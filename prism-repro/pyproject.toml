@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prism-repro"
+version = "2.2.0rc1"
+description = "PRISM: implementation and simulation study for the paper on joint cost-SLA provisioning of concurrency and memory for serverless data pipelines (synthetic data only)"
+requires-python = ">=3.10"
+dependencies = ["numpy", "scipy", "pandas", "scikit-learn", "matplotlib", "tabulate"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

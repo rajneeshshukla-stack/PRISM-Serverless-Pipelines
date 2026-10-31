@@ -1,0 +1,267 @@
+diff --git a/scripts/revision/pc_billing_bounds.py b/scripts/revision/pc_billing_bounds.py
+index 10db1ea..c7c45ee 100644
+--- a/scripts/revision/pc_billing_bounds.py
++++ b/scripts/revision/pc_billing_bounds.py
+@@ -26,6 +26,8 @@ for seed in sorted(rows.seed.unique()):
+         P = arr[key + "::P_epoch"].astype(float); m = arr[key + "::mem_epoch"]
+         g = m / 1024.0
+         inc = np.maximum(np.diff(P, axis=0), 0.0)          # environments added per epoch (from epoch 1)
++        sw = m[1:] != m[:-1]                                  # M5 fix: memory change re-provisions the whole pool
++        inc[sw] = P[1:][sw]
+         added = inc.sum(axis=1)                               # per epoch, all stages
+         ini = np.array([INIT[int(x)] for x in m[1:]])
+         init_lo = float((added * ini * g[1:] * pr.pcd).sum())
+diff --git a/src/prism_repro/des.py b/src/prism_repro/des.py
+index 3deae70..56751e6 100644
+--- a/src/prism_repro/des.py
++++ b/src/prism_repro/des.py
+@@ -42,8 +42,10 @@ class EventDraws:
+         self.n, self.n_min = n, n_min
+ 
+ 
+-def _stage_pass(arr, x, z, P_min, KA):
+-    """One stage. arr sorted ascending. Returns finish times, cold flags, provisioned flags."""
++def _stage_pass(arr, x, z, P_min, KA, gen_min=None):
++    """One stage. arr sorted ascending. Returns finish times, cold flags, provisioned flags.
++    gen_min (M5 fix): memory-version index per minute; an on-demand environment is reused only by a
++    request of the same version."""
+     n = len(arr)
+     finish = np.empty(n)
+     cold = np.zeros(n, bool)
+@@ -53,6 +55,8 @@ def _stage_pass(arr, x, z, P_min, KA):
+     arr_l, x_l, z_l = arr.tolist(), x.tolist(), z.tolist()
+     P_l = P_min.tolist()
+     nP = len(P_l)
++    G_l = gen_min.tolist() if gen_min is not None else None
++    cur_gen = None
+     for j in range(n):
+         t = arr_l[j]
+         while pc_busy and pc_busy[0] <= t:
+@@ -64,18 +68,38 @@ def _stage_pass(arr, x, z, P_min, KA):
+             hpush(pc_busy, f)
+             used_pc[j] = True
+         else:
+-            while od_busy and od_busy[0] <= t:
+-                idle.append(hpop(od_busy))
+-            lim = t - KA
+-            while idle and idle[0] < lim:
+-                idle.popleft()
+-            if idle:
+-                idle.pop()
+-                f = t + x_l[j]
+-            else:
+-                f = t + z_l[j] + x_l[j]
+-                cold[j] = True
+-            hpush(od_busy, f)
++            if G_l is None:
++                while od_busy and od_busy[0] <= t:
++                    idle.append(hpop(od_busy))
++                lim = t - KA
++                while idle and idle[0] < lim:
++                    idle.popleft()
++                if idle:
++                    idle.pop()
++                    f = t + x_l[j]
++                else:
++                    f = t + z_l[j] + x_l[j]
++                    cold[j] = True
++                hpush(od_busy, f)
++            else:  # M5 fix: entries are (finish time, version)
++                g = G_l[m] if m < len(G_l) else G_l[-1]
++                if g != cur_gen:
++                    cur_gen = g
++                    idle = deque(e for e in idle if e[1] == g)
++                while od_busy and od_busy[0][0] <= t:
++                    e = hpop(od_busy)
++                    if e[1] == g:
++                        idle.append(e)
++                lim = t - KA
++                while idle and idle[0][0] < lim:
++                    idle.popleft()
++                if idle:
++                    idle.pop()
++                    f = t + x_l[j]
++                else:
++                    f = t + z_l[j] + x_l[j]
++                    cold[j] = True
++                hpush(od_busy, (f, g))
+         finish[j] = f
+     return finish, cold, used_pc
+ 
+@@ -108,6 +132,7 @@ def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray,
+     cost = (P_min * (mem_min[:, None] / 1024.0) * 60.0 * pr.pc).sum() + draws.n * S * pr.req
+     od_share, cold_ratio, inflight = [], [], []
+     KA = cfg.keepalive_min * 60.0
++    gen_min = np.concatenate([[0], np.cumsum(mem_min[1:] != mem_min[:-1])])  # M5 fix: memory version per minute
+     for s in range(S):
+         m_req = mem_min[np.minimum((arr // 60).astype(np.int64), draws.n_min - 1)]
+         d_s = np.array([stage_means(cfg, int(m))[s] for m in cfg.mem_options])
+@@ -115,7 +140,7 @@ def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray,
+         mi = np.searchsorted(np.array(cfg.mem_options), m_req)
+         x = draws.ex[s, idx] * d_s[mi]
+         z = draws.init[s, idx] * ini[mi]
+-        fin, cold, used_pc = _stage_pass(arr, x, z, P_min[:, s], KA)
++        fin, cold, used_pc = _stage_pass(arr, x, z, P_min[:, s], KA, gen_min)
+         g = m_req / 1024.0
+         cost += (x * g * np.where(used_pc, pr.pcd, pr.od)).sum()
+         if bill_init:
+diff --git a/src/prism_repro/policies.py b/src/prism_repro/policies.py
+index 19ae86d..7ef1bcb 100644
+--- a/src/prism_repro/policies.py
++++ b/src/prism_repro/policies.py
+@@ -98,7 +98,8 @@ class Reactive(Policy):
+         if lo >= 0:
+             Kwin = tel.K[lo:v + 1]
+         else:  # pre-week minutes from history at default memory
+-            pre = self.ctx.K_hist_default[self.ctx.week_start + lo:self.ctx.week_start]
++            # M12 fix: the pre-week slice ends at the visible horizon (minute v when v < 0)
++            pre = self.ctx.K_hist_default[self.ctx.week_start + lo:self.ctx.week_start + min(v + 1, 0)]
+             Kwin = np.vstack([pre, tel.K[0:max(v + 1, 0)]])
+         target = np.ceil(Kwin.max(0) / self.param - 1e-9)
+         if self.cur is None:
+diff --git a/src/prism_repro/simulator.py b/src/prism_repro/simulator.py
+index 3bf88ec..7ee8f64 100644
+--- a/src/prism_repro/simulator.py
++++ b/src/prism_repro/simulator.py
+@@ -108,7 +108,9 @@ def simulate(ctx: SimContext, policy, keep_raw: bool = True) -> dict:
+     t0 = time.perf_counter()
+     dec_times = []
+     ka = cfg.keepalive_min
+-    pre_pool = None
++    pre_od = None          # (ka, S) pre-week on-demand concurrency, row j = minute j - ka
++    seg_start = 0          # M5 fix: first minute of the current memory segment
++    m_prev = None
+     for k in range(ctx.n_epochs):
+         td = time.perf_counter()
+         P, m = policy.decide(k, tel)
+@@ -120,15 +122,21 @@ def simulate(ctx: SimContext, policy, keep_raw: bool = True) -> dict:
+         K = ctx.K_week(m)[a:b]
+         if k == 0:  # initial warm pool from the 10 pre-week minutes at default memory (D24)
+             Kpre = ctx.K_hist_default[ctx.week_start - ka:ctx.week_start]
+-            pre_pool = np.maximum(Kpre - P[None, :], 0).max(0) if ka > 0 else np.zeros(S)
++            pre_od = np.maximum(Kpre - P[None, :], 0) if ka > 0 else np.zeros((0, S))
++            if m != cfg.default_mem:   # M5 fix: pre-week environments run the default-memory version
++                pre_od = np.zeros_like(pre_od)
++        if m_prev is not None and m != m_prev:
++            seg_start = a          # M5 fix: environments of the previous version cannot be reused
++        m_prev = m
+         od = np.maximum(K - P[None, :], 0.0)
+         new = np.zeros_like(od)
+         for i in range(E):  # pool from previous ka minutes of on-demand concurrency
+             t = a + i
+-            lo = max(0, t - ka)
++            lo = max(0, t - ka, seg_start)
+             pool = OD[lo:t].max(0) if t > lo else np.zeros(S)
+-            if t < ka:
+-                pool = np.maximum(pool, pre_pool)
++            if t < ka and seg_start == 0:
++                # M12 fix: pre-week minute j - ka is still warm at minute t only if j - ka >= t - ka
++                pool = np.maximum(pool, pre_od[t:].max(0) if t < len(pre_od) else 0.0)
+             new[i] = np.maximum(od[i] - pool, 0.0)
+             OD[t] = od[i]
+         share = np.where(K > 0, od / np.where(K > 0, K, 1.0), 0.0)
+diff --git a/tests/test_stage21_fixes.py b/tests/test_stage21_fixes.py
+new file mode 100644
+index 0000000..94544b2
+--- /dev/null
++++ b/tests/test_stage21_fixes.py
+@@ -0,0 +1,99 @@
++"""Stage 2.1 (branch stage2.1-m12-m5-fix, not merged): tests of the M12 and M5 code fixes.
++
++M12  first epoch of a week: reactive tracking must not read beyond its visible horizon; the pre-week warm
++     pool must expire minute by minute.
++M5   memory change: warm on-demand environments of the previous version cannot be reused (fast and
++     event-level simulator).
++"""
++import os
++import sys
++import unittest
++from collections import deque
++
++import numpy as np
++
++sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
++
++from prism_repro.config import PipelineConfig  # noqa: E402
++from prism_repro.des import _stage_pass  # noqa: E402
++from prism_repro.policies import OnDemand, Policy, Reactive  # noqa: E402
++from prism_repro.simulator import WEEK, SimContext, Telemetry, WeekDraws, simulate  # noqa: E402
++
++
++def context(K_week_by_mem, K_hist, N=1000.0):
++    cfg = PipelineConfig()
++    counts = np.full(2 * WEEK, N, dtype=np.int64)
++    ctx = SimContext(cfg=cfg, counts=counts, week_start=WEEK, draws=WeekDraws(cfg, 5, 1),
++                     K_hist_default=K_hist, r_mean_peak=0.8)
++    for m, K in K_week_by_mem.items():
++        ctx._Kweek[m] = np.repeat(np.asarray(K, float)[:, None], cfg.n_stages, axis=1)
++    return ctx
++
++
++class MemSchedule(Policy):
++    """No provisioned capacity; memory per epoch from a list."""
++    family = "MemSchedule"
++
++    def __init__(self, mems):
++        super().__init__(None)
++        self.mems = mems
++
++    def decide(self, k, tel):
++        return np.zeros(self.cfg.n_stages), self.mems[k] if k < len(self.mems) else self.mems[-1]
++
++
++class TestM12(unittest.TestCase):
++    def test_reactive_first_epoch_window_ends_at_visible_horizon(self):
++        S = 4
++        hist = np.zeros((2 * WEEK, S))
++        hist[WEEK - 1] = 1000.0          # minute -1: NOT visible at decision k = 0 (visible through minute -2)
++        hist[WEEK - 2] = 10.0            # minute -2: visible
++        ctx = context({1024: np.zeros(WEEK)}, hist)
++        pol = Reactive(0.5)
++        pol.prepare(ctx)
++        tel = Telemetry(N=np.zeros(WEEK), K=np.zeros((WEEK, S)), P=np.zeros((WEEK, S)),
++                        n_od=np.zeros((WEEK, S)), cold=np.zeros((WEEK, S)))
++        P, _ = pol.decide(0, tel)
++        np.testing.assert_allclose(P, np.full(S, 20.0))   # ceil(10 / 0.5); minute -1 ignored
++
++    def test_pre_week_pool_expires_minute_by_minute(self):
++        S = 4
++        hist = np.zeros((2 * WEEK, S))
++        hist[WEEK - 10] = 6.0            # used only at minute -10: warm at minute 0, expired from minute 1
++        K = np.zeros(WEEK)
++        K[1] = 6.0
++        res = simulate(context({1024: K}, hist), OnDemand())
++        self.assertEqual(res["telemetry"].cold[1, 0], 6.0)   # before the fix: 0 (expired pool still counted)
++        K0 = np.zeros(WEEK)
++        K0[0] = 6.0
++        res0 = simulate(context({1024: K0}, hist), OnDemand())
++        self.assertEqual(res0["telemetry"].cold[0, 0], 0.0)  # still warm at minute 0
++
++
++class TestM5(unittest.TestCase):
++    def test_fast_simulator_memory_change_empties_warm_pool(self):
++        S = 4
++        hist = np.zeros((2 * WEEK, S))
++        K = np.zeros(WEEK)
++        K[3], K[6] = 5.0, 5.0            # same demand before and after a switch at minute 5 (epoch 1)
++        ctx = context({1024: K, 2048: K}, hist)
++        res = simulate(ctx, MemSchedule([1024, 2048]))
++        cold = res["telemetry"].cold[:, 0]
++        self.assertEqual(cold[3], 5.0)
++        self.assertEqual(cold[6], 5.0)  # before the fix: 0 (environments of the 1024 MB version reused)
++        res_same = simulate(context({1024: K}, hist), MemSchedule([1024, 1024]))
++        self.assertEqual(res_same["telemetry"].cold[6, 0], 0.0)   # no switch: reuse as before
++
++    def test_event_level_memory_change_prevents_reuse(self):
++        arr = np.array([10.0, 200.0])            # second request after the version changes at minute 1
++        x, z = np.full(2, 1.0), np.full(2, 5.0)
++        fin, cold, pc = _stage_pass(arr, x, z, np.zeros(5), 600.0, gen_min=np.array([0, 1, 1, 1, 1]))
++        np.testing.assert_array_equal(cold, [True, True])
++        fin, cold, pc = _stage_pass(arr, x, z, np.zeros(5), 600.0, gen_min=np.zeros(5, int))
++        np.testing.assert_array_equal(cold, [True, False])
++        fin2, cold2, pc2 = _stage_pass(arr, x, z, np.zeros(5), 600.0)     # legacy path unchanged
++        np.testing.assert_array_equal(cold2, [True, False])
++
++
++if __name__ == "__main__":
++    unittest.main()

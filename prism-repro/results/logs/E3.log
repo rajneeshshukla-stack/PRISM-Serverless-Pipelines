@@ -1,0 +1,11 @@
+[E3] start 2026-10-29T23:38:58+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E3] seed 101 done
+[E3] seed 102 done
+[E3] seed 103 done
+[E3] seed 104 done
+[E3] seed 105 done
+[E3] finished 2026-10-29T23:48:49+00:00 in 591s
+[E3] start 2026-10-29T23:48:54+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E3] finished 2026-10-29T23:48:54+00:00 in 0s
+[E3] start 2026-10-29T23:58:38+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E3] finished 2026-10-29T23:58:38+00:00 in 0s

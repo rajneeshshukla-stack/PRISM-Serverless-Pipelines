@@ -1,0 +1,2 @@
+seed,scenario,epochs,total_ms_median,total_ms_p99,total_ms_max,forecast_ms_median,forecast_ms_p99,optimise_ms_median,optimise_ms_p99,online_vs_batch_max_rel_diff,online_equals_batch_identical,busy_fraction_at_5min,synthetic,exp,status,started_utc,platform,processor,python
+101,stationary,2016,7.3587,17.0546,22.8083,5.4757,9.4506,1.8059,9.0584,0.0,True,0.0,True,E10,ok,2026-10-29T23:49:18+00:00,Linux-6.18.44-fc-v185-x86_64-with-glibc2.39,x86_64,3.12.3

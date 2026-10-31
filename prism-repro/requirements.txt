@@ -1,0 +1,7 @@
+# Versions tested in the reference sandbox (Python 3.12.3). Other versions are untested.
+numpy==2.4.4
+scipy==1.17.1
+pandas==3.0.2
+scikit-learn==1.8.0
+matplotlib==3.10.8
+tabulate>=0.9

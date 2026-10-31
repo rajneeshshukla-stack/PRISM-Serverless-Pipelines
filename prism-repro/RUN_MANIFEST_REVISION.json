@@ -1,0 +1,96 @@
+{
+ "generated_utc": "2026-10-30T05:49:19+00:00",
+ "note": "Experiments added or completed during the manuscript revision, after E1-E11 outputs had been inspected (post hoc). All data synthetic; simulations on a local sandbox; no cloud resources.",
+ "environment_of_revision_runs": {
+  "python": "3.13.18",
+  "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+  "packages": {
+   "numpy": "2.5.3",
+   "scipy": "1.18.1",
+   "pandas": "3.0.5",
+   "sklearn": "1.9.1",
+   "matplotlib": "3.11.2"
+  }
+ },
+ "experiments": {
+  "E8": {
+   "kind": "reference forecasters (simulation); seeds 101-105, completed in revision",
+   "n_rows": 1280,
+   "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105
+   ],
+   "status_counts": {
+    "ok": 1280
+   },
+   "first_start_utc": "2026-10-30T00:58:20+00:00",
+   "last_start_utc": "2026-10-30T03:50:26+00:00",
+   "files": {
+    "E8_downstream_selected.csv": "1b9fe61da7893ebf7527517d9bbdf6b952a54828bdf0008a329ac047f8ce1067",
+    "arrays_seed101_ewma.npz": "67710e940e2159d89d9173547aed88828d87812b6038a13b7620926a98e16d09",
+    "arrays_seed101_forecast.npz": "3e6bea28ccfdde665fdfa045e54c13a709ff0f0a9fc4faf65460e7c7d535952e",
+    "arrays_seed101_forecast_original_env.npz": "3e6bea28ccfdde665fdfa045e54c13a709ff0f0a9fc4faf65460e7c7d535952e",
+    "arrays_seed101_last5max.npz": "617648f4f7eb456a42e08b47e2fb5b1ffe4451a760c273783b2f08da6247204e",
+    "arrays_seed101_seasonal_naive.npz": "9229fb6c1faee44c9dcd35aaeaafe639d7843ea2ea7a095f19a562e6e8fbb183",
+    "arrays_seed102_ewma.npz": "bcac930ee4a90839bc257546d0a127d90d5312903da6be42db66382f15de4008",
+    "arrays_seed102_forecast.npz": "ac7d27b7e781e366d3826d5bb7b0d3021b55d71c3a338b169e0ab53fe4ad332f",
+    "arrays_seed102_last5max.npz": "619b054ab8c2cec190c449510103b1f834d94040d27cd6d78f10faf5824f603b",
+    "arrays_seed102_seasonal_naive.npz": "ca118d9a1add1ff311e3495b730952d49d6b5f16ee0a9faf9565bd6fe78eb954",
+    "arrays_seed103_ewma.npz": "091224b400fca097bc48c7820d35a0b42737666620c23f171305b1adec42dd01",
+    "arrays_seed103_forecast.npz": "ac7d27b7e781e366d3826d5bb7b0d3021b55d71c3a338b169e0ab53fe4ad332f",
+    "arrays_seed103_last5max.npz": "52637c353b421b2ed1c9ac507850a4c5583004255f9a15e2d20675915053fbe1",
+    "arrays_seed103_seasonal_naive.npz": "92f5248cfbb0af371261126e7edd383424a4705f51aae5de2f081adbd875d7c5",
+    "arrays_seed104_ewma.npz": "589421dc4945fd852fff05cec22d59cb1f2ef6c577717f114214de0947577bd2",
+    "arrays_seed104_forecast.npz": "ac7d27b7e781e366d3826d5bb7b0d3021b55d71c3a338b169e0ab53fe4ad332f",
+    "arrays_seed104_last5max.npz": "571c8c82b58fd8ac94175e4b9f975c491cc97d2d81a32b6c22fe5164d2047349",
+    "arrays_seed104_seasonal_naive.npz": "663a311c1a7a8c1009b836bf7dff586b8892a74357ea0141411f19273e254023",
+    "arrays_seed105_ewma.npz": "5590053de2e5cb42b4856d3da5c22fe446a0085c50d3fc2d8647398ad8d0be57",
+    "arrays_seed105_forecast.npz": "ac7d27b7e781e366d3826d5bb7b0d3021b55d71c3a338b169e0ab53fe4ad332f",
+    "arrays_seed105_last5max.npz": "e7c2136dcbd7f20e9727247feb16f0eaca25214b07523baa3477de116c4e7943",
+    "arrays_seed105_seasonal_naive.npz": "d6cf0f63b426e901453f804a7bc7a04a73cc892f0ae78e7ea5ad6fbe71cba699",
+    "rows.jsonl": "d217aa7efa59ce60b932b8746a9b145cf8ae5b31b93a225c6fa60c94f52812a8",
+    "rows_partial_seed101_original_env.jsonl": "78ab4121681762a85f856b0f2113fd707359ceabbcc8f52113ed8f1e8a657dba"
+   },
+   "command": "python experiments/run_experiments.py --exp E8 --seeds <seeds>; analysis: python scripts/revision/analyze_e8.py . results/raw/E8/rows.jsonl",
+   "synthetic_data": true,
+   "cloud_execution": false
+  },
+  "E12": {
+   "kind": "event-level re-tuning by open-loop replay of stored E1 schedules (added in revision)",
+   "n_rows": 395,
+   "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105
+   ],
+   "status_counts": {
+    "null": 395
+   },
+   "first_start_utc": null,
+   "last_start_utc": null,
+   "files": {
+    "E12_seed101.jsonl": "23caf97d2e6e90824209ee49c281a7d4bc6f02fae693173932b6e668aaefc494",
+    "E12_seed102.jsonl": "e3c723dbfb0128e16af6307f0488c6f270de70ca28ef0ffbb1df154fe09d0184",
+    "E12_seed103.jsonl": "ab01244b4bdfc5db0e18add5f0bdad0dd2208f8805b753d50804caf348dafea4",
+    "E12_seed104.jsonl": "eeae58a23044f65e22a76dd69d9f82cd18d09ea37c52e03843689bb4db388c99",
+    "E12_seed105.jsonl": "b1036af2b04ebc36b56442ccd6f452429cb08315b4183d684af97e9daf953ab7"
+   },
+   "command": "python scripts/revision/e12_event_retune.py . results/raw/E12 <seeds>; analysis: python scripts/revision/analyze_e12.py results/raw/E12",
+   "synthetic_data": true,
+   "cloud_execution": false
+  }
+ },
+ "post_hoc_outputs": {
+  "results/tables/revision/E12_event_level_retuning_analysis.txt": "ef519f10beba5e843bb7af5256ae2495f90e6ddabedcb2b53b22d7a0369139df",
+  "results/tables/revision/E8_reference_forecasters_analysis.txt": "533cff3010a7f037aedf8b6b34cbfff3056ffb4eecee17e69ac35ba8a0278c32",
+  "results/tables/revision/matched_compliance_pertrace.txt": "36f10b38bcedb848b22ea8d3d90a9eef97cf36c9c4141af1cf3f7db8efc0cf84",
+  "results/tables/revision/pc_billing_bounds.txt": "d6cf8502194b67bd4d5242960176d52a49a23ed9f9a9d37a3c1d02931b6df818",
+  "results/tables/revision/pc_billing_runs.csv": "76817cda7f00ec2d3d18c462fad5e95a5b79b6426a5c0d1e941886275153a0ed",
+  "results/tables/revision/posthoc_matched_compliance.txt": "7771bf3c4223af58ef0a76d7778141a400d33d955d73650d8b86a1c7e1a06f59"
+ }
+}

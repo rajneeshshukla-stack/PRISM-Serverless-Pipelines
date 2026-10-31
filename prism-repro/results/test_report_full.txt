@@ -1,0 +1,59 @@
+test_C02_break_even (test_analytic.TestLatencyAndPrices.test_C02_break_even) ... ok
+test_C03_doubling_memory (test_analytic.TestLatencyAndPrices.test_C03_doubling_memory) ... ok
+test_C04_exponential_tail_exact (test_analytic.TestLatencyAndPrices.test_C04_exponential_tail_exact) ... ok
+test_C06_table3_miss_probabilities (test_analytic.TestLatencyAndPrices.test_C06_table3_miss_probabilities) ... ok
+test_C39_window_share (test_analytic.TestLatencyAndPrices.test_C39_window_share) ... ok
+test_break_even_is_cost_indifference (test_analytic.TestLatencyAndPrices.test_break_even_is_cost_indifference)
+At utilisation u, a provisioned env costs pc + u*pcd per GB-s of capacity versus ... ok
+test_lognormal_mean_one (test_analytic.TestLatencyAndPrices.test_lognormal_mean_one) ... ok
+test_stage_cost_hand_example (test_analytic.TestLatencyAndPrices.test_stage_cost_hand_example) ... ok
+test_C01_reported_values (test_analytic.TestOverflowFormulas.test_C01_reported_values) ... ok
+test_C05_ceff_is_upper45_mean_with_intensity (test_analytic.TestOverflowFormulas.test_C05_ceff_is_upper45_mean_with_intensity)
+c_eff ~ E_Z[mean of the upper 45 % of Poisson(c Z)], Z=exp(0.148 N) — the same ... ok
+test_erlang_b_matches_recursion_and_sum (test_analytic.TestOverflowFormulas.test_erlang_b_matches_recursion_and_sum) ... ok
+test_monotonicity (test_analytic.TestOverflowFormulas.test_monotonicity) ... ok
+test_occupancy_matches_bruteforce (test_analytic.TestOverflowFormulas.test_occupancy_matches_bruteforce) ... ok
+test_record_violation_limits (test_analytic.TestOverflowFormulas.test_record_violation_limits) ... ok
+test_zero_load (test_analytic.TestOverflowFormulas.test_zero_load) ... ok
+test_clipping (test_controller.TestConformal.test_clipping) ... ok
+test_delay_two_epochs (test_controller.TestConformal.test_delay_two_epochs)
+A miss at epoch 3 may affect the offset used at epoch 5 but not at epochs <= 4 ... ok
+test_long_run_miss_rate_near_target (test_controller.TestConformal.test_long_run_miss_rate_near_target) ... ok
+test_no_lookahead (test_controller.TestFeatures.test_no_lookahead) ... ok
+test_target (test_controller.TestFeatures.test_target) ... ok
+test_zero_demand_floor (test_controller.TestFeatures.test_zero_demand_floor) ... ok
+test_C07_pools_drain (test_controller.TestHysteresis.test_C07_pools_drain) ... ok
+test_cost_not_monotone_in_P (test_controller.TestOptimizer.test_cost_not_monotone_in_P)
+§3.5: above the break-even utilisation more capacity can be cheaper. ... ok
+test_infeasible_flag_and_cap (test_controller.TestOptimizer.test_infeasible_flag_and_cap) ... ok
+test_matches_scalar_reference (test_controller.TestOptimizer.test_matches_scalar_reference) ... ok
+test_quantile_mode_feasibility_equivalence (test_controller.TestOptimizer.test_quantile_mode_feasibility_equivalence)
+§4.3: with v monotone in demand, scenario feasibility == check at the 1-delta scenario. ... ok
+test_zero_demand_no_provisioning (test_controller.TestOptimizer.test_zero_demand_no_provisioning) ... ok
+test_C08_all_offsets_monotone (test_controller.TestQuantileOrdering.test_C08_all_offsets_monotone) ... ok
+test_upper_far_below_median (test_controller.TestQuantileOrdering.test_upper_far_below_median) ... ok
+test_online_equals_batch (test_des_online.TestOnlineFeatures.test_online_equals_batch) ... ok
+test_cold_occupancy_and_keepalive_expiry (test_des_online.TestStagePass.test_cold_occupancy_and_keepalive_expiry) ... ok
+test_erlang_b_oracle (test_des_online.TestStagePass.test_erlang_b_oracle)
+Poisson arrivals into a pool of P provisioned envs: overflow share = B(P, c). ... ok
+test_full_pipeline_deterministic_and_bounded (test_des_online.TestStagePass.test_full_pipeline_deterministic_and_bounded) ... ok
+test_inflight_sweep (test_des_online.TestStagePass.test_inflight_sweep) ... ok
+test_provisioned_loss_routing (test_des_online.TestStagePass.test_provisioned_loss_routing) ... ok
+test_cost_matches_independent_formula (test_simulation.TestFastSimulator.test_cost_matches_independent_formula) ... ok
+test_invariants_and_determinism (test_simulation.TestFastSimulator.test_invariants_and_determinism) ... ok
+test_keepalive_cold_start_count_hand_example (test_simulation.TestFastSimulator.test_keepalive_cold_start_count_hand_example) ... ok
+test_provisioned_covers_all (test_simulation.TestFastSimulator.test_provisioned_covers_all) ... ok
+test_runs (test_simulation.TestMetricsAndTuning.test_runs) ... ok
+test_selection_rule (test_simulation.TestMetricsAndTuning.test_selection_rule) ... ok
+test_weighted_quantile (test_simulation.TestMetricsAndTuning.test_weighted_quantile) ... ok
+test_window_attainment (test_simulation.TestMetricsAndTuning.test_window_attainment) ... ok
+test_bursty_has_more_burst_mass (test_simulation.TestWorkload.test_bursty_has_more_burst_mass) ... ok
+test_first_21_days_identical (test_simulation.TestWorkload.test_first_21_days_identical) ... ok
+test_growth_and_spike (test_simulation.TestWorkload.test_growth_and_spike) ... ok
+test_mean_rate (test_simulation.TestWorkload.test_mean_rate) ... ok
+test_synthetic_label_and_determinism (test_simulation.TestWorkload.test_synthetic_label_and_determinism) ... ok
+
+----------------------------------------------------------------------
+Ran 48 tests in 45.249s
+
+OK

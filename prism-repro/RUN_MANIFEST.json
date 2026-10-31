@@ -1,0 +1,382 @@
+{
+ "generated_utc": "2026-10-30T01:00:41+00:00",
+ "note": "Independent reimplementation. All data SYNTHETIC; all results are simulations on a local sandbox; no cloud resources were used. Manuscript values are claims, not inputs.",
+ "manuscript": {
+  "file": "Joint_Cost_SLA_Serverless_Pipelines_PRISM_REVISED__1_.docx",
+  "sha256": "473672fbac925414da43ec716b083fc46effe339f0095be221bd09beafa5269a",
+  "redistributed": false
+ },
+ "git_head": "20a48cb54315a83ba1cdc7d15a2038a4fe0d1f32",
+ "git_dirty": true,
+ "git_log": [
+  "20a48cb 2026-10-30T01:00:36+00:00 E5-E7, E11 results; analysis fixes; final reports",
+  "e82a3cd 2026-10-30T00:01:43+00:00 Reports, readiness, claim rules, analysis fix",
+  "8c98e3a 2026-10-29T23:40:36+00:00 Reorder queue (E4, E9 first); README, data card, manifest/claim/repro scripts",
+  "5c85313 2026-10-29T23:30:10+00:00 Chunked resumable saves; docs, loader, fixture, demo, CI (untested)",
+  "afc492f 2026-10-29T23:24:45+00:00 Fix carried-in level in in-flight sweep; reorder queue; DES tests",
+  "6db1f8d 2026-10-29T23:15:54+00:00 Independent reimplementation: core library, runner, tests, protocol"
+ ],
+ "current_source_sha256": "8c1710f74c3d6ddc807db5122a2702a8db0c80c1c984510f2e3f30ca21a184dc",
+ "environment": {
+  "python": "3.12.3",
+  "platform": "Linux-6.18.44-fc-v185-x86_64-with-glibc2.39",
+  "cpu_model": "Intel(R) Xeon(R) Processor @ 2.10GHz",
+  "logical_cpus": 1,
+  "mem_total_mb": 3995,
+  "packages": {
+   "numpy": "2.4.4",
+   "scipy": "1.17.1",
+   "pandas": "3.0.2",
+   "sklearn": "1.8.0",
+   "matplotlib": "3.10.8"
+  }
+ },
+ "experiments": {
+  "E1": {
+   "kind": "scientific evaluation (simulation)",
+   "executed": true,
+   "n_rows_unique": 1900,
+   "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105
+   ],
+   "status_counts": {
+    "ok": 1900
+   },
+   "source_sha256_values": [
+    "8c1710f74c3d6ddc807db5122a2702a8db0c80c1c984510f2e3f30ca21a184dc",
+    "af08337bc26275d0506c86046e640428231f6ded85a5b4c24ae7f8d14fc20e48"
+   ],
+   "first_start_utc": "2026-10-29T23:12:16+00:00",
+   "last_start_utc": "2026-10-29T23:38:22+00:00",
+   "total_run_seconds": 1194.7,
+   "files": {
+    "arrays_seed101.npz": "452ab103e7e72d9ed520b43c70704ca630fd227e29efb749237e525915a11be7",
+    "arrays_seed102.npz": "bb397343b13ea73a42397d3a1d9918359e812d4912efe8f83839a50aa14de371",
+    "arrays_seed103.npz": "7573c2100f1739631140809de59b6666f61dd5ce6acb829f3295752ccab059e7",
+    "arrays_seed104.npz": "b860eec436674ee9096439fef8a850fc4e77c0e18a169122f034a43687bb9c93",
+    "arrays_seed105.npz": "778395ab0163bda25a10b42eb9ffafec70cf5c6353f658144184674999167a05",
+    "rows.jsonl": "ce85e218a512f53e36ecedaa0e4af2944d751d90632b897c74e1944f37495caf"
+   },
+   "command": "python experiments/run_experiments.py --exp E1 --seeds <seeds> (see scripts/run_all.sh)",
+   "synthetic_data": true,
+   "cloud_execution": false
+  },
+  "E10": {
+   "kind": "timing measurement (sandbox)",
+   "executed": true,
+   "n_rows_unique": 1,
+   "seeds": [
+    101
+   ],
+   "status_counts": {
+    "ok": 1
+   },
+   "source_sha256_values": [
+    "8c1710f74c3d6ddc807db5122a2702a8db0c80c1c984510f2e3f30ca21a184dc"
+   ],
+   "first_start_utc": "2026-10-29T23:49:18+00:00",
+   "last_start_utc": "2026-10-29T23:49:18+00:00",
+   "total_run_seconds": 0,
+   "files": {
+    "arrays_seed101.npz": "4a5db759ced710fd43f213194bbfe9dda6f69ff77b0d46e61d2bf4d452706212",
+    "rows.jsonl": "5e003be6278cb9ecf75fbd16b7e58c7410ee11dc7579d988c1799723187836b9"
+   },
+   "command": "python experiments/run_experiments.py --exp E10 --seeds <seeds> (see scripts/run_all.sh)",
+   "synthetic_data": true,
+   "cloud_execution": false
+  },
+  "E11": {
+   "kind": "scientific evaluation (simulation)",
+   "executed": true,
+   "n_rows_unique": 150,
+   "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105
+   ],
+   "status_counts": {
+    "ok": 150
+   },
+   "source_sha256_values": [
+    "8c1710f74c3d6ddc807db5122a2702a8db0c80c1c984510f2e3f30ca21a184dc"
+   ],
+   "first_start_utc": "2026-10-30T00:46:45+00:00",
+   "last_start_utc": "2026-10-30T00:58:09+00:00",
+   "total_run_seconds": 658.6,
+   "files": {
+    "arrays_seed101.npz": "14062777304a62c38a344bb2c6ef0778f7de825d718987fe6f1d13f476e19f8e",
+    "arrays_seed102.npz": "b4456fcc8618dcb41367c851a0c8377e0583773bb6f17e7598aff72818854a92",
+    "arrays_seed103.npz": "aca314e6f61ea5b35a47785b23fd7632079eb53170b8d7607213754558fc5318",
+    "arrays_seed104.npz": "5396c4dd49474f7c2b2724896fc64b72a9a947272495fc357925783df244301c",
+    "arrays_seed105.npz": "58a0201ff92f7502bc4ac778581c4c9c5a5925bf98a5f8dce0c621962a593f9c",
+    "rows.jsonl": "c993a8db3751e4c1a28b4b67f6d73253d756f199f5787986779d10a02d3cb130"
+   },
+   "command": "python experiments/run_experiments.py --exp E11 --seeds <seeds> (see scripts/run_all.sh)",
+   "synthetic_data": true,
+   "cloud_execution": false
+  },
+  "E2": {
+   "kind": "scientific evaluation (forecast, no simulation)",
+   "executed": true,
+   "n_rows_unique": 20,
+   "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105
+   ],
+   "status_counts": {
+    "ok": 20
+   },
+   "source_sha256_values": [
+    "8c1710f74c3d6ddc807db5122a2702a8db0c80c1c984510f2e3f30ca21a184dc"
+   ],
+   "first_start_utc": "2026-10-29T23:38:35+00:00",
+   "last_start_utc": "2026-10-29T23:38:56+00:00",
+   "total_run_seconds": 0,
+   "files": {
+    "arrays_seed101.npz": "c662e8d1dd67e245492c2ea724853ff73914821d529494d31f3368556aabd247",
+    "arrays_seed102.npz": "6390e2eefdd5a0b8241aba080a730d2a41597ea1aa8d2e93944472cdaecb98a0",
+    "arrays_seed103.npz": "4dd30a289930b86663940e515bef86c8290a6518f31debdcd8ec682434044088",
+    "arrays_seed104.npz": "947a6040a852d1cb506870f9e0178cc4f42fd802b7c6c40e79ca5f324c68cb81",
+    "arrays_seed105.npz": "908cb905f2bc3fdb3f32db4a82074880857115014f30bc5a0a1d2de9c1b5f6b7",
+    "rows.jsonl": "328cfea970cbed06a1aba7748bc37cb8eed7d72d1ccb8c005aed1c946677e755"
+   },
+   "command": "python experiments/run_experiments.py --exp E2 --seeds <seeds> (see scripts/run_all.sh)",
+   "synthetic_data": true,
+   "cloud_execution": false
+  },
+  "E3": {
+   "kind": "scientific evaluation (simulation, ablation)",
+   "executed": true,
+   "n_rows_unique": 110,
+   "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105
+   ],
+   "status_counts": {
+    "ok": 110
+   },
+   "source_sha256_values": [
+    "8c1710f74c3d6ddc807db5122a2702a8db0c80c1c984510f2e3f30ca21a184dc"
+   ],
+   "first_start_utc": "2026-10-29T23:39:04+00:00",
+   "last_start_utc": "2026-10-29T23:48:44+00:00",
+   "total_run_seconds": 556.0,
+   "files": {
+    "arrays_seed101.npz": "6ef220bfc45e6b7363be003e74644adeac27c48008c2c8057461e6582f116a7b",
+    "arrays_seed102.npz": "bd2097e30b9c527706255e818ae7d7af01a3f46435a0460cbcd5b1c51ae0ea2b",
+    "arrays_seed103.npz": "95ec3fd92fcf9ba244dec477bff7254ea334d33d5a20d827ec3b86eebb2a42ac",
+    "arrays_seed104.npz": "f29d07d2955b31fca2d1caf012525db087da9a1fcda1a73b1051d73b1a2593dd",
+    "arrays_seed105.npz": "63ce0ac8cc702506291bd8a46218ca6e4eba02f22b075765a242076e14c5b552",
+    "rows.jsonl": "b9a281a1331f5abd540fcf8106f024b61d6730ba1894aee8385cacf551aa7af5"
+   },
+   "command": "python experiments/run_experiments.py --exp E3 --seeds <seeds> (see scripts/run_all.sh)",
+   "synthetic_data": true,
+   "cloud_execution": false
+  },
+  "E4": {
+   "kind": "scientific evaluation (simulation)",
+   "executed": true,
+   "n_rows_unique": 172,
+   "seeds": [
+    101,
+    102
+   ],
+   "status_counts": {
+    "ok": 172
+   },
+   "source_sha256_values": [
+    "8c1710f74c3d6ddc807db5122a2702a8db0c80c1c984510f2e3f30ca21a184dc"
+   ],
+   "first_start_utc": "2026-10-29T23:49:24+00:00",
+   "last_start_utc": "2026-10-29T23:52:14+00:00",
+   "total_run_seconds": 153.4,
+   "files": {
+    "arrays_seed101.npz": "9c089450f3cc4de17dadb411703e4935490fa58496b92a3f79262c19ab092729",
+    "arrays_seed102.npz": "68eb14f71e86e9d170d944b83015ea9e03d9237ce4d3870a9ac475ba48a0be3d",
+    "rows.jsonl": "f0035db364e8826ffe41f49e73da54f76e6e0196e7436a41e9be7f47ef985e82"
+   },
+   "command": "python experiments/run_experiments.py --exp E4 --seeds <seeds> (see scripts/run_all.sh)",
+   "synthetic_data": true,
+   "cloud_execution": false
+  },
+  "E5": {
+   "kind": "scientific evaluation (simulation, sensitivity)",
+   "executed": true,
+   "n_rows_unique": 540,
+   "seeds": [
+    101,
+    102
+   ],
+   "status_counts": {
+    "ok": 540
+   },
+   "source_sha256_values": [
+    "8c1710f74c3d6ddc807db5122a2702a8db0c80c1c984510f2e3f30ca21a184dc"
+   ],
+   "first_start_utc": "2026-10-30T00:37:30+00:00",
+   "last_start_utc": "2026-10-30T00:46:33+00:00",
+   "total_run_seconds": 540.5,
+   "files": {
+    "arrays_seed101_default.npz": "5db130ba099c97b3399521ac222fc0f41fe9a7cff306a5342178e19835fcebc0",
+    "arrays_seed101_init3.npz": "34df1099f8af14a0e5015cae5cbaebfcbcb7d3bb42bcc5c28424c8233b540437",
+    "arrays_seed101_init9.npz": "b6813d03b81ff69eb48c136699229988805fde8fee21e5ff11605fb792d63310",
+    "arrays_seed101_keepalive30.npz": "8504bded2d6c852a5ac554f3a171f76d47a580c650243b75c0a86f4191fe8cc9",
+    "arrays_seed101_keepalive5.npz": "9fb6c4a01c49862c109664a99a1731a7105417499cf3ff75699cddd01af0d4af",
+    "arrays_seed102_default.npz": "626312538277ac6fc954caa714345ce5511e661cf544a27e5875b63b268fee81",
+    "arrays_seed102_init3.npz": "5ed3da4fbce5c6b496e272427a8afa68005a9ebb01aecbf175204c93fbe62d8d",
+    "arrays_seed102_init9.npz": "ac58987d1a8f04d5e176ae5632457053a4cfca45a28fb87fc2861135c6285a54",
+    "arrays_seed102_keepalive30.npz": "293f5590cd7590d309ecbd50f0ad02ea4b456accf068c0ea4893598831b27877",
+    "arrays_seed102_keepalive5.npz": "8077429a82266d5c6073cfca6d4823116787d9f5b1f6f9d213ac454c5cda68d0",
+    "rows.jsonl": "5bb898f930d15d8917ea84bb4f64105e77efeeac6278746dfd4efc7ef1d72e4a"
+   },
+   "command": "python experiments/run_experiments.py --exp E5 --seeds <seeds> (see scripts/run_all.sh)",
+   "synthetic_data": true,
+   "cloud_execution": false
+  },
+  "E6": {
+   "kind": "scientific evaluation (simulation)",
+   "executed": true,
+   "n_rows_unique": 40,
+   "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105
+   ],
+   "status_counts": {
+    "ok": 40
+   },
+   "source_sha256_values": [
+    "8c1710f74c3d6ddc807db5122a2702a8db0c80c1c984510f2e3f30ca21a184dc"
+   ],
+   "first_start_utc": "2026-10-30T00:25:26+00:00",
+   "last_start_utc": "2026-10-30T00:29:03+00:00",
+   "total_run_seconds": 196.8,
+   "files": {
+    "arrays_seed101.npz": "62a596ab78fdb7c586a65bb08871fe8cbf084ee2cfa01e876646ba84b2afd3ec",
+    "arrays_seed102.npz": "f57bdc999c503d5c3071d16c7280d7dde1d545bfc3907982a9be83a512293c91",
+    "arrays_seed103.npz": "9d31e28373c0ef8eca26bbd15c95dd7b200fbe5655959032c334178e650c2fde",
+    "arrays_seed104.npz": "558b4c66e292581ffc9451a82d01f7fc87b69ccce22008371350e0b690cbd2e0",
+    "arrays_seed105.npz": "cc356ba13c3b740a743f61c0454603c8ce4cbfc37ec296a34fd94af9554bbf8c",
+    "rows.jsonl": "6aed31cdddb4650da3e1a256947c55a7940cc3af38b7d8af4fd21be5b3eaf195"
+   },
+   "command": "python experiments/run_experiments.py --exp E6 --seeds <seeds> (see scripts/run_all.sh)",
+   "synthetic_data": true,
+   "cloud_execution": false
+  },
+  "E7": {
+   "kind": "scientific evaluation (simulation, ablation)",
+   "executed": true,
+   "n_rows_unique": 180,
+   "seeds": [
+    101,
+    102,
+    103,
+    104,
+    105
+   ],
+   "status_counts": {
+    "ok": 180
+   },
+   "source_sha256_values": [
+    "8c1710f74c3d6ddc807db5122a2702a8db0c80c1c984510f2e3f30ca21a184dc"
+   ],
+   "first_start_utc": "2026-10-30T00:29:30+00:00",
+   "last_start_utc": "2026-10-30T00:37:19+00:00",
+   "total_run_seconds": 380.7,
+   "files": {
+    "arrays_seed101.npz": "382e11df7cc6f5012eae45112390bc44f49bd4a997f0bd89346be27c854d18f0",
+    "arrays_seed102.npz": "f3e7dd53aa7c4e6ff37d70f43d5433ba080274b6d9debbc1fca97ff129730273",
+    "arrays_seed103.npz": "5e1c25053333df8cd3b85f6249f1498be848989d3af65ebf6685fa6f8ca4624f",
+    "arrays_seed104.npz": "0b115d12b65a64981f808fa05ca727f0f5ed4ee3b12b9f26b47bd0515e3db933",
+    "arrays_seed105.npz": "e553800b3ed90cf967ac1866183c2bb8ec0e79b84827b3eb983cd96bef2b797e",
+    "rows.jsonl": "092931c2f2c53f78a5ed0dcec5071f7dac82b6d5386e7dfe652a2e6c169b8a0f"
+   },
+   "command": "python experiments/run_experiments.py --exp E7 --seeds <seeds> (see scripts/run_all.sh)",
+   "synthetic_data": true,
+   "cloud_execution": false
+  },
+  "E8": {
+   "kind": "scientific evaluation (simulation)",
+   "executed": true,
+   "n_rows_unique": 16,
+   "seeds": [
+    101
+   ],
+   "status_counts": {
+    "ok": 16
+   },
+   "source_sha256_values": [
+    "8c1710f74c3d6ddc807db5122a2702a8db0c80c1c984510f2e3f30ca21a184dc"
+   ],
+   "first_start_utc": "2026-10-30T00:58:20+00:00",
+   "last_start_utc": "2026-10-30T00:58:20+00:00",
+   "total_run_seconds": 0,
+   "files": {
+    "arrays_seed101_forecast.npz": "3e6bea28ccfdde665fdfa045e54c13a709ff0f0a9fc4faf65460e7c7d535952e",
+    "rows.jsonl": "78ab4121681762a85f856b0f2113fd707359ceabbcc8f52113ed8f1e8a657dba"
+   },
+   "command": "python experiments/run_experiments.py --exp E8 --seeds <seeds> (see scripts/run_all.sh)",
+   "synthetic_data": true,
+   "cloud_execution": false
+  },
+  "E9": {
+   "kind": "scientific evaluation (event-level simulation, open loop)",
+   "executed": true,
+   "n_rows_unique": 72,
+   "seeds": [
+    101,
+    102,
+    103
+   ],
+   "status_counts": {
+    "ok": 72
+   },
+   "source_sha256_values": [
+    "8c1710f74c3d6ddc807db5122a2702a8db0c80c1c984510f2e3f30ca21a184dc"
+   ],
+   "first_start_utc": "2026-10-29T23:58:46+00:00",
+   "last_start_utc": "2026-10-30T00:24:58+00:00",
+   "total_run_seconds": 1564.1,
+   "files": {
+    "arrays_seed101_bursty.npz": "4cc162fe8e6ce3c0cc01eefe327c0a66e27d3549d65d9dbc91172a49ca3279d2",
+    "arrays_seed101_growth.npz": "4f7a507d4412ceb892247e870cebb66aae3c540225e8c38b046f44a664161b64",
+    "arrays_seed101_new_spike.npz": "215578253ebc1ea17761aaa46f9cf89fe4563815c8196a025fe1aec082ba1edf",
+    "arrays_seed101_stationary.npz": "9f1d4c0232fd15c5d5de5064bec4a62ea409c820ddc20b1079fab31bfb0364ee",
+    "arrays_seed102_bursty.npz": "dd10afc37031dab025779e798b2a0f770fd9f308464208cc79710cfc29d15cb9",
+    "arrays_seed102_growth.npz": "8076a5be4db466872485dc519c10f66e82728877f4b42657f0c60289e81af0e0",
+    "arrays_seed102_new_spike.npz": "ef5e015878c901ab0fdcf3025def3908e796505ccc7590bdeaba3ffb5799064a",
+    "arrays_seed102_stationary.npz": "3e53cb4c754d176f0841ab694aae17e10764c5514795273adff1629a3c0ea8a1",
+    "arrays_seed103_bursty.npz": "a52b6a23791fc8044e19206a8887ab91a2aaf6199a5d5a674ac32b499a9e3d78",
+    "arrays_seed103_growth.npz": "129c043ee281581448f897308af322e55087df576ee4784bb59422fee42f6b7b",
+    "arrays_seed103_new_spike.npz": "26e43549c1e7d50c53dd127f12440f9d76e10896d036e281bb13bbe2a4f12872",
+    "arrays_seed103_stationary.npz": "a74b60b456eda63b6506311ee329fe3d7b18e87253859a22881f882f2c88d738",
+    "rows.jsonl": "490e501554d72c28438f43a5086a9ac65bd299aa009297dca010ed85bd036634"
+   },
+   "command": "python experiments/run_experiments.py --exp E9 --seeds <seeds> (see scripts/run_all.sh)",
+   "synthetic_data": true,
+   "cloud_execution": false
+  }
+ },
+ "evaluation_seeds": [
+  101,
+  102,
+  103,
+  104,
+  105
+ ],
+ "development_seed": 7
+}

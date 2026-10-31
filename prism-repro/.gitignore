@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+/tmp/
+results/smoke/
+*.egg-info/
+.DS_Store
+private/

@@ -1,0 +1,12 @@
+{
+ "file": "example_trace_SYNTHETIC_seed7_day1.csv",
+ "synthetic": true,
+ "generator": "prism_repro.workload.generate_trace(seed=7, scenario='stationary')",
+ "rows": 1440,
+ "columns": {
+  "minute": "int, consecutive from 0",
+  "count": "int >= 0, pipeline executions arriving in that minute"
+ },
+ "purpose": "demonstration fixture for the CSV loader and schema; NOT research evaluation data (too short; development seed)",
+ "sha256": "caa13aeca95ca91c03ce8619c6ed69813dc7c2a91bd778f8c8fca59089040782"
+}

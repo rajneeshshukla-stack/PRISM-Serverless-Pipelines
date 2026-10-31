@@ -1,0 +1,8 @@
+# PRISM minus PredHead under both simulators (same frozen schedules)
+
+| Scenario   |   PRISM−PredHead viol (pp) fast |   PRISM−PredHead viol (pp) event |   PRISM−PredHead cost (USD) fast |   PRISM−PredHead cost (USD) event |
+|:-----------|--------------------------------:|---------------------------------:|---------------------------------:|----------------------------------:|
+| stationary |                           -0.74 |                            -1.19 |                             +169 |                              +168 |
+| growth     |                           -0.55 |                            -1.34 |                             +212 |                              +212 |
+| bursty     |                           -1.34 |                            -2.78 |                             +246 |                              +246 |
+| new_spike  |                           -5.26 |                           -15.28 |                             +240 |                              +239 |

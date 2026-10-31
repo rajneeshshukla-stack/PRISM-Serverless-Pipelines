@@ -1,0 +1,29 @@
+## Forecast accuracy (raw quantiles; mean over 5 traces x 4 scenarios)
+ewma            n=20 MAPE  23.8  pin50  147.5  pin90  132.9  pin99  22.9  cov90  89.8%  cov99  98.8%  cov99cal  99.0%
+gbm             n=20 MAPE  13.7  pin50   78.2  pin90   68.7  pin99  29.8  cov90  85.1%  cov99  96.0%  cov99cal  98.8%
+last5max        n=20 MAPE  44.1  pin50  216.1  pin90  162.5  pin99  29.1  cov90  89.4%  cov99  98.8%  cov99cal  99.0%
+seasonal_naive  n=20 MAPE  34.2  pin50  158.6  pin90  120.8  pin99  34.2  cov90  82.9%  cov99  97.9%  cov99cal  98.7%
+
+## By scenario: MAPE / cov99 raw
+ewma stationary: 21.9/98.9 | growth: 21.9/99.0 | bursty: 24.6/98.4 | new_spike: 26.6/99.0
+gbm stationary: 12.2/97.2 | growth: 12.2/97.3 | bursty: 14.0/96.0 | new_spike: 16.3/93.4
+last5max stationary: 40.3/98.8 | growth: 40.2/98.9 | bursty: 42.8/98.4 | new_spike: 52.9/98.9
+seasonal_naive stationary: 32.6/98.6 | growth: 33.5/98.4 | bursty: 37.2/97.7 | new_spike: 33.7/97.0
+
+## Downstream (validation-tuned; test weeks; mean over traces): cost / viol% ; n traces
+PRISM[gbm]                     1,073 / 1.28 | 1,396 / 1.22 | 1,202 / 1.40 | 1,395 / 1.55 || all20: 1,267 / 1.36 / meet 80%  n=5 params=[0.02, 0.03, 0.05]
+QuantProv_q99[gbm]             1,150 / 0.92 | 1,512 / 0.83 | 1,301 / 0.95 | 1,516 / 0.98 || all20: 1,370 / 0.92 / meet 100%  n=5 params=[0.7, 0.8, 0.9]
+PRISM[seasonal_naive]          1,089 / 2.11 | 1,430 / 2.11 | 1,229 / 2.62 | 1,600 / 1.76 || all20: 1,337 / 2.15 / meet 45%  n=5 params=[0.05, 0.08]
+QuantProv_q99[seasonal_naive]  1,298 / 1.04 | 1,720 / 0.95 | 1,492 / 1.34 | 1,990 / 0.68 || all20: 1,625 / 1.00 / meet 100%  n=5 params=[0.6]
+PRISM[ewma]                    1,230 / 1.85 | 1,572 / 1.67 | 1,303 / 1.55 | 1,503 / 1.79 || all20: 1,402 / 1.71 / meet 75%  n=5 params=[0.005, 0.01]
+QuantProv_q99[ewma]            1,268 / 1.46 | 1,651 / 1.37 | 1,355 / 1.43 | 1,572 / 1.52 || all20: 1,462 / 1.44 / meet 65%  n=5 params=[0.8, 0.9]
+PRISM[last5max]                1,514 / 1.55 | 1,940 / 1.49 | 1,619 / 1.25 | 1,900 / 1.43 || all20: 1,743 / 1.43 / meet 80%  n=5 params=[0.005, 0.01, 0.02]
+QuantProv_q99[last5max]        1,631 / 1.28 | 2,114 / 1.31 | 1,756 / 1.04 | 2,065 / 1.22 || all20: 1,892 / 1.21 / meet 80%  n=5 params=[0.7, 0.8, 0.9]
+
+## Paired cost difference vs GBM (same method), % (mean ± t-hw over 5 traces), all scenarios pooled per trace
+PRISM          seasonal_naive  cost   +5.4 ±  9.2%  viol +0.79 ± 0.89 pp  traces dearer 4/5
+PRISM          ewma            cost  +11.0 ±  5.8%  viol +0.35 ± 1.18 pp  traces dearer 5/5
+PRISM          last5max        cost  +37.9 ±  9.5%  viol +0.07 ± 1.57 pp  traces dearer 5/5
+QuantProv_q99  seasonal_naive  cost  +18.4 ± 10.7%  viol +0.08 ± 0.65 pp  traces dearer 5/5
+QuantProv_q99  ewma            cost   +7.1 ±  8.8%  viol +0.52 ± 1.12 pp  traces dearer 4/5
+QuantProv_q99  last5max        cost  +38.5 ± 11.9%  viol +0.29 ± 1.38 pp  traces dearer 5/5

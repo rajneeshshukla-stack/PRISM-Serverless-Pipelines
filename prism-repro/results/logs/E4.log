@@ -1,0 +1,16 @@
+[E4] start 2026-10-29T23:49:19+00:00 seeds=[101, 102] python=3.12.3 numpy=2.4.4
+[E4] seed 101 ns0.5_D14.5 done
+[E4] seed 101 ns0.5_D13.0 done
+[E4] seed 101 ns0.5_D12.0 done
+[E4] seed 101 ns0.5_D11.0 done
+[E4] seed 101 ns0.15_D14.5 done
+[E4] seed 101 ns0.15_D12.0 done
+[E4] seed 102 ns0.5_D14.5 done
+[E4] seed 102 ns0.5_D13.0 done
+[E4] seed 102 ns0.5_D12.0 done
+[E4] seed 102 ns0.5_D11.0 done
+[E4] seed 102 ns0.15_D14.5 done
+[E4] seed 102 ns0.15_D12.0 done
+[E4] finished 2026-10-29T23:52:14+00:00 in 175s
+[E4] start 2026-10-29T23:58:41+00:00 seeds=[101, 102] python=3.12.3 numpy=2.4.4
+[E4] finished 2026-10-29T23:58:41+00:00 in 0s

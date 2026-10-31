@@ -1,0 +1,50 @@
+[E1] start 2026-10-29T23:09:37+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E1] start 2026-10-29T23:12:10+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E1] seed 101 val/stationary: 76 runs, 55s
+[E1] seed 101 test/stationary: 152 runs, 101s
+[E1] seed 101 test/growth: 228 runs, 150s
+[E1] seed 101 test/bursty: 304 runs, 197s
+[E1] seed 101 test/new_spike: 380 runs, 246s
+[E1] seed 102 val/stationary: 76 runs, 61s
+[E1] seed 102 test/stationary: 152 runs, 111s
+[E1] seed 102 test/growth: 228 runs, 160s
+[E1] seed 102 test/bursty: 304 runs, 208s
+[E1] seed 102 test/new_spike: 380 runs, 255s
+[E1] seed 103 val/stationary: 76 runs, 54s
+[E1] seed 103 test/stationary: 152 runs, 102s
+[E1] seed 103 test/growth: 228 runs, 150s
+[E1] seed 103 test/bursty: 304 runs, 198s
+[E1] seed 103 test/new_spike: 380 runs, 245s
+[E1] seed 104 val/stationary: 76 runs, 51s
+[E1] seed 104 test/stationary: 152 runs, 96s
+[E1] seed 104 test/growth: 228 runs, 142s
+[E1] seed 104 test/bursty: 304 runs, 187s
+[E1] start 2026-10-29T23:30:17+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E1] seed 101 done, skipping
+[E1] seed 102 done, skipping
+[E1] seed 103 done, skipping
+[E1] seed 104 val/stationary: 76 runs, 53s
+[E1] seed 104 test/stationary: 152 runs, 100s
+[E1] seed 104 test/growth: 228 runs, 147s
+[E1] seed 104 test/bursty: 304 runs, 196s
+[E1] seed 104 test/new_spike: 380 runs, 246s
+[E1] seed 105 val/stationary: 76 runs, 57s
+[E1] seed 105 test/stationary: 152 runs, 104s
+[E1] seed 105 test/growth: 228 runs, 152s
+[E1] seed 105 test/bursty: 304 runs, 198s
+[E1] seed 105 test/new_spike: 380 runs, 243s
+[E1] finished 2026-10-29T23:38:28+00:00 in 491s
+[E1] start 2026-10-29T23:48:52+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E1] seed 101 done, skipping
+[E1] seed 102 done, skipping
+[E1] seed 103 done, skipping
+[E1] seed 104 done, skipping
+[E1] seed 105 done, skipping
+[E1] finished 2026-10-29T23:48:52+00:00 in 0s
+[E1] start 2026-10-29T23:58:34+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E1] seed 101 done, skipping
+[E1] seed 102 done, skipping
+[E1] seed 103 done, skipping
+[E1] seed 104 done, skipping
+[E1] seed 105 done, skipping
+[E1] finished 2026-10-29T23:58:34+00:00 in 0s

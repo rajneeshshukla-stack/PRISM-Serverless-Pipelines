@@ -1,0 +1,12 @@
+{"seed": 101, "nonscaling": 0.5, "deadline": 14.5, "mem": 2048, "label": "OnDemand2048", "cost": 1294.1556015447452, "violating_window_rate": 0.0}
+{"seed": 101, "nonscaling": 0.5, "deadline": 14.5, "mem": 3008, "label": "OnDemand3008", "cost": 1696.6530173192168, "violating_window_rate": 0.0}
+{"seed": 101, "nonscaling": 0.5, "deadline": 13.0, "mem": 2048, "label": "OnDemand2048", "cost": 1294.1556015447452, "violating_window_rate": 0.002976190476190476}
+{"seed": 101, "nonscaling": 0.5, "deadline": 13.0, "mem": 3008, "label": "OnDemand3008", "cost": 1696.6530173192168, "violating_window_rate": 0.0}
+{"seed": 101, "nonscaling": 0.5, "deadline": 12.0, "mem": 2048, "label": "OnDemand2048", "cost": 1294.1556015447452, "violating_window_rate": 0.03571428571428571}
+{"seed": 101, "nonscaling": 0.5, "deadline": 12.0, "mem": 3008, "label": "OnDemand3008", "cost": 1696.6530173192168, "violating_window_rate": 0.001488095238095238}
+{"seed": 101, "nonscaling": 0.5, "deadline": 11.0, "mem": 2048, "label": "OnDemand2048", "cost": 1294.1556015447452, "violating_window_rate": 0.1324404761904762}
+{"seed": 101, "nonscaling": 0.5, "deadline": 11.0, "mem": 3008, "label": "OnDemand3008", "cost": 1696.6530173192168, "violating_window_rate": 0.022321428571428572}
+{"seed": 101, "nonscaling": 0.15, "deadline": 14.5, "mem": 2048, "label": "OnDemand2048", "cost": 993.3832437512325, "violating_window_rate": 0.0}
+{"seed": 101, "nonscaling": 0.15, "deadline": 14.5, "mem": 3008, "label": "OnDemand3008", "cost": 1114.036703729545, "violating_window_rate": 0.0}
+{"seed": 101, "nonscaling": 0.15, "deadline": 12.0, "mem": 2048, "label": "OnDemand2048", "cost": 993.3832437512325, "violating_window_rate": 0.0}
+{"seed": 101, "nonscaling": 0.15, "deadline": 12.0, "mem": 3008, "label": "OnDemand3008", "cost": 1114.036703729545, "violating_window_rate": 0.0}

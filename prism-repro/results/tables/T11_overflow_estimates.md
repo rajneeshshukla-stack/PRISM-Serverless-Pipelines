@@ -1,0 +1,6 @@
+# Share of stage executions served on demand: event-level vs analytic estimates (5 provisioned policies; detail trace)
+
+| Scenario   | Event-level   | Erlang-B (mean load)   | Fast simulator   | o(P,c) mean load   | o(P,c_eff) (optimiser)   |
+|:-----------|:--------------|:-----------------------|:-----------------|:-------------------|:-------------------------|
+| stationary | 1.11%         | 1.13% (+2%)            | 1.12% (+1%)      | 0.79% (-28%)       | 1.37% (+24%)             |
+| new_spike  | 1.80%         | 1.82% (+1%)            | 1.94% (+8%)      | 1.43% (-20%)       | 2.15% (+20%)             |

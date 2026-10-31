@@ -1,0 +1,3 @@
+Scenario,Identical P (share of epochs),Identical memory,Cost diff,Viol diff (pp),Decision ms scenarios,Decision ms quantile
+stationary,98.9%,100.0%,-0.04%,+0.00,1.80,1.62
+new_spike,99.5%,100.0%,-0.02%,+0.00,1.80,1.66

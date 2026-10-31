@@ -1,0 +1,30 @@
+target 1.0%: per-trace interpolated cost
+   PRISM          [1377, 1287, 1476, 1369, 1210]
+   QuantProv_q90  [1333, 1283, 1539, 1375, 1219]
+   PredHead+hyst  [1350, 1275, 'n.r.', 'n.r.', 1255]
+   Static         [1556, 1553, 1479, 1578, 1554]
+   Reactive       [1925, 1754, 1812, 1738, 1847]
+   PRISM vs QuantProv_q90   -0.4 ±  3.3%  (n=5; per trace [3.3, 0.3, -4.1, -0.5, -0.7])
+   PRISM vs PredHead+hyst   -0.2 ±  7.4%  (n=3; per trace [2.0, 0.9, -3.6])
+   PRISM vs Static         -12.9 ± 10.1%  (n=5; per trace [-11.5, -17.2, -0.2, -13.3, -22.1])
+   PRISM vs Reactive       -25.9 ±  7.8%  (n=5; per trace [-28.5, -26.6, -18.6, -21.2, -34.5])
+target 1.5%: per-trace interpolated cost
+   PRISM          [1226, 1220, 1376, 1251, 1175]
+   QuantProv_q90  [1243, 1216, 1407, 1265, 1150]
+   PredHead+hyst  [1223, 1185, 1385, 1236, 1181]
+   Static         [1493, 1471, 1447, 1488, 1477]
+   Reactive       [1805, 1661, 1723, 1660, 1779]
+   PRISM vs QuantProv_q90   -0.4 ±  2.1%  (n=5; per trace [-1.3, 0.3, -2.2, -1.1, 2.2])
+   PRISM vs PredHead+hyst   +0.6 ±  1.8%  (n=5; per trace [0.2, 2.9, -0.7, 1.2, -0.5])
+   PRISM vs Static         -15.3 ±  7.5%  (n=5; per trace [-17.9, -17.1, -4.9, -15.9, -20.5])
+   PRISM vs Reactive       -27.5 ±  7.0%  (n=5; per trace [-32.1, -26.6, -20.2, -24.6, -33.9])
+target 2.0%: per-trace interpolated cost
+   PRISM          [1160, 1172, 1286, 1190, 1140]
+   QuantProv_q90  [1158, 1172, 1303, 1181, 1127]
+   PredHead+hyst  [1134, 1141, 1268, 1162, 1150]
+   Static         [1461, 1440, 1416, 1436, 1444]
+   Reactive       [1719, 1619, 1635, 1617, 1729]
+   PRISM vs QuantProv_q90   +0.2 ±  1.2%  (n=5; per trace [0.2, 0.0, -1.3, 0.8, 1.2])
+   PRISM vs PredHead+hyst   +1.6 ±  1.8%  (n=5; per trace [2.4, 2.7, 1.4, 2.4, -0.9])
+   PRISM vs Static         -17.3 ±  6.0%  (n=5; per trace [-20.6, -18.6, -9.1, -17.2, -21.0])
+   PRISM vs Reactive       -28.4 ±  6.3%  (n=5; per trace [-32.5, -27.6, -21.3, -26.4, -34.1])

@@ -1,0 +1,5 @@
+[E10] start 2026-10-29T23:48:56+00:00 seeds=[101] python=3.12.3 numpy=2.4.4
+[E10] {"total_ms_median": 7.358738999982961, "total_ms_p99": 17.054613500044944, "total_ms_max": 22.808298999962062, "forecast_ms_median": 5.475671499880264, "forecast_ms_p99": 9.450560050072452, "optimise_ms_median": 1.8058964999454474, "optimise_ms_p99": 9.058383050046354, "online_equals_batch_identical": true}
+[E10] finished 2026-10-29T23:49:18+00:00 in 22s
+[E10] start 2026-10-29T23:58:39+00:00 seeds=[101] python=3.12.3 numpy=2.4.4
+[E10] finished 2026-10-29T23:58:39+00:00 in 0s

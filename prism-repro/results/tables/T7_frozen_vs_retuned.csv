@@ -1,0 +1,5 @@
+Scenario,PredHead frozen,PredHead retuned (diagnostic),PRISM frozen,PRISM retuned (diagnostic)
+stationary,928 / 1.85%,924 / 1.82%,"1,073 / 1.28%","1,028 / 1.52%"
+growth,"1,208 / 1.67%","1,177 / 1.85%","1,396 / 1.22%","1,282 / 1.79%"
+bursty,958 / 2.89%,"1,043 / 2.08%","1,202 / 1.40%","1,197 / 1.46%"
+new_spike,"1,160 / 6.67%","1,324 / 2.95%","1,395 / 1.55%","1,384 / 1.43%"
