@@ -25,9 +25,9 @@ Per (trace seed, week): peak-concurrency quantile levels, intensity factors, and
 
 `data/fixtures/example_trace_SYNTHETIC_seed7_day1.csv` (+ `.meta.json` with SHA-256): first day of the development trace; columns `minute,count`. For the CSV loader and schema only — **not** research evaluation data.
 
-## 4. External / real data — NOT USED
+## 4. External / real data — Huawei Private 2023 (experiment R1, post hoc, added 31 Oct 2026)
 
-The manuscript's planned validation on the public Huawei and Azure serverless traces was not possible here: no network access from the execution sandbox, and the Huawei file format was not available to implement against. `prism_repro.trace_io.load_minute_csv` loads any per-minute trace converted to `minute,count`; the full protocol can then be run by replacing `generate_trace` (the paper's Section IX names evaluation on public production traces as the next step). No real-trace result exists in this repository.
+`data/real/huawei_fn{150,72,60,183,42}.csv` (columns `minute,count`; 40,320 minutes each) are derived from the public **Huawei Private 2023** serverless trace, *requests per minute* (A. Joosen et al., "How does it function? Characterizing long-term trends in production serverless workloads," ACM SoCC 2023; https://github.com/sir-lab/data-release; licence **CC BY 4.0**). Derivation (`data/real/make_csvs.py`, `data/real/pick.py`): days 28–55 of the release (28 consecutive days), functions 150, 72, 60, 183, 42 (missing minutes = 0 requests; none missing in these functions), each thinned binomially to a mean of 600 executions/min with seed 20261031 + function id. `data/real/traces_meta.json` gives source means, thinning probabilities, week means and SHA-256 of each derived series. The data are anonymized request counts; no personal data. Changes from the original: subset of functions and days, binomial thinning. Experiment R1 (`experiments/run_real_traces.py`, analysis `scripts/revision/analyze_real_traces.py`) replays them through the unchanged protocol; arrivals are real, service/initialization/latency remain simulated. The Azure Functions 2019 trace was not used (14 days, shorter than the 28-day protocol).
 
 ## 5. Results data
 

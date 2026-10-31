@@ -1,6 +1,7 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite the paper below. Venue, year and DOI will be added on publication."
 title: "PRISM: code and results for 'Joint Cost-SLA Provisioning of Concurrency and Memory for Serverless Data Pipelines: A Chance-Constrained Formulation and a Simulation Study under Workload Shift'"
+repository-code: "https://github.com/rajneeshshukla-stack/PRISM-Serverless-Pipelines"
 version: "2.2.0rc1"
 type: software
 authors:
@@ -10,6 +11,8 @@ authors:
     given-names: Elavarasu
   - family-names: Shukla
     given-names: Vivek
+  - family-names: Gupta
+    given-names: Punit
 preferred-citation:
   type: article
   title: "Joint Cost-SLA Provisioning of Concurrency and Memory for Serverless Data Pipelines: A Chance-Constrained Formulation and a Simulation Study under Workload Shift"
@@ -20,4 +23,6 @@ preferred-citation:
       given-names: Elavarasu
     - family-names: Shukla
       given-names: Vivek
+    - family-names: Gupta
+      given-names: Punit
   status: in-preparation

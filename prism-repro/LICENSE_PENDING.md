@@ -1,8 +1,9 @@
 # Licence — to be chosen by the authors
 
 No licence file is included yet. The three authors have agreed to release this code with the paper
-(verbal agreement of all three authors, recorded on 30 Oct 2026); the choice of licence, repository and archive
-is still open.
+(verbal agreement of all three authors, recorded on 30 Oct 2026); the choice of licence and archive
+is still open. Repository (chosen 31 Oct 2026, private during review): https://github.com/rajneeshshukla-stack/PRISM-Serverless-Pipelines. Punit Gupta joined as
+fourth author after this record; his agreement to the release should be recorded as well.
 
 Until a `LICENSE` file is added, default copyright applies and others may not reuse the code.
 

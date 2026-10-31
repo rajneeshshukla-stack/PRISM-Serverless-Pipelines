@@ -1,0 +1,46 @@
+{
+ "experiment": "R1",
+ "kind": "post hoc scientific evaluation (simulation with REAL arrival traces)",
+ "added_utc": "2026-10-31T13:42:44+00:00",
+ "command": "python experiments/run_real_traces.py; python scripts/revision/analyze_real_traces.py",
+ "data": "data/real/huawei_fn*.csv (Huawei Private 2023, CC BY 4.0; see data/real/README.md)",
+ "synthetic_data": false,
+ "cloud_execution": false,
+ "n_rows": 765,
+ "status_counts": {
+  "ok": 765
+ },
+ "source_sha256_values": [
+  "d4bad4e2b096e25645495abcc3af5ad80b678b0cd4d6c6bb4051451fe244295b"
+ ],
+ "first_start_utc": "2026-10-31T13:32:10+00:00",
+ "last_start_utc": "2026-10-31T13:38:20+00:00",
+ "environment": {
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "sklearn": "1.9.1",
+  "pandas": "3.0.5"
+ },
+ "files": {
+  "data/real/README.md": "a93ea886a23721217793e08508eddca450de8c566d6bf91ee075ab5c75eb8126",
+  "data/real/huawei_fn150.csv": "262d3085d3380d78d52bd44577b6cdd7c04bfad2e562ccdaa1899dab204e15e1",
+  "data/real/huawei_fn183.csv": "32995d9708f929af047faf822245f725cd0353fd58fc5dd8f2c9c20ff487ad9c",
+  "data/real/huawei_fn42.csv": "25e3d705548fa690c9ecc91a4b52a5c1750fa83f83f9da3c4d1f4e5a70c78b48",
+  "data/real/huawei_fn60.csv": "63931ed34b8242355cdcc167ee1e6725462772494ee0e10f7e119574c1e270be",
+  "data/real/huawei_fn72.csv": "e3c072360e0e07c14b11fb71afa55031c28bc7f61666b164cb0f8d5c4e34c3e7",
+  "data/real/make_csvs.py": "e70bd57b3d02a936eed743fd6ae5d163979daa18a33ced47bdbb084de339dbdc",
+  "data/real/pick.py": "0d9731c46c92bd2df161597e8edef9d053c879f1f7601a7b6231e76d49857f63",
+  "data/real/traces_meta.json": "e5cbe76de7bdf54c13b52002d76a25bfbf4baf17cc730094cf50749f8b07cb51",
+  "experiments/run_real_traces.py": "3c12563b1b5ed62423b905e2ba39df7bc6e5a9d1924616f010c06529cfae2031",
+  "results/raw/R1/arrays_seed201.npz": "daea87aa416995f7555b0c93a1417131ce950d42e79429aab24ea2ab38a67a30",
+  "results/raw/R1/arrays_seed202.npz": "2ffb0d30309c8fba3879e3ad1b9122bf522231293bdb3884d50e7b5b3e136eac",
+  "results/raw/R1/arrays_seed203.npz": "4b930a5dec0937449bb44b0df578735156789e8b7f3664a7f8466c9b6e6adcbc",
+  "results/raw/R1/arrays_seed204.npz": "da5ad4483e8a392c565eb1326ab9f91f529cc91f1f3910efba66a38c216b5393",
+  "results/raw/R1/arrays_seed205.npz": "be53144b3a2fb4ac82ccc34a0d92eed8ed80eb14ca52e3993c84cf98c97ae052",
+  "results/raw/R1/rows.jsonl": "6773ee314fd7bc452eaade5a3a5ad76daf9ea96f4ce11c381a6d6f9d22cf61fb",
+  "results/tables/R1_real_traces.json": "6a8fa8d6279214d4be12b0a3863c4745148f74a6ab6812acf9f08d3aeed99143",
+  "results/tables/R1_real_traces.md": "206d15e09ced10ba14a5bf0d51b7bd108f8e7354ff0b5a2d8562a5599ae82b60",
+  "scripts/revision/analyze_real_traces.py": "4585628a6022fcfc67668470168e8013bd8451453a37d9f4001c16871c4fa5dd"
+ }
+}

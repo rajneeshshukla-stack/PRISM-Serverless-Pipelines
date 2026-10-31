@@ -1,11 +1,11 @@
 # PRISM — code and results for the paper
 
 **Joint Cost-SLA Provisioning of Concurrency and Memory for Serverless Data Pipelines: A Chance-Constrained Formulation and a Simulation Study under Workload Shift**
-R. Shukla, E. Ramasamy, V. Shukla, P. Gupta(manuscript V2.8, not yet submitted or published).
+R. Shukla, E. Ramasamy, V. Shukla, P. Gupta (manuscript V2.8, submission candidate V11; not yet published).
 
 > **Status: RELEASE CANDIDATE 2.2.0rc1 (30 Oct 2026). Not released.** The authors have agreed to release this
-> code with the paper; the licence, the repository and the archive (DOI) are still to be chosen
-> (`LICENSE_PENDING.md`). Until a licence is added, default copyright applies.
+> code with the paper. Repository: https://github.com/rajneeshshukla-stack/PRISM-Serverless-Pipelines
+> (private during review). The licence and the archive (DOI) are still to be chosen (`LICENSE_PENDING.md`). Until a licence is added, default copyright applies.
 
 ## What this is
 
@@ -16,16 +16,23 @@ tests, SHA-256 checksums of every file, and a separate patch (`patches/`) that c
 after the runs (paper, Section VI-G and Supplementary Section S1). The stored results come from the code
 without the patch.
 
-**Provenance.** The code was written by an AI system (Claude, Anthropic) from the authors' description of the
-method, and the experiments were run with it; the paper's Acknowledgment discloses the use of AI. An
+**Provenance.** At the direction and under the supervision of the authors, the code was implemented by the
+generative AI system Claude (Anthropic) from the authors' specification, and the experiments were run with it; the
+authors reviewed, tested, and verified the code and results. The paper's Acknowledgment discloses the use of AI. An
 earlier prototype implementation, which produced the results of an earlier draft of the paper, is **not**
 included; Section V-E of the paper states where its results differ from these. Some file headers and the
 module docstring of `src/prism_repro/__init__.py` still use the working title of the manuscript from which
 the code was written and call the code an "independent reimplementation"; they were left unchanged so that the
 recorded source hash stays traceable (`PROVENANCE.md`).
 
-**Data.** Every workload is synthetic and is regenerated deterministically from the seeds (evaluation
-101–105; development 7). No real-world or personal data are used or bundled (`docs/DATA_CARD.md`).
+**Data.** The main workloads are synthetic and are regenerated deterministically from the seeds (evaluation
+101–105; development 7). Experiment R1 (post hoc) replays five real per-minute arrival traces derived from the public
+Huawei Private 2023 trace (CC BY 4.0; anonymized request counts, no personal data) in `data/real/`; see
+`docs/DATA_CARD.md` §4. Run it with `python experiments/run_real_traces.py` and analyze with
+`python scripts/revision/analyze_real_traces.py` (about 6 minutes on one core).
+Experiment R2 (post hoc, synthetic) runs the calibrated-quantile rules in the memory regimes of Table IX:
+`python scripts/revision/r2_quantprov_memory.py . results/raw/R2/r2_seed101.jsonl 101` (and seed 102), then
+`python scripts/revision/analyze_r2.py`.
 
 ## Reproduce
 

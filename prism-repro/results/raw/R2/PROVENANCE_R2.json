@@ -1,0 +1,26 @@
+{
+ "experiment": "R2",
+ "kind": "post hoc scientific evaluation (simulation, synthetic workloads)",
+ "question": "Calibrated-quantile rules (QuantProv-q90/q99) at 1024 and 2048 MB in the memory regimes of Table IX",
+ "added_utc": "2026-10-31T14:02:08+00:00",
+ "command": "python scripts/revision/r2_quantprov_memory.py . results/raw/R2/r2_seed<seed>.jsonl <seed> (seeds 101, 102); python scripts/revision/analyze_r2.py",
+ "synthetic_data": true,
+ "cloud_execution": false,
+ "n_rows": 492,
+ "environment_check": "PRISM-0.02 re-run in each regime identical to stored E4b rows",
+ "environment": {
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "sklearn": "1.9.1",
+  "pandas": "3.0.5"
+ },
+ "files": {
+  "results/raw/R2/r2_seed101.jsonl": "0226b560965068089dc2240b4f87f5425c2baa2b0a21b966fd30dae4786a9002",
+  "results/raw/R2/r2_seed102.jsonl": "2f8e53e6ce5394dc20107a7a4b8bc2a053503483bd3ca5c624fda56cf7fbf10e",
+  "results/tables/R2_quantprov_memory.json": "f8b02b0bf9ce1b22637de9667d303ee28e82364e7baab05582c6ceefdfc0c95e",
+  "results/tables/R2_quantprov_memory.md": "be1c1cf74d92936f455929721fadcc417a82538f0a463ea9a223d98e8c61b7c9",
+  "scripts/revision/analyze_r2.py": "48ace9ac7dbcd14e23cdd8a7692e42030b8f98b165e383223a0e7f2cab7ffdf8",
+  "scripts/revision/r2_quantprov_memory.py": "ee55ec252ac03e9d1cee22e858c797aa74a0912cab7b55bc25054ccf1a98f0d8"
+ }
+}
