@@ -17,3 +17,7 @@ build_manifest.py --verify: 283 files, 0 mismatches; 48 tests pass.
 Added 31 Oct 2026 (manuscript V13): experiment R2 (post hoc, synthetic), calibrated-quantile rules in the memory
 regimes of Table IX (scripts/revision/r2_quantprov_memory.py, analyze_r2.py; results/raw/R2/ with
 PROVENANCE_R2.json; results/tables/R2_quantprov_memory.{md,json}). Program code (src/) unchanged.
+Updated 31 Oct 2026 (manuscript V13, package V2): scripts/revision/figures/make_diagrams.py now draws Fig. 1 with the
+same boxes, arrows, and texts at print-size fonts (9 pt titles, 8 pt labels; review SET-2, comment 3); the one-line
+legend moved to the figure caption, and Fig. S1 (fig_protocol) is unchanged. Its CHECKSUMS.sha256 line was updated;
+no other file under prism-repro/ changed. The top-level README.md now mentions the real Huawei traces of R1.
