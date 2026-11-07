@@ -1,0 +1,89 @@
+seeds complete: [np.int64(101), np.int64(102), np.int64(103), np.int64(104), np.int64(105)]
+
+## Selected parameter per seed (event-level validation)
+OnDemand        {101: None, 102: None, 103: None, 104: None, 105: None}
+Static          {101: 99.5, 102: 99.5, 103: 99.5, 104: 99, 105: 99.5}
+Reactive        {101: 0.45, 102: 0.45, 103: 0.45, 104: 0.45, 105: 0.5}
+PredHead        {101: 2.0, 102: 1.9, 103: 1.7, 104: 2.0, 105: 1.8}
+PredHead+hyst   {101: 1.7, 102: 2.0, 103: 1.4, 104: 1.9, 105: 1.8}
+QuantProv_q90   {101: 1.3, 102: 1.5, 103: 1.1, 104: 1.2, 105: 1.2}
+PRISM           {101: 0.005, 102: 0.005, 103: 0.03, 104: 0.01, 105: 0.02}
+
+## Validation: does any grid point reach <=2%? min viol per family per seed
+OnDemand        {101: 34.52, 102: 32.44, 103: 32.29, 104: 31.85, 105: 32.89}
+Static          {101: 0.15, 102: 0.0, 103: 0.15, 104: 0.0, 105: 0.0}
+Reactive        {101: 0.45, 102: 0.45, 103: 0.45, 104: 0.3, 105: 0.3}
+PredHead        {101: 2.53, 102: 2.68, 103: 1.93, 104: 2.53, 105: 2.38}
+PredHead+hyst   {101: 2.23, 102: 2.38, 103: 1.34, 104: 1.49, 105: 1.49}
+QuantProv_q90   {101: 1.64, 102: 1.93, 103: 1.34, 104: 1.49, 105: 1.19}
+PRISM           {101: 1.79, 102: 1.49, 103: 1.34, 104: 0.89, 105: 1.04}
+
+## Test weeks under event-level tuning: cost / viol% (mean ± hw over seeds)
+-- stationary
+   OnDemand            874 ±   13 | 33.30 ± 1.21 | meet 0/5
+   Static            1,534 ±   85 |  0.89 ± 0.74 | meet 5/5
+   Reactive          1,783 ±   69 |  1.31 ± 1.09 | meet 4/5
+   PredHead          1,035 ±   34 |  3.18 ± 0.73 | meet 0/5
+   PredHead+hyst     1,132 ±   93 |  2.41 ± 1.21 | meet 2/5
+   QuantProv_q90     1,248 ±  148 |  1.96 ± 0.87 | meet 2/5
+   PRISM             1,223 ±  139 |  1.90 ± 0.76 | meet 3/5
+-- growth
+   OnDemand          1,142 ±   15 | 34.46 ± 0.67 | meet 0/5
+   Static            1,695 ±   84 |  4.43 ± 1.68 | meet 0/5
+   Reactive          2,298 ±   93 |  1.49 ± 0.64 | meet 4/5
+   PredHead          1,347 ±   44 |  3.10 ± 0.50 | meet 0/5
+   PredHead+hyst     1,476 ±  120 |  2.53 ± 1.12 | meet 2/5
+   QuantProv_q90     1,641 ±  188 |  1.73 ± 0.79 | meet 3/5
+   PRISM             1,572 ±  152 |  1.90 ± 0.79 | meet 4/5
+-- bursty
+   OnDemand            903 ±   10 | 34.02 ± 1.37 | meet 0/5
+   Static            1,552 ±   84 |  1.28 ± 1.03 | meet 4/5
+   Reactive          1,867 ±   75 |  1.16 ± 0.82 | meet 4/5
+   PredHead          1,066 ±   38 |  5.60 ± 0.75 | meet 0/5
+   PredHead+hyst     1,166 ±   93 |  4.40 ± 1.39 | meet 0/5
+   QuantProv_q90     1,423 ±  138 |  2.08 ± 0.82 | meet 2/5
+   PRISM             1,365 ±  128 |  2.17 ± 1.03 | meet 3/5
+-- new_spike
+   OnDemand          1,099 ±   15 | 52.35 ± 1.03 | meet 0/5
+   Static            1,666 ±   84 |  3.21 ± 2.01 | meet 0/5
+   Reactive          2,231 ±   91 |  1.07 ± 0.73 | meet 4/5
+   PredHead          1,287 ±   39 | 13.42 ± 3.18 | meet 0/5
+   PredHead+hyst     1,398 ±  111 |  3.99 ± 3.42 | meet 0/5
+   QuantProv_q90     1,653 ±  183 |  1.67 ± 1.08 | meet 4/5
+   PRISM             1,570 ±  146 |  2.08 ± 1.48 | meet 3/5
+
+## Aggregate over all test weeks
+   OnDemand        cost   1,004  viol 38.53  meet    0%  n=20
+   Static          cost   1,612  viol  2.46  meet   45%  n=20
+   Reactive        cost   2,045  viol  1.26  meet   80%  n=20
+   PredHead        cost   1,184  viol  6.32  meet    0%  n=20
+   PredHead+hyst   cost   1,293  viol  3.33  meet   20%  n=20
+   QuantProv_q90   cost   1,491  viol  1.86  meet   55%  n=20
+   PRISM           cost   1,432  viol  2.02  meet   65%  n=20
+
+## Paired PRISM minus X (per seed, per scenario)
+   vs PredHead       stationary cost  +18.1 ± 10.4%  viol  -1.28 ± 0.56 pp  PRISM cheaper 0/5  fewer viol 5/5
+   vs PredHead       growth     cost  +16.6 ±  8.2%  viol  -1.19 ± 0.51 pp  PRISM cheaper 0/5  fewer viol 5/5
+   vs PredHead       bursty     cost  +27.9 ±  8.3%  viol  -3.42 ± 0.43 pp  PRISM cheaper 0/5  fewer viol 5/5
+   vs PredHead       new_spike  cost  +21.9 ±  8.4%  viol -11.34 ± 1.91 pp  PRISM cheaper 0/5  fewer viol 5/5
+   vs PredHead       all        cost  +21.1 ±  8.4%  viol  -4.31 ± 0.42 pp  PRISM cheaper 0/5  fewer viol 5/5
+   vs PredHead+hyst  stationary cost   +8.1 ±  9.5%  viol  -0.51 ± 0.62 pp  PRISM cheaper 1/5  fewer viol 4/5
+   vs PredHead+hyst  growth     cost   +6.5 ±  8.0%  viol  -0.62 ± 0.62 pp  PRISM cheaper 1/5  fewer viol 4/5
+   vs PredHead+hyst  bursty     cost  +17.0 ±  6.9%  viol  -2.23 ± 0.79 pp  PRISM cheaper 0/5  fewer viol 5/5
+   vs PredHead+hyst  new_spike  cost  +12.3 ±  6.4%  viol  -1.90 ± 2.21 pp  PRISM cheaper 0/5  fewer viol 4/5
+   vs PredHead+hyst  all        cost  +11.0 ±  7.4%  viol  -1.32 ± 0.96 pp  PRISM cheaper 0/5  fewer viol 5/5
+   vs QuantProv_q90  stationary cost   -1.9 ±  6.2%  viol  -0.06 ± 0.43 pp  PRISM cheaper 3/5  fewer viol 2/5
+   vs QuantProv_q90  growth     cost   -4.0 ±  5.5%  viol  +0.18 ± 0.36 pp  PRISM cheaper 4/5  fewer viol 1/5
+   vs QuantProv_q90  bursty     cost   -4.0 ±  4.9%  viol  +0.09 ± 0.65 pp  PRISM cheaper 4/5  fewer viol 1/5
+   vs QuantProv_q90  new_spike  cost   -4.9 ±  4.6%  viol  +0.42 ± 0.95 pp  PRISM cheaper 5/5  fewer viol 2/5
+   vs QuantProv_q90  all        cost   -3.7 ±  5.3%  viol  +0.16 ± 0.53 pp  PRISM cheaper 4/5  fewer viol 2/5
+   vs Static         stationary cost  -20.1 ±  9.6%  viol  +1.01 ± 1.06 pp  PRISM cheaper 5/5  fewer viol 0/5
+   vs Static         growth     cost   -7.1 ± 10.4%  viol  -2.53 ± 1.86 pp  PRISM cheaper 3/5  fewer viol 5/5
+   vs Static         bursty     cost  -11.9 ± 10.6%  viol  +0.89 ± 1.66 pp  PRISM cheaper 5/5  fewer viol 1/5
+   vs Static         new_spike  cost   -5.5 ± 12.1%  viol  -1.13 ± 2.95 pp  PRISM cheaper 3/5  fewer viol 4/5
+   vs Static         all        cost  -11.2 ± 10.4%  viol  -0.44 ± 1.83 pp  PRISM cheaper 5/5  fewer viol 4/5
+   vs Reactive       stationary cost  -31.4 ±  6.4%  viol  +0.60 ± 1.46 pp  PRISM cheaper 5/5  fewer viol 1/5
+   vs Reactive       growth     cost  -31.7 ±  5.1%  viol  +0.42 ± 1.00 pp  PRISM cheaper 5/5  fewer viol 2/5
+   vs Reactive       bursty     cost  -26.9 ±  5.9%  viol  +1.01 ± 1.62 pp  PRISM cheaper 5/5  fewer viol 1/5
+   vs Reactive       new_spike  cost  -29.7 ±  5.3%  viol  +1.01 ± 1.69 pp  PRISM cheaper 5/5  fewer viol 0/5
+   vs Reactive       all        cost  -29.9 ±  5.4%  viol  +0.76 ± 1.39 pp  PRISM cheaper 5/5  fewer viol 1/5

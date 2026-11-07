@@ -1,0 +1,8 @@
+# PRISM ablations at validation-chosen ε (cost USD / violating windows; mean over traces)
+
+| Scenario   | PRISM         | No conformal   | Oracle        | traces where removing conformal raised violations   |
+|:-----------|:--------------|:---------------|:--------------|:----------------------------------------------------|
+| stationary | 1,073 / 1.28% | 943 / 2.62%    | 937 / 0.33%   | 5/5                                                 |
+| growth     | 1,396 / 1.22% | 1,223 / 2.41%  | 1,216 / 0.42% | 5/5                                                 |
+| bursty     | 1,202 / 1.40% | 979 / 3.51%    | 976 / 0.33%   | 5/5                                                 |
+| new_spike  | 1,395 / 1.55% | 1,172 / 5.74%  | 1,188 / 0.65% | 5/5                                                 |

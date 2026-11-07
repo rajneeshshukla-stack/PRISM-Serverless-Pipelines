@@ -1,0 +1,61 @@
+{
+ "seed": 101,
+ "scenario": "stationary",
+ "all_identical": true,
+ "runs": [
+  {
+   "label": "OnDemand",
+   "stored_source": "af08337bc262",
+   "cost_stored": 865.05164583855,
+   "cost_now": 865.05164583855,
+   "viol_stored": 0.16071428571428573,
+   "viol_now": 0.16071428571428573,
+   "identical": true
+  },
+  {
+   "label": "Static-95",
+   "stored_source": "af08337bc262",
+   "cost_stored": 1013.2737852596566,
+   "cost_now": 1013.2737852596566,
+   "viol_stored": 0.06994047619047619,
+   "viol_now": 0.06994047619047619,
+   "identical": true
+  },
+  {
+   "label": "Reactive-0.6",
+   "stored_source": "af08337bc262",
+   "cost_stored": 1478.3122531982317,
+   "cost_now": 1478.3122531982317,
+   "viol_stored": 0.020833333333333332,
+   "viol_now": 0.020833333333333332,
+   "identical": true
+  },
+  {
+   "label": "PredHead-1.3",
+   "stored_source": "af08337bc262",
+   "cost_stored": 880.5312949135094,
+   "cost_now": 880.5312949135094,
+   "viol_stored": 0.019345238095238096,
+   "viol_now": 0.019345238095238096,
+   "identical": true
+  },
+  {
+   "label": "QuantProv_q90-1.0",
+   "stored_source": "af08337bc262",
+   "cost_stored": 1071.641901741593,
+   "cost_now": 1071.641901741593,
+   "viol_stored": 0.010416666666666666,
+   "viol_now": 0.010416666666666666,
+   "identical": true
+  },
+  {
+   "label": "PRISM-0.05",
+   "stored_source": "af08337bc262",
+   "cost_stored": 1017.0269592237605,
+   "cost_now": 1017.0269592237605,
+   "viol_stored": 0.011904761904761904,
+   "viol_now": 0.011904761904761904,
+   "identical": true
+  }
+ ]
+}

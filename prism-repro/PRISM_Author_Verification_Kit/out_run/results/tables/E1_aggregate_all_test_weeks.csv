@@ -1,0 +1,10 @@
+Policy,Mean cost (USD),Mean violating windows (%),SLO met (share of test weeks),test weeks
+OnDemand,997,18.72,0%,20
+Static,"1,491",1.26,70%,20
+Scheduled,"1,367",2.58,40%,20
+Reactive,"1,725",1.53,85%,20
+PredHead,"1,064",3.27,30%,20
+PRISM,"1,267",1.36,80%,20
+PredHead+hyst,"1,145",2.28,50%,20
+QuantProv_q90,"1,320",1.24,80%,20
+QuantProv_q99,"1,370",0.92,100%,20

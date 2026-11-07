@@ -1,0 +1,199 @@
+[E1] start 2026-10-29T23:12:10+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E1] seed 101 val/stationary: 76 runs, 55s
+[E1] seed 101 test/stationary: 152 runs, 101s
+[E1] seed 101 test/growth: 228 runs, 150s
+[E1] seed 101 test/bursty: 304 runs, 197s
+[E1] seed 101 test/new_spike: 380 runs, 246s
+[E1] seed 102 val/stationary: 76 runs, 61s
+[E1] seed 102 test/stationary: 152 runs, 111s
+[E1] seed 102 test/growth: 228 runs, 160s
+[E1] seed 102 test/bursty: 304 runs, 208s
+[E1] seed 102 test/new_spike: 380 runs, 255s
+[E1] seed 103 val/stationary: 76 runs, 54s
+[E1] seed 103 test/stationary: 152 runs, 102s
+[E1] seed 103 test/growth: 228 runs, 150s
+[E1] seed 103 test/bursty: 304 runs, 198s
+[E1] seed 103 test/new_spike: 380 runs, 245s
+[E1] seed 104 val/stationary: 76 runs, 51s
+[E1] seed 104 test/stationary: 152 runs, 96s
+[E1] seed 104 test/growth: 228 runs, 142s
+[E1] seed 104 test/bursty: 304 runs, 187s
+[E1] start 2026-10-29T23:30:17+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E1] seed 101 done, skipping
+[E1] seed 102 done, skipping
+[E1] seed 103 done, skipping
+[E1] seed 104 val/stationary: 76 runs, 53s
+[E1] seed 104 test/stationary: 152 runs, 100s
+[E1] seed 104 test/growth: 228 runs, 147s
+[E1] seed 104 test/bursty: 304 runs, 196s
+[E1] seed 104 test/new_spike: 380 runs, 246s
+[E1] seed 105 val/stationary: 76 runs, 57s
+[E1] seed 105 test/stationary: 152 runs, 104s
+[E1] seed 105 test/growth: 228 runs, 152s
+[E1] seed 105 test/bursty: 304 runs, 198s
+[E1] seed 105 test/new_spike: 380 runs, 243s
+[E1] finished 2026-10-29T23:38:28+00:00 in 491s
+[E2] start 2026-10-29T23:38:29+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E2] finished 2026-10-29T23:38:56+00:00 in 27s
+[E3] start 2026-10-29T23:38:58+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E3] seed 101 done
+[E3] seed 102 done
+[E3] seed 103 done
+[E3] seed 104 done
+[E3] seed 105 done
+[E3] finished 2026-10-29T23:48:49+00:00 in 591s
+[E1] start 2026-10-29T23:48:52+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E1] seed 101 done, skipping
+[E1] seed 102 done, skipping
+[E1] seed 103 done, skipping
+[E1] seed 104 done, skipping
+[E1] seed 105 done, skipping
+[E1] finished 2026-10-29T23:48:52+00:00 in 0s
+[E2] start 2026-10-29T23:48:53+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E2] finished 2026-10-29T23:48:53+00:00 in 0s
+[E3] start 2026-10-29T23:48:54+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E3] finished 2026-10-29T23:48:54+00:00 in 0s
+[E10] start 2026-10-29T23:48:56+00:00 seeds=[101] python=3.12.3 numpy=2.4.4
+[E10] {"total_ms_median": 7.358738999982961, "total_ms_p99": 17.054613500044944, "total_ms_max": 22.808298999962062, "forecast_ms_median": 5.475671499880264, "forecast_ms_p99": 9.450560050072452, "optimise_ms_median": 1.8058964999454474, "optimise_ms_p99": 9.058383050046354, "online_equals_batch_identical": true}
+[E10] finished 2026-10-29T23:49:18+00:00 in 22s
+[E4] start 2026-10-29T23:49:19+00:00 seeds=[101, 102] python=3.12.3 numpy=2.4.4
+[E4] seed 101 ns0.5_D14.5 done
+[E4] seed 101 ns0.5_D13.0 done
+[E4] seed 101 ns0.5_D12.0 done
+[E4] seed 101 ns0.5_D11.0 done
+[E4] seed 101 ns0.15_D14.5 done
+[E4] seed 101 ns0.15_D12.0 done
+[E4] seed 102 ns0.5_D14.5 done
+[E4] seed 102 ns0.5_D13.0 done
+[E4] seed 102 ns0.5_D12.0 done
+[E4] seed 102 ns0.5_D11.0 done
+[E4] seed 102 ns0.15_D14.5 done
+[E4] seed 102 ns0.15_D12.0 done
+[E4] finished 2026-10-29T23:52:14+00:00 in 175s
+[E9] start 2026-10-29T23:52:15+00:00 seeds=[101, 102, 103] python=3.12.3 numpy=2.4.4
+[E9] seed 101 stationary OnDemand: 22s
+[E9] seed 101 stationary Static-99: 21s
+[E9] seed 101 stationary Scheduled-1.8: 21s
+[E1] start 2026-10-29T23:58:34+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E1] seed 101 done, skipping
+[E1] seed 102 done, skipping
+[E1] seed 103 done, skipping
+[E1] seed 104 done, skipping
+[E1] seed 105 done, skipping
+[E1] finished 2026-10-29T23:58:34+00:00 in 0s
+[E2] start 2026-10-29T23:58:36+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E2] finished 2026-10-29T23:58:36+00:00 in 0s
+[E3] start 2026-10-29T23:58:38+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E3] finished 2026-10-29T23:58:38+00:00 in 0s
+[E10] start 2026-10-29T23:58:39+00:00 seeds=[101] python=3.12.3 numpy=2.4.4
+[E10] finished 2026-10-29T23:58:39+00:00 in 0s
+[E4] start 2026-10-29T23:58:41+00:00 seeds=[101, 102] python=3.12.3 numpy=2.4.4
+[E4] finished 2026-10-29T23:58:41+00:00 in 0s
+[E9] start 2026-10-29T23:58:43+00:00 seeds=[101, 102, 103] python=3.12.3 numpy=2.4.4
+[E9] seed 101 stationary OnDemand: 28s
+[E9] seed 101 stationary Static-99: 26s
+[E9] seed 101 stationary Scheduled-1.8: 20s
+[E9] seed 101 stationary Reactive-0.55: 20s
+[E9] seed 101 stationary PredHead-1.4: 21s
+[E9] seed 101 stationary PRISM-0.02: 21s
+[E9] seed 101 growth OnDemand: 24s
+[E9] seed 101 growth Static-99: 25s
+[E9] seed 101 growth Scheduled-1.8: 29s
+[E9] seed 101 growth Reactive-0.55: 28s
+[E9] seed 101 growth PredHead-1.4: 30s
+[E9] seed 101 growth PRISM-0.02: 26s
+[E9] seed 101 bursty OnDemand: 19s
+[E9] seed 101 bursty Static-99: 18s
+[E9] seed 101 bursty Scheduled-1.8: 19s
+[E9] seed 101 bursty Reactive-0.55: 18s
+[E9] seed 101 bursty PredHead-1.4: 18s
+[E9] seed 101 bursty PRISM-0.02: 17s
+[E9] seed 101 new_spike OnDemand: 29s
+[E9] seed 101 new_spike Static-99: 27s
+[E9] seed 101 new_spike Scheduled-1.8: 27s
+[E9] seed 101 new_spike Reactive-0.55: 26s
+[E9] seed 101 new_spike PredHead-1.4: 27s
+[E9] seed 101 new_spike PRISM-0.02: 31s
+[E9] seed 102 stationary OnDemand: 19s
+[E9] seed 102 stationary Static-99: 18s
+[E9] seed 102 stationary Scheduled-1.8: 17s
+[E9] seed 102 stationary Reactive-0.6: 21s
+[E9] seed 102 stationary PredHead-1.6: 19s
+[E9] seed 102 stationary PRISM-0.03: 17s
+[E9] seed 102 growth OnDemand: 27s
+[E9] seed 102 growth Static-99: 23s
+[E9] seed 102 growth Scheduled-1.8: 23s
+[E9] seed 102 growth Reactive-0.6: 24s
+[E9] seed 102 growth PredHead-1.6: 27s
+[E9] seed 102 growth PRISM-0.03: 23s
+[E9] seed 102 bursty OnDemand: 20s
+[E9] seed 102 bursty Static-99: 18s
+[E9] seed 102 bursty Scheduled-1.8: 18s
+[E9] seed 102 bursty Reactive-0.6: 18s
+[E9] seed 102 bursty PredHead-1.6: 18s
+[E9] seed 102 bursty PRISM-0.03: 17s
+[E9] seed 102 new_spike OnDemand: 25s
+[E9] seed 102 new_spike Static-99: 21s
+[E9] seed 102 new_spike Scheduled-1.8: 21s
+[E9] seed 102 new_spike Reactive-0.6: 21s
+[E9] seed 102 new_spike PredHead-1.6: 22s
+[E9] seed 102 new_spike PRISM-0.03: 23s
+[E9] seed 103 stationary OnDemand: 19s
+[E9] seed 103 stationary Static-99: 17s
+[E9] seed 103 stationary Scheduled-1.6: 17s
+[E9] seed 103 stationary Reactive-0.6: 18s
+[E9] seed 103 stationary PredHead-1.5: 17s
+[E9] seed 103 stationary PRISM-0.05: 17s
+[E9] seed 103 growth OnDemand: 24s
+[E9] seed 103 growth Static-99: 23s
+[E9] seed 103 growth Scheduled-1.6: 24s
+[E9] seed 103 growth Reactive-0.6: 23s
+[E9] seed 103 growth PredHead-1.5: 23s
+[E9] seed 103 growth PRISM-0.05: 23s
+[E9] seed 103 bursty OnDemand: 19s
+[E9] seed 103 bursty Static-99: 20s
+[E9] seed 103 bursty Scheduled-1.6: 18s
+[E9] seed 103 bursty Reactive-0.6: 18s
+[E9] seed 103 bursty PredHead-1.5: 19s
+[E9] seed 103 bursty PRISM-0.05: 19s
+[E9] seed 103 new_spike OnDemand: 23s
+[E9] seed 103 new_spike Static-99: 21s
+[E9] seed 103 new_spike Scheduled-1.6: 21s
+[E9] seed 103 new_spike Reactive-0.6: 21s
+[E9] seed 103 new_spike PredHead-1.5: 22s
+[E9] seed 103 new_spike PRISM-0.05: 21s
+[E9] finished 2026-10-30T00:25:19+00:00 in 1596s
+[E6] start 2026-10-30T00:25:20+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E6] seed 101 done
+[E6] seed 102 done
+[E6] seed 103 done
+[E6] seed 104 done
+[E6] seed 105 done
+[E6] finished 2026-10-30T00:29:08+00:00 in 227s
+[E7] start 2026-10-30T00:29:09+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E7] seed 101 done
+[E7] seed 102 done
+[E7] seed 103 done
+[E7] seed 104 done
+[E7] seed 105 done
+[E7] finished 2026-10-30T00:37:23+00:00 in 495s
+[E5] start 2026-10-30T00:37:25+00:00 seeds=[101, 102] python=3.12.3 numpy=2.4.4
+[E5] seed 101 default done
+[E5] seed 101 keepalive5 done
+[E5] seed 101 keepalive30 done
+[E5] seed 101 init3 done
+[E5] seed 101 init9 done
+[E5] seed 102 default done
+[E5] seed 102 keepalive5 done
+[E5] seed 102 keepalive30 done
+[E5] seed 102 init3 done
+[E5] seed 102 init9 done
+[E5] finished 2026-10-30T00:46:38+00:00 in 554s
+[E11] start 2026-10-30T00:46:40+00:00 seeds=[101, 102, 103, 104, 105] python=3.12.3 numpy=2.4.4
+[E11] seed 101 done
+[E11] seed 102 done
+[E11] seed 103 done
+[E11] seed 104 done
+[E11] seed 105 done
+[E11] finished 2026-10-30T00:58:13+00:00 in 693s
+[E8] start 2026-10-30T00:58:14+00:00 seeds=[101, 102, 103] python=3.12.3 numpy=2.4.4

@@ -1,0 +1,5 @@
+Scenario,Cost diff (USD),Cost diff (%),Violating-window diff (pp),traces PRISM cheaper,traces PRISM fewer violations,n
+stationary,-37 ± 100,-2.8 ± 7.5,0.00 ± 0.18,4,2,5
+growth,-60 ± 132,-3.6 ± 7.5,0.06 ± 0.10,5,0,5
+bursty,-51 ± 110,-3.6 ± 7.5,0.12 ± 0.27,5,1,5
+new_spike,-65 ± 130,-3.9 ± 7.4,0.30 ± 0.35,5,0,5
