@@ -12,17 +12,22 @@ Every request's latency is computed, so window attainment is exact.
 
 This is an independent reconstruction of the manuscript's description; it is
 open-loop: it replays provisioning schedules produced elsewhere (§VI-H).
+`simulate_events(..., want_telemetry=True)` additionally emits the per-minute
+telemetry the controller consumes (`EventTelemetry`), the first step towards the
+closed loop requested in R2.2; nothing consumes it yet.
 """
 from __future__ import annotations
 
 import heapq
 from collections import deque
+from dataclasses import dataclass
 
 import numpy as np
 
 from .config import PipelineConfig
 from .latency import init_mean, lognormal_mult, stage_means
 from .metrics import severity, weighted_quantile_hist, window_attainment
+from .simulator import Telemetry
 
 
 class EventDraws:
@@ -120,9 +125,58 @@ def max_inflight_per_minute(arr, finish, n_min):
     return np.maximum(out, carry)
 
 
+@dataclass
+class EventTelemetry(Telemetry):
+    """Per-minute telemetry measured in the event-level simulator (R2.2).
+
+    The fields inherited from `simulator.Telemetry` carry the same meaning as in the
+    fast simulator, so a policy's `decide(k, tel)` can read either: N arrivals per
+    minute, K peak in-flight executions per stage, P provisioned level, n_od requests
+    served on demand and cold the cold starts, each binned by the minute a request
+    reaches the stage. The extra fields support conservation checks: `arrivals` and
+    `completed` count stage arrivals and completions in each minute, and `inflight_end`
+    counts executions still running at the end of each minute. Events after the last
+    minute of the horizon are not observed (K is the exception: it reuses
+    `max_inflight_per_minute`, which folds them into the last minute)."""
+    arrivals: np.ndarray = None      # (n, S) stage arrivals per minute
+    completed: np.ndarray = None     # (n, S) stage completions per minute
+    inflight_end: np.ndarray = None  # (n, S) executions in flight at the end of each minute
+    mem: np.ndarray = None           # (n,) memory applied per minute
+
+
+def stage_telemetry(arr, fin, cold, used_pc, n_min):
+    """Per-minute telemetry of one stage from its event outcomes.
+
+    arr, fin: arrival and finish times (s); cold, used_pc: per-request flags from
+    `_stage_pass`. Returns dict(arrivals, completed, inflight_end, n_od, cold, K), each of
+    length n_min. inflight_end is counted directly at each minute boundary, not as a
+    running sum of the other two, so arrivals - completed accumulating to inflight_end
+    is a real check."""
+    arr = np.asarray(arr, float)
+    fin = np.asarray(fin, float)
+    T = n_min * 60.0
+    a_min = (arr // 60.0).astype(np.int64)
+    f_min = (fin // 60.0).astype(np.int64)
+    seen = arr < T
+    od = seen & ~np.asarray(used_pc, bool)
+    arrivals = np.bincount(a_min[seen], minlength=n_min)[:n_min]
+    completed = np.bincount(f_min[fin < T], minlength=n_min)[:n_min]
+    bounds = (np.arange(n_min) + 1) * 60.0
+    started = np.searchsorted(np.sort(arr), bounds, side="left")    # arrivals strictly before the boundary
+    finished = np.searchsorted(np.sort(fin), bounds, side="left")   # finishes strictly before the boundary
+    inflight_end = started - finished
+    n_od = np.bincount(a_min[od], minlength=n_min)[:n_min]
+    n_cold = np.bincount(a_min[od & np.asarray(cold, bool)], minlength=n_min)[:n_min]
+    K = max_inflight_per_minute(arr, fin, n_min)
+    return dict(arrivals=arrivals, completed=completed, inflight_end=inflight_end,
+                n_od=n_od, cold=n_cold, K=K)
+
+
 def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray, mem_epoch: np.ndarray,
-                    bill_init: bool = True, want_inflight: bool = False, sample_seed: int | None = None) -> dict:
-    """Replay a provisioning schedule (per epoch, S stages) and memory schedule."""
+                    bill_init: bool = True, want_inflight: bool = False, sample_seed: int | None = None,
+                    want_telemetry: bool = False) -> dict:
+    """Replay a provisioning schedule (per epoch, S stages) and memory schedule.
+    want_telemetry: also return raw['telemetry'], an EventTelemetry (R2.2)."""
     S, E = cfg.n_stages, cfg.epoch_min
     P_min = np.repeat(np.asarray(P_epoch, float), E, axis=0)[:draws.n_min]
     mem_min = np.repeat(np.asarray(mem_epoch), E)[:draws.n_min]
@@ -130,7 +184,7 @@ def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray,
     arr = draws.arrival.copy()
     idx = np.arange(draws.n)          # request id of each position
     cost = (P_min * (mem_min[:, None] / 1024.0) * 60.0 * pr.pc).sum() + draws.n * S * pr.req
-    od_share, cold_ratio, inflight = [], [], []
+    od_share, cold_ratio, inflight, stel = [], [], [], []
     KA = cfg.keepalive_min * 60.0
     gen_min = np.concatenate([[0], np.cumsum(mem_min[1:] != mem_min[:-1])])  # M5 fix: memory version per minute
     for s in range(S):
@@ -149,6 +203,8 @@ def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray,
         cold_ratio.append(cold.mean())
         if want_inflight:
             inflight.append(max_inflight_per_minute(arr, fin, draws.n_min))
+        if want_telemetry:
+            stel.append(stage_telemetry(arr, fin, cold, used_pc, draws.n_min))
         nxt = fin + draws.ov[s, idx]
         o = np.argsort(nxt, kind="stable")
         arr, idx = nxt[o], idx[o]
@@ -167,6 +223,12 @@ def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray,
     raw = dict(window_attainment=att.astype(np.float32), overflow_share_stage=np.array(od_share))
     if want_inflight:
         raw["inflight_max"] = np.stack(inflight, 1).astype(np.float32)
+    if want_telemetry:
+        col = {f: np.stack([t[f] for t in stel], 1).astype(float) for f in stel[0]}
+        raw["telemetry"] = EventTelemetry(
+            N=draws.counts.astype(float), K=col["K"], P=P_min.copy(), n_od=col["n_od"], cold=col["cold"],
+            filled=draws.n_min, arrivals=col["arrivals"], completed=col["completed"],
+            inflight_end=col["inflight_end"], mem=np.asarray(mem_min).copy())
     if sample_seed is not None:  # latency-sampling error of the fast simulator (Supplement S4)
         raw["sampling_flip_share"] = sampling_flips(draws, lat, cfg, sample_seed)
         raw["sampling_flip_direction"] = sampling_flip_direction(draws, lat, cfg, sample_seed)

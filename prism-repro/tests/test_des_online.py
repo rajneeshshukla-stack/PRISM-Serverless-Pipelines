@@ -9,7 +9,9 @@ import numpy as np
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
 from prism_repro.config import PipelineConfig  # noqa: E402
-from prism_repro.des import EventDraws, _stage_pass, max_inflight_per_minute, simulate_events  # noqa: E402
+from prism_repro.des import (EventDraws, _stage_pass, max_inflight_per_minute, simulate_events,  # noqa: E402
+                             stage_telemetry)
+from prism_repro.simulator import Telemetry  # noqa: E402
 from prism_repro.features import FeatureBuilder, online_features  # noqa: E402
 from prism_repro.risk import c_eff, erlang_b, occupancy_overflow  # noqa: E402
 from prism_repro.workload import generate_trace  # noqa: E402
@@ -85,6 +87,86 @@ class TestStagePass(unittest.TestCase):
         od = simulate_events(cfg, dr, np.zeros((120, 4)), np.full(120, 1024))["summary"]
         self.assertEqual(od["overflow_share"], 1.0)
         self.assertGreaterEqual(od["cold_start_ratio"], a["cold_start_ratio"])
+
+
+class TestEventTelemetry(unittest.TestCase):
+    """R2.2, first closed-loop step: the event-level simulator emits the per-minute
+    telemetry a policy reads (simulator.Telemetry fields) and the emitted counts conserve
+    requests: arrivals minus completions accumulate to the executions in flight."""
+
+    def test_stage_telemetry_hand_trace(self):
+        # request 0 runs 0 -> 65 on demand (cold); 1 runs 10 -> 20 provisioned; 2 runs 70 -> 80
+        # warm on demand; 3 arrives exactly on the minute boundary and 4 finishes exactly on it
+        arr = np.array([0.0, 10.0, 70.0, 60.0, 30.0])
+        fin = np.array([65.0, 20.0, 80.0, 90.0, 60.0])
+        cold = np.array([True, False, False, False, False])
+        pc = np.array([False, True, False, True, True])
+        t = stage_telemetry(arr, fin, cold, pc, 2)
+        np.testing.assert_array_equal(t["arrivals"], [3, 2])
+        np.testing.assert_array_equal(t["completed"], [1, 4])   # fin = 60 belongs to minute 1
+        np.testing.assert_array_equal(t["inflight_end"], [2, 0])
+        np.testing.assert_array_equal(t["n_od"], [1, 1])
+        np.testing.assert_array_equal(t["cold"], [1, 0])
+        # boundary arrival with no boundary finish: pins the half-open convention
+        t = stage_telemetry(np.array([0.0, 60.0]), np.array([30.0, 150.0]),
+                            np.zeros(2, bool), np.zeros(2, bool), 2)
+        np.testing.assert_array_equal(t["arrivals"], [1, 1])
+        np.testing.assert_array_equal(t["completed"], [1, 0])
+        np.testing.assert_array_equal(t["inflight_end"], [0, 1])
+        # events after the horizon are not observed; the request is still in flight at its end
+        t = stage_telemetry(np.array([0.0, 130.0]), np.array([150.0, 140.0]), np.zeros(2, bool),
+                            np.zeros(2, bool), 2)
+        np.testing.assert_array_equal(t["arrivals"], [1, 0])
+        np.testing.assert_array_equal(t["completed"], [0, 0])
+        np.testing.assert_array_equal(t["inflight_end"], [1, 1])
+
+    def _run(self, want_telemetry):
+        cfg = PipelineConfig()
+        counts = generate_trace(5, "stationary")["counts"][:600].copy()
+        counts[-10:] = 0                       # drain, so every request finishes inside the horizon
+        dr = EventDraws(cfg, counts, 5, 0)
+        # continuous draws never land on a minute boundary, so the gate could not see the
+        # half-open convention; snap each minute's first arrival onto its boundary (order kept)
+        first = np.r_[0, np.cumsum(dr.counts)[:-1]][dr.counts > 0]
+        dr.arrival[first] = dr.minute[first] * 60.0
+        P = np.tile([6, 30, 18, 8], (120, 1))   # mixed provisioned / on-demand service
+        mem = np.r_[np.full(60, 1024), np.full(60, 2048)]   # one memory change (M5 path)
+        return cfg, dr, P, simulate_events(cfg, dr, P, mem, want_telemetry=want_telemetry)
+
+    def test_conservation_gate(self):
+        cfg, dr, P, out = self._run(True)
+        tel = out["raw"]["telemetry"]
+        self.assertIsInstance(tel, Telemetry)
+        n, S = dr.n_min, cfg.n_stages
+        for f in ("K", "P", "n_od", "cold", "arrivals", "completed", "inflight_end"):
+            self.assertEqual(getattr(tel, f).shape, (n, S), f)
+        self.assertEqual(tel.filled, n)
+        np.testing.assert_array_equal(tel.P, np.repeat(P, cfg.epoch_min, axis=0))
+        # gate: in flight + completed = arrivals, per minute and per window, every stage
+        net = np.cumsum(tel.arrivals, 0) - np.cumsum(tel.completed, 0)
+        np.testing.assert_array_equal(net, tel.inflight_end)
+        w = cfg.window_min
+        np.testing.assert_array_equal(net[w - 1::w], tel.inflight_end[w - 1::w])
+        # no request lost or duplicated across stages; the horizon drains
+        np.testing.assert_array_equal(tel.arrivals[:, 0], tel.N)
+        np.testing.assert_array_equal(tel.arrivals.sum(0), np.full(S, dr.n))
+        np.testing.assert_array_equal(tel.completed.sum(0), np.full(S, dr.n))
+        np.testing.assert_array_equal(tel.inflight_end[-1], np.zeros(S))
+        # invariants shared with the fast simulator: cold <= overflow <= arrivals
+        self.assertTrue(np.all(tel.cold <= tel.n_od) and np.all(tel.n_od <= tel.arrivals))
+        self.assertTrue(np.all(tel.K >= tel.inflight_end))
+        self.assertTrue(0 < tel.n_od.sum() < tel.arrivals.sum() and tel.cold.sum() > 0)
+        # telemetry agrees with the simulator's own summary
+        s = out["summary"]
+        self.assertAlmostEqual(float(np.mean(tel.n_od.sum(0) / dr.n)), s["overflow_share"], places=12)
+        self.assertAlmostEqual(float(np.mean(tel.cold.sum(0) / dr.n)), s["cold_start_ratio"], places=12)
+
+    def test_emitting_telemetry_changes_nothing_else(self):
+        _, _, _, a = self._run(False)
+        _, _, _, b = self._run(True)
+        self.assertEqual(a["summary"], b["summary"])
+        self.assertNotIn("telemetry", a["raw"])
+        np.testing.assert_array_equal(a["raw"]["window_attainment"], b["raw"]["window_attainment"])
 
 
 class TestOnlineFeatures(unittest.TestCase):
