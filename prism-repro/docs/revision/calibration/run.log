@@ -1,0 +1,56 @@
+start 2026-11-21T08:28:47Z base 91a4d8b + Group 2 working changes
+B shared seed 101: 80 rows in 572.1s
+B shared seed 102: 80 rows in 576.2s
+B shared seed 103: 80 rows in 568.9s
+B shared seed 104: 80 rows in 578.0s
+B shared seed 105: 80 rows in 580.0s
+B independent seed 101: 80 rows in 504.3s
+B independent seed 102: 80 rows in 511.3s
+B independent seed 103: 80 rows in 523.9s
+B independent seed 104: 80 rows in 516.4s
+B independent seed 105: 80 rows in 522.9s
+A gamma=0.02 seed 101: 24 rows in 218.1s
+A gamma=0.02 seed 102: 24 rows in 229.6s
+A gamma=0.02 seed 103: 24 rows in 238.2s
+A gamma=0.02 seed 104: 24 rows in 236.8s
+A gamma=0.02 seed 105: 24 rows in 238.0s
+A gamma=0.10 seed 101: 24 rows in 185.1s
+A gamma=0.10 seed 102: 24 rows in 188.3s
+A gamma=0.10 seed 103: 24 rows in 199.0s
+A gamma=0.10 seed 104: 24 rows in 198.3s
+A gamma=0.10 seed 105: 24 rows in 199.8s
+A clip=[-0.1,0.5] seed 101: 24 rows in 177.9s
+A clip=[-0.1,0.5] seed 102: 24 rows in 181.6s
+A clip=[-0.1,0.5] seed 103: 24 rows in 193.7s
+A clip=[-0.1,0.5] seed 104: 24 rows in 190.4s
+A clip=[-0.1,0.5] seed 105: 24 rows in 199.8s
+A clip=[-0.5,1.2] seed 101: 24 rows in 221.2s
+A clip=[-0.5,1.2] seed 102: 24 rows in 266.9s
+A clip=[-0.5,1.2] seed 103: 24 rows in 274.0s
+A clip=[-0.5,1.2] seed 104: 24 rows in 273.5s
+A clip=[-0.5,1.2] seed 105: 24 rows in 278.0s
+A delay=3 seed 101: 24 rows in 291.2s
+A delay=3 seed 102: 24 rows in 256.6s
+A delay=3 seed 103: 24 rows in 243.7s
+A delay=3 seed 104: 24 rows in 245.8s
+A delay=3 seed 105: 24 rows in 245.3s
+A delay=4 seed 101: 24 rows in 200.9s
+A delay=4 seed 102: 24 rows in 198.3s
+A delay=4 seed 103: 24 rows in 229.9s
+A delay=4 seed 104: 24 rows in 233.0s
+A delay=4 seed 105: 24 rows in 238.1s
+A s0=0.2 seed 101: 24 rows in 242.1s
+A s0=0.2 seed 102: 24 rows in 394.5s
+A s0=0.2 seed 103: 24 rows in 386.1s
+A s0=0.2 seed 104: 24 rows in 377.0s
+A s0=0.2 seed 105: 24 rows in 899.6s
+A s0=0.4 seed 101: 24 rows in 1019.0s
+A s0=0.4 seed 102: 24 rows in 837.1s
+A s0=0.4 seed 103: 24 rows in 801.0s
+A s0=0.4 seed 104: 24 rows in 775.6s
+A s0=0.4 seed 105: 24 rows in 453.6s
+
+real	64m28.124s
+user	0m0.016s
+sys	0m0.015s
+end 2026-11-21T09:33:15Z
