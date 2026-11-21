@@ -1,7 +1,7 @@
 # Test report (software verification)
 
-**Latest full run:** 2026-11-20, `python -m unittest discover -s tests -v` → **55 tests, all passed**, on two platforms:
-Windows 11 x86-64 with Python 3.12.9 and the pinned requirements, and Linux x86-64 with Python 3.13.18 (numpy 2.5.3, scipy 1.18.1). The count rose from 48 after the m12_m5 patch was applied (+4) and three regression tests were added for the Erlang-B accuracy gate and the epsilon-monotonicity of the infeasible fallback. Previous run: 2026-10-29, 48 tests, reference sandbox, Python 3.12.3 (`results/test_report_full.txt`).
+**Latest full run:** 2026-11-20, `python -m unittest discover -s tests -v` → **58 tests, all passed**, on two platforms:
+Windows 11 x86-64 with Python 3.12.9 and the pinned requirements, and Linux x86-64 with Python 3.13.18 (numpy 2.5.3, scipy 1.18.1). The count rose from 48 at the previous reference run: the m12_m5 patch carries its own tests, and regression tests were added for the Erlang-B accuracy gate, the epsilon-monotonicity of the infeasible fallback, and the agreement of each revision probe in `scripts/revision/` with the optimiser's own evaluator. Previous run: 2026-10-29, 48 tests, reference sandbox, Python 3.12.3 (`results/test_report_full.txt`).
 
 This is software verification only: it shows that the code implements the stated formulas and behaves as specified. It does **not** validate the scientific conclusions.
 

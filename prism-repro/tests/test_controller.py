@@ -97,6 +97,33 @@ class TestIntegerSearchEvaluator(unittest.TestCase):
                     self.assertAlmostEqual(cost, float(ev["cost"][0, j]), places=9)
                     self.assertAlmostEqual(feas, float(ev["feas"][0, j]), places=9)
 
+
+class TestStageDemandEvaluator(unittest.TestCase):
+    """Phase D: stage_demand_gap.eval_phi must reduce exactly to integer_search_gap.eval_P at
+    phi = (1,...,1). That pins the stage-specific-demand probe to the evaluator already
+    validated against the optimiser."""
+
+    def test_unit_phi_matches_common_demand_evaluator(self):
+        import os
+        import sys as _sys
+        _sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts", "revision"))
+        from integer_search_gap import eval_P
+        from stage_demand_gap import eval_phi
+
+        cfg = PipelineConfig()
+        rng = np.random.default_rng(23)
+        ones = [1.0] * cfg.n_stages
+        for eps in (0.01, 0.05):
+            pc = PrismConfig(eps=eps)
+            for _ in range(3):
+                sc = scenarios(np.sort(rng.uniform(300, 1400, 4)), 60)
+                P = np.ceil(rng.uniform(5, 90, cfg.n_stages))
+                for m in (1024, 2048):
+                    a = eval_P(P, m, sc, 0.35, pc, cfg)
+                    b = eval_phi(P, m, sc, 0.35, pc, ones, cfg)
+                    self.assertAlmostEqual(a[0], b[0], places=9)
+                    self.assertAlmostEqual(a[1], b[1], places=9)
+
 class TestDefaultRiskModel(unittest.TestCase):
     """R4.9: Supplement S6 recommends Erlang-B while the submitted main configuration used
     Eq. (5). This guards against silently reverting that."""
