@@ -12,7 +12,7 @@ import numpy as np
 from .config import PipelineConfig, PrismConfig
 from .features import FeatureBuilder, forecast_horizon, min_feedback_delay
 from .forecast import ConformalScaler, QuantileGBM, RatioQuantileForecaster, apply_offset
-from .policies import PRISM, OnDemand, PredHead, QuantProv, Reactive, Scheduled, Static
+from .policies import PRISM, MemAdapt, OnDemand, PredHead, QuantProv, Reactive, Scheduled, Static
 from .simulator import WEEK, SimContext, WeekDraws, simulate
 from .workload import MAIN_SCENARIOS, MIN_PER_DAY, WorkloadParams, generate_trace
 
@@ -182,6 +182,8 @@ def make_policy(spec: dict, pcfg_base: PrismConfig | None = None):
         return PredHead(p, fc, hysteresis=0.85 if spec.get("hyst") else None)
     if fam == "QuantProv":
         return QuantProv(spec["tau_idx"], p, fc)
+    if fam == "MemAdapt":   # R2.6, R3.7, R7.4
+        return MemAdapt(spec.get("tau_idx", 2), p, spec.get("tau_w", 0.005), fc)
     if fam in ("PRISM", "Oracle"):
         base = pcfg_base or PrismConfig()
         pc = base.with_(eps=p, **spec.get("prism", {}))

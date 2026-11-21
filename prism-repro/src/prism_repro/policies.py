@@ -12,7 +12,7 @@ import numpy as np
 
 from .config import PipelineConfig, PrismConfig
 from .forecast import scenarios as make_scenarios
-from .latency import stage_demand, stage_means
+from .latency import miss_table, stage_demand, stage_means
 from .optimizer import ChanceConstrainedOptimizer
 
 
@@ -167,6 +167,54 @@ class QuantProv(_ForecastPolicy):
     def decide(self, k, tel):
         y = self.param * self.fc["q_cal"][k, self.tau_idx]
         return self._smooth(np.ceil(y * self.d / 60.0 - 1e-9)), self.cfg.default_mem
+
+
+class MemAdapt(QuantProv):
+    """Memory-adaptive calibrated-quantile controller (R2.6, R3.7, R7.4).
+
+    Memory: estimated warm-service feasibility. At each decision, the smallest memory size whose warm miss
+    probability v_w(m) is at most tau_w; the largest size if none qualifies. v_w comes from the latency model
+    PRISM's optimiser uses (latency.miss_table), so both controllers see the same estimate. The smallest
+    qualifying size is also the cheapest: cost per execution, m d(m), grows with m under Eq. (2). tau_w is
+    fixed in advance (default half the window budget sla_eps = 0.01), not tuned.
+    Capacity: QuantProv at the chosen memory, P_s = ceil(a q_tau phi_s d_s(m) / 60), with the PRISM scale-in
+    rule. One tuned parameter, a, selected by the common validation rule like every other family.
+    Under the simulator's fixed latency model the chosen size is constant within a replay and changes with the
+    regime (deadline, non-scaling fraction); every change is logged in mem_log as (epoch, memory, v_w)."""
+    family = "MemAdapt"
+
+    def __init__(self, tau_idx: int, a: float, tau_w: float = 0.005, fc_name="gbm"):
+        super().__init__(tau_idx, a, fc_name)
+        if not 0 < tau_w < 1:
+            raise ValueError("tau_w must be in (0, 1)")
+        self.tau_w = float(tau_w)
+
+    @property
+    def variant(self):
+        tau = {2: "q90", 3: "q99"}[self.tau_idx]
+        return (f"MemAdapt_{tau}" + ("" if self.tau_w == 0.005 else f"[tw{self.tau_w:g}]")
+                + ("" if self.fc_name == "gbm" else f"[{self.fc_name}]"))
+
+    def prepare(self, ctx):
+        super().prepare(ctx)
+        self._vw = {m: miss_table(self.cfg)[m][0] for m in self.cfg.mem_options}
+        self._dm = {m: stage_means(self.cfg, m) * stage_demand(self.cfg) for m in self.cfg.mem_options}
+        self.mem, self.mem_log = None, []
+
+    def choose_memory(self) -> int:
+        ok = [m for m in sorted(self.cfg.mem_options) if self._vw[m] <= self.tau_w]
+        return ok[0] if ok else max(self.cfg.mem_options)
+
+    def decide(self, k, tel):
+        m = self.choose_memory()
+        if m != self.mem:
+            self.mem_log.append((k, m, float(self._vw[m])))
+            self.mem, self.d = m, self._dm[m]
+        y = self.param * self.fc["q_cal"][k, self.tau_idx]
+        return self._smooth(np.ceil(y * self.d / 60.0 - 1e-9)), self.mem
+
+    def info(self):
+        return dict(mem_log=list(self.mem_log), mem_changes=max(len(self.mem_log) - 1, 0))
 
 
 class PRISM(Policy):
