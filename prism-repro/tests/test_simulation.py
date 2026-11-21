@@ -191,5 +191,27 @@ class TestGridEdgeAudit(unittest.TestCase):
             self.assertGreater(max(w), max(g), fam)
 
 
+class TestRevisionTraceSet(unittest.TestCase):
+    """R2.18 / R3.5 / R5.M4: the 30 revision traces are fixed a priori and recorded by checksum in
+    data/trace_set_revision.json; regenerating any of them must reproduce the recorded counts."""
+
+    def test_seeds_fixed_and_checksums_reproduce(self):
+        import json
+        import sys as _sys
+        _sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts", "revision"))
+        from trace_set import SEEDS, counts_sha256
+        root = os.path.join(os.path.dirname(__file__), "..")
+        with open(os.path.join(root, "data", "trace_set_revision.json"), encoding="utf-8") as fh:
+            m = json.load(fh)
+        self.assertEqual(m["seeds"], list(range(101, 131)))
+        self.assertEqual(list(SEEDS), m["seeds"])
+        self.assertFalse({7, 201, 202, 203, 204, 205} & set(m["seeds"]))   # dev seed, real traces
+        self.assertTrue(m["all_first21_identical"])
+        for seed in (101, 117, 130):
+            for sc in ("stationary", "new_spike"):
+                self.assertEqual(counts_sha256(generate_trace(seed, sc)["counts"]),
+                                 m["counts_sha256"][str(seed)][sc], (seed, sc))
+
+
 if __name__ == "__main__":
     unittest.main()
