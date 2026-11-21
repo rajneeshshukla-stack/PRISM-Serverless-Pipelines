@@ -1,0 +1,28 @@
+start_utc 2026-11-21T06:57:49Z HEAD efcfd12
+lag seed 101 2: 16 rows in 244.1s
+lag seed 102 2: 16 rows in 247.5s
+lag seed 103 2: 16 rows in 251.9s
+lag seed 104 2: 16 rows in 251.6s
+lag seed 105 2: 16 rows in 247.3s
+lag seed 101 5: 16 rows in 224.0s
+lag seed 102 5: 16 rows in 226.8s
+lag seed 103 5: 16 rows in 223.2s
+lag seed 104 5: 16 rows in 226.2s
+lag seed 105 5: 16 rows in 227.6s
+lag seed 101 10: 16 rows in 216.8s
+lag seed 102 10: 16 rows in 222.5s
+lag seed 103 10: 16 rows in 218.4s
+lag seed 104 10: 16 rows in 221.7s
+lag seed 105 10: 16 rows in 219.7s
+init seed 101 eq3: 6 rows in 78.5s
+init seed 102 eq3: 6 rows in 88.8s
+init seed 101 constant: 6 rows in 88.2s
+init seed 102 constant: 6 rows in 85.9s
+init seed 101 inverted: 6 rows in 84.9s
+init seed 102 inverted: 6 rows in 45.1s
+wrote 276 rows
+
+real	13m40.008s
+user	0m0.016s
+sys	0m0.015s
+end_utc 2026-11-21T07:11:29Z
