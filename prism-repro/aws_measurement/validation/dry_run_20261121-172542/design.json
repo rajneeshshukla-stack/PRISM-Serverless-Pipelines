@@ -1,0 +1,11231 @@
+{
+ "seed": 20261121,
+ "batch": 8,
+ "blocks": 3,
+ "cold_target": {
+  "main": 232,
+  "init": 232
+ },
+ "warm_target": {
+  "main": 1000,
+  "init": 200
+ },
+ "visits": [
+  {
+   "block": 0,
+   "order": 0,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 0,
+   "order": 1,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 0,
+   "order": 2,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 0,
+   "order": 3,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 0,
+   "order": 4,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 0,
+   "order": 5,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 0,
+   "order": 6,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 0,
+   "order": 7,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 0,
+   "order": 8,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 0,
+   "order": 9,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 0,
+   "order": 10,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 0,
+   "order": 11,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 0,
+   "order": 12,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 0,
+   "order": 13,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 0,
+   "order": 14,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 0,
+   "order": 15,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 0,
+   "order": 16,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 0,
+   "order": 17,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 0,
+   "order": 18,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 0,
+   "order": 19,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 0,
+   "order": 20,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 0,
+   "order": 21,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 0,
+   "order": 22,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 0,
+   "order": 23,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 0,
+   "order": 24,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 0,
+   "order": 25,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 0,
+   "order": 26,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 0,
+   "order": 27,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 0,
+   "order": 28,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 0,
+   "order": 29,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 0,
+   "order": 30,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 0,
+   "order": 31,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 0,
+   "order": 32,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 0,
+   "order": 33,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 0,
+   "order": 34,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 0,
+   "order": 35,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 0,
+   "order": 36,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 0,
+   "order": 37,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 0,
+   "order": 38,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 0,
+   "order": 39,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 0,
+   "order": 40,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 0,
+   "order": 41,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 0,
+   "order": 42,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 0,
+   "order": 43,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 0,
+   "order": 44,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 0,
+   "order": 45,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 0,
+   "order": 46,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 0,
+   "order": 47,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 0,
+   "order": 48,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 0,
+   "order": 49,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 0,
+   "order": 50,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 0,
+   "order": 51,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 0,
+   "order": 52,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 0,
+   "order": 53,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 0,
+   "order": 54,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 0,
+   "order": 55,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 0,
+   "order": 56,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 0,
+   "order": 57,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 0,
+   "order": 58,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 0,
+   "order": 59,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 0,
+   "order": 60,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 0,
+   "order": 61,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 0,
+   "order": 62,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 0,
+   "order": 63,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 0,
+   "order": 64,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 0,
+   "order": 65,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 0,
+   "order": 66,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 0,
+   "order": 67,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 0,
+   "order": 68,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 0,
+   "order": 69,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 0,
+   "order": 70,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 0,
+   "order": 71,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 0,
+   "order": 72,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 0,
+   "order": 73,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 0,
+   "order": 74,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 0,
+   "order": 75,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 0,
+   "order": 76,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 0,
+   "order": 77,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 0,
+   "order": 78,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 0,
+   "order": 79,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 0,
+   "order": 80,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 0,
+   "order": 81,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 0,
+   "order": 82,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 0,
+   "order": 83,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 0,
+   "order": 84,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 0,
+   "order": 85,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 0,
+   "order": 86,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 0,
+   "order": 87,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 0,
+   "order": 88,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 0,
+   "order": 89,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 0,
+   "order": 90,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 0,
+   "order": 91,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 0,
+   "order": 92,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 0,
+   "order": 93,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 0,
+   "order": 94,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 0,
+   "order": 95,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 0,
+   "order": 96,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 0,
+   "order": 97,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 0,
+   "order": 98,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 0,
+   "order": 99,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 0,
+   "order": 100,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 0,
+   "order": 101,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 0,
+   "order": 102,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 0,
+   "order": 103,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 0,
+   "order": 104,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 0,
+   "order": 105,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 0,
+   "order": 106,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 0,
+   "order": 107,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 0,
+   "order": 108,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 0,
+   "order": 109,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 0,
+   "order": 110,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 0,
+   "order": 111,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 0,
+   "order": 112,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 0,
+   "order": 113,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 0,
+   "order": 114,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 0,
+   "order": 115,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 0,
+   "order": 116,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 0,
+   "order": 117,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 0,
+   "order": 118,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 0,
+   "order": 119,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 0,
+   "order": 120,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 0,
+   "order": 121,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 0,
+   "order": 122,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 0,
+   "order": 123,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 0,
+   "order": 124,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 0,
+   "order": 125,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 0,
+   "order": 126,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 0,
+   "order": 127,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 0,
+   "order": 128,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 0,
+   "order": 129,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 0,
+   "order": 130,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 0,
+   "order": 131,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 0,
+   "order": 132,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 0,
+   "order": 133,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 0,
+   "order": 134,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 0,
+   "order": 135,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 0,
+   "order": 136,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 0,
+   "order": 137,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 0,
+   "order": 138,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 0,
+   "order": 139,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 0,
+   "order": 140,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 0,
+   "order": 141,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 0,
+   "order": 142,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 0,
+   "order": 143,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 0,
+   "order": 144,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 0,
+   "order": 145,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 0,
+   "order": 146,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 0,
+   "order": 147,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 0,
+   "order": 148,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 0,
+   "order": 149,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 0,
+   "order": 150,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 0,
+   "order": 151,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 0,
+   "order": 152,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 0,
+   "order": 153,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 0,
+   "order": 154,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 0,
+   "order": 155,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 0,
+   "order": 156,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 0,
+   "order": 157,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 0,
+   "order": 158,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 0,
+   "order": 159,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 0,
+   "order": 160,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 0,
+   "order": 161,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 0,
+   "order": 162,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 0,
+   "order": 163,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 0,
+   "order": 164,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 0,
+   "order": 165,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 0,
+   "order": 166,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 0,
+   "order": 167,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 0,
+   "order": 168,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 0,
+   "order": 169,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 0,
+   "order": 170,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 0,
+   "order": 171,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 0,
+   "order": 172,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 0,
+   "order": 173,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 0,
+   "order": 174,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 0,
+   "order": 175,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 0,
+   "order": 176,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 0,
+   "order": 177,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 0,
+   "order": 178,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 0,
+   "order": 179,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 0,
+   "order": 180,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 0,
+   "order": 181,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 0,
+   "order": 182,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 0,
+   "order": 183,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 0,
+   "order": 184,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 0,
+   "order": 185,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 0,
+   "order": 186,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 0,
+   "order": 187,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 0,
+   "order": 188,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 0,
+   "order": 189,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 0,
+   "order": 190,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 0,
+   "order": 191,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 0,
+   "order": 192,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 0,
+   "order": 193,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 0,
+   "order": 194,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 0,
+   "order": 195,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 0,
+   "order": 196,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 0,
+   "order": 197,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 0,
+   "order": 198,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 0,
+   "order": 199,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 0,
+   "order": 200,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 0,
+   "order": 201,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 0,
+   "order": 202,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 0,
+   "order": 203,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 0,
+   "order": 204,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 0,
+   "order": 205,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 0,
+   "order": 206,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 0,
+   "order": 207,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 0,
+   "order": 208,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 0,
+   "order": 209,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 0,
+   "order": 210,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 0,
+   "order": 211,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 0,
+   "order": 212,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 0,
+   "order": 213,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 0,
+   "order": 214,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 0,
+   "order": 215,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 0,
+   "order": 216,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 0,
+   "order": 217,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 0,
+   "order": 218,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 0,
+   "order": 219,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 0,
+   "order": 220,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 0,
+   "order": 221,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 0,
+   "order": 222,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 0,
+   "order": 223,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 0,
+   "order": 224,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 0,
+   "order": 225,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 0,
+   "order": 226,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 0,
+   "order": 227,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 0,
+   "order": 228,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 0,
+   "order": 229,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 0,
+   "order": 230,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 0,
+   "order": 231,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 0,
+   "order": 232,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 0,
+   "order": 233,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 0,
+   "order": 234,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 0,
+   "order": 235,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 0,
+   "order": 236,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 0,
+   "order": 237,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 0,
+   "order": 238,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 0,
+   "order": 239,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 1,
+   "order": 0,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 1,
+   "order": 1,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 1,
+   "order": 2,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 1,
+   "order": 3,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 1,
+   "order": 4,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 1,
+   "order": 5,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 1,
+   "order": 6,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 1,
+   "order": 7,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 1,
+   "order": 8,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 1,
+   "order": 9,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 1,
+   "order": 10,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 1,
+   "order": 11,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 1,
+   "order": 12,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 1,
+   "order": 13,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 1,
+   "order": 14,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 1,
+   "order": 15,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 1,
+   "order": 16,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 1,
+   "order": 17,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 1,
+   "order": 18,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 1,
+   "order": 19,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 1,
+   "order": 20,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 1,
+   "order": 21,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 1,
+   "order": 22,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 1,
+   "order": 23,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 1,
+   "order": 24,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 1,
+   "order": 25,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 1,
+   "order": 26,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 1,
+   "order": 27,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 1,
+   "order": 28,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 1,
+   "order": 29,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 1,
+   "order": 30,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 1,
+   "order": 31,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 1,
+   "order": 32,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 1,
+   "order": 33,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 1,
+   "order": 34,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 1,
+   "order": 35,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 1,
+   "order": 36,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 1,
+   "order": 37,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 1,
+   "order": 38,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 1,
+   "order": 39,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 1,
+   "order": 40,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 1,
+   "order": 41,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 1,
+   "order": 42,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 1,
+   "order": 43,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 1,
+   "order": 44,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 1,
+   "order": 45,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 1,
+   "order": 46,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 1,
+   "order": 47,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 1,
+   "order": 48,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 1,
+   "order": 49,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 1,
+   "order": 50,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 1,
+   "order": 51,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 1,
+   "order": 52,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 1,
+   "order": 53,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 1,
+   "order": 54,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 1,
+   "order": 55,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 1,
+   "order": 56,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 1,
+   "order": 57,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 1,
+   "order": 58,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 1,
+   "order": 59,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 1,
+   "order": 60,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 1,
+   "order": 61,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 1,
+   "order": 62,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 1,
+   "order": 63,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 1,
+   "order": 64,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 1,
+   "order": 65,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 1,
+   "order": 66,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 1,
+   "order": 67,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 1,
+   "order": 68,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 1,
+   "order": 69,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 1,
+   "order": 70,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 1,
+   "order": 71,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 1,
+   "order": 72,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 1,
+   "order": 73,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 1,
+   "order": 74,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 1,
+   "order": 75,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 1,
+   "order": 76,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 1,
+   "order": 77,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 1,
+   "order": 78,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 1,
+   "order": 79,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 1,
+   "order": 80,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 1,
+   "order": 81,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 1,
+   "order": 82,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 1,
+   "order": 83,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 1,
+   "order": 84,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 1,
+   "order": 85,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 1,
+   "order": 86,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 1,
+   "order": 87,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 1,
+   "order": 88,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 1,
+   "order": 89,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 1,
+   "order": 90,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 1,
+   "order": 91,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 1,
+   "order": 92,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 1,
+   "order": 93,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 1,
+   "order": 94,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 1,
+   "order": 95,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 1,
+   "order": 96,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 1,
+   "order": 97,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 1,
+   "order": 98,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 1,
+   "order": 99,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 1,
+   "order": 100,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 1,
+   "order": 101,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 1,
+   "order": 102,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 1,
+   "order": 103,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 1,
+   "order": 104,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 1,
+   "order": 105,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 1,
+   "order": 106,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 1,
+   "order": 107,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 1,
+   "order": 108,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 1,
+   "order": 109,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 1,
+   "order": 110,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 1,
+   "order": 111,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 1,
+   "order": 112,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 1,
+   "order": 113,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 1,
+   "order": 114,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 1,
+   "order": 115,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 1,
+   "order": 116,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 1,
+   "order": 117,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 1,
+   "order": 118,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 1,
+   "order": 119,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 1,
+   "order": 120,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 1,
+   "order": 121,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 1,
+   "order": 122,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 1,
+   "order": 123,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 1,
+   "order": 124,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 1,
+   "order": 125,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 1,
+   "order": 126,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 1,
+   "order": 127,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 1,
+   "order": 128,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 1,
+   "order": 129,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 1,
+   "order": 130,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 1,
+   "order": 131,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 1,
+   "order": 132,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 1,
+   "order": 133,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 1,
+   "order": 134,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 1,
+   "order": 135,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 1,
+   "order": 136,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 1,
+   "order": 137,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 1,
+   "order": 138,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 1,
+   "order": 139,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 1,
+   "order": 140,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 1,
+   "order": 141,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 1,
+   "order": 142,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 1,
+   "order": 143,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 1,
+   "order": 144,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 1,
+   "order": 145,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 1,
+   "order": 146,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 1,
+   "order": 147,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 1,
+   "order": 148,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 1,
+   "order": 149,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 1,
+   "order": 150,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 1,
+   "order": 151,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 1,
+   "order": 152,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 1,
+   "order": 153,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 1,
+   "order": 154,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 1,
+   "order": 155,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 1,
+   "order": 156,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 1,
+   "order": 157,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 1,
+   "order": 158,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 1,
+   "order": 159,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 1,
+   "order": 160,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 1,
+   "order": 161,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 1,
+   "order": 162,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 1,
+   "order": 163,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 1,
+   "order": 164,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 1,
+   "order": 165,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 1,
+   "order": 166,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 1,
+   "order": 167,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 1,
+   "order": 168,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 1,
+   "order": 169,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 1,
+   "order": 170,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 1,
+   "order": 171,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 1,
+   "order": 172,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 1,
+   "order": 173,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 1,
+   "order": 174,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 1,
+   "order": 175,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 1,
+   "order": 176,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 1,
+   "order": 177,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 1,
+   "order": 178,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 1,
+   "order": 179,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 1,
+   "order": 180,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 1,
+   "order": 181,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 1,
+   "order": 182,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 1,
+   "order": 183,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 1,
+   "order": 184,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 1,
+   "order": 185,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 1,
+   "order": 186,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 1,
+   "order": 187,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 1,
+   "order": 188,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 1,
+   "order": 189,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 1,
+   "order": 190,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 1,
+   "order": 191,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 1,
+   "order": 192,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 1,
+   "order": 193,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 1,
+   "order": 194,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 1,
+   "order": 195,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 1,
+   "order": 196,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 1,
+   "order": 197,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 1,
+   "order": 198,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 1,
+   "order": 199,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 1,
+   "order": 200,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 1,
+   "order": 201,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 1,
+   "order": 202,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 1,
+   "order": 203,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 1,
+   "order": 204,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 1,
+   "order": 205,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 1,
+   "order": 206,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 1,
+   "order": 207,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 1,
+   "order": 208,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 1,
+   "order": 209,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 1,
+   "order": 210,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 1,
+   "order": 211,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 1,
+   "order": 212,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 1,
+   "order": 213,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 1,
+   "order": 214,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 1,
+   "order": 215,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 1,
+   "order": 216,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 1,
+   "order": 217,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 1,
+   "order": 218,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 1,
+   "order": 219,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 1,
+   "order": 220,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 1,
+   "order": 221,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 1,
+   "order": 222,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 1,
+   "order": 223,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 1,
+   "order": 224,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 1,
+   "order": 225,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 1,
+   "order": 226,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 1,
+   "order": 227,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 1,
+   "order": 228,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 1,
+   "order": 229,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 1,
+   "order": 230,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 1,
+   "order": 231,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 1,
+   "order": 232,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 1,
+   "order": 233,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 1,
+   "order": 234,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 1,
+   "order": 235,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 1,
+   "order": 236,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 1,
+   "order": 237,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 1,
+   "order": 238,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 1,
+   "order": 239,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 2,
+   "order": 0,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 2,
+   "order": 1,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 2,
+   "order": 2,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 2,
+   "order": 3,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 2,
+   "order": 4,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 2,
+   "order": 5,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 2,
+   "order": 6,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 2,
+   "order": 7,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 2,
+   "order": 8,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 2,
+   "order": 9,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 2,
+   "order": 10,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 2,
+   "order": 11,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 2,
+   "order": 12,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 2,
+   "order": 13,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 2,
+   "order": 14,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 2,
+   "order": 15,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 2,
+   "order": 16,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 2,
+   "order": 17,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 2,
+   "order": 18,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 2,
+   "order": 19,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 2,
+   "order": 20,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 2,
+   "order": 21,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 2,
+   "order": 22,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 2,
+   "order": 23,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 2,
+   "order": 24,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 2,
+   "order": 25,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 2,
+   "order": 26,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 2,
+   "order": 27,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 2,
+   "order": 28,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 2,
+   "order": 29,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 2,
+   "order": 30,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 2,
+   "order": 31,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 2,
+   "order": 32,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 2,
+   "order": 33,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 2,
+   "order": 34,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 2,
+   "order": 35,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 2,
+   "order": 36,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 2,
+   "order": 37,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 2,
+   "order": 38,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 2,
+   "order": 39,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 2,
+   "order": 40,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 2,
+   "order": 41,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 2,
+   "order": 42,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 2,
+   "order": 43,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 2,
+   "order": 44,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 2,
+   "order": 45,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 2,
+   "order": 46,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 2,
+   "order": 47,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 2,
+   "order": 48,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 2,
+   "order": 49,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 2,
+   "order": 50,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 2,
+   "order": 51,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 2,
+   "order": 52,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 2,
+   "order": 53,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 2,
+   "order": 54,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 2,
+   "order": 55,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 2,
+   "order": 56,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 2,
+   "order": 57,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 2,
+   "order": 58,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 2,
+   "order": 59,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 2,
+   "order": 60,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 2,
+   "order": 61,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 2,
+   "order": 62,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 2,
+   "order": 63,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 2,
+   "order": 64,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 2,
+   "order": 65,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 2,
+   "order": 66,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 2,
+   "order": 67,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 2,
+   "order": 68,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 2,
+   "order": 69,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 2,
+   "order": 70,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 2,
+   "order": 71,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 2,
+   "order": 72,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 2,
+   "order": 73,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 2,
+   "order": 74,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 2,
+   "order": 75,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 2,
+   "order": 76,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 2,
+   "order": 77,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 2,
+   "order": 78,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 2,
+   "order": 79,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 2,
+   "order": 80,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 2,
+   "order": 81,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 2,
+   "order": 82,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 2,
+   "order": 83,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 2,
+   "order": 84,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 2,
+   "order": 85,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 2,
+   "order": 86,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 2,
+   "order": 87,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 2,
+   "order": 88,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 2,
+   "order": 89,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 2,
+   "order": 90,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 2,
+   "order": 91,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 2,
+   "order": 92,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 2,
+   "order": 93,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 2,
+   "order": 94,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 2,
+   "order": 95,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 2,
+   "order": 96,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 2,
+   "order": 97,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 2,
+   "order": 98,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 2,
+   "order": 99,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 2,
+   "order": 100,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 2,
+   "order": 101,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 2,
+   "order": 102,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 2,
+   "order": 103,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 2,
+   "order": 104,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 2,
+   "order": 105,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 2,
+   "order": 106,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 2,
+   "order": 107,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 2,
+   "order": 108,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 2,
+   "order": 109,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 2,
+   "order": 110,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 2,
+   "order": 111,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 2,
+   "order": 112,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 2,
+   "order": 113,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 2,
+   "order": 114,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 2,
+   "order": 115,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 2,
+   "order": 116,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 2,
+   "order": 117,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 2,
+   "order": 118,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 2,
+   "order": 119,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 2,
+   "order": 120,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 2,
+   "order": 121,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 2,
+   "order": 122,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-512"
+  },
+  {
+   "block": 2,
+   "order": 123,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-3008"
+  },
+  {
+   "block": 2,
+   "order": 124,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 2,
+   "order": 125,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 2,
+   "order": 126,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 2,
+   "order": 127,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 2,
+   "order": 128,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 2,
+   "order": 129,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 2,
+   "order": 130,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 2,
+   "order": 131,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 2,
+   "order": 132,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 2,
+   "order": 133,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 2,
+   "order": 134,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 2,
+   "order": 135,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 2,
+   "order": 136,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 2,
+   "order": 137,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 2,
+   "order": 138,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 2,
+   "order": 139,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 2,
+   "order": 140,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 2,
+   "order": 141,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 2,
+   "order": 142,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 2,
+   "order": 143,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 2,
+   "order": 144,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 2,
+   "order": 145,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-512"
+  },
+  {
+   "block": 2,
+   "order": 146,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 2,
+   "order": 147,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 2,
+   "order": 148,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 2,
+   "order": 149,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 2,
+   "order": 150,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 2,
+   "order": 151,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-1024"
+  },
+  {
+   "block": 2,
+   "order": 152,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 2,
+   "order": 153,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 2,
+   "order": 154,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 2,
+   "order": 155,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 2,
+   "order": 156,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 2,
+   "order": 157,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 2,
+   "order": 158,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 2,
+   "order": 159,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 2,
+   "order": 160,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 2,
+   "order": 161,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 2,
+   "order": 162,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 2,
+   "order": 163,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 2,
+   "order": 164,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 2,
+   "order": 165,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 2,
+   "order": 166,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 2,
+   "order": 167,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 2,
+   "order": 168,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 2,
+   "order": 169,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 2,
+   "order": 170,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-512"
+  },
+  {
+   "block": 2,
+   "order": 171,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 2,
+   "order": 172,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 2,
+   "order": 173,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 2,
+   "order": 174,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 2,
+   "order": 175,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 2,
+   "order": 176,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 2,
+   "order": 177,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-2048"
+  },
+  {
+   "block": 2,
+   "order": 178,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 2,
+   "order": 179,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 2,
+   "order": 180,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 2,
+   "order": 181,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 2,
+   "order": 182,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 2,
+   "order": 183,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 2,
+   "order": 184,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-512"
+  },
+  {
+   "block": 2,
+   "order": 185,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 2,
+   "order": 186,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 2,
+   "order": 187,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-module-2048"
+  },
+  {
+   "block": 2,
+   "order": 188,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  },
+  {
+   "block": 2,
+   "order": 189,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-2048"
+  },
+  {
+   "block": 2,
+   "order": 190,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 2,
+   "order": 191,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 2,
+   "order": 192,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 2,
+   "order": 193,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 2,
+   "order": 194,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-3008"
+  },
+  {
+   "block": 2,
+   "order": 195,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-3008"
+  },
+  {
+   "block": 2,
+   "order": 196,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 2,
+   "order": 197,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 2,
+   "order": 198,
+   "cell": {
+    "group": "main",
+    "variant": "ingest",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-ingest-2048"
+  },
+  {
+   "block": 2,
+   "order": 199,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-2048"
+  },
+  {
+   "block": 2,
+   "order": 200,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 2,
+   "order": 201,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 2,
+   "order": 202,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 2,
+   "order": 203,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 2,
+   "order": 204,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 2048
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-2048"
+  },
+  {
+   "block": 2,
+   "order": 205,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 2,
+   "order": 206,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-512"
+  },
+  {
+   "block": 2,
+   "order": 207,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-3008"
+  },
+  {
+   "block": 2,
+   "order": 208,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [],
+   "function": "prism-meas-init-first-call-3008"
+  },
+  {
+   "block": 2,
+   "order": 209,
+   "cell": {
+    "group": "init",
+    "variant": "init_module",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-module-1024"
+  },
+  {
+   "block": 2,
+   "order": 210,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-1024"
+  },
+  {
+   "block": 2,
+   "order": 211,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-1024"
+  },
+  {
+   "block": 2,
+   "order": 212,
+   "cell": {
+    "group": "main",
+    "variant": "load",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-load-1024"
+  },
+  {
+   "block": 2,
+   "order": 213,
+   "cell": {
+    "group": "main",
+    "variant": "aggregate",
+    "memory_mb": 512
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-aggregate-512"
+  },
+  {
+   "block": 2,
+   "order": 214,
+   "cell": {
+    "group": "init",
+    "variant": "init_first_call",
+    "memory_mb": 1024
+   },
+   "cold": 8,
+   "warm_batches": [
+    8
+   ],
+   "function": "prism-meas-init-first-call-1024"
+  },
+  {
+   "block": 2,
+   "order": 215,
+   "cell": {
+    "group": "main",
+    "variant": "transform",
+    "memory_mb": 3008
+   },
+   "cold": 8,
+   "warm_batches": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "function": "prism-meas-transform-3008"
+  }
+ ]
+}
