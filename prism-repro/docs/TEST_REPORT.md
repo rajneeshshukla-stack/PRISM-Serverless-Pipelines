@@ -2,6 +2,7 @@
 
 **Full runs** (`python -m unittest discover -s tests -v`), newest first. Each statement names only the platform it was run on.
 
+- **2026-11-21, branch `phase-e-review`, final state of the revision pass**: **77 tests, all passed** (55 s). Windows 11 Pro x86-64, Python 3.12.9, project `venv` with the pinned requirements. **Not** run on Linux. Added since 58: event-level telemetry (3, R2.2), truncated init (4, R4.8), init-vs-memory direction (2, R1.2/R5.M2), lag horizon (2, R1.3/R4.3), conformal warm-up (1, R4.6), per-quantile calibration (2, R2.11), grid-edge audit (2, R5.M4), trace set (1, R2.18), byte-identical rerun (1, R2.16), epsilon mapping (1, R2.3).
 - **2026-11-20, branch `phase-e-review`** (after the R2.2 event-level telemetry tests): **61 tests, all passed**. Windows 11 Pro x86-64, Python 3.12.9, project `venv` with the pinned requirements. **Not** run on Linux.
 - **2026-11-20, commit `2bdeaba`**: **58 tests, all passed**, on two platforms: Windows 11 x86-64 with Python 3.12.9 and the pinned requirements, and Linux x86-64 with Python 3.13.18 (numpy 2.5.3, scipy 1.18.1). The count rose from 48 at the previous reference run: the m12_m5 patch carries its own tests, and regression tests were added for the Erlang-B accuracy gate, the epsilon-monotonicity of the infeasible fallback, and the agreement of each revision probe in `scripts/revision/` with the optimiser's own evaluator.
 - **2026-10-29**: 48 tests, reference sandbox, Python 3.12.3 (`results/test_report_full.txt`).
