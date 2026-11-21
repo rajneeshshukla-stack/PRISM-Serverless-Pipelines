@@ -29,7 +29,9 @@ This is software verification only: it shows that the code implements the stated
 
 ## Reproducibility checks
 
-`scripts/check_reproducibility.py --seed 101` re-simulated six stored E1 runs (one per policy family, trace 101, stationary test week) that were produced before later code edits; all six were **bit-identical** (`results/verification/`).
+`scripts/check_reproducibility.py --seed 101` re-simulated six stored E1 runs (one per policy family, trace 101, stationary test week) that were produced before later code edits; all six were **bit-identical** (`results/verification/`). That check ran in the reference sandbox (Linux, Python 3.12.3).
+
+2026-11-21, Windows 11 Pro x86-64, Python 3.12.9, pinned packages, run from a `git archive` of `v1-submitted` (`3b4bc33`): the same check gives **3 of 6 bit-identical** for seed 101 stationary and for seed 103 new spike. OnDemand, Static-95 and Reactive-0.6 reproduce exactly; PredHead-1.3, QuantProv_q90-1.0 and PRISM-0.05 differ (seed 101: PRISM USD 1,017.03 against 1,034.95 stored). Unchanged with `OMP_NUM_THREADS=1` and with `NPY_DISABLE_CPU_FEATURES=AVX2,FMA3`; the synthetic traces are bit-identical across the two platforms. The forecast-driven policies are therefore platform-dependent at identical code and package versions; the root cause is not isolated (`REPRODUCE.md`, section 2).
 
 ## Not tested
 

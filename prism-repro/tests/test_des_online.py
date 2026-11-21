@@ -90,9 +90,9 @@ class TestStagePass(unittest.TestCase):
 
 
 class TestEventTelemetry(unittest.TestCase):
-    """R2.2, first closed-loop step: the event-level simulator emits the per-minute
-    telemetry a policy reads (simulator.Telemetry fields) and the emitted counts conserve
-    requests: arrivals minus completions accumulate to the executions in flight."""
+    """R2.2 instrumentation (open loop; no closed loop yet): the event-level simulator records
+    per-minute telemetry with the fields a policy reads (simulator.Telemetry), and the recorded
+    counts conserve requests: arrivals minus completions accumulate to the executions in flight."""
 
     def test_stage_telemetry_hand_trace(self):
         # request 0 runs 0 -> 65 on demand (cold); 1 runs 10 -> 20 provisioned; 2 runs 70 -> 80

@@ -30,10 +30,17 @@ venv/Scripts/python -m pip install -r requirements.txt     # Windows; venv/bin/p
 ```
 
 Forecast-driven results (every policy that uses the GBM forecaster) depend on the scikit-learn
-version (Supplementary S1). Exact numbers need the pinned versions; with other versions expect the
-same orderings and small numeric differences. Example: the level-choice count is 26 of 40,307 epochs
-in the pinned Windows environment and 22 of 40,309 in the earlier Python 3.13 / scikit-learn 1.9.1
-session (`KNOWN_ISSUES.md`, revision-branch section).
+version (Supplementary S1) **and on the platform**. Exact numbers need the pinned versions on the
+reference platform (Linux x86-64). Measured on Windows 11 with the pinned versions and the archived
+`v1-submitted` tree (`scripts/check_reproducibility.py`, seed 101): OnDemand, Static and Reactive
+reproduce the stored E1 rows bit for bit, while PredHead, QuantProv and PRISM do not (PRISM-0.05 USD
+1,017.03 against 1,034.95 stored, -1.7%; across the 20 level-choice runs PRISM's cost differs from
+E1 by up to 4.1%). The synthetic traces are bit-identical across the two platforms, and the
+difference persists with one OpenMP thread and with numpy's AVX2/FMA3 dispatch disabled; its root
+cause is not isolated. Expect the same orderings and percent-level numeric differences off the
+reference platform. The level-choice count is the clearest case: 16 of 40,293 feasible epochs in the
+stored run (submitted code, Python 3.13.18), 10 of 40,280 for the same code on Windows, 26 of 40,307
+for corrected code on Windows (all of 40,320 epochs; provenance in `notes/number_audit.md`).
 
 ## 3. Checks that need no stored results
 
@@ -47,7 +54,12 @@ Times on a 4-core laptop CPU (Intel i5-10310U, 16 GB), one process unless stated
 | One-parameter family gap, static (R2.13) | `python scripts/revision/integer_search_gap.py . <out.json>` | 4 s |
 | Stage-specific demand gap, static (R4.1) | `python scripts/revision/stage_demand_gap.py . <out.json>` | 6 s |
 | Level-choice diagnostic (20 PRISM test weeks) | `python scripts/revision/level_choice_diagnostic.py . <out.json>` | 8.5 min |
+| Level-choice tie sensitivity (R2.17, R5.M6) | `python scripts/revision/level_choice_margins.py <code_root> <out.json>`; on the submitted code: `git archive 3b4bc33 prism-repro \| tar -x -C <dir>`, then run it with `<dir>/prism-repro` as `<code_root>` | 15 min |
+| Cited anchors at printed precision | `python -m unittest tests.test_regression_anchors -v` | 10 s |
+| Integer-search saving, end to end (R2.13; independent check, not the cited script) | `python scripts/revision/integer_search_e2e_check.py . <out.json>` (6 processes) | 6.5 min |
 | Cold-hit floor retuned at matched compliance (R2.12) | `python scripts/revision/kappa_floor_retune.py . <out_dir>` (5 processes) | 16 min (300 runs) |
+| Per-week held-out compliance (R2.4) | `python scripts/revision/weekly_compliance.py .` (reads `docs/revision/kappa_floor/`) | 1 s |
+| Lag and init-direction sensitivity (R1.2, R1.3, R5.M2; pre-calibration) | `python scripts/revision/lag_init_sensitivity.py . <out_dir> both` (5 processes) | see `notes/number_audit.md` |
 
 ## 4. Analyses of the stored results (read only)
 

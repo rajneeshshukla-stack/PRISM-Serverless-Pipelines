@@ -12,9 +12,12 @@ Every request's latency is computed, so window attainment is exact.
 
 This is an independent reconstruction of the manuscript's description; it is
 open-loop: it replays provisioning schedules produced elsewhere (§VI-H).
-`simulate_events(..., want_telemetry=True)` additionally emits the per-minute
-telemetry the controller consumes (`EventTelemetry`), the first step towards the
-closed loop requested in R2.2; nothing consumes it yet.
+`simulate_events(..., want_telemetry=True)` additionally records per-minute
+telemetry of that open-loop replay (`EventTelemetry`). This is instrumentation and a
+data contract (the fields of `simulator.Telemetry` that policies read), not a closed
+loop: no policy consumes it, and `simulate_events` still runs stage by stage over the
+whole horizon. Making it epoch-major so decisions can respond to it is separate work
+(R2.2 remains open).
 """
 from __future__ import annotations
 
@@ -127,7 +130,7 @@ def max_inflight_per_minute(arr, finish, n_min):
 
 @dataclass
 class EventTelemetry(Telemetry):
-    """Per-minute telemetry measured in the event-level simulator (R2.2).
+    """Per-minute telemetry of an open-loop event-level replay (R2.2: instrumentation and data contract).
 
     The fields inherited from `simulator.Telemetry` carry the same meaning as in the
     fast simulator, so a policy's `decide(k, tel)` can read either: N arrivals per
