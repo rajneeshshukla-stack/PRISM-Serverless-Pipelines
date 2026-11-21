@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 from prism_repro.config import PipelineConfig  # noqa: E402
 from prism_repro.des import EventDraws, _stage_pass, max_inflight_per_minute, simulate_events  # noqa: E402
 from prism_repro.features import FeatureBuilder, online_features  # noqa: E402
-from prism_repro.risk import erlang_b  # noqa: E402
+from prism_repro.risk import c_eff, erlang_b, occupancy_overflow  # noqa: E402
 from prism_repro.workload import generate_trace  # noqa: E402
 
 
@@ -40,6 +40,21 @@ class TestStagePass(unittest.TestCase):
         dr = EventDraws(cfg, counts, 3, 0)
         _, _, pc = _stage_pass(dr.arrival, dr.ex[1] * 4.0, dr.init[1] * 6.0, np.full(400, 40.0), 600.0)
         self.assertAlmostEqual(1 - pc.mean(), float(erlang_b(40, 40)), delta=0.01)
+
+    def test_erlangb_accuracy_vs_eq5_gap(self):
+        """R3.4 / R4.9 gate: against the event-level simulator at mean load, Erlang-B is
+        within 2.5% while Eq. (5) evaluated at c_eff is 20-28% off. Reviewer 3 cites these
+        figures; this test holds the main configuration to them."""
+        cfg = PipelineConfig()
+        counts = np.random.default_rng(0).poisson(600, 400)
+        dr = EventDraws(cfg, counts, 3, 0)
+        _, _, pcv = _stage_pass(dr.arrival, dr.ex[1] * 4.0, dr.init[1] * 6.0, np.full(400, 40.0), 600.0)
+        measured = 1 - pcv.mean()
+        eb_err = abs(float(erlang_b(40, 40)) - measured) / measured
+        eq5_err = abs(float(occupancy_overflow(40, c_eff(40))) - measured) / measured
+        self.assertLess(eb_err, 0.025, f"Erlang-B error {eb_err:.1%} exceeds the 2.5% claimed in VI-H")
+        self.assertTrue(0.20 <= eq5_err <= 0.28,
+                        f"Eq. (5) error {eq5_err:.1%} outside the 20-28% band reported for VI-H")
 
     def test_inflight_sweep(self):
         arr = np.array([0.0, 10.0, 70.0])
