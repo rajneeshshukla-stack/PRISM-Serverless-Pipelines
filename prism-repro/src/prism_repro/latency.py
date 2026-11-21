@@ -6,6 +6,7 @@ from __future__ import annotations
 from functools import lru_cache
 
 import numpy as np
+from scipy.special import ndtr, ndtri
 
 from .config import PipelineConfig
 
@@ -22,8 +23,42 @@ def stage_means(cfg: PipelineConfig, m: float) -> np.ndarray:
     return np.asarray(cfg.warm_mean_1024, float) * duration_factor(m, cfg.nonscaling)
 
 
-def init_mean(cfg: PipelineConfig, m: float) -> float:
+def _init_untruncated_mean(cfg: PipelineConfig, m: float) -> float:
     return cfg.init_mean_1024 * duration_factor(m, cfg.init_nonscaling)
+
+
+def _init_cap_z(cfg: PipelineConfig, m: float) -> float:
+    """Standard-normal quantile of the cap init_max_s under the untruncated log-normal."""
+    mu, s = _init_untruncated_mean(cfg, m), cfg.init_shape
+    return (np.log(cfg.init_max_s / mu) + 0.5 * s * s) / s
+
+
+def init_mean(cfg: PipelineConfig, m: float) -> float:
+    """Mean initialisation time (s) at memory m; the truncated mean when init_max_s is set (R4.8)."""
+    mu = _init_untruncated_mean(cfg, m)
+    if cfg.init_max_s is None or mu == 0 or cfg.init_shape == 0:
+        return mu if cfg.init_max_s is None else min(mu, cfg.init_max_s)
+    zc = _init_cap_z(cfg, m)
+    return float(mu * ndtr(zc - cfg.init_shape) / ndtr(zc))
+
+
+def init_seconds(cfg: PipelineConfig, mult, m: float) -> np.ndarray:
+    """Initialisation times (s) from mean-one log-normal multipliers `mult` at memory m.
+
+    Without init_max_s this is init_mean(m) * mult (the submitted model). With it, each
+    multiplier is mapped through the inverse CDF of the log-normal truncated at init_max_s
+    (R4.8): u = Phi(z) becomes u * Phi(z_cap). The map is monotone, so common random numbers
+    across policies and memory sizes are preserved, and no draw exceeds the cap."""
+    mult = np.asarray(mult)
+    mu = _init_untruncated_mean(cfg, m)
+    if cfg.init_max_s is None:
+        return mu * mult
+    s = cfg.init_shape
+    if mu == 0 or s == 0:
+        return np.minimum(mu * mult.astype(np.float64), cfg.init_max_s)
+    z = (np.log(mult.astype(np.float64)) + 0.5 * s * s) / s
+    zt = ndtri(ndtr(z) * ndtr(_init_cap_z(cfg, m)))
+    return np.minimum(mu * np.exp(s * zt - 0.5 * s * s), cfg.init_max_s)
 
 
 def gb(m: float) -> float:
@@ -66,7 +101,7 @@ def attainment_table(cfg, m: int) -> np.ndarray:
     """
     key = (int(m), cfg.n_stages, tuple(cfg.warm_mean_1024), cfg.exec_shape, cfg.overhead_mean,
            cfg.overhead_shape, cfg.init_mean_1024, cfg.init_shape, cfg.nonscaling,
-           cfg.init_nonscaling, cfg.deadline, cfg.exact_attainment_draws)
+           cfg.init_nonscaling, cfg.deadline, cfg.exact_attainment_draws, cfg.init_max_s)
     hit = _ATTAIN_CACHE.get(key)
     if hit is not None:
         return hit
@@ -76,9 +111,11 @@ def attainment_table(cfg, m: int) -> np.ndarray:
     Y = cfg.overhead_mean * lognormal_mult(rng.standard_normal((n, S)), cfg.overhead_shape)
     I = lognormal_mult(rng.standard_normal((n, S)), cfg.init_shape)
     warm = (X * stage_means(cfg, m)).sum(-1) + Y.sum(-1)
-    icum = np.concatenate([np.zeros((n, 1)), np.cumsum(I, axis=1)], axis=1)
-    im = init_mean(cfg, m)
-    out = np.array([float((warm + im * icum[:, k] <= cfg.deadline).mean()) for k in range(S + 1)])
+    if cfg.init_max_s is None:   # submitted model, kept bit-identical
+        icum = init_mean(cfg, m) * np.concatenate([np.zeros((n, 1)), np.cumsum(I, axis=1)], axis=1)
+    else:                        # R4.8: truncate each stage's init before summing
+        icum = np.concatenate([np.zeros((n, 1)), np.cumsum(init_seconds(cfg, I, m), axis=1)], axis=1)
+    out = np.array([float((warm + icum[:, k] <= cfg.deadline).mean()) for k in range(S + 1)])
     _ATTAIN_CACHE[key] = out
     return out
 
@@ -96,7 +133,7 @@ def miss_probabilities(cfg: PipelineConfig, m: float, n: int = 400_000, seed: in
     ex = d[None, :] * lognormal_mult(rng.standard_normal((n, S)), cfg.exec_shape)
     ov = cfg.overhead_mean * lognormal_mult(rng.standard_normal((n, S)), cfg.overhead_shape)
     warm = ex.sum(1) + ov.sum(1)
-    init = init_mean(cfg, m) * lognormal_mult(rng.standard_normal(n), cfg.init_shape)
+    init = init_seconds(cfg, lognormal_mult(rng.standard_normal(n), cfg.init_shape), m)
     v_w = float(np.mean(warm > cfg.deadline))
     # a cold start in any one stage adds the same init distribution (stage-independent init)
     rho = float(np.mean(warm + init > cfg.deadline))
@@ -114,6 +151,6 @@ def _miss_cached(key):
 def miss_table(cfg: PipelineConfig) -> dict:
     """{m: (v_w, rho)} for all memory options, cached on the latency-relevant fields."""
     keys = ("warm_mean_1024", "exec_shape", "overhead_mean", "overhead_shape", "init_mean_1024",
-            "init_shape", "nonscaling", "init_nonscaling", "deadline")
+            "init_shape", "nonscaling", "init_nonscaling", "deadline", "init_max_s")
     items = tuple((k, getattr(cfg, k)) for k in keys)
     return {m: _miss_cached((items, m)) for m in cfg.mem_options}

@@ -52,3 +52,11 @@ which checks the harness. Scripts, raw outputs and the summary: `patches/diagnos
 | Clean install | Not tested (packages were preinstalled; no network) | `docs/TEST_REPORT.md` ("Not tested") | `python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt && python -m unittest discover -s tests` |
 | CI and Docker | Not tested | `docs/TEST_REPORT.md` | Run `.github/workflows/tests.yml` once; `docker build .` |
 | Other platforms and Python versions | Linux x86-64 only. The tests were run under Python 3.12.3 with the pinned versions and, in later checks (30 Oct 2026), under Python 3.13.18 with numpy 2.5.3, scipy 1.18.1, pandas 3.0.5, scikit-learn 1.9.1 and matplotlib 3.11.2 (48 of 48 passed; 52 of 52 with the patch); `docs/TEST_REPORT.md` and the header of `requirements.txt` describe only the 3.12.3 run | `docs/TEST_REPORT.md` | - |
+
+## Revision branch `phase-e-review` (appended 20 Nov 2026; earlier entries unchanged)
+
+Changes made on the revision branch that are implemented and tested but **not yet in effect** for any stored result. They take effect at the single regeneration after the AWS constants land.
+
+| Item | Comment | State | Switch or next step |
+|---|---|---|---|
+| Truncated initialisation | R4.8 | `PipelineConfig.init_max_s` truncates the init log-normal at the cap (inverse-CDF map, common random numbers kept) in both simulators and both risk tables; gate test `tests/test_analytic.py::TestTruncatedInit`. Default `None` = submitted model, so P(init > 10 s) is still 3.20% at 1024 MB and 16.40% at 512 MB in the main configuration | Set `init_max_s=10.0` at regeneration, after fitting the measured init distribution (which may replace the log-normal). With the cap, rho(1024) 0.531 -> 0.515, rho(2048) 0.094 -> 0.087 |

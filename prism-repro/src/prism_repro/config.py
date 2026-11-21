@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import asdict, dataclass, field, replace
-from typing import Tuple
+from typing import Optional, Tuple
 
 STAGES: Tuple[str, ...] = ("ingest", "transform", "aggregate", "load")
 
@@ -47,6 +47,11 @@ class PipelineConfig:
     overhead_shape: float = 0.30
     init_mean_1024: float = 6.0  # s
     init_shape: float = 0.30
+    # R4.8: upper bound (s) on a sampled initialisation. The log-normal is truncated (conditioned
+    # on init <= init_max_s). None keeps the untruncated model of the submitted paper. Lambda's
+    # init phase is limited to 10 s; switching the main configuration to 10.0 is deferred to the
+    # regeneration with the measured init distribution, because it moves every risk table.
+    init_max_s: Optional[float] = None
     mem_options: Tuple[int, ...] = (512, 1024, 2048, 3008)
     nonscaling: float = 0.5  # Eq. (2)
     init_nonscaling: float = 0.7  # §III-A, Eq. (3)
@@ -92,6 +97,8 @@ class PipelineConfig:
             raise ValueError("invalid timing parameters")
         if (7 * 1440) % self.window_min or self.window_min % 1:
             raise ValueError("window length must divide a week")
+        if self.init_max_s is not None and not self.init_max_s > 0:
+            raise ValueError("init_max_s must be positive or None")
         if self.deadline <= 0 or self.init_mean_1024 < 0:
             raise ValueError("deadline must be positive and init time non-negative")
 

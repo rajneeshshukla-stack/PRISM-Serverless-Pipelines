@@ -11,7 +11,9 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
 from prism_repro.config import PipelineConfig, Prices  # noqa: E402
 from prism_repro.forecast import quantile_knots  # noqa: E402
-from prism_repro.latency import duration_factor, lognormal_mult, miss_probabilities  # noqa: E402
+from prism_repro.latency import (attainment_table, duration_factor, init_mean, init_seconds,  # noqa: E402
+                                 lognormal_mult, miss_probabilities)
+from scipy import stats  # noqa: E402
 from prism_repro.pricing import break_even_utilisation, stage_cost  # noqa: E402
 from prism_repro.risk import (c_eff, erlang_b, erlang_b_recursive, occupancy_overflow,  # noqa: E402
                               record_violation)
@@ -129,6 +131,55 @@ class TestLatencyAndPrices(unittest.TestCase):
 
     def test_C39_window_share(self):
         self.assertAlmostEqual(100 / (7 * 24 * 4), 0.149, places=3)
+
+
+class TestTruncatedInit(unittest.TestCase):
+    """R4.8 gate: with init_max_s = 10 s no sampled initialisation exceeds 10 s at any memory
+    size, and the truncated distribution has the closed-form mean and CDF. Without the cap the
+    submitted model (and every number cited from it) is unchanged."""
+
+    def setUp(self):
+        self.base = PipelineConfig()
+        self.cap = self.base.with_(init_max_s=10.0)
+        self.u = lognormal_mult(np.random.default_rng(7).standard_normal(1_000_000), self.base.init_shape)
+
+    def test_default_is_untruncated_and_cited_shares_hold(self):
+        for m, share in ((1024, 0.0320), (512, 0.1640)):   # Reviewer 4's "3%", and 512 MB
+            self.assertEqual(init_mean(self.base, m), self.base.init_mean_1024 * duration_factor(m, 0.7))
+            x = init_seconds(self.base, self.u, m)
+            np.testing.assert_array_equal(x, init_mean(self.base, m) * self.u)
+            self.assertAlmostEqual(float((x > 10).mean()), share, delta=0.001)
+
+    def test_gate_no_init_above_cap_at_any_size(self):
+        for m in self.cap.mem_options + (1536,):
+            x = init_seconds(self.cap, self.u, m)
+            self.assertLessEqual(float(x.max()), 10.0, m)
+            # moments: sample mean = closed-form truncated mean, below the untruncated mean
+            se = float(x.std() / np.sqrt(len(x)))
+            self.assertLess(abs(float(x.mean()) - init_mean(self.cap, m)), 4 * se, m)
+            self.assertLess(init_mean(self.cap, m), init_mean(self.base, m))
+            # distribution: P(X <= t) = F(t) / F(10) for the untruncated log-normal F
+            mu, s = init_mean(self.base, m), self.base.init_shape
+            F = lambda t: stats.norm.cdf((np.log(t / mu) + s * s / 2) / s)  # noqa: E731
+            for t in (0.5 * mu, mu, 9.0):
+                self.assertAlmostEqual(float((x <= t).mean()), F(t) / F(10.0), delta=0.002)
+
+    def test_monotone_map_keeps_common_random_numbers(self):
+        x0 = init_seconds(self.base, self.u, 1024)
+        x1 = init_seconds(self.cap, self.u, 1024)
+        o = np.argsort(self.u)
+        self.assertTrue(np.all(np.diff(x1[o]) >= 0))   # same ordering of draws
+        self.assertTrue(np.all(x1 <= x0 + 1e-12))       # truncation only shortens each draw
+
+    def test_risk_tables_move_in_the_right_direction(self):
+        for m in (512, 1024):
+            v0, rho0 = miss_probabilities(self.base, m)[:2]
+            v1, rho1 = miss_probabilities(self.cap, m)[:2]
+            self.assertEqual(v0, v1)            # warm misses do not involve init
+            self.assertLess(rho1, rho0)
+            a0, a1 = attainment_table(self.base, m), attainment_table(self.cap, m)
+            self.assertEqual(a0[0], a1[0])
+            self.assertTrue(np.all(a1 >= a0))
 
 
 if __name__ == "__main__":

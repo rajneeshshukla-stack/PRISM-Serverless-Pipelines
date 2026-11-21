@@ -25,7 +25,7 @@ from dataclasses import dataclass
 import numpy as np
 
 from .config import PipelineConfig
-from .latency import init_mean, lognormal_mult, stage_means
+from .latency import init_mean, init_seconds, lognormal_mult, stage_means
 from .metrics import severity, weighted_quantile_hist, window_attainment
 from .simulator import Telemetry
 
@@ -193,7 +193,15 @@ def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray,
         ini = np.array([init_mean(cfg, int(m)) for m in cfg.mem_options])
         mi = np.searchsorted(np.array(cfg.mem_options), m_req)
         x = draws.ex[s, idx] * d_s[mi]
-        z = draws.init[s, idx] * ini[mi]
+        if cfg.init_max_s is None:
+            z = draws.init[s, idx] * ini[mi]
+        else:  # R4.8: truncated initialisation, per memory size
+            u = draws.init[s, idx]
+            z = np.empty(len(u))
+            for j, m in enumerate(cfg.mem_options):
+                sel = mi == j
+                if sel.any():
+                    z[sel] = init_seconds(cfg, u[sel], m)
         fin, cold, used_pc = _stage_pass(arr, x, z, P_min[:, s], KA, gen_min)
         g = m_req / 1024.0
         cost += (x * g * np.where(used_pc, pr.pcd, pr.od)).sum()
