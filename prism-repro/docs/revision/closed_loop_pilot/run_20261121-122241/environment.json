@@ -1,0 +1,60 @@
+{
+ "commit": "1f1d771",
+ "platform": "Windows-11-10.0.26200-SP0",
+ "python": "3.12.9",
+ "numpy": "2.4.4",
+ "scipy": "1.17.1",
+ "sklearn": "1.8.0",
+ "seeds": [
+  101,
+  102,
+  103
+ ],
+ "scenario": "stationary",
+ "pipeline_config": {
+  "warm_mean_1024": [
+   0.8,
+   4.0,
+   2.5,
+   1.2
+  ],
+  "stage_demand": null,
+  "exec_shape": 0.3,
+  "overhead_mean": 0.1,
+  "overhead_shape": 0.3,
+  "init_mean_1024": 6.0,
+  "init_shape": 0.3,
+  "init_max_s": null,
+  "mem_options": [
+   512,
+   1024,
+   2048,
+   3008
+  ],
+  "nonscaling": 0.5,
+  "init_nonscaling": 0.7,
+  "init_scaling": "eq3",
+  "init_mean_measured": null,
+  "default_mem": 1024,
+  "deadline": 14.5,
+  "window_min": 15,
+  "sla_eps": 0.01,
+  "slo_violating_window_target": 0.02,
+  "keepalive_min": 10,
+  "epoch_min": 5,
+  "lag_min": 2,
+  "intensity_sigma": 0.148,
+  "peak_upper_frac": 0.45,
+  "latency_samples": 100,
+  "exact_attainment": true,
+  "exact_attainment_draws": 400000,
+  "prices": {
+   "od": 1.66667e-05,
+   "pc": 4.1667e-06,
+   "pcd": 9.7222e-06,
+   "req": 2e-07
+  }
+ },
+ "prism_config": "PrismConfig(eps=0.05, delta=0.1, gamma=0.05, s_min=-0.3, s_max=0.8, target_miss=0.01, conformal_delay_epochs=2, conformal_warmup_days=0, forecast_train_days=14, conformal_per_quantile=False, conformal_s0=0.0, use_conformal=True, n_scenarios=100, n_levels=20, level_lo=0.5, level_hi=1.15, risk_model='erlangb', use_ceff=True, kappa_prior=0.35, kappa_alpha=0.1, kappa_min_overflow=1000.0, kappa_clip=(0.1, 1.0), hysteresis=0.85, use_hysteresis=True, memory_every=12, optimise_memory=True, feasibility_mode='scenarios', cap=None, family_follows_stage_demand=False)",
+ "label": "PRE-CALIBRATION, SUPERSEDES AT RECALIBRATION; exploratory pilot (PRESPECIFICATION.md section 7)"
+}

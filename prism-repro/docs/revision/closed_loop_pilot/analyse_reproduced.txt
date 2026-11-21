@@ -1,0 +1,24 @@
+PRE-CALIBRATION, SUPERSEDES AT RECALIBRATION; exploratory pilot (PRESPECIFICATION.md section 7)
+Commit 1f1d771; Windows-11-10.0.26200-SP0; seeds [101, 102, 103], stationary, default deadline; one held-out test week per trace.
+
+Selected settings (validation week, common rule, prespecified edge expansion) and held-out test week:
+  family         trace | selected (expansions) | edge | val: cost, violating | TEST: cost, violating windows, met 2% | cold-start ratio | kappa
+  PRISM          101 |   0.01 (-) |      |   1210.7,  1.93% |   1298.6,  1.79%, yes | 0.00028 | 0.442
+  PRISM          102 |   0.01 (-) |      |   1248.3,  1.93% |   1340.1,  1.64%, yes | 0.00030 | 0.384
+  PRISM          103 |   0.02 (-) |      |   1091.2,  1.93% |   1239.5,  2.38%, NO  | 0.00042 | 0.434
+  QuantProv_q90  101 |    1.3 (-) |      |   1172.8,  1.79% |   1256.8,  2.23%, NO  | 0.00031 | -
+  QuantProv_q90  102 |    1.5 ([1.6]) |      |   1297.0,  1.93% |   1425.7,  1.19%, yes | 0.00018 | -
+  QuantProv_q90  103 |    1.1 (-) |      |   1035.8,  1.64% |   1154.7,  2.83%, NO  | 0.00055 | -
+  Reactive       101 |   0.55 (-) |      |   1807.2,  1.19% |   1786.5,  1.19%, yes | 0.00036 | -
+  Reactive       102 |   0.55 (-) |      |   1809.9,  1.34% |   1783.0,  1.04%, yes | 0.00029 | -
+  Reactive       103 |   0.55 (-) |      |   1741.2,  1.64% |   1767.4,  1.19%, yes | 0.00029 | -
+  MemAdapt_q90   101 |    1.3 (-) |      |   1172.8,  1.79% |   1256.8,  2.23%, NO  | 0.00031 | -
+  MemAdapt_q90   102 |    1.5 ([1.6]) |      |   1297.0,  1.93% |   1425.7,  1.19%, yes | 0.00018 | -
+  MemAdapt_q90   103 |    1.1 (-) |      |   1035.8,  1.64% |   1154.7,  2.83%, NO  | 0.00055 | -
+
+Paired differences on the test weeks, PRISM minus comparator, across the independent traces (mean, 95% t interval, df = 2; per trace):
+  vs QuantProv_q90  cost +1.6 +/- 17.0% (+3.3, -6.0, +7.3) | violating windows -0.15 +/- 1.28 points (-0.45, +0.45, -0.45) | similar compliance (+/-0.5): NO
+  vs Reactive       cost -27.3 +/- 6.2% (-27.3, -24.8, -29.9) | violating windows +0.79 +/- 0.85 points (+0.60, +0.60, +1.19) | similar compliance (+/-0.5): NO
+  vs MemAdapt_q90   cost +1.6 +/- 17.0% (+3.3, -6.0, +7.3) | violating windows -0.15 +/- 1.28 points (-0.45, +0.45, -0.45) | similar compliance (+/-0.5): NO
+
+Runtime: 125 closed-loop weeks, median 78 s, total 2.7 CPU-h.
