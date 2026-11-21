@@ -259,3 +259,20 @@ concurrency cannot be configured at all.
 What the quota allows still decides RQ4's direction (initialisation against memory, the decisive gate) and
 recalibrates every cold-start constant, which matters more after `docs/revision/kappa_gap/`. The
 provisioned-concurrency mechanisms stay simulated, and the paper must say so.
+
+## H. Corrections after the kappa diagnostic (21 Nov 2026; `docs/revision/kappa_gap/`)
+
+- **B3 (R2.12, R5.M5) is on hold.** Its conclusion (keep the 0.1 floor; the lower floor costs 2.8-3.7% more at
+  matched compliance) was measured in the fast simulator, where kappa sits on the floor in 89.7% of epochs and the
+  unfloored estimate is 0.05, a sixth of the event-level one (0.33 on the same schedules). Do not put B3 in the
+  letter until the floor comparison is rerun in the closed loop. What can be said now: "In the fast simulator the
+  estimate sits at its floor most of the time; at event level it does not (0.33-0.44), so its role is assessed in the
+  closed loop."
+- **C1 (R5.M1, R3.3) gains a sentence.** After "the fast simulator matches the controller's load model by design",
+  add: "On identical provisioning decisions it produces about a third of the event-level simulator's cold starts per
+  on-demand request (3.2x fewer over ten traces) and a quarter of its violating windows (0.70% against 2.89%),
+  because its per-minute concurrency omits the occupancy of initialisation. Its compliance figures are therefore
+  optimistic, and compliance claims rest on the event-level simulator." (Pre-calibration; supersedes at
+  recalibration.)
+- **A1-A4 (R2.5, R4.1, R7.1, R6.7)** stand as fast-simulator results and must say so; the closed-loop pilot
+  (`docs/revision/closed_loop_pilot/`) is the first event-level comparison and is exploratory.
