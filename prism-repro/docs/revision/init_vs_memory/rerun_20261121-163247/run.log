@@ -1,0 +1,8 @@
+inputs verified against MANIFEST.tsv: 80 files
+SeBS done: 37 benchmark-memory cells (13 s)
+Huawei R1: 7,098,514 events, 31 days (56 s)
+Huawei R2: 1,873,127 events, 31 days (75 s)
+Huawei R3: 308,605 events, 31 days (77 s)
+Huawei R4: 1,603,769 events, 31 days (87 s)
+Huawei R5: 804,237 events, 31 days (93 s)
+done in 93 s

@@ -1,0 +1,6 @@
+region,day_files,events,functions,pools,unparsed_pool,missing_total,nonpositive_total,total_equals_component_sum_share,runtime_matched_share
+R1,31,7107399,2429,21,8885,0,0,1.0,
+R2,31,2072823,2322,21,199696,0,0,1.0,1.0
+R3,31,308605,215,13,0,0,0,1.0,
+R4,31,1619285,7557,20,15516,0,0,1.0,
+R5,31,805745,527,16,1508,0,0,1.0,
