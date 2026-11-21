@@ -2,10 +2,10 @@
 """End-to-end check of the integer-search gap (R2.13; also R2.5, R4.1, R6.7, R7.1). OFFLINE BENCHMARK, post hoc.
 
 The response letter cites a 1.92% mean end-to-end saving from six offline test-week replays run with
-scripts/revision/integer_search_e2e.py. That script was not available on the machine where this check was
-written; this file is an INDEPENDENT reconstruction from its description, not the cited script, and its
-numbers are not expected to match the cited table digit for digit (forecast-driven runs differ between
-platforms; see notes/number_audit.md).
+scripts/revision/integer_search_e2e.py in one Linux sandbox. That script was not available on the machine
+where this check was written; this file is an INDEPENDENT reconstruction from its description, not the
+cited script. Being different code, its numbers are not comparable digit for digit with the cited ones, and
+it supports no claim about the cited script on any platform. The cited script remains the canonical source.
 
 What it does. For each run it simulates PRISM twice on the same test week: (base) unchanged; (searched) with
 ChanceConstrainedOptimizer.decide wrapped so that, in every epoch where PRISM's own decision is feasible,

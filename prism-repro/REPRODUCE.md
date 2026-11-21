@@ -38,9 +38,12 @@ reproduce the stored E1 rows bit for bit, while PredHead, QuantProv and PRISM do
 E1 by up to 4.1%). The synthetic traces are bit-identical across the two platforms, and the
 difference persists with one OpenMP thread and with numpy's AVX2/FMA3 dispatch disabled; its root
 cause is not isolated. Expect the same orderings and percent-level numeric differences off the
-reference platform. The level-choice count is the clearest case: 16 of 40,293 feasible epochs in the
-stored run (submitted code, Python 3.13.18), 10 of 40,280 for the same code on Windows, 26 of 40,307
-for corrected code on Windows (all of 40,320 epochs; provenance in `notes/number_audit.md`).
+reference platform. The level-choice count is the clearest case. On Linux with Python 3.13.18:
+16 of 40,293 feasible epochs for the submitted tree (the published figure; reproduced exactly from an
+archived `3b4bc33` tree in the author's Linux run) and 22 of 40,309 for corrected `main`. On Windows
+(Python 3.12.9, pinned): 10 of 40,280 for the same archived submitted tree (identical, run by run, to
+current code with `risk_model` set back to Eq. (5)) and 26 of 40,307 for corrected code. Every run
+set has 40,320 epochs; provenance in `notes/number_audit.md`.
 
 ## 3. Checks that need no stored results
 
