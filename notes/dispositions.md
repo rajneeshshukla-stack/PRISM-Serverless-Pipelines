@@ -41,7 +41,7 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Requests: (a) Brief discussion of porting the formulation to Azure Functions and Cloud Run: open (manuscript).
 - Changed / rationale: Proposal drafted (P-D, R1.4 row). No evidence needed.
 - Evidence: The chance constraint, forecaster and recalibration are provider-independent in the code; provider-specific terms are confined to pricing.py and the concurrency semantics of the simulators.
-- Remaining: Blocker: none. Next: add the paragraph in Phase N (plan #113). Pass: paragraph present; consistency gate.
+- Remaining: Text prepared, not applied (notes/manuscript_proposals.md E1, 21 Nov 2026). Blocker: none. Next: add the paragraph in Phase N (plan #113). Pass: paragraph present; consistency gate.
 - Suggested response: We added a portability paragraph. The chance constraint, quantile forecast and recalibration carry over unchanged; the cost model and the concurrency semantics (billing granularity, minimum-instance pricing, cold-start behaviour) are what change.
 
 ## R2.1 | Not fixed
@@ -111,7 +111,7 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Requests: (a) Keep the distinction that only arrivals are real in the Huawei replay: guardrail. (b) Avoid presenting it as end-to-end validation: open (wording not checked; manuscript not opened).
 - Changed / rationale: Proposal drafted (P-D, R2.10 row). No plan task existed; the tracker flags it.
 - Evidence: Reviewer 2's own reading: only arrival patterns are real; execution, cold starts, billing and SLA outcomes are simulated.
-- Remaining: Blocker: none. Next: check the abstract, §VI-J and Table XIII wording and apply the proposal. Pass: no sentence calls the replay validation on production workloads.
+- Remaining: Text prepared, not applied (notes/manuscript_proposals.md E2, 21 Nov 2026). Blocker: none. Next: check the abstract, §VI-J and Table XIII wording and apply the proposal. Pass: no sentence calls the replay validation on production workloads.
 - Suggested response: We agree and keep the distinction throughout: the Huawei replay uses real arrivals with simulated execution, cold starts, billing and SLA outcomes, and is not presented as end-to-end validation.
 
 ## R2.11 | Partially fixed
@@ -188,14 +188,14 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Requests: (a) Abstract, introduction and conclusion distinguish the formulation from the benefits of calibration and smoothing: open (manuscript). (b) Present PRISM as a simulation-evaluated framework: open (manuscript).
 - Changed / rationale: Proposals P-A5, P-A6.
 - Evidence: NA-4 and NA-5 support the narrow claim.
-- Remaining: Blocker: none. Next: apply in Phase N; consistency gate. Pass: claims table matches the text.
+- Remaining: Text prepared, not applied (notes/manuscript_proposals.md A5, A6 and F, 21 Nov 2026). Blocker: none. Next: apply in Phase N; consistency gate. Pass: claims table matches the text.
 - Suggested response: We accept both points. The contribution list separates the formulation, the evaluation protocol and the attribution of robustness to calibration and smoothing, and PRISM is described as a simulation-evaluated framework.
 
 ## R2.22 | Not fixed
 - Requests: (a) Fix date placeholders, DOI, volume/year and notation formatting: open. (b) Label experiments prespecified, post hoc, corrected or version-specific in text and supplement: open.
 - Changed / rationale: Proposal P-D (R2.22 row); KNOWN_ISSUES and REPRODUCE.md label each repository result by code state and platform.
 - Evidence: n/a.
-- Remaining: Blocker: none. Next: editorial pass (plan #124, #110). Pass: checklist complete.
+- Remaining: Text prepared, not applied (notes/manuscript_proposals.md E6 and E11, 21 Nov 2026). Blocker: none. Next: editorial pass (plan #124, #110). Pass: checklist complete.
 - Suggested response: Corrected, and every analysis now carries one label: prespecified, post hoc, corrected, or version- or platform-specific.
 
 ## R3.1 | Not fixed
@@ -251,7 +251,7 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Requests: (a) Shorten the abstract: open. (b) Align §I with §VII-B: open. (c) Consistent AI disclosure: open. (d) Funding statement: open.
 - Changed / rationale: Proposal P-D (R3.8 rows). Conflict with R5.M7, which adds qualifiers: keep only figures that survive.
 - Evidence: Reviewer 4 counts ten numbers and three post hoc labels in the abstract.
-- Remaining: Blocker: none. Next: Phase N (plan #106, #111, #124). Pass: all four done.
+- Remaining: Text prepared, not applied (notes/manuscript_proposals.md E6, 21 Nov 2026). Blocker: none. Next: Phase N (plan #106, #111, #124). Pass: all four done.
 - Suggested response: All four done: the abstract is rewritten against the claims table and shortened, §I matches §VII-B, the AI-use disclosure is consistent and a funding statement is added.
 
 ## R4.1 | Partially fixed
@@ -286,7 +286,7 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Requests: (a) Name a pipeline with per-record deadlines: open (manuscript).
 - Changed / rationale: P-D (R4.5 row).
 - Evidence: AWS guidance that asynchronous pipelines rarely need provisioned concurrency (reviewer's point).
-- Remaining: Blocker: none. Next: plan #117. Pass: named use case in §I.
+- Remaining: Text prepared, not applied (notes/manuscript_proposals.md E8, 21 Nov 2026). Blocker: none. Next: plan #117. Pass: named use case in §I.
 - Suggested response: Added to the motivation: [named synchronous or interactive pipeline in which each record carries its own deadline].
 
 ## R4.6 | Partially fixed
@@ -321,14 +321,14 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Requests: (a) Show smoothed headroom (3.24%) next to the 6.67% in the graphical abstract: open.
 - Changed / rationale: P-D (R5.m5, R4.10 row).
 - Evidence: New spike: PRISM 1.55%, PredHead+S 3.24%, PredHead 6.67% (results/tables/T5_test_weeks.md).
-- Remaining: Blocker: none (values refresh after the regeneration). Next: plan #116. Pass: redrawn figure.
+- Remaining: Text prepared, not applied (notes/manuscript_proposals.md E9, 21 Nov 2026). Blocker: none (values refresh after the regeneration). Next: plan #116. Pass: redrawn figure.
 - Suggested response: Redrawn with smoothed headroom shown beside the unsmoothed comparator.
 
 ## R4.11 | Not fixed
 - Requests: (a) Move prototype, commit and library-version prose from §V-E and §S1 to the repository: open (the repository already held PROVENANCE.md and KNOWN_ISSUES.md before this revision; REPRODUCE.md now adds which code and platform produced what; the prose is still in the paper). (b) One primary evaluation, one main results table and a separate exploratory section (Reviewer 4, Q3; tracked with R2.22): open.
 - Changed / rationale: REPRODUCE.md (8bf6152, 69d5049, 95163b2) records which code and platform produced what; KNOWN_ISSUES.md holds the defect audit.
 - Evidence: n/a.
-- Remaining: Blocker: none for (a); closed loop for (b). Next: plan #125 and #102. Pass: §V-E and §S1 keep only validity-relevant provenance; structure fixed.
+- Remaining: Text prepared, not applied (notes/manuscript_proposals.md E10 (part a), 21 Nov 2026). Blocker: none for (a); closed loop for (b). Next: plan #125 and #102. Pass: §V-E and §S1 keep only validity-relevant provenance; structure fixed.
 - Suggested response: Moved: the paper keeps only what bears on validity, and the commit, version and defect history is in the repository. The evaluation is restructured into one primary evaluation, one main table and an exploratory section [pending].
 
 ## R5.M1 | Partially fixed
@@ -384,21 +384,21 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Requests: (a) Limit "Much of the benefit credited to uncertainty-aware controllers can thus come from two inexpensive ingredients" (p. 2, l. 91-93) to the setting studied: open.
 - Changed / rationale: P-A6 row.
 - Evidence: n/a.
-- Remaining: Blocker: none. Next: plan #111. Pass: sentence scoped.
+- Remaining: Text prepared, not applied (notes/manuscript_proposals.md E7, 21 Nov 2026). Blocker: none. Next: plan #111. Pass: sentence scoped.
 - Suggested response: Limited to the simulated pipeline studied.
 
 ## R5.m2 | Not fixed
 - Requests: (a) New symbols for one meaning each of tau and s (Table II): open.
 - Changed / rationale: P-D row.
 - Evidence: n/a.
-- Remaining: Blocker: none. Next: plan #118, paper and supplement. Pass: no symbol with two meanings.
+- Remaining: Text prepared, not applied (notes/manuscript_proposals.md E3, 21 Nov 2026). Blocker: none. Next: plan #118, paper and supplement. Pass: no symbol with two meanings.
 - Suggested response: Resolved, with the new symbols used consistently in the paper and the supplement.
 
 ## R5.m3 | Not fixed
 - Requests: (a) Cite Table IV, not Fig. S2b, for the five-trace means (p. 10, l. 61-63): open.
 - Changed / rationale: P-D row.
 - Evidence: The reviewer notes Fig. S2b's trace-101 caption gives the reverse ordering.
-- Remaining: Blocker: none. Next: plan #119. Pass: citation corrected.
+- Remaining: Text prepared, not applied (notes/manuscript_proposals.md E4, 21 Nov 2026). Blocker: none. Next: plan #119. Pass: citation corrected.
 - Suggested response: Corrected to Table IV.
 
 ## R5.m4 | Not fixed
@@ -412,14 +412,14 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Requests: (a) Show smoothed headroom (3.24%) in the graphical abstract: open. (b) Match the image title to the article title: open. (c) Narrow the caption's memory claim to the third conclusion: open.
 - Changed / rationale: P-A6 and P-D rows (shared with R4.10 and R4.4).
 - Evidence: T5_test_weeks.md (1.55%, 3.24%, 6.67%); stored E4b (14-29%).
-- Remaining: Blocker: none. Next: plan #116, #109. Pass: redrawn figure and caption.
+- Remaining: Text prepared, not applied (notes/manuscript_proposals.md E9, 21 Nov 2026). Blocker: none. Next: plan #116, #109. Pass: redrawn figure and caption.
 - Suggested response: Redrawn with smoothed headroom shown, the image title matched to the article title, and the caption narrowed to the demonstrated claim.
 
 ## R5.R | Not fixed
 - Requests: (a) Add pages to [5] (1281-1297) and [19] (1-8): open. (b) Update the dead URL of [41]: open.
 - Changed / rationale: P-D row; full reference audit planned.
 - Evidence: n/a.
-- Remaining: Blocker: none. Next: plan #121. Pass: three entries corrected; list audited.
+- Remaining: Text prepared, not applied (notes/manuscript_proposals.md E5, 21 Nov 2026). Blocker: none. Next: plan #121. Pass: three entries corrected; list audited.
 - Suggested response: All three corrected, and the full reference list audited against IEEE style.
 
 ## R6.1 | Not fixed
