@@ -16,6 +16,7 @@ from prism_repro.pricing import stage_cost  # noqa: E402
 from prism_repro.latency import stage_means, init_mean  # noqa: E402
 from prism_repro.simulator import WEEK, SimContext, WeekDraws, simulate  # noqa: E402
 from prism_repro.workload import MIN_PER_DAY, generate_trace  # noqa: E402
+from scipy.stats import t as stats_t  # noqa: E402
 
 
 class TestWorkload(unittest.TestCase):
@@ -243,6 +244,44 @@ class TestByteIdenticalRerun(unittest.TestCase):
                 a, b_ = np.asarray(r1["raw"][k]), np.asarray(r2["raw"][k])
                 self.assertEqual(a.dtype.kind in "biufc", True, k)
                 self.assertEqual((a.dtype, a.shape, a.tobytes()), (b_.dtype, b_.shape, b_.tobytes()), k)
+
+
+class TestEpsWindowMapping(unittest.TestCase):
+    """R2.3 / R7.3: the epsilon -> violating-window mapping uses the trace as the unit, a t-interval
+    over traces, and scores held-out weeks against a prediction interval refitted without them."""
+
+    def _mod(self):
+        import sys as _sys
+        _sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts", "revision"))
+        import eps_window_mapping
+        return eps_window_mapping
+
+    def test_curve_interval_and_leave_one_out(self):
+        m = self._mod()
+        rows = []
+        for s, off in zip((1, 2, 3, 4), (0.000, 0.002, 0.004, 0.006)):
+            for e in (0.01, 0.03, 0.05):
+                rows.append(dict(seed=s, week="val", scenario="stationary", tag="",
+                                 spec={"family": "PRISM", "param": e}, violating_window_rate=e / 2 + off))
+                for sc in ("a", "b"):
+                    rows.append(dict(seed=s, week="test", scenario=sc, tag="",
+                                     spec={"family": "PRISM", "param": e}, violating_window_rate=e / 2 + off))
+        rows.append(dict(seed=1, week="val", scenario="stationary", tag="-nohyst",
+                         spec={"family": "PRISM", "param": 0.01}, violating_window_rate=0.9))   # ablation: ignored
+        pts = m.prism_points(rows)
+        self.assertEqual(len(pts), 4 * 3 * 3)
+        c = m.curve(pts, "val")
+        x = np.array([0.005, 0.007, 0.009, 0.011])
+        t = stats_t.ppf(0.975, 3)
+        self.assertAlmostEqual(c[0.01]["mean"], x.mean(), places=12)
+        self.assertAlmostEqual(c[0.01]["ci"][1], x.mean() + t * x.std(ddof=1) / 2, places=12)
+        self.assertAlmostEqual(c[0.01]["pi"][1], x.mean() + t * x.std(ddof=1) * np.sqrt(1.25), places=12)
+        res = m.analyse(pts)
+        self.assertEqual(res["val_to_test_pi_coverage"], 1.0)   # test weeks equal validation here
+        self.assertEqual(res["loo_n"], 24)
+        self.assertAlmostEqual(res["spearman_eps_vs_val_rate"], 1.0)
+        self.assertEqual(res["operator_max_eps_upper_pi_within_target"], 0.01)
+
 
 if __name__ == "__main__":
     unittest.main()
