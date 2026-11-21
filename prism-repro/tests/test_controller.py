@@ -67,6 +67,38 @@ class TestConformal(unittest.TestCase):
         self.assertGreaterEqual(s.min(), -0.3)
 
 
+
+class TestEpsMonotonicity(unittest.TestCase):
+    """R5.M5: with infeasible candidates ranked by violation quantile, tightening eps
+    must not buy less capacity, cost less, or violate more (Table IX regime, D = 13 s,
+    memory fixed). Under the previous cost tie-break the trade-off reversed below the
+    warm miss probability of every size."""
+
+    def test_tightening_eps_is_monotone(self):
+        cfg = PipelineConfig(deadline=13.0)
+        q = np.array([400.0, 600.0, 900.0, 1200.0])
+        sc = scenarios(q, 100)
+        eps_grid = (0.08, 0.05, 0.02, 0.01, 0.005)
+        cap, cost, excess = [], [], []
+        for eps in eps_grid:
+            d = ChanceConstrainedOptimizer(cfg, PrismConfig(eps=eps), 0.8).decide(sc, (1024,), 0.35)
+            cap.append(int(d.P.sum()))
+            cost.append(float(d.exp_cost))
+            excess.append(float(d.excess))
+        for a, b, ea, eb in zip(cap, cap[1:], eps_grid, eps_grid[1:]):
+            self.assertGreaterEqual(b, a, f"capacity fell when eps tightened {ea} -> {eb}: {a} -> {b}")
+        for a, b, ea, eb in zip(cost, cost[1:], eps_grid, eps_grid[1:]):
+            self.assertGreaterEqual(b + 1e-9, a, f"cost fell when eps tightened {ea} -> {eb}: {a} -> {b}")
+        self.assertLess(max(excess), 0.05, f"violation when infeasible too large: {excess}")
+
+    def test_infeasible_prefers_least_violating(self):
+        """The fallback must not pick a cheap, badly-violating candidate."""
+        cfg = PipelineConfig(deadline=13.0)
+        sc = scenarios(np.array([400.0, 600.0, 900.0, 1200.0]), 100)
+        d = ChanceConstrainedOptimizer(cfg, PrismConfig(eps=0.005), 0.8).decide(sc, (1024,), 0.35)
+        self.assertFalse(d.feasible)
+        self.assertLess(d.excess, 0.02, "fallback chose a badly-violating candidate")
+
 def reference_decide(cfg, pc, scen, mems, kappa, r):
     """Scalar loop implementation of §4.4 used as an oracle."""
     mt = miss_table(cfg)
