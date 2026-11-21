@@ -222,5 +222,57 @@ class TestObservedOutcomes(_Loop):
             self.assertEqual(fresh.kappa, kappa[k], k)
 
 
+class TestOnlineForecastTrim(_Loop):
+    def test_trimmed_history_gives_identical_forecasts(self):
+        """The feature builder is given counts from a week-aligned start (runtime); forecasts must not change. Epochs
+        0-360 cover the trim start moving from trace minute 20160 to 30240 (near epoch 328)."""
+        from prism_repro.closed_loop import OnlineForecast
+        for sc in ("stationary", "new_spike"):
+            tel = type("T", (), {})()
+            tel.N = self.b.traces[sc]["counts"][WS:WS + 7 * 1440].astype(float)
+            f = OnlineForecast(self.b, sc, "test", "seasonal_naive", self.cfg, 2016, trim=True)
+            for k in range(361):
+                f.step(k, tel)
+            st = self.b.forecasts[(sc, "test", "seasonal_naive")]
+            for key in ("q_raw", "s", "q_cal"):
+                np.testing.assert_array_equal(f.arrays[key][:361], st[key][:361], f"{sc}: {key}")
+
+
+class TestValidationWeek(_Loop):
+    """Closed loop on the validation week (tuning), for the submitted split and the PROVISIONAL split with an
+    out-of-sample conformal warm-up (R4.6 / R5.M3): fitting, warm-up, feedback and scoring respect the split."""
+
+    def _val_run(self, bundle):
+        from prism_repro.workload import MIN_PER_DAY
+        ws = WEEK_START["val"]
+        counts = bundle.traces["stationary"]["counts"][ws:ws + H]
+        dr = EventDraws(self.cfg, counts, 101, 2)                 # scoring: the validation week alone
+        ctl = PolicyController(make_policy(SPECS["QuantProv_q90"]), bundle, "stationary", week="val")
+        simulate_events(self.cfg, dr, controller=ctl)
+        f = ctl.forecasts["seasonal_naive"]
+        st = bundle.forecasts[("stationary", "val", "seasonal_naive")]
+        K = H // self.cfg.epoch_min
+        for key in ("q_raw", "s", "q_cal"):
+            np.testing.assert_array_equal(f.arrays[key][:K], st[key][:K], key)
+        self.assertGreaterEqual(f.scaler.delay, 2)                # feedback no earlier than observable
+        return f, MIN_PER_DAY
+
+    def test_submitted_split(self):
+        f, _ = self._val_run(self.b)
+        self.assertEqual(f.warmup_epochs, 0)
+        self.assertEqual(f.arrays["s"][0], 0.0)
+
+    def test_provisional_split_with_out_of_sample_warmup(self):
+        from prism_repro.config import PrismConfig
+        b = TraceBundle(101, self.cfg, scenarios=("stationary",), forecasters=("seasonal_naive",),
+                        conformal=PrismConfig(forecast_train_days=11, conformal_warmup_days=3))
+        f, DAY = self._val_run(b)
+        self.assertEqual(f.warmup_epochs, 3 * DAY // self.cfg.epoch_min)
+        self.assertEqual(f.train_hi, 11 * DAY)
+        self.assertTrue(f.warmup_out_of_sample)                   # first warm-up target at or after the fit's end
+        self.assertGreaterEqual(f.warmup_first_target, 11 * DAY)
+        self.assertNotEqual(f.arrays["s"][0], 0.0)                # the offset enters validation warm
+
+
 if __name__ == "__main__":
     unittest.main()

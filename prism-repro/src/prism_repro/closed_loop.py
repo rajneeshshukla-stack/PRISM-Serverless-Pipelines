@@ -23,6 +23,7 @@ import numpy as np
 
 from .config import PipelineConfig
 from .experiment import FORECASTERS, WEEK_START, TraceBundle
+from .workload import MIN_PER_DAY
 from .features import FeatureBuilder, forecast_horizon, min_feedback_delay
 from .forecast import ConformalScaler, QuantileGBM, RatioQuantileForecaster, calibrate
 
@@ -48,10 +49,12 @@ class OnlineForecast:
 
     Initial state: for the test week, the offset and the not-yet-applied outcomes carried over from the validation
     week as the bundle's continuous replay leaves them (past information); for the validation week, the configured
-    initial offset (no warm-up)."""
+    initial offset, replayed over the conformal warm-up days if any (PROVISIONAL split, R4.6 / R5.M3)."""
 
-    def __init__(self, bundle: TraceBundle, scenario: str, week: str, name: str, cfg: PipelineConfig, n_epochs: int):
+    def __init__(self, bundle: TraceBundle, scenario: str, week: str, name: str, cfg: PipelineConfig, n_epochs: int,
+                 trim: bool = True):
         self.spec, self.model = FORECASTERS[name], bundle.models[name]
+        self.trim = trim
         self.ws = WEEK_START[week]
         sc_eff = bundle.scenarios[0] if week == "val" else scenario
         self.hist = bundle.traces[sc_eff]["counts"][:self.ws].astype(float)
@@ -76,9 +79,21 @@ class OnlineForecast:
             for j in range(Kv - self.scaler.delay, Kv):     # validation epochs whose outcomes are still pending
                 self.pending.append((j - Kv, self._upper(q_val[j], s_val[j])))
         else:
-            if pc.conformal_warmup_days:
-                raise NotImplementedError("closed loop on the validation week with a conformal warm-up")
             self.s = np.full(2, pc.conformal_s0) if width else float(pc.conformal_s0)
+            W = pc.conformal_warmup_days * MIN_PER_DAY // self.E
+            # Split bookkeeping (R4.6 / R5.M3): forecasters are fitted on targets before train_hi; the warm-up replays
+            # the W epochs before validation; validation outcomes feed back after the delay; scoring is the event
+            # simulation of the validation week alone.
+            self.train_hi = pc.forecast_train_days * MIN_PER_DAY
+            self.warmup_epochs = W
+            self.warmup_first_target = self.ws - self.L - W * self.E + self.h_lo if W else None
+            self.warmup_out_of_sample = (not W) or self.warmup_first_target >= self.train_hi
+            if W:   # replay the update over the warm-up epochs, all in the history, as TraceBundle's replay does
+                ts = self.ws - self.L + np.arange(-W, 0) * self.E
+                q_warm = self._predictor(self.hist).predict(ts)
+                for i, j in enumerate(range(-W, 0)):
+                    self._resolve(j, self.hist, int(ts[i]))
+                    self.pending.append((j, self._upper(q_warm[i], self.s)))
 
     def _upper(self, q_row, s):
         if self.scaler.per_quantile:
@@ -97,18 +112,27 @@ class OnlineForecast:
             p.ratio_q = self.model.ratio_q
         return p
 
-    def step(self, k: int, tel) -> None:
-        v = k * self.E - self.L                                  # last observed minute of the week
-        t = self.ws + v                                          # the same minute in trace time
+    # Every feature at decision minute t reads counts in [t - DAY - 59, t] (lags to 59 minutes, 60-minute level,
+    # the previous day's level and window peak), and the clock features read t modulo a week. The feature builder can
+    # therefore be given the counts from a week-aligned start no later than t - DAY - 200 instead of the whole history,
+    # with identical features (tests/test_des_closed_loop.py::TestOnlineForecastTrim). The EWMA forecaster is a
+    # recursion over the whole history and is never trimmed.
+    TRIM_WEEK, TRIM_LOOKBACK = 7 * 1440, 1440 + 200
+
+    def _visible_counts(self, v: int, tel):
+        """Counts of trace minutes 0..ws+v (history, then the arrivals the telemetry has shown)."""
         if v >= 0:
             seen = tel.N[:v + 1]
             if not np.all(np.isfinite(seen)):
-                raise RuntimeError(f"epoch {k}: arrivals up to minute {v} are not all observed")
-            counts = np.concatenate([self.hist, seen])
-        else:
-            counts = self.hist[:self.ws + v + 1]
+                raise RuntimeError(f"arrivals up to week minute {v} are not all observed")
+            return np.concatenate([self.hist, seen])
+        return self.hist[:self.ws + v + 1]
+
+    def _resolve(self, k: int, counts, t: int) -> None:
+        """Apply the outcomes that are observable at decision k (Eq. (13): epochs <= k - delay), read from `counts`
+        (trace minutes 0..t). Same arithmetic as ConformalScaler.run."""
         sc, a = self.scaler, self.arrays
-        while self.pending and self.pending[0][0] <= k - sc.delay:   # outcomes now observable (Eq. (13) delay)
+        while self.pending and self.pending[0][0] <= k - sc.delay:
             j, U = self.pending.pop(0)
             tj = self.ws + j * self.E - self.L
             if tj + self.h_hi > t:
@@ -122,7 +146,17 @@ class OnlineForecast:
                     self.s = np.clip(self.s + sc.gamma * ((y > U) - tgt), sc.s_min, sc.s_max)
                 else:
                     self.s = float(np.clip(self.s + sc.gamma * ((y > U) - sc.target), sc.s_min, sc.s_max))
-        q = self._predictor(counts).predict(np.array([t]))[0]
+
+    def step(self, k: int, tel) -> None:
+        v = k * self.E - self.L                                  # last observed minute of the week
+        t = self.ws + v                                          # the same minute in trace time
+        counts = self._visible_counts(v, tel)
+        a = self.arrays
+        self._resolve(k, counts, t)
+        s0 = 0
+        if self.trim and self.spec["kind"] != "ewma":
+            s0 = max(0, (t - self.TRIM_LOOKBACK) // self.TRIM_WEEK * self.TRIM_WEEK)
+        q = self._predictor(counts[s0:]).predict(np.array([t - s0]))[0]
         a["q_raw"][k] = q
         a["s"][k] = self.s
         a["q_cal"][k] = calibrate(q[None, :], a["s"][k:k + 1])[0]
@@ -133,10 +167,10 @@ class PolicyController:
     """Drive a fast-simulator policy from event-level telemetry (closed loop). `scenario` and `week` select the
     bundle's history and conformal carry-over; the event draws must be of the same trace-week."""
 
-    def __init__(self, policy, bundle: TraceBundle, scenario: str, week: str = "test"):
+    def __init__(self, policy, bundle: TraceBundle, scenario: str, week: str = "test", trim: bool = True):
         if getattr(policy, "oracle", False):
             raise ValueError("the oracle reads the realised demand of the epoch it decides; it has no closed loop")
-        self.policy, self.bundle, self.scenario, self.week = policy, bundle, scenario, week
+        self.policy, self.bundle, self.scenario, self.week, self.trim = policy, bundle, scenario, week, trim
         self.forecasts = {}
 
     def start(self, cfg: PipelineConfig, n_min: int, n_epochs: int) -> None:
@@ -149,7 +183,8 @@ class PolicyController:
         if used is not None and used not in b.fc_names:
             raise ValueError(f"policy reads forecaster {used!r}, which the bundle did not train")
         names = () if used is None else (used,)
-        self.forecasts = {nm: OnlineForecast(b, self.scenario, self.week, nm, cfg, n_epochs) for nm in names}
+        self.forecasts = {nm: OnlineForecast(b, self.scenario, self.week, nm, cfg, n_epochs, trim=self.trim)
+                          for nm in names}
         ctx = ClosedLoopContext(cfg=cfg, week_start=ws, K_hist_default=b.K_hist(sc_eff)[:ws].copy(),
                                 forecasts={nm: f.arrays for nm, f in self.forecasts.items()},
                                 r_mean_peak=b.r_mean_peak, n_epochs=n_epochs)
