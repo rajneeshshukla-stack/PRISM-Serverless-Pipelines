@@ -1,0 +1,16 @@
+start 2026-11-21T09:36:54Z code a396f40
+seed 101 ns 0.5: 416 rows in 12364.1s
+seed 102 ns 0.5: 416 rows in 12383.1s
+seed 103 ns 0.5: 416 rows in 12499.5s
+seed 104 ns 0.5: 416 rows in 1800.6s
+seed 105 ns 0.5: 416 rows in 1821.1s
+seed 101 ns 0.15: 208 rows in 1149.0s
+seed 102 ns 0.15: 208 rows in 1700.7s
+seed 103 ns 0.15: 208 rows in 1084.2s
+seed 104 ns 0.15: 208 rows in 1154.6s
+seed 105 ns 0.15: 208 rows in 1076.4s
+
+real	272m21.820s
+user	0m0.045s
+sys	0m0.030s
+end 2026-11-21T14:09:16Z
