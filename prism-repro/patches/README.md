@@ -1,8 +1,11 @@
 # Corrective patch for three code defects found after the runs
 
 `m12_m5_corrections.patch` corrects the three defects listed in `../KNOWN_ISSUES.md` (paper: Section VI-G and
-Supplementary Section S1). **The stored results in `results/` were produced without this patch and were not
-regenerated.**
+Supplementary Section S1).
+
+**Status: APPLIED to `main` on 20 November 2026.** The patch file is kept so the correction stays auditable as
+a discrete change. **The stored results in `results/` were produced without it and have not yet been
+regenerated** - the code that produced them is tagged `v1-submitted` (commit `3b4bc33`).
 
 | Defect | File | Change |
 |---|---|---|

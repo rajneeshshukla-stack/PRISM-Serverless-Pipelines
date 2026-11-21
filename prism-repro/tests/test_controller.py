@@ -68,6 +68,14 @@ class TestConformal(unittest.TestCase):
 
 
 
+
+class TestDefaultRiskModel(unittest.TestCase):
+    """R4.9: Supplement S6 recommends Erlang-B while the submitted main configuration used
+    Eq. (5). This guards against silently reverting that."""
+
+    def test_main_configuration_uses_erlangb(self):
+        self.assertEqual(PrismConfig().risk_model, "erlangb")
+
 class TestEpsMonotonicity(unittest.TestCase):
     """R5.M5: with infeasible candidates ranked by violation quantile, tightening eps
     must not buy less capacity, cost less, or violate more (Table IX regime, D = 13 s,

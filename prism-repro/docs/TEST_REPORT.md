@@ -1,6 +1,7 @@
 # Test report (software verification)
 
-**Latest full run:** 2026-10-29, `python -m unittest discover -s tests -v` → **48 tests, all passed** (45 s, reference sandbox, Python 3.12.3). Raw output: `results/test_report_full.txt`.
+**Latest full run:** 2026-11-20, `python -m unittest discover -s tests -v` → **55 tests, all passed**, on two platforms:
+Windows 11 x86-64 with Python 3.12.9 and the pinned requirements, and Linux x86-64 with Python 3.13.18 (numpy 2.5.3, scipy 1.18.1). The count rose from 48 after the m12_m5 patch was applied (+4) and three regression tests were added for the Erlang-B accuracy gate and the epsilon-monotonicity of the infeasible fallback. Previous run: 2026-10-29, 48 tests, reference sandbox, Python 3.12.3 (`results/test_report_full.txt`).
 
 This is software verification only: it shows that the code implements the stated formulas and behaves as specified. It does **not** validate the scientific conclusions.
 
@@ -28,4 +29,4 @@ This is software verification only: it shows that the code implements the stated
 
 ## Not tested
 
-GitHub Actions workflow and Dockerfile (no runner/Docker available); installation from `requirements.txt` in a fresh virtual environment (no network; packages were preinstalled); platforms other than Linux x86-64; Python versions other than 3.12.3; the CSV trace loader on any real trace.
+GitHub Actions workflow and Dockerfile (no runner/Docker available); installation from `requirements.txt` in a fresh virtual environment (no network; packages were preinstalled); platforms other than Linux x86-64 and Windows 11 x86-64; Python versions other than 3.12.3, 3.12.9 and 3.13.18; the CSV trace loader on any real trace.
