@@ -139,6 +139,9 @@ class PrismConfig:
     # (offset starts at zero at the start of validation). The warm-up days lie inside the
     # forecaster's training range, so their residuals are in-sample.
     conformal_warmup_days: int = 0
+    # R2.11: independent conformal offsets for q0.9 (target 10% misses) and q0.99 (target_miss).
+    # False = submitted Eq. (13): one offset driven by q0.99 misses scales both.
+    conformal_per_quantile: bool = False
     use_conformal: bool = True
     n_scenarios: int = 100
     n_levels: int = 20  # plus the zero level

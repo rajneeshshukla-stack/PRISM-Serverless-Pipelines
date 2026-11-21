@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
 from prism_repro.config import PipelineConfig, PrismConfig  # noqa: E402
 from prism_repro.features import FeatureBuilder, window_peak_target  # noqa: E402
-from prism_repro.forecast import ConformalScaler, calibrate, scenarios  # noqa: E402
+from prism_repro.forecast import TAUS as TAUS_, ConformalScaler, calibrate, scenarios  # noqa: E402
 from prism_repro.latency import gb, init_mean, miss_table, stage_means  # noqa: E402
 from prism_repro.optimizer import ChanceConstrainedOptimizer  # noqa: E402
 from prism_repro.risk import c_eff, occupancy_overflow, overflow_prob  # noqa: E402
@@ -290,6 +290,44 @@ class TestFeatures(unittest.TestCase):
         N = np.zeros(4000, int)
         X, lev = FeatureBuilder(N, [0, 1, 30]).matrix(np.array([3500]))
         self.assertTrue(np.all(np.isfinite(X)) and lev[0] == 1.0)
+
+
+class TestPerQuantileCalibration(unittest.TestCase):
+    """R2.11: with one shared offset driven by q0.99 misses, a q0.9 that was already right is
+    inflated with q0.99 and over-covers; independent offsets keep each near its own level."""
+
+    def _coverage(self, per_quantile):
+        from scipy import stats
+        rng = np.random.default_rng(31)
+        K = 40_000
+        y = np.exp(0.3 * rng.standard_normal(K)) * 100
+        true = 100 * np.exp(0.3 * stats.norm.ppf(np.array(TAUS_)))
+        q_raw = np.tile(true * np.array([1, 1, 1, 0.8]), (K, 1))   # q0.99 20% too low, q0.9 exact
+        q, s, _ = ConformalScaler(per_quantile=per_quantile).run(q_raw, y)
+        burn = 5_000
+        return float((y[burn:] <= q[burn:, 2]).mean()), float((y[burn:] <= q[burn:, 3]).mean()), s
+
+    def test_shared_overcovers_q90_and_independent_does_not(self):
+        c90_sh, c99_sh, s_sh = self._coverage(False)
+        c90_pq, c99_pq, s_pq = self._coverage(True)
+        self.assertEqual(s_sh.ndim, 1)
+        self.assertEqual(s_pq.shape[1], 2)
+        self.assertGreater(c90_sh, 0.95)                 # inflated with q0.99
+        self.assertAlmostEqual(c90_pq, 0.90, delta=0.02)  # its own level
+        for c in (c99_sh, c99_pq):
+            self.assertAlmostEqual(c, 0.99, delta=0.005)
+
+    def test_shared_mode_unchanged(self):
+        rng = np.random.default_rng(2)
+        q_raw = np.sort(rng.uniform(50, 150, (500, 4)), axis=1)
+        y = rng.uniform(40, 180, 500)
+        a = ConformalScaler().run(q_raw, y)
+        b = ConformalScaler(per_quantile=False).run(q_raw, y)
+        np.testing.assert_array_equal(a[0], b[0])
+        np.testing.assert_array_equal(a[1], b[1])
+        # a per-quantile run whose two offsets are equal reproduces apply_offset's shared form
+        s = rng.uniform(-0.2, 0.5, 500)
+        np.testing.assert_array_equal(calibrate(q_raw, s), calibrate(q_raw, np.column_stack([s, s])))
 
 
 class TestConformalWarmup(unittest.TestCase):
