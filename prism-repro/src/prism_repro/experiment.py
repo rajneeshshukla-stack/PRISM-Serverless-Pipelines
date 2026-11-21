@@ -10,7 +10,7 @@ from dataclasses import asdict
 import numpy as np
 
 from .config import PipelineConfig, PrismConfig
-from .features import FeatureBuilder
+from .features import FeatureBuilder, forecast_horizon, min_feedback_delay
 from .forecast import ConformalScaler, QuantileGBM, RatioQuantileForecaster
 from .policies import PRISM, OnDemand, PredHead, QuantProv, Reactive, Scheduled, Static
 from .simulator import WEEK, SimContext, WeekDraws, simulate
@@ -70,13 +70,13 @@ class TraceBundle:
     # ---------------- forecasting ----------------
     def _builder(self, counts, spec):
         return FeatureBuilder(counts, self.trigger_minutes, drop_groups=spec.get("drop", ()),
-                              normalise=spec.get("normalise", True))
+                              normalise=spec.get("normalise", True), horizon=forecast_horizon(self.cfg))
 
     def _train_forecasters(self):
         train_hi = 14 * MIN_PER_DAY
         sc0 = self.scenarios[0]
         fb0 = self._builder(self.traces[sc0]["counts"], {})
-        ts = np.arange(fb0.min_t, train_hi - 6)
+        ts = np.arange(fb0.min_t, train_hi - fb0.h_hi)
         self.r_mean_peak = float(np.mean(fb0.ymean[ts] / np.maximum(fb0.y[ts], 1)))
         for name in self.fc_names:
             spec = FORECASTERS[name]
@@ -100,7 +100,7 @@ class TraceBundle:
                 q_raw = pred.predict(ts_all)
                 y = fbs.target(ts_all)
                 cs = ConformalScaler(self.pc.gamma, self.pc.target_miss, self.pc.s_min, self.pc.s_max,
-                                     self.pc.conformal_delay_epochs)
+                                     max(self.pc.conformal_delay_epochs, min_feedback_delay(self.cfg)))
                 q_cal, s_used, rev = cs.run(q_raw, y)
                 K = len(ts_val)
                 for wk, sl in (("val", slice(0, K)), ("test", slice(K, 2 * K))):

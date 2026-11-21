@@ -292,5 +292,44 @@ class TestFeatures(unittest.TestCase):
         self.assertTrue(np.all(np.isfinite(X)) and lev[0] == 1.0)
 
 
+class TestLagHorizon(unittest.TestCase):
+    """R1.3 / R4.3 / R5.M2 (disclosed issue M1): the forecast horizon and the conformal
+    feedback delay follow cfg.lag_min, so lag sweeps at L = 5 and 10 stay free of
+    look-ahead. At the default L = 2 both equal the submitted values."""
+
+    def test_horizon_and_delay_follow_lag(self):
+        from prism_repro.features import forecast_horizon, min_feedback_delay
+        base = PipelineConfig()
+        self.assertEqual(forecast_horizon(base), (2, 6))
+        self.assertEqual(min_feedback_delay(base), PrismConfig().conformal_delay_epochs)
+        self.assertEqual(forecast_horizon(base.with_(lag_min=5)), (5, 9))
+        self.assertEqual(forecast_horizon(base.with_(lag_min=10)), (10, 14))
+        for L in range(0, 16):   # brute force: first j with 5(k+j) - L >= 5k + 4
+            j = next(j for j in range(1, 10) if 5 * j - L >= 4)
+            self.assertEqual(min_feedback_delay(base.with_(lag_min=L)), j, L)
+        self.assertEqual(min_feedback_delay(base.with_(lag_min=10)), 3)
+
+    def test_target_and_features_at_lag_10(self):
+        from prism_repro.features import online_features
+        rng = np.random.default_rng(8)
+        N = rng.poisson(400, 5000)
+        h = (10, 14)
+        fb = FeatureBuilder(N, [0, 1, 30], horizon=h)
+        for t in (1600, 2500, 4000):
+            self.assertEqual(fb.y[t], N[t + 10:t + 15].max())
+        self.assertTrue(np.isnan(fb.y[len(N) - 14]) and not np.isnan(fb.y[len(N) - 15]))
+        np.testing.assert_array_equal(window_peak_target(N), FeatureBuilder(N, [0, 1, 30]).y)
+        for t in (1600, 3000, 4980):
+            x_b, l_b = fb.matrix(np.array([t]))
+            x_o, l_o = online_features(N, t, [0, 1, 30], horizon=h)
+            np.testing.assert_allclose(x_b[0], x_o, rtol=1e-12)
+            self.assertAlmostEqual(l_b[0], l_o)
+        t = 3000   # no look-ahead at the longer horizon either
+        N2 = N.copy()
+        N2[t + 1:] = rng.poisson(5000, len(N) - t - 1)
+        np.testing.assert_allclose(fb.matrix(np.array([t]))[0],
+                                   FeatureBuilder(N2, [0, 1, 30], horizon=h).matrix(np.array([t]))[0])
+
+
 if __name__ == "__main__":
     unittest.main()

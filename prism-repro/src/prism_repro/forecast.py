@@ -37,7 +37,7 @@ class QuantileGBM:
 
     def fit(self, t_lo: int, t_hi: int):
         """Fit on decision minutes t in [t_lo, t_hi) whose targets lie inside [.., t_hi)."""
-        ts = np.arange(max(t_lo, self.fb.min_t), t_hi - 6)
+        ts = np.arange(max(t_lo, self.fb.min_t), t_hi - self.fb.h_hi)
         X, lev = self.fb.matrix(ts)
         y = self.fb.target(ts) / lev
         for tau in TAUS:
@@ -81,7 +81,7 @@ class RatioQuantileForecaster:
         return self._ewma[ts]
 
     def fit(self, t_lo, t_hi):
-        ts = np.arange(max(t_lo, self.fb.min_t), t_hi - 6)
+        ts = np.arange(max(t_lo, self.fb.min_t), t_hi - self.fb.h_hi)
         f = np.maximum(self.point(ts), 1.0)
         r = self.fb.target(ts) / f
         self.ratio_q = np.quantile(r, TAUS)
