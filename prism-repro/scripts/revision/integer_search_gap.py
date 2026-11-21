@@ -18,8 +18,8 @@ import sys
 
 import numpy as np
 
-ROOT, OUT = sys.argv[1], sys.argv[2]
-sys.path.insert(0, os.path.join(ROOT, 'src'))
+if __name__ == '__main__':  # importable as a module; argv is only read when run directly
+    sys.path.insert(0, os.path.join(sys.argv[1], 'src'))
 from prism_repro.config import PipelineConfig, PrismConfig          # noqa: E402
 from prism_repro.forecast import scenarios                          # noqa: E402
 from prism_repro.latency import gb, init_mean, miss_table, stage_means  # noqa: E402
@@ -79,6 +79,7 @@ def coord_search(P0, m, scen, kappa, pc, cfg=CFG, r=0.8, radius=4, rounds=12):
 
 
 def main():
+    out_path = sys.argv[2]
     rows = []
     for eps in EPS_GRID:
         pc = PrismConfig(eps=eps)
@@ -97,7 +98,7 @@ def main():
     gaps = [r['gap'] for r in rows if np.isfinite(r['gap'])]
     tot = dict(configurations=len(gaps), max_gap=max(gaps), mean_gap=float(np.mean(gaps)),
                min_gap=min(gaps))
-    json.dump(dict(rows=rows, totals=tot, environment=sys.version), open(OUT, 'w'), indent=1)
+    json.dump(dict(rows=rows, totals=tot, environment=sys.version), open(out_path, 'w'), indent=1)
     print(tot)
 
 
