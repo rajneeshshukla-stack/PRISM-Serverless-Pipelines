@@ -105,7 +105,7 @@ class TraceBundle:
                 cs = ConformalScaler(self.pc.gamma, self.pc.target_miss, self.pc.s_min, self.pc.s_max,
                                      max(self.pc.conformal_delay_epochs, min_feedback_delay(self.cfg)),
                                      per_quantile=self.pc.conformal_per_quantile)
-                q_cal, s_used, rev = cs.run(q_run, y_run)
+                q_cal, s_used, rev = cs.run(q_run, y_run, s0=self.pc.conformal_s0)
                 q_raw, y, q_cal, s_used = q_run[W:], y_run[W:], q_cal[W:], s_used[W:]
                 if W:  # count order reversals over validation and test only, as without warm-up
                     rev = int(np.sum(np.any(np.diff(apply_offset(q_raw, s_used), axis=1) < 0, axis=1)))

@@ -142,6 +142,9 @@ class PrismConfig:
     # R2.11: independent conformal offsets for q0.9 (target 10% misses) and q0.99 (target_miss).
     # False = submitted Eq. (13): one offset driven by q0.99 misses scales both.
     conformal_per_quantile: bool = False
+    # R2.11: initial conformal offset at the start of the replayed period (calibration-initialisation
+    # sensitivity). 0.0 = submitted behaviour.
+    conformal_s0: float = 0.0
     use_conformal: bool = True
     n_scenarios: int = 100
     n_levels: int = 20  # plus the zero level
@@ -175,6 +178,8 @@ class PrismConfig:
             raise ValueError("cap must be non-negative")
         if not (0 <= self.conformal_warmup_days <= 12):  # features need day 1 + 1 h of history
             raise ValueError("conformal_warmup_days must be in [0, 12]")
+        if not (self.s_min <= self.conformal_s0 <= self.s_max):
+            raise ValueError("conformal_s0 must lie within [s_min, s_max]")
 
     def with_(self, **kw) -> "PrismConfig":
         c = replace(self, **kw)

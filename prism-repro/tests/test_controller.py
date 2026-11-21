@@ -330,6 +330,27 @@ class TestPerQuantileCalibration(unittest.TestCase):
         np.testing.assert_array_equal(calibrate(q_raw, s), calibrate(q_raw, np.column_stack([s, s])))
 
 
+class TestConformalInitialOffset(unittest.TestCase):
+    """R2.11: the initial conformal offset is a parameter (sensitivity sweep); the default 0.0 is the
+    submitted behaviour and leaves forecasts untouched."""
+
+    def test_initial_offset(self):
+        from prism_repro.experiment import TraceBundle
+        cfg = PipelineConfig()
+        kw = dict(scenarios=("stationary",), forecasters=("seasonal_naive",))
+        b0 = TraceBundle(101, cfg, **kw)
+        b1 = TraceBundle(101, cfg, conformal=PrismConfig(conformal_s0=0.0), **kw)
+        b2 = TraceBundle(101, cfg, conformal=PrismConfig(conformal_s0=0.2), **kw)
+        f0, f1, f2 = (b.forecasts[("stationary", "val", "seasonal_naive")] for b in (b0, b1, b2))
+        for k in ("q_raw", "q_cal", "s"):
+            np.testing.assert_array_equal(f0[k], f1[k])        # explicit 0.0 = default, byte for byte
+        np.testing.assert_array_equal(f0["q_raw"], f2["q_raw"])
+        self.assertEqual(f2["s"][0], 0.2)                       # validation starts from the set offset
+        self.assertEqual(f0["s"][0], 0.0)
+        with self.assertRaises(ValueError):
+            PrismConfig().with_(conformal_s0=0.9)               # outside the clip [-0.3, 0.8]
+
+
 class TestConformalWarmup(unittest.TestCase):
     """R4.6 / R5.M3: the conformal offset can be warmed on the days before validation.
     Default 0 keeps the submitted behaviour (offset 0 at the start of validation)."""
