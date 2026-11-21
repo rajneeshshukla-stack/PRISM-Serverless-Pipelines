@@ -108,7 +108,9 @@ def simulate(ctx: SimContext, policy, keep_raw: bool = True) -> dict:
     t0 = time.perf_counter()
     dec_times = []
     ka = cfg.keepalive_min
-    pre_pool = None
+    pre_od = None          # (ka, S) pre-week on-demand concurrency, row j = minute j - ka
+    seg_start = 0          # M5 fix: first minute of the current memory segment
+    m_prev = None
     for k in range(ctx.n_epochs):
         td = time.perf_counter()
         P, m = policy.decide(k, tel)
@@ -120,15 +122,21 @@ def simulate(ctx: SimContext, policy, keep_raw: bool = True) -> dict:
         K = ctx.K_week(m)[a:b]
         if k == 0:  # initial warm pool from the 10 pre-week minutes at default memory (D24)
             Kpre = ctx.K_hist_default[ctx.week_start - ka:ctx.week_start]
-            pre_pool = np.maximum(Kpre - P[None, :], 0).max(0) if ka > 0 else np.zeros(S)
+            pre_od = np.maximum(Kpre - P[None, :], 0) if ka > 0 else np.zeros((0, S))
+            if m != cfg.default_mem:   # M5 fix: pre-week environments run the default-memory version
+                pre_od = np.zeros_like(pre_od)
+        if m_prev is not None and m != m_prev:
+            seg_start = a          # M5 fix: environments of the previous version cannot be reused
+        m_prev = m
         od = np.maximum(K - P[None, :], 0.0)
         new = np.zeros_like(od)
         for i in range(E):  # pool from previous ka minutes of on-demand concurrency
             t = a + i
-            lo = max(0, t - ka)
+            lo = max(0, t - ka, seg_start)
             pool = OD[lo:t].max(0) if t > lo else np.zeros(S)
-            if t < ka:
-                pool = np.maximum(pool, pre_pool)
+            if t < ka and seg_start == 0:
+                # M12 fix: pre-week minute j - ka is still warm at minute t only if j - ka >= t - ka
+                pool = np.maximum(pool, pre_od[t:].max(0) if t < len(pre_od) else 0.0)
             new[i] = np.maximum(od[i] - pool, 0.0)
             OD[t] = od[i]
         share = np.where(K > 0, od / np.where(K > 0, K, 1.0), 0.0)

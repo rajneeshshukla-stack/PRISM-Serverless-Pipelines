@@ -98,7 +98,8 @@ class Reactive(Policy):
         if lo >= 0:
             Kwin = tel.K[lo:v + 1]
         else:  # pre-week minutes from history at default memory
-            pre = self.ctx.K_hist_default[self.ctx.week_start + lo:self.ctx.week_start]
+            # M12 fix: the pre-week slice ends at the visible horizon (minute v when v < 0)
+            pre = self.ctx.K_hist_default[self.ctx.week_start + lo:self.ctx.week_start + min(v + 1, 0)]
             Kwin = np.vstack([pre, tel.K[0:max(v + 1, 0)]])
         target = np.ceil(Kwin.max(0) / self.param - 1e-9)
         if self.cur is None:

@@ -26,6 +26,8 @@ for seed in sorted(rows.seed.unique()):
         P = arr[key + "::P_epoch"].astype(float); m = arr[key + "::mem_epoch"]
         g = m / 1024.0
         inc = np.maximum(np.diff(P, axis=0), 0.0)          # environments added per epoch (from epoch 1)
+        sw = m[1:] != m[:-1]                                  # M5 fix: memory change re-provisions the whole pool
+        inc[sw] = P[1:][sw]
         added = inc.sum(axis=1)                               # per epoch, all stages
         ini = np.array([INIT[int(x)] for x in m[1:]])
         init_lo = float((added * ini * g[1:] * pr.pcd).sum())

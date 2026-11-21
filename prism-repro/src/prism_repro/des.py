@@ -42,8 +42,10 @@ class EventDraws:
         self.n, self.n_min = n, n_min
 
 
-def _stage_pass(arr, x, z, P_min, KA):
-    """One stage. arr sorted ascending. Returns finish times, cold flags, provisioned flags."""
+def _stage_pass(arr, x, z, P_min, KA, gen_min=None):
+    """One stage. arr sorted ascending. Returns finish times, cold flags, provisioned flags.
+    gen_min (M5 fix): memory-version index per minute; an on-demand environment is reused only by a
+    request of the same version."""
     n = len(arr)
     finish = np.empty(n)
     cold = np.zeros(n, bool)
@@ -53,6 +55,8 @@ def _stage_pass(arr, x, z, P_min, KA):
     arr_l, x_l, z_l = arr.tolist(), x.tolist(), z.tolist()
     P_l = P_min.tolist()
     nP = len(P_l)
+    G_l = gen_min.tolist() if gen_min is not None else None
+    cur_gen = None
     for j in range(n):
         t = arr_l[j]
         while pc_busy and pc_busy[0] <= t:
@@ -64,18 +68,38 @@ def _stage_pass(arr, x, z, P_min, KA):
             hpush(pc_busy, f)
             used_pc[j] = True
         else:
-            while od_busy and od_busy[0] <= t:
-                idle.append(hpop(od_busy))
-            lim = t - KA
-            while idle and idle[0] < lim:
-                idle.popleft()
-            if idle:
-                idle.pop()
-                f = t + x_l[j]
-            else:
-                f = t + z_l[j] + x_l[j]
-                cold[j] = True
-            hpush(od_busy, f)
+            if G_l is None:
+                while od_busy and od_busy[0] <= t:
+                    idle.append(hpop(od_busy))
+                lim = t - KA
+                while idle and idle[0] < lim:
+                    idle.popleft()
+                if idle:
+                    idle.pop()
+                    f = t + x_l[j]
+                else:
+                    f = t + z_l[j] + x_l[j]
+                    cold[j] = True
+                hpush(od_busy, f)
+            else:  # M5 fix: entries are (finish time, version)
+                g = G_l[m] if m < len(G_l) else G_l[-1]
+                if g != cur_gen:
+                    cur_gen = g
+                    idle = deque(e for e in idle if e[1] == g)
+                while od_busy and od_busy[0][0] <= t:
+                    e = hpop(od_busy)
+                    if e[1] == g:
+                        idle.append(e)
+                lim = t - KA
+                while idle and idle[0][0] < lim:
+                    idle.popleft()
+                if idle:
+                    idle.pop()
+                    f = t + x_l[j]
+                else:
+                    f = t + z_l[j] + x_l[j]
+                    cold[j] = True
+                hpush(od_busy, (f, g))
         finish[j] = f
     return finish, cold, used_pc
 
@@ -108,6 +132,7 @@ def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray,
     cost = (P_min * (mem_min[:, None] / 1024.0) * 60.0 * pr.pc).sum() + draws.n * S * pr.req
     od_share, cold_ratio, inflight = [], [], []
     KA = cfg.keepalive_min * 60.0
+    gen_min = np.concatenate([[0], np.cumsum(mem_min[1:] != mem_min[:-1])])  # M5 fix: memory version per minute
     for s in range(S):
         m_req = mem_min[np.minimum((arr // 60).astype(np.int64), draws.n_min - 1)]
         d_s = np.array([stage_means(cfg, int(m))[s] for m in cfg.mem_options])
@@ -115,7 +140,7 @@ def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray,
         mi = np.searchsorted(np.array(cfg.mem_options), m_req)
         x = draws.ex[s, idx] * d_s[mi]
         z = draws.init[s, idx] * ini[mi]
-        fin, cold, used_pc = _stage_pass(arr, x, z, P_min[:, s], KA)
+        fin, cold, used_pc = _stage_pass(arr, x, z, P_min[:, s], KA, gen_min)
         g = m_req / 1024.0
         cost += (x * g * np.where(used_pc, pr.pcd, pr.od)).sum()
         if bill_init:
