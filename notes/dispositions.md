@@ -73,25 +73,25 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Suggested response: [pending] We separate weeks that miss narrowly from sustained breaches, report which traces, scenarios and settings they come from, and the extra capacity that would close them. A preliminary fast-simulator analysis already shows the misses cluster where validation selected the largest eps in the grid.
 
 ## R2.5 | Partially fixed
-- Requests: (a) State the measurable benefit of the optimizer beyond a calibrated upper-quantile rule with the same smoothing: resolved as a narrow, evidenced answer (manuscript text open). (b) Experiments in realistic regimes where the optimizer gives a substantial advantage: open (static evidence only).
-- Changed / rationale: Static benchmarks of the candidate family (main c7360fe, 6cb3eef, 2bdeaba; pinned by bc548e7); level-choice provenance (e95fd8d).
-- Evidence: Default deadline, common demand: smallest feasible member chosen in all but 16 of 40,293 feasible epochs (submitted code); under 0.07% for corrected code. Static per-epoch gap 2.71% (16 configurations); end-to-end integer-search saving 1.92% reported (Linux), with worse compliance in 4 of 6 runs. Stage-specific demand: 5.06% and 5.78% static gaps; fan-out infeasible on the paper's grid (NA-4).
-- Remaining: Blocker: none external. Next: end-to-end runs under stage-specific demand and above break-even, PRISM against QuantProv-q90 at matched compliance. Pass: a regime with an end-to-end advantage, or a stated null.
-- Suggested response: At the paper's default deadline the optimizer adds no measurable benefit: it picks the smallest feasible member of a one-parameter family. Where stages see different demand the family itself is the limitation (static gaps of 5-6%, infeasible on our grid under fan-out); an end-to-end comparison in those regimes is [pending].
+- Requests: (a) State the measurable benefit of the optimizer beyond a calibrated upper-quantile rule with the same smoothing: resolved as a narrow, evidenced answer (manuscript text open). (b) Experiments in realistic regimes where the optimizer gives a substantial advantage: resolved as an end-to-end stated null, pre-calibration (no regime tested shows a consistent advantage).
+- Changed / rationale: Static benchmarks of the candidate family (main c7360fe, 6cb3eef, 2bdeaba; pinned by bc548e7); level-choice provenance (e95fd8d); stage-specific demand in the fast simulator and the optimiser, guarded byte-identical at unit demand (85d909e, bde7d25); end-to-end runs (066f69c, docs/revision/stage_demand_e2e/).
+- Evidence: End to end, 20 held-out weeks per cell, PRISM against QuantProv-q90 at the validation-selected settings: wider eps grid on the paper's workload -1.2 +/- 2.2% (matched compliance -1.0 to -2.3%); above break-even (smooth 6000/min) +11.1 +/- 0.8% (matched +9.0 to +9.9%); break-even 0.30 +4.3 +/- 1.5%, more compliant. Stage-specific demand: 3.1-6.8% cheaper than the phi-aware rule, but against a quantile rule with the same allocation shape -1.9 to -4.3% (filter), +3.3 to +5.4% (fan-out), -0.6 to -2.0% (batch) at matched compliance. Level choice: at most 0.11% of feasible epochs above the smallest for eps up to 0.05, 23.7% at 0.08 (common demand). Static restriction cost 2.71% (16 configurations); end-to-end integer-search saving 1.92% (Linux) with worse compliance in 4 of 6 runs (NA-4).
+- Remaining: Blocker: author's framing decision (R4.1). Next: P-A1 to P-A4 with the corrected level-choice wording and the end-to-end null. Pass: text states the null and the conditions tested.
+- Suggested response: We tested the optimizer end to end where its reduction to a quantile rule should fail. The reduction does fail there (above the smallest feasible level in most epochs at larger eps, under fan-out and above break-even), but no regime shows a consistent cost advantage over a calibrated quantile rule with the same information: with a wider eps grid the difference is -1.2 +/- 2.2%, above break-even PRISM costs 9-11% more, and under stage-specific demand its 3-7% advantage over the phi-aware rule comes from its candidate family's per-stage allocation, which a quantile rule with the same allocation also captures. We state the benefit accordingly [pending the framing decision, R4.1].
 
-## R2.6 | Not fixed
-- Requests: (a) A competitive baseline that adjusts memory from observed latency or estimated warm-service feasibility: open.
-- Changed / rationale: Not started. Design (latency-driven or warm-feasibility-driven), implementation, a gate showing it adapts, and tuning across the short-slack regimes exceed two hours and need the author's design choice.
-- Evidence: Stored post hoc comparison: fixed-2048 MB headroom 14-29% cheaper than PRISM's best setting in the short-slack regimes (results/tables/revision/E4b_fixed_memory_summary.json). The init-direction sweep (a4187f7) shows PRISM's memory switching but is not this baseline.
-- Remaining: Blocker: design decision; scope. Next: plan #83-85. Pass: baseline logs memory changes, tuned by the common rule, compared at matched compliance.
-- Suggested response: [pending] We add a memory-adaptive calibrated-quantile baseline that adjusts memory from observed latency, verified to adapt, and compare it with PRISM at matched compliance.
+## R2.6 | Partially fixed
+- Requests: (a) A competitive baseline that adjusts memory from observed latency or estimated warm-service feasibility: resolved (estimated warm-service feasibility), pre-calibration; its place in the manuscript is the author's decision D1.
+- Changed / rationale: policies.MemAdapt, tests and scripts/revision/memadapt_compare.py (a396f40); results (7980b69, docs/revision/memadapt/). Memory: the smallest size whose warm miss probability is at most 0.005, from the latency model PRISM uses, tolerance fixed in advance; capacity: QuantProv-q90 at that size; one parameter tuned by the common rule; memory changes logged. Tests show it adapts across deadlines and is QuantProv byte for byte where 1024 MB qualifies.
+- Evidence: Six E4 regimes, seeds 101-105, stationary weeks. MemAdapt picks 2048 MB in every short-slack regime and meets 2% as PRISM does; PRISM costs more at the validation-selected settings: +27.9% (13 s), +19.8% (12 s), +4.7% (11 s, PRISM 0.39 points fewer violating windows), +8.3% (non-scaling 0.15, 12 s); tie at the default deadline (+1.6%). Matched compliance (post hoc): +27.2-27.6%, +19.1-19.5%, -0.6 to +6.8%, +8.3%. Fixed-2048 headroom is a further 6.3-6.6% cheaper at 12-13 s; with test-week knowledge it is 9.8-27.0% cheaper than PRISM's best (stored E4b: 14-29%, two traces).
+- Remaining: Blocker: author decision D1 (notes/decisions_pending.md). Next: MemAdapt in Table IX / S14 at the regeneration; narrow the memory claim. Pass: baseline in the comparison and the claim matching it.
+- Suggested response: [pending D1] We added a memory-adaptive calibrated-quantile controller: it chooses the smallest memory size at which warm requests meet the deadline, from the same latency model PRISM uses, and provisions by the calibrated q0.9 rule. It adapts as intended (1024 MB at the default deadline, 2048 MB in every short-slack regime). In the regimes we tested it meets the target as PRISM does at 8-28% lower cost at 12-13 s, so we narrowed the memory claim: memory selection is needed when the default size cannot meet the deadline, and a simple warm-feasibility rule achieves it.
 
 ## R2.7 | Not fixed
 - Requests: (a) Scenarios where execution characteristics change during a run (CPU intensity, memory demand, execution time, initialisation latency): open.
-- Changed / rationale: Not started; the plan marks it P4, "cut first". If cut, RQ4 must be narrowed (R4.4).
-- Evidence: None new.
-- Remaining: Blocker: author decision (run or narrow). Next: plan #99-100, or narrow RQ4 (P-D R4.4). Pass: results for all families, or a scoped limitation.
-- Suggested response: [run: report] or: We did not run mid-run regime changes; we narrowed RQ4 to the regimes tested and state the limitation.
+- Changed / rationale: Not run. Options, costs and a recommendation are in notes/decisions_pending.md D4 (5d934d4).
+- Evidence: New context from the memory-adaptive baseline (7980b69): in every fixed regime a once-per-regime memory choice meets the target as PRISM does at equal or lower cost, so a mid-run change of execution characteristics is the remaining case in which an online memory decision could show value.
+- Remaining: Blocker: author decision D4 (run or narrow). Next: plan #99-100 with MemAdapt as comparator, or narrow RQ4 (R4.4). Pass: results for all families, or a scoped limitation.
+- Suggested response: [run: report] or: We did not run mid-run changes of execution characteristics; RQ4 is narrowed to the fixed regimes tested, where a simple memory-selection rule matches PRISM, and we state the limitation.
 
 ## R2.8 | Not fixed
 - Requests: (a) Measure warm execution times, initialisation delays, activation behaviour and cost on AWS Lambda or a similar platform: open. (b) Calibrate the simulators on them: open.
@@ -102,10 +102,10 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 
 ## R2.9 | Not fixed
 - Requests: (a) Evaluate less structured traffic (irregular bursts, unexpected periodicity changes, different predictability): open.
-- Changed / rationale: Not started (generator extension and runs, about seven hours in the plan).
-- Evidence: The stored Huawei replay has no trigger minutes assumed known; PRISM was still cheaper than static, scheduled and reactive there (results/tables/R1_real_traces.md), but costs and SLA outcomes are simulated.
-- Remaining: Blocker: scope. Next: plan #94-95. Pass: all families on the new traces.
-- Suggested response: [pending] We generate traces with irregular bursts and unannounced periodicity changes, with no trigger minute encoded, and report whether the predictive advantage survives.
+- Changed / rationale: Not run. Options, costs and a recommendation (remove the trigger-minute features and add an unannounced schedule change first) are in notes/decisions_pending.md D5 (5d934d4).
+- Evidence: The stored Huawei replay has no trigger minutes assumed known; PRISM was still cheaper than static, scheduled and reactive there (results/tables/R1_real_traces.md), but costs and SLA outcomes are simulated. The generator's spike schedule (minutes 0, 1, 30) is given to the forecaster as features.
+- Remaining: Blocker: author decision D5; scope. Next: plan #94-95 or the minimal version. Pass: all families on the new traces.
+- Suggested response: [pending] We remove the scheduled-spike features from the forecaster and add traces with unannounced schedule changes and irregular bursts, and report whether the predictive advantage survives.
 
 ## R2.10 | Not fixed
 - Requests: (a) Keep the distinction that only arrivals are real in the Huawei replay: guardrail. (b) Avoid presenting it as end-to-end validation: open (wording not checked; manuscript not opened).
@@ -115,11 +115,11 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Suggested response: We agree and keep the distinction throughout: the Huawei replay uses real arrivals with simulated execution, cold starts, billing and SLA outcomes, and is not presented as end-to-end validation.
 
 ## R2.11 | Partially fixed
-- Requests: (a) Effect of update rate, clipping bounds, feedback delay and initialisation: open (only the delay's dependence on the lag is fixed; initialisation, see R4.6). (b) Independent calibration per quantile level: resolved (implemented and evidenced; cost-compliance effect open).
-- Changed / rationale: PrismConfig.conformal_per_quantile (4702440, default off so existing runs are unchanged); feedback delay floored by the lag (be7a912).
-- Evidence: Synthetic test: shared offset gives q0.9 coverage 97.9%, independent offsets 90.0%, q0.99 99.0% in both. Stored traces, held-out test weeks: q0.9 coverage 98.0% -> 89.9% (stationary), 92.4% -> 89.8% (new spike); q0.99 unchanged (NA-7).
-- Remaining: Blocker: none external. Next: calibration sweep (plan #76-78); retune PRISM and QuantProv-q90 with independent offsets and compare at matched compliance. Pass: sweep table; cost-compliance comparison.
-- Suggested response: The reviewer is right about the shared factor: with it, the calibrated q0.9 covered 98% of outcomes in the stationary test weeks; with independent offsets it covers 90% while q0.99 is unchanged. The sweep over update rate, clipping and initialisation is [pending].
+- Requests: (a) Effect of update rate, clipping bounds, feedback delay and initialisation: resolved (sweep, pre-calibration). (b) Independent calibration per quantile level: resolved, including its cost-compliance effect. Manuscript text open.
+- Changed / rationale: PrismConfig.conformal_per_quantile (4702440, default off); feedback delay floored by the lag (be7a912); PrismConfig.conformal_s0 and scripts/revision/calibration_sweep.py (38f0d67); sweep outputs (dc528db, docs/revision/calibration/).
+- Evidence: Validation-selected, 20 held-out weeks: clipping never binds (wider bounds give identical runs); update rate and delay move cost -4.2% to +1.4% (weeks meeting 2%: 8-14 of 20); an initial offset of 0.4 makes selection less conservative (PRISM -4.9%, 8/20 weeks; QuantProv-q90 -5.8%, 7/20). Independent offsets: q0.9 coverage 98.0% -> 89.9% (stationary, NA-7); 6.8% / 5.7% cheaper at the selected settings but 6/20 weeks meet 2% (shared: 12/20, 11/20); at matched compliance -1.18% to +0.12% (post hoc). PRISM's selection is at eps 0.08, the grid edge, in 3-5 of 5 traces in every setting.
+- Remaining: Blocker: none external. Next: prespecify the calibration (shared or per quantile) before the regeneration; rerun on the reference platform. Pass: text states the sweep and the matched-compliance result.
+- Suggested response: The reviewer is right about the shared factor: with it the calibrated q0.9 covered 98% of outcomes in the stationary test weeks; with independent offsets it covers 90% and q0.99 is unchanged. Independent offsets do not improve the cost-compliance trade-off (-1.2% to +0.1% at matched compliance); at the selected settings they are cheaper but meet the target in fewer weeks. Clipping never binds, update rate and feedback delay move cost by -4.2% to +1.4%, and the initial offset matters through validation, where the submitted zero start makes selection conservative (see R4.6).
 
 ## R2.12 | Partially fixed
 - Requests: (a) Alternative estimators or conditions in which the estimate stays active: resolved (lowering the floor keeps it active). (b) Whether the component is needed under the default configuration: answered by evidence; manuscript text open.
@@ -132,7 +132,7 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Requests: (a) Quantify the solution-quality loss of the one-parameter restriction: resolved (static and end-to-end, distinguished). (b) Compare with a broader integer search: resolved. Manuscript text and in-repository provenance of the end-to-end script: open.
 - Changed / rationale: scripts/revision/integer_search_gap.py (main c7360fe, 6cb3eef); end-to-end figures from the author's integer_search_e2e.py (Linux); independent Windows check integer_search_e2e_check.py (50ac42f); anchors pinned (bc548e7).
 - Evidence: Static per-epoch gap 2.71% mean over 16 configurations (1.52-5.90%). End-to-end integer-search saving 1.92% mean (1.53-2.66%), Linux only; compliance worse in 4 of 6 runs; two runs cross the 2% target (103 stationary 1.93% -> 2.38%, 103 new spike 1.79% -> 2.08%). A cheaper vector existed in 96.6-99.7% of the epochs with a feasible decision (NA-4).
-- Remaining: Blocker: the author's script is not on this machine. Next: cp ~/Downloads/integer_search_e2e.py prism-repro/scripts/revision/, run it on Windows and Linux, commit outputs; apply P-A3. Pass: committed outputs for both platforms; text as P-A3.
+- Remaining: Blocker: the author's script is not on this machine (checked again 21 Nov 2026: scripts/revision/integer_search_e2e.py absent; not reconstructed). Next: cp ~/Downloads/integer_search_e2e.py prism-repro/scripts/revision/, run it on Windows and Linux, commit outputs; apply P-A3. Pass: committed outputs for both platforms; text as P-A3.
 - Suggested response: We ran a broader integer search. As a static benchmark the restriction costs 2.71% per epoch (16 configurations); end to end, refining PRISM's vectors saved 1.92% over six test weeks but raised violating windows in four of them and crossed the 2% target in two, so the per-epoch rule that licenses the cheaper vectors does not carry over fully to window compliance.
 
 ## R2.14 | Not fixed
@@ -151,14 +151,14 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 
 ## R2.16 | Partially fixed
 - Requests: (a) Pinned environment, dependency versions, seeds, configuration files and deterministic reproduction instructions: resolved. (b) State which results came from which software version: resolved in the repository; manuscript open. (c) Consistent conditions for all primary experiments: open (regeneration).
-- Changed / rationale: requirements.txt pins; byte-identical rerun gate through GBM training (24bb075); REPRODUCE.md (8bf6152, 69d5049, 95163b2); checksum verification fixed for Windows checkouts (efcfd12).
+- Changed / rationale: requirements.txt pins; byte-identical rerun gate through GBM training (24bb075); REPRODUCE.md (8bf6152, 69d5049, 95163b2); checksum verification fixed for Windows checkouts (efcfd12); Table VI measured under both scikit-learn versions (91a4d8b, R5.M6).
 - Evidence: Same machine: two independent runs byte-identical. Across platforms at identical pins, forecast-driven runs differ (PRISM cost up to 4.1%; NA-1 item 2); traces bit-identical. Checksums: fixed verifier flags exactly the changed files on v1-submitted, main and the branch (NA-2).
 - Remaining: Blocker: regeneration. Next: regenerate on the reference platform; state the platform with every figure (P-C3). Pass: check_reproducibility 6/6 on the reference platform.
 - Suggested response: The environment is pinned, seeds are deterministic and a gate checks byte-identical reruns. We also found that forecast-driven results depend on the platform at identical versions, so every figure is now produced on one reference platform, which we state.
 
 ## R2.17 | Partially fixed
 - Requests: (a) Discuss what the prototype discrepancy implies for the stability of the conclusions: open (manuscript). (b) Additional independent verification: resolved for the submitted code's level-choice statistic and E1 runs; the outcome is mixed.
-- Changed / rationale: Archived-tree reruns and the tie probe (e95fd8d); platform finding (69d5049).
+- Changed / rationale: Archived-tree reruns and the tie probe (e95fd8d); platform finding (69d5049); Table VI under scikit-learn 1.8.0 and 1.9.1 (91a4d8b): its conclusions hold under both (R5.M6).
 - Evidence: Submitted tree: 16 of 40,293 reproduced exactly on Linux / Python 3.13.18 (author's run); 10 of 40,280 on Windows. Not floating-point ties. Non-forecast policies reproduce bit for bit across platforms; forecast-driven ones do not (NA-5, NA-1).
 - Remaining: Blocker: none. Next: one paragraph (P-C3); cite the bound for corrected code (P-A2). Pass: paragraph present.
 - Suggested response: The prototype cannot be reconstructed and we do not explain the discrepancy away. We verified the present results independently: the published level-choice count reproduces exactly on the reference platform, non-forecast results reproduce on every platform, and forecast-driven results reproduce only on the reference platform, which is why all reported figures come from it.
@@ -207,10 +207,10 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 
 ## R3.2 | Not fixed
 - Requests: (a) Add a published controller, e.g. the hybrid histogram policy of [3], to Table V: open.
-- Changed / rationale: Not started: specifying [3] precisely enough to implement, a correctness gate against a published characteristic, and tuning exceed two hours and need the paper [3].
-- Evidence: None.
-- Remaining: Blocker: scope; author reading of [3]. Next: plan #89-92. Pass: implementation reproduces a published characteristic; tuned under the common rule; in the main table.
-- Suggested response: [pending] We implemented the hybrid histogram policy of [3], checked it against a published characteristic, tuned it under the common rule and added it to the main comparison.
+- Changed / rationale: Not built. notes/decisions_pending.md D2 (5d934d4) sets out the scope problem: the hybrid histogram policy sets keep-alive and pre-warm windows for intermittently invoked functions, and at the paper's load no function is idle for a minute, so a faithful version has no published characteristic to reproduce here. Options and costs there.
+- Evidence: Mean 600 executions per minute per stage (Table S1); none of the synthetic traces leaves a stage idle for a minute.
+- Remaining: Blocker: author decision D2 and the author's reading of [3]. Next: plan #89-92 if (a) is chosen. Pass: implementation reproduces a published characteristic, tuned under the common rule, in the main table; or the scope argument in Section II.
+- Suggested response: [pending D2] Either: we implemented the hybrid histogram policy of [3], checked it against a published characteristic and added it to Table V. Or: the hybrid histogram policy manages keep-alive for intermittently invoked functions; at the loads we study no function is ever idle, so it reduces to keeping every instance warm, and we explain in Section II why keep-alive policies and provisioned concurrency address different regimes.
 
 ## R3.3 | Not fixed
 - Requests: (a) A test without the simulator matched to Eq. (14): open (closed-loop event level). (b) Move Table X next to Table V: open (manuscript).
@@ -240,12 +240,12 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Remaining: Blocker: AWS constants (regeneration); author's release decision. Next: regenerate on the reference platform; release to the editor. Pass: tables regenerated from one commit; repository reachable.
 - Suggested response: [pending] Every table is regenerated from one corrected build in one pinned environment on one reference platform, and the repository is available to the reviewers through the editor.
 
-## R3.7 | Not fixed
-- Requests: (a) Add a simple memory-adaptive baseline, or (b) soften the abstract: both open.
-- Changed / rationale: Shares R2.6 (baseline) and P-A6 (softening).
-- Evidence: Fixed-2048 MB headroom 14-29% cheaper (stored E4b analysis).
-- Remaining: Blocker: author decision between (a) and (b). Next: R2.6 or P-A6. Pass: either the baseline in the comparison or the abstract narrowed.
-- Suggested response: [pending: whichever is done] We add a memory-adaptive baseline [or: we narrowed the abstract's memory claim to what Table IX supports].
+## R3.7 | Partially fixed
+- Requests: (a) Add a simple memory-adaptive baseline: resolved (built and compared, pre-calibration). (b) Soften the abstract: open (manuscript; author decision D1).
+- Changed / rationale: Shares R2.6 (a396f40, 7980b69) and P-A6 (softening).
+- Evidence: As R2.6: the baseline meets the target as PRISM does at 8-28% lower cost at 12-13 s, and ties at the default deadline.
+- Remaining: Blocker: author decision D1. Next: P-A6 with the R2.6 evidence. Pass: the baseline in the comparison and the abstract matching it.
+- Suggested response: We added a simple memory-adaptive baseline (see R2.6). Because it matches PRISM's compliance at lower cost in the short-slack regimes, we also narrowed the abstract's memory claim to what Table IX supports [pending D1].
 
 ## R3.8 | Not fixed
 - Requests: (a) Shorten the abstract: open. (b) Align §I with §VII-B: open. (c) Consistent AI disclosure: open. (d) Funding statement: open.
@@ -255,11 +255,11 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Suggested response: All four done: the abstract is rewritten against the claims table and shortened, §I matches §VII-B, the AI-use disclosure is consistent and a funding statement is added.
 
 ## R4.1 | Partially fixed
-- Requests: (a) State what PRISM reduces to at the default deadline: answer established by evidence; manuscript text open (P-A1). (b) Test the optimizer where the reduction fails (stage-specific demand; utilisation above break-even with a wider eps grid), or present PRISM as one rule among the families and adjust title and contributions: stage-specific demand resolved as a static test; above break-even open; framing decision open.
-- Changed / rationale: Stage-demand probe (main 2bdeaba), integer search (main c7360fe), anchors (bc548e7).
-- Evidence: Reduction confirmed: 16 of 40,293 above smallest (submitted, Linux); under 0.07% for corrected code. Stage-specific static gaps 5.06% and 5.78%; fan-out infeasible on the paper's grid for every eps tested, 17.40% gap at level_hi 4.0 and eps 0.02 (NA-4).
-- Remaining: Blocker: author's framing decision (the Phase D checkpoint task). Next: end-to-end stage-specific runs; above-break-even runs with GRIDS_WIDE. Pass: decision written with this evidence; title and contributions follow it.
-- Suggested response: The reduction is correct and we now state it in §IV. We took the first branch: with stage-specific demand the one-parameter family is the binding limitation (static gaps of 5-6%, and no feasible member on our grid under a 3x fan-out); end-to-end runs in that regime and above break-even are [pending], and the contributions are scoped to what they show.
+- Requests: (a) State what PRISM reduces to at the default deadline: answer established by evidence, with its eps range (corrected); manuscript text open (P-A1). (b) Test the optimizer where the reduction fails (stage-specific demand; utilisation above break-even with a wider eps grid), or present PRISM as one rule among the families and adjust title and contributions: both tests run end to end (stated null); framing decision open.
+- Changed / rationale: Stage-demand probe (main 2bdeaba), integer search (main c7360fe), anchors (bc548e7); stage-specific demand end to end and the above-break-even regimes (85d909e, bde7d25, 066f69c).
+- Evidence: Reduction at the submitted run's eps (0.02-0.05): 16 of 40,293 above smallest (submitted, Linux), at most 0.11% for current code. It fails at eps 0.08 (23.7%) and above (72-100% at 0.10-0.20); current code's validation selects 0.08 for three traces (14.7% of feasible epochs at its selections). End to end: no consistent advantage (R2.5); above break-even PRISM is 9-11% costlier. The static fan-out infeasibility (kappa 0.35, NA-4) does not carry over end to end: feasible in 96.7-100% of epochs, 19/20 weeks within 2%.
+- Remaining: Blocker: author's framing decision. Next: decide with this evidence, which no longer supports the first branch (a regime where the optimizer pays); title and contributions follow; P-A1 and P-A2 with the corrected wording. Pass: decision written; title and contributions follow it.
+- Suggested response: The reduction is correct at the risk budgets the paper selected, and we now state it in Section IV with its range: at larger eps the optimizer does choose above the smallest feasible level. We ran both suggested tests end to end. Neither shows a consistent advantage over a calibrated quantile rule with the same information and allocation: with a wider eps grid the difference is within +/- 2.2%, above break-even PRISM costs 9-11% more, and under stage-specific demand its 3-7% advantage over the phi-aware rule comes from its candidate family's allocation. We therefore [present PRISM as one calibrated rule among the families and adjust the title and contributions: author decision].
 
 ## R4.2 | Not fixed
 - Requests: (a) A closed-loop event-level simulation with exact attainment as the primary evaluation: open.
@@ -276,11 +276,11 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Suggested response: We ran L = 5 and 10 minutes with every family retuned: PRISM's cost moved by under 3% and stayed about 25% below reactive provisioning in our simulations. The constants are now measured on AWS Lambda [pending], and the sweep is centred on the measured lag.
 
 ## R4.4 | Not fixed
-- Requests: (a) Narrow RQ4, or test it with per-stage memory and a within-run change: open. (b) Narrow the graphical-abstract caption: open (manuscript).
-- Changed / rationale: P-A6 (caption), P-D (RQ4). Per-stage memory and mid-run change are P4.
-- Evidence: Fixed-2048 MB headroom 14-29% cheaper in every short-slack regime (stored E4b); PRISM's memory switching holds under all three init directions at 12 s (a4187f7).
-- Remaining: Blocker: author decision (test or narrow). Next: P-A6 and narrow RQ4, or plan #97-100. Pass: RQ4 matches the evidence.
-- Suggested response: We accept the caption criticism and narrowed it. RQ4 is narrowed to the fixed regimes tested [or: per-stage memory and within-run change are tested, pending].
+- Requests: (a) Narrow RQ4, or test it with per-stage memory and a within-run change: open (author decision D4). (b) Narrow the graphical-abstract caption: open (manuscript).
+- Changed / rationale: P-A6 (caption), P-D (RQ4); options and costs in notes/decisions_pending.md D4 (5d934d4). Per-stage memory and mid-run change are P4, not built.
+- Evidence: Memory-adaptive baseline (7980b69): in every short-slack regime a once-per-regime memory choice meets the target as PRISM does at equal or lower cost (PRISM +8.3% to +27.9% at 12-13 s); fixed-2048 headroom cheaper still. PRISM's memory switching holds under all three init directions at 12 s (a4187f7).
+- Remaining: Blocker: author decision D4 (test or narrow). Next: P-A6 and narrow RQ4, or plan #97-100. Pass: RQ4 matches the evidence.
+- Suggested response: We accept the caption criticism and narrowed it. RQ4 is narrowed to the fixed regimes tested, where a simple memory-selection rule meets the target at lower cost than PRISM [or: per-stage memory and within-run change are tested, pending D4].
 
 ## R4.5 | Not fixed
 - Requests: (a) Name a pipeline with per-record deadlines: open (manuscript).
@@ -289,12 +289,12 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Remaining: Blocker: none. Next: plan #117. Pass: named use case in §I.
 - Suggested response: Added to the motivation: [named synchronous or interactive pipeline in which each record carries its own deadline].
 
-## R4.6 | Not fixed
-- Requests: (a) Warm the conformal offset before validation: open.
-- Changed / rationale: PrismConfig.conformal_warmup_days implemented and tested (92d304c, default 0). A 7-day warm-up over the days before validation leaves the offset at about 0.04, because those days are inside the forecaster's training range; a useful warm-up needs out-of-sample days and so a different training split, which changes every forecast-driven result.
-- Evidence: Offset at the start of validation: 0.04 (traces 101-104), -0.01 (105), against 0.19-0.34 reached out of sample (NA-7).
-- Remaining: Blocker: author decision on the training split. Next: e.g. fit on days 0-11, warm on 11-14; retune (R5.M3). Pass: offset at validation start close to its out-of-sample level; retuned selections reported.
-- Suggested response: [pending] The offset is warmed on held-out days before the validation week, and every affected family is retuned under the warm start.
+## R4.6 | Partially fixed
+- Requests: (a) Warm the conformal offset before validation: resolved as a PROVISIONAL split (built and evaluated); adoption is the author's decision D3.
+- Changed / rationale: PrismConfig.conformal_warmup_days (92d304c) and PrismConfig.forecast_train_days (31b8c50, default 14 byte-identical); scripts/revision/provisional_split.py and results (ccd3649, docs/revision/provisional_split/).
+- Evidence: Fit on days 0-10, warm on the out-of-sample days 11-13: the offset enters validation at 0.22-0.37 (submitted: 0), close to its level at the start of the test week (0.26-0.46). Side effect: validation is no longer conservative, the rule selects eps 0.08 (grid edge) on all five traces, and PRISM meets 2% in 9/20 test weeks with a pooled 2.11% (submitted: 12/20, 1.78%). The in-sample warm-up of the submitted split leaves the offset near 0.04 (NA-7).
+- Remaining: Blocker: author decision D3. Next: adopt the warm-up at the regeneration together with a selection rule fixed in advance and checked on unseen seeds 106-130. Pass: offset warm at validation start; retuned selections and their test compliance reported.
+- Suggested response: [pending D3] We now warm the offset on held-out days before the validation week, so validation starts from the offset level the test week sees. This removed a conservatism in the submitted selection, and with the same selection rule test compliance fell; we therefore [adopted a prespecified selection rule, validated on unseen traces / report the effect].
 
 ## R4.7 | Not fixed
 - Requests: (a) Acknowledge that the real-trace replay cannot separate the families: open (manuscript). (b) Widen the grids whose edges were selected (PRISM and headroom at edges in four of five traces): the observation is verified and widened grids are defined, but no run uses them, so open.
@@ -345,12 +345,12 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Remaining: Blocker: AWS (measured centre). Next: RQ3 matched-compliance per lag and direction; more traces for the init runs; centre on measured values. Pass: sweep tables on measured constants.
 - Suggested response: We added both. [pre-calibration figures above; final values pending] The predictive advantage survives longer lags in our simulations, the recalibration grows more conservative on its own, and memory co-optimisation still switches to larger memory when initialisation does not shorten with memory, at 3-5% higher cost.
 
-## R5.M3 | Not fixed
-- Requests: (a) Warm the offset before validation: open (shares R4.6). (b) Retune the no-recalibration ablation: open. (c) Report each selected setting's validation-week results beside its test results: open.
-- Changed / rationale: Warm-up option implemented but ineffective in-sample (R4.6). The new sweeps record each selected setting's validation rate (docs/revision/sensitivity/rows.jsonl, val_viol), not yet reported in the requested form.
-- Evidence: Offset at the start of validation 0.04 with a 7-day in-sample warm-up (NA-7).
-- Remaining: Blocker: author decision on the training split. Next: out-of-sample warm-up, retune PRISM, QuantProv and the ablation, report validation beside test. Pass: the three items in one table.
-- Suggested response: [pending] The offset is warmed before validation, PRISM, QuantProv and the no-recalibration ablation are retuned under the warm start, and validation-week results are reported beside test-week results for every selected setting.
+## R5.M3 | Partially fixed
+- Requests: (a) Warm the offset before validation: resolved as a PROVISIONAL split (shares R4.6). (b) Retune the no-recalibration ablation: resolved under both splits. (c) Report each selected setting's validation-week results beside its test results: resolved (one table, both splits). Adoption of the split is the author's decision D3.
+- Changed / rationale: As R4.6 (31b8c50, ccd3649).
+- Evidence: Validation beside test, mean over traces (docs/revision/provisional_split/summary.txt has every trace and setting). Submitted: PRISM validation 1.58% / test 1.78% (12/20 weeks), QuantProv-q90 1.79% / 1.95% (11/20), no recalibration 1.88% / 2.98% (5/20). PROVISIONAL: PRISM 1.55% / 2.11% (9/20), QuantProv-q90 1.64% / 2.23% (8/20), no recalibration 1.85% / 2.97% (6/20).
+- Remaining: Blocker: author decision D3. Next: as R4.6; then the same table from the regeneration. Pass: the three items in one table from the adopted split.
+- Suggested response: [pending D3] The offset is warmed before validation; PRISM, QuantProv-q90 and the no-recalibration ablation are retuned under the warm start; and each selected setting's validation-week result is reported beside its test-week results. The ablation's test compliance is the same under both splits (about 3% of windows), so recalibration, not the split, is what keeps PRISM near target.
 
 ## R5.M4 | Not fixed
 - Requests: (a) Run more traces: open (30 prepared). (b) All families under the shifted-trigger scenario: open. (c) Widen every grid whose edge is selected: open (audit done, GRIDS_WIDE defined, no run). (d) Narrower option, state the limits in the abstract: open.
@@ -366,12 +366,12 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Remaining: Blocker: none. Next: text per P-A1 and P-B1. Pass: conclusions state it.
 - Suggested response: We accept the analysis. Infeasible candidates are now ranked by their violation quantile, and the conclusions state that the chance constraint acted on capacity as a tuned quantile rule. On the floor: with eps retuned, lowering it made the estimate active but raised cost at equal compliance, so we keep it and describe it as a conservative constant.
 
-## R5.M6 | Not fixed
-- Requests: (a) Make the code available to the reviewers through the editor: open (author's outward action). (b) Report the Table VI differences under both scikit-learn versions: open.
-- Changed / rationale: Repository prepared. New finding to report with (b): forecast-driven results also depend on the platform at identical package versions (PRISM cost up to 4.1%), while non-forecast results reproduce bit for bit.
-- Evidence: NA-1 item 2; check_reproducibility on the archived tree, Windows: 3 of 6 identical.
-- Remaining: Blocker: a scikit-learn 1.9.1 environment (not installed here) and the release decision. Next: run Table VI under 1.8.0 and 1.9.1 on the reference platform; release. Pass: both columns reported; repository reachable.
-- Suggested response: [pending] The repository is available through the editor, and Table VI is reported under both scikit-learn versions. We also report that forecast-driven results reproduce exactly only on the reference platform, which is where every reported figure comes from.
+## R5.M6 | Partially fixed
+- Requests: (a) Make the code available to the reviewers through the editor: open (author's outward action). (b) Report the Table VI differences under both scikit-learn versions: resolved on one Windows machine; the reference-platform rerun is open.
+- Changed / rationale: scripts/revision/table6_versions.py and its outputs (91a4d8b): Table VI in two environments identical except scikit-learn (1.8.0, 1.9.1), side by side. Earlier finding stands: forecast-driven results also depend on the platform at identical versions (PRISM cost up to 4.1%), while non-forecast results reproduce bit for bit.
+- Evidence: 3 of 20 validation selections change; single-run violating-window rates move by at most 0.74 points and cost by at most 8.4%. PRISM vs QuantProv-q90 cost, 1.8.0 -> 1.9.1: stationary +1.6 +/- 2.3 -> +0.2 +/- 2.9%, growth +1.3 +/- 2.2 -> -0.2 +/- 2.9%, bursty +0.0 +/- 3.5 -> -1.5 +/- 3.0%, new spike -0.1 +/- 3.1 -> -1.3 +/- 2.9%; every interval includes zero in both. PRISM stays 2.9-21.0% costlier than PredHead and PredHead+S with fewer violating windows in both (docs/revision/table6_versions/comparison.txt; Windows, Python 3.12.9, current code). NA-1 item 2 for the platform effect.
+- Remaining: Blocker: release decision (author). Next: rerun table6_versions.py on the reference platform at the regeneration; release the repository through the editor. Pass: both columns from the reference platform; repository reachable.
+- Suggested response: The repository is available through the editor [pending release]. Under scikit-learn 1.8.0 and 1.9.1, three of twenty validation selections change and single-run violating-window rates move by at most 0.74 points; every conclusion of Table VI holds under both (the PRISM-QuantProv-q90 cost differences shift by 1.3-1.5 points and all intervals include zero). We also report that forecast-driven results reproduce exactly only on the reference platform, which is where every reported figure comes from.
 
 ## R5.M7 | Not fixed
 - Requests: (a) Label the 13-29% saving as pooled with per-trace ranges: open. (b) Label "within 1.6%" as pooled, with per-scenario spreads: open. (c) Report the Huawei and synthetic orderings separately: open. (d) Say all paired cost intervals against QuantProv-q90 include zero: open. (e) Say which orderings held: open. (f) Rename the "calibrated-90%-quantile rule": open.
@@ -465,11 +465,11 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Suggested response: [pending] A prespecification was frozen before the production runs, and every analysis in the paper and supplement is labelled prespecified, post hoc, corrected or version-specific.
 
 ## R6.7 | Partially fixed
-- Requests: (a) Explain the optimizer's practical value when it rarely chose above the smallest feasible capacity: resolved as an evidenced answer; manuscript text open.
-- Changed / rationale: Shares R2.5, R4.1, R7.1.
-- Evidence: Above the smallest feasible level in 16 of 40,293 feasible epochs (submitted code), under 0.07% for corrected code; not ties (each such choice saves 1e-5 to 6e-3 of the epoch cost). Static restriction cost 2.71%; end-to-end integer-search saving 1.92% with worse compliance in 4 of 6 runs; family infeasible under fan-out on the paper's grid (NA-4, NA-5).
-- Remaining: Blocker: none. Next: P-A1 to P-A4. Pass: text applied.
-- Suggested response: Under the evaluated conditions the optimizer's practical value is small: it reduces to choosing the smallest feasible member of a one-parameter family. Its value lies in regimes the paper did not evaluate end to end, such as stage-specific demand, where that family becomes the limitation; we state both.
+- Requests: (a) Explain the optimizer's practical value when it rarely chose above the smallest feasible capacity: resolved as an evidenced answer, now with its eps range and end-to-end evidence; manuscript text open.
+- Changed / rationale: Shares R2.5, R4.1, R7.1 (066f69c).
+- Evidence: Above the smallest feasible level in 16 of 40,293 feasible epochs (submitted code) and at most 0.11% for current code at eps up to 0.05; not ties (each such choice saves 1e-5 to 6e-3 of the epoch cost). At eps 0.08 23.7%, at 0.10-0.20 72-100%; end to end the cost against QuantProv-q90 then stays within -1.2 +/- 2.2% (wider grid) or turns against PRISM (+11.1 +/- 0.8% above break-even). Static restriction cost 2.71%; end-to-end integer-search saving 1.92% with worse compliance in 4 of 6 runs (NA-4, NA-5).
+- Remaining: Blocker: none. Next: P-A1 to P-A4 with the corrected wording. Pass: text applied.
+- Suggested response: Under the evaluated conditions the optimizer's practical value is small. Where it does choose above the smallest feasible level, at larger risk budgets, under stage-specific demand and above break-even, the end-to-end cost is no better than a calibrated quantile rule with the same information, and above break-even it is worse. We state this, with the conditions tested.
 
 ## R6.8 | No change warranted
 - Requests: (a) Preserve the negative-result reporting and limitation discussion: guardrail, verified for this revision.
@@ -479,11 +479,11 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Suggested response: Preserved. The revision reorganises where the negative findings sit but removes or softens none, and it adds several found during the revision.
 
 ## R7.1 | Partially fixed
-- Requests: (a) Explain when the optimizer gives a clear advantage over simpler calibrated provisioning, and under which operating conditions the complexity is justified: resolved as an evidenced, narrow answer (static evidence for the conditions); manuscript text and end-to-end confirmation open.
-- Changed / rationale: Shares R2.5, R4.1, R6.7.
-- Evidence: As R6.7; stage-specific demand static gaps 5.06% (filter) and 5.78% (batch), fan-out infeasible on the paper's grid (NA-4).
-- Remaining: Blocker: none. Next: end-to-end runs under stage-specific demand; P-A4. Pass: stated conditions backed by end-to-end results, or labelled static.
-- Suggested response: Not under the conditions the paper evaluated, where every stage sees the same demand. Where stages see different demand (filtering, batching, fan-out) the one-parameter family the optimizer searches is what limits it, which is where a broader search can pay; these results are static benchmarks so far [end-to-end pending].
+- Requests: (a) Explain when the optimizer gives a clear advantage over simpler calibrated provisioning, and under which operating conditions the complexity is justified: resolved as an evidenced, narrow answer with end-to-end results (pre-calibration); manuscript text open.
+- Changed / rationale: Shares R2.5, R4.1, R6.7 (066f69c).
+- Evidence: As R2.5: no regime tested gives a consistent end-to-end advantage; the stage-specific advantage over the phi-aware rule (3.1-6.8%) comes from the allocation shape, and above break-even PRISM is 9-11% costlier.
+- Remaining: Blocker: none (framing decision R4.1). Next: P-A4 with the end-to-end result. Pass: stated conditions backed by end-to-end results.
+- Suggested response: In the regimes we tested end to end, none: with a wider eps grid, above break-even and under stage-specific demand, a calibrated quantile rule with the same information and per-stage allocation matches PRISM or does better. We say so, and describe where the complexity would have to pay for itself [pending the framing decision, R4.1].
 
 ## R7.2 | Not fixed
 - Requests: (a) Which simulation assumptions contribute most to the higher event-level violation rates: open. (b) How they affect PRISM in a real environment: open.
@@ -499,16 +499,16 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Remaining: Blocker: regeneration. Next: as R2.3. Pass: as R2.3.
 - Suggested response: The relation is empirical: the weekly violating-window rate rises monotonically with eps, and a prediction interval fitted on validation weeks covered [pending] of held-out weeks. Because eps bounds a per-record probability, it must sit below the 1% per-window allowance when warm misses dominate, which we now state.
 
-## R7.4 | Not fixed
-- Requests: (a) Compare with a simpler memory-adaptive calibrated-quantile controller: open.
-- Changed / rationale: Shares R2.6.
+## R7.4 | Partially fixed
+- Requests: (a) Compare with a simpler memory-adaptive calibrated-quantile controller: resolved (pre-calibration); manuscript inclusion is the author's decision D1.
+- Changed / rationale: Shares R2.6 (a396f40, 7980b69).
 - Evidence: As R2.6.
-- Remaining: Blocker: design decision; scope. Next: plan #83-85. Pass: as R2.6.
-- Suggested response: [pending] Added: a calibrated-quantile controller that adjusts memory from observed latency, tuned under the common rule and verified to adapt.
+- Remaining: Blocker: author decision D1. Next: as R2.6. Pass: as R2.6.
+- Suggested response: Added: a calibrated-quantile controller that chooses memory by estimated warm-service feasibility, tuned under the common rule and verified to adapt. In the regimes tested, joint optimisation provides no benefit beyond this automatic memory selection: the simple controller meets the target at equal or lower cost (see R2.6).
 
 ## R7.5 | Partially fixed
 - Requests: Sensitivity of decisions, cost and compliance, especially under sudden spikes, to: (a) cold-start behaviour: resolved, pre-calibration (initialisation direction). (b) Activation lag (implied by the spike scenarios): resolved, pre-calibration. (c) Upper-tail demand behaviour: open. (d) Memory-dependent execution times: open. (e) Scale-in smoothing: open.
-- Changed / rationale: a4187f7 (with per-scenario results, including the new spike).
+- Changed / rationale: a4187f7 (with per-scenario results, including the new spike). The calibration sweep (dc528db, R2.11) adds update rate, clipping, feedback delay and initial offset; none of (a)-(e) is among them, so the items below are unchanged.
 - Evidence: Lag sweep by scenario: PRISM new-spike violating windows 2.11% / 2.50% / 2.26% at L = 2 / 5 / 10 (docs/revision/sensitivity/rows.jsonl); init-direction results NA-7.
 - Remaining: Blocker: AWS for measured centres. Next: plan #80 and the Phase S set (upper tail, nonscaling, hysteresis). Pass: each sweep centred on a measured value.
 - Suggested response: [partly pending] We sweep each assumption around a measured centre and report the spike scenarios separately; lag and initialisation are done in simulation, the rest are [pending].
