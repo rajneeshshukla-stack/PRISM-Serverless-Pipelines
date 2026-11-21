@@ -149,6 +149,15 @@ changes the forecast-driven inputs. No dependency version is identified as the c
 than 0.07% of the epochs with a feasible candidate (40,320 epochs per run set), in every environment tested"
 (largest observed share 26 of 40,307 = 0.065%).
 
+**Correction (21 Nov 2026).** That bound is for the selections the diagnostic fixes, `SEL = {101: 0.02, 102: 0.03,
+103: 0.05, 104: 0.05, 105: 0.05}` (the submitted run's). In `scripts/revision/stage_demand_e2e.py` (common demand,
+each eps on all 20 test weeks, current code, Windows) the above-smallest counts are: eps 0.005 and 0.01, none;
+0.02, 31 of 40,278 (0.077%); 0.03, 43 of 40,307 (0.107%); 0.05, 28 of 40,317 (0.069%); 0.08, the top of the grid,
+9,548 of 40,320 (23.7%). Current code's own validation selects 0.08 for traces 103-105, and at its selections
+(0.05, 0.03, 0.08, 0.08, 0.08) 5,908 of 40,316 feasible epochs (14.7%) are above the smallest. So "below 0.07%"
+holds for the diagnostic's per-trace eps, not for every eps up to 0.05 (at most 0.11% there), and not at 0.08.
+Cite the bound only with its eps values.
+
 ## 6. Cold-hit floor and weekly compliance (R2.12, R2.4)
 
 Rows: `docs/revision/kappa_floor/rows_{101..105}.jsonl` (`8d8a816`; `python scripts/revision/kappa_floor_retune.py .

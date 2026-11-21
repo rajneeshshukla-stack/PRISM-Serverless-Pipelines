@@ -1,0 +1,189 @@
+PRE-CALIBRATION, EXPLORATORY. Fast simulator, assumed constants, current code. Environment: {'platform': 'Windows-11-10.0.26200-SP0', 'python': '3.12.9', 'numpy': '2.4.4', 'scipy': '1.17.1', 'sklearn': '1.8.0'}.
+Seeds 101-105 x 4 held-out test scenarios = 20 weeks per cell; violating windows pooled over the week (672 windows, 2% = 13 windows allowed).
+
+=== P common (phi = None)
+  (1) validation-selected, 20 held-out weeks: mean cost USD/week | mean violating windows | weeks within 2% | billing utilisation | PRISM epochs above the smallest feasible level
+    PRISM                  1150.1 |  1.78% | 12/20 | 0.439 | 5908 of 40316 (14.7%) | selected [0.03, 0.05, 0.08]
+    QuantProv_q90          1141.8 |  1.95% | 11/20 | 0.443 | selected [0.7, 0.8, 0.9]
+    PredHead+S             1058.2 |  2.77% |  6/20 | 0.517 | selected [1.0, 1.1, 1.2, 1.3]
+    PRISM vs QuantProv_q90, paired over 20 weeks: cost +0.7 +/- 1.0% (cheaper in 8/20), violating windows -0.17 +/- 0.14 points
+    PredHead+S vs QuantProv_q90, paired over 20 weeks: cost -7.1 +/- 2.1% (cheaper in 19/20), violating windows +0.82 +/- 0.40 points
+  (2) POST HOC matched compliance (per trace, frontier over the parameter, mean of 4 test weeks): cost relative to QuantProv_q90 at equal violating-window rate
+    at 1.0%: PRISM -2.27% (traces -0.4, -3.9, -3.9, -1.0, -2.1; 5/5)
+    at 1.5%: PRISM -1.41% (traces -0.9, +0.4, -1.8, -2.4, -2.3; 5/5)
+    at 2.0%: PRISM -0.52% (traces -0.2, +0.0, -2.4, -1.7, +1.7; 5/5)
+  (3) PRISM per eps over the 20 test weeks: eps | mean cost | mean violating windows | utilisation | epochs above the smallest feasible level
+       0.005 |    1505.4 |  0.33% | 0.279 |   0.0% of 39015 feasible (of 40320 epochs)
+       0.010 |    1410.9 |  0.56% | 0.299 |   0.0% of 39920 feasible (of 40320 epochs)
+       0.020 |    1335.2 |  0.75% | 0.327 |   0.1% of 40278 feasible (of 40320 epochs)
+       0.030 |    1282.8 |  0.94% | 0.351 |   0.1% of 40307 feasible (of 40320 epochs)
+       0.050 |    1192.6 |  1.37% | 0.403 |   0.1% of 40317 feasible (of 40320 epochs)
+       0.080 |    1093.0 |  2.28% | 0.480 |  23.7% of 40320 feasible (of 40320 epochs)
+
+=== P filter (phi = (1.0, 1.0, 0.5, 0.5))
+  (1) validation-selected, 20 held-out weeks: mean cost USD/week | mean violating windows | weeks within 2% | billing utilisation | PRISM epochs above the smallest feasible level
+    PRISM                   864.5 |  1.85% | 12/20 | 0.468 | 10994 of 40320 (27.3%) | selected [0.05, 0.08]
+    PRISM-phi               889.1 |  2.12% |  8/20 | 0.451 | 6517 of 40315 (16.2%) | selected [0.03, 0.08]
+    QuantProv_q90           893.3 |  2.17% |  8/20 | 0.443 | selected [0.7, 0.8, 0.9]
+    PredHead+S              834.2 |  2.99% |  6/20 | 0.510 | selected [1.0, 1.1, 1.2, 1.4]
+    QuantProv_q90-blind     915.5 |  1.48% | 16/20 | 0.418 | selected [0.6, 0.7] [REFERENCE: ignores phi]
+    PRISM vs QuantProv_q90, paired over 20 weeks: cost -3.1 +/- 1.4% (cheaper in 16/20), violating windows -0.32 +/- 0.19 points
+    PRISM-phi vs QuantProv_q90, paired over 20 weeks: cost -0.5 +/- 1.6% (cheaper in 12/20), violating windows -0.04 +/- 0.21 points
+    PredHead+S vs QuantProv_q90, paired over 20 weeks: cost -6.5 +/- 2.2% (cheaper in 18/20), violating windows +0.83 +/- 0.52 points
+    QuantProv_q90-blind vs QuantProv_q90, paired over 20 weeks: cost +2.6 +/- 1.2% (cheaper in 5/20), violating windows -0.68 +/- 0.25 points
+  (2) POST HOC matched compliance (per trace, frontier over the parameter, mean of 4 test weeks): cost relative to QuantProv_q90 at equal violating-window rate
+    at 1.0%: PRISM -7.78% (traces -6.1, -7.4, -9.3, -7.2, -8.9; 5/5); PRISM-phi -2.50% (traces -0.6, -3.8, -4.1, -2.7, -1.3; 5/5); QuantProv_q90-blind -6.03% (traces -5.7, -5.4, -6.4, -7.4, -5.2; 5/5)
+      same allocation shape: PRISM vs QuantProv_q90-blind -1.85% (traces -0.4, -2.0, -3.1, +0.2, -3.9; 5/5)
+    at 1.5%: PRISM -5.75% (traces -5.6, -5.7, -6.6, -7.1, -3.8; 5/5); PRISM-phi -0.99% (traces -0.8, +0.9, -1.3, -2.7, -1.1; 5/5); QuantProv_q90-blind -3.69% (traces -5.2, -2.0, -5.5, -6.2, +0.6; 5/5)
+      same allocation shape: PRISM vs QuantProv_q90-blind -2.11% (traces -0.4, -3.8, -1.2, -0.9, -4.3; 5/5)
+    at 2.0%: PRISM -4.02% (traces -4.8, -4.4, -5.3, -6.3, +0.7; 5/5); PRISM-phi -0.22% (traces -0.9, +1.1, -0.5, -1.6, +0.9; 5/5); QuantProv_q90-blind +0.36% (traces -1.2, +2.1, -3.3, -1.1, +5.2; 5/5)
+      same allocation shape: PRISM vs QuantProv_q90-blind -4.34% (traces -3.7, -6.4, -2.1, -5.3, -4.3; 5/5)
+  same allocation shape, validation-selected: PRISM vs QuantProv_q90-blind cost -5.5 +/- 1.1% (cheaper in 20/20), violating windows +0.36 +/- 0.24 points
+  (3) PRISM per eps over the 20 test weeks: eps | mean cost | mean violating windows | utilisation | epochs above the smallest feasible level
+       0.005 |    1322.1 |  0.09% | 0.227 |   0.0% of 39486 feasible (of 40320 epochs)
+       0.010 |    1226.2 |  0.19% | 0.251 |   0.0% of 40223 feasible (of 40320 epochs)
+       0.020 |    1125.6 |  0.38% | 0.287 |   0.0% of 40305 feasible (of 40320 epochs)
+       0.030 |    1041.6 |  0.60% | 0.328 |   0.0% of 40316 feasible (of 40320 epochs)
+       0.050 |     917.7 |  1.24% | 0.414 |   0.2% of 40320 feasible (of 40320 epochs)
+       0.080 |     850.4 |  1.95% | 0.483 |  33.5% of 40320 feasible (of 40320 epochs)
+  (3) PRISM-phi per eps over the 20 test weeks: eps | mean cost | mean violating windows | utilisation | epochs above the smallest feasible level
+       0.005 |    1233.1 |  0.31% | 0.274 |   0.0% of 38574 feasible (of 40320 epochs)
+       0.010 |    1128.8 |  0.52% | 0.291 |   0.0% of 39522 feasible (of 40320 epochs)
+       0.020 |    1060.7 |  0.80% | 0.319 |   0.2% of 40188 feasible (of 40320 epochs)
+       0.030 |    1014.0 |  0.97% | 0.345 |   0.2% of 40290 feasible (of 40320 epochs)
+       0.050 |     939.6 |  1.51% | 0.397 |   0.0% of 40310 feasible (of 40320 epochs)
+       0.080 |     856.2 |  2.48% | 0.479 |  18.5% of 40320 feasible (of 40320 epochs)
+
+=== P fanout (phi = (1.0, 1.0, 3.0, 3.0))
+  (1) validation-selected, 20 held-out weeks: mean cost USD/week | mean violating windows | weeks within 2% | billing utilisation | PRISM epochs above the smallest feasible level
+    PRISM                  2032.9 |  1.16% | 19/20 | 0.481 | 31960 of 40320 (79.3%) | selected [0.08]
+    PRISM-phi              2076.7 |  1.91% | 12/20 | 0.468 | 8521 of 40320 (21.1%) | selected [0.05, 0.08]
+    QuantProv_q90          2135.7 |  1.82% | 13/20 | 0.444 | selected [0.7, 0.8, 0.9]
+    PredHead+S             1964.9 |  2.60% |  7/20 | 0.528 | selected [1.0, 1.1, 1.2, 1.3]
+    QuantProv_q90-blind    1918.3 |  2.04% |  9/20 | 0.554 | selected [0.8, 0.9, 1.0, 1.1] [REFERENCE: ignores phi]
+    PRISM vs QuantProv_q90, paired over 20 weeks: cost -4.5 +/- 2.4% (cheaper in 16/20), violating windows -0.65 +/- 0.20 points
+    PRISM-phi vs QuantProv_q90, paired over 20 weeks: cost -2.7 +/- 1.2% (cheaper in 17/20), violating windows +0.10 +/- 0.24 points
+    PredHead+S vs QuantProv_q90, paired over 20 weeks: cost -7.9 +/- 1.9% (cheaper in 20/20), violating windows +0.78 +/- 0.35 points
+    QuantProv_q90-blind vs QuantProv_q90, paired over 20 weeks: cost -10.0 +/- 1.6% (cheaper in 20/20), violating windows +0.22 +/- 0.15 points
+  (2) POST HOC matched compliance (per trace, frontier over the parameter, mean of 4 test weeks): cost relative to QuantProv_q90 at equal violating-window rate
+    at 1.0%: PRISM -7.92% (traces -10.3, -13.7, -4.6, -3.2, -7.8; 5/5); PRISM-phi -1.64% (traces +0.4, -1.5, -2.1, -1.2, -3.8; 5/5); QuantProv_q90-blind -11.60% (traces -10.7, -12.1, -13.1, -12.4, -9.7; 5/5)
+      same allocation shape: PRISM vs QuantProv_q90-blind +4.20% (traces +0.5, -1.7, +9.8, +10.4, +2.1; 5/5)
+    at 1.5%: PRISM -6.19% (traces -5.6, -6.1, -10.6, -8.0, -0.7; 5/5); PRISM-phi -1.09% (traces +0.8, -1.2, -2.6, -1.4, -1.0; 5/5); QuantProv_q90-blind -9.24% (traces -8.4, -10.6, -10.7, -10.2, -6.3; 5/5)
+      same allocation shape: PRISM vs QuantProv_q90-blind +3.33% (traces +3.0, +5.1, +0.0, +2.5, +6.0; 5/5)
+    at 2.0%: PRISM -2.77% (traces -2.8, -0.7, -5.9, -6.7, +2.3; 5/5); PRISM-phi -0.72% (traces -0.5, -0.8, -0.9, -3.2, +1.9; 5/5); QuantProv_q90-blind -7.74% (traces -8.2, -7.7, -7.8, -9.0, -6.0; 5/5)
+      same allocation shape: PRISM vs QuantProv_q90-blind +5.36% (traces +5.8, +7.6, +2.1, +2.6, +8.8; 5/5)
+  same allocation shape, validation-selected: PRISM vs QuantProv_q90-blind cost +6.0 +/- 1.2% (cheaper in 0/20), violating windows -0.88 +/- 0.23 points
+  (3) PRISM per eps over the 20 test weeks: eps | mean cost | mean violating windows | utilisation | epochs above the smallest feasible level
+       0.005 |    4091.8 |  0.00% | 0.450 |  77.3% of 40074 feasible (of 40320 epochs)
+       0.010 |    3597.1 |  0.00% | 0.442 |  52.6% of 38995 feasible (of 40320 epochs)
+       0.020 |    3088.2 |  0.00% | 0.464 |  99.7% of 40308 feasible (of 40320 epochs)
+       0.030 |    3079.7 |  0.00% | 0.462 |  99.0% of 40230 feasible (of 40320 epochs)
+       0.050 |    2948.9 |  0.08% | 0.454 |  84.3% of 39611 feasible (of 40320 epochs)
+       0.080 |    2032.9 |  1.16% | 0.481 |  79.3% of 40320 feasible (of 40320 epochs)
+  (3) PRISM-phi per eps over the 20 test weeks: eps | mean cost | mean violating windows | utilisation | epochs above the smallest feasible level
+       0.005 |    2734.7 |  0.36% | 0.287 |   0.0% of 39443 feasible (of 40320 epochs)
+       0.010 |    2584.7 |  0.54% | 0.309 |   0.0% of 40164 feasible (of 40320 epochs)
+       0.020 |    2463.9 |  0.75% | 0.335 |   0.0% of 40307 feasible (of 40320 epochs)
+       0.030 |    2374.4 |  0.91% | 0.358 |   0.0% of 40313 feasible (of 40320 epochs)
+       0.050 |    2217.5 |  1.29% | 0.408 |   0.1% of 40320 feasible (of 40320 epochs)
+       0.080 |    2037.4 |  2.05% | 0.484 |  24.6% of 40320 feasible (of 40320 epochs)
+
+=== P batch (phi = (1.0, 1.0, 1.0, 0.1))
+  (1) validation-selected, 20 held-out weeks: mean cost USD/week | mean violating windows | weeks within 2% | billing utilisation | PRISM epochs above the smallest feasible level
+    PRISM                   958.8 |  1.90% | 11/20 | 0.472 | 22138 of 40320 (54.9%) | selected [0.08]
+    PRISM-phi               998.0 |  2.18% | 10/20 | 0.442 | 3766 of 40315 (9.3%) | selected [0.05, 0.08]
+    QuantProv_q90          1030.4 |  1.93% | 10/20 | 0.412 | selected [0.7, 0.8, 0.9]
+    PredHead+S              936.1 |  3.01% |  5/20 | 0.502 | selected [1.1, 1.2, 1.4]
+    QuantProv_q90-blind     999.6 |  1.79% | 12/20 | 0.440 | selected [0.6, 0.7, 0.8] [REFERENCE: ignores phi]
+    PRISM vs QuantProv_q90, paired over 20 weeks: cost -6.8 +/- 2.0% (cheaper in 20/20), violating windows -0.03 +/- 0.23 points
+    PRISM-phi vs QuantProv_q90, paired over 20 weeks: cost -3.1 +/- 2.4% (cheaper in 16/20), violating windows +0.25 +/- 0.37 points
+    PredHead+S vs QuantProv_q90, paired over 20 weeks: cost -9.1 +/- 1.7% (cheaper in 20/20), violating windows +1.08 +/- 0.44 points
+    QuantProv_q90-blind vs QuantProv_q90, paired over 20 weeks: cost -3.0 +/- 1.4% (cheaper in 16/20), violating windows -0.14 +/- 0.19 points
+  (2) POST HOC matched compliance (per trace, frontier over the parameter, mean of 4 test weeks): cost relative to QuantProv_q90 at equal violating-window rate
+    at 1.0%: PRISM -8.38% (traces -3.7, -12.1, -8.2, -8.0, -9.8; 5/5); PRISM-phi -2.60% (traces +0.2, -4.7, -3.9, -2.6, -2.0; 5/5); QuantProv_q90-blind -6.49% (traces -4.9, -8.0, -4.5, -6.6, -8.3; 5/5)
+      same allocation shape: PRISM vs QuantProv_q90-blind -2.03% (traces +1.3, -4.5, -3.8, -1.5, -1.6; 5/5)
+    at 1.5%: PRISM -6.11% (traces -5.3, -7.9, -6.5, -7.5, -3.3; 5/5); PRISM-phi -1.36% (traces -0.7, +0.5, -2.9, -3.7, -0.0; 5/5); QuantProv_q90-blind -5.54% (traces -5.5, -5.5, -5.3, -7.8, -3.6; 5/5)
+      same allocation shape: PRISM vs QuantProv_q90-blind -0.61% (traces +0.2, -2.6, -1.3, +0.3, +0.3; 5/5)
+    at 2.0%: PRISM -4.55% (traces -5.4, -4.7, -6.1, -7.0, +0.4; 5/5); PRISM-phi -0.64% (traces -0.5, +1.6, -2.0, -1.6, -0.8; 5/5); QuantProv_q90-blind -4.04% (traces -4.2, -3.7, -5.6, -5.9, -0.8; 5/5)
+      same allocation shape: PRISM vs QuantProv_q90-blind -0.55% (traces -1.3, -1.0, -0.6, -1.1, +1.2; 5/5)
+  same allocation shape, validation-selected: PRISM vs QuantProv_q90-blind cost -3.7 +/- 2.7% (cheaper in 16/20), violating windows +0.11 +/- 0.25 points
+  (3) PRISM per eps over the 20 test weeks: eps | mean cost | mean violating windows | utilisation | epochs above the smallest feasible level
+       0.005 |    1392.6 |  0.23% | 0.249 |   0.0% of 39356 feasible (of 40320 epochs)
+       0.010 |    1306.2 |  0.34% | 0.270 |   0.0% of 40134 feasible (of 40320 epochs)
+       0.020 |    1225.4 |  0.56% | 0.299 |   0.1% of 40305 feasible (of 40320 epochs)
+       0.030 |    1164.6 |  0.70% | 0.327 |   0.0% of 40310 feasible (of 40320 epochs)
+       0.050 |    1056.6 |  1.09% | 0.390 |   0.3% of 40320 feasible (of 40320 epochs)
+       0.080 |     958.8 |  1.90% | 0.472 |  54.9% of 40320 feasible (of 40320 epochs)
+  (3) PRISM-phi per eps over the 20 test weeks: eps | mean cost | mean violating windows | utilisation | epochs above the smallest feasible level
+       0.005 |    1644.7 |  0.04% | 0.289 |   0.0% of 38347 feasible (of 40320 epochs)
+       0.010 |    1349.0 |  0.27% | 0.281 |   0.2% of 38370 feasible (of 40320 epochs)
+       0.020 |    1210.6 |  0.72% | 0.308 |   0.3% of 39999 feasible (of 40320 epochs)
+       0.030 |    1149.9 |  0.94% | 0.335 |   0.3% of 40275 feasible (of 40320 epochs)
+       0.050 |    1060.2 |  1.52% | 0.389 |   0.1% of 40303 feasible (of 40320 epochs)
+       0.080 |     956.2 |  2.71% | 0.478 |  13.1% of 40317 feasible (of 40320 epochs)
+
+=== B default_wide (paper's workload and prices, GRIDS_WIDE)
+  (1) validation-selected, 20 held-out weeks: mean cost USD/week | mean violating windows | weeks within 2% | billing utilisation | PRISM epochs above the smallest feasible level
+    PRISM                  1128.8 |  1.95% | 11/20 | 0.459 | 24150 of 40316 (59.9%) | selected [0.03, 0.05, 0.15, 0.2]
+    QuantProv_q90          1141.8 |  1.95% | 11/20 | 0.443 | selected [0.7, 0.8, 0.9]
+    PRISM vs QuantProv_q90, paired over 20 weeks: cost -1.2 +/- 2.2% (cheaper in 10/20), violating windows +0.00 +/- 0.23 points
+  (2) POST HOC matched compliance (per trace, frontier over the parameter, mean of 4 test weeks): cost relative to QuantProv_q90 at equal violating-window rate
+    at 1.0%: PRISM -2.27% (traces -0.4, -3.9, -3.9, -1.0, -2.1; 5/5)
+    at 1.5%: PRISM -1.48% (traces -0.9, +0.4, -1.8, -2.4, -2.6; 5/5)
+    at 2.0%: PRISM -0.98% (traces -0.2, +0.0, -2.4, -1.7, -0.6; 5/5)
+  (3) PRISM per eps over the 20 test weeks: eps | mean cost | mean violating windows | utilisation | epochs above the smallest feasible level
+       0.002 |    2099.3 |  0.00% | 0.302 |   0.0% of 39933 feasible (of 40320 epochs)
+       0.003 |    1647.9 |  0.22% | 0.270 |   0.0% of 38371 feasible (of 40320 epochs)
+       0.005 |    1505.4 |  0.33% | 0.279 |   0.0% of 39015 feasible (of 40320 epochs)
+       0.010 |    1410.9 |  0.56% | 0.299 |   0.0% of 39920 feasible (of 40320 epochs)
+       0.020 |    1335.2 |  0.75% | 0.327 |   0.1% of 40278 feasible (of 40320 epochs)
+       0.030 |    1282.8 |  0.94% | 0.351 |   0.1% of 40307 feasible (of 40320 epochs)
+       0.050 |    1192.6 |  1.37% | 0.403 |   0.1% of 40317 feasible (of 40320 epochs)
+       0.080 |    1093.0 |  2.28% | 0.480 |  23.7% of 40320 feasible (of 40320 epochs)
+       0.100 |    1068.0 |  2.50% | 0.504 |  72.3% of 40320 feasible (of 40320 epochs)
+       0.150 |    1061.3 |  2.55% | 0.511 |  99.7% of 40320 feasible (of 40320 epochs)
+       0.200 |    1061.3 |  2.55% | 0.511 | 100.0% of 40320 feasible (of 40320 epochs)
+
+=== B smooth6000_wide (smooth 6000/min workload, GRIDS_WIDE)
+  (1) validation-selected, 20 held-out weeks: mean cost USD/week | mean violating windows | weeks within 2% | billing utilisation | PRISM epochs above the smallest feasible level
+    PRISM                 10092.3 |  0.11% | 20/20 | 0.565 | 36821 of 40320 (91.3%) | selected [0.08]
+    QuantProv_q90          9092.1 |  1.28% | 17/20 | 0.803 | selected [0.5, 0.6]
+    PRISM vs QuantProv_q90, paired over 20 weeks: cost +11.1 +/- 0.8% (cheaper in 0/20), violating windows -1.17 +/- 0.37 points
+  (2) POST HOC matched compliance (per trace, frontier over the parameter, mean of 4 test weeks): cost relative to QuantProv_q90 at equal violating-window rate
+    at 1.0%: PRISM +8.99% (traces +8.3, +9.4, +9.4, +8.7, +9.2; 5/5)
+    at 1.5%: PRISM +9.76% (traces +9.1, +10.1, +9.8, +9.9, +10.0; 5/5)
+    at 2.0%: PRISM +9.88% (traces +9.7, +9.9, +9.8, +10.1, +10.0; 5/5)
+  (3) PRISM per eps over the 20 test weeks: eps | mean cost | mean violating windows | utilisation | epochs above the smallest feasible level
+       0.002 |   16201.1 |  0.00% | 0.507 |   0.6% of 40320 feasible (of 40320 epochs)
+       0.003 |   11353.8 |  0.02% | 0.460 |   0.0% of 37698 feasible (of 40320 epochs)
+       0.005 |   11125.8 |  0.02% | 0.478 |   0.0% of 40164 feasible (of 40320 epochs)
+       0.010 |   10895.4 |  0.03% | 0.500 |   0.0% of 40320 feasible (of 40320 epochs)
+       0.020 |   10640.2 |  0.03% | 0.525 |  24.0% of 40320 feasible (of 40320 epochs)
+       0.030 |   10510.5 |  0.04% | 0.534 |  69.8% of 40320 feasible (of 40320 epochs)
+       0.050 |   10312.3 |  0.05% | 0.546 |  74.7% of 40320 feasible (of 40320 epochs)
+       0.080 |   10092.3 |  0.11% | 0.565 |  91.3% of 40320 feasible (of 40320 epochs)
+       0.100 |   10037.9 |  0.13% | 0.570 |  99.1% of 40320 feasible (of 40320 epochs)
+       0.150 |    9243.9 | 12.52% | 0.714 |  91.2% of 40320 feasible (of 40320 epochs)
+       0.200 |    9244.4 | 12.55% | 0.715 |  91.0% of 40320 feasible (of 40320 epochs)
+
+=== B be0.30_wide (provisioned price halved (break-even 0.30), GRIDS_WIDE)
+  (1) validation-selected, 20 held-out weeks: mean cost USD/week | mean violating windows | weeks within 2% | billing utilisation | PRISM epochs above the smallest feasible level
+    PRISM                   904.0 |  1.19% | 19/20 | 0.384 | 39769 of 40320 (98.6%) | selected [0.08, 0.1]
+    QuantProv_q90           867.4 |  1.95% | 11/20 | 0.443 | selected [0.7, 0.8, 0.9]
+    PRISM vs QuantProv_q90, paired over 20 weeks: cost +4.3 +/- 1.5% (cheaper in 4/20), violating windows -0.76 +/- 0.29 points
+  (2) POST HOC matched compliance (per trace, frontier over the parameter, mean of 4 test weeks): cost relative to QuantProv_q90 at equal violating-window rate
+    at 1.0%: PRISM -1.25% (traces -1.3, -2.4, -2.6, -0.8, +0.8; 5/5)
+    at 1.5%: PRISM +1.63% (traces +1.5, +3.1, -1.2, -0.3, +5.1; 5/5)
+    at 2.0%: PRISM +4.49% (traces +4.1, +6.0, +1.3, +3.7, +7.4; 5/5)
+  (3) PRISM per eps over the 20 test weeks: eps | mean cost | mean violating windows | utilisation | epochs above the smallest feasible level
+       0.002 |    1487.3 |  0.00% | 0.302 |   0.0% of 39933 feasible (of 40320 epochs)
+       0.003 |    1144.7 |  0.22% | 0.270 |   0.1% of 38371 feasible (of 40320 epochs)
+       0.005 |    1053.1 |  0.33% | 0.279 |   0.2% of 39012 feasible (of 40320 epochs)
+       0.010 |     998.3 |  0.56% | 0.299 |   0.3% of 39920 feasible (of 40320 epochs)
+       0.020 |     960.4 |  0.75% | 0.327 |   0.2% of 40278 feasible (of 40320 epochs)
+       0.030 |     934.6 |  0.94% | 0.351 |   0.4% of 40307 feasible (of 40320 epochs)
+       0.050 |     905.9 |  1.18% | 0.382 |  37.6% of 40317 feasible (of 40320 epochs)
+       0.080 |     904.0 |  1.19% | 0.384 |  98.5% of 40320 feasible (of 40320 epochs)
+       0.100 |     904.0 |  1.19% | 0.384 |  99.9% of 40320 feasible (of 40320 epochs)
+       0.150 |     904.0 |  1.19% | 0.384 | 100.0% of 40320 feasible (of 40320 epochs)
+       0.200 |     904.0 |  1.19% | 0.384 | 100.0% of 40320 feasible (of 40320 epochs)

@@ -32,6 +32,15 @@ print 22, 26 or 10 as reproducible counts. The variation is not floating-point n
 above-smallest choice saves 1e-5 to 6e-3 of the epoch cost); it follows forecast inputs that differ between
 platforms (A6). Do not attribute it to a library version.
 
+**Correction to A1 and A2 (21 Nov 2026).** The 0.07% bound holds at the per-trace eps the diagnostic fixes, those
+the submitted run selected (0.02 to 0.05). Run at every eps on all 20 held-out weeks (common demand, current code,
+Windows; `docs/revision/stage_demand_e2e/`), the share is at most 0.11% for eps up to 0.05 (43 of 40,307 at 0.03)
+but 23.7% at eps = 0.08, the top of the grid. On current code the validation rule selects 0.08 for three of the
+five traces, and at those selections 14.7% of the feasible epochs (5,908 of 40,316) are above the smallest. A2 must
+therefore name its eps ("at the eps selected in the submitted run, 0.02 to 0.05"), and A1's "almost always" holds
+only for eps up to 0.05. The end-to-end cost effect of these choices is small (same folder: PRISM against
+QuantProv-q90 at the selected settings and at matched compliance).
+
 ### A3. What the restriction costs (§VI, new subsection) — R2.13, R2.5, R4.1, R7.1
 Proposed: "PRISM evaluates a one-parameter family of capacity vectors. We measured what that restriction costs in
 two ways, which should not be confused. As a static benchmark, integer coordinate descent from PRISM's chosen
