@@ -57,7 +57,7 @@ Times on a 4-core laptop CPU (Intel i5-10310U, 16 GB), one process unless stated
 | Grid-edge audit (R5.M4, R4.7) | `python scripts/revision/grid_edge_audit.py . results/raw/E1/rows.jsonl` (also `results/raw/E12`, `results/raw/R1/rows.jsonl`; `--week test` for post hoc selections) |
 | Epsilon to violating-window mapping (R2.3, R7.3) | `python scripts/revision/eps_window_mapping.py . results/raw/E1/rows.jsonl` |
 | Revision analyses of the submission | as listed in `README.md` ("Reproduce") |
-| File checksums | `python scripts/build_manifest.py --verify` (never run it without `--verify`). `CHECKSUMS.sha256` hashes the LF file contents of `v1-submitted` (0 mismatches against that tag's committed files). On an LF checkout every file changed since then mismatches until the regeneration rebuilds the file: 13 on `main` at `2bdeaba`, more on the revision branch. On Windows with `core.autocrlf=true` the tool hashes the CRLF working copy, so almost every text file mismatches (201 of 290 here); verify on an LF checkout |
+| File checksums | `python scripts/build_manifest.py --verify` (never run it without `--verify`; `--root <tree>` checks another checkout against its own `CHECKSUMS.sha256`). `CHECKSUMS.sha256` hashes the LF file contents of `v1-submitted` (0 mismatches against that tag's committed files). Every file changed since then mismatches until the regeneration rebuilds the manifest; counts per commit are in `notes/number_audit.md` at the repository root. Text files also verify after CRLF->LF normalisation, so a Windows checkout (`core.autocrlf=true`) no longer flags unchanged files (before the fix: 201 of 290); binary files are compared byte for byte, and content changes and missing files still fail |
 
 ## 5. Re-running the experiments
 

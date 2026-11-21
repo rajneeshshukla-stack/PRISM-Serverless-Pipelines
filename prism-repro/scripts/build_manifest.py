@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build RUN_MANIFEST.json (environment, revisions, per-experiment provenance) and
-CHECKSUMS.sha256 (every repository file except .git). `--verify` re-checks checksums."""
+CHECKSUMS.sha256 (every repository file except .git). `--verify` re-checks checksums (text files also match
+after CRLF->LF normalisation, so a Windows checkout verifies; binary files are compared byte for byte)."""
 from __future__ import annotations
 
 import argparse
@@ -97,21 +98,67 @@ def experiments():
     return out
 
 
+# Text files in the manifest, by suffix or name. Git for Windows (core.autocrlf=true) checks these out with
+# CRLF line endings although they are committed, and hashed, with LF; binary files are never converted.
+TEXT_SUFFIXES = (".py", ".md", ".json", ".jsonl", ".csv", ".txt", ".log", ".out", ".sh", ".yml", ".yaml",
+                 ".toml", ".cff", ".patch", ".cfg", ".ini")
+TEXT_NAMES = ("Makefile", "Dockerfile", ".gitignore")
+
+
+def is_text_path(p: str) -> bool:
+    base = os.path.basename(p)
+    return base in TEXT_NAMES or os.path.splitext(base)[1].lower() in TEXT_SUFFIXES
+
+
+def verify(root: str = ROOT, manifest: str | None = None, report=print) -> dict:
+    """Re-check CHECKSUMS.sha256 against the files under `root`.
+
+    A file passes if its bytes hash to the recorded value. A text path (is_text_path, no NUL byte) also
+    passes if its bytes with every CRLF replaced by LF do: that difference is the line-ending conversion
+    Git applies at checkout on Windows, not a content change. Binary files are checked byte for byte only.
+    Content changes are reported as MISMATCH and absent files as MISSING; both fail verification."""
+    manifest = manifest or os.path.join(root, "CHECKSUMS.sha256")
+    n = dict(files=0, exact=0, eol_normalised=0, mismatch=0, missing=0)
+    with open(manifest, encoding="utf-8") as fh:
+        for line in fh:
+            line = line.rstrip("\r\n")
+            if not line:
+                continue
+            h, p = line.split("  ", 1)
+            n["files"] += 1
+            fp = os.path.join(root, p)
+            if not os.path.isfile(fp):
+                report(f"MISSING {p}")
+                n["missing"] += 1
+            elif sha(fp) == h:
+                n["exact"] += 1
+            else:
+                data = b""
+                if is_text_path(p):
+                    with open(fp, "rb") as f:
+                        data = f.read()
+                if (data and b"\0" not in data and b"\r\n" in data
+                        and hashlib.sha256(data.replace(b"\r\n", b"\n")).hexdigest() == h):
+                    n["eol_normalised"] += 1
+                else:
+                    report(f"MISMATCH {p}")
+                    n["mismatch"] += 1
+    report(f"verified {n['files']} files: {n['exact']} byte-identical, {n['eol_normalised']} identical after "
+           f"CRLF->LF line-ending normalisation (text files), {n['mismatch']} mismatches, {n['missing']} missing")
+    return n
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--verify", action="store_true")
+    ap.add_argument("--root", default=None, help="with --verify: tree to check (default: this repository)")
     a = ap.parse_args()
+    if a.root is not None and not a.verify:   # never let --root fall through to the writing (build) mode
+        ap.error("--root is only valid with --verify")
     ck = os.path.join(ROOT, "CHECKSUMS.sha256")
     if a.verify:
-        bad = 0
-        for line in open(ck):
-            h, p = line.rstrip("\n").split("  ", 1)
-            fp = os.path.join(ROOT, p)
-            if not os.path.exists(fp) or sha(fp) != h:
-                print("MISMATCH", p)
-                bad += 1
-        print(f"verified {sum(1 for _ in open(ck))} files, {bad} mismatches")
-        sys.exit(1 if bad else 0)
+        n = verify(a.root or ROOT)
+        sys.exit(1 if n["mismatch"] or n["missing"] else 0)
     sys.path.insert(0, os.path.join(ROOT, "experiments"))
     from run_experiments import source_sha
     man = dict(generated_utc=datetime.now(timezone.utc).isoformat(timespec="seconds"),
