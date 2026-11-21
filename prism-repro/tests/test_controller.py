@@ -14,7 +14,7 @@ from prism_repro.features import FeatureBuilder, window_peak_target  # noqa: E40
 from prism_repro.forecast import ConformalScaler, calibrate, scenarios  # noqa: E402
 from prism_repro.latency import gb, init_mean, miss_table, stage_means  # noqa: E402
 from prism_repro.optimizer import ChanceConstrainedOptimizer  # noqa: E402
-from prism_repro.risk import c_eff, occupancy_overflow  # noqa: E402
+from prism_repro.risk import c_eff, occupancy_overflow, overflow_prob  # noqa: E402
 
 
 class TestQuantileOrdering(unittest.TestCase):
@@ -85,7 +85,8 @@ def reference_decide(cfg, pc, scen, mems, kappa, r):
                 cst = 0.0
                 n = r * lam * cfg.epoch_min
                 for s, ds in enumerate(d):
-                    f = float(occupancy_overflow(P[s], c_eff(lam * ds / 60.0)))
+                    f = float(overflow_prob(P[s], lam * ds / 60.0, pc.risk_model,
+                                            pc.use_ceff if pc.risk_model == "occupancy" else False))
                     pnc *= 1 - kappa * f
                     cst += (P[s] * gb(m) * tau * pr.pc + n * (1 - f) * ds * gb(m) * pr.pcd
                             + n * f * ds * gb(m) * pr.od + kappa * n * f * init_mean(cfg, m) * gb(m) * pr.od)

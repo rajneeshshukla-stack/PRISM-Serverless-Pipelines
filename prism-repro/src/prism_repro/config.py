@@ -118,7 +118,7 @@ class PrismConfig:
     n_levels: int = 20  # plus the zero level
     level_lo: float = 0.5
     level_hi: float = 1.15
-    risk_model: str = "occupancy"  # "occupancy" (Eq. (5) o at c_eff, Eq. (14), as in paper) or "erlangb"
+    risk_model: str = "erlangb"  # "occupancy" (Eq. (5) o at c_eff, Eq. (14), as in paper) or "erlangb"
     use_ceff: bool = True
     kappa_prior: float = 0.35
     kappa_alpha: float = 0.1  # ASSUMPTION D10
