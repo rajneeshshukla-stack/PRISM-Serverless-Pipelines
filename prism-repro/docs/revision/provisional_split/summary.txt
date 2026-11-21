@@ -1,0 +1,54 @@
+PROVISIONAL TRAINING SPLIT, EXPLORATORY. Fast simulator, assumed constants, current code. Environment: {'platform': 'Windows-11-10.0.26200-SP0', 'python': '3.12.9', 'numpy': '2.4.4', 'scipy': '1.17.1', 'sklearn': '1.8.0'}.
+Each selected setting's validation-week result beside its test-week results (four held-out test weeks per trace). Violating windows pooled over the week (672 windows; 2% = 13 allowed).
+
+Conformal offset and coverage (stationary trace): offset at the start of validation | mean over validation | at the start of test | q0.9 coverage val / test (calibrated; raw)
+  submitted split (fit days 0-13, offset starts at 0 on day 14)
+    seed 101: +0.000 | +0.181 | +0.342 | 94.4% / 98.1% (raw 86.8% / 86.5%)
+    seed 102: +0.000 | +0.172 | +0.192 | 96.9% / 97.9% (raw 87.1% / 86.2%)
+    seed 103: +0.000 | +0.161 | +0.192 | 96.9% / 97.7% (raw 86.2% / 86.4%)
+    seed 104: +0.000 | +0.310 | +0.242 | 98.2% / 98.2% (raw 87.2% / 86.4%)
+    seed 105: +0.000 | +0.217 | +0.192 | 97.1% / 98.2% (raw 86.1% / 86.2%)
+  PROVISIONAL split (fit days 0-10, out-of-sample warm-up days 11-13)
+    seed 101: +0.268 | +0.311 | +0.461 | 98.0% / 98.3% (raw 86.1% / 85.6%)
+    seed 102: +0.318 | +0.332 | +0.310 | 98.3% / 98.0% (raw 86.0% / 85.9%)
+    seed 103: +0.368 | +0.304 | +0.310 | 98.7% / 98.0% (raw 85.7% / 86.6%)
+    seed 104: +0.318 | +0.436 | +0.261 | 98.6% / 98.3% (raw 87.0% / 87.4%)
+    seed 105: +0.218 | +0.349 | +0.360 | 98.1% / 98.6% (raw 87.0% / 86.9%)
+
+One table: split | family | trace | selected | VALIDATION violating windows, cost | TEST violating windows (mean of 4), cost (mean of 4), weeks within 2%
+  submitted   | PRISM                  | 101 |  0.05 |  1.49%    958.0 |  1.41%   1163.0 | 4/4
+  submitted   | PRISM                  | 102 |  0.03 |  1.64%   1025.6 |  0.82%   1298.3 | 4/4
+  submitted   | PRISM                  | 103 |  0.08 |  1.34%    893.7 |  2.83%   1088.8 | 0/4
+  submitted   | PRISM                  | 104 |  0.08 |  1.64%    927.6 |  2.38%   1109.5 | 1/4
+  submitted   | PRISM                  | 105 |  0.08 |  1.79%    923.3 |  1.45%   1091.1 | 3/4
+  submitted   | PRISM                  | mean |       |  1.58%    945.6 |  1.78%   1150.1 | 12/20
+  submitted   | QuantProv_q90          | 101 |   0.8 |  1.79%    932.0 |  1.75%   1136.0 | 3/4
+  submitted   | QuantProv_q90          | 102 |   0.9 |  1.93%    990.7 |  1.12%   1256.9 | 4/4
+  submitted   | QuantProv_q90          | 103 |   0.7 |  1.79%    859.2 |  2.86%   1093.9 | 0/4
+  submitted   | QuantProv_q90          | 104 |   0.7 |  1.64%    929.9 |  2.34%   1132.5 | 1/4
+  submitted   | QuantProv_q90          | 105 |   0.7 |  1.79%    900.6 |  1.67%   1089.4 | 3/4
+  submitted   | QuantProv_q90          | mean |       |  1.79%    922.5 |  1.95%   1141.8 | 11/20
+  submitted   | PRISM no recalibration | 101 |  0.08 |  1.93%    909.2 |  3.20%   1029.9 | 1/4
+  submitted   | PRISM no recalibration | 102 |  0.02 |  1.93%    988.0 |  1.90%   1121.3 | 2/4
+  submitted   | PRISM no recalibration | 103 |  0.08 |  1.64%    880.1 |  3.72%   1038.7 | 0/4
+  submitted   | PRISM no recalibration | 104 |  0.08 |  1.93%    892.4 |  3.76%   1011.2 | 0/4
+  submitted   | PRISM no recalibration | 105 |  0.08 |  1.93%    903.2 |  2.34%   1039.7 | 2/4
+  submitted   | PRISM no recalibration | mean |       |  1.88%    914.6 |  2.98%   1048.1 | 5/20
+  PROVISIONAL | PRISM                  | 101 |  0.08 |  1.93%    943.0 |  2.27%   1102.0 | 2/4
+  PROVISIONAL | PRISM                  | 102 |  0.08 |  1.93%    953.8 |  1.86%   1136.3 | 3/4
+  PROVISIONAL | PRISM                  | 103 |  0.08 |  1.34%    917.3 |  2.64%   1105.1 | 0/4
+  PROVISIONAL | PRISM                  | 104 |  0.08 |  1.19%    977.5 |  2.27%   1127.5 | 2/4
+  PROVISIONAL | PRISM                  | 105 |  0.08 |  1.34%    942.3 |  1.53%   1106.7 | 2/4
+  PROVISIONAL | PRISM                  | mean |       |  1.55%    946.8 |  2.11%   1115.5 | 9/20
+  PROVISIONAL | QuantProv_q90          | 101 |   0.7 |  1.79%    932.6 |  2.16%   1109.8 | 2/4
+  PROVISIONAL | QuantProv_q90          | 102 |   0.8 |  1.79%   1010.9 |  1.12%   1244.2 | 4/4
+  PROVISIONAL | QuantProv_q90          | 103 |   0.7 |  1.49%    905.0 |  2.49%   1121.0 | 0/4
+  PROVISIONAL | QuantProv_q90          | 104 |   0.6 |  1.34%    930.5 |  2.94%   1083.2 | 0/4
+  PROVISIONAL | QuantProv_q90          | 105 |   0.6 |  1.79%    892.7 |  2.46%   1051.5 | 2/4
+  PROVISIONAL | QuantProv_q90          | mean |       |  1.64%    934.3 |  2.23%   1121.9 | 8/20
+  PROVISIONAL | PRISM no recalibration | 101 |  0.08 |  1.93%    910.0 |  3.20%   1030.5 | 2/4
+  PROVISIONAL | PRISM no recalibration | 102 |  0.02 |  1.93%    985.8 |  1.86%   1119.9 | 2/4
+  PROVISIONAL | PRISM no recalibration | 103 |  0.08 |  1.64%    881.1 |  3.72%   1038.9 | 0/4
+  PROVISIONAL | PRISM no recalibration | 104 |  0.08 |  1.93%    891.5 |  3.83%   1010.5 | 0/4
+  PROVISIONAL | PRISM no recalibration | 105 |  0.08 |  1.79%    902.8 |  2.23%   1039.7 | 2/4
+  PROVISIONAL | PRISM no recalibration | mean |       |  1.85%    914.3 |  2.97%   1047.9 | 6/20

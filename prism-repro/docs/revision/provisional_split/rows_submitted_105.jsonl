@@ -1,0 +1,38 @@
+{"split": "submitted", "seed": 105, "kind": "diagnostic", "offset_start_val": 0.0, "offset_mean_val": 0.21673983134920577, "q90_coverage_val": 0.970734126984127, "q99_coverage_val": 0.9880952380952381, "q90_raw_coverage_val": 0.8606150793650794, "offset_start_test": 0.1924999999999989, "offset_mean_test": 0.28247519841269675, "q90_coverage_test": 0.9821428571428571, "q99_coverage_test": 0.9890873015873016, "q90_raw_coverage_test": 0.8621031746031746}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM", "week": "val", "scenario": "validation", "param": 0.005, "cost": 1221.2739891828, "viol": 0.0}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM", "week": "val", "scenario": "validation", "param": 0.01, "cost": 1135.3481052482725, "viol": 0.002976190476190476}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM", "week": "val", "scenario": "validation", "param": 0.02, "cost": 1075.0782156889718, "viol": 0.004464285714285714}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM", "week": "val", "scenario": "validation", "param": 0.03, "cost": 1033.005935348176, "viol": 0.005952380952380952}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM", "week": "val", "scenario": "validation", "param": 0.05, "cost": 968.0199741816008, "viol": 0.013392857142857142}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM", "week": "val", "scenario": "validation", "param": 0.08, "cost": 923.2745854681648, "viol": 0.017857142857142856}
+{"split": "submitted", "seed": 105, "kind": "selection", "family": "PRISM", "param": 0.08, "val_cost": 923.2745854681648, "val_viol": 0.017857142857142856, "val_meets": true}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM", "week": "test", "scenario": "stationary", "param": 0.08, "selected": true, "cost": 937.7503521945185, "viol": 0.010416666666666666}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM", "week": "test", "scenario": "growth", "param": 0.08, "selected": true, "cost": 1212.1353721246574, "viol": 0.005952380952380952}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM", "week": "test", "scenario": "bursty", "param": 0.08, "selected": true, "cost": 1020.9281993440052, "viol": 0.017857142857142856}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM", "week": "test", "scenario": "new_spike", "param": 0.08, "selected": true, "cost": 1193.7168243394403, "viol": 0.023809523809523808}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "QuantProv_q90", "week": "val", "scenario": "validation", "param": 0.6, "cost": 861.4168988597456, "viol": 0.025297619047619048}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "QuantProv_q90", "week": "val", "scenario": "validation", "param": 0.7, "cost": 900.5560868013295, "viol": 0.017857142857142856}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "QuantProv_q90", "week": "val", "scenario": "validation", "param": 0.8, "cost": 945.9310351751163, "viol": 0.01636904761904762}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "QuantProv_q90", "week": "val", "scenario": "validation", "param": 0.9, "cost": 995.146933896123, "viol": 0.011904761904761904}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "QuantProv_q90", "week": "val", "scenario": "validation", "param": 1.0, "cost": 1046.0289097033165, "viol": 0.008928571428571428}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "QuantProv_q90", "week": "val", "scenario": "validation", "param": 1.1, "cost": 1097.9655924659587, "viol": 0.002976190476190476}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "QuantProv_q90", "week": "val", "scenario": "validation", "param": 1.2, "cost": 1150.6228822681378, "viol": 0.002976190476190476}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "QuantProv_q90", "week": "val", "scenario": "validation", "param": 1.3, "cost": 1203.3031194921348, "viol": 0.002976190476190476}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "QuantProv_q90", "week": "val", "scenario": "validation", "param": 1.4, "cost": 1256.385927656724, "viol": 0.002976190476190476}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "QuantProv_q90", "week": "val", "scenario": "validation", "param": 1.5, "cost": 1309.5275732936968, "viol": 0.0}
+{"split": "submitted", "seed": 105, "kind": "selection", "family": "QuantProv_q90", "param": 0.7, "val_cost": 900.5560868013295, "val_viol": 0.017857142857142856, "val_meets": true}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "QuantProv_q90", "week": "test", "scenario": "stationary", "param": 0.7, "selected": true, "cost": 924.0506850096566, "viol": 0.01488095238095238}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "QuantProv_q90", "week": "test", "scenario": "growth", "param": 0.7, "selected": true, "cost": 1185.4161152357124, "viol": 0.011904761904761904}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "QuantProv_q90", "week": "test", "scenario": "bursty", "param": 0.7, "selected": true, "cost": 1039.0761271529664, "viol": 0.019345238095238096}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "QuantProv_q90", "week": "test", "scenario": "new_spike", "param": 0.7, "selected": true, "cost": 1209.2404423606224, "viol": 0.020833333333333332}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM no recalibration", "week": "val", "scenario": "validation", "param": 0.005, "cost": 1131.6795802734089, "viol": 0.004464285714285714}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM no recalibration", "week": "val", "scenario": "validation", "param": 0.01, "cost": 1027.925700607363, "viol": 0.005952380952380952}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM no recalibration", "week": "val", "scenario": "validation", "param": 0.02, "cost": 974.8843273884493, "viol": 0.008928571428571428}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM no recalibration", "week": "val", "scenario": "validation", "param": 0.03, "cost": 942.6028094789241, "viol": 0.01488095238095238}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM no recalibration", "week": "val", "scenario": "validation", "param": 0.05, "cost": 910.0914356738018, "viol": 0.019345238095238096}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM no recalibration", "week": "val", "scenario": "validation", "param": 0.08, "cost": 903.2137581819977, "viol": 0.019345238095238096}
+{"split": "submitted", "seed": 105, "kind": "selection", "family": "PRISM no recalibration", "param": 0.08, "val_cost": 903.2137581819977, "val_viol": 0.019345238095238096, "val_meets": true}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM no recalibration", "week": "test", "scenario": "stationary", "param": 0.08, "selected": true, "cost": 909.9035169415275, "viol": 0.01488095238095238}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM no recalibration", "week": "test", "scenario": "growth", "param": 0.08, "selected": true, "cost": 1182.385444987797, "viol": 0.010416666666666666}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM no recalibration", "week": "test", "scenario": "bursty", "param": 0.08, "selected": true, "cost": 940.16387003336, "viol": 0.03273809523809524}
+{"split": "submitted", "seed": 105, "kind": "run", "family": "PRISM no recalibration", "week": "test", "scenario": "new_spike", "param": 0.08, "selected": true, "cost": 1126.2653304704384, "viol": 0.03571428571428571}
