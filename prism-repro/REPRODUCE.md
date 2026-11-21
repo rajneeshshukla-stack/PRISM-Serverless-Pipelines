@@ -94,3 +94,29 @@ Lambda, and every result depends on them (`KNOWN_ISSUES.md` lists the switches t
 | Burst overflow beyond provisioned capacity | loss routing in both simulators | burst-overflow campaign |
 | Billing (provisioning init, activation timing, recycling, granularity) | `pricing.py`, `prices` | bill reconciliation against the cost model |
 | Memory sizes | `mem_options = (512, 1024, 2048, 3008)` | the campaign plans five sizes including 1536 MB (decision open) |
+
+After the quota decision of 20 Nov 2026 (applied concurrency quota 10; no provisioned concurrency), only the
+initialisation-duration, warm-service-time, orchestration and on-demand billing rows above can be measured; activation
+lag and burst overflow stay simulated (notes/manuscript_proposals.md section G).
+
+## 7. Closed-loop event-level runs (R2.2, R6.3; branch `closed-loop`)
+
+```python
+from prism_repro.config import PipelineConfig
+from prism_repro.experiment import TraceBundle, make_policy, WEEK_START
+from prism_repro.des import EventDraws, simulate_events
+from prism_repro.closed_loop import PolicyController
+
+b = TraceBundle(seed, PipelineConfig(), scenarios=("stationary",))
+ws = WEEK_START["test"]                               # or "val" (key 2) for tuning
+dr = EventDraws(b.cfg, b.traces["stationary"]["counts"][ws:ws + 7 * 1440], seed, 3)
+ctl = PolicyController(make_policy(dict(family="PRISM", param=0.02)), b, "stationary", week="test")
+res = simulate_events(b.cfg, dr, controller=ctl)       # raw["P_epoch"], raw["mem_epoch"]: the decisions
+```
+
+Without `controller`, `simulate_events(cfg, draws, P_epoch, mem_epoch, ...)` replays a schedule exactly as before
+(E9, E12; byte-identical to the stage-major code, tests/test_des_epoch_major_guard.py). The controller sees
+telemetry up to minute 5k - 2 only; forecasts, the conformal offset and the cold-hit estimate come from observed
+outcomes (tests/test_des_closed_loop.py). The initialisation protocol is in docs/revision/event_init/; runtime and the
+compute budget in docs/revision/closed_loop/. Comparisons follow docs/revision/PRESPECIFICATION.md (frozen in
+d16fbea); everything produced so far is pre-calibration and supersedes at recalibration.
