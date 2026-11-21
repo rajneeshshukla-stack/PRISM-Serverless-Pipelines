@@ -79,7 +79,7 @@ def reference_decide(cfg, pc, scen, mems, kappa, r):
         ys = [0.0] + list(np.linspace(lo, hi, pc.n_levels))
         for y in ys:
             P = [math.ceil(y * ds / 60.0 - 1e-9) for ds in d]
-            ok, cost = 0, 0.0
+            ok, cost, vs = 0, 0.0, []
             for lam in scen:
                 pnc = 1.0
                 cst = 0.0
@@ -92,13 +92,16 @@ def reference_decide(cfg, pc, scen, mems, kappa, r):
                             + n * f * ds * gb(m) * pr.od + kappa * n * f * init_mean(cfg, m) * gb(m) * pr.od)
                 cst += cfg.n_stages * n * pr.req
                 v = pnc * mt[m][0] + (1 - pnc) * mt[m][1]
+                vs.append(v)
                 ok += v <= pc.eps
                 cost += cst
             frac, cost = ok / len(scen), cost / len(scen)
+            iq = min(len(scen) - 1, max(0, math.ceil((1 - pc.delta) * len(scen)) - 1))
+            vq = vs[iq]
             if frac >= 1 - pc.delta - 1e-12 and (best_key is None or cost < best_key):
                 best, best_key = (tuple(P), m), cost
-            if fb_key is None or (frac, -cost) > fb_key:
-                fb, fb_key = (tuple(P), m), (frac, -cost)
+            if fb_key is None or (-vq, -cost) > fb_key:
+                fb, fb_key = (tuple(P), m), (-vq, -cost)
     return (best, True) if best is not None else (fb, False)
 
 

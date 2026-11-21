@@ -94,11 +94,11 @@ class ChanceConstrainedOptimizer:
             i, j = np.unravel_index(np.argmin(masked), masked.shape)
             excess = 0.0
             ok = True
-        else:  # fallback: highest feasibility fraction, ties broken by cost
-            fmax = ev["feas"].max()
-            masked = np.where(ev["feas"] >= fmax - 1e-12, cost, np.inf)
+        else:  # fallback: lowest violation quantile, ties broken by cost (R5.M5)
+            vq = ev["v_q"]
+            masked = np.where(vq <= vq.min() + 1e-12, cost, np.inf)
             i, j = np.unravel_index(np.argmin(masked), masked.shape)
-            excess = float(ev["v_q"][i, j] - self.pcfg.eps)
+            excess = float(vq[i, j] - self.pcfg.eps)
             ok = False
         return Decision(P=ev["P"][i, j].astype(int), mem=int(ev["mems"][i]), feasible=ok,
                         feas_frac=float(ev["feas"][i, j]), excess=max(excess, 0.0),
