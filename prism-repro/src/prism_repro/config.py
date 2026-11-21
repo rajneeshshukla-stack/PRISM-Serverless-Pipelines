@@ -42,6 +42,13 @@ class Prices:
 @dataclass(frozen=True)
 class PipelineConfig:
     warm_mean_1024: Tuple[float, ...] = (0.8, 4.0, 2.5, 1.2)  # s, Table S1
+    # R2.5, R4.1, R7.1: stage-specific demand phi. Stage s runs phi_s executions per record that enters stage 1
+    # (filtering < 1, fan-out > 1, batching < 1). None = one execution per record at every stage, the submitted
+    # model ("one demand drives every stage"). Approximation in the fast simulator and the optimiser: a record's
+    # latency still counts one execution per stage, with that stage's per-execution cold-start probability; the
+    # concurrency, overflow, cost and request counts of stage s scale with phi_s. The event-level simulator
+    # refuses phi != 1 (fan-out joins, filter exits and batch formation are not modelled there).
+    stage_demand: Optional[Tuple[float, ...]] = None
     exec_shape: float = 0.30  # sigma of log, Table S1 (ASSUMPTION D01: sigma of log)
     overhead_mean: float = 0.1  # s per stage
     overhead_shape: float = 0.30
@@ -86,6 +93,9 @@ class PipelineConfig:
         self.prices.validate()
         if self.n_stages < 1 or any(d <= 0 for d in self.warm_mean_1024):
             raise ValueError("stage warm means must be positive")
+        if self.stage_demand is not None and (len(self.stage_demand) != self.n_stages
+                                              or any(not p > 0 for p in self.stage_demand)):
+            raise ValueError("stage_demand needs one positive multiplier per stage")
         for name in ("exec_shape", "overhead_shape", "init_shape", "intensity_sigma"):
             if getattr(self, name) < 0:
                 raise ValueError(f"{name} must be >= 0")
@@ -162,6 +172,10 @@ class PrismConfig:
     optimise_memory: bool = True
     feasibility_mode: str = "scenarios"  # or "quantile" (§IV-C; Supplement S9)
     cap: int | None = None
+    # R2.5, R4.1, R7.1: candidate family under stage-specific demand. False = the paper's family (15),
+    # P_s = ceil(y d_s / 60), the same for every phi. True = P_s = ceil(y phi_s d_s / 60), proportional to the
+    # per-stage load. Identical when phi = 1.
+    family_follows_stage_demand: bool = False
 
     def validate(self) -> None:
         if not (0 < self.eps < 1 and 0 < self.delta < 1):

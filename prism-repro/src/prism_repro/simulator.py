@@ -21,7 +21,8 @@ import numpy as np
 from scipy import stats
 
 from .config import PipelineConfig
-from .latency import attainment_table, gb, init_mean, init_seconds, lognormal_mult, poisson_binomial, stage_means
+from .latency import (attainment_table, gb, init_mean, init_seconds, lognormal_mult, poisson_binomial, stage_demand,
+                      stage_means)
 from .metrics import severity, weighted_quantile_hist, window_attainment
 
 WEEK = 7 * 1440
@@ -45,7 +46,7 @@ class WeekDraws:
         self._warm = {}
 
     def peak_concurrency(self, counts: np.ndarray, m: int) -> np.ndarray:
-        d = stage_means(self.cfg, m)
+        d = stage_means(self.cfg, m) * stage_demand(self.cfg)   # x 1.0 exactly when phi = 1
         lam = counts[:, None] * d[None, :] / 60.0 * np.exp(self.cfg.intensity_sigma * self.z_int)[:, None]
         return np.where(lam > 0, stats.poisson.ppf(self.u_peak, np.maximum(lam, 1e-12)), 0.0)
 
@@ -100,6 +101,8 @@ def simulate(ctx: SimContext, policy, keep_raw: bool = True) -> dict:
     S, E = cfg.n_stages, cfg.epoch_min
     N = ctx.week_counts().astype(float)
     n = len(N)
+    phi = stage_demand(cfg)                  # R2.5/R4.1: executions per stage-1 record (ones by default)
+    NS = N[:, None] * phi[None, :]           # executions per minute and stage; equals N exactly when phi = 1
     tel = Telemetry(N=N, K=np.zeros((n, S)), P=np.zeros((n, S)), n_od=np.zeros((n, S)),
                     cold=np.zeros((n, S)))
     mem_min = np.full(n, cfg.default_mem, dtype=np.int32)
@@ -140,7 +143,7 @@ def simulate(ctx: SimContext, policy, keep_raw: bool = True) -> dict:
             new[i] = np.maximum(od[i] - pool, 0.0)
             OD[t] = od[i]
         share = np.where(K > 0, od / np.where(K > 0, K, 1.0), 0.0)
-        n_od = N[a:b, None] * share
+        n_od = NS[a:b] * share
         cold = np.minimum(new, n_od)
         tel.K[a:b], tel.P[a:b], tel.n_od[a:b], tel.cold[a:b] = K, P[None, :], n_od, cold
         mem_min[a:b] = m
@@ -154,17 +157,18 @@ def simulate(ctx: SimContext, policy, keep_raw: bool = True) -> dict:
     g = mem_min / 1024.0
     ini = np.array([init_mean(cfg, int(mm)) for mm in mem_min]) if len(mems) > 1 else \
         np.full(n, init_mean(cfg, int(mems[0])))
-    n_pc = N[:, None] - tel.n_od
+    n_pc = NS - tel.n_od
     c_pc = (tel.P * g[:, None] * 60.0 * pr.pc).sum()
     c_pcd = (n_pc * D * g[:, None] * pr.pcd).sum()
     c_od = (tel.n_od * D * g[:, None] * pr.od).sum()
     c_init = (tel.cold * ini[:, None] * g[:, None] * pr.od).sum() if ctx.bill_init else 0.0
-    c_req = N.sum() * S * pr.req
+    c_req = N.sum() * float(phi.sum()) * pr.req   # = N.sum() * S * req when phi = 1
     total = c_pc + c_pcd + c_od + c_init + c_req
 
     # ---- latency (sampled, volume weighted) ----
     dr = ctx.draws
-    cr = np.where(N[:, None] > 0, tel.cold / np.maximum(N[:, None], 1), 0.0).astype(np.float32)
+    # per-execution cold-start probability of each stage (counts are integers, so NS >= 1 wherever NS > 0 at phi = 1)
+    cr = np.where(NS > 0, tel.cold / np.where(NS > 0, NS, 1.0), 0.0).astype(np.float32)
     lat = np.empty((n, cfg.latency_samples), np.float32)
     for mm in mems:
         sel = mem_min == mm
@@ -196,8 +200,8 @@ def simulate(ctx: SimContext, policy, keep_raw: bool = True) -> dict:
         cost=total, cost_pc=c_pc, cost_pcd=c_pcd, cost_od=c_od, cost_init=c_init, cost_req=c_req,
         record_attainment=float((N * frac_ok).sum() / N.sum()),
         p99_latency=p99, billing_utilisation=float(busy_pc / prov) if prov > 0 else 0.0,
-        mean_provisioned=float(Ptot.mean()), overflow_share=float(tel.n_od.sum() / (N.sum() * S)),
-        cold_start_ratio=float(tel.cold.sum() / (N.sum() * S)),
+        mean_provisioned=float(Ptot.mean()), overflow_share=float(tel.n_od.sum() / (N.sum() * float(phi.sum()))),
+        cold_start_ratio=float(tel.cold.sum() / (N.sum() * float(phi.sum()))),
         minutes_with_change=int(chg.sum()), envs_added=float(added),
         share_mem_ge_2048=float(np.mean(mem_min >= 2048)),
         slo_met=bool(sev["violating_window_rate"] <= cfg.slo_violating_window_target + 1e-12),

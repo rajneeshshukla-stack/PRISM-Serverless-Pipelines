@@ -36,7 +36,7 @@ from prism_repro.workload import MAIN_SCENARIOS  # noqa: E402
 
 RESULTS = os.environ.get("PRISM_RESULTS", os.path.join(ROOT, "results", "raw"))
 DRAW_FIELDS = ("warm_mean_1024", "exec_shape", "overhead_mean", "overhead_shape", "init_shape",
-               "nonscaling", "intensity_sigma", "peak_upper_frac", "latency_samples", "mem_options")
+               "nonscaling", "intensity_sigma", "peak_upper_frac", "latency_samples", "mem_options", "stage_demand")
 
 
 def source_sha() -> str:

@@ -23,6 +23,13 @@ def stage_means(cfg: PipelineConfig, m: float) -> np.ndarray:
     return np.asarray(cfg.warm_mean_1024, float) * duration_factor(m, cfg.nonscaling)
 
 
+def stage_demand(cfg: PipelineConfig) -> np.ndarray:
+    """Executions per stage-1 record at each stage (phi); ones when cfg.stage_demand is None (R2.5, R4.1)."""
+    if cfg.stage_demand is None:
+        return np.ones(cfg.n_stages)
+    return np.asarray(cfg.stage_demand, float)
+
+
 def init_factor(cfg: PipelineConfig, m: float) -> float:
     """Init-vs-memory factor relative to 1024 MB under cfg.init_scaling (R1.2, R5.M2)."""
     mode = cfg.init_scaling

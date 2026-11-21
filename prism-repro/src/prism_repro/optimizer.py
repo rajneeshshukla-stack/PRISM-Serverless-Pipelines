@@ -14,7 +14,7 @@ from dataclasses import dataclass
 import numpy as np
 
 from .config import PipelineConfig, PrismConfig
-from .latency import gb, init_mean, miss_table, stage_means
+from .latency import gb, init_mean, miss_table, stage_demand, stage_means
 from .risk import overflow_prob
 
 
@@ -53,11 +53,14 @@ class ChanceConstrainedOptimizer:
         mems = list(mems)
         Ms = len(mems)
         D = np.stack([self.d[m] for m in mems])                      # (M,S)
-        P = np.ceil(ys[None, :, None] * D[:, None, :] / 60.0 - 1e-9)  # (M,Y,S)
+        phi = stage_demand(cfg)                                       # R2.5/R4.1; ones by default
+        DL = D * phi[None, :]                                         # load per record per stage (= D at phi = 1)
+        DF = DL if pc.family_follows_stage_demand else D              # candidate family: paper's (15) or phi-scaled
+        P = np.ceil(ys[None, :, None] * DF[:, None, :] / 60.0 - 1e-9)  # (M,Y,S)
         if pc.cap is not None:
             P = np.minimum(P, pc.cap)
         lam = scen  # (I,)
-        c = lam[None, None, :, None] * D[:, None, None, :] / 60.0     # (M,1,I,S)
+        c = lam[None, None, :, None] * DL[:, None, None, :] / 60.0    # (M,1,I,S)
         f = overflow_prob(P[:, :, None, :], c, pc.risk_model, self.use_ceff)  # (M,Y,I,S)
         vw = np.array([self.mt[m][0] for m in mems])[:, None, None]
         rho = np.array([self.mt[m][1] for m in mems])[:, None, None]
@@ -75,13 +78,13 @@ class ChanceConstrainedOptimizer:
         g = np.array([gb(m) for m in mems])[:, None, None, None]
         n_exec = self.r * lam[cost_idx] * cfg.epoch_min                 # expected executions (§III-D (iv))
         fc = f[:, :, cost_idx, :]
-        n = n_exec[None, None, :, None]
+        n = n_exec[None, None, :, None] * phi[None, None, None, :]   # executions per stage (x 1.0 at phi = 1)
         Dm = D[:, None, None, :]
         initm = np.array([self.init[m] for m in mems])[:, None, None, None]
         cost = (P[:, :, None, :] * g * tau * pr.pc
                 + n * (1 - fc) * Dm * g * pr.pcd
                 + n * fc * Dm * g * pr.od
-                + kappa * n * fc * initm * g * pr.od).sum(-1) + S * n_exec[None, None, :] * pr.req
+                + kappa * n * fc * initm * g * pr.od).sum(-1) + float(phi.sum()) * n_exec[None, None, :] * pr.req
         exp_cost = cost.mean(-1)                                      # (M,Y)
         return dict(ys=ys, P=P, feas=feas_frac, cost=exp_cost, v_q=v_q, mems=mems)
 

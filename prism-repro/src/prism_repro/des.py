@@ -28,7 +28,7 @@ from dataclasses import dataclass
 import numpy as np
 
 from .config import PipelineConfig
-from .latency import init_mean, init_seconds, lognormal_mult, stage_means
+from .latency import init_mean, init_seconds, lognormal_mult, stage_demand, stage_means
 from .metrics import severity, weighted_quantile_hist, window_attainment
 from .simulator import Telemetry
 
@@ -180,6 +180,9 @@ def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray,
                     want_telemetry: bool = False) -> dict:
     """Replay a provisioning schedule (per epoch, S stages) and memory schedule.
     want_telemetry: also return raw['telemetry'], an EventTelemetry (R2.2)."""
+    if np.any(stage_demand(cfg) != 1.0):   # R2.5/R4.1: not modelled at event level (see PipelineConfig.stage_demand)
+        raise NotImplementedError("event-level simulator: stage-specific demand (stage_demand != 1) is not modelled; "
+                                  "fan-out joins, filter exits and batch formation would need defined semantics")
     S, E = cfg.n_stages, cfg.epoch_min
     P_min = np.repeat(np.asarray(P_epoch, float), E, axis=0)[:draws.n_min]
     mem_min = np.repeat(np.asarray(mem_epoch), E)[:draws.n_min]

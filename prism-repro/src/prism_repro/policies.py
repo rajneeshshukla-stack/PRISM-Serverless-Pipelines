@@ -12,7 +12,7 @@ import numpy as np
 
 from .config import PipelineConfig, PrismConfig
 from .forecast import scenarios as make_scenarios
-from .latency import stage_means
+from .latency import stage_demand, stage_means
 from .optimizer import ChanceConstrainedOptimizer
 
 
@@ -33,7 +33,8 @@ class Policy:
     def prepare(self, ctx):
         self.ctx = ctx
         self.cfg: PipelineConfig = ctx.cfg
-        self.d = stage_means(self.cfg, self.cfg.default_mem)
+        # per-stage scale of the rules; with stage-specific demand the rules know phi (x 1.0 exactly at phi = 1)
+        self.d = stage_means(self.cfg, self.cfg.default_mem) * stage_demand(self.cfg)
 
     def _visible(self, k):
         """Last week-relative minute whose telemetry is visible at decision k."""
