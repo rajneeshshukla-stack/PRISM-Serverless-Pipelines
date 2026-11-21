@@ -28,10 +28,10 @@ Scheduled 6, Reactive 11, PredHead 11, PredHead+S 11, QuantProv-q90 10, QuantPro
 | Design per trace | CPU time per trace | 5 traces | 25 traces (seeds 106-130) |
 |---|---|---|---|
 | Validation grid (85 weeks) + selected setting on 4 test weeks (36 weeks) | about 3.0 h | 15 h | 75 h |
-| + every grid point on 4 test weeks (matched compliance, 340 weeks) | about 12 h | 60 h | 300 h |
+| + every grid point on 4 test weeks (matched compliance, 340 weeks) | about 10.7 h | 53 h | 267 h |
 
 At 4-5 parallel workers (each closed-loop week holds about 2-3 GB), the validation-selected design for the 25
 confirmatory traces takes **about 15-19 hours wall clock**; adding matched-compliance frontiers takes **about 2.5-3
-days**. Both are feasible on this machine but not inside one session; the pilot (3 traces, 1 scenario, 4 families)
+days** (267 CPU-h at 4-5 workers). Both are feasible on this machine but not inside one session; the pilot (3 traces, 1 scenario, 4 families)
 costs about 2-3 hours wall clock. The budget assumes the machine stays awake (it suspended for about three hours on
 the night of 20-21 Nov).
