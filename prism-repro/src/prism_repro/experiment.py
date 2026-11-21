@@ -152,6 +152,19 @@ GRIDS = {
     "QuantProv": [round(0.6 + 0.1 * i, 1) for i in range(10)],  # ASSUMPTION D16
 }
 
+# R5.M4 / R4.7: widened grids for the closed-loop retuning. Every family whose selection sat at a
+# grid edge in a stored analysis (scripts/revision/grid_edge_audit.py: E12 event-level retuning,
+# R1 real-trace replay, post hoc test-week selections) is extended past that edge; GRIDS itself is
+# unchanged, so no stored or existing experiment changes. Not yet used by any run.
+GRIDS_WIDE = {
+    "Static": [30, 40] + GRIDS["Static"] + [99.95, 99.99],
+    "Scheduled": [0.6, 0.8] + GRIDS["Scheduled"] + [2.2, 2.5, 3.0],
+    "Reactive": [0.30, 0.35] + GRIDS["Reactive"] + [0.95, 1.0],
+    "PredHead": [0.8, 0.9] + GRIDS["PredHead"] + [2.2, 2.5, 3.0],
+    "PRISM": [0.002, 0.003] + GRIDS["PRISM"] + [0.10, 0.15, 0.20],
+    "QuantProv": [0.4, 0.5] + GRIDS["QuantProv"] + [1.6, 1.8, 2.0],
+}
+
 
 def make_policy(spec: dict, pcfg_base: PrismConfig | None = None):
     fam = spec["family"]

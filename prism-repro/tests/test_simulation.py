@@ -152,5 +152,44 @@ class TestMetricsAndTuning(unittest.TestCase):
         self.assertEqual(select_by_rule(rows)["cost"], 12)
 
 
+class TestGridEdgeAudit(unittest.TestCase):
+    """R5.M4 / R4.7: the audit applies the paper's selection rule per trace and family and flags a
+    selection at either edge of the grid actually run; GRIDS_WIDE extends past every edge."""
+
+    def _rows(self, fam_spec, vals, viol, cost, seed=1, week="val", tag=""):
+        return [dict(seed=seed, scenario="stationary", week=week, tag=tag, spec=dict(fam_spec, param=v),
+                     violating_window_rate=w, cost=c) for v, w, c in zip(vals, viol, cost)]
+
+    def test_audit_flags_edges_by_rule(self):
+        import sys as _sys
+        _sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts", "revision"))
+        from grid_edge_audit import audit
+        rows = (self._rows({"family": "PRISM"}, [0.01, 0.02, 0.05], [0.01, 0.015, 0.03], [30, 20, 10])  # interior
+                + self._rows({"family": "PredHead"}, [1.0, 1.5, 2.0], [0.09, 0.06, 0.04], [10, 20, 30])  # none meets: high
+                + self._rows({"family": "QuantProv", "tau_idx": 2}, [0.6, 0.9], [0.0, 0.0], [5, 9])       # cheapest: low
+                + self._rows({"family": "QuantProv", "tau_idx": 3}, [0.6, 0.9], [0.05, 0.01], [5, 9])     # separate family
+                + self._rows({"family": "PRISM"}, [0.005, 0.08], [0.0, 0.0], [1, 2], tag="-nohyst")       # ablation: ignored
+                + [dict(seed=1, week="val", tag="", spec={"family": "OnDemand"}, violating_window_rate=0, cost=1)])
+        res = {r["family"]: r for r in audit(rows)}
+        self.assertEqual(set(res), {"PRISM", "PredHead", "QuantProv_q90", "QuantProv_q99"})
+        self.assertEqual((res["PRISM"]["selected"], res["PRISM"]["edge"]), (0.02, False))
+        self.assertEqual((res["PredHead"]["side"], res["PredHead"]["met_threshold"]), ("high", False))
+        self.assertEqual((res["QuantProv_q90"]["selected"], res["QuantProv_q90"]["side"]), (0.6, "low"))
+        self.assertEqual((res["QuantProv_q99"]["selected"], res["QuantProv_q99"]["side"]), (0.9, "high"))
+        self.assertTrue(all(not r["post_hoc"] for r in res.values()))
+        post = audit(self._rows({"family": "PRISM"}, [0.01, 0.05], [0.0, 0.0], [2, 1], week="test"), week="test")
+        self.assertTrue(post[0]["post_hoc"] and post[0]["side"] == "high")
+
+    def test_wide_grids_extend_past_both_edges(self):
+        from prism_repro.experiment import GRIDS, GRIDS_WIDE
+        self.assertEqual(set(GRIDS_WIDE), set(GRIDS))
+        for fam, g in GRIDS.items():
+            w = GRIDS_WIDE[fam]
+            self.assertEqual(w, sorted(w), fam)
+            self.assertTrue(set(g) <= set(w), fam)
+            self.assertLess(min(w), min(g), fam)
+            self.assertGreater(max(w), max(g), fam)
+
+
 if __name__ == "__main__":
     unittest.main()
