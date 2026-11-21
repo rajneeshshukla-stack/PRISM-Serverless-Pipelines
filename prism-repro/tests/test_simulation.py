@@ -213,5 +213,36 @@ class TestRevisionTraceSet(unittest.TestCase):
                                  m["counts_sha256"][str(seed)][sc], (seed, sc))
 
 
+class TestByteIdenticalRerun(unittest.TestCase):
+    """R2.16 / R3.5 gate: the same configuration run twice from scratch (forecaster training
+    included) gives byte-identical outputs: every summary field except wall-clock timings and
+    every raw array, for a forecast-driven policy and a baseline."""
+
+    TIMING = ("sim_seconds", "decision_ms_median", "decision_ms_p99")
+
+    def test_two_independent_runs_identical(self):
+        from prism_repro.experiment import TraceBundle, make_policy
+        cfg = PipelineConfig()
+        out = []
+        for _ in range(2):
+            b = TraceBundle(101, cfg, scenarios=("stationary",))
+            out.append([simulate(b.context("stationary", "val"), make_policy(spec))
+                        for spec in ({"family": "PRISM", "param": 0.02}, {"family": "Reactive", "param": 0.6})])
+        for r1, r2 in zip(*out):
+            s1 = {k: v for k, v in r1["summary"].items() if k not in self.TIMING}
+            s2 = {k: v for k, v in r2["summary"].items() if k not in self.TIMING}
+            self.assertEqual(s1.keys(), s2.keys())
+            for k in s1:
+                a, b_ = np.asarray(s1[k]), np.asarray(s2[k])
+                if a.dtype.kind in "biufc":   # numbers: compare the bytes
+                    self.assertEqual((a.dtype, a.tobytes()), (b_.dtype, b_.tobytes()), k)
+                else:                         # labels and other objects: compare values
+                    self.assertEqual(s1[k], s2[k], k)
+            self.assertEqual(sorted(r1["raw"]), sorted(r2["raw"]))
+            for k in r1["raw"]:
+                a, b_ = np.asarray(r1["raw"][k]), np.asarray(r2["raw"][k])
+                self.assertEqual(a.dtype.kind in "biufc", True, k)
+                self.assertEqual((a.dtype, a.shape, a.tobytes()), (b_.dtype, b_.shape, b_.tobytes()), k)
+
 if __name__ == "__main__":
     unittest.main()
