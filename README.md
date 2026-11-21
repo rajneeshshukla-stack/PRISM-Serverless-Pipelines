@@ -89,3 +89,9 @@ changed cost by at most USD 0.21 per week.
 
 Licence: **to be chosen by the authors** (`LICENSE_PENDING.md`). Third-party dependencies:
 `THIRD_PARTY_NOTICES.md`. Citation: `CITATION.cff` (to be completed with the venue and DOI on publication).
+
+## Canonical results
+
+`prism-repro/results/` is the authoritative results directory.
+`prism-repro/PRISM_Author_Verification_Kit/out_run/results/` is an
+archived copy made for the peer-review audit and is not regenerated.
