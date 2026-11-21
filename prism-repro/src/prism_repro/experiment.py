@@ -73,7 +73,7 @@ class TraceBundle:
                               normalise=spec.get("normalise", True), horizon=forecast_horizon(self.cfg))
 
     def _train_forecasters(self):
-        train_hi = 14 * MIN_PER_DAY
+        train_hi = self.pc.forecast_train_days * MIN_PER_DAY   # 14 days = submitted (R4.6 / R5.M3)
         sc0 = self.scenarios[0]
         fb0 = self._builder(self.traces[sc0]["counts"], {})
         ts = np.arange(fb0.min_t, train_hi - fb0.h_hi)

@@ -351,6 +351,32 @@ class TestConformalInitialOffset(unittest.TestCase):
             PrismConfig().with_(conformal_s0=0.9)               # outside the clip [-0.3, 0.8]
 
 
+class TestForecastTrainingSplit(unittest.TestCase):
+    """R4.6 / R5.M3 (PROVISIONAL split option): the forecasters' training range is a parameter. The default, 14 days,
+    is the submitted split and leaves every forecast untouched; with 11 days and a 3-day warm-up, the offset is
+    warmed on out-of-sample days and enters validation away from zero."""
+
+    def test_training_split(self):
+        from prism_repro.experiment import TraceBundle
+        cfg = PipelineConfig()
+        kw = dict(scenarios=("stationary",), forecasters=("seasonal_naive",))
+        b0 = TraceBundle(101, cfg, **kw)
+        b14 = TraceBundle(101, cfg, conformal=PrismConfig(forecast_train_days=14), **kw)
+        b11 = TraceBundle(101, cfg, conformal=PrismConfig(forecast_train_days=11, conformal_warmup_days=3), **kw)
+        for wk in ("val", "test"):
+            f0, f14, f11 = (b.forecasts[("stationary", wk, "seasonal_naive")] for b in (b0, b14, b11))
+            for k in ("q_raw", "q_cal", "s", "y", "ts"):
+                np.testing.assert_array_equal(f0[k], f14[k])     # explicit 14 = default, byte for byte
+            np.testing.assert_array_equal(f0["y"], f11["y"])     # same targets ...
+            self.assertFalse(np.array_equal(f0["q_raw"], f11["q_raw"]))   # ... from a model fitted on fewer days
+        self.assertEqual(b0.r_mean_peak, b14.r_mean_peak)
+        self.assertEqual(b0.forecasts[("stationary", "val", "seasonal_naive")]["s"][0], 0.0)
+        self.assertNotEqual(b11.forecasts[("stationary", "val", "seasonal_naive")]["s"][0], 0.0)   # warmed
+        for bad in (2, 15):
+            with self.assertRaises(ValueError):
+                PrismConfig().with_(forecast_train_days=bad)
+
+
 class TestConformalWarmup(unittest.TestCase):
     """R4.6 / R5.M3: the conformal offset can be warmed on the days before validation.
     Default 0 keeps the submitted behaviour (offset 0 at the start of validation)."""

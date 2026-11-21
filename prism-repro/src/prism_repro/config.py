@@ -149,6 +149,10 @@ class PrismConfig:
     # (offset starts at zero at the start of validation). The warm-up days lie inside the
     # forecaster's training range, so their residuals are in-sample.
     conformal_warmup_days: int = 0
+    # R4.6 / R5.M3 (PROVISIONAL split option): the forecasters are fitted on days [0, forecast_train_days). 14 =
+    # submitted (every day before validation). With 11 and conformal_warmup_days = 3, the warm-up replays the
+    # out-of-sample days 11-13, so the offset enters validation warm without in-sample residuals.
+    forecast_train_days: int = 14
     # R2.11: independent conformal offsets for q0.9 (target 10% misses) and q0.99 (target_miss).
     # False = submitted Eq. (13): one offset driven by q0.99 misses scales both.
     conformal_per_quantile: bool = False
@@ -192,6 +196,8 @@ class PrismConfig:
             raise ValueError("cap must be non-negative")
         if not (0 <= self.conformal_warmup_days <= 12):  # features need day 1 + 1 h of history
             raise ValueError("conformal_warmup_days must be in [0, 12]")
+        if not (3 <= self.forecast_train_days <= 14):   # training needs days beyond the 1-day feature lead-in
+            raise ValueError("forecast_train_days must be in [3, 14] (validation starts on day 14)")
         if not (self.s_min <= self.conformal_s0 <= self.s_max):
             raise ValueError("conformal_s0 must lie within [s_min, s_max]")
 
