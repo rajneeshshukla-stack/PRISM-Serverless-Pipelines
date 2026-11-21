@@ -10,11 +10,15 @@ otherwise it cold-starts, and the new environment is occupied for init + executi
 An upstream completion plus the orchestration delay is the downstream arrival.
 Every request's latency is computed, so window attainment is exact.
 
-This is an independent reconstruction of the manuscript's description; it is
-open-loop: it replays provisioning schedules produced elsewhere (§VI-H).
+This is an independent reconstruction of the manuscript's description. Given a
+schedule it replays provisioning decisions produced elsewhere (open loop, §VI-H, as
+E9 and E12 use it). Given a controller (`simulate_events(cfg, draws, controller=...)`,
+R2.2 stage 2, R6.3) it runs closed loop: before each epoch the controller sees the
+telemetry observed up to the feedback delay and sets that epoch's provisioning and
+memory; `closed_loop.PolicyController` drives the fast simulator's policies this way.
 `simulate_events(..., want_telemetry=True)` additionally records per-minute
-telemetry of that open-loop replay (`EventTelemetry`), with the fields of
-`simulator.Telemetry` that policies read.
+telemetry (`EventTelemetry`), with the fields of `simulator.Telemetry` that policies
+read.
 
 R2.2, stage 1: the replay is epoch-major. `_EventEngine` advances epoch by epoch and,
 within an epoch, routes every stage's arrivals that fall in it, carrying each stage's
@@ -306,14 +310,112 @@ def stage_telemetry(arr, fin, cold, used_pc, n_min):
                 n_od=n_od, cold=n_cold, K=K)
 
 
-def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray, mem_epoch: np.ndarray,
-                    bill_init: bool = True, want_inflight: bool = False, sample_seed: int | None = None,
-                    want_telemetry: bool = False) -> dict:
-    """Replay a provisioning schedule (per epoch, S stages) and memory schedule.
-    want_telemetry: also return raw['telemetry'], an EventTelemetry (R2.2)."""
+class _ObservedTelemetry:
+    """Per-minute telemetry of a closed-loop run, built epoch by epoch as requests are routed (R2.2, stage 2).
+
+    Same definitions as `stage_telemetry` (arrivals, n_od and cold binned by the minute a request reaches the stage;
+    completions by the minute it finishes; executions in flight at the end of each minute; K the peak in flight within
+    each minute, arrivals counted before departures at equal times). After the requests arriving before minute M are
+    routed, every minute below M is final: any event in it belongs to a request that arrived before it. `expose`
+    copies final minutes up to the visible one into the controller's view, so the view never holds a value the
+    controller could not have observed."""
+
+    FIELDS = ("arrivals", "completed", "n_od", "cold", "K")
+
+    def __init__(self, cfg: PipelineConfig, draws: EventDraws):
+        n, S = draws.n_min, cfg.n_stages
+        self.n, self.S = n, S
+        for f in self.FIELDS:
+            setattr(self, f, np.zeros((n, S)))
+        self.P = np.zeros((n, S))
+        self.mem = np.zeros(n, np.int64)
+        self.level = np.zeros(S)                                 # executions in flight at the last swept instant
+        self.fin_pending = [np.empty(0) for _ in range(S)]       # finish times not yet swept, per stage
+        self.final = 0                                           # minutes [0, final) are final
+        self.shown = 0                                           # minutes [0, shown) are in the view
+
+    def add(self, routed, t_lo, t_hi):
+        """Fold in the requests routed for arrivals in [t_lo, t_hi) (one list entry per stage, None if none)."""
+        n, T = self.n, self.n * 60.0
+        a_m, b_m = int(t_lo // 60), min(int(t_hi // 60), n)
+        for s, r in enumerate(routed):
+            arr = np.empty(0) if r is None else np.asarray(r["arr"], float)
+            fin = np.empty(0) if r is None else r["fin"]
+            if r is not None:
+                seen = arr < T
+                a_min = (arr // 60.0).astype(np.int64)
+                od = seen & ~r["used"]
+                self.arrivals[:, s] += np.bincount(a_min[seen], minlength=n)[:n]
+                self.n_od[:, s] += np.bincount(a_min[od], minlength=n)[:n]
+                self.cold[:, s] += np.bincount(a_min[od & r["cold"]], minlength=n)[:n]
+                self.completed[:, s] += np.bincount((fin[fin < T] // 60.0).astype(np.int64), minlength=n)[:n]
+            # peak in flight per minute of [t_lo, t_hi): sweep this interval's arrivals and finishes from the level
+            # carried in (as max_inflight_per_minute does over the whole horizon)
+            buf = np.concatenate([self.fin_pending[s], fin])
+            now = buf < t_hi
+            self.fin_pending[s] = buf[~now]
+            times = np.concatenate([arr, buf[now]])
+            delta = np.concatenate([np.ones(len(arr)), -np.ones(int(now.sum()))])
+            o = np.lexsort((-delta, times))
+            times, lvl = times[o], self.level[s] + np.cumsum(delta[o])
+            if b_m > a_m:
+                mins = (times // 60).astype(np.int64)
+                inside = mins < b_m
+                out = np.zeros(b_m - a_m)
+                np.maximum.at(out, mins[inside] - a_m, lvl[inside])
+                j = np.searchsorted(times, np.arange(a_m, b_m) * 60.0, side="left") - 1
+                carry = np.where(j >= 0, lvl[np.maximum(j, 0)] if len(lvl) else 0.0, self.level[s])
+                self.K[a_m:b_m, s] = np.maximum(out, carry)
+            if len(lvl):
+                self.level[s] = lvl[-1]
+        self.final = b_m
+
+    def view(self):
+        nan = lambda *shape: np.full(shape, np.nan)  # noqa: E731
+        n, S = self.n, self.S
+        return EventTelemetry(N=nan(n), K=nan(n, S), P=nan(n, S), n_od=nan(n, S), cold=nan(n, S), filled=0,
+                              arrivals=nan(n, S), completed=nan(n, S), inflight_end=nan(n, S), mem=nan(n))
+
+    def expose(self, view: EventTelemetry, upto: int):
+        """Show minutes [shown, upto] in the view (they must be final); later minutes stay NaN."""
+        hi = min(upto + 1, self.n)
+        if hi > self.final:
+            raise RuntimeError(f"minute {hi - 1} is not final yet (final below {self.final}): lookahead")
+        lo = self.shown
+        if hi <= lo:
+            return
+        for f in self.FIELDS:
+            getattr(view, f)[lo:hi] = getattr(self, f)[lo:hi]
+        view.N[lo:hi] = self.arrivals[lo:hi, 0]
+        view.P[lo:hi] = self.P[lo:hi]
+        view.mem[lo:hi] = self.mem[lo:hi]
+        prev = view.inflight_end[lo - 1] if lo > 0 else np.zeros(self.S)
+        view.inflight_end[lo:hi] = prev + np.cumsum(self.arrivals[lo:hi] - self.completed[lo:hi], axis=0)
+        view.filled = hi
+        self.shown = hi
+
+
+def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray | None = None,
+                    mem_epoch: np.ndarray | None = None, bill_init: bool = True, want_inflight: bool = False,
+                    sample_seed: int | None = None, want_telemetry: bool = False, controller=None) -> dict:
+    """Replay a provisioning schedule (per epoch, S stages) and memory schedule (open loop), or, with `controller`,
+    let a controller set them epoch by epoch from what the simulation observes (closed loop, R2.2).
+    want_telemetry: also return raw['telemetry'], an EventTelemetry (R2.2).
+
+    Closed loop: `controller.decide(k, tel)` returns (P, memory) for epoch k; `controller.start(cfg, n_min, n_epochs)`
+    is called first if defined. `tel` is an EventTelemetry whose minutes up to k*epoch_min - lag_min (5k - 2 at the
+    defaults, the paper's feedback delay) hold the observed values and whose later minutes are NaN; it never shows a
+    minute of epoch k or later. Epoch k is then simulated under that decision. raw['P_epoch'] and raw['mem_epoch']
+    record the decisions."""
     if np.any(stage_demand(cfg) != 1.0):   # R2.5/R4.1: not modelled at event level (see PipelineConfig.stage_demand)
         raise NotImplementedError("event-level simulator: stage-specific demand (stage_demand != 1) is not modelled; "
                                   "fan-out joins, filter exits and batch formation would need defined semantics")
+    if controller is not None:
+        if P_epoch is not None or mem_epoch is not None:
+            raise ValueError("pass either a schedule (open loop) or a controller (closed loop), not both")
+        return _simulate_closed_loop(cfg, draws, controller, bill_init, want_inflight, want_telemetry, sample_seed)
+    if P_epoch is None or mem_epoch is None:
+        raise ValueError("open loop needs P_epoch and mem_epoch")
     S, E = cfg.n_stages, cfg.epoch_min
     P_min = np.repeat(np.asarray(P_epoch, float), E, axis=0)[:draws.n_min]
     mem_min = np.repeat(np.asarray(mem_epoch), E)[:draws.n_min]
@@ -325,6 +427,52 @@ def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray,
         eng.route_until((k + 1) * E * 60.0, P_l, G_l, mem_min)
     eng.drain(P_l, G_l, mem_min)
     return _event_results(cfg, draws, eng, P_min, mem_min, bill_init, want_inflight, want_telemetry, sample_seed)
+
+
+def _simulate_closed_loop(cfg, draws, controller, bill_init, want_inflight, want_telemetry, sample_seed):
+    """R2.2, stage 2. Each epoch k: show the controller the telemetry observed up to minute k*E - L (never a minute of
+    epoch k or later), take its decision for epoch k, route epoch k under it, fold the outcome into the telemetry.
+    The routing engine, its carried state and the final aggregation are the open loop's."""
+    S, E, L = cfg.n_stages, cfg.epoch_min, cfg.lag_min
+    n = draws.n_min
+    n_ep = -(-n // E)
+    eng = _EventEngine(cfg, draws, bill_init, keep_times=True)
+    obs = _ObservedTelemetry(cfg, draws)
+    view = obs.view()
+    if hasattr(controller, "start"):
+        controller.start(cfg, n, n_ep)
+    P_l = [[] for _ in range(S)]
+    G_l = []
+    mem_min = np.zeros(n, np.int64)
+    P_ep, m_ep = np.zeros((n_ep, S)), np.zeros(n_ep, np.int64)
+    gen, m_prev = 0, None
+    for k in range(n_ep):
+        obs.expose(view, min(k * E - L, k * E - 1))   # the paper's feedback delay; never epoch k's own minutes
+        P, m = controller.decide(k, view)
+        P = np.asarray(P, float)
+        if P.shape != (S,) or np.any(P < 0) or not np.all(np.isfinite(P)):
+            raise ValueError(f"controller returned invalid P {P} at epoch {k}")
+        m = int(m)
+        if m not in cfg.mem_options:
+            raise ValueError(f"controller returned memory {m} at epoch {k}, not one of {cfg.mem_options}")
+        a, b = k * E, min((k + 1) * E, n)
+        if m_prev is not None and m != m_prev:
+            gen += 1                                   # M5 fix: a new memory version, as gen_min counts in open loop
+        m_prev = m
+        for s in range(S):
+            P_l[s].extend([float(P[s])] * (b - a))
+        G_l.extend([gen] * (b - a))
+        mem_min[a:b] = m
+        obs.P[a:b], obs.mem[a:b] = P, m
+        P_ep[k], m_ep[k] = P, m
+        routed = eng.route_until((k + 1) * E * 60.0, P_l, G_l, mem_min)
+        obs.add(routed, k * E * 60.0, (k + 1) * E * 60.0)
+    eng.drain(P_l, G_l, mem_min)
+    P_min = np.array(P_l, float).T.reshape(n, S)
+    res = _event_results(cfg, draws, eng, P_min, mem_min, bill_init, want_inflight, want_telemetry, sample_seed)
+    res["raw"]["P_epoch"], res["raw"]["mem_epoch"] = P_ep, m_ep
+    res["raw"]["observed"] = view        # the telemetry as the controller last saw it
+    return res
 
 
 def _event_results(cfg, draws, eng, P_min, mem_min, bill_init, want_inflight, want_telemetry, sample_seed):
