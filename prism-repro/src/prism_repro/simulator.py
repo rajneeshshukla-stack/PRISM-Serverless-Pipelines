@@ -21,7 +21,7 @@ import numpy as np
 from scipy import stats
 
 from .config import PipelineConfig
-from .latency import gb, init_mean, lognormal_mult, stage_means
+from .latency import attainment_table, gb, init_mean, lognormal_mult, poisson_binomial, stage_means
 from .metrics import severity, weighted_quantile_hist, window_attainment
 
 WEEK = 7 * 1440
@@ -170,7 +170,14 @@ def simulate(ctx: SimContext, policy, keep_raw: bool = True) -> dict:
         sel = mem_min == mm
         cold_ind = dr.u_cold[sel] < cr[sel][:, None, :]
         lat[sel] = dr.warm_total(int(mm))[sel] + (cold_ind * dr.init[sel]).sum(-1) * np.float32(init_mean(cfg, int(mm)))
-    frac_ok = (lat <= cfg.deadline).mean(1)
+    if cfg.exact_attainment:  # R5.M1: weight cold-start patterns, no per-minute sampling
+        frac_ok = np.empty(n, np.float64)
+        for mm in mems:
+            sel = mem_min == mm
+            w = poisson_binomial(np.clip(cr[sel].astype(np.float64), 0.0, 1.0))
+            frac_ok[sel] = w @ attainment_table(cfg, int(mm))
+    else:
+        frac_ok = (lat <= cfg.deadline).mean(1)
     att, late, tot = window_attainment(N, N * frac_ok, cfg.window_min)
     sev = severity(att, late, tot, 1 - cfg.sla_eps)
     p99 = weighted_quantile_hist(lat, (N / cfg.latency_samples)[:, None], 0.99)

@@ -63,6 +63,8 @@ class PipelineConfig:
     intensity_sigma: float = 0.148
     peak_upper_frac: float = 0.45
     latency_samples: int = 100
+    exact_attainment: bool = True   # R5.M1: weight cold-start patterns instead of sampling
+    exact_attainment_draws: int = 400_000
     prices: Prices = field(default_factory=Prices)
 
     @property

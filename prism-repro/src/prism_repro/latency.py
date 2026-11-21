@@ -35,6 +35,54 @@ def lognormal_mult(z: np.ndarray, sigma: float) -> np.ndarray:
     return np.exp(sigma * z - 0.5 * sigma * sigma)
 
 
+def poisson_binomial(p: np.ndarray) -> np.ndarray:
+    """PMF of the number of successes for independent, non-identical Bernoullis.
+
+    p has shape (..., S); returns (..., S+1)."""
+    S = p.shape[-1]
+    w = np.zeros(p.shape[:-1] + (S + 1,), dtype=np.float64)
+    w[..., 0] = 1.0
+    for s in range(S):
+        ps = p[..., s][..., None]
+        nxt = np.zeros_like(w)
+        nxt[..., 0] = w[..., 0] * (1.0 - ps[..., 0])
+        nxt[..., 1:] = w[..., 1:] * (1.0 - ps) + w[..., :-1] * ps
+        w = nxt
+    return w
+
+
+_ATTAIN_CACHE: dict = {}
+
+
+def attainment_table(cfg, m: int) -> np.ndarray:
+    """P(latency <= deadline | exactly k stages cold) at memory m, for k = 0..S (R5.M1).
+
+    The per-stage initialisation multipliers are i.i.d. and init_mean(m) does not depend on
+    the stage, so the latency distribution depends on the cold-start pattern only through the
+    NUMBER of cold stages. That makes exact attainment a weighted sum over S+1 cases rather
+    than a sample of requests. The conditional probabilities are estimated once, at high
+    precision, from a fixed seed; the per-minute sampling noise of the previous approach is
+    removed entirely.
+    """
+    key = (int(m), cfg.n_stages, tuple(cfg.warm_mean_1024), cfg.exec_shape, cfg.overhead_mean,
+           cfg.overhead_shape, cfg.init_mean_1024, cfg.init_shape, cfg.nonscaling,
+           cfg.init_nonscaling, cfg.deadline, cfg.exact_attainment_draws)
+    hit = _ATTAIN_CACHE.get(key)
+    if hit is not None:
+        return hit
+    S, n = cfg.n_stages, int(cfg.exact_attainment_draws)
+    rng = np.random.default_rng([20261120, int(m)])
+    X = lognormal_mult(rng.standard_normal((n, S)), cfg.exec_shape)
+    Y = cfg.overhead_mean * lognormal_mult(rng.standard_normal((n, S)), cfg.overhead_shape)
+    I = lognormal_mult(rng.standard_normal((n, S)), cfg.init_shape)
+    warm = (X * stage_means(cfg, m)).sum(-1) + Y.sum(-1)
+    icum = np.concatenate([np.zeros((n, 1)), np.cumsum(I, axis=1)], axis=1)
+    im = init_mean(cfg, m)
+    out = np.array([float((warm + im * icum[:, k] <= cfg.deadline).mean()) for k in range(S + 1)])
+    _ATTAIN_CACHE[key] = out
+    return out
+
+
 def miss_probabilities(cfg: PipelineConfig, m: float, n: int = 400_000, seed: int = 12345):
     """Monte Carlo v_w(m) and rho(m).
 
