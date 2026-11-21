@@ -11,7 +11,7 @@ import numpy as np
 
 from .config import PipelineConfig, PrismConfig
 from .features import FeatureBuilder, forecast_horizon, min_feedback_delay
-from .forecast import ConformalScaler, QuantileGBM, RatioQuantileForecaster
+from .forecast import ConformalScaler, QuantileGBM, RatioQuantileForecaster, apply_offset
 from .policies import PRISM, OnDemand, PredHead, QuantProv, Reactive, Scheduled, Static
 from .simulator import WEEK, SimContext, WeekDraws, simulate
 from .workload import MAIN_SCENARIOS, MIN_PER_DAY, WorkloadParams, generate_trace
@@ -97,11 +97,17 @@ class TraceBundle:
                 ts_val = (WEEK_START["val"] + np.arange(WEEK // self.cfg.epoch_min) * self.cfg.epoch_min
                           - self.cfg.lag_min)
                 ts_all = np.concatenate([ts_val, ts_val + WEEK])
-                q_raw = pred.predict(ts_all)
-                y = fbs.target(ts_all)
+                # R4.6 / R5.M3: optional replay of the days before validation (0 = submitted)
+                W = self.pc.conformal_warmup_days * MIN_PER_DAY // self.cfg.epoch_min
+                ts_run = np.concatenate([ts_val[0] - (np.arange(W, 0, -1) * self.cfg.epoch_min), ts_all])
+                q_run = pred.predict(ts_run)
+                y_run = fbs.target(ts_run)
                 cs = ConformalScaler(self.pc.gamma, self.pc.target_miss, self.pc.s_min, self.pc.s_max,
                                      max(self.pc.conformal_delay_epochs, min_feedback_delay(self.cfg)))
-                q_cal, s_used, rev = cs.run(q_raw, y)
+                q_cal, s_used, rev = cs.run(q_run, y_run)
+                q_raw, y, q_cal, s_used = q_run[W:], y_run[W:], q_cal[W:], s_used[W:]
+                if W:  # count order reversals over validation and test only, as without warm-up
+                    rev = int(np.sum(np.any(np.diff(apply_offset(q_raw, s_used), axis=1) < 0, axis=1)))
                 K = len(ts_val)
                 for wk, sl in (("val", slice(0, K)), ("test", slice(K, 2 * K))):
                     self.forecasts[(sc, wk, name)] = dict(q_raw=q_raw[sl], q_cal=q_cal[sl], s=s_used[sl],

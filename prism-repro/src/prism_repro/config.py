@@ -134,6 +134,11 @@ class PrismConfig:
     s_max: float = 0.8
     target_miss: float = 0.01
     conformal_delay_epochs: int = 2
+    # R4.6 / R5.M3: days of conformal replay immediately before the validation week, so the
+    # offset enters validation warm (as it enters the test week). 0 = submitted behaviour
+    # (offset starts at zero at the start of validation). The warm-up days lie inside the
+    # forecaster's training range, so their residuals are in-sample.
+    conformal_warmup_days: int = 0
     use_conformal: bool = True
     n_scenarios: int = 100
     n_levels: int = 20  # plus the zero level
@@ -165,6 +170,8 @@ class PrismConfig:
             raise ValueError("hysteresis factor must be in (0,1]")
         if self.cap is not None and self.cap < 0:
             raise ValueError("cap must be non-negative")
+        if not (0 <= self.conformal_warmup_days <= 12):  # features need day 1 + 1 h of history
+            raise ValueError("conformal_warmup_days must be in [0, 12]")
 
     def with_(self, **kw) -> "PrismConfig":
         c = replace(self, **kw)

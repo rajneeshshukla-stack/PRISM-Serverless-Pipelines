@@ -292,6 +292,37 @@ class TestFeatures(unittest.TestCase):
         self.assertTrue(np.all(np.isfinite(X)) and lev[0] == 1.0)
 
 
+class TestConformalWarmup(unittest.TestCase):
+    """R4.6 / R5.M3: the conformal offset can be warmed on the days before validation.
+    Default 0 keeps the submitted behaviour (offset 0 at the start of validation)."""
+
+    def test_warmup_is_a_continuous_prefix_replay(self):
+        from prism_repro.experiment import WEEK_START, TraceBundle
+        from prism_repro.features import min_feedback_delay
+        cfg = PipelineConfig()
+        cold = TraceBundle(101, cfg, scenarios=("stationary",), forecasters=("seasonal_naive",))
+        warm = TraceBundle(101, cfg, scenarios=("stationary",), forecasters=("seasonal_naive",),
+                           conformal=PrismConfig(conformal_warmup_days=7))
+        fc0, fc1 = (b.forecasts[("stationary", "val", "seasonal_naive")] for b in (cold, warm))
+        self.assertEqual(fc0["s"][0], 0.0)
+        np.testing.assert_array_equal(fc0["q_raw"], fc1["q_raw"])   # same forecasts, only s differs
+        np.testing.assert_array_equal(fc0["ts"], fc1["ts"])
+        # oracle: one ConformalScaler pass over [7 warm-up days, validation, test]
+        pc = PrismConfig()
+        W = 7 * 1440 // cfg.epoch_min
+        ts = np.concatenate([fc0["ts"][0] - np.arange(W, 0, -1) * cfg.epoch_min, fc0["ts"],
+                             cold.forecasts[("stationary", "test", "seasonal_naive")]["ts"]])
+        self.assertLess(ts[W - 1] + cfg.lag_min + cfg.epoch_min - 1, WEEK_START["val"])  # warm-up ends before val
+        model = cold.models["seasonal_naive"]
+        q, y = model.predict(ts), model.fb.target(ts)
+        _, s_ref, _ = ConformalScaler(pc.gamma, pc.target_miss, pc.s_min, pc.s_max,
+                                      max(pc.conformal_delay_epochs, min_feedback_delay(cfg))).run(q, y)
+        np.testing.assert_allclose(fc1["s"], s_ref[W:W + len(fc0["ts"])], rtol=0, atol=0)
+        self.assertNotEqual(fc1["s"][0], 0.0)
+        with self.assertRaises(ValueError):
+            PrismConfig().with_(conformal_warmup_days=13)
+
+
 class TestLagHorizon(unittest.TestCase):
     """R1.3 / R4.3 / R5.M2 (disclosed issue M1): the forecast horizon and the conformal
     feedback delay follow cfg.lag_min, so lag sweeps at L = 5 and 10 stay free of
