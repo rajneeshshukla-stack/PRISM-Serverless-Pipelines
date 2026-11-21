@@ -161,3 +161,101 @@ unexplained divergence of the earlier prototype (R2.17) and a pointer to the rep
 | R1.1, R2.20 | operator guidance and the safety margin: *pending* (closed-loop and platform data) |
 | R4.4 | narrow RQ4 to the demonstrated claim unless per-stage memory and within-run change are tested |
 | R7.7 | add a scope table: what the simulations show, and what still needs a real platform (measured initialisation, lag, overflow and billing) |
+
+## E. Manuscript-only queue: exact drafts (prepared 21 Nov 2026)
+
+Status of every item below: **prepared**, not applied. Each quotes the reviewer's location; check each against the
+current text before applying. None contains a new number.
+
+**E1. Portability (R1.4), §VIII, new paragraph after the limitations list.**
+"Portability. The formulation separates what is provider-specific from what is not. The quantile forecaster, the
+conformal recalibration and the chance constraint on the per-record miss probability do not depend on the provider.
+Three inputs do: the cost model (Eqs. (8)-(9)), which on Azure Functions would price pre-warmed instances of the
+Premium plan per instance-hour and on Cloud Run minimum instances per vCPU- and GiB-second; the concurrency semantics,
+since Cloud Run serves several requests per instance where Lambda serves one; and the cold-start model (Eq. (3)),
+whose memory dependence differs across platforms. Porting PRISM means re-deriving the risk model for the platform's
+concurrency semantics and refitting the cold-start and billing constants; we have not done so."
+
+**E2. Replay scope (R2.10), abstract, §VI-J and Table XIII caption.**
+Wherever the Huawei replay is described, use: "a trace-driven replay in which only the arrival times are real;
+execution times, cold starts, billing and SLA outcomes are simulated". Table XIII caption, append: "Real arrival
+traces; all other quantities simulated. Not an end-to-end validation." Delete or rephrase any sentence that calls the
+replay validation on production workloads [check the abstract and conclusions].
+
+**E3. Notation (R5.m2), Table II and every use in paper and supplement.** Epoch length tau -> Delta (seconds;
+Delta = 300); the quantile level stays tau. Stage index s -> j; the conformal offset stays s_k. Keep the supplement
+consistent.
+
+**E4. Citation (R5.m3), p. 10, lines 61-63.** Replace "Fig. S2b" with "Table IV" for the five-trace means (97.3%
+against 97.2%).
+
+**E5. References (R5.R).** [5]: add "pp. 1281-1297". [19]: add "pp. 1-8". [41]: replace the dead URL with the
+archived copy or the current documentation page for the same content, with an access date. Audit the list against
+IEEE style.
+
+**E6. Presentation (R3.8, R2.22).** Abstract: at most one number per claim, moving the post hoc labels into the body
+(Reviewer 4: ten numbers and three labels now). Align §I's contribution list with §VII-B. AI-use disclosure: one
+sentence, identical in the cover letter and the paper, stating which tool was used for what [authors to fill].
+Funding: "This research received no external funding." or the actual grant [authors to fill]. Replace date
+placeholders; complete the DOI, volume and year fields.
+
+**E7. Overgeneralised claim (R5.m1), p. 2, lines 91-93.** Replace "Much of the benefit credited to
+uncertainty-aware controllers can thus come from two inexpensive ingredients" with "In the simulated pipeline we
+study, much of the benefit we first credited to the uncertainty-aware controller came from two inexpensive
+ingredients: calibration of the forecast and smoothing of scale-in decisions."
+
+**E8. Named use case (R4.5), §I.** "PRISM targets synchronous or interactive pipelines in which each record carries
+its own deadline, for example a document-ingestion pipeline that must return a classified, redacted and indexed
+document to the requesting user within seconds. Asynchronous batch pipelines, which the provider's guidance notes
+rarely need provisioned concurrency, are outside this scope."
+
+**E9. Graphical abstract (R4.10, R5.m5).** Figure instructions: (1) the image title must equal the article title;
+(2) the headline panel shows three bars for the new-spike scenario (Table V): PRISM 1.55%, smoothed headroom 3.24%
+and unsmoothed headroom 6.67% violating windows, the smoothed bar labelled as the stronger comparator; (3) caption:
+replace "memory adaptation helping satisfy tighter latency targets" with the narrowing chosen in F, for example "a
+larger memory size is selected when the default size cannot meet the deadline". Values refresh at the regeneration.
+
+**E10. Provenance prose (R4.11a).** Move prototype, commit-prefix, library-version and defect-audit prose from §V-E
+and §S1 to the repository (REPRODUCE.md, KNOWN_ISSUES.md). Leave one sentence in §V-E: "Code, configuration, seeds
+and the record of which code state and platform produced each result are in the repository [ref]." (R4.11b, one
+primary evaluation and one main table, waits for the closed-loop runs.)
+
+**E11. Analysis labels (R2.22b, R6.6).** Every table and figure caption ends with one label: "prespecified"
+(docs/revision/PRESPECIFICATION.md, frozen in d16fbea), "post hoc", "corrected" or "version- and platform-specific".
+All revision results so far are post hoc or pre-calibration and are labelled so.
+
+## F. RQ4 and the abstract's memory claim: options, not a choice (R2.6, R7.4, R3.7, R4.4, R2.7, R4.10, R5.m5)
+
+Evidence (pre-calibration, supersedes at recalibration): `docs/revision/memadapt/` (7980b69): a warm-feasibility
+memory rule with calibrated-quantile capacity meets 2% as PRISM does in every short-slack regime and costs less
+(PRISM +27.9% at 13 s, +19.8% at 12 s, +8.3% at non-scaling 0.15 and 12 s; +4.7% at 11 s with 0.39 points fewer
+violating windows); fixed-2048 MB headroom is cheaper still; the two tie at the default deadline. These are
+fast-simulator numbers, and the fast simulator understates event-level cold starts about 3x
+(`docs/revision/kappa_gap/`).
+
+- **F1. Narrow.** RQ4 becomes "When the default memory size cannot meet the deadline, does selecting a larger size
+  restore compliance, and at what cost?"; answer: yes, and a one-line warm-feasibility rule achieves it at lower
+  cost than joint optimisation in the regimes tested. Caption as E9. Addresses R2.6 and R7.4 (with the baseline in
+  Table IX), R3.7, R4.4(b), R4.10, R5.m5; answers R2.7 and R4.4(a) as stated limitations.
+- **F2. Narrow and test.** F1, plus the within-run change of execution time (decision D4(c)), the one setting in
+  which an online memory decision could beat a once-per-regime choice. Adds R2.7 and R4.4(a) if run. Cost: plan
+  #99-100.
+- **F3. Keep RQ4 as stated.** Not supported by the evidence above; leaves R2.6, R7.4, R3.7 and R4.4 open.
+
+## G. AWS measurement plan under the applied quota of 10 (R1.2, R1.3, R2.8, R2.14, R2.20, R3.1, R4.3, R4.8, R5.M2, R6.1, R6.2, R7.5)
+
+The quota increase to 1,000 was denied on 20 Nov 2026; the applied concurrency quota is 10, so provisioned
+concurrency cannot be configured at all.
+
+| Campaign | Feasible at quota 10 | Comments it serves | Smallest design |
+|---|---|---|---|
+| Initialisation duration vs memory (five sizes, decision D6) | Yes: one cold start at a time | R1.2, R3.1, R4.8, R5.M2, R2.8, R6.2 | per size about 200 forced cold starts (new version, or idle beyond the keep-alive); init duration from the REPORT lines; fit the log-normal and its truncation |
+| Warm service time vs memory | Yes | R2.8, R6.2, R7.5 (memory-dependent execution) | per stage and size about 1,000 warm invocations at concurrency up to 10 |
+| Orchestration overhead (Step Functions) | Yes | R2.8, R2.20 | per transition, from the execution histories of the runs above |
+| Billing reconciliation | Partly: on-demand and request charges only | R2.14 | compare the cost model's on-demand and request terms with the bill of the runs above |
+| Activation lag of provisioned concurrency | **No** | R1.3, R4.3, R6.1 | keep the simulated lag sweep (L = 2, 5, 10) and state the lag is unmeasured |
+| Burst overflow beyond provisioned capacity | **No** | R6.1, R6.2 | keep the simulated loss routing and state it is unmeasured |
+
+What the quota allows still decides RQ4's direction (initialisation against memory, the decisive gate) and
+recalibrates every cold-start constant, which matters more after `docs/revision/kappa_gap/`. The
+provisioned-concurrency mechanisms stay simulated, and the paper must say so.
