@@ -1,12 +1,18 @@
 # Known issues
 
-## Code defects found after the runs (corrected by a separate patch; stored results not regenerated)
+## Code defects found after the runs (patch APPLIED 20 Nov 2026; stored results not yet regenerated)
 
-The program code in `src/`, `experiments/` and `scripts/` is the one that produced every stored result. The
-patch `patches/m12_m5_corrections.patch` corrects the three defects below and adds four tests
-(`tests/test_stage21_fixes.py`; all four fail without the patch, three by assertion and one with an error).
-It is not applied, because applying it
-to the stored results would require re-running the experiments; `patches/README.md` explains how to apply it.
+**Status.** `patches/m12_m5_corrections.patch` corrects the three defects below and adds four tests
+(`tests/test_stage21_fixes.py`). It was **applied to `main` on 20 November 2026**. The patch file is
+retained so the correction remains auditable as a discrete change.
+
+**Consequences, until the experiments are re-run:**
+
+- The code in `src/`, `experiments/` and `scripts/` is **no longer** the code that produced the stored
+  results in `results/`. The code that did is tagged `v1-submitted` (commit `3b4bc33`).
+- `CHECKSUMS.sha256` describes the `v1-submitted` code, so `python scripts/build_manifest.py --verify`
+  reports mismatches by design. It will be rebuilt when the results are regenerated.
+- `git diff v1-submitted -- src/ tests/` lists every code change made since submission.
 
 | ID | Defect | Where | Paper |
 |---|---|---|---|
