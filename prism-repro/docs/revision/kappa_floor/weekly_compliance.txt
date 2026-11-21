@@ -1,0 +1,37 @@
+(1) validation selection (floor 0.1; current code; fast simulator)
+  seed 101: eps 0.05 (interior); validation 1.49% = 10 windows
+  seed 102: eps 0.03 (interior); validation 1.64% = 11 windows
+  seed 103: eps 0.08 (TOP OF GRID); validation 1.34% = 9 windows
+  seed 104: eps 0.08 (TOP OF GRID); validation 1.64% = 11 windows
+  seed 105: eps 0.08 (TOP OF GRID); validation 1.79% = 12 windows
+
+(2) held-out test weeks at the selected eps
+  101 stationary eps 0.05   8/672 windows (1.19%), -5 vs the 13-window allowance, met; cost 1000.9, kappa 0.108
+  101 growth     eps 0.05   8/672 windows (1.19%), -5 vs the 13-window allowance, met; cost 1281.2, kappa 0.105
+  101 bursty     eps 0.05  11/672 windows (1.64%), -2 vs the 13-window allowance, met; cost 1111.3, kappa 0.107
+  101 new_spike  eps 0.05  11/672 windows (1.64%), -2 vs the 13-window allowance, met; cost 1258.5, kappa 0.106
+  102 stationary eps 0.03   5/672 windows (0.74%), -8 vs the 13-window allowance, met; cost 1104.2, kappa 0.108
+  102 growth     eps 0.03   5/672 windows (0.74%), -8 vs the 13-window allowance, met; cost 1445.5, kappa 0.107
+  102 bursty     eps 0.03   8/672 windows (1.19%), -5 vs the 13-window allowance, met; cost 1206.0, kappa 0.108
+  102 new_spike  eps 0.03   4/672 windows (0.60%), -9 vs the 13-window allowance, met; cost 1437.5, kappa 0.105
+  103 stationary eps 0.08  17/672 windows (2.53%), +4 vs the 13-window allowance, MISS; cost 937.5, kappa 0.101
+  103 growth     eps 0.08  16/672 windows (2.38%), +3 vs the 13-window allowance, MISS; cost 1221.5, kappa 0.101
+  103 bursty     eps 0.08  20/672 windows (2.98%), +7 vs the 13-window allowance, MISS; cost 998.1, kappa 0.102
+  103 new_spike  eps 0.08  23/672 windows (3.42%), +10 vs the 13-window allowance, MISS; cost 1197.9, kappa 0.101
+  104 stationary eps 0.08  15/672 windows (2.23%), +2 vs the 13-window allowance, MISS; cost 925.0, kappa 0.105
+  104 growth     eps 0.08  11/672 windows (1.64%), -2 vs the 13-window allowance, met; cost 1205.5, kappa 0.105
+  104 bursty     eps 0.08  21/672 windows (3.12%), +8 vs the 13-window allowance, MISS; cost 1043.4, kappa 0.105
+  104 new_spike  eps 0.08  17/672 windows (2.53%), +4 vs the 13-window allowance, MISS; cost 1263.9, kappa 0.103
+  105 stationary eps 0.08   7/672 windows (1.04%), -6 vs the 13-window allowance, met; cost 937.8, kappa 0.102
+  105 growth     eps 0.08   4/672 windows (0.60%), -9 vs the 13-window allowance, met; cost 1212.1, kappa 0.102
+  105 bursty     eps 0.08  12/672 windows (1.79%), -1 vs the 13-window allowance, met; cost 1020.9, kappa 0.102
+  105 new_spike  eps 0.08  16/672 windows (2.38%), +3 vs the 13-window allowance, MISS; cost 1193.7, kappa 0.101
+  pooled: mean of 20 weekly rates 1.78% = 239/13440 windows (every week has 672 windows, so the two agree); weeks met 12/20
+  misses by trace {101: 0, 102: 0, 103: 4, 104: 3, 105: 1}; by scenario {'stationary': 2, 'growth': 1, 'bursty': 2, 'new_spike': 3}; at the top-of-grid eps: 8 of 8 (weeks at that eps: 12)
+
+(3) POST HOC alternatives on the same weeks (test-week knowledge; not a validation)
+  submitted rule (cheapest with validation <= 2%): eps [0.05, 0.03, 0.08, 0.08, 0.08]; cost +0.0% vs submitted; pooled 1.78%; weeks met 12/20; worst week 3.42%
+  validation margin (cheapest with validation <= 1.5%): eps [0.05, 0.02, 0.08, 0.05, 0.05]; cost +4.6% vs submitted; pooled 1.47%; weeks met 15/20; worst week 3.42%
+  eps capped at 0.05 (largest interior grid value): eps [0.05, 0.03, 0.05, 0.05, 0.05]; cost +5.3% vs submitted; pooled 1.28%; weeks met 18/20; worst week 2.38%
+  uniform eps 0.03: eps [0.03, 0.03, 0.03, 0.03, 0.03]; cost +11.5% vs submitted; pooled 0.94%; weeks met 20/20; worst week 1.49%
+  uniform eps 0.02 (operator rule of eps_window_mapping.py on these rows): eps [0.02, 0.02, 0.02, 0.02, 0.02]; cost +16.1% vs submitted; pooled 0.75%; weeks met 20/20; worst week 1.34%
