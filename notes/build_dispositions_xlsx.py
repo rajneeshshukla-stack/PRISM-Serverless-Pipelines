@@ -99,7 +99,9 @@ def sheet_about(rows, source_note):
     lines = [
         ("PRISM reviewer dispositions", 1),
         (f"Generated {dt.datetime.now(dt.timezone.utc):%Y-%m-%d %H:%M} UTC from notes/dispositions.md (branch phase-e-review) by notes/build_dispositions_xlsx.py.", 3),
-        ("One row per tracker comment ID (73). Status definitions:", 3),
+        ("One row per tracker comment ID (73), in the same order as rows 2-74 of the tracker's Comments sheet.", 3),
+        ("Merging: Excel lookups (VLOOKUP, MATCH, COUNTIF) ignore case, so R5.M1-R5.M5 and R5.m1-R5.m5 collide. Merge by row order, or match with EXACT().", 3),
+        ("Status definitions:", 3),
         ("Fixed: all required changes complete and verified; any other request in the row has an evidence-backed rationale.", 3),
         ("Partially fixed: at least one substantive request resolved, another open.", 3),
         ("Not fixed: substantive work or verification remains and no substantive request is resolved.", 3),

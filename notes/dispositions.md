@@ -20,7 +20,7 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Requests: (a) Elaborate on the likely size of SLA violations on AWS Lambda: open. (b) Recommend an operator safety margin: open.
 - Changed / rationale: Nothing yet. The margin has to come from closed-loop event-level runs on measured constants, neither of which exists; a margin derived from the open-loop 2.1-4.2x factor would be quoted with false precision.
 - Evidence: Open-loop event-level replay gives 2.1-4.2x the fast simulator's violating windows (results/tables/T10_fast_vs_event.md). On current code the submitted configuration misses the weekly target in 8 of 20 held-out fast-simulator weeks (NA-6), so a margin is needed. The eps mapping (637596a) gives an operator rule within the simulator.
-- Remaining: Blocker: closed loop (R2.2) and AWS constants. Next: derive the margin from the closed-loop versus fast gap on measured constants (plan task #79 set) and add the guidance subsection (P-D). Pass: a stated margin with its source run, and the eps operator rule from the regenerated rows.
+- Remaining: Blocker: closed loop (R2.2) and AWS constants. Next: derive the margin from the closed-loop versus fast gap on measured constants (the Phase S safety-margin task; deployment guidance #114-115) and add the guidance subsection (P-D). Pass: a stated margin with its source run, and the eps operator rule from the regenerated rows.
 - Suggested response: We agree an operator needs a margin. We now derive it from the closed-loop event-level evaluation run on constants measured on AWS Lambda [margin pending], and we give operators the empirical mapping from the risk budget to weekly compliance so they can choose eps for their target.
 
 ## R1.2 | Partially fixed
@@ -83,7 +83,7 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Requests: (a) A competitive baseline that adjusts memory from observed latency or estimated warm-service feasibility: open.
 - Changed / rationale: Not started. Design (latency-driven or warm-feasibility-driven), implementation, a gate showing it adapts, and tuning across the short-slack regimes exceed two hours and need the author's design choice.
 - Evidence: Stored post hoc comparison: fixed-2048 MB headroom 14-29% cheaper than PRISM's best setting in the short-slack regimes (results/tables/revision/E4b_fixed_memory_summary.json). The init-direction sweep (a4187f7) shows PRISM's memory switching but is not this baseline.
-- Remaining: Blocker: design decision; scope. Next: plan #82-85. Pass: baseline logs memory changes, tuned by the common rule, compared at matched compliance.
+- Remaining: Blocker: design decision; scope. Next: plan #83-85. Pass: baseline logs memory changes, tuned by the common rule, compared at matched compliance.
 - Suggested response: [pending] We add a memory-adaptive calibrated-quantile baseline that adjusts memory from observed latency, verified to adapt, and compare it with PRISM at matched compliance.
 
 ## R2.7 | Not fixed
@@ -258,7 +258,7 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Requests: (a) State what PRISM reduces to at the default deadline: answer established by evidence; manuscript text open (P-A1). (b) Test the optimizer where the reduction fails (stage-specific demand; utilisation above break-even with a wider eps grid), or present PRISM as one rule among the families and adjust title and contributions: stage-specific demand resolved as a static test; above break-even open; framing decision open.
 - Changed / rationale: Stage-demand probe (main 2bdeaba), integer search (main c7360fe), anchors (bc548e7).
 - Evidence: Reduction confirmed: 16 of 40,293 above smallest (submitted, Linux); under 0.07% for corrected code. Stage-specific static gaps 5.06% and 5.78%; fan-out infeasible on the paper's grid for every eps tested, 17.40% gap at level_hi 4.0 and eps 0.02 (NA-4).
-- Remaining: Blocker: author's framing decision (plan #47 checkpoint). Next: end-to-end stage-specific runs; above-break-even runs with GRIDS_WIDE. Pass: decision written with this evidence; title and contributions follow it.
+- Remaining: Blocker: author's framing decision (the Phase D checkpoint task). Next: end-to-end stage-specific runs; above-break-even runs with GRIDS_WIDE. Pass: decision written with this evidence; title and contributions follow it.
 - Suggested response: The reduction is correct and we now state it in §IV. We took the first branch: with stage-specific demand the one-parameter family is the binding limitation (static gaps of 5-6%, and no feasible member on our grid under a 3x fan-out); end-to-end runs in that regime and above break-even are [pending], and the contributions are scoped to what they show.
 
 ## R4.2 | Not fixed
@@ -487,9 +487,9 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 
 ## R7.2 | Not fixed
 - Requests: (a) Which simulation assumptions contribute most to the higher event-level violation rates: open. (b) How they affect PRISM in a real environment: open.
-- Changed / rationale: Not started; the decomposition by mechanism (initialisation occupancy, downstream dependency, attainment metric) is plan #65. Only the attainment-metric component is now handled (exact attainment, main 1ab053c).
+- Changed / rationale: Not started; the decomposition by mechanism (initialisation occupancy, downstream dependency, attainment metric) is the Phase E decomposition task. Only the attainment-metric component is now handled (exact attainment, main 1ab053c).
 - Evidence: Fast versus event, same schedules: 1.44% -> 3.75% (T10_fast_vs_event.md).
-- Remaining: Blocker: closed loop for the real-environment part. Next: plan #65. Pass: per-mechanism contributions reported.
+- Remaining: Blocker: closed loop for the real-environment part. Next: the Phase E decomposition task. Pass: per-mechanism contributions reported.
 - Suggested response: [pending] We isolate the contributors: initialisation occupying environments, downstream dependency, and the attainment metric, and report each one's share of the gap.
 
 ## R7.3 | Partially fixed
@@ -503,7 +503,7 @@ regenerated. The *Erlang-B relative error* and the *end-to-end integer-search sa
 - Requests: (a) Compare with a simpler memory-adaptive calibrated-quantile controller: open.
 - Changed / rationale: Shares R2.6.
 - Evidence: As R2.6.
-- Remaining: Blocker: design decision; scope. Next: plan #82-85. Pass: as R2.6.
+- Remaining: Blocker: design decision; scope. Next: plan #83-85. Pass: as R2.6.
 - Suggested response: [pending] Added: a calibrated-quantile controller that adjusts memory from observed latency, tuned under the common rule and verified to adapt.
 
 ## R7.5 | Partially fixed
