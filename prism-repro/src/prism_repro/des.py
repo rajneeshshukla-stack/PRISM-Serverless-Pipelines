@@ -144,7 +144,40 @@ def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray,
         raw["inflight_max"] = np.stack(inflight, 1).astype(np.float32)
     if sample_seed is not None:  # latency-sampling error of the fast simulator (Supplement S4)
         raw["sampling_flip_share"] = sampling_flips(draws, lat, cfg, sample_seed)
+        raw["sampling_flip_direction"] = sampling_flip_direction(draws, lat, cfg, sample_seed)
     return dict(summary=out, raw=raw)
+
+
+def sampling_flip_direction(draws: EventDraws, lat: np.ndarray, cfg: PipelineConfig, seed: int,
+                            reps: int = 5):
+    """Direction of the sampling-induced misclassification (R5.M1).
+
+    sampling_flips reports how often the 100-request sample changes a window's compliance
+    verdict; Reviewer 5 notes the net direction was never reported. Returns the share of
+    windows the sample calls compliant while exact attainment calls them violating
+    ("optimistic" - these hide real violations) and the converse ("pessimistic"), plus
+    net = optimistic - pessimistic. Positive net means sampling understates violations.
+    """
+    N = draws.counts.astype(float)
+    ok = (lat <= cfg.deadline).astype(float)
+    exact_ot = np.bincount(draws.minute, weights=ok, minlength=draws.n_min)
+    att_exact, _, _ = window_attainment(N, exact_ot, cfg.window_min)
+    starts = np.concatenate([[0], np.cumsum(draws.counts)[:-1]])
+    rng = np.random.default_rng(seed)
+    thr = 1 - cfg.sla_eps
+    exact_bad = att_exact < thr
+    opt, pes = [], []
+    k = cfg.latency_samples
+    for _ in range(reps):
+        pick = starts[:, None] + (rng.uniform(size=(draws.n_min, k)) * np.maximum(draws.counts, 1)[:, None]).astype(np.int64)
+        pick = np.minimum(pick, len(ok) - 1)
+        frac = np.where(draws.counts > 0, ok[pick].mean(1), 1.0)
+        att_s, _, _ = window_attainment(N, N * frac, cfg.window_min)
+        samp_bad = att_s < thr
+        opt.append(float(np.mean(exact_bad & ~samp_bad)))
+        pes.append(float(np.mean(~exact_bad & samp_bad)))
+    o, p_ = float(np.mean(opt)), float(np.mean(pes))
+    return dict(optimistic=o, pessimistic=p_, net=o - p_)
 
 
 def sampling_flips(draws: EventDraws, lat: np.ndarray, cfg: PipelineConfig, seed: int, reps: int = 5):
