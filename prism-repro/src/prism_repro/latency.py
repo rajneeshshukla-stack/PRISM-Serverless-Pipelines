@@ -23,8 +23,22 @@ def stage_means(cfg: PipelineConfig, m: float) -> np.ndarray:
     return np.asarray(cfg.warm_mean_1024, float) * duration_factor(m, cfg.nonscaling)
 
 
+def init_factor(cfg: PipelineConfig, m: float) -> float:
+    """Init-vs-memory factor relative to 1024 MB under cfg.init_scaling (R1.2, R5.M2)."""
+    mode = cfg.init_scaling
+    if mode == "eq3":
+        return duration_factor(m, cfg.init_nonscaling)
+    if mode == "constant":
+        return 1.0
+    if mode == "inverted":
+        return 1.0 / duration_factor(m, cfg.init_nonscaling)
+    raise ValueError(f"init_factor undefined for init_scaling={mode!r}")
+
+
 def _init_untruncated_mean(cfg: PipelineConfig, m: float) -> float:
-    return cfg.init_mean_1024 * duration_factor(m, cfg.init_nonscaling)
+    if cfg.init_scaling == "measured":
+        return float(dict(cfg.init_mean_measured)[int(m)])
+    return cfg.init_mean_1024 * init_factor(cfg, m)
 
 
 def _init_cap_z(cfg: PipelineConfig, m: float) -> float:
@@ -101,7 +115,8 @@ def attainment_table(cfg, m: int) -> np.ndarray:
     """
     key = (int(m), cfg.n_stages, tuple(cfg.warm_mean_1024), cfg.exec_shape, cfg.overhead_mean,
            cfg.overhead_shape, cfg.init_mean_1024, cfg.init_shape, cfg.nonscaling,
-           cfg.init_nonscaling, cfg.deadline, cfg.exact_attainment_draws, cfg.init_max_s)
+           cfg.init_nonscaling, cfg.deadline, cfg.exact_attainment_draws, cfg.init_max_s,
+           cfg.init_scaling, cfg.init_mean_measured)
     hit = _ATTAIN_CACHE.get(key)
     if hit is not None:
         return hit
@@ -151,6 +166,7 @@ def _miss_cached(key):
 def miss_table(cfg: PipelineConfig) -> dict:
     """{m: (v_w, rho)} for all memory options, cached on the latency-relevant fields."""
     keys = ("warm_mean_1024", "exec_shape", "overhead_mean", "overhead_shape", "init_mean_1024",
-            "init_shape", "nonscaling", "init_nonscaling", "deadline", "init_max_s")
+            "init_shape", "nonscaling", "init_nonscaling", "deadline", "init_max_s",
+            "init_scaling", "init_mean_measured")
     items = tuple((k, getattr(cfg, k)) for k in keys)
     return {m: _miss_cached((items, m)) for m in cfg.mem_options}

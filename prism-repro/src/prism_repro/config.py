@@ -55,6 +55,12 @@ class PipelineConfig:
     mem_options: Tuple[int, ...] = (512, 1024, 2048, 3008)
     nonscaling: float = 0.5  # Eq. (2)
     init_nonscaling: float = 0.7  # §III-A, Eq. (3)
+    # R1.2 / R5.M2: direction of the init-vs-memory relation. "eq3": Eq. (3), init shortens as
+    # memory grows (submitted model). "constant": init_mean_1024 at every size. "inverted":
+    # reciprocal of the Eq. (3) factor, so init grows with memory by the same log-ratio.
+    # "measured": per-size means from init_mean_measured ((MB, s), ...), e.g. the AWS campaign.
+    init_scaling: str = "eq3"
+    init_mean_measured: Optional[Tuple[Tuple[int, float], ...]] = None
     default_mem: int = 1024
     deadline: float = 14.5  # s
     window_min: int = 15
@@ -97,6 +103,12 @@ class PipelineConfig:
             raise ValueError("invalid timing parameters")
         if (7 * 1440) % self.window_min or self.window_min % 1:
             raise ValueError("window length must divide a week")
+        if self.init_scaling not in ("eq3", "constant", "inverted", "measured"):
+            raise ValueError("init_scaling must be 'eq3', 'constant', 'inverted' or 'measured'")
+        if self.init_scaling == "measured":
+            meas = dict(self.init_mean_measured or ())
+            if any(m not in meas for m in self.mem_options) or any(v < 0 for v in meas.values()):
+                raise ValueError("init_mean_measured must give a non-negative mean for every memory option")
         if self.init_max_s is not None and not self.init_max_s > 0:
             raise ValueError("init_max_s must be positive or None")
         if self.deadline <= 0 or self.init_mean_1024 < 0:

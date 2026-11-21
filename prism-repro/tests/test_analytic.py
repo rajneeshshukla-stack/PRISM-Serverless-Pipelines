@@ -182,5 +182,55 @@ class TestTruncatedInit(unittest.TestCase):
             self.assertTrue(np.all(a1 >= a0))
 
 
+class TestInitScalingDirection(unittest.TestCase):
+    """R1.2 / R5.M2: the init-vs-memory direction is a parameter (Eq. (3), constant, inverted,
+    measured). rho is recomputed per direction and checked against an independent Monte Carlo;
+    the default reproduces the cited rho = 0.53 at 1024 MB and 0.09 at 2048 MB."""
+
+    MEMS = (512, 1024, 2048, 3008)
+
+    def cfg(self, mode, **kw):
+        return PipelineConfig().with_(init_scaling=mode, **kw)
+
+    def test_closed_form_means_per_direction(self):
+        eq3, const, inv = self.cfg("eq3"), self.cfg("constant"), self.cfg("inverted")
+        for m in self.MEMS:
+            f = 0.7 + 0.3 * 1024.0 / m
+            self.assertAlmostEqual(init_mean(eq3, m), 6.0 * f, places=12)
+            self.assertEqual(init_mean(const, m), 6.0)
+            self.assertAlmostEqual(init_mean(inv, m), 6.0 / f, places=12)
+        for c, sign in ((eq3, -1), (inv, 1)):
+            d = np.diff([init_mean(c, m) for m in self.MEMS])
+            self.assertTrue(np.all(np.sign(d) == sign))
+        meas = self.cfg("measured", init_mean_measured=((512, 1.1), (1024, 1.2), (1536, 1.25),
+                                                         (2048, 1.3), (3008, 1.4)))
+        self.assertEqual([init_mean(meas, m) for m in self.MEMS], [1.1, 1.2, 1.3, 1.4])
+        with self.assertRaises(ValueError):
+            self.cfg("measured", init_mean_measured=((1024, 1.2),))
+        with self.assertRaises(ValueError):
+            self.cfg("upside_down")
+
+    def test_rho_per_direction_against_independent_monte_carlo(self):
+        rng = np.random.default_rng(99)
+        n = 400_000
+        rhos = {}
+        for mode in ("eq3", "constant", "inverted"):
+            c = self.cfg(mode)
+            for m in (1024, 2048):
+                rho = miss_probabilities(c, m)[1]
+                d = np.array(c.warm_mean_1024) * (0.5 + 0.5 * 1024.0 / m)
+                warm = (d * np.exp(0.3 * rng.standard_normal((n, 4)) - 0.045)).sum(1) \
+                    + (0.1 * np.exp(0.3 * rng.standard_normal((n, 4)) - 0.045)).sum(1)
+                ref = float((warm + init_mean(c, m) * np.exp(0.3 * rng.standard_normal(n) - 0.045) > 14.5).mean())
+                self.assertLess(abs(rho - ref), 4 * np.sqrt(ref * (1 - ref) / n) + 1e-4, (mode, m))
+                rhos[mode, m] = rho
+        self.assertEqual(round(rhos["eq3", 1024], 2), 0.53)
+        self.assertEqual(round(rhos["eq3", 2048], 2), 0.09)
+        for mode in ("constant", "inverted"):   # all three agree at the 1024 MB pivot
+            self.assertAlmostEqual(rhos[mode, 1024], rhos["eq3", 1024], places=12)
+        self.assertLess(rhos["eq3", 2048], rhos["constant", 2048])
+        self.assertLess(rhos["constant", 2048], rhos["inverted", 2048])
+
+
 if __name__ == "__main__":
     unittest.main()
