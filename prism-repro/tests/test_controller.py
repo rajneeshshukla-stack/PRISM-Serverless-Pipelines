@@ -69,6 +69,34 @@ class TestConformal(unittest.TestCase):
 
 
 
+
+class TestIntegerSearchEvaluator(unittest.TestCase):
+    """R2.13: the standalone evaluator used by scripts/revision/integer_search_gap.py must
+    agree with ChanceConstrainedOptimizer.evaluate(). Every reported optimality gap depends
+    on it; silent drift would make those numbers meaningless."""
+
+    def test_matches_optimizer_evaluate(self):
+        import os
+        import sys as _sys
+        _sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "scripts", "revision"))
+        from integer_search_gap import eval_P
+
+        cfg = PipelineConfig()
+        rng = np.random.default_rng(11)
+        for eps in (0.01, 0.05):
+            pc = PrismConfig(eps=eps)
+            opt = ChanceConstrainedOptimizer(cfg, pc, 0.8)
+            for _ in range(3):
+                q = np.sort(rng.uniform(300, 1400, 4))
+                sc = scenarios(q, 60)
+                for m in (1024, 2048):
+                    d = opt.decide(sc, (m,), 0.35)
+                    ev = opt.evaluate(sc, (m,), 0.35)
+                    j = int(np.argmin(np.abs(np.asarray(ev["ys"]) - d.level)))
+                    cost, feas = eval_P(d.P, m, sc, 0.35, pc, cfg)
+                    self.assertAlmostEqual(cost, float(ev["cost"][0, j]), places=9)
+                    self.assertAlmostEqual(feas, float(ev["feas"][0, j]), places=9)
+
 class TestDefaultRiskModel(unittest.TestCase):
     """R4.9: Supplement S6 recommends Erlang-B while the submitted main configuration used
     Eq. (5). This guards against silently reverting that."""
