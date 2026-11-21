@@ -13,11 +13,20 @@ Every request's latency is computed, so window attainment is exact.
 This is an independent reconstruction of the manuscript's description; it is
 open-loop: it replays provisioning schedules produced elsewhere (§VI-H).
 `simulate_events(..., want_telemetry=True)` additionally records per-minute
-telemetry of that open-loop replay (`EventTelemetry`). This is instrumentation and a
-data contract (the fields of `simulator.Telemetry` that policies read), not a closed
-loop: no policy consumes it, and `simulate_events` still runs stage by stage over the
-whole horizon. Making it epoch-major so decisions can respond to it is separate work
-(R2.2 remains open).
+telemetry of that open-loop replay (`EventTelemetry`), with the fields of
+`simulator.Telemetry` that policies read.
+
+R2.2, stage 1: the replay is epoch-major. `_EventEngine` advances epoch by epoch and,
+within an epoch, routes every stage's arrivals that fall in it, carrying each stage's
+state across the boundary explicitly (`_StageState`: provisioned environments busy
+until their finish times, on-demand environments busy until theirs, the LIFO pool of
+idle warm environments with their keep-alive clocks, and the memory version of the
+last request routed). Requests still running at a boundary stay in those heaps, and a
+request's downstream arrival waits in the next stage's pending set until the epoch it
+falls in. Each stage sees exactly the arrival sequence of the former stage-major pass
+(by time, ties by the upstream stage's routing order), so outputs are byte-identical
+to it (tests/test_des_epoch_major_guard.py). Costs and shares are still summed once,
+over each stage's full request array in that order.
 """
 from __future__ import annotations
 
@@ -50,6 +59,20 @@ class EventDraws:
         self.n, self.n_min = n, n_min
 
 
+class _StageState:
+    """Routing state of one stage, carried across epoch boundaries (R2.2).
+
+    pc_busy: heap of finish times of busy provisioned environments (requests in flight on them).
+    od_busy: heap of busy on-demand environments, as finish times, or (finish time, memory version) with the M5 fix.
+    idle:    warm idle on-demand environments in the order they became idle; reused last-in first-out, expired
+             first-in first-out once idle longer than the keep-alive (their idle-since time is their keep-alive clock).
+    cur_gen: memory version of the last on-demand request routed (the M5 version counter's state)."""
+    __slots__ = ("pc_busy", "od_busy", "idle", "cur_gen")
+
+    def __init__(self):
+        self.pc_busy, self.od_busy, self.idle, self.cur_gen = [], [], deque(), None
+
+
 def _stage_pass(arr, x, z, P_min, KA, gen_min=None):
     """One stage. arr sorted ascending. Returns finish times, cold flags, provisioned flags.
     gen_min (M5 fix): memory-version index per minute; an on-demand environment is reused only by a
@@ -58,14 +81,20 @@ def _stage_pass(arr, x, z, P_min, KA, gen_min=None):
     finish = np.empty(n)
     cold = np.zeros(n, bool)
     used_pc = np.zeros(n, bool)
-    pc_busy, od_busy, idle = [], [], deque()
+    _route(_StageState(), arr.tolist(), x.tolist(), z.tolist(), P_min.tolist(), KA,
+           gen_min.tolist() if gen_min is not None else None, finish, cold, used_pc)
+    return finish, cold, used_pc
+
+
+def _route(st, arr_l, x_l, z_l, P_l, KA, G_l, finish, cold, used_pc):
+    """Route requests through one stage, continuing from state `st` and leaving it as the state after the last one.
+    arr_l, x_l, z_l: arrival, execution and initialisation times (lists, arrival-ordered); P_l: provisioned level per
+    minute; G_l: memory version per minute (None: no versioning). Writes finish, cold and used_pc (same length).
+    The loop body is the former whole-horizon _stage_pass, unchanged; only its state outlives the call."""
+    pc_busy, od_busy, idle, cur_gen = st.pc_busy, st.od_busy, st.idle, st.cur_gen
     hpush, hpop = heapq.heappush, heapq.heappop
-    arr_l, x_l, z_l = arr.tolist(), x.tolist(), z.tolist()
-    P_l = P_min.tolist()
     nP = len(P_l)
-    G_l = gen_min.tolist() if gen_min is not None else None
-    cur_gen = None
-    for j in range(n):
+    for j in range(len(arr_l)):
         t = arr_l[j]
         while pc_busy and pc_busy[0] <= t:
             hpop(pc_busy)
@@ -109,7 +138,109 @@ def _stage_pass(arr, x, z, P_min, KA, gen_min=None):
                     cold[j] = True
                 hpush(od_busy, (f, g))
         finish[j] = f
-    return finish, cold, used_pc
+    st.idle, st.cur_gen = idle, cur_gen   # the heaps were changed in place; the pool may have been rebuilt
+
+
+class _EventEngine:
+    """Epoch-major event routing (R2.2). `route_until(t_hi)` routes, stage by stage, every request whose arrival at
+    the stage is earlier than t_hi; `drain()` routes the rest. Called with t_hi at successive epoch ends, it advances
+    one epoch at a time with all stages inside each epoch.
+
+    Why this reproduces the former stage-major pass exactly: a stage's state changes only when one of its own
+    arrivals is routed, so the stage gives the same results whenever it sees the same arrival sequence. Stage 0 takes
+    the trace's arrivals in order. A request reaches stage s+1 at its stage-s finish plus the orchestration delay,
+    always later than it reached stage s, so every stage-(s+1) arrival before t_hi comes from a stage-s arrival
+    before t_hi, already routed when stage s+1's turn in the same epoch comes. Pending arrivals are taken in the
+    order of the former global stable sort: by time, ties by the position at which stage s routed them.
+
+    Kept per stage, in routing order, for the summary: the per-request execution and initialisation cost terms,
+    cold and provisioned flags, and (when asked) arrival and finish times."""
+
+    def __init__(self, cfg: PipelineConfig, draws: EventDraws, bill_init: bool = True, keep_times: bool = False):
+        self.cfg, self.draws, self.bill_init, self.keep_times = cfg, draws, bill_init, keep_times
+        S = cfg.n_stages
+        self.S, self.KA = S, cfg.keepalive_min * 60.0
+        self.state = [_StageState() for _ in range(S)]
+        self.mems = np.array(cfg.mem_options)
+        self.d = [np.array([stage_means(cfg, int(m))[s] for m in cfg.mem_options]) for s in range(S)]
+        self.ini = np.array([init_mean(cfg, int(m)) for m in cfg.mem_options])
+        self.next0 = 0                                     # next stage-0 position (the trace's arrival order)
+        e_t, e_i = np.empty(0), np.empty(0, np.int64)
+        self.pend = [None] + [(e_t, e_i, e_i) for _ in range(1, S)]   # stage s >= 1: (time, upstream position, id)
+        self.seq = [0] * S                                 # requests routed so far, per stage
+        self.out = [dict(cold=[], used=[], ex=[], ini=[], arr=[], fin=[]) for _ in range(S)]
+        self.done = np.empty(draws.n)                      # completion after the last stage's orchestration delay
+
+    def _take(self, s, t_hi):
+        """Requests arriving at stage s before t_hi (all remaining if t_hi is None), in stage-major order."""
+        if s == 0:
+            a = self.draws.arrival
+            lo = self.next0
+            hi = len(a) if t_hi is None else max(lo, int(np.searchsorted(a, t_hi, side="left")))
+            self.next0 = hi
+            return a[lo:hi], np.arange(lo, hi)
+        t, q, r = self.pend[s]
+        sel = np.ones(len(t), bool) if t_hi is None else t < t_hi
+        o = np.lexsort((q[sel], t[sel]))                   # by time, ties by upstream routing position
+        tt, rr = t[sel][o], r[sel][o]
+        keep = ~sel
+        self.pend[s] = (t[keep], q[keep], r[keep])
+        return tt, rr
+
+    def _route_stage(self, s, tt, rr, P_l, G_l, mem_min):
+        n = len(tt)
+        if n == 0:
+            return None
+        cfg, dr = self.cfg, self.draws
+        m_req = mem_min[np.minimum((tt // 60).astype(np.int64), dr.n_min - 1)]
+        mi = np.searchsorted(self.mems, m_req)
+        x = dr.ex[s, rr] * self.d[s][mi]
+        if cfg.init_max_s is None:
+            z = dr.init[s, rr] * self.ini[mi]
+        else:  # R4.8: truncated initialisation, per memory size
+            u = dr.init[s, rr]
+            z = np.empty(len(u))
+            for j, m in enumerate(cfg.mem_options):
+                sel = mi == j
+                if sel.any():
+                    z[sel] = init_seconds(cfg, u[sel], m)
+        fin = np.empty(n)
+        cold = np.zeros(n, bool)
+        used = np.zeros(n, bool)
+        _route(self.state[s], tt.tolist(), x.tolist(), z.tolist(), P_l[s], self.KA, G_l, fin, cold, used)
+        pr = cfg.prices
+        g = m_req / 1024.0
+        o = self.out[s]
+        o["ex"].append(x * g * np.where(used, pr.pcd, pr.od))
+        if self.bill_init:
+            o["ini"].append(z * g * cold * pr.od)
+        o["cold"].append(cold)
+        o["used"].append(used)
+        if self.keep_times:
+            o["arr"].append(np.asarray(tt, float))
+            o["fin"].append(fin)
+        nxt = fin + dr.ov[s, rr]
+        if s + 1 < self.S:
+            t, q, r = self.pend[s + 1]
+            self.pend[s + 1] = (np.concatenate([t, nxt]), np.concatenate([q, self.seq[s] + np.arange(n)]),
+                                np.concatenate([r, rr]))
+        else:
+            self.done[rr] = nxt
+        self.seq[s] += n
+        return dict(arr=tt, fin=fin, cold=cold, used=used)
+
+    def route_until(self, t_hi, P_l, G_l, mem_min):
+        """Route every stage's arrivals before t_hi, stage 0 first. P_l: per stage, provisioned level per minute;
+        G_l: memory version per minute; mem_min: memory per minute. Returns each stage's newly routed requests."""
+        return [self._route_stage(s, *self._take(s, t_hi), P_l, G_l, mem_min) for s in range(self.S)]
+
+    def drain(self, P_l, G_l, mem_min):
+        """Route the requests still on their way when the horizon ends (lookups beyond it use its last minute)."""
+        return self.route_until(None, P_l, G_l, mem_min)
+
+    def stage(self, s, key, dtype=float):
+        parts = self.out[s][key]
+        return np.concatenate(parts) if parts else np.empty(0, dtype)
 
 
 def max_inflight_per_minute(arr, finish, n_min):
@@ -186,44 +317,37 @@ def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray,
     S, E = cfg.n_stages, cfg.epoch_min
     P_min = np.repeat(np.asarray(P_epoch, float), E, axis=0)[:draws.n_min]
     mem_min = np.repeat(np.asarray(mem_epoch), E)[:draws.n_min]
+    gen_min = np.concatenate([[0], np.cumsum(mem_min[1:] != mem_min[:-1])])  # M5 fix: memory version per minute
+    eng = _EventEngine(cfg, draws, bill_init, keep_times=want_inflight or want_telemetry)
+    P_l = [P_min[:, s].tolist() for s in range(S)]
+    G_l = gen_min.tolist()
+    for k in range(-(-draws.n_min // E)):            # epoch-major: epoch k, every stage, state carried over
+        eng.route_until((k + 1) * E * 60.0, P_l, G_l, mem_min)
+    eng.drain(P_l, G_l, mem_min)
+    return _event_results(cfg, draws, eng, P_min, mem_min, bill_init, want_inflight, want_telemetry, sample_seed)
+
+
+def _event_results(cfg, draws, eng, P_min, mem_min, bill_init, want_inflight, want_telemetry, sample_seed):
+    """Summary and raw outputs of a routed horizon; the former stage-major aggregation, unchanged, applied to each
+    stage's requests in routing order."""
+    S = cfg.n_stages
     pr = cfg.prices
-    arr = draws.arrival.copy()
-    idx = np.arange(draws.n)          # request id of each position
     cost = (P_min * (mem_min[:, None] / 1024.0) * 60.0 * pr.pc).sum() + draws.n * S * pr.req
     od_share, cold_ratio, inflight, stel = [], [], [], []
-    KA = cfg.keepalive_min * 60.0
-    gen_min = np.concatenate([[0], np.cumsum(mem_min[1:] != mem_min[:-1])])  # M5 fix: memory version per minute
     for s in range(S):
-        m_req = mem_min[np.minimum((arr // 60).astype(np.int64), draws.n_min - 1)]
-        d_s = np.array([stage_means(cfg, int(m))[s] for m in cfg.mem_options])
-        ini = np.array([init_mean(cfg, int(m)) for m in cfg.mem_options])
-        mi = np.searchsorted(np.array(cfg.mem_options), m_req)
-        x = draws.ex[s, idx] * d_s[mi]
-        if cfg.init_max_s is None:
-            z = draws.init[s, idx] * ini[mi]
-        else:  # R4.8: truncated initialisation, per memory size
-            u = draws.init[s, idx]
-            z = np.empty(len(u))
-            for j, m in enumerate(cfg.mem_options):
-                sel = mi == j
-                if sel.any():
-                    z[sel] = init_seconds(cfg, u[sel], m)
-        fin, cold, used_pc = _stage_pass(arr, x, z, P_min[:, s], KA, gen_min)
-        g = m_req / 1024.0
-        cost += (x * g * np.where(used_pc, pr.pcd, pr.od)).sum()
+        cold, used_pc = eng.stage(s, "cold", bool), eng.stage(s, "used", bool)
+        cost += eng.stage(s, "ex").sum()
         if bill_init:
-            cost += (z * g * cold * pr.od).sum()
+            cost += eng.stage(s, "ini").sum()
         od_share.append(1 - used_pc.mean())
         cold_ratio.append(cold.mean())
-        if want_inflight:
-            inflight.append(max_inflight_per_minute(arr, fin, draws.n_min))
-        if want_telemetry:
-            stel.append(stage_telemetry(arr, fin, cold, used_pc, draws.n_min))
-        nxt = fin + draws.ov[s, idx]
-        o = np.argsort(nxt, kind="stable")
-        arr, idx = nxt[o], idx[o]
-    done = np.empty(draws.n)
-    done[idx] = arr                  # after final stage incl. its orchestration overhead
+        if want_inflight or want_telemetry:
+            arr, fin = eng.stage(s, "arr"), eng.stage(s, "fin")
+            if want_inflight:
+                inflight.append(max_inflight_per_minute(arr, fin, draws.n_min))
+            if want_telemetry:
+                stel.append(stage_telemetry(arr, fin, cold, used_pc, draws.n_min))
+    done = eng.done                  # after final stage incl. its orchestration overhead
     lat = done - draws.arrival
     ok = lat <= cfg.deadline
     ontime = np.bincount(draws.minute, weights=ok.astype(float), minlength=draws.n_min)
