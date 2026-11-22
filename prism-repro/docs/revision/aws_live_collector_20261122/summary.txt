@@ -1,0 +1,26 @@
+SMALL LIVE COLLECTOR VERIFICATION (run AWS_livetest_20261122-090236; us-east-2; fixed 1024 MB; proposed synthetic
+workload; fixed schedule, NOT PRISM's adaptive controller). Recomputed from the saved files; sanitized aggregates only.
+
+## Coverage (recomputed independently of cloudwatch_coverage.json)
+  expected stage request IDs (smoke 12, baseline 16, adapter 16): 44
+  REPORT records saved: 100; unique request IDs: 100; duplicates: 0
+  matched: 44; missing: 0; extra (not a recorded stage invocation): 56
+  saved coverage file agrees: True (file: expected 44, matched 44, missing 0, extra 56, complete True)
+  collection state: complete, 1 call(s), pages per group [2, 2, 2, 2], retries 0, duplicates skipped 0; livetest.json verified: True
+  extras by stage log group: {'ingest': 14, 'transform': 14, 'aggregate': 14, 'load': 14}. They are not used in the analysis below. The run's calibration step invokes each function directly before the arms (livetest.json 'calibration'; probes per stage are not recorded as stage rows), which is the expected source; this is not verified per request ID.
+
+## Matched REPORT records by stage (44; extras excluded)
+  ingest    n=11 (cold 5, warm 6); Duration ms cold {'n': 5, 'min': 828.41, 'median': 939.24, 'max': 992.25}, warm {'n': 6, 'min': 811.04, 'median': 846.4, 'max': 996.73}; Init Duration present 5 {'n': 5, 'min': 115.83, 'median': 125.17, 'max': 149.17}; Billed ms cold {'n': 5, 'min': 974.0, 'median': 1059.0, 'max': 1118.0}, warm {'n': 6, 'min': 812.0, 'median': 847.0, 'max': 997.0}; Memory Size [1024]; Max Memory Used {'n': 11, 'min': 41, 'median': 41, 'max': 42}; missing required fields 0; cold without Init 0; warm with Init 0
+  transform n=11 (cold 7, warm 4); Duration ms cold {'n': 7, 'min': 4187.95, 'median': 4809.43, 'max': 5136.81}, warm {'n': 4, 'min': 4050.02, 'median': 4654.06, 'max': 5195.42}; Init Duration present 7 {'n': 7, 'min': 93.06, 'median': 110.94, 'max': 126.67}; Billed ms cold {'n': 7, 'min': 4298.0, 'median': 4930.0, 'max': 5230.0}, warm {'n': 4, 'min': 4051.0, 'median': 4654.5, 'max': 5196.0}; Memory Size [1024]; Max Memory Used {'n': 11, 'min': 41, 'median': 42, 'max': 42}; missing required fields 0; cold without Init 0; warm with Init 0
+  aggregate n=11 (cold 7, warm 4); Duration ms cold {'n': 7, 'min': 2702.6, 'median': 3020.95, 'max': 3082.71}, warm {'n': 4, 'min': 2534.23, 'median': 2769.08, 'max': 3037.39}; Init Duration present 7 {'n': 7, 'min': 88.51, 'median': 111.46, 'max': 132.73}; Billed ms cold {'n': 7, 'min': 2792.0, 'median': 3133.0, 'max': 3206.0}, warm {'n': 4, 'min': 2535.0, 'median': 2769.5, 'max': 3038.0}; Memory Size [1024]; Max Memory Used {'n': 11, 'min': 112, 'median': 112, 'max': 112}; missing required fields 0; cold without Init 0; warm with Init 0
+  load      n=11 (cold 5, warm 6); Duration ms cold {'n': 5, 'min': 1203.75, 'median': 1401.09, 'max': 1421.27}, warm {'n': 6, 'min': 1194.02, 'median': 1275.9, 'max': 1434.84}; Init Duration present 5 {'n': 5, 'min': 114.17, 'median': 117.1, 'max': 119.81}; Billed ms cold {'n': 5, 'min': 1319.0, 'median': 1519.0, 'max': 1539.0}, warm {'n': 6, 'min': 1195.0, 'median': 1276.5, 'max': 1435.0}; Memory Size [1024]; Max Memory Used {'n': 11, 'min': 42, 'median': 42, 'max': 42}; missing required fields 0; cold without Init 0; warm with Init 0
+
+## Billed Duration against Duration (matched reports)
+  warm: Billed = ceil(Duration) in 20 of 20; cold: Billed = ceil(Duration + Init Duration) in 24 of 24
+  in-function handler time vs Lambda Duration: n=44, median Duration - handler = 2.74 ms
+
+## Cleanup evidence
+  saved teardown result (livetest.json): remaining after teardown: {'functions': [], 'state_machines': ['prism-pipe-docpipe'], 'log_groups': [], 'roles': []}; last line: NOT CLEAN: delete the listed resources by hand and re-run ve
+  CloudTrail export (lambda, logs, states; no IAM file): {'CreateFunction20150331': 5, 'CreateLogGroup': 4, 'CreateLogStream': 28, 'CreateStateMachine': 1, 'DeleteFunction20150331': 4, 'DeleteLogGroup': 8, 'DeleteStateMachine': 1, 'PutRetentionPolicy': 4}
+  errors on Delete calls: {('DeleteLogGroup', 'ResourceNotFoundException'): 4} (the second DeleteLogGroup per group is the manifest pass after the per-function pass already deleted it)
+  A later CLEAN from `verify` is not in the saved files: if reported, it is terminal-reported. IAM role deletion is shown only by the saved teardown listing (roles: []), not by the CloudTrail export.
