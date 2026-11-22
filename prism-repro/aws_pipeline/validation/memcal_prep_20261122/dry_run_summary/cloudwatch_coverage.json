@@ -1,0 +1,12 @@
+{
+ "expected_request_ids": 21248,
+ "matched": 21248,
+ "missing": 0,
+ "missing_ids": [],
+ "extra_reports": 0,
+ "invocations_without_request_id": 0,
+ "tail_and_cloudwatch_both": 21248,
+ "tail_and_cloudwatch_differ": 0,
+ "collection_status": "complete",
+ "complete": true
+}

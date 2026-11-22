@@ -12,6 +12,7 @@ FakeLogs and FakeSTS hold just enough state to test deploy, collect and teardown
 from __future__ import annotations
 
 import base64
+import hashlib
 import importlib.util
 import io
 import itertools
@@ -137,7 +138,9 @@ class FakeLambda:
             arn = f"arn:aws:lambda:us-east-2:000000000000:function:{FunctionName}"
             self.fns[FunctionName] = {"arn": arn, "handler": Handler, "memory": int(MemorySize),
                                       "env": dict(Environment["Variables"]), "tags": dict(Tags or {}), "gen": 0,
-                                      "idle": [], "pending": 0, "timeout": Timeout, "zip_bytes": len(Code["ZipFile"])}
+                                      "idle": [], "pending": 0, "timeout": Timeout, "zip_bytes": len(Code["ZipFile"]),
+                                      "runtime": Runtime, "architectures": list(Architectures),
+                                      "code_sha256": base64.b64encode(hashlib.sha256(Code["ZipFile"]).digest()).decode()}
         return {"FunctionArn": arn, "State": "Pending"}
 
     def delete_function(self, FunctionName):
@@ -181,7 +184,9 @@ class FakeLambda:
             st = "InProgress" if f["pending"] > 0 else "Successful"
             f["pending"] = max(f["pending"] - 1, 0)
             return {"FunctionName": FunctionName, "FunctionArn": f["arn"], "MemorySize": f["memory"],
-                    "State": "Active", "LastUpdateStatus": st, "Environment": {"Variables": dict(f["env"])}}
+                    "State": "Active", "LastUpdateStatus": st, "Environment": {"Variables": dict(f["env"])},
+                    "Runtime": f.get("runtime"), "Handler": f["handler"], "Timeout": f["timeout"],
+                    "Architectures": list(f.get("architectures") or []), "CodeSha256": f.get("code_sha256")}
 
     def put_provisioned_concurrency_config(self, **kw):
         self.pc_calls += 1
@@ -234,7 +239,8 @@ class FakeLambda:
         try:
             if slot is None:
                 mod, init_s, ilines = self._new_env(FunctionName, env)
-                lines = ilines + lines
+                lines = [f"INIT_START Runtime Version: python:3.12.fake	Runtime Version ARN: "
+                         f"arn:aws:lambda:us-east-2::runtime:fake"] + ilines + lines
                 init_total = self.runtime_init_s + init_s * self.slow(mem)
                 extra = self.create_s + self.runtime_init_s + init_s * max(self.slow(mem) - 1.0, 0.0)
                 if extra > 0:

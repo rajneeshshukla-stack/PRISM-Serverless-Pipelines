@@ -42,6 +42,9 @@ The real-AWS path has never run against AWS.
 | `prism_pipeline/fake.py`, `selftest.py` | in-process fakes running the real handler code; end-to-end self-test |
 | `tests/test_pipeline.py` | 29 local tests (sockets blocked, no boto3) |
 | `tests/check_botocore_shapes.py` | offline check of every AWS request against botocore's service models |
+| `MEMCAL_PLAN.md` | first multi-memory calibration campaign (memcal-1, us-east-2, on demand): frozen workload, design, held-out check, Eq. (3) tests, commands, cost; prepared 22 Nov 2026, not run |
+| `prism_pipeline/memcal.py` | that campaign: 16 functions (4 stages x 4 sizes) with K frozen at 1024 MB, randomised cold/warm design and runner reused from `aws_measurement`, REPORT collection and coverage, log-retaining teardown, fit/check analysis |
+| `tests/test_memcal.py`, `tests/check_botocore_memcal.py` | its local tests (fakes, synthetic truth) and offline botocore check |
 | `validation/prep_20261121/` | saved plan, estimate, state machine, test listing, self-test and botocore-check summaries |
 
 **Reused from the measurement harness (`../aws_measurement`):**

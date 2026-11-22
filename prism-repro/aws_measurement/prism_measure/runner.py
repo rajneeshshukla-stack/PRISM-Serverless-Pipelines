@@ -46,13 +46,23 @@ class Runner:
     def __init__(self, client, envs: Dict[str, Dict[str, str]], out_path: str, cap: int = CAP_MAX,
                  clock_ns: Callable[[], int] = time.perf_counter_ns, wall_ns: Callable[[], int] = time.time_ns,
                  sleep: Callable[[float], None] = time.sleep, update_timeout_s: float = 300.0, poll_s: float = 1.0,
-                 run_id: Optional[str] = None, payload: Optional[dict] = None):
+                 run_id: Optional[str] = None, payload: Optional[dict] = None,
+                 payloads: Optional[Dict[str, dict]] = None, normalise: Optional[Callable[[dict], dict]] = None,
+                 meta: Optional[dict] = None, tail_hook: Optional[Callable[[Optional[str]], Optional[dict]]] = None):
+        """payloads: optional per-function request bodies (default: `payload` for every function). normalise:
+        optional map applied to a dict response before it is stored (e.g. to keep only a stage's trace entry).
+        meta: extra fields for the run_meta record. tail_hook: optional extractor of extra fields from the base64 log
+        tail, stored as `tail_extra`. All four default to the original behaviour."""
         check_cap(cap)
         self.client, self.envs, self.out_path, self.cap = client, envs, out_path, cap
         self.clock_ns, self.wall_ns, self.sleep = clock_ns, wall_ns, sleep
         self.update_timeout_s, self.poll_s = update_timeout_s, poll_s
         self.run_id = run_id or uuid.uuid4().hex[:12]
         self.payload = json.dumps(payload or {}).encode()
+        self.payloads = {fn: json.dumps(p).encode() for fn, p in (payloads or {}).items()}
+        self.normalise = normalise
+        self.meta = dict(meta or {})
+        self.tail_hook = tail_hook
         self._sem = threading.BoundedSemaphore(cap)
         self._lock = threading.Lock()
         self._in_flight = 0
@@ -105,7 +115,7 @@ class Runner:
             t0 = self.clock_ns()
             try:
                 resp = self.client.invoke(FunctionName=fn, InvocationType="RequestResponse", LogType="Tail",
-                                          Payload=self.payload)
+                                          Payload=self.payloads.get(fn, self.payload))
                 body = resp["Payload"].read()
                 t1 = self.clock_ns()
                 meta = resp.get("ResponseMetadata", {})
@@ -114,11 +124,17 @@ class Runner:
                     payload = json.loads(body) if body else None
                 except ValueError:
                     payload = None
+                if isinstance(payload, dict) and self.normalise is not None:
+                    payload = self.normalise(payload)
                 rep = parse_log_tail(resp.get("LogResult"))
                 rec.update(t0_ns=t0, t1_ns=t1, e2e_s=(t1 - t0) / 1e9, status_code=resp.get("StatusCode"),
                            function_error=resp.get("FunctionError"), error=None, request_id=rid,
                            report=rep, report_source="tail" if rep else None,
                            payload=payload if isinstance(payload, dict) else None)
+                if self.tail_hook is not None:
+                    extra = self.tail_hook(resp.get("LogResult"))
+                    if extra:
+                        rec["tail_extra"] = extra
             except Exception as e:                           # throttling, timeouts: recorded, never retried
                 t1 = self.clock_ns()
                 rec.update(t0_ns=t0, t1_ns=t1, e2e_s=(t1 - t0) / 1e9, status_code=None, function_error=None,
@@ -154,7 +170,8 @@ class Runner:
         try:
             self._write({"type": "run_meta", "run_id": self.run_id, "cap": self.cap, "seed": design.seed,
                          "batch": design.batch, "blocks": sorted(blocks), "wall_ns": self.wall_ns(),
-                         "host": platform.platform(), "python": platform.python_version(), "host_note": host_note})
+                         "host": platform.platform(), "python": platform.python_version(), "host_note": host_note,
+                         **self.meta})
             n_visits = 0
             for v in design.visits:
                 if v.block not in blocks:

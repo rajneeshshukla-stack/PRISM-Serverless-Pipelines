@@ -1,0 +1,97 @@
+{
+ "runtime_versions_by_block": {
+  "block 0": [
+   "python:3.12.fake"
+  ],
+  "block 1": [
+   "python:3.12.fake"
+  ],
+  "block 2": [
+   "python:3.12.fake"
+  ]
+ },
+ "runtime_changed_during_campaign": false,
+ "invocations": {
+  "fit": 15592,
+  "check": 5400
+ },
+ "issues": {
+  "incomplete_visit_invocations_dropped": 0,
+  "orphan_cloudwatch_reports": 0
+ },
+ "reports_from_cloudwatch": 20992,
+ "check_rows": 80,
+ "check_inside_interval": 59,
+ "trend": [
+  {
+   "stage": "ingest",
+   "eq3_slope": -0.2727,
+   "I_slope": -0.9929,
+   "I_slope_lo": -1.0062,
+   "I_slope_hi": -0.9764,
+   "P_slope": 0.0062,
+   "P_slope_lo": -0.0409,
+   "P_slope_hi": 0.051,
+   "P_minus_I_slope_lo": 0.9544,
+   "P_minus_I_slope_hi": 1.0418,
+   "reading": "P and I trends differ: Eq. (3) must name which quantity it models (the model's initialisation is the full first-call penalty P)",
+   "decision_on_P": "init_scaling = 'constant' (or 'measured')"
+  },
+  {
+   "stage": "transform",
+   "eq3_slope": -0.2727,
+   "I_slope": -0.7508,
+   "I_slope_lo": -0.9638,
+   "I_slope_hi": -0.7238,
+   "P_slope": 0.4441,
+   "P_slope_lo": 0.2624,
+   "P_slope_hi": 0.6834,
+   "P_minus_I_slope_lo": 1.0253,
+   "P_minus_I_slope_hi": 1.5262,
+   "reading": "P and I trends differ: Eq. (3) must name which quantity it models (the model's initialisation is the full first-call penalty P)",
+   "decision_on_P": "init_scaling = 'inverted' or 'measured'; narrow the RQ4 memory claims"
+  },
+  {
+   "stage": "aggregate",
+   "eq3_slope": -0.2727,
+   "I_slope": -0.9426,
+   "I_slope_lo": -0.9747,
+   "I_slope_hi": -0.8165,
+   "P_slope": -0.0106,
+   "P_slope_lo": -0.072,
+   "P_slope_hi": 0.0585,
+   "P_minus_I_slope_lo": 0.7626,
+   "P_minus_I_slope_hi": 1.0163,
+   "reading": "P and I trends differ: Eq. (3) must name which quantity it models (the model's initialisation is the full first-call penalty P)",
+   "decision_on_P": "init_scaling = 'constant' (or 'measured')"
+  },
+  {
+   "stage": "load",
+   "eq3_slope": -0.2727,
+   "I_slope": -1.0398,
+   "I_slope_lo": -1.0571,
+   "I_slope_hi": -1.0169,
+   "P_slope": 0.0005,
+   "P_slope_lo": -0.0597,
+   "P_slope_hi": 0.0733,
+   "P_minus_I_slope_lo": 0.9786,
+   "P_minus_I_slope_hi": 1.1147,
+   "reading": "P and I trends differ: Eq. (3) must name which quantity it models (the model's initialisation is the full first-call penalty P)",
+   "decision_on_P": "init_scaling = 'constant' (or 'measured')"
+  },
+  {
+   "stage": "POOLED",
+   "eq3_slope": -0.2727,
+   "I_slope": -0.9232,
+   "I_slope_lo": -0.9791,
+   "I_slope_hi": -0.8863,
+   "P_slope": 0.0532,
+   "P_slope_lo": 0.0215,
+   "P_slope_hi": 0.092,
+   "P_minus_I_slope_lo": 0.9225,
+   "P_minus_I_slope_hi": 1.0509,
+   "reading": "P and I trends differ: Eq. (3) must name which quantity it models (the model's initialisation is the full first-call penalty P)",
+   "decision_on_P": "init_scaling = 'inverted' or 'measured'; narrow the RQ4 memory claims"
+  }
+ ]
+}
