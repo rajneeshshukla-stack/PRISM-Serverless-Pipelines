@@ -1,0 +1,7 @@
+block,split,visits,invocations,cold,warm,visits_per_cell_min,visits_per_cell_max
+0,fit,152,5064,1216,3848,9,10
+0,check,56,1904,448,1456,3,4
+1,fit,158,5416,1264,4152,9,10
+1,check,50,1648,400,1248,3,4
+2,fit,154,5112,1232,3880,9,10
+2,check,54,1848,432,1416,3,4

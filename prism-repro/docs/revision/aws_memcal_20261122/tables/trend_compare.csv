@@ -1,0 +1,6 @@
+stage,eq3_slope,I_slope,I_slope_lo,I_slope_hi,P_slope,P_slope_lo,P_slope_hi,P_minus_I_slope_lo,P_minus_I_slope_hi,reading,decision_on_P
+ingest,-0.2727,0.0049,-0.0029,0.0107,-0.0036,-0.0277,0.0152,-0.0309,0.0112,no detectable difference between the P and I trends,init_scaling = 'constant' (or 'measured')
+transform,-0.2727,0.0072,-0.0,0.0132,-0.0266,-0.074,0.0339,-0.0789,0.022,no detectable difference between the P and I trends,init_scaling = 'constant' (or 'measured')
+aggregate,-0.2727,0.008,0.0,0.0148,-0.2877,-0.3092,-0.2687,-0.316,-0.2749,P and I trends differ: Eq. (3) must name which quantity it models (the model's initialisation is the full first-call penalty P),keep Eq. (3); refit init_mean_1024 and init_nonscaling
+load,-0.2727,0.0007,-0.0061,0.0081,-0.0312,-0.0566,-0.0015,-0.0548,-0.0048,P and I trends differ: Eq. (3) must name which quantity it models (the model's initialisation is the full first-call penalty P),keep the direction; refit the non-scaling share (Eq. (3)'s shape changes)
+POOLED,-0.2727,0.0052,0.0013,0.0082,-0.1163,-0.1307,-0.1002,-0.1353,-0.1068,P and I trends differ: Eq. (3) must name which quantity it models (the model's initialisation is the full first-call penalty P),keep the direction; refit the non-scaling share (Eq. (3)'s shape changes)

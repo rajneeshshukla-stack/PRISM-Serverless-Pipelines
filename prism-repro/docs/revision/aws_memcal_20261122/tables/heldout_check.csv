@@ -1,0 +1,57 @@
+quantity,stage,memory_mb,fit_split_value,predicted,check_observed,check_lo,check_hi,rel_error,inside_check_interval
+warm Duration median (Eq. 2 form),ingest,512,1.622365,1.505893,1.629035,1.626582,1.634191,-0.0756,False
+warm Duration median (Eq. 2 form),ingest,1024,0.80071,0.849827,0.801595,0.800635,0.80262,0.0602,False
+warm Duration median (Eq. 2 form),ingest,2048,0.463115,0.521794,0.46255,0.4622,0.4633,0.1281,False
+warm Duration median (Eq. 2 form),ingest,3008,0.46297,0.417102,0.4627,0.46195,0.463365,-0.0985,False
+P_mean (Eq. 3 form),ingest,512,0.223524,0.228175,0.226147,0.1802,0.260946,0.009,True
+P_mean (measured mode (fit-split mean)),ingest,512,0.223524,0.223524,0.226147,0.1802,0.260946,-0.0116,True
+P_mean (Eq. 3 form),ingest,1024,0.237081,0.228175,0.231606,0.207941,0.255456,-0.0148,True
+P_mean (measured mode (fit-split mean)),ingest,1024,0.237081,0.237081,0.231606,0.207941,0.255456,0.0236,True
+P_mean (Eq. 3 form),ingest,2048,0.233023,0.228175,0.234018,0.206681,0.261399,-0.025,True
+P_mean (measured mode (fit-split mean)),ingest,2048,0.233023,0.233023,0.234018,0.206681,0.261399,-0.0043,True
+P_mean (Eq. 3 form),ingest,3008,0.219509,0.228175,0.223863,0.199409,0.249061,0.0193,True
+P_mean (measured mode (fit-split mean)),ingest,3008,0.219509,0.219509,0.223863,0.199409,0.249061,-0.0194,True
+I (Eq. 3 form),ingest,512,0.11383,0.114434,0.115185,0.11363,0.116985,-0.0065,True
+I (measured mode (fit-split mean)),ingest,512,0.11383,0.11383,0.115185,0.11363,0.116985,-0.0118,True
+I (Eq. 3 form),ingest,1024,0.1143,0.114434,0.113955,0.11241,0.11535,0.0042,True
+I (measured mode (fit-split mean)),ingest,1024,0.1143,0.1143,0.113955,0.11241,0.11535,0.003,True
+I (Eq. 3 form),ingest,2048,0.11492,0.114434,0.115335,0.11347,0.116186,-0.0078,True
+I (measured mode (fit-split mean)),ingest,2048,0.11492,0.11492,0.115335,0.11347,0.116186,-0.0036,True
+I (Eq. 3 form),ingest,3008,0.11469,0.114434,0.11431,0.11317,0.115651,0.0011,True
+I (measured mode (fit-split mean)),ingest,3008,0.11469,0.11469,0.11431,0.11317,0.115651,0.0033,True
+warm Duration median (Eq. 2 form),transform,512,8.03991,7.480457,8.034315,8.012029,8.06007,-0.0689,False
+warm Duration median (Eq. 2 form),transform,1024,3.993695,4.216717,3.99264,3.98693,3.997905,0.0561,False
+warm Duration median (Eq. 2 form),transform,2048,2.292565,2.584848,2.28934,2.283865,2.29418,0.1291,False
+warm Duration median (Eq. 2 form),transform,3008,2.286165,2.064038,2.28713,2.28457,2.290626,-0.0975,False
+I (Eq. 3 form),transform,512,0.113755,0.114552,0.113645,0.11271,0.115955,0.008,True
+I (measured mode (fit-split mean)),transform,512,0.113755,0.113755,0.113645,0.11271,0.115955,0.001,True
+I (Eq. 3 form),transform,1024,0.114415,0.114552,0.113035,0.112385,0.115,0.0134,True
+I (measured mode (fit-split mean)),transform,1024,0.114415,0.114415,0.113035,0.112385,0.115,0.0122,True
+I (Eq. 3 form),transform,2048,0.11469,0.114552,0.11369,0.11205,0.11559,0.0076,True
+I (measured mode (fit-split mean)),transform,2048,0.11469,0.11469,0.11369,0.11205,0.11559,0.0088,True
+I (Eq. 3 form),transform,3008,0.115355,0.114552,0.11709,0.114805,0.118795,-0.0217,False
+I (measured mode (fit-split mean)),transform,3008,0.115355,0.115355,0.11709,0.114805,0.118795,-0.0148,True
+warm Duration median (Eq. 2 form),aggregate,512,5.091775,4.735781,5.094825,5.087655,5.10148,-0.0705,False
+warm Duration median (Eq. 2 form),aggregate,1024,2.5297,2.671055,2.529145,2.522898,2.53333,0.0561,False
+warm Duration median (Eq. 2 form),aggregate,2048,1.451895,1.638692,1.450015,1.44853,1.45261,0.1301,False
+warm Duration median (Eq. 2 form),aggregate,3008,1.45114,1.309215,1.450195,1.447065,1.453615,-0.0972,False
+I (Eq. 3 form),aggregate,512,0.114505,0.114886,0.114655,0.112624,0.115815,0.002,True
+I (measured mode (fit-split mean)),aggregate,512,0.114505,0.114505,0.114655,0.112624,0.115815,-0.0013,True
+I (Eq. 3 form),aggregate,1024,0.113865,0.114886,0.115845,0.11293,0.117931,-0.0083,True
+I (measured mode (fit-split mean)),aggregate,1024,0.113865,0.113865,0.115845,0.11293,0.117931,-0.0171,True
+I (Eq. 3 form),aggregate,2048,0.11515,0.114886,0.115085,0.11306,0.11671,-0.0017,True
+I (measured mode (fit-split mean)),aggregate,2048,0.11515,0.11515,0.115085,0.11306,0.11671,0.0006,True
+I (Eq. 3 form),aggregate,3008,0.116035,0.114886,0.113975,0.11312,0.11522,0.008,True
+I (measured mode (fit-split mean)),aggregate,3008,0.116035,0.116035,0.113975,0.11312,0.11522,0.0181,False
+warm Duration median (Eq. 2 form),load,512,2.451885,2.275229,2.457465,2.453915,2.462286,-0.0742,False
+warm Duration median (Eq. 2 form),load,1024,1.2056,1.277501,1.20505,1.203375,1.20642,0.0601,False
+warm Duration median (Eq. 2 form),load,2048,0.68909,0.778637,0.688455,0.687125,0.689546,0.131,False
+warm Duration median (Eq. 2 form),load,3008,0.688225,0.619425,0.68907,0.68734,0.69056,-0.1011,False
+I (Eq. 3 form),load,512,0.115015,0.114792,0.114565,0.113125,0.116755,0.002,True
+I (measured mode (fit-split mean)),load,512,0.115015,0.115015,0.114565,0.113125,0.116755,0.0039,True
+I (Eq. 3 form),load,1024,0.11444,0.114792,0.11279,0.11214,0.11457,0.0177,False
+I (measured mode (fit-split mean)),load,1024,0.11444,0.11444,0.11279,0.11214,0.11457,0.0146,True
+I (Eq. 3 form),load,2048,0.114375,0.114792,0.114235,0.11246,0.116718,0.0049,True
+I (measured mode (fit-split mean)),load,2048,0.114375,0.114375,0.114235,0.11246,0.116718,0.0012,True
+I (Eq. 3 form),load,3008,0.11534,0.114792,0.11703,0.114535,0.11886,-0.0191,True
+I (measured mode (fit-split mean)),load,3008,0.11534,0.11534,0.11703,0.114535,0.11886,-0.0144,True

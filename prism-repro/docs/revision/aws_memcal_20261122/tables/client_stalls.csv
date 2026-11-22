@@ -1,0 +1,6 @@
+block,stage,memory_mb,batch_kind,split,invocations_over_5s,max_e2e_s,max_lambda_duration_s
+0,transform,512,warm,fit,8,41.93,8.167
+0,aggregate,3008,warm,fit,8,22.92,1.46
+0,load,2048,warm,fit,8,53.92,0.729
+1,transform,3008,warm,fit,6,26.96,2.332
+2,aggregate,512,warm,fit,8,216.79,5.143
