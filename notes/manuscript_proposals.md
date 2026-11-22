@@ -276,3 +276,68 @@ provisioned-concurrency mechanisms stay simulated, and the paper must say so.
   recalibration.)
 - **A1-A4 (R2.5, R4.1, R7.1, R6.7)** stand as fast-simulator results and must say so; the closed-loop pilot
   (`docs/revision/closed_loop_pilot/`) is the first event-level comparison and is exploratory.
+
+## I. Drafts after the scope decisions of 22 Nov 2026 (D4, D5, D2; not applied; check the locations against the current text)
+
+**I1. RQ4 (R4.4, R2.7).**
+- **Replace RQ4** in Section I and in the RQ4 row of Table XIII: "RQ4: When default memory is insufficient in the fixed
+  workload regimes studied, can increasing memory restore deadline compliance, and at what cost?"
+- **Answer, for Section VI-G and Table IX / S14** (add MemAdapt and keep the fixed-size rows; figures to be
+  regenerated; exploratory, pre-calibration simulation): "Yes. Where 1024 MB cannot meet the deadline (12-13 s), every
+  setting of the quantile rule at a fixed 1024 MB violates all windows, and moving to 2048 MB restores compliance (5 of 5
+  weeks within 2%). That costs 38% more per week than at the default deadline when half of each stage's work does not
+  scale with memory, and 6% more when 15% does not. A rule that selects the smallest warm-feasible size reaches the same
+  compliance at lower cost than PRISM's joint optimisation: PRISM costs 8-28% more than the rule (equivalently, the rule
+  costs 8-22% less than PRISM). Only at 11 s does PRISM meet the target in more weeks (5 of 5 against 3 of 5), at 4.7%
+  higher cost."
+- **Limitation, for Section VIII:** "RQ4 is answered only for fixed workload regimes, with one memory size shared by
+  the four stages. We did not test per-stage memory sizes or changes in CPU intensity, memory demand, execution time or
+  initialisation time within a run. The results therefore do not show whether online memory optimisation adds value
+  beyond a one-time memory choice."
+- **Also change:**
+  - the abstract's memory sentence;
+  - the third conclusion (p. 17, l. 89-95);
+  - the graphical-abstract caption (E9 and A6: "a larger memory size is selected when the default size cannot meet
+    the deadline"; also R5.m5(c));
+  - any contribution statement that credits joint online memory optimisation.
+- **Reply to R4.4:** "We narrowed RQ4 as suggested: it now asks whether, when default memory is insufficient in the
+  fixed regimes studied, increasing memory restores deadline compliance, and at what cost. Section VIII states that
+  PRISM uses one memory size shared by all stages and that per-stage sizes and within-run changes were not tested. In
+  those regimes (exploratory, pre-calibration simulation), a simple rule that picks the smallest warm-feasible size
+  restores compliance at lower cost than PRISM: PRISM's cost is 8-28% higher than the rule's. Only at the tightest
+  deadline does PRISM meet the target in more weeks (5 of 5 against 3 of 5), at 4.7% higher cost [figures to be
+  regenerated]. The graphical-abstract caption is narrowed accordingly."
+- **Reply to R2.7:** "We did not run scenarios in which execution characteristics change during a run. RQ4 is narrowed
+  to the fixed regimes studied, and we state as a limitation that the experiment the reviewer describes, which would
+  test whether online memory optimisation helps beyond a one-time configuration decision, remains to be done."
+  R2.7 stays open.
+
+**I2. Less-structured traffic (R2.9)** (`prism-repro/docs/revision/less_structured_r29_20261122/`; exploratory,
+pre-calibration, fast simulator).
+- **Add to Section VI-J** (real traces) or a new exploratory subsection, with a supplementary table: the 10 Region 2
+  traces, their structure (CV, burstiness, forecast error) and all families' test-week cost and compliance.
+- **Reply:** "We evaluated every family on ten further production arrival traces, from the Huawei Public Cloud Trace
+  2025, Region 2. They have no designed spikes or known trigger minutes, include irregular bursts (a 99.9th percentile
+  up to 39 times the median, and one trace with long idle periods), and span forecast errors from 5% to 56%. We used
+  the same tuning rule and split as for the other real traces. PRISM met the 2% target on 7 of 10 traces, as did the
+  calibrated q90 rule; static provisioning met it on all 10. No paired cost difference between PRISM and the
+  calibrated-quantile, reactive, static or smoothed-headroom policies was distinguishable from zero, and PRISM's
+  relative cost was not associated with forecast difficulty. We also evaluated every family under an unannounced change
+  of the spike schedule. We therefore do not claim that the predictive cost advantage observed on the synthetic
+  traces carries over to less structured traffic [figures to be regenerated]."
+
+**I3. Hybrid histogram baseline (R3.2)** (`prism-repro/docs/revision/hybrid_histogram_r32_20261122/`; option (c) of
+D2, pending the author's confirmation of [3]).
+- **Add to Section II:** "The hybrid histogram policy of [3] sets, for each application, when its single loaded image
+  is unloaded and pre-warmed, from a histogram of idle times with one-minute bins. Its authors exclude cold starts that
+  arise when load spikes require new instances, and it reduces the provider's idle memory, which customers are not
+  billed for. In every workload studied here, each stage is invoked at least once a minute, so the policy never
+  unloads an application and sets no number of concurrent instances. It therefore does not address the provisioned
+  concurrency decision that PRISM and the baselines in Table V make."
+- **Reply:** "We examined the hybrid histogram policy of [3] in detail. It decides the keep-alive and pre-warming
+  windows of one application image for infrequently invoked applications, and its authors explicitly leave aside cold
+  starts caused by load spikes that need new instances. Applied to our workloads, where every stage receives requests
+  every minute, it keeps every stage loaded at all times (pre-warming window 0, keep-alive 1.1 minutes) and makes no
+  provisioning decision, so adding it to Table V would not test a concurrency controller. We explain this in Section
+  II [and, if confirmed against the AWS documentation, note that our reactive baseline follows the provider's
+  target-tracking rule for provisioned concurrency]."

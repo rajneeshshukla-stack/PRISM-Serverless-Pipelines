@@ -328,3 +328,106 @@ activation lag is a parameter Reviewers 1, 3, 4 and 5 all raise (Reviewer 5: "Tw
 conclusions may depend on are never varied"; the simulated lag sweep now exists, a measured value does not). Confirm
 the quota with
 a fresh read-only `GetAccountSettings` before planning, and run it only with separate authorisation.
+
+## Decisions recorded 22 Nov 2026 (D2, D4, D5)
+
+These are the author's decisions, recorded as given. The sections above stay as written. All new simulation results
+are EXPLORATORY and PRE-CALIBRATION (fast simulator). The confirmatory seeds 106-130 were not used, and
+`prism-repro/docs/revision/PRESPECIFICATION.md` is unchanged.
+
+### D4 (R4.4, R2.7): narrow RQ4
+
+**Decision.** RQ4 becomes: "When default memory is insufficient in the fixed workload regimes studied, can increasing
+memory restore deadline compliance, and at what cost?"
+
+**Evidence** (`prism-repro/docs/revision/memadapt/summary.txt`, 7980b69; five development traces, stationary weeks,
+validation-selected). MemAdapt is the warm-feasibility baseline.
+
+| Regime | Outcome |
+|---|---|
+| 1024 MB insufficient (12-13 s; non-scaling 0.5 and 0.15) | All 100 settings of the quantile rule at a fixed 1024 MB violate 100% of windows. Moving to 2048 MB restores compliance: PRISM and MemAdapt both meet 2% in 5 of 5 weeks, at 0.00-0.03% violating windows. |
+| 13 s, non-scaling 0.5 | MemAdapt matches PRISM's compliance; PRISM costs 27.9% more. |
+| 12 s, non-scaling 0.5 | MemAdapt matches PRISM's compliance; PRISM costs 19.8% more. |
+| 12 s, non-scaling 0.15 | MemAdapt matches PRISM's compliance; PRISM costs 8.3% more. |
+| 11 s | PRISM meets the target in more weeks (5 of 5 against 3 of 5; 1.22% against 1.61%) at 4.7% higher cost. |
+| 14.5 s (default deadline) | 1024 MB suffices, and both stay there (PRISM +1.6%, -0.18 points). |
+
+**Denominators** (rechecked 22 Nov 2026 from the saved rows, with the source's aggregation: the mean over five traces of
+the per-trace percentage; `prism-repro/docs/revision/memadapt/recheck_denominators_20261122.txt`). "PRISM costs X% more
+than MemAdapt" and "MemAdapt costs Y% less than PRISM" differ:
+
+| Regime | PRISM relative to MemAdapt | MemAdapt relative to PRISM |
+|---|---|---|
+| 13 s, non-scaling 0.5 | +27.9% | -21.8% |
+| 12 s, non-scaling 0.5 | +19.8% | -16.5% |
+| 12 s, non-scaling 0.15 | +8.3% | -7.7% |
+| 11 s, non-scaling 0.5 | +4.7% | -4.3% |
+
+Earlier drafts that said the baseline was "8-28% lower cost than PRISM" used the wrong denominator. Corrected: PRISM
+costs 8-28% more, or the baseline costs 8-22% less.
+
+**Cost of the remedy.** MemAdapt at 12-13 s (2048 MB) against MemAdapt at the default deadline (1024 MB, which meets 2%
+in only 3 of 5 weeks):
+- non-scaling 0.5: +37.6% (USD 1,325 against 965; ratio of the mean costs +37.3%);
+- non-scaling 0.15, 12 s: +5.8% (USD 1,019 against 965).
+
+**Untested.**
+- Changes in execution characteristics within a run.
+- Per-stage memory sizes: PRISM shares one size across the four stages.
+
+**What it settles.**
+- R4.4 offers "narrow RQ4 or test it". The decision takes the narrowing option, and the drafts are in
+  `notes/manuscript_proposals.md` section I.
+- R4.4 stays open until the RQ4, limitation and caption text are in the manuscript, together with R4.4(b), the
+  caption.
+- R2.7 explicitly asks to "investigate scenarios where the application workload changes during execution". That is an
+  experiment, not a scope option, so R2.7 stays open, and its reply states the limitation.
+
+### D5 (R2.9): test less-structured workloads
+
+**Decision.** Run the smallest real-trace comparison now. Plan fixed in advance:
+`prism-repro/docs/revision/less_structured_r29_20261122/PLAN.md`.
+
+**What ran.** All nine families, under the R1 protocol, on 10 Huawei Public 2025 Region 2 functions selected by the
+fixed rule:
+- forecast median APE 4.8-55.8%;
+- 99.9th-percentile-to-median ratio 2.3-39.4;
+- one trace with 6,512 empty minutes.
+
+**Results** (`prism-repro/docs/revision/less_structured_r29_20261122/README.md`):
+- PRISM meets 2% on 7 of 10 traces, the same as QuantProv-q90. Static meets it on 10 of 10.
+- No paired cost difference of PRISM against QuantProv-q90, Reactive, Static or PredHead+S excludes zero.
+- PRISM's cost relative to Reactive is not associated with forecast error: Spearman -0.03.
+- Unexpected periodicity changes: the all-family shifted-trigger check of
+  `prism-repro/docs/revision/technical_pass_20261122/shifted_triggers/`.
+
+**Still open.**
+- The closed-loop, calibrated version.
+- Heavier-tailed synthetic bursts (option a).
+- Checking the data licence before any derived trace is redistributed. The derived traces stay local.
+
+### D2 (R3.2): the cited hybrid histogram policy
+
+**Decision.** Verify the method against its source and evaluate it only if a faithful reproduction is feasible.
+
+**Verified** (`prism-repro/docs/revision/hybrid_histogram_r32_20261122/README.md`; source PDF SHA-256 d6f71e84...,
+not stored):
+- The policy sets per-application pre-warm and keep-alive windows: 1-minute bins, 4-hour range, 5th and 99th
+  percentiles, 10% margin, CV threshold 2, ARIMA beyond the range.
+- It excludes load-spike cold starts that need new instances ("we do not consider it in this paper").
+- It reduces the provider's wasted memory.
+
+**On all 40 workloads studied**, from the check `prism-repro/scripts/revision/hybrid_histogram_check.py`, the policy
+gives pre-warm 0 and keep-alive 1.1 minutes, and never unloads the application. It decides nothing about concurrent
+instances.
+
+**Blocked.**
+- There is no instance-level or concurrency rule to reproduce.
+- The customer-bill cost model has no term for the provider's wasted memory.
+- The Azure Functions 2019 trace behind the published result is not in the repository.
+
+**Next.** The comparison stays open. Recommended:
+- (c), the scope statement in Section II;
+- (d)(1), checking Reactive against AWS target tracking, not yet done.
+
+The author must confirm that [3] is this paper. Checked 22 Nov 2026: the submitted manuscript and its bibliography are not in the working tree, in `review-inputs/` or in any Git ref (`v1-submitted`, `main`, `closed-loop`), so the identity of [3] is **unverified**. Nothing here reproduces the published baseline.

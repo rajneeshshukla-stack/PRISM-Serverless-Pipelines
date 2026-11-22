@@ -1,0 +1,153 @@
+{"kind": "forecast", "rank": 8, "mape_median": 20.264032715195192, "pinball_90": 9.452391413702808, "cov90_cal": 0.933531746031746, "cov99_cal": 0.9900793650793651}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "OnDemand"}, "cost": 857.17919254515, "violating_window_rate": 0.010416666666666666, "runtime_s": 3.931627900001331}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Static", "param": 50}, "cost": 812.053997530486, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.8758843999967212}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Static", "param": 60}, "cost": 822.0488359085996, "violating_window_rate": 0.001488095238095238, "runtime_s": 1.0770085000003746}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Static", "param": 70}, "cost": 839.0611096886327, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.9178060999984154}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Static", "param": 80}, "cost": 865.290081135234, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.9419484000027296}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Static", "param": 90}, "cost": 921.5297144389624, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.8638677999988431}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Static", "param": 95}, "cost": 983.1412475704, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.8204377000001841}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Static", "param": 97}, "cost": 1043.9041626952303, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.8506105999986175}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Static", "param": 99}, "cost": 1288.8938834770913, "violating_window_rate": 0.001488095238095238, "runtime_s": 1.567049200002657}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Static", "param": 99.5}, "cost": 1396.4230570031032, "violating_window_rate": 0.0, "runtime_s": 0.7771255999978166}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Static", "param": 99.9}, "cost": 1564.7201220112065, "violating_window_rate": 0.0, "runtime_s": 0.41451489999963087}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Scheduled", "param": 1.0}, "cost": 882.4103840191207, "violating_window_rate": 0.0, "runtime_s": 0.40166559999852325}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Scheduled", "param": 1.2}, "cost": 952.9990463244853, "violating_window_rate": 0.0, "runtime_s": 0.37118439999903785}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Scheduled", "param": 1.4}, "cost": 1026.4471262933866, "violating_window_rate": 0.0, "runtime_s": 0.3630637999995088}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Scheduled", "param": 1.6}, "cost": 1100.5437639486543, "violating_window_rate": 0.0, "runtime_s": 0.356131299999106}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Scheduled", "param": 1.8}, "cost": 1174.8358975418676, "violating_window_rate": 0.0, "runtime_s": 0.352737099998194}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Scheduled", "param": 2.0}, "cost": 1248.6464288509828, "violating_window_rate": 0.0, "runtime_s": 0.3698061000031885}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Reactive", "param": 0.4}, "cost": 1461.898276164828, "violating_window_rate": 0.0, "runtime_s": 0.3762037999986205}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Reactive", "param": 0.45}, "cost": 1357.223170727411, "violating_window_rate": 0.0, "runtime_s": 0.37000869999974384}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Reactive", "param": 0.5}, "cost": 1267.7491487461148, "violating_window_rate": 0.0, "runtime_s": 0.38847249999889755}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Reactive", "param": 0.55}, "cost": 1202.1453900269885, "violating_window_rate": 0.0, "runtime_s": 0.38036469999860856}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Reactive", "param": 0.6}, "cost": 1142.5998237556107, "violating_window_rate": 0.0, "runtime_s": 0.38194540000040433}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Reactive", "param": 0.65}, "cost": 1095.5122786363504, "violating_window_rate": 0.0, "runtime_s": 0.3796631000004709}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Reactive", "param": 0.7}, "cost": 1052.7796686706993, "violating_window_rate": 0.0, "runtime_s": 0.3761984999982815}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Reactive", "param": 0.75}, "cost": 1015.606657898776, "violating_window_rate": 0.0, "runtime_s": 0.38673199999902863}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Reactive", "param": 0.8}, "cost": 984.3978256521557, "violating_window_rate": 0.0, "runtime_s": 0.3895754000004672}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Reactive", "param": 0.85}, "cost": 957.4096312392458, "violating_window_rate": 0.0, "runtime_s": 0.39866709999841987}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "Reactive", "param": 0.9}, "cost": 932.7192740169758, "violating_window_rate": 0.0, "runtime_s": 0.39556439999796567}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.0}, "cost": 771.8462718730161, "violating_window_rate": 0.0, "runtime_s": 0.36998440000024857}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.1}, "cost": 778.233990950261, "violating_window_rate": 0.0, "runtime_s": 0.37270209999769577}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.2}, "cost": 790.654385068427, "violating_window_rate": 0.0, "runtime_s": 0.36096809999799007}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.3}, "cost": 807.3479187983696, "violating_window_rate": 0.0, "runtime_s": 0.35289970000303583}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.4}, "cost": 826.6064710010342, "violating_window_rate": 0.0, "runtime_s": 0.37070569999923464}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.5}, "cost": 847.4761711469836, "violating_window_rate": 0.0, "runtime_s": 0.3569593000029272}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.6}, "cost": 869.0621162119661, "violating_window_rate": 0.0, "runtime_s": 0.34663260000161245}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.7}, "cost": 891.1241908381347, "violating_window_rate": 0.0, "runtime_s": 0.34132510000199545}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.8}, "cost": 913.4340804091477, "violating_window_rate": 0.0, "runtime_s": 0.33761260000028415}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.9}, "cost": 935.8327029166308, "violating_window_rate": 0.0, "runtime_s": 0.35620339999877615}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 2.0}, "cost": 958.4127500115104, "violating_window_rate": 0.0, "runtime_s": 0.5087899999998626}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.0, "hyst": true}, "cost": 778.8545373694209, "violating_window_rate": 0.0, "runtime_s": 0.38984399999753805}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.1, "hyst": true}, "cost": 786.3755456117565, "violating_window_rate": 0.0, "runtime_s": 0.37352869999813265}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.2, "hyst": true}, "cost": 799.8223407526967, "violating_window_rate": 0.0, "runtime_s": 0.36957039999833796}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.3, "hyst": true}, "cost": 817.4847169456258, "violating_window_rate": 0.0, "runtime_s": 0.368321099998866}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.4, "hyst": true}, "cost": 837.7396829698126, "violating_window_rate": 0.0, "runtime_s": 0.3650540999988152}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.5, "hyst": true}, "cost": 859.5355137932048, "violating_window_rate": 0.0, "runtime_s": 0.34689990000333637}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.6, "hyst": true}, "cost": 882.0291653689416, "violating_window_rate": 0.0, "runtime_s": 0.3468800000009651}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.7, "hyst": true}, "cost": 904.9613189129648, "violating_window_rate": 0.0, "runtime_s": 0.34952290000001085}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.8, "hyst": true}, "cost": 928.2050615554613, "violating_window_rate": 0.0, "runtime_s": 0.3387455999982194}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 1.9, "hyst": true}, "cost": 951.5286554318017, "violating_window_rate": 0.0, "runtime_s": 0.3554011000014725}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PredHead", "param": 2.0, "hyst": true}, "cost": 974.9636533824621, "violating_window_rate": 0.0, "runtime_s": 0.352207100000669}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 0.6}, "cost": 793.5929232348689, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.36105890000180807}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 0.7}, "cost": 785.9092453075564, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3597291999976733}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 0.8}, "cost": 781.1127340797661, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.34469349999926635}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 0.9}, "cost": 782.0203831923207, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3440714999996999}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 1.0}, "cost": 790.3228973924029, "violating_window_rate": 0.0, "runtime_s": 0.3499307999991288}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 1.1}, "cost": 805.5290876347407, "violating_window_rate": 0.0, "runtime_s": 0.35152949999974226}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 1.2}, "cost": 825.5608852327629, "violating_window_rate": 0.0, "runtime_s": 0.35684349999792175}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 1.3}, "cost": 848.4924223054649, "violating_window_rate": 0.0, "runtime_s": 0.3638329999994312}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 1.4}, "cost": 872.9911620265523, "violating_window_rate": 0.0, "runtime_s": 0.3692201000012574}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 1.5}, "cost": 898.3308787036292, "violating_window_rate": 0.0, "runtime_s": 0.3663483999989694}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 0.6}, "cost": 796.0997803568697, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.37145130000135396}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 0.7}, "cost": 791.7885866675238, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.36706989999947837}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 0.8}, "cost": 792.2176988363103, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3655839000020933}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 0.9}, "cost": 799.8502356312144, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3887639999993553}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 1.0}, "cost": 815.3363454774535, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.36920240000108606}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 1.1}, "cost": 836.8498280157072, "violating_window_rate": 0.0, "runtime_s": 0.3578664000015124}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 1.2}, "cost": 862.1347219982356, "violating_window_rate": 0.0, "runtime_s": 0.3763827999973728}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 1.3}, "cost": 889.4806964284049, "violating_window_rate": 0.0, "runtime_s": 0.3591829999968468}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 1.4}, "cost": 917.8457413164755, "violating_window_rate": 0.0, "runtime_s": 0.36255719999826397}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 1.5}, "cost": 946.7068276393333, "violating_window_rate": 0.0, "runtime_s": 0.36782960000346065}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PRISM", "param": 0.005}, "cost": 1109.801864823753, "violating_window_rate": 0.0, "runtime_s": 9.256606899998587}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PRISM", "param": 0.01}, "cost": 905.3274862550425, "violating_window_rate": 0.0, "runtime_s": 7.893096300002071}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PRISM", "param": 0.02}, "cost": 829.8620717875356, "violating_window_rate": 0.0, "runtime_s": 9.986975400002848}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PRISM", "param": 0.03}, "cost": 802.0116948907086, "violating_window_rate": 0.0, "runtime_s": 7.2573202999992645}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PRISM", "param": 0.05}, "cost": 794.7859944829503, "violating_window_rate": 0.0, "runtime_s": 7.057186100002582}
+{"kind": "run", "rank": 8, "week": "val", "spec": {"family": "PRISM", "param": 0.08}, "cost": 791.7961042230286, "violating_window_rate": 0.0, "runtime_s": 7.015991500000382}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "OnDemand"}, "cost": 836.4448894243001, "violating_window_rate": 0.005952380952380952, "runtime_s": 0.7322552999976324}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Static", "param": 50}, "cost": 802.8345562789096, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.32711870000275667}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Static", "param": 60}, "cost": 814.8409618285731, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.33743279999907827}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Static", "param": 70}, "cost": 832.9921848549874, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3265062999998918}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Static", "param": 80}, "cost": 855.8313102131466, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3262728000008792}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Static", "param": 90}, "cost": 904.4571420516405, "violating_window_rate": 0.0, "runtime_s": 0.33082809999905294}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Static", "param": 95}, "cost": 955.8359641733354, "violating_window_rate": 0.0, "runtime_s": 0.3364862999987963}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Static", "param": 97}, "cost": 1017.2100127010677, "violating_window_rate": 0.0, "runtime_s": 0.3234626000012213}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Static", "param": 99}, "cost": 1260.9361392314145, "violating_window_rate": 0.0, "runtime_s": 0.3257301000012376}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Static", "param": 99.5}, "cost": 1373.7618801863935, "violating_window_rate": 0.0, "runtime_s": 0.3275168999971356}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Static", "param": 99.9}, "cost": 1560.0044138946398, "violating_window_rate": 0.0, "runtime_s": 0.32985269999699085}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Scheduled", "param": 1.0}, "cost": 873.7747192974467, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.35310949999984587}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Scheduled", "param": 1.2}, "cost": 947.8616852339712, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3509664999983215}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Scheduled", "param": 1.4}, "cost": 1021.9531944891977, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.35646059999999125}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Scheduled", "param": 1.6}, "cost": 1096.3691141016282, "violating_window_rate": 0.0, "runtime_s": 0.35713699999905657}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Scheduled", "param": 1.8}, "cost": 1171.280143656899, "violating_window_rate": 0.0, "runtime_s": 0.3553241999979946}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Scheduled", "param": 2.0}, "cost": 1244.875254467909, "violating_window_rate": 0.0, "runtime_s": 0.35776830000031623}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Reactive", "param": 0.4}, "cost": 1426.667751676733, "violating_window_rate": 0.0, "runtime_s": 0.35971799999970244}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Reactive", "param": 0.45}, "cost": 1324.8081320355566, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3577728999989631}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Reactive", "param": 0.5}, "cost": 1237.601671953958, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3629759999967064}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Reactive", "param": 0.55}, "cost": 1174.2466051924557, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3613288000015018}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Reactive", "param": 0.6}, "cost": 1116.1923415143367, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3548259999988659}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Reactive", "param": 0.65}, "cost": 1070.1506574756854, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3647092999999586}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Reactive", "param": 0.7}, "cost": 1028.4245661266746, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3591065000000526}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Reactive", "param": 0.75}, "cost": 992.0933773252459, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.35595529999773134}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Reactive", "param": 0.8}, "cost": 961.4292447490436, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.36208609999812325}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Reactive", "param": 0.85}, "cost": 934.9917220786017, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3603568999969866}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "Reactive", "param": 0.9}, "cost": 910.6166586031355, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3626223999999638}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.0}, "cost": 753.6651014119328, "violating_window_rate": 0.004464285714285714, "runtime_s": 0.3395196000019496}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.1}, "cost": 760.2167803756602, "violating_window_rate": 0.004464285714285714, "runtime_s": 0.3371058000011544}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.2}, "cost": 772.4989164661813, "violating_window_rate": 0.004464285714285714, "runtime_s": 0.34071509999921545}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.3}, "cost": 788.7053552437498, "violating_window_rate": 0.004464285714285714, "runtime_s": 0.33839910000097007}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.4}, "cost": 807.4757084674262, "violating_window_rate": 0.004464285714285714, "runtime_s": 0.34045079999850714}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.5}, "cost": 827.5740321045204, "violating_window_rate": 0.004464285714285714, "runtime_s": 0.33930139999938547}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.6}, "cost": 848.572297322568, "violating_window_rate": 0.004464285714285714, "runtime_s": 0.34108410000044387}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.7}, "cost": 869.9662113066136, "violating_window_rate": 0.004464285714285714, "runtime_s": 0.33896760000061477}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.8}, "cost": 891.6635225221705, "violating_window_rate": 0.004464285714285714, "runtime_s": 0.3393462999993062}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.9}, "cost": 913.4174343334051, "violating_window_rate": 0.004464285714285714, "runtime_s": 0.3425996000005398}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 2.0}, "cost": 935.4049719438136, "violating_window_rate": 0.002976190476190476, "runtime_s": 0.3479544000001624}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.0, "hyst": true}, "cost": 760.5538584999988, "violating_window_rate": 0.002976190476190476, "runtime_s": 0.3511510000025737}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.1, "hyst": true}, "cost": 768.4115201840191, "violating_window_rate": 0.002976190476190476, "runtime_s": 0.35040440000011586}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.2, "hyst": true}, "cost": 781.83875309965, "violating_window_rate": 0.002976190476190476, "runtime_s": 0.34741330000179005}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.3, "hyst": true}, "cost": 799.2013662934444, "violating_window_rate": 0.002976190476190476, "runtime_s": 0.3472734999995737}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.4, "hyst": true}, "cost": 819.0369000221234, "violating_window_rate": 0.002976190476190476, "runtime_s": 0.34942859999864595}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.5, "hyst": true}, "cost": 840.1784680364453, "violating_window_rate": 0.002976190476190476, "runtime_s": 0.35174759999790695}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.6, "hyst": true}, "cost": 862.1190066078868, "violating_window_rate": 0.002976190476190476, "runtime_s": 0.34293260000049486}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.7, "hyst": true}, "cost": 884.5110243445098, "violating_window_rate": 0.002976190476190476, "runtime_s": 0.34693479999987176}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.8, "hyst": true}, "cost": 907.0740027836997, "violating_window_rate": 0.002976190476190476, "runtime_s": 0.3468762999982573}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 1.9, "hyst": true}, "cost": 929.7535543241369, "violating_window_rate": 0.002976190476190476, "runtime_s": 0.3476227999999537}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PredHead", "param": 2.0, "hyst": true}, "cost": 952.7269154728093, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3459206000006816}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 0.6}, "cost": 777.8139667307479, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3448279000003822}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 0.7}, "cost": 771.0841817341739, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3492633999994723}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 0.8}, "cost": 767.4407714329806, "violating_window_rate": 0.0, "runtime_s": 0.3479786999996577}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 0.9}, "cost": 769.3323367487394, "violating_window_rate": 0.0, "runtime_s": 0.3451991000001726}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 1.0}, "cost": 778.4559571740045, "violating_window_rate": 0.0, "runtime_s": 0.3467586999977357}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 1.1}, "cost": 794.0976826548464, "violating_window_rate": 0.0, "runtime_s": 0.34448170000177925}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 1.2}, "cost": 814.3822840995916, "violating_window_rate": 0.0, "runtime_s": 0.34802160000253934}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 1.3}, "cost": 837.2592745750853, "violating_window_rate": 0.0, "runtime_s": 0.3462260000014794}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 1.4}, "cost": 861.6960860561941, "violating_window_rate": 0.0, "runtime_s": 0.34578329999931157}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 2, "param": 1.5}, "cost": 887.0563003942843, "violating_window_rate": 0.0, "runtime_s": 0.34729169999991427}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 0.6}, "cost": 784.545921715117, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.3464115999995556}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 0.7}, "cost": 781.9876400702636, "violating_window_rate": 0.001488095238095238, "runtime_s": 0.34854880000057165}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 0.8}, "cost": 784.6474327009988, "violating_window_rate": 0.0, "runtime_s": 0.3481722999968042}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 0.9}, "cost": 794.8135041115077, "violating_window_rate": 0.0, "runtime_s": 0.3493297999993956}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 1.0}, "cost": 812.4615630530758, "violating_window_rate": 0.0, "runtime_s": 0.3437002999999095}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 1.1}, "cost": 835.6640864041744, "violating_window_rate": 0.0, "runtime_s": 0.34819489999790676}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 1.2}, "cost": 862.2662957832848, "violating_window_rate": 0.0, "runtime_s": 0.3471763999987161}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 1.3}, "cost": 890.6057212244378, "violating_window_rate": 0.0, "runtime_s": 0.35206770000149845}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 1.4}, "cost": 919.9876208957149, "violating_window_rate": 0.0, "runtime_s": 0.3559934000004432}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "QuantProv", "tau_idx": 3, "param": 1.5}, "cost": 949.8959390845894, "violating_window_rate": 0.0, "runtime_s": 0.3647004999984347}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PRISM", "param": 0.005}, "cost": 1081.9635156869372, "violating_window_rate": 0.0, "runtime_s": 7.7972168999986025}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PRISM", "param": 0.01}, "cost": 909.5301884320877, "violating_window_rate": 0.0, "runtime_s": 7.85633450000023}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PRISM", "param": 0.02}, "cost": 817.9476784848802, "violating_window_rate": 0.0, "runtime_s": 7.197813800001313}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PRISM", "param": 0.03}, "cost": 787.7264749653057, "violating_window_rate": 0.0, "runtime_s": 7.4702577000025485}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PRISM", "param": 0.05}, "cost": 780.6796896268156, "violating_window_rate": 0.0, "runtime_s": 7.008449299999484}
+{"kind": "run", "rank": 8, "week": "test", "spec": {"family": "PRISM", "param": 0.08}, "cost": 776.5436246041643, "violating_window_rate": 0.001488095238095238, "runtime_s": 7.123469800000748}

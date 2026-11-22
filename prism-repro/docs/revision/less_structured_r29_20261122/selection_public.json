@@ -1,0 +1,146 @@
+{
+ "rule": {
+  "window_days": 28,
+  "min_mean": 600.0,
+  "min_active": 0.95,
+  "n_pick": 10,
+  "order": "sha256(funcID) ascending",
+  "thin_seed0": 20261122,
+  "sim_seed0": 301
+ },
+ "source_files": {
+  "day_00.csv": "eb1d494c941df068d7461efa022e4fb8af16b0e422538d341c574daf56e2025b",
+  "day_01.csv": "ca103fc4557350a0d85ca5f4146f29719530d9b1e91a4ecd0340eb0246b74378",
+  "day_02.csv": "94950f60edfcf225a5aeb48d368e13ac7451cc23f0f25df6b0b8b480d36c92be",
+  "day_03.csv": "6f3a691399dff0677edc3f79b2f6fc031ec131993cdb00cb347bcc9c0e94aad8",
+  "day_04.csv": "fc825c1ea8d11bc47bdda4801237245196690bc37b1726795728770a444d6277",
+  "day_05.csv": "70167275fa4ce6249019eea8c7b89e9a3351723859801eccdd02fd18ae57c969",
+  "day_06.csv": "866decb33f88a2cd18ef0c73f04e4d87a365de48232659b403324ca3e00a28cd",
+  "day_07.csv": "5e79517e00ba75ac05fb13b5fd3a37677658c77f8d50a4ae2205c046ad4003d4",
+  "day_08.csv": "5e58ce4c8007d49bc9e6d3800fd3737dafac3722535a37e32cb2eadb4a401a58",
+  "day_09.csv": "5680508e871fd74634c8d1c52a5e041edb548eebfe17741ea143767a0015af11",
+  "day_10.csv": "6876e9029170ce9c20899b15d533291c51a3d93cbee426ceeb15db9b97787ae4",
+  "day_11.csv": "7cebe3067f65713b641d59f6b8713137a2aab4c7e7c2e60e1f9424c3fdf32762",
+  "day_12.csv": "66f9ce10e47daf3deff64ecb33fb72cf52e1b90fc3ab4a7ae69eb83145174500",
+  "day_13.csv": "ea7261dcdf64e7a996a623c9f7cd33313a2c8cd682dd2f2d29173b3f0cfcd3a9",
+  "day_14.csv": "367759fe84feaf78b837e6b11960f9cb91dd1922efd8b3be4628364e0c9274a1",
+  "day_15.csv": "7db75a32704fbbaa885aa233b3ab2c195458e49edebe6b708bc5a896ab2af4aa",
+  "day_16.csv": "f846ab8c6228323c6c9473e42c3364b41b6b09339d54f8627f00df0d0823fa3a",
+  "day_17.csv": "c4c06431a588dbc95fd0dfe977f70a0709e0389c459c6280ea5585ada441f054",
+  "day_18.csv": "66a5244b59650167c22af2103924e5efc45b8b54b2d5825a9206d8b240507e1b",
+  "day_19.csv": "d561322cdd983d9b4f9c66fd2b193967cea9434f37de3b6cc16a9991845c0d50",
+  "day_20.csv": "421c01adcb62c8b33422ff045c9404da11af6d569c1fae0f02346d1ca4cb3eb3",
+  "day_21.csv": "cb2d857e49be020780725e1a4b12f45bb0dd956d8785bc13a9d24ba61a430c51",
+  "day_22.csv": "24d36105414db91ed595edcf61feca1b29c5dbcd1d8bc9f4a8fcdc5cf11b2337",
+  "day_23.csv": "d6e2974deca497de12d72c2f7ba2ec2a7772d287cbcfb494f00a2552bd87381a",
+  "day_24.csv": "2bf6c97f4ccb30b6f0dd4b00f5acdc88d058f4c55aff3c401592626d3b758e22",
+  "day_25.csv": "0634ce98226ad0b5e8f5d8bb3c9c88677bbc2e4754211ab8e0b7b72688895784",
+  "day_26.csv": "cc8432e2db53a3c69df7d8b803b9eb6d65fe0381e88c0d5165cfc583d5120b4a",
+  "day_27.csv": "39d0528fa98c8c8fd744aa850a471cc73f8f95dc6185870d1174332463c930fa"
+ },
+ "n_functions_in_window": 2418,
+ "n_eligible": 11,
+ "selected": [
+  {
+   "rank": 0,
+   "sim_seed": 301,
+   "source_mean": 188788.1486855159,
+   "source_active": 0.9998263888888889,
+   "thin_p": 0.003178165600847554,
+   "mean": 599.8504712301587,
+   "zero_minutes": 6512,
+   "counts_sha256": "b7adfbd5260812c694301a3f8dbfaef1b327609efa4021ce0ed54902794dbb58"
+  },
+  {
+   "rank": 1,
+   "sim_seed": 302,
+   "source_mean": 26070.316517857143,
+   "source_active": 1.0,
+   "thin_p": 0.023014680300832695,
+   "mean": 600.1520337301587,
+   "zero_minutes": 0,
+   "counts_sha256": "75c25b954cf9a666987f348e31ade55864d6a5a561a8407b0bb19f5182a996ce"
+  },
+  {
+   "rank": 2,
+   "sim_seed": 303,
+   "source_mean": 1603.9190476190477,
+   "source_active": 0.9999007936507937,
+   "thin_p": 0.3740837175608554,
+   "mean": 600.0995783730159,
+   "zero_minutes": 9,
+   "counts_sha256": "43364beaf67879d4470c4c964e94ce7a7f36971b0655f5eb17b30a7ccdc981ca"
+  },
+  {
+   "rank": 3,
+   "sim_seed": 304,
+   "source_mean": 1638.4220982142858,
+   "source_active": 1.0,
+   "thin_p": 0.3662059982308217,
+   "mean": 600.0331597222222,
+   "zero_minutes": 0,
+   "counts_sha256": "946bbbde8b71352d2a99981437d65aaa1eb1494319e1cf77b3401ae4a3bb3964"
+  },
+  {
+   "rank": 4,
+   "sim_seed": 305,
+   "source_mean": 9152.578472222222,
+   "source_active": 1.0,
+   "thin_p": 0.06555529699318946,
+   "mean": 600.4514880952381,
+   "zero_minutes": 0,
+   "counts_sha256": "45ac8d87ea30fabb476d5c31b158e91fe2f7e0c1127cd9db98fbe57e01855aee"
+  },
+  {
+   "rank": 5,
+   "sim_seed": 306,
+   "source_mean": 9152.42757936508,
+   "source_active": 1.0,
+   "thin_p": 0.06555637778033345,
+   "mean": 599.9011656746031,
+   "zero_minutes": 0,
+   "counts_sha256": "8208bdd4c1109a76d75b0966db6133b4af38c1521d4484d4c122f3850ead2f95"
+  },
+  {
+   "rank": 6,
+   "sim_seed": 307,
+   "source_mean": 1233.9338293650794,
+   "source_active": 0.9999007936507937,
+   "thin_p": 0.48624973699661833,
+   "mean": 599.8695932539682,
+   "zero_minutes": 4,
+   "counts_sha256": "3c0c8d3dd2abc83c4eadf42065c8c81f8bb3eed879b665405455d8bc4fb0aeee"
+  },
+  {
+   "rank": 7,
+   "sim_seed": 308,
+   "source_mean": 643.7667410714286,
+   "source_active": 1.0,
+   "thin_p": 0.9320145974012465,
+   "mean": 600.0395337301587,
+   "zero_minutes": 0,
+   "counts_sha256": "573baebda65d5c07ef7a17338d0e3bf4ae62f416054c178bb62e45f751d755d5"
+  },
+  {
+   "rank": 8,
+   "sim_seed": 309,
+   "source_mean": 25470.759151785714,
+   "source_active": 1.0,
+   "thin_p": 0.023556423914358866,
+   "mean": 600.0441220238096,
+   "zero_minutes": 4,
+   "counts_sha256": "3a604155ad8a4cedd6593970685fffd32f2478d90f4423554e506a94693ed640"
+  },
+  {
+   "rank": 9,
+   "sim_seed": 310,
+   "source_mean": 1006.2931795634921,
+   "source_active": 0.9999751984126984,
+   "thin_p": 0.5962477061210599,
+   "mean": 600.1891617063492,
+   "zero_minutes": 1,
+   "counts_sha256": "de64f44f73a75e742d91b9652fa89a22d1f33ae5aa1a2acc48fad5b22d5b8f90"
+  }
+ ],
+ "note": "funcID omitted: source identifiers stay local while the data licence is unresolved (selection.json)."
+}
