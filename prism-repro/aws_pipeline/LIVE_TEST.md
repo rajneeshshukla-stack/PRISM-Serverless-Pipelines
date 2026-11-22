@@ -135,7 +135,101 @@ $PY -m prism_pipeline teardown --manifest $OUT/manifest.json --execute
 ```
 
 Then run `verify --execute`. The manifest is written after every created resource, so a partial deploy is still
-torn down; this is tested.
+torn down; this is tested. Teardown keeps the run's log groups unless REPORT coverage is complete; see "REPORT
+collection" below.
+
+## REPORT collection: resume, check, then delete the log groups (fix of 22 Nov 2026)
+
+**Why.** Run `livetest_20261121-203051` lost every REPORT line, in three steps:
+1. The first `filter_log_events` call failed on a credential refresh (`EndpointConnectionError` on
+   `https://us-east-2.signin.aws.amazon.com/v1/token`), after a stall of about 12 minutes.
+2. Nothing had been saved by then.
+3. Teardown in `finally` then deleted the log groups.
+
+**What the kit does now** (tests: `tests/test_report_collection.py`):
+- `collect_reports` fetches page by page. Each page's REPORT records go to `cloudwatch_reports.jsonl` and are flushed
+  to disk **before** the page token is saved in `cloudwatch_collect_state.json`.
+- A failed page is retried 5 times, with 1, 2, 4 and 8 s between attempts. If it still fails, collection stops
+  without raising and is marked `incomplete`.
+- A resumed collection never writes a request ID twice, even when a page is re-fetched after a crash.
+- An expired page token restarts that log group; repeated entries are still skipped.
+- `coverage` compares every Lambda request ID recorded in `smoke/`, `baseline_ondemand/` and `adapter_schedule/`
+  `records.jsonl` with the saved REPORT records. It writes `cloudwatch_coverage.json` (matched, missing, the missing
+  IDs with arm, record and stage, and extras such as calibration probes). `complete` means collection finished and
+  nothing is missing.
+- The run's `livetest.json` has `verified: true` only if coverage is complete and no error occurred. `live-test`
+  exits 1 otherwise.
+- Teardown (default `--delete-log-groups auto`) deletes the functions, state machine and roles in every case. It
+  deletes **this run's** log groups (those listed in the manifest) only if coverage is complete. Otherwise it keeps
+  them:
+  - it re-applies their 7-day retention;
+  - it records them under `retained_log_groups` in the manifest;
+  - it prints `RETAINED ...` with the resume commands.
+
+  Nothing outside `/aws/lambda/prism-pipe-` is touched.
+
+**Resume after a failure.** Re-authenticate first (for example `aws login` or `aws sso login`). Then, within 7 days,
+before the retention expires:
+
+```
+export PRISM_AWS_AUTHORIZED=I-ACCEPT-CHARGES
+$PY -m prism_pipeline collect --manifest $OUT/manifest.json --execute     # resumes from the saved tokens; exit 0 = complete
+$PY -m prism_pipeline coverage --run $OUT                                 # local; lists any missing request IDs
+$PY -m prism_pipeline collect --manifest $OUT/manifest.json --execute --rescan   # only if IDs are missing: re-reads for late delivery
+$PY -m prism_pipeline analyse --run $OUT --out $OUT/analysis              # local
+$PY -m prism_pipeline cleanup-logs --manifest $OUT/manifest.json --execute   # deletes the retained groups; refuses unless coverage is complete
+$PY -m prism_pipeline verify --execute                                    # must print CLEAN
+unset PRISM_AWS_AUTHORIZED
+```
+
+No Lambda function is invoked again, and the functions themselves are already deleted. If IDs stay missing after a
+rescan, the run is not verified. Deleting the evidence anyway needs `cleanup-logs --force-delete-incomplete`, which
+the manifest records as forced.
+
+## Smallest live verification of the fix (us-east-2; separately authorised; not yet run)
+
+**Purpose:** a few cold and warm invocations, with every REPORT line saved and matched before any log group is
+deleted.
+
+```
+$PY -m prism_pipeline --records 4 --rate 12 --schedule 1024 plan       # no AWS; check the calls
+$PY -m prism_pipeline --records 4 --rate 12 --schedule 1024 estimate
+export PRISM_AWS_AUTHORIZED=I-ACCEPT-CHARGES
+$PY -m prism_pipeline preflight --execute
+$PY -m prism_pipeline --records 4 --rate 12 --schedule 1024 live-test --out $OUT --execute --host-note "<host, date>"
+$PY -m prism_pipeline coverage --run $OUT
+$PY -m prism_pipeline verify --execute
+unset PRISM_AWS_AUTHORIZED
+```
+
+**What runs:**
+- calibration probes;
+- 3 smoke records one at a time: the first is cold at every stage, the rest warm;
+- 4 records per arm at 1024 MB, each arm starting cold.
+
+That is 44 stage invocations that must each have a REPORT: 4 stages x (3 + 4 + 4).
+
+**Pass:**
+- `livetest.json` shows `verified: true`;
+- `cloudwatch_coverage.json` shows `expected_request_ids: 44`, `missing: 0`, `collection_status: complete`;
+- in `analysis/analysis.json`, `report_missing: 0` and `cold_without_init_duration: 0`, with at least one cold and
+  one warm row per stage;
+- teardown deleted the log groups itself (no `RETAINED` line);
+- `verify` prints CLEAN.
+
+**Expected cost:** about USD 0.006 at the UNVERIFIED list prices (`validation/report_fix_20261122/
+estimate_min_verification.json`). That is 124 Lambda invocations, 80 of them calibration probes; about 336 GB-s
+upper bound; and 11 Step Functions executions. Check current us-east-2 prices before approval. The suggested budget
+alarm stays at USD 1.
+
+**What can remain after a failure:**
+- **Log groups kept on purpose.** If collection is incomplete, the four `/aws/lambda/prism-pipe-<stage>` log groups
+  stay, with 7-day retention, until `cleanup-logs` (or the retention) removes them. They bill only storage, a few kB.
+- **State machine still listed.** Express deletion is asynchronous: the 21 Nov run's state machine was still listed
+  right after `DeleteStateMachine` succeeded. Rerun `verify` after a minute.
+- **Teardown itself fails** (for example, credentials expire again). The manifest's functions, state machine, roles
+  and log groups remain. None of them bills while idle except log storage, since no provisioned concurrency is
+  created. Re-authenticate and rerun `teardown --manifest $OUT/manifest.json --execute`.
 
 ## Stop conditions
 
@@ -144,6 +238,8 @@ torn down; this is tested.
 - preflight `STOP` lines (leftovers, or an account limit below 10).
 
 Inspect `$OUT/livetest.log`. After the run, treat any of these as a failed verification:
+- `verified: false` in `$OUT/livetest.json`, or `complete: false` in `$OUT/cloudwatch_coverage.json` (missing REPORT
+  records, or collection incomplete); resume as in "REPORT collection";
 - `failed` records, `report_missing`, `duplicate_request_ids` or `cold_without_init_duration` in
   `$OUT/analysis/analysis.json`;
 - throttling errors in any record;
@@ -155,8 +251,9 @@ Inspect `$OUT/livetest.log`. After the run, treat any of these as a failed verif
 ## Cleanup: scoped to this test's resources
 
 **Teardown deletes:**
-- **From the manifest:** the state machine, the four functions, their log groups, the inline policy, and the two
-  roles.
+- **From the manifest:** the state machine, the four functions, the inline policy and the two roles, plus their log
+  groups **only if REPORT coverage is complete**. Otherwise the log groups are kept, with 7-day retention, and
+  `cleanup-logs` deletes them later. `--delete-log-groups always` restores the old behaviour.
 - **Beyond the manifest:** only resources that carry **both** the `prism-pipe-` prefix **and** the tag
   `project=prism-pipeline`.
 
@@ -166,9 +263,12 @@ Inspect `$OUT/livetest.log`. After the run, treat any of these as a failed verif
 
 Both behaviours are tested (`tests/test_pipeline.py::TestAWSGuardAndCleanup`).
 
-**After teardown, nothing billable is left:**
+**After a verified teardown, nothing billable is left:**
 - no versions, aliases, provisioned concurrency, buckets or Step Functions log groups were created;
 - the log groups' already-ingested bytes have been billed, and deleting the groups stops storage.
+
+After an unverified run, the retained log groups bill storage, a few kB, until `cleanup-logs` deletes them or the
+7-day retention removes their events.
 
 **Independent read-only check:**
 

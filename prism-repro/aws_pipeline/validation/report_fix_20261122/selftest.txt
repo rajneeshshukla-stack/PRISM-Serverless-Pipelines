@@ -1,0 +1,74 @@
+command (from prism-repro/aws_pipeline): ../venv/Scripts/python -m prism_pipeline selftest --out validation/report_fix_20261122/selftest_fake
+{
+ "ok": true,
+ "checks": {
+  "no_error": true,
+  "boto3_not_imported": true,
+  "teardown_clean": true,
+  "report_coverage_complete": true,
+  "no_throttle": true,
+  "max_lambda_in_flight<=8": true,
+  "smoke_all_run": true,
+  "baseline_ondemand:all_records_logged": true,
+  "baseline_ondemand:none_failed": true,
+  "baseline_ondemand:request_ids_complete": true,
+  "baseline_ondemand:reports_joined": true,
+  "baseline_ondemand:cold_has_init_duration": true,
+  "baseline_ondemand:decisions_every_epoch": true,
+  "baseline_ondemand:cold_starts_logged": true,
+  "adapter_schedule:all_records_logged": true,
+  "adapter_schedule:none_failed": true,
+  "adapter_schedule:request_ids_complete": true,
+  "adapter_schedule:reports_joined": true,
+  "adapter_schedule:cold_has_init_duration": true,
+  "adapter_schedule:decisions_every_epoch": true,
+  "adapter_schedule:cold_starts_logged": true,
+  "baseline:memory_1024_only": true,
+  "adapter:memory_changes_as_scheduled": true,
+  "adapter:ran_at_scheduled_sizes": true,
+  "adapter:cold_after_change": true,
+  "paired:same_records": true
+ },
+ "fake_lambda": {
+  "calls": 196,
+  "updates": 24,
+  "max_in_flight": 4
+ },
+ "sfn_executions": 35,
+ "calibration_k": {
+  "ingest": 84,
+  "transform": 1354,
+  "aggregate": 417,
+  "load": 309
+ },
+ "arms": {
+  "baseline_ondemand": {
+   "outcomes": {
+    "met": 11,
+    "missed": 5
+   },
+   "e2e_s": {
+    "p50": 0.42841055,
+    "p95": 1.003155825,
+    "p99": 1.1027820449999999,
+    "max": 1.1276886
+   },
+   "decisions": 0
+  },
+  "adapter_schedule": {
+   "outcomes": {
+    "met": 13,
+    "missed": 3
+   },
+   "e2e_s": {
+    "p50": 0.3713055,
+    "p95": 0.791874025,
+    "p99": 0.850482805,
+    "max": 0.865135
+   },
+   "decisions": 3
+  }
+ },
+ "error": null
+}
+exit 0

@@ -35,10 +35,10 @@ The real-AWS path has never run against AWS.
 | `prism_pipeline/driver.py` | open-loop record driver; Step Functions and client-chain executors; cap 8 in flight; one JSONL line per record |
 | `prism_pipeline/adapter.py` | PRISM controller to deployment: live telemetry (no lookahead), epoch timing, memory actuation, provisioned concurrency record-only |
 | `prism_pipeline/campaign.py` | calibration, forced-cold reset, one arm (driver plus adapter) |
-| `prism_pipeline/aws.py` | preflight, deploy, collect REPORT lines, teardown, verify; plan-only unless authorised; scoped by prefix and tag |
+| `prism_pipeline/aws.py` | preflight, deploy, resumable REPORT collection with a request-ID coverage check, teardown (keeps this run's log groups unless coverage is complete), cleanup of retained log groups, verify; plan-only unless authorised; scoped by prefix and tag |
 | `prism_pipeline/analyse.py` | request-ID join, deadline outcomes, per-stage and e2e timing, cold starts, transition gaps, decisions, paired arms, billing |
 | `prism_pipeline/estimate.py` | cost and duration of the smallest live test, every assumption listed |
-| `prism_pipeline/livetest.py` | the whole live test as one sequence, teardown in `finally` |
+| `prism_pipeline/livetest.py` | the whole live test as one sequence, teardown in `finally`; `verified` only when REPORT coverage is complete |
 | `prism_pipeline/fake.py`, `selftest.py` | in-process fakes running the real handler code; end-to-end self-test |
 | `tests/test_pipeline.py` | 29 local tests (sockets blocked, no boto3) |
 | `tests/check_botocore_shapes.py` | offline check of every AWS request against botocore's service models |

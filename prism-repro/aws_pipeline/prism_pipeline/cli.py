@@ -1,7 +1,8 @@
 """Command line. Run from prism-repro/aws_pipeline:  python -m prism_pipeline <command> ...
 
-Local (no AWS):  plan, estimate, asl, selftest, analyse
-AWS (plan only unless --execute AND PRISM_AWS_AUTHORIZED=I-ACCEPT-CHARGES):  preflight, live-test, teardown
+Local (no AWS):  plan, estimate, asl, selftest, analyse, coverage
+AWS (plan only unless --execute AND PRISM_AWS_AUTHORIZED=I-ACCEPT-CHARGES):  preflight, live-test, collect, teardown,
+  cleanup-logs, verify
 """
 from __future__ import annotations
 
@@ -38,7 +39,18 @@ def main(argv=None) -> int:
     s.add_argument("--keep", action="store_true", help="do NOT tear down at the end (then run teardown yourself)")
     s.add_argument("--host-note", default="")
     s = sub.add_parser("teardown"); s.add_argument("--manifest"); s.add_argument("--execute", action="store_true")
+    s.add_argument("--delete-log-groups", choices=("auto", "always", "never"), default="auto",
+                   help="auto: delete them only if REPORT coverage is complete (default)")
     s = sub.add_parser("verify"); s.add_argument("--execute", action="store_true")
+    s = sub.add_parser("collect", help="resume (or start) REPORT collection for a run, then check coverage")
+    s.add_argument("--manifest", required=True); s.add_argument("--execute", action="store_true")
+    s.add_argument("--start-ms", type=int); s.add_argument("--end-ms", type=int)
+    s.add_argument("--rescan", action="store_true", help="re-read every group from the start (late REPORT lines)")
+    s = sub.add_parser("coverage", help="local: recorded request IDs against saved REPORT records")
+    s.add_argument("--run", required=True)
+    s = sub.add_parser("cleanup-logs", help="delete this run's retained log groups once coverage is complete")
+    s.add_argument("--manifest", required=True); s.add_argument("--execute", action="store_true")
+    s.add_argument("--force-delete-incomplete", action="store_true")
     a = p.parse_args(argv)
 
     if a.cmd == "plan":
@@ -78,11 +90,26 @@ def main(argv=None) -> int:
         if "plan" in r:
             print("PLAN ONLY (nothing called):\n" + "\n".join(r["plan"]))
         else:
-            print(json.dumps({k: r.get(k) for k in ("error", "smoke", "teardown", "stopped")}, indent=1,
-                             default=float))
-            return 1 if r.get("error") or r.get("stopped") else 0
+            print(json.dumps({k: r.get(k) for k in ("verified", "coverage", "error", "smoke", "teardown", "stopped")},
+                             indent=1, default=float))
+            return 0 if r.get("verified") else 1
     elif a.cmd == "verify":
         print("\n".join(aws.verify(a.region, execute=a.execute)))
     elif a.cmd == "teardown":
-        print("\n".join(aws.teardown(a.manifest, a.region, execute=a.execute)))
+        print("\n".join(aws.teardown(a.manifest, a.region, execute=a.execute, delete_log_groups=a.delete_log_groups)))
+    elif a.cmd == "collect":
+        out = aws.collect_reports(a.manifest, a.start_ms, a.end_ms, execute=a.execute, rescan=a.rescan)
+        print("\n".join(out))
+        if a.execute:
+            cov = aws.report_coverage(os.path.dirname(os.path.abspath(a.manifest)))
+            print(json.dumps({k: v for k, v in cov.items() if k != "missing_ids"}, indent=1))
+            return 0 if cov["complete"] else 1
+    elif a.cmd == "coverage":
+        cov = aws.report_coverage(a.run)
+        print(json.dumps(cov, indent=1))
+        return 0 if cov["complete"] else 1
+    elif a.cmd == "cleanup-logs":
+        out = aws.cleanup_log_groups(a.manifest, a.region, execute=a.execute, force=a.force_delete_incomplete)
+        print("\n".join(out))
+        return 1 if any(x.startswith(("REFUSED", "NOT CLEAN")) for x in out) else 0
     return 0

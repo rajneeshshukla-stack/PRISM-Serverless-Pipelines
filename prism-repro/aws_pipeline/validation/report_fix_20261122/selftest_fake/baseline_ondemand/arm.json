@@ -1,0 +1,60 @@
+{
+ "arm": "baseline_ondemand",
+ "reset_nonce": "882b49f79e9c4467",
+ "first_decision": {
+  "type": "decision",
+  "k": 0,
+  "observed_upto_bin": -2,
+  "decision_s": 1.1e-05,
+  "P_model": [
+   0.0,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "P_live": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "memory": 1024,
+  "records_running_at_decision": 0,
+  "decided_wall_ns": 1795358587629173200,
+  "actuation": {
+   "memory_requested": 1024,
+   "memory_changed": false,
+   "memory_update_s": null,
+   "pc_requested": [
+    0,
+    0,
+    0,
+    0
+   ],
+   "pc_applied": null,
+   "pc_mode": "record"
+  },
+  "applied_wall_ns": 1795358587629173200,
+  "effective_bin": 0
+ },
+ "summary": {
+  "type": "arm_summary",
+  "run_id": "9df2901ce3be",
+  "arm": "baseline_ondemand",
+  "n": 16,
+  "met": 11,
+  "missed": 5,
+  "failed": 0,
+  "shed_client_cap": 0,
+  "max_in_flight": 4,
+  "cap": 8,
+  "elapsed_s": 5.4169544
+ },
+ "n_decisions": 5,
+ "adapter_error": null,
+ "bin_s": 0.25,
+ "n_epochs": 5,
+ "count_scale": 1.0,
+ "pc_scale": 1.0,
+ "t0_wall_ns": 1795358587629173200
+}

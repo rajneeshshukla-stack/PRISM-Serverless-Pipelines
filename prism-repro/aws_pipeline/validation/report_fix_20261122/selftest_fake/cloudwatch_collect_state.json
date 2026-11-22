@@ -1,0 +1,43 @@
+{
+ "window_ms": [
+  1795358524539,
+  1795358658570
+ ],
+ "groups": {
+  "/aws/lambda/prism-pipe-ingest": {
+   "next_token": null,
+   "done": true,
+   "pages": 1,
+   "written": 49,
+   "skipped_duplicates": 0,
+   "retries": 0
+  },
+  "/aws/lambda/prism-pipe-transform": {
+   "next_token": null,
+   "done": true,
+   "pages": 1,
+   "written": 49,
+   "skipped_duplicates": 0,
+   "retries": 0
+  },
+  "/aws/lambda/prism-pipe-aggregate": {
+   "next_token": null,
+   "done": true,
+   "pages": 1,
+   "written": 49,
+   "skipped_duplicates": 0,
+   "retries": 0
+  },
+  "/aws/lambda/prism-pipe-load": {
+   "next_token": null,
+   "done": true,
+   "pages": 1,
+   "written": 49,
+   "skipped_duplicates": 0,
+   "retries": 0
+  }
+ },
+ "calls": 1,
+ "status": "complete",
+ "last_error": null
+}

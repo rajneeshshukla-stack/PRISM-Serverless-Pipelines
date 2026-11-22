@@ -389,7 +389,9 @@ class TestAWSGuardAndCleanup(unittest.TestCase):
         lam.create_function("prism-pipe-someone-else", "python3.12", "r", "h.h", z, 60, 1024, ["x86_64"],
                             {"Variables": {}}, Tags={})
         lam.create_function("unrelated", "python3.12", "r", "h.h", z, 60, 1024, ["x86_64"], {"Variables": {}})
-        plan = aws.teardown(man, cl=cl)
+        # deletion scope, with log groups deleted explicitly (by default they are kept until REPORT coverage is
+        # complete: tests/test_report_collection.py)
+        plan = aws.teardown(man, cl=cl, delete_log_groups="always")
         self.assertEqual(sorted(lam.fns), ["prism-meas-ingest-1024", "prism-pipe-someone-else", "unrelated"])
         self.assertEqual(cl["stepfunctions"].machines, {})
         self.assertEqual(cl["iam"].roles, {})

@@ -1,0 +1,15 @@
+{
+ "arms": [
+  "smoke",
+  "baseline_ondemand",
+  "adapter_schedule"
+ ],
+ "expected_request_ids": 140,
+ "matched": 140,
+ "missing": 0,
+ "missing_ids": [],
+ "extra_reports": 56,
+ "stage_rows_without_request_id": 0,
+ "collection_status": "complete",
+ "complete": true
+}

@@ -1,0 +1,63 @@
+command (from prism-repro/aws_pipeline): ../venv/Scripts/python -m unittest discover -s tests -v
+HEAD 0316789 + uncommitted fix (aws.py, livetest.py, cli.py, selftest.py, tests/test_report_collection.py); 2026-11-22T14:31:12Z
+Windows-11-10.0.26200-SP0 Python 3.12.9 numpy 2.4.4
+test_linear_chain_without_retry (test_pipeline.TestASL.test_linear_chain_without_retry) ... ok
+test_deploy_resources_and_teardown_is_scoped (test_pipeline.TestAWSGuardAndCleanup.test_deploy_resources_and_teardown_is_scoped) ... FAIL
+test_execute_needs_authorisation_for_non_fake_clients (test_pipeline.TestAWSGuardAndCleanup.test_execute_needs_authorisation_for_non_fake_clients) ... ok
+test_plan_only_without_execute (test_pipeline.TestAWSGuardAndCleanup.test_plan_only_without_execute) ... ok
+test_preflight_stops_on_leftovers_and_low_quota (test_pipeline.TestAWSGuardAndCleanup.test_preflight_stops_on_leftovers_and_low_quota) ... ok
+test_teardown_after_partial_deploy (test_pipeline.TestAWSGuardAndCleanup.test_teardown_after_partial_deploy) ... ok
+test_ondemand_baseline_policy (test_pipeline.TestAdapter.test_ondemand_baseline_policy) ... ok
+test_prism_controller_through_adapter (test_pipeline.TestAdapter.test_prism_controller_through_adapter)
+PRISM itself (policies.PRISM via closed_loop.PolicyController, seasonal-naive forecaster) decides from ... ok
+test_provisioned_concurrency_refused_at_quota_10 (test_pipeline.TestAdapter.test_provisioned_concurrency_refused_at_quota_10) ... ok
+test_schedule_actuates_memory_on_epoch_boundaries (test_pipeline.TestAdapter.test_schedule_actuates_memory_on_epoch_boundaries) ... ok
+test_hits_targets_on_fake (test_pipeline.TestCalibration.test_hits_targets_on_fake) ... ok
+test_cap_sheds_and_bounds_in_flight (test_pipeline.TestDriver.test_cap_sheds_and_bounds_in_flight) ... ok
+test_deadline_outcomes_failures_and_no_retry (test_pipeline.TestDriver.test_deadline_outcomes_failures_and_no_retry) ... ok
+test_sfn_executor_failure_is_recorded (test_pipeline.TestDriver.test_sfn_executor_failure_is_recorded) ... ok
+test_bounds (test_pipeline.TestEstimate.test_bounds) ... ok
+test_cold_then_warm (test_pipeline.TestHandler.test_cold_then_warm) ... ok
+test_deterministic_across_environments (test_pipeline.TestHandler.test_deterministic_across_environments) ... ok
+test_four_stages_real_work_and_trace (test_pipeline.TestHandler.test_four_stages_real_work_and_trace) ... ok
+test_k_override_only_in_calibration_mode (test_pipeline.TestHandler.test_k_override_only_in_calibration_mode) ... ok
+test_missing_ids_fail_loudly (test_pipeline.TestHandler.test_missing_ids_fail_loudly) ... ok
+test_work_grows_with_k_and_length (test_pipeline.TestHandler.test_work_grows_with_k_and_length) ... ok
+test_cloudwatch_fallback_join_with_pagination (test_pipeline.TestJoinAndAnalysis.test_cloudwatch_fallback_join_with_pagination) ... ok
+test_cold_without_init_duration_flagged (test_pipeline.TestJoinAndAnalysis.test_cold_without_init_duration_flagged) ... ok
+test_paired_same_records (test_pipeline.TestJoinAndAnalysis.test_paired_same_records) ... ok
+test_whole_live_test_sequence_on_fakes (test_pipeline.TestSelfTest.test_whole_live_test_sequence_on_fakes)
+livetest.run end to end (preflight, deploy, calibrate, smoke, both arms, collect, analyse, teardown). ... ok
+test_no_lookahead_and_counts (test_pipeline.TestTelemetry.test_no_lookahead_and_counts) ... ok
+test_same_seed_same_records (test_pipeline.TestWorkload.test_same_seed_same_records) ... ok
+test_size_mean_and_spread (test_pipeline.TestWorkload.test_size_mean_and_spread) ... ok
+test_thinning_and_trace_stream (test_pipeline.TestWorkload.test_thinning_and_trace_stream) ... ok
+test_failed_collection_keeps_only_this_runs_log_groups_then_resume_and_cleanup (test_report_collection.TestCleanup.test_failed_collection_keeps_only_this_runs_log_groups_then_resume_and_cleanup) ... ok
+test_forced_cleanup_and_old_behaviour_are_explicit (test_report_collection.TestCleanup.test_forced_cleanup_and_old_behaviour_are_explicit) ... ok
+test_successful_collection_then_teardown_deletes_everything (test_report_collection.TestCleanup.test_successful_collection_then_teardown_deletes_everything) ... ok
+test_teardown_without_a_coverage_check_keeps_logs (test_report_collection.TestCleanup.test_teardown_without_a_coverage_check_keeps_logs) ... ok
+test_a_first_call_needs_a_window (test_report_collection.TestCollection.test_a_first_call_needs_a_window) ... ok
+test_crash_after_page_write_before_token_save_resumes_without_duplicates (test_report_collection.TestCollection.test_crash_after_page_write_before_token_save_resumes_without_duplicates) ... ok
+test_expired_token_restarts_the_group_without_duplicates (test_report_collection.TestCollection.test_expired_token_restarts_the_group_without_duplicates) ... ok
+test_interrupted_pagination_keeps_completed_pages_and_does_not_raise (test_report_collection.TestCollection.test_interrupted_pagination_keeps_completed_pages_and_does_not_raise) ... ok
+test_resume_after_failure_completes_without_duplicates (test_report_collection.TestCollection.test_resume_after_failure_completes_without_duplicates) ... ok
+test_transient_failure_is_retried_within_the_call (test_report_collection.TestCollection.test_transient_failure_is_retried_within_the_call) ... ok
+test_complete_when_every_recorded_id_has_a_report (test_report_collection.TestCoverage.test_complete_when_every_recorded_id_has_a_report) ... ok
+test_incomplete_collection_is_not_complete_even_without_missing_ids (test_report_collection.TestCoverage.test_incomplete_collection_is_not_complete_even_without_missing_ids) ... ok
+test_missing_reports_are_listed_and_block_verification (test_report_collection.TestCoverage.test_missing_reports_are_listed_and_block_verification) ... ok
+test_collection_failure_marks_unverified_and_keeps_logs (test_report_collection.TestLiveTestSequence.test_collection_failure_marks_unverified_and_keeps_logs) ... ok
+test_successful_collection_is_verified_and_clean (test_report_collection.TestLiveTestSequence.test_successful_collection_is_verified_and_clean) ... ok
+
+======================================================================
+FAIL: test_deploy_resources_and_teardown_is_scoped (test_pipeline.TestAWSGuardAndCleanup.test_deploy_resources_and_teardown_is_scoped)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<repo>\prism-repro\aws_pipeline\tests\test_pipeline.py", line 396, in test_deploy_resources_and_teardown_is_scoped
+    self.assertFalse([g for g in cl["logs"].groups if g.startswith("/aws/lambda/prism-pipe-")
+AssertionError: ['/aws/lambda/prism-pipe-ingest', '/aws/lambda/prism-pipe-transform', '/aws/lambda/prism-pipe-aggregate', '/aws/lambda/prism-pipe-load'] is not false
+
+----------------------------------------------------------------------
+Ran 44 tests in 59.749s
+
+FAILED (failures=1)
+exit 1

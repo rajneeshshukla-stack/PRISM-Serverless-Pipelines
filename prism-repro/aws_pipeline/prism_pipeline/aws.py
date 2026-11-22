@@ -14,6 +14,10 @@ manifest lists plus anything else carrying BOTH that prefix and that tag; it nev
   Logs  /aws/lambda/prism-pipe-<stage> (created first, 7-day retention)
   Step Functions  prism-pipe-docpipe (EXPRESS, logging OFF)
 No S3 bucket, queue, table, VPC, alias, version or provisioned concurrency is created (sink "none").
+
+REPORT lines (22 Nov 2026 fix): collect_reports saves each page before recording its token and resumes after a
+failure; report_coverage checks every recorded request ID against the saved REPORTs; teardown keeps this run's log
+groups (7-day retention) unless that check passed, and cleanup_log_groups deletes them afterwards.
 """
 from __future__ import annotations
 
@@ -241,35 +245,158 @@ def deploy(manifest_path: str, region: str = DEFAULT_REGION, execute: bool = Fal
 
 
 # --------------------------------------------------------------------------- REPORT lines from CloudWatch
-def collect_reports(manifest_path: str, start_ms: int, end_ms: int, execute: bool = False, cl=None) -> List[str]:
-    """Every REPORT line of the four log groups in [start_ms, end_ms], one paginated filter per group.
-    Returns the plan; with execute, also writes <manifest dir>/cloudwatch_reports.jsonl."""
+# Run livetest_20261121-203051 lost every REPORT line: the first filter_log_events call failed on a credential refresh
+# (EndpointConnectionError on the sign-in token endpoint), nothing had been saved, and teardown then deleted the log
+# groups. Collection is therefore page-by-page and resumable, its completeness is checked against the request IDs
+# the arms recorded, and teardown keeps this run's log groups unless that check passed.
+REPORTS_FILE, COLLECT_STATE_FILE, COVERAGE_FILE = "cloudwatch_reports.jsonl", "cloudwatch_collect_state.json", \
+    "cloudwatch_coverage.json"
+COLLECT_ATTEMPTS = 5                  # per page; backoff 1, 2, 4, 8 s between attempts
+ARMS_WITH_RECORDS = ("smoke", "baseline_ondemand", "adapter_schedule")
+
+
+def _run_dir(manifest_path: str) -> str:
+    return os.path.dirname(os.path.abspath(manifest_path))
+
+
+def _atomic_json(obj, path):
+    tmp = path + ".tmp"
+    with open(tmp, "w", encoding="utf-8") as f:
+        json.dump(obj, f, indent=1)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp, path)
+
+
+def _jsonl(path) -> List[dict]:
+    if not os.path.exists(path):
+        return []
+    with open(path, encoding="utf-8") as f:
+        return [json.loads(l) for l in f if l.strip()]
+
+
+def collect_reports(manifest_path: str, start_ms: Optional[int] = None, end_ms: Optional[int] = None,
+                    execute: bool = False, cl=None, attempts: int = COLLECT_ATTEMPTS, sleep=time.sleep,
+                    rescan: bool = False) -> List[str]:
+    """Every REPORT line of the run's log groups in [start_ms, end_ms], fetched page by page.
+
+    Each page's REPORT records are appended to <run dir>/cloudwatch_reports.jsonl and flushed to disk BEFORE the
+    page's nextToken is saved to cloudwatch_collect_state.json, so an interruption loses at most the page in flight.
+    A failed page is retried `attempts` times; if it still fails, the state is saved, the status is 'incomplete' and
+    the function returns without raising. Calling it again resumes from the saved token and window (start_ms and
+    end_ms are then ignored); a request ID already in the file is never written twice, so a page re-fetched after a
+    crash adds nothing. rescan=True re-reads every group from the start (for REPORT lines delivered late); duplicates
+    are still skipped. An expired token (InvalidParameterException) restarts that group, also without duplicates.
+    Returns the plan; with execute, the last line is 'collection complete' or 'collection INCOMPLETE ...'."""
     plan = [f"logs.filter_log_events on /aws/lambda/{function_name(s)} pattern '\"REPORT RequestId\"' "
-            f"[{start_ms}, {end_ms}] (paginated)" for s in STAGES]
+            f"[{start_ms}, {end_ms}] (paginated; each page saved and flushed before its token is recorded; "
+            f"up to {attempts} attempts per page; resumable)" for s in STAGES]
     if not allowed(execute, cl):
         return plan
     man = load_manifest(manifest_path)
+    rd = _run_dir(manifest_path)
+    out, state_path = os.path.join(rd, REPORTS_FILE), os.path.join(rd, COLLECT_STATE_FILE)
+    state = load_manifest(state_path) if os.path.exists(state_path) else None
+    if state is None:
+        if start_ms is None or end_ms is None:
+            raise ValueError("a first collection needs start_ms and end_ms")
+        state = {"window_ms": [int(start_ms), int(end_ms)], "groups": {}, "calls": 0}
+    lo, hi = state["window_ms"]
+    state["calls"] = state.get("calls", 0) + 1
+    if rescan:
+        for g in state["groups"].values():
+            g.update(next_token=None, done=False)
+    have = {r["request_id"] for r in _jsonl(out)}
     cl = cl or clients(man["region"])
-    out = os.path.join(os.path.dirname(os.path.abspath(manifest_path)), "cloudwatch_reports.jsonl")
-    n = 0
-    with open(out, "a", encoding="utf-8") as f:
+    new, status, err = 0, "complete", None
+    with open(out, "a", encoding="utf-8", newline="\n") as f:
         for lg in man["log_groups"]:
-            kw = dict(logGroupName=lg, filterPattern='"REPORT RequestId"', startTime=int(start_ms),
-                      endTime=int(end_ms))
-            while True:
-                page = cl["logs"].filter_log_events(**kw)
+            g = state["groups"].setdefault(lg, {"next_token": None, "done": False, "pages": 0, "written": 0,
+                                                "skipped_duplicates": 0, "retries": 0})
+            while not g["done"]:
+                kw = dict(logGroupName=lg, filterPattern='"REPORT RequestId"', startTime=int(lo), endTime=int(hi))
+                if g["next_token"]:
+                    kw["nextToken"] = g["next_token"]
+                page, last = None, None
+                for a in range(attempts):
+                    try:
+                        page = cl["logs"].filter_log_events(**kw)
+                        break
+                    except Exception as e:                    # noqa: BLE001  (bounded; recorded; resumable)
+                        last = e
+                        g["retries"] += 1
+                        if _code(e) == "InvalidParameterException" and kw.get("nextToken"):
+                            kw.pop("nextToken")               # expired token: restart the group, duplicates skipped
+                            g["next_token"] = None
+                            continue
+                        if a + 1 < attempts:
+                            sleep(min(2 ** a, 30))
+                if page is None:
+                    status, err = "incomplete", f"{type(last).__name__}: {last}"
+                    g["last_error"] = err
+                    break
                 for e in page.get("events", []):
                     rep = parse_report_line(e["message"])
-                    if rep:
-                        rep["log_group"] = lg
-                        f.write(json.dumps(rep) + "\n")
-                        n += 1
-                tok = page.get("nextToken")
-                if not tok:
-                    break
-                kw["nextToken"] = tok
-    plan.append(f"wrote {n} REPORT records to {out}")
+                    if not rep:
+                        continue
+                    if rep["request_id"] in have:
+                        g["skipped_duplicates"] += 1
+                        continue
+                    rep["log_group"] = lg
+                    f.write(json.dumps(rep) + "\n")
+                    have.add(rep["request_id"])
+                    g["written"] += 1
+                    new += 1
+                f.flush()
+                os.fsync(f.fileno())                          # the page is on disk before its token is recorded
+                g["pages"] += 1
+                g["next_token"] = page.get("nextToken")
+                g["done"] = not g["next_token"]
+                _atomic_json(state, state_path)
+            if status == "incomplete":
+                break
+    done = all(state["groups"].get(lg, {}).get("done") for lg in man["log_groups"])
+    state["status"] = "complete" if done else "incomplete"
+    state["last_error"] = err
+    _atomic_json(state, state_path)
+    plan.append(f"wrote {new} new REPORT records to <run dir>/{REPORTS_FILE} ({len(have)} in total)")
+    plan.append("collection complete" if done else
+                f"collection INCOMPLETE ({err}); state saved in <run dir>/{COLLECT_STATE_FILE}; resume with: "
+                f"python -m prism_pipeline collect --manifest <run dir>/manifest.json --execute")
     return plan
+
+
+def report_coverage(run_dir: str, arms=ARMS_WITH_RECORDS) -> dict:
+    """Local check: every Lambda request ID the arms recorded must have a captured REPORT. Writes and returns
+    <run dir>/cloudwatch_coverage.json. complete = the collection finished, at least one ID was expected, and none is
+    missing. REPORT lines without a recorded ID (calibration probes, other invocations) are counted as extras."""
+    expected, no_id = {}, 0
+    for arm in arms:
+        for rec in _jsonl(os.path.join(run_dir, arm, "records.jsonl")):
+            if rec.get("type") != "record":
+                continue
+            for st in rec.get("stages", []):
+                rid = st.get("aws_request_id")
+                if rid:
+                    expected[rid] = {"arm": arm, "record_id": rec.get("record_id"), "stage": st.get("stage")}
+                else:
+                    no_id += 1
+    captured = {r["request_id"] for r in _jsonl(os.path.join(run_dir, REPORTS_FILE))}
+    sp = os.path.join(run_dir, COLLECT_STATE_FILE)
+    status = load_manifest(sp).get("status", "unknown") if os.path.exists(sp) else "not collected"
+    missing = sorted(set(expected) - captured)
+    cov = {"arms": list(arms), "expected_request_ids": len(expected), "matched": len(expected) - len(missing),
+           "missing": len(missing), "missing_ids": [dict(request_id=r, **expected[r]) for r in missing],
+           "extra_reports": len(captured - set(expected)), "stage_rows_without_request_id": no_id,
+           "collection_status": status}
+    cov["complete"] = status == "complete" and bool(expected) and not missing
+    _atomic_json(cov, os.path.join(run_dir, COVERAGE_FILE))
+    return cov
+
+
+def coverage_complete(run_dir: str) -> bool:
+    p = os.path.join(run_dir, COVERAGE_FILE)
+    return os.path.exists(p) and bool(load_manifest(p).get("complete"))
 
 
 # --------------------------------------------------------------------------- teardown and verification
@@ -283,17 +410,27 @@ def _tagged_function(lam, fn) -> bool:
         raise
 
 
-def teardown(manifest_path: Optional[str], region: str = DEFAULT_REGION, execute: bool = False, cl=None) -> List[str]:
+def teardown(manifest_path: Optional[str], region: str = DEFAULT_REGION, execute: bool = False, cl=None,
+             delete_log_groups: str = "auto") -> List[str]:
+    """delete_log_groups: 'auto' (default) deletes the log groups only if <run dir>/cloudwatch_coverage.json says the
+    REPORT collection is complete; otherwise this run's log groups are KEPT, with their LOG_RETENTION_DAYS retention
+    re-applied, and listed under 'retained_log_groups' in the manifest (delete them later with cleanup_log_groups).
+    'always' deletes them regardless (the old behaviour); 'never' keeps them."""
     plan = [f"stepfunctions.delete_state_machine {STATE_MACHINE}",
             f"lambda.delete_function {', '.join(functions().values())} (manifest, or prefix '{PREFIX}-' AND tag {TAG})",
-            f"logs.delete_log_group /aws/lambda/{PREFIX}-<stage> for each",
+            f"logs.delete_log_group /aws/lambda/{PREFIX}-<stage> for each, ONLY if REPORT coverage is complete "
+            f"({COVERAGE_FILE}); otherwise kept with {LOG_RETENTION_DAYS}-day retention and listed in the manifest",
             f"iam: delete inline policy, detach {BASIC_POLICY}, delete roles {LAMBDA_ROLE}, {SFN_ROLE}",
             "then verify: list every remaining 'prism-pipe-' function, state machine, log group and role"]
     if not allowed(execute, cl):
         return plan
+    if delete_log_groups not in ("auto", "always", "never"):
+        raise ValueError("delete_log_groups must be 'auto', 'always' or 'never'")
     man = load_manifest(manifest_path) if manifest_path and os.path.exists(manifest_path) else {}
     cl = cl or clients(man.get("region", region))
     lam, logs, iam, sfn = cl["lambda"], cl["logs"], cl["iam"], cl["stepfunctions"]
+    rd = _run_dir(manifest_path) if manifest_path else None
+    keep_logs = delete_log_groups == "never" or (delete_log_groups == "auto" and not (rd and coverage_complete(rd)))
     sm_arns = {man["state_machine"]} if man.get("state_machine") else set()
     for p in sfn.get_paginator("list_state_machines").paginate():
         for m in p["stateMachines"]:
@@ -309,17 +446,78 @@ def teardown(manifest_path: Optional[str], region: str = DEFAULT_REGION, execute
         for f in p["Functions"]:
             if f["FunctionName"].startswith(PREFIX + "-") and _tagged_function(lam, f["FunctionName"]):
                 names.add(f["FunctionName"])
+    retained = []
     for fn in sorted(names):
         _ignore(lam.delete_function, "ResourceNotFoundException", FunctionName=fn)
-        _ignore(logs.delete_log_group, "ResourceNotFoundException", logGroupName=f"/aws/lambda/{fn}")
+        if keep_logs:
+            if f"/aws/lambda/{fn}" not in man.get("log_groups", []):
+                retained.append(f"/aws/lambda/{fn}")
+        else:
+            _ignore(logs.delete_log_group, "ResourceNotFoundException", logGroupName=f"/aws/lambda/{fn}")
     for lg in man.get("log_groups", []):
-        _ignore(logs.delete_log_group, "ResourceNotFoundException", logGroupName=lg)
+        if keep_logs:
+            retained.append(lg)
+        else:
+            _ignore(logs.delete_log_group, "ResourceNotFoundException", logGroupName=lg)
+    if keep_logs:
+        present = {g for g in leftovers_log_groups(cl)}
+        retained = sorted(g for g in set(retained) if g in present)
+        for lg in retained:                                   # bounded retention, even if it was changed by hand
+            _ignore(logs.put_retention_policy, "ResourceNotFoundException", logGroupName=lg,
+                    retentionInDays=LOG_RETENTION_DAYS)
+        if manifest_path and man:
+            man["retained_log_groups"] = {"groups": retained, "retention_days": LOG_RETENTION_DAYS,
+                                          "wall_ns": time.time_ns(), "reason": "REPORT coverage not complete"
+                                          if delete_log_groups == "auto" else "delete_log_groups='never'"}
+            _save(man, manifest_path)
     _ignore(iam.delete_role_policy, "NoSuchEntity", RoleName=SFN_ROLE, PolicyName=f"{SFN_ROLE}-invoke")
     _ignore(iam.detach_role_policy, "NoSuchEntity", RoleName=LAMBDA_ROLE, PolicyArn=BASIC_POLICY)
     for r in (LAMBDA_ROLE, SFN_ROLE):
         _ignore(iam.delete_role, "NoSuchEntity", RoleName=r)
     left = leftovers(cl)
     plan.append(f"remaining after teardown: {left}")
-    if any(left.values()):
+    others = dict(left, log_groups=[g for g in left["log_groups"] if g not in retained])
+    if retained:
+        plan.append(f"RETAINED {len(retained)} log groups ({LOG_RETENTION_DAYS}-day retention) because REPORT "
+                    f"collection is not verified complete: {retained}. Resume: python -m prism_pipeline collect "
+                    "--manifest <run dir>/manifest.json --execute; then: python -m prism_pipeline cleanup-logs "
+                    "--manifest <run dir>/manifest.json --execute")
+    if any(others.values()):
         plan.append("NOT CLEAN: delete the listed resources by hand and re-run verify")
+    return plan
+
+
+def leftovers_log_groups(cl) -> List[str]:
+    return [g["logGroupName"] for p in cl["logs"].get_paginator("describe_log_groups").paginate(
+        logGroupNamePrefix=f"/aws/lambda/{PREFIX}-") for g in p["logGroups"]]
+
+
+def cleanup_log_groups(manifest_path: str, region: str = DEFAULT_REGION, execute: bool = False, cl=None,
+                       force: bool = False) -> List[str]:
+    """Delete the log groups this run created (the manifest's 'log_groups', all under /aws/lambda/prism-pipe-) once
+    REPORT coverage is complete. Refuses otherwise unless force=True. Touches nothing else."""
+    plan = [f"logs.delete_log_group for the manifest's log groups (/aws/lambda/{PREFIX}-<stage>), only if "
+            f"{COVERAGE_FILE} says complete (or with --force-delete-incomplete)"]
+    if not allowed(execute, cl):
+        return plan
+    man = load_manifest(manifest_path)
+    rd = _run_dir(manifest_path)
+    if not coverage_complete(rd) and not force:
+        cov = load_manifest(os.path.join(rd, COVERAGE_FILE)) if os.path.exists(os.path.join(rd, COVERAGE_FILE)) else {}
+        plan.append(f"REFUSED: REPORT coverage is not complete (missing {cov.get('missing', '?')}, collection "
+                    f"{cov.get('collection_status', 'not checked')}); run collect and coverage first, or pass "
+                    "--force-delete-incomplete to delete the evidence anyway")
+        return plan
+    cl = cl or clients(man.get("region", region))
+    owned = [g for g in man.get("log_groups", []) if g.startswith(f"/aws/lambda/{PREFIX}-")]
+    owned += [g for g in (man.get("retained_log_groups") or {}).get("groups", [])
+              if g.startswith(f"/aws/lambda/{PREFIX}-") and g not in owned]
+    for lg in owned:
+        _ignore(cl["logs"].delete_log_group, "ResourceNotFoundException", logGroupName=lg)
+    man["retained_log_groups"] = dict(man.get("retained_log_groups") or {}, deleted_wall_ns=time.time_ns(),
+                                      deleted=owned, forced=bool(force and not coverage_complete(rd)))
+    _save(man, manifest_path)
+    left = leftovers(cl)
+    plan.append(f"deleted {len(owned)} log groups; remaining: {left}")
+    plan.append("CLEAN" if not any(left.values()) else "NOT CLEAN: delete the listed resources by hand and re-run verify")
     return plan

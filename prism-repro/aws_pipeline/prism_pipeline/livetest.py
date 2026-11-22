@@ -1,7 +1,10 @@
 """The smallest live test, as one sequence: preflight, deploy, calibrate, smoke, baseline arm, adapter arm, collect,
-analyse, teardown. Teardown runs in `finally` (unless keep=True), so a failure part-way still deletes what this test
-created. Plan-only unless execute and PRISM_AWS_AUTHORIZED are set; the local self-test runs the same sequence
-against the fakes (fake.fake_cloud), with documents, targets and time scaled down.
+coverage, analyse, teardown. Teardown runs in `finally` (unless keep=True), so a failure part-way still deletes what
+this test created, EXCEPT its log groups when the REPORT coverage check has not passed: those are kept (7-day
+retention) so that `collect` can resume, and `cleanup-logs` deletes them afterwards. The run is marked verified only
+when every recorded request ID has a saved REPORT. Plan-only unless execute and PRISM_AWS_AUTHORIZED are set; the
+local self-test runs the same sequence against the fakes (fake.fake_cloud), with documents, targets and time scaled
+down.
 """
 from __future__ import annotations
 
@@ -37,6 +40,7 @@ class TestSpec:
     log_settle_s: float = 60.0               # wait for CloudWatch delivery before collecting REPORT lines
     calib_kw: dict = field(default_factory=dict)
     poll_s: float = 1.0                      # configuration-update polling interval
+    collect_attempts: int = aws.COLLECT_ATTEMPTS   # per REPORT page before collection stops (resumable)
 
 
 def plan(spec: TestSpec, region: str = aws.DEFAULT_REGION) -> List[str]:
@@ -51,7 +55,9 @@ def plan(spec: TestSpec, region: str = aws.DEFAULT_REGION) -> List[str]:
           f"Poisson {spec.rate_per_min}/min, seed {spec.seed}, cap {spec.cap}",
           f"arm adapter_schedule: force cold, ScheduleController memory {spec.schedule_mb} per {5 * spec.bin_s:.0f} s "
           f"epoch via update_function_configuration(MemorySize) x4 per change; P recorded, not applied; SAME records",
-          f"collect: wait {spec.log_settle_s:.0f} s, then filter_log_events REPORT per log group",
+          f"collect: wait {spec.log_settle_s:.0f} s, then filter_log_events REPORT per log group, page by page "
+          "(saved before each token; retried; resumable)",
+          "coverage (local): every recorded request ID must have a saved REPORT; verified only if complete",
           "analyse (local)"]
     p += aws.teardown("<out>/manifest.json", region)
     p.append(f"epochs per arm: {n_ep}; arm length about {n_ep * 5 * spec.bin_s:.0f} s")
@@ -127,7 +133,11 @@ def run(out_dir: str, spec: TestSpec, region: str = aws.DEFAULT_REGION, execute:
         if not fake:
             sleep(spec.log_settle_s)
         res["collect"] = aws.collect_reports(man_path, t_start_ms - 60_000, time.time_ns() // 1_000_000 + 60_000,
-                                             execute=True, cl=cl)
+                                             execute=True, cl=cl, sleep=sleep, attempts=spec.collect_attempts)
+        note(f"collect: {res['collect'][-1]}")
+        res["coverage"] = {k: v for k, v in aws.report_coverage(out_dir).items() if k != "missing_ids"}
+        note(f"coverage: matched {res['coverage']['matched']} of {res['coverage']['expected_request_ids']}, "
+             f"missing {res['coverage']['missing']}, collection {res['coverage']['collection_status']}")
         an = analyse(out_dir, ["baseline_ondemand", "adapter_schedule"], spec.bin_s,
                      os.path.join(out_dir, "cloudwatch_reports.jsonl"), prices=_prices(), window_bins=15)
         an["smoke"] = analyse(out_dir, ["smoke"], spec.bin_s, os.path.join(out_dir, "cloudwatch_reports.jsonl"))
@@ -138,8 +148,12 @@ def run(out_dir: str, spec: TestSpec, region: str = aws.DEFAULT_REGION, execute:
         res["error"] = f"{type(e).__name__}: {e}"
         note(f"ERROR {res['error']}")
     finally:
+        cov_ok = aws.coverage_complete(out_dir)
+        res["verified"] = bool(cov_ok and not res.get("error") and not res.get("stopped"))
+        if not cov_ok:
+            note("NOT VERIFIED: REPORT coverage incomplete or not checked; the log groups are kept by teardown")
         if not keep:
-            res["teardown"] = aws.teardown(man_path, region, execute=True, cl=cl)
+            res["teardown"] = aws.teardown(man_path, region, execute=True, cl=cl)   # keeps logs unless coverage ok
             note(f"teardown: {res['teardown'][-1]}")
         with open(os.path.join(out_dir, "livetest.json"), "w", encoding="utf-8") as f:
             json.dump(res, f, indent=1, default=float)

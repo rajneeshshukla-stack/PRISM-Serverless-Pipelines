@@ -46,7 +46,8 @@ def run_selftest(out_dir: str) -> dict:
     checks["boto3_not_imported"] = "boto3" not in sys.modules
     left = r.get("teardown", [""])
     checks["teardown_clean"] = any(x.startswith("remaining after teardown") for x in left) and \
-        not any(x.startswith("NOT CLEAN") for x in left)
+        not any(x.startswith(("NOT CLEAN", "RETAINED")) for x in left)
+    checks["report_coverage_complete"] = (r.get("coverage") or {}).get("complete") is True and r.get("verified") is True
     lam = cl["lambda"]
     checks["no_throttle"] = lam.throttles == 0
     checks["max_lambda_in_flight<=8"] = lam.max_in_flight <= 8

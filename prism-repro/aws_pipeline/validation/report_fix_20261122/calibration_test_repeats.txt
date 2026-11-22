@@ -1,0 +1,24 @@
+command (from prism-repro/aws_pipeline), 5 repeats: ../venv/Scripts/python -m unittest tests.test_pipeline.TestCalibration -v
+== repeat 1 14:34:14Z
+test_hits_targets_on_fake (tests.test_pipeline.TestCalibration.test_hits_targets_on_fake) ... ok
+Ran 1 test in 0.521s
+== repeat 2 14:34:18Z
+test_hits_targets_on_fake (tests.test_pipeline.TestCalibration.test_hits_targets_on_fake) ... FAIL
+FAIL: test_hits_targets_on_fake (tests.test_pipeline.TestCalibration.test_hits_targets_on_fake)
+AssertionError: 1.9638000003396883 != 1.0 within 0.6 delta (0.9638000003396883 difference) : ingest
+Ran 1 test in 0.438s
+FAILED (failures=1)
+== repeat 3 14:34:23Z
+test_hits_targets_on_fake (tests.test_pipeline.TestCalibration.test_hits_targets_on_fake) ... ok
+Ran 1 test in 0.393s
+== repeat 4 14:34:27Z
+test_hits_targets_on_fake (tests.test_pipeline.TestCalibration.test_hits_targets_on_fake) ... ok
+Ran 1 test in 0.432s
+== repeat 5 14:34:31Z
+test_hits_targets_on_fake (tests.test_pipeline.TestCalibration.test_hits_targets_on_fake) ... ok
+Ran 1 test in 0.419s
+
+== interleaved comparison, 22 Nov 2026 ~14:36-14:40 UTC: tests.test_pipeline.TestCalibration, 10 repeats per cell
+   HEAD 0316789 unmodified copy (git -c core.autocrlf=false archive HEAD prism-repro/aws_pipeline prism-repro/aws_measurement prism-repro/src, in a scratch folder): 10/10, then 10/10 in round A, 9/10 in round B (one failure)
+   working tree with the fix: 9/10 in round A, 10/10 in round B
+   Reading: the test compares real handler timing on the host with a target (delta 0.6) and fails occasionally on both trees; the fix does not touch calibration (campaign.py, fake.py and the handler are unchanged vs HEAD).
