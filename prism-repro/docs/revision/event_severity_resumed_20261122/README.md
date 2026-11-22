@@ -82,3 +82,9 @@ excess comes from cold starts. The two factors are not additive shares, because 
 
 Three mechanisms were not separated from one another: environments occupied while initialising, the latency
 initialisation adds to a request, and downstream dependency. Nothing here measures the effect on a real platform.
+
+## Line endings (22 Nov 2026)
+
+Applies to `ORIGINAL_ROWS.sha256`, with companion `ORIGINAL_ROWS.lf.sha256`.
+
+Python on Windows wrote the JSON row files with CRLF line endings, and Git (core.autocrlf=true) stores them with LF. The checksum lists named here hash the CRLF working copies. Their `.lf` companions hash the stored LF content; use those on an LF checkout. The companions were written 22 Nov 2026 from the committed blobs, after checking that each blob is the LF form of the listed file.

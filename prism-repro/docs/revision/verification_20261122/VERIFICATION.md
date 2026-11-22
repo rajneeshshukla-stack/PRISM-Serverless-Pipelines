@@ -67,3 +67,9 @@ R1.1, R1.3, R2.4, R2.6, R2.7, R2.8, R2.9, R2.14, R2.19, R2.20, R3.1, R3.2, R3.7,
 R5.M7, R5.m4, R5.m5, R6.1, R6.2, R6.4, R7.2, R7.4, R7.6.
 
 Statuses and tracker cells were updated in `notes/dispositions.md` and in the 22 Nov 2026 tracker workbook.
+
+## Line endings (22 Nov 2026)
+
+Applies to `SHA256SUMS`, with companion `SHA256SUMS.lf`.
+
+Python on Windows wrote the JSON row files with CRLF line endings, and Git (core.autocrlf=true) stores them with LF. The checksum lists named here hash the CRLF working copies. Their `.lf` companions hash the stored LF content; use those on an LF checkout. The companions were written 22 Nov 2026 from the committed blobs, after checking that each blob is the LF form of the listed file.
