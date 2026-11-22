@@ -1,0 +1,21 @@
+arm,quantity,subset,n,p50_s,p95_s,max_s,clock_basis
+baseline_ondemand,client overhead: end-to-end minus service span,all records,40,0.096,0.562,0.845,client monotonic e2e minus Lambda host-clock span
+baseline_ondemand,stage transition ingest->transform,warm next stage,36,0.027,0.04,0.047,Lambda host clocks of two environments
+baseline_ondemand,stage transition ingest->transform,cold next stage,4,0.251,0.3,0.307,Lambda host clocks of two environments
+baseline_ondemand,stage transition transform->aggregate,warm next stage,36,0.026,0.035,0.044,Lambda host clocks of two environments
+baseline_ondemand,stage transition transform->aggregate,cold next stage,4,0.26,0.269,0.27,Lambda host clocks of two environments
+baseline_ondemand,stage transition aggregate->load,warm next stage,37,0.023,0.034,0.034,Lambda host clocks of two environments
+baseline_ondemand,stage transition aggregate->load,cold next stage,3,0.25,0.255,0.256,Lambda host clocks of two environments
+baseline_ondemand,module initialisation (handler module only),cold stage rows,13,0.005,0.005,0.005,Lambda host clock; not Lambda Init Duration
+baseline_ondemand,client dispatch lateness,all records,40,0.001,0.001,0.001,client clock
+baseline_ondemand,"decision time (fixed schedule or OnDemand, not PRISM)",decisions,5,,,9.1e-06,client clock
+adapter_schedule,client overhead: end-to-end minus service span,all records,40,0.11,0.583,0.626,client monotonic e2e minus Lambda host-clock span
+adapter_schedule,stage transition ingest->transform,warm next stage,30,0.027,0.04,0.044,Lambda host clocks of two environments
+adapter_schedule,stage transition ingest->transform,cold next stage,10,0.258,0.271,0.273,Lambda host clocks of two environments
+adapter_schedule,stage transition transform->aggregate,warm next stage,30,0.025,0.036,0.129,Lambda host clocks of two environments
+adapter_schedule,stage transition transform->aggregate,cold next stage,10,0.251,0.278,0.289,Lambda host clocks of two environments
+adapter_schedule,stage transition aggregate->load,warm next stage,34,0.024,0.042,0.054,Lambda host clocks of two environments
+adapter_schedule,stage transition aggregate->load,cold next stage,6,0.25,0.267,0.269,Lambda host clocks of two environments
+adapter_schedule,module initialisation (handler module only),cold stage rows,31,0.005,0.006,0.006,Lambda host clock; not Lambda Init Duration
+adapter_schedule,client dispatch lateness,all records,40,0.001,0.001,0.001,client clock
+adapter_schedule,"decision time (fixed schedule or OnDemand, not PRISM)",decisions,5,,,4.7e-06,client clock

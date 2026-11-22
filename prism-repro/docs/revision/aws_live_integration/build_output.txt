@@ -1,0 +1,8 @@
+baseline_ondemand: n=40 met=39 missed=1 statuses={'SUCCEEDED': 40}
+adapter_schedule: n=40 met=29 missed=11 statuses={'SUCCEEDED': 40}
+paired: same record IDs as plan=True; identical ingest digests=True
+adapter decisions=5 memory changes=3; pc_requested all zero=True; pc_applied all null=True; last submit at 165.4 s, last completion at 172.6 s
+cloudwatch_reports.jsonl: 0 bytes, 0 REPORT entries
+CloudTrail events: lambda=219 logs=89 states=3; regions={'us-east-2': 311}; window 02:30:11-02:55:23 UTC
+hashed 18 private source files
+sanitization scan: clean

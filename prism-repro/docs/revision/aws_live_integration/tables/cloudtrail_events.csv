@@ -1,0 +1,25 @@
+service,event,caller,error_code,events,resources
+lambda,CreateFunction,run client (boto3),,4,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+lambda,CreateFunction,run client (boto3),InvalidParameterValueException,1,prism-pipe-ingest
+lambda,DeleteFunction,run client (boto3),,4,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+lambda,GetFunction,AWS Resource Explorer (service),,20,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+lambda,GetFunctionCodeSigningConfig,AWS Resource Explorer (service),,20,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+lambda,GetFunctionConfiguration,run client (boto3),,82,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+lambda,GetFunctionRecursionConfig,AWS Resource Explorer (service),,20,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+lambda,GetPolicy,AWS Resource Explorer (service),ResourceNotFoundException,20,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+lambda,GetRuntimeManagementConfig,AWS Resource Explorer (service),,20,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+lambda,ListTags,run client (boto3),,4,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+lambda,UpdateFunctionConfiguration,run client (boto3),,24,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+logs,CreateLogGroup,run client (boto3),,4,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+logs,CreateLogStream,Lambda service,,54,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+logs,DeleteLogGroup,run client (boto3),,4,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+logs,DeleteLogGroup,run client (boto3),ResourceNotFoundException,4,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+logs,DescribeIndexPolicies,AWS Resource Explorer (service),,4,(none)
+logs,DescribeLogGroups,AWS Resource Explorer (service),,4,(none)
+logs,DescribeLogGroups,run client (boto3),,3,(none)
+logs,DescribeResourcePolicies,AWS Resource Explorer (service),,4,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+logs,ListTagsForResource,AWS Resource Explorer (service),,4,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+logs,PutRetentionPolicy,run client (boto3),,4,prism-pipe-aggregate;prism-pipe-ingest;prism-pipe-load;prism-pipe-transform
+states,CreateStateMachine,run client (boto3),,1,prism-pipe-docpipe
+states,DeleteStateMachine,run client (boto3),,1,prism-pipe-docpipe
+states,ListTagsForResource,run client (boto3),,1,prism-pipe-docpipe

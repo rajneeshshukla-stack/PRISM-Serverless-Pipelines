@@ -1,0 +1,3 @@
+arm,records,met,missed,execution_failures,shed_client_cap,max_in_flight,e2e_p50_s,e2e_p95_s,e2e_max_s,sfn_billed_gb_s
+baseline_ondemand,40,39,1,0,0,5,9.081,12.333,17.175,22.9
+adapter_schedule,40,29,11,0,0,8,10.466,19.614,24.892,27.55
