@@ -73,3 +73,34 @@ Statuses and tracker cells were updated in `notes/dispositions.md` and in the 22
 Applies to `SHA256SUMS`, with companion `SHA256SUMS.lf`.
 
 Python on Windows wrote the JSON row files with CRLF line endings, and Git (core.autocrlf=true) stores them with LF. The checksum lists named here hash the CRLF working copies. Their `.lf` companions hash the stored LF content; use those on an LF checkout. The companions were written 22 Nov 2026 from the committed blobs, after checking that each blob is the LF form of the listed file.
+
+## The progress-note entry is a historical snapshot (22 Nov 2026)
+
+`SHA256SUMS` and `SHA256SUMS.lf` record each file as it stood at this verification. Their entry for
+`REVISION_PROGRESS_20261122.md` is `103087f81d556818e616d23d0ef9c59118bb12671ffe2a7b1d0b3e1a4e8c82ff` in both lists.
+That is the note before its "Update, 22 Nov 2026: verification and resumed pass" section was appended. Both hashes
+are kept unchanged. The other 66 entries still verify the current files.
+
+The listed version was never committed: the note's first commit, 9ffef14, already contains the appended section.
+
+**Reconstructing the snapshot.** It is the first 3,069 bytes, lines 1-33, of the current note. The note contains no
+CR bytes, so the Windows working copy and the Git LF content are identical, and one hash serves both lists. From
+`prism-repro/docs/revision/`:
+
+```
+head -c 3069 REVISION_PROGRESS_20261122.md | sha256sum                              # working copy or LF checkout
+tr -d '\r' < REVISION_PROGRESS_20261122.md | head -c 3069 | sha256sum                # a CRLF checkout (core.autocrlf=true)
+git show 9ffef14:prism-repro/docs/revision/REVISION_PROGRESS_20261122.md | head -c 3069 | sha256sum   # committed blob
+```
+
+Each prints `103087f8...c82ff`.
+
+**Checking the other 66 entries:**
+
+```
+grep -v ' \*\?REVISION_PROGRESS_20261122\.md$' SHA256SUMS | sha256sum -c -           # Windows working copies
+grep -v ' \*\?REVISION_PROGRESS_20261122\.md$' SHA256SUMS.lf | sha256sum -c -        # LF content
+```
+
+Run these from `prism-repro/docs/revision/`, with each list path prefixed by `verification_20261122/`. A plain
+`sha256sum -c` on either full list reports one mismatch, the progress note, as expected.
