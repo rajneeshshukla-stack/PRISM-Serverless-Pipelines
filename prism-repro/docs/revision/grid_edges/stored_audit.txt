@@ -1,0 +1,62 @@
+== E1_val (results/raw/E1/rows.jsonl --week val)
+validation selections: 0 of 40 selections at a grid edge
+== E1_test_posthoc (results/raw/E1/rows.jsonl --week test)
+POST HOC (selected with test-week knowledge): 23 of 160 selections at a grid edge
+  seed 101 growth PRISM: 0.08 at high edge of [0.005, 0.08] (6 points)
+  seed 101 growth Scheduled: 2 at high edge of [1, 2] (6 points); no grid point met the 2% threshold
+  seed 101 new_spike PredHead: 2 at high edge of [1, 2] (11 points); no grid point met the 2% threshold
+  seed 101 new_spike Scheduled: 2 at high edge of [1, 2] (6 points)
+  seed 102 growth PRISM: 0.08 at high edge of [0.005, 0.08] (6 points)
+  seed 102 growth Scheduled: 2 at high edge of [1, 2] (6 points)
+  seed 102 new_spike PredHead: 2 at high edge of [1, 2] (11 points); no grid point met the 2% threshold
+  seed 102 new_spike Scheduled: 2 at high edge of [1, 2] (6 points)
+  seed 102 stationary PRISM: 0.08 at high edge of [0.005, 0.08] (6 points)
+  seed 103 bursty PredHead+hyst: 2 at high edge of [1, 2] (11 points)
+  seed 103 growth Scheduled: 2 at high edge of [1, 2] (6 points)
+  seed 103 new_spike PredHead: 2 at high edge of [1, 2] (11 points); no grid point met the 2% threshold
+  seed 104 bursty PredHead: 2 at high edge of [1, 2] (11 points); no grid point met the 2% threshold
+  seed 104 growth PRISM: 0.08 at high edge of [0.005, 0.08] (6 points)
+  seed 104 growth QuantProv_q99: 0.6 at low edge of [0.6, 1.5] (10 points)
+  seed 104 growth Scheduled: 2 at high edge of [1, 2] (6 points)
+  seed 104 new_spike PredHead: 2 at high edge of [1, 2] (11 points); no grid point met the 2% threshold
+  seed 104 new_spike Scheduled: 2 at high edge of [1, 2] (6 points)
+  seed 104 stationary QuantProv_q99: 0.6 at low edge of [0.6, 1.5] (10 points)
+  seed 105 growth PRISM: 0.08 at high edge of [0.005, 0.08] (6 points)
+  seed 105 growth Scheduled: 2 at high edge of [1, 2] (6 points)
+  seed 105 new_spike PredHead: 2 at high edge of [1, 2] (11 points); no grid point met the 2% threshold
+  seed 105 new_spike Scheduled: 2 at high edge of [1, 2] (6 points)
+== E12_val (results/raw/E12 --week val)
+validation selections: 6 of 30 selections at a grid edge
+  seed 101 PRISM: 0.005 at low edge of [0.005, 0.08] (6 points)
+  seed 101 PredHead: 2 at high edge of [1, 2] (11 points); no grid point met the 2% threshold
+  seed 102 PRISM: 0.005 at low edge of [0.005, 0.08] (6 points)
+  seed 102 PredHead+hyst: 2 at high edge of [1, 2] (11 points); no grid point met the 2% threshold
+  seed 102 QuantProv_q90: 1.5 at high edge of [0.6, 1.5] (10 points)
+  seed 104 PredHead: 2 at high edge of [1, 2] (11 points); no grid point met the 2% threshold
+== R1_val (results/raw/R1/rows.jsonl --week val)
+validation selections: 25 of 40 selections at a grid edge
+  seed 201 PRISM: 0.08 at high edge of [0.005, 0.08] (6 points)
+  seed 201 PredHead: 1 at low edge of [1, 2] (11 points)
+  seed 201 PredHead+hyst: 1 at low edge of [1, 2] (11 points)
+  seed 201 Reactive: 0.9 at high edge of [0.4, 0.9] (11 points)
+  seed 201 Scheduled: 1 at low edge of [1, 2] (6 points)
+  seed 201 Static: 50 at low edge of [50, 99.9] (10 points)
+  seed 202 PRISM: 0.08 at high edge of [0.005, 0.08] (6 points)
+  seed 202 PredHead: 1 at low edge of [1, 2] (11 points)
+  seed 202 PredHead+hyst: 1 at low edge of [1, 2] (11 points)
+  seed 202 Reactive: 0.9 at high edge of [0.4, 0.9] (11 points)
+  seed 202 Scheduled: 1 at low edge of [1, 2] (6 points)
+  seed 202 Static: 50 at low edge of [50, 99.9] (10 points)
+  seed 203 PRISM: 0.08 at high edge of [0.005, 0.08] (6 points)
+  seed 203 PredHead: 1 at low edge of [1, 2] (11 points)
+  seed 203 PredHead+hyst: 1 at low edge of [1, 2] (11 points)
+  seed 204 Reactive: 0.4 at low edge of [0.4, 0.9] (11 points); no grid point met the 2% threshold
+  seed 204 Scheduled: 2 at high edge of [1, 2] (6 points); no grid point met the 2% threshold
+  seed 204 Static: 99.9 at high edge of [50, 99.9] (10 points)
+  seed 205 PRISM: 0.08 at high edge of [0.005, 0.08] (6 points)
+  seed 205 PredHead: 1 at low edge of [1, 2] (11 points)
+  seed 205 PredHead+hyst: 1 at low edge of [1, 2] (11 points)
+  seed 205 QuantProv_q99: 0.6 at low edge of [0.6, 1.5] (10 points)
+  seed 205 Reactive: 0.9 at high edge of [0.4, 0.9] (11 points)
+  seed 205 Scheduled: 1 at low edge of [1, 2] (6 points)
+  seed 205 Static: 50 at low edge of [50, 99.9] (10 points)

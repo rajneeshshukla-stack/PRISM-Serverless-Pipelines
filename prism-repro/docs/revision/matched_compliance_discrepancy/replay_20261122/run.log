@@ -1,0 +1,23 @@
+start 2026-11-22T13:15:10Z HEAD 78ba419 tag 3b4bc33 src/experiments clean: yes
+exit 0 101 sampled 13:20:06Z
+exit 0 101 head 13:20:10Z
+exit 0 101 occupancy+sampled 13:20:34Z
+exit 0 101 occupancy 13:20:35Z
+exit 0 101 tag 13:25:04Z
+exit 0 102 occupancy 13:25:05Z
+exit 0 102 sampled 13:25:05Z
+exit 0 102 occupancy+sampled 13:25:40Z
+exit 0 103 sampled 13:30:23Z
+exit 0 103 occupancy 13:30:45Z
+exit 0 102 tag 13:30:46Z
+exit 0 103 occupancy+sampled 13:31:02Z
+exit 0 104 sampled 13:35:55Z
+exit 0 103 tag 13:35:55Z
+exit 0 104 occupancy 13:36:18Z
+exit 0 104 occupancy+sampled 13:36:29Z
+exit 0 105 sampled 13:40:50Z
+exit 0 105 occupancy 13:40:52Z
+exit 0 104 tag 13:40:54Z
+exit 0 105 occupancy+sampled 13:41:12Z
+exit 0 105 tag 13:43:48Z
+end 2026-11-22T13:43:48Z

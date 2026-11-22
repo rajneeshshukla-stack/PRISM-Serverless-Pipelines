@@ -1,0 +1,4 @@
+memory_mb,n_cold,cold_gap_median_s,cold_gap_min_s,cold_gap_max_s,n_warm,warm_gap_median_s,added_latency_median_s
+512,9,0.2553,0.1981,0.2639,31,0.0253,0.2299
+1024,19,0.256,0.2204,0.3074,137,0.0256,0.2304
+2048,9,0.2505,0.2258,0.2886,35,0.0229,0.2276

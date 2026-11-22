@@ -1,0 +1,13 @@
+stage,memory_mb,n_warm,cv_handler_s,cv_handler_s_per_1000_words
+ingest,512,14,0.169,0.012
+ingest,1024,49,0.237,0.012
+ingest,2048,10,0.308,0.005
+transform,512,10,0.113,0.015
+transform,1024,46,0.242,0.022
+transform,2048,10,0.335,0.062
+aggregate,512,10,0.151,0.017
+aggregate,1024,45,0.225,0.019
+aggregate,2048,11,0.27,0.029
+load,512,11,0.163,0.023
+load,1024,46,0.231,0.02
+load,2048,14,0.342,0.025

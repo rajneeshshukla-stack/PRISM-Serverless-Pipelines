@@ -1,0 +1,82 @@
+VERIFICATION COPY, written 22 Nov 2026 during the overnight-pass verification; not an output of the pass.
+The event_severity run stopped before completion (Modern Standby at 01:44:40 CST, Windows Update restart 02:51-02:55 CST)
+and never wrote event_severity/summary.txt. This is the unmodified output of
+  python scripts/revision/event_severity_factors.py . <copy of event_severity/rows_*.jsonl> --analyse
+run on a copy of the 204 saved rows (HEAD 78ba419, src/ and experiments/ clean, .venv-prism-pilot: Python 3.12.9,
+numpy 2.4.4, scipy 1.17.1, scikit-learn 1.8.0). Incomplete: R24 trace 105 new_spike lacks the 30% and 50% margin
+replays; R72 has 9 of 48 replays (section 6, n=1, is not usable).
+----------------------------------------------------------------------------------------------------------------
+EVENT-LEVEL SEVERITY, MODELLING FACTORS AND EXTRA CAPACITY (R2.4; R7.2; R1.1 evidence)
+Pre-calibration, post hoc, open loop: stored E1 schedules replayed through the current event-level code.
+Rows: 204; target 2% of 672 windows = at most 13 violating windows per week.
+
+## 1. Reproduction of the stored event-level results (current des.py against the stored rows)
+  E12 (Table XI): 60 replays; identical in cost and violating windows: 45; largest cost difference USD 0.0048 (0.00031%); violating-window change +0.00 to +0.00 points (identical in 60 of 60)
+  E9 (Table X): 3 replays; identical in cost and violating windows: 0; largest cost difference USD 0.0008 (0.00007%); violating-window change +0.00 to +0.00 points (identical in 3 of 3)
+
+## 2. Severity and persistence of the E12 selections, 20 test weeks (OBSERVED in the simulator)
+  family          weeks<=2%  viol%  late rec/wk  attain in viol  worst window  longest run  mean run  runs/wk
+  PRISM            13/20     2.02      20,894         98.19%       96.35%       1.00     1.00     13.6
+  QuantProv_q90    11/20     1.86      20,457         98.17%       96.54%       1.15     1.01     12.3
+  Reactive         16/20     1.26      19,506         98.21%       96.35%       1.00     1.00      8.4
+  PredHead+hyst   omitted: 4 of 20 weeks replayed (trimmed design)
+  Static          omitted: 4 of 20 weeks replayed (trimmed design)
+
+  PRISM, every test week (E12 selection): violating windows of 672 (allowance 13), worst window, longest run
+    101 stationary PRISM-0.005   11 ( -2)  worst  96.96%  longest run 1  median shortfall 0.24 points  in burst windows 11/11  met
+    101 growth     PRISM-0.005   12 ( -1)  worst  96.76%  longest run 1  median shortfall 0.32 points  in burst windows 12/12  met
+    101 bursty     PRISM-0.005   10 ( -3)  worst  96.43%  longest run 1  median shortfall 0.77 points  in burst windows 10/10  met
+    101 new_spike  PRISM-0.005   11 ( -2)  worst  97.02%  longest run 1  median shortfall 0.40 points  in burst windows 10/11  met
+    102 stationary PRISM-0.005    8 ( -5)  worst  97.67%  longest run 1  median shortfall 0.41 points  in burst windows 8/8  met
+    102 growth     PRISM-0.005    7 ( -6)  worst  97.31%  longest run 1  median shortfall 0.52 points  in burst windows 7/7  met
+    102 bursty     PRISM-0.005   11 ( -2)  worst  97.86%  longest run 1  median shortfall 0.33 points  in burst windows 11/11  met
+    102 new_spike  PRISM-0.005    7 ( -6)  worst  98.14%  longest run 1  median shortfall 0.52 points  in burst windows 7/7  met
+    103 stationary PRISM-0.03    19 ( +6)  worst  95.94%  longest run 1  median shortfall 0.75 points  in burst windows 19/19  MISS
+    103 growth     PRISM-0.03    19 ( +6)  worst  95.77%  longest run 1  median shortfall 0.87 points  in burst windows 19/19  MISS
+    103 bursty     PRISM-0.03    24 (+11)  worst  95.60%  longest run 1  median shortfall 0.59 points  in burst windows 24/24  MISS
+    103 new_spike  PRISM-0.03    27 (+14)  worst  96.85%  longest run 1  median shortfall 0.38 points  in burst windows 17/27  MISS
+    104 stationary PRISM-0.01    14 ( +1)  worst  96.51%  longest run 1  median shortfall 0.91 points  in burst windows 14/14  MISS
+    104 growth     PRISM-0.01    13 ( +0)  worst  96.16%  longest run 1  median shortfall 1.01 points  in burst windows 13/13  met
+    104 bursty     PRISM-0.01    15 ( +2)  worst  95.92%  longest run 1  median shortfall 0.60 points  in burst windows 15/15  MISS
+    104 new_spike  PRISM-0.01     9 ( -4)  worst  97.96%  longest run 1  median shortfall 0.37 points  in burst windows 8/9  met
+    105 stationary PRISM-0.02    12 ( -1)  worst  93.81%  longest run 1  median shortfall 0.80 points  in burst windows 11/12  met
+    105 growth     PRISM-0.02    13 ( +0)  worst  94.10%  longest run 1  median shortfall 0.75 points  in burst windows 12/13  met
+    105 bursty     PRISM-0.02    13 ( +0)  worst  94.30%  longest run 1  median shortfall 0.96 points  in burst windows 12/13  met
+    105 new_spike  PRISM-0.02    16 ( +3)  worst  95.94%  longest run 1  median shortfall 0.66 points  in burst windows 9/16  MISS
+  PRISM misses: 7 of 20 weeks
+
+## 3. Workload conditions of PRISM's violating windows (association, OBSERVED; E12 selections, 20 weeks)
+  window :00-:14 (scheduled spikes at :00-:01, 2x+2x)           25 of  3360 violating (0.74%)
+  window :15-:29 (new-spike slot :15-:16; empty otherwise)     106 of  3360 violating (3.15%)
+  window :30-:44 (scheduled spike at :30, 1x)                   64 of  3360 violating (1.90%)
+  window :45-:59 (no scheduled spike)                           76 of  3360 violating (2.26%)
+  windows with a random burst:     249 of  1007 violating (24.73%)
+  windows without a random burst:   22 of 12433 violating (0.18%)
+  by arrival-rate decile of the week (0 = quietest): 0: 0.3%, 1: 0.1%, 2: 0.8%, 3: 0.6%, 4: 1.0%, 5: 1.7%, 6: 1.9%, 7: 1.3%, 8: 1.7%, 9: 10.7%
+  by scenario: stationary 1.90%, growth 1.90%, bursty 2.17%, new_spike 2.08%
+
+## 4. Modelling factors (counterfactual replays of PRISM's E12 schedules; CAUSAL within the simulator)
+  event                              weeks<=2% 13/20  viol  2.02%  cost   1,432  cold-start ratio 0.00045
+  init_instant                       weeks<=2% 20/20  viol  0.00%  cost   1,431  cold-start ratio 0.00027
+  keepalive_unlimited                weeks<=2% 20/20  viol  0.31%  cost   1,431  cold-start ratio 0.00007
+
+## 5. Extra provisioning (ESTIMATED by counterfactual replay: uniform margin on every stage's capacity)
+    103 stationary miss at 2.83%: smallest margin meeting 2% = 30% (cost +16.2%, viol 1.79%)
+    103 growth     miss at 2.83%: smallest margin meeting 2% = 20% (cost +10.7%, viol 1.93%)
+    103 bursty     miss at 3.57%: smallest margin meeting 2% = 50% (cost +28.0%, viol 1.34%)
+    103 new_spike  miss at 4.02%: smallest margin meeting 2% = 30% (cost +16.5%, viol 1.64%)
+    104 stationary miss at 2.08%: smallest margin meeting 2% = 10% (cost +6.1%, viol 1.49%)
+    104 bursty     miss at 2.23%: smallest margin meeting 2% = 10% (cost +6.6%, viol 1.93%)
+    105 new_spike  miss at 2.38%: smallest margin meeting 2% = 10% (cost +5.8%, viol 1.49%)
+  uniform margin  10%: weeks<=2% 16/20, viol  1.49%, cost  +6.1% (mean over weeks)
+  uniform margin  20%: weeks<=2% 17/20, viol  1.18%, cost +11.8% (mean over weeks)
+  uniform margin  30%: weeks<=2% 18/19, viol  0.89%, cost +17.7% (mean over weeks)
+  uniform margin  50%: weeks<=2% 19/19, viol  0.55%, cost +29.2% (mean over weeks)
+
+## 6. Fast-to-event gap on the Table X schedules (E1 selections, seeds 101-103 x 4 scenarios = 12 weeks)
+  fast = stored submitted fast-simulator result (E9 rows); the other columns are current event-level replays.
+  family     fast   event   init-instant  keep-alive-unlim  both    gap closed by: init  keep-alive  both
+  PRISM      0.89   2.68        0.00           0.30      0.00       150%       133%    150%   (n=1)
+
+Labels: OBSERVED = counted in the simulator's output; ESTIMATED = counterfactual replay, not a policy the
+controller could have run without hindsight; all values pre-calibration (assumed constants) and open loop.

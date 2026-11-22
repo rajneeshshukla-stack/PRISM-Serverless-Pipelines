@@ -1,0 +1,77 @@
+resume 2026-11-22T12:53:13Z: resumed in a separate folder from copies of the 24 saved row files of event_severity/ (204 rows: 187 design rows reused, 17 pre-trim non-design rows kept and not tabled); only the 41 missing design rows are run
+start 2026-11-22T12:53:22Z tasks=32 workers=4 env={"platform": "Windows-11-10.0.26200-SP0", "python": "3.12.9", "numpy": "2.4.4", "scipy": "1.17.1", "sklearn": "1.8.0", "git_head": "78ba419c427b15537c2828e22e543ebac3c98479", "src_and_experiments_clean": true, "cpu_count": 8}
+task done R24 101 growth: 0 new rows
+task done R24 102 stationary: 0 new rows
+task done R24 101 bursty: 0 new rows
+task done R24 102 growth: 0 new rows
+task done R24 102 bursty: 0 new rows
+task done R24 102 new_spike: 0 new rows
+task done R24 103 stationary: 0 new rows
+task done R24 101 new_spike: 0 new rows
+task done R24 101 stationary: 0 new rows
+task done R24 103 bursty: 0 new rows
+task done R24 103 growth: 0 new rows
+task done R24 103 new_spike: 0 new rows
+task done R24 104 stationary: 0 new rows
+task done R24 104 growth: 0 new rows
+task done R24 104 bursty: 0 new rows
+task done R24 104 new_spike: 0 new rows
+task done R24 105 stationary: 0 new rows
+task done R24 105 bursty: 0 new rows
+task done R24 105 growth: 0 new rows
+task done R72 101 stationary: 0 new rows
+[R72] 101 bursty E1sel|PRISM|PRISM-0.02|keepalive_unlimited|0 viol 0.0030 cost 1267 50s
+[R72] 101 new_spike E1sel|PRISM|PRISM-0.02|event|0 viol 0.0432 cost 1428 62s
+[R24] 105 new_spike E12sel|PRISM|PRISM-0.02|event|0.3 viol 0.0074 cost 1713 63s
+[R72] 101 growth E1sel|PRISM|PRISM-0.02|init_instant+keepalive_unlimited|0 viol 0.0000 cost 1460 64s
+task done R72 101 growth: 1 new rows
+[R72] 101 bursty E1sel|PRISM|PRISM-0.02|init_instant+keepalive_unlimited|0 viol 0.0000 cost 1267 52s
+task done R72 101 bursty: 2 new rows
+[R72] 102 stationary E1sel|PRISM|PRISM-0.03|event|0 viol 0.0283 cost 1149 49s
+[R72] 101 new_spike E1sel|PRISM|PRISM-0.02|init_instant|0 viol 0.0000 cost 1426 61s
+[R24] 105 new_spike E12sel|PRISM|PRISM-0.02|event|0.5 viol 0.0045 cost 1875 63s
+task done R24 105 new_spike: 2 new rows
+[R72] 102 stationary E1sel|PRISM|PRISM-0.03|init_instant|0 viol 0.0000 cost 1147 50s
+[R72] 102 growth E1sel|PRISM|PRISM-0.03|event|0 viol 0.0268 cost 1485 65s
+[R72] 102 bursty E1sel|PRISM|PRISM-0.03|event|0 viol 0.0342 cost 1238 48s
+[R72] 101 new_spike E1sel|PRISM|PRISM-0.02|keepalive_unlimited|0 viol 0.0015 cost 1426 60s
+[R72] 102 stationary E1sel|PRISM|PRISM-0.03|keepalive_unlimited|0 viol 0.0015 cost 1147 44s
+[R72] 102 bursty E1sel|PRISM|PRISM-0.03|init_instant|0 viol 0.0000 cost 1237 45s
+[R72] 102 growth E1sel|PRISM|PRISM-0.03|init_instant|0 viol 0.0000 cost 1483 56s
+[R72] 101 new_spike E1sel|PRISM|PRISM-0.02|init_instant+keepalive_unlimited|0 viol 0.0000 cost 1426 53s
+task done R72 101 new_spike: 4 new rows
+[R72] 102 stationary E1sel|PRISM|PRISM-0.03|init_instant+keepalive_unlimited|0 viol 0.0000 cost 1147 41s
+task done R72 102 stationary: 4 new rows
+[R72] 102 bursty E1sel|PRISM|PRISM-0.03|keepalive_unlimited|0 viol 0.0015 cost 1237 43s
+[R72] 102 growth E1sel|PRISM|PRISM-0.03|keepalive_unlimited|0 viol 0.0015 cost 1484 55s
+[R72] 102 new_spike E1sel|PRISM|PRISM-0.03|event|0 viol 0.0402 cost 1464 136s
+[R72] 103 stationary E1sel|PRISM|PRISM-0.05|event|0 viol 0.0327 cost 1037 124s
+[R72] 102 bursty E1sel|PRISM|PRISM-0.03|init_instant+keepalive_unlimited|0 viol 0.0000 cost 1237 123s
+task done R72 102 bursty: 4 new rows
+[R72] 102 growth E1sel|PRISM|PRISM-0.03|init_instant+keepalive_unlimited|0 viol 0.0000 cost 1483 136s
+task done R72 102 growth: 4 new rows
+[R72] 103 stationary E1sel|PRISM|PRISM-0.05|init_instant|0 viol 0.0000 cost 1035 39s
+[R72] 102 new_spike E1sel|PRISM|PRISM-0.03|init_instant|0 viol 0.0000 cost 1462 50s
+[R72] 103 growth E1sel|PRISM|PRISM-0.05|event|0 viol 0.0372 cost 1349 54s
+[R72] 103 stationary E1sel|PRISM|PRISM-0.05|keepalive_unlimited|0 viol 0.0015 cost 1035 50s
+[R72] 103 bursty E1sel|PRISM|PRISM-0.05|event|0 viol 0.0432 cost 1134 53s
+[R72] 102 new_spike E1sel|PRISM|PRISM-0.03|keepalive_unlimited|0 viol 0.0015 cost 1462 70s
+[R72] 103 growth E1sel|PRISM|PRISM-0.05|init_instant|0 viol 0.0000 cost 1346 74s
+[R72] 103 stationary E1sel|PRISM|PRISM-0.05|init_instant+keepalive_unlimited|0 viol 0.0000 cost 1035 53s
+task done R72 103 stationary: 4 new rows
+[R72] 103 bursty E1sel|PRISM|PRISM-0.05|init_instant|0 viol 0.0000 cost 1131 51s
+[R72] 102 new_spike E1sel|PRISM|PRISM-0.03|init_instant+keepalive_unlimited|0 viol 0.0000 cost 1462 55s
+task done R72 102 new_spike: 4 new rows
+[R72] 103 bursty E1sel|PRISM|PRISM-0.05|keepalive_unlimited|0 viol 0.0015 cost 1131 42s
+[R72] 103 growth E1sel|PRISM|PRISM-0.05|keepalive_unlimited|0 viol 0.0015 cost 1346 52s
+[R72] 103 new_spike E1sel|PRISM|PRISM-0.05|event|0 viol 0.0774 cost 1344 48s
+[R72] 103 bursty E1sel|PRISM|PRISM-0.05|init_instant+keepalive_unlimited|0 viol 0.0000 cost 1131 32s
+task done R72 103 bursty: 4 new rows
+[R72] 103 growth E1sel|PRISM|PRISM-0.05|init_instant+keepalive_unlimited|0 viol 0.0000 cost 1346 39s
+task done R72 103 growth: 4 new rows
+[R72] 103 new_spike E1sel|PRISM|PRISM-0.05|init_instant|0 viol 0.0000 cost 1340 37s
+[R72] 103 new_spike E1sel|PRISM|PRISM-0.05|keepalive_unlimited|0 viol 0.0015 cost 1340 28s
+[R72] 103 new_spike E1sel|PRISM|PRISM-0.05|init_instant+keepalive_unlimited|0 viol 0.0000 cost 1340 27s
+task done R72 103 new_spike: 4 new rows
+end 2026-11-22T13:04:38Z
+exit 0

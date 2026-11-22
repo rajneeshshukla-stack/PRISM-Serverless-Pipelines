@@ -1,0 +1,67 @@
+MATCHED REPLAY ANALYSIS, 1.0% target, PRISM minus QuantProv-q90 (% of QuantProv-q90 cost); PRE-CALIBRATION, POST HOC
+Each set: per-trace frontier interpolation, four-scenario means, paired by trace, 95% t interval (df = n-1).
+
+stored (Linux, submitted runs)         -0.36 +/- 3.30 (n=5, includes 0)
+    101: PRISM  1377.1 [0.01, 0.02]    QP  1333.2 [1.2, 1.1]      d  +3.3
+    102: PRISM  1286.9 [0.03, 0.05]    QP  1283.4 [1, 0.9]        d  +0.3
+    103: PRISM  1475.5 [0.005, 0.01]   QP  1539.4 [1.4, 1.3]      d  -4.1
+    104: PRISM  1368.6 [0.02, 0.03]    QP  1375.2 [1.1, 1]        d  -0.5
+    105: PRISM  1210.1 [0.03, 0.05]    QP  1219.2 [1, 0.9]        d  -0.7
+v1-submitted code, this laptop         -0.68 +/- 1.47 (n=5, includes 0)
+    101: PRISM  1356.7 [0.01, 0.02]    QP  1355.4 [1.2, 1.1]      d  +0.1
+    102: PRISM  1286.5 [0.03, 0.05]    QP  1285.1 [1, 0.9]        d  +0.1
+    103: PRISM  1457.6 [0.005, 0.01]   QP  1498.7 [1.3, 1.2]      d  -2.7
+    104: PRISM  1349.6 [0.03, 0.05]    QP  1356.2 [1, 0.9]        d  -0.5
+    105: PRISM  1219.8 [0.03, 0.05]    QP  1224.2 [1, 0.9]        d  -0.4
+HEAD, occupancy + sampled              -0.68 +/- 1.47 (n=5, includes 0)
+    101: PRISM  1356.7 [0.01, 0.02]    QP  1355.4 [1.2, 1.1]      d  +0.1
+    102: PRISM  1286.5 [0.03, 0.05]    QP  1285.1 [1, 0.9]        d  +0.1
+    103: PRISM  1457.6 [0.005, 0.01]   QP  1498.7 [1.3, 1.2]      d  -2.7
+    104: PRISM  1349.6 [0.03, 0.05]    QP  1356.2 [1, 0.9]        d  -0.5
+    105: PRISM  1219.8 [0.03, 0.05]    QP  1224.2 [1, 0.9]        d  -0.4
+HEAD, occupancy (exact attainment)     -2.39 +/- 1.91 (n=5, excludes 0)
+    101: PRISM  1222.7 [0.03, 0.05]    QP  1232.3 [1, 0.9]        d  -0.8
+    102: PRISM  1262.8 [0.03, 0.05]    QP  1313.4 [1, 0.9]        d  -3.8
+    103: PRISM  1336.1 [0.02, 0.03]    QP  1389.1 [1.2, 1.1]      d  -3.8
+    104: PRISM  1331.0 [0.03, 0.05]    QP  1341.6 [1, 0.9]        d  -0.8
+    105: PRISM  1162.8 [0.05, 0.08]    QP  1195.4 [0.9, 0.8]      d  -2.7
+HEAD, Erlang-B + sampled               +0.29 +/- 1.60 (n=5, includes 0)
+    101: PRISM  1386.4 [0.005, 0.01]   QP  1355.4 [1.2, 1.1]      d  +2.3
+    102: PRISM  1287.7 [0.03, 0.05]    QP  1285.1 [1, 0.9]        d  +0.2
+    103: PRISM  1478.9 [0.005, 0.01]   QP  1498.7 [1.3, 1.2]      d  -1.3
+    104: PRISM  1359.1 [0.02, 0.03]    QP  1356.2 [1, 0.9]        d  +0.2
+    105: PRISM  1225.0 [0.03, 0.05]    QP  1224.2 [1, 0.9]        d  +0.1
+HEAD defaults (grid_studies)           -2.27 +/- 2.02 (n=5, excludes 0)
+    101: PRISM  1227.7 [0.03, 0.05]    QP  1232.3 [1, 0.9]        d  -0.4
+    102: PRISM  1261.6 [0.03, 0.05]    QP  1313.4 [1, 0.9]        d  -3.9
+    103: PRISM  1335.0 [0.01, 0.02]    QP  1389.1 [1.2, 1.1]      d  -3.9
+    104: PRISM  1327.6 [0.03, 0.05]    QP  1341.6 [1, 0.9]        d  -1.0
+    105: PRISM  1170.5 [0.05, 0.08]    QP  1195.4 [0.9, 0.8]      d  -2.1
+
+Change between consecutive sets, per trace (d_next - d_prev, points) and paired 95% t interval:
+  stored (Linux, submitted runs) -> v1-submitted code, this laptop: -0.32 +/- 2.14 (n=5, includes 0)  per trace [-3.2, -0.2, 1.4, -0.0, 0.4]
+  v1-submitted code, this laptop -> HEAD, occupancy + sampled: +0.00 +/- 0.00 (n=5, includes 0)  per trace [0.0, 0.0, 0.0, 0.0, 0.0]
+  HEAD, occupancy + sampled -> HEAD, occupancy (exact attainment): -1.71 +/- 1.82 (n=5, includes 0)  per trace [-0.9, -4.0, -1.1, -0.3, -2.4]
+  HEAD, occupancy + sampled -> HEAD, Erlang-B + sampled: +0.97 +/- 1.05 (n=5, includes 0)  per trace [2.2, 0.1, 1.4, 0.7, 0.4]
+  HEAD, occupancy (exact attainment) -> HEAD defaults (grid_studies): +0.12 +/- 0.47 (n=5, includes 0)  per trace [0.4, -0.1, -0.1, -0.3, 0.6]
+  HEAD, Erlang-B + sampled -> HEAD defaults (grid_studies): -2.55 +/- 1.30 (n=5, excludes 0)  per trace [-2.7, -4.1, -2.6, -1.3, -2.2]
+  HEAD, occupancy + sampled -> HEAD defaults (grid_studies): -1.59 +/- 1.82 (n=5, includes 0)  per trace [-0.5, -4.0, -1.1, -0.6, -1.7]
+  stored (Linux, submitted runs) -> HEAD defaults (grid_studies): -1.91 +/- 2.42 (n=5, includes 0)  per trace [-3.7, -4.2, 0.3, -0.6, -1.3]
+
+Swaps (PRISM rows from one set, QP rows from another):
+  PRISM HEAD defaults (grid_studies) / QP stored (Linux, submitted runs): -6.07 +/- 5.74 (n=5, excludes 0)
+  PRISM stored (Linux, submitted runs) / QP HEAD defaults (grid_studies): +3.84 +/- 6.59 (n=5, includes 0)
+  PRISM HEAD, occupancy (exact attainment) / QP HEAD, occupancy + sampled: -5.85 +/- 5.34 (n=5, excludes 0)
+  PRISM HEAD, occupancy + sampled / QP HEAD, occupancy (exact attainment): +3.12 +/- 5.76 (n=5, includes 0)
+
+Per-setting change, mean over traces and scenarios (cost %, violating windows in points):
+  PRISM         stored (Linux, submitted runs) -> v1-submitted code, this laptop: n=120, identical 0; cost +0.30% (range -3.53 to +4.12); viol -0.050 pts (range -0.60 to +0.45)
+  QuantProv_q90 stored (Linux, submitted runs) -> v1-submitted code, this laptop: n=200, identical 0; cost +0.28% (range -2.04 to +3.99); viol -0.019 pts (range -0.60 to +0.89)
+  PRISM         v1-submitted code, this laptop -> HEAD, occupancy + sampled: n=120, identical 114; cost +0.00% (range +0.00 to +0.00); viol +0.000 pts (range +0.00 to +0.00)
+  QuantProv_q90 v1-submitted code, this laptop -> HEAD, occupancy + sampled: n=200, identical 200; cost +0.00% (range +0.00 to +0.00); viol +0.000 pts (range +0.00 to +0.00)
+  PRISM         HEAD, occupancy + sampled -> HEAD, occupancy (exact attainment): n=120, identical 15; cost +0.00% (range +0.00 to +0.00); viol -0.321 pts (range -2.53 to +0.45)
+  QuantProv_q90 HEAD, occupancy + sampled -> HEAD, occupancy (exact attainment): n=200, identical 26; cost +0.00% (range +0.00 to +0.00); viol -0.367 pts (range -3.42 to +0.60)
+  PRISM         HEAD, occupancy + sampled -> HEAD, Erlang-B + sampled: n=120, identical 0; cost -2.32% (range -3.89 to -1.45); viol +0.193 pts (range -0.15 to +1.19)
+  QuantProv_q90 HEAD, occupancy + sampled -> HEAD, Erlang-B + sampled: n=200, identical 200; cost +0.00% (range +0.00 to +0.00); viol +0.000 pts (range +0.00 to +0.00)
+  PRISM         HEAD, occupancy + sampled -> HEAD defaults (grid_studies): n=120, identical 0; cost -2.32% (range -3.89 to -1.45); viol -0.167 pts (range -1.79 to +0.74)
+  QuantProv_q90 HEAD, occupancy + sampled -> HEAD defaults (grid_studies): n=200, identical 26; cost +0.00% (range +0.00 to +0.00); viol -0.367 pts (range -3.42 to +0.60)
