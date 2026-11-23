@@ -1,0 +1,6 @@
+command (from prism-repro/): python docs/revision/technical_pass_20261122/verify_trace_inventory.py .
+HEAD 0316789; 2026-11-22T14:11:52Z
+development traces 101-105 x 5 scenarios: 25 of 25 counts match the manifest; mismatches none
+manifest: 30 seeds; original [101, 102, 103, 104, 105]; new (confirmatory) 106-130 (25); scenarios ['stationary', 'growth', 'bursty', 'new_spike', 'shifted_triggers']; checksums for 30 seeds
+data/trace_set_revision.json unchanged since 4c43769: True
+seeds 106-130: not generated here; no policy run
