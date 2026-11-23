@@ -1,0 +1,57 @@
+2026-11-22T22:27:31Z start: sets ['pilot101'], 4 groups, workers 6, commit fd8b01a, driver d9050e4bbb1d
+2026-11-22T22:28:31Z heartbeat: 37 running/queued, 0 weeks run, 0 reused, 0/4 groups done
+2026-11-22T22:29:31Z heartbeat: 37 running/queued, 0 weeks run, 0 reused, 0/4 groups done
+2026-11-22T22:30:31Z heartbeat: 37 running/queued, 0 weeks run, 0 reused, 0/4 groups done
+2026-11-22T22:31:12Z week pilot101 101 PRISM val validation 0.08: 186.1 s, cost 937.4, violating 4.46%
+2026-11-22T22:31:14Z week pilot101 101 PRISM val validation 0.05: 187.5 s, cost 998.4, violating 3.42%
+2026-11-22T22:31:14Z week pilot101 101 PRISM val validation 0.005: 187.7 s, cost 1352.0, violating 1.64%
+2026-11-22T22:31:15Z week pilot101 101 PRISM val validation 0.03: 188.6 s, cost 1070.5, violating 2.38%
+2026-11-22T22:31:15Z week pilot101 101 PRISM val validation 0.02: 188.3 s, cost 1123.5, violating 2.23%
+2026-11-22T22:31:16Z week pilot101 101 PRISM val validation 0.01: 188.8 s, cost 1210.7, violating 1.93%
+2026-11-22T22:32:16Z heartbeat: 31 running/queued, 6 weeks run, 0 reused, 0/4 groups done
+2026-11-22T22:33:16Z heartbeat: 32 running/queued, 6 weeks run, 0 reused, 0/4 groups done
+2026-11-22T22:34:04Z week pilot101 101 QuantProv_q90 val validation 1.0: 162.8 s, cost 1025.0, violating 2.98%
+2026-11-22T22:34:05Z week pilot101 101 QuantProv_q90 val validation 0.6: 166.9 s, cost 857.2, violating 11.46%
+2026-11-22T22:34:05Z week pilot101 101 QuantProv_q90 val validation 1.1: 163.5 s, cost 1073.5, violating 2.68%
+2026-11-22T22:34:07Z week pilot101 101 QuantProv_q90 val validation 0.8: 166.1 s, cost 933.2, violating 5.36%
+2026-11-22T22:34:15Z week pilot101 101 QuantProv_q90 val validation 0.9: 174.2 s, cost 977.8, violating 3.42%
+2026-11-22T22:34:20Z week pilot101 101 QuantProv_q90 val validation 0.7: 178.7 s, cost 892.2, violating 7.14%
+2026-11-22T22:35:20Z heartbeat: 26 running/queued, 12 weeks run, 0 reused, 0/4 groups done
+2026-11-22T22:35:54Z week pilot101 101 Reactive val validation 0.4: 90.7 s, cost 2229.1, violating 0.15%
+2026-11-22T22:35:59Z week pilot101 101 Reactive val validation 0.45: 91.1 s, cost 2049.7, violating 0.45%
+2026-11-22T22:36:50Z week pilot101 101 QuantProv_q90 val validation 1.2: 159.2 s, cost 1122.9, violating 2.68%
+2026-11-22T22:36:51Z week pilot101 101 QuantProv_q90 val validation 1.4: 159.0 s, cost 1222.9, violating 1.64%
+2026-11-22T22:36:51Z week pilot101 101 QuantProv_q90 val validation 1.3: 159.0 s, cost 1172.8, violating 1.79%
+2026-11-22T22:36:53Z week pilot101 101 QuantProv_q90 val validation 1.5: 158.4 s, cost 1273.3, violating 1.64%
+2026-11-22T22:37:20Z week pilot101 101 Reactive val validation 0.5: 80.9 s, cost 1902.1, violating 0.89%
+2026-11-22T22:37:25Z week pilot101 101 Reactive val validation 0.55: 81.6 s, cost 1807.2, violating 1.19%
+2026-11-22T22:38:17Z week pilot101 101 Reactive val validation 0.6: 82.1 s, cost 1723.3, violating 3.27%
+2026-11-22T22:38:19Z week pilot101 101 Reactive val validation 0.65: 82.5 s, cost 1657.3, violating 4.76%
+2026-11-22T22:38:20Z week pilot101 101 Reactive val validation 0.75: 82.2 s, cost 1569.9, violating 8.33%
+2026-11-22T22:38:20Z week pilot101 101 Reactive val validation 0.7: 83.3 s, cost 1604.9, violating 6.25%
+2026-11-22T22:38:49Z week pilot101 101 Reactive val validation 0.8: 83.0 s, cost 1540.4, violating 10.12%
+2026-11-22T22:38:53Z week pilot101 101 Reactive val validation 0.85: 82.8 s, cost 1507.8, violating 12.05%
+2026-11-22T22:39:52Z week pilot101 101 Reactive val validation 0.9: 88.9 s, cost 1487.2, violating 14.73%
+2026-11-22T22:40:52Z heartbeat: 12 running/queued, 27 weeks run, 0 reused, 0/4 groups done
+2026-11-22T22:41:06Z week pilot101 101 MemAdapt_q90 val validation 0.7: 159.9 s, cost 892.2, violating 7.14%
+2026-11-22T22:41:08Z week pilot101 101 MemAdapt_q90 val validation 0.6: 163.2 s, cost 857.2, violating 11.46%
+2026-11-22T22:41:09Z week pilot101 101 MemAdapt_q90 val validation 0.8: 163.2 s, cost 933.2, violating 5.36%
+2026-11-22T22:41:41Z week pilot101 101 MemAdapt_q90 val validation 0.9: 167.0 s, cost 977.8, violating 3.42%
+2026-11-22T22:41:44Z week pilot101 101 MemAdapt_q90 val validation 1.0: 165.5 s, cost 1025.0, violating 2.98%
+2026-11-22T22:42:44Z heartbeat: 8 running/queued, 32 weeks run, 0 reused, 0/4 groups done
+2026-11-22T22:42:47Z week pilot101 101 MemAdapt_q90 val validation 1.1: 168.9 s, cost 1073.5, violating 2.68%
+2026-11-22T22:43:47Z heartbeat: 7 running/queued, 33 weeks run, 0 reused, 0/4 groups done
+2026-11-22T22:44:26Z week pilot101 101 MemAdapt_q90 val validation 1.3: 191.8 s, cost 1172.8, violating 1.79%
+2026-11-22T22:44:31Z week pilot101 101 MemAdapt_q90 val validation 1.2: 198.2 s, cost 1122.9, violating 2.68%
+2026-11-22T22:44:48Z week pilot101 101 MemAdapt_q90 val validation 1.4: 212.6 s, cost 1222.9, violating 1.64%
+2026-11-22T22:45:14Z week pilot101 101 MemAdapt_q90 val validation 1.5: 207.4 s, cost 1273.3, violating 1.64%
+2026-11-22T22:45:28Z week pilot101 101 PRISM test stationary 0.01: 216.8 s, cost 1298.6, violating 1.79%
+2026-11-22T22:45:28Z group done pilot101 101 PRISM: selected 0.01 expansions -
+2026-11-22T22:46:03Z week pilot101 101 QuantProv_q90 test stationary 1.3: 189.5 s, cost 1256.8, violating 2.23%
+2026-11-22T22:46:03Z group done pilot101 101 QuantProv_q90: selected 1.3 expansions -
+2026-11-22T22:46:13Z week pilot101 101 Reactive test stationary 0.55: 97.5 s, cost 1786.5, violating 1.19%
+2026-11-22T22:46:13Z group done pilot101 101 Reactive: selected 0.55 expansions -
+2026-11-22T22:47:13Z heartbeat: 1 running/queued, 40 weeks run, 0 reused, 3/4 groups done
+2026-11-22T22:47:16Z week pilot101 101 MemAdapt_q90 test stationary 1.3: 102.6 s, cost 1256.8, violating 2.23%
+2026-11-22T22:47:16Z group done pilot101 101 MemAdapt_q90: selected 1.3 expansions -
+2026-11-22T22:47:17Z end: 41 weeks run, 0 reused from cache, 0 failures, 4/4 groups done

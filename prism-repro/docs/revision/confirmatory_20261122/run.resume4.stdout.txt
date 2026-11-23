@@ -1,0 +1,785 @@
+2026-11-23T10:09:36Z start: sets ['C1C2', 'C3'], 125 groups, workers 2, commit fd8b01a, driver 3f909dc9780d
+2026-11-23T10:10:36Z heartbeat: 225 running/queued, 0 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:11:01Z week C3 116 MemAdapt_q90 val validation 1.5: 79.1 s, cost 1866.4, violating 0.60%
+2026-11-23T10:11:08Z week C3 117 PRISM val validation 0.005: 86.0 s, cost 2159.0, violating 0.00%
+2026-11-23T10:12:08Z heartbeat: 533 running/queued, 2 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:12:23Z week C3 117 PRISM val validation 0.01: 78.4 s, cost 1948.9, violating 0.30%
+2026-11-23T10:12:28Z week C3 117 PRISM val validation 0.02: 77.4 s, cost 1772.6, violating 0.74%
+2026-11-23T10:13:28Z heartbeat: 531 running/queued, 4 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:13:37Z week C3 117 PRISM val validation 0.03: 71.4 s, cost 1675.3, violating 1.04%
+2026-11-23T10:13:43Z week C3 117 PRISM val validation 0.05: 72.4 s, cost 1275.3, violating 86.90%
+2026-11-23T10:14:43Z heartbeat: 529 running/queued, 6 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:14:58Z week C3 117 MemAdapt_q90 val validation 0.6: 71.7 s, cost 1303.2, violating 2.38%
+2026-11-23T10:14:59Z week C3 117 PRISM val validation 0.08: 78.8 s, cost 1153.1, violating 99.40%
+2026-11-23T10:15:59Z heartbeat: 527 running/queued, 8 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:16:06Z week C3 117 MemAdapt_q90 val validation 0.7: 65.3 s, cost 1371.5, violating 1.93%
+2026-11-23T10:16:06Z week C3 117 MemAdapt_q90 val validation 0.8: 65.0 s, cost 1447.2, violating 1.64%
+2026-11-23T10:17:06Z heartbeat: 526 running/queued, 10 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:17:16Z week C3 117 MemAdapt_q90 val validation 0.9: 67.6 s, cost 1526.9, violating 1.34%
+2026-11-23T10:17:17Z week C3 117 MemAdapt_q90 val validation 1.0: 67.5 s, cost 1609.5, violating 1.19%
+2026-11-23T10:18:17Z heartbeat: 524 running/queued, 12 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:18:25Z week C3 117 MemAdapt_q90 val validation 1.1: 65.2 s, cost 1693.2, violating 1.04%
+2026-11-23T10:18:26Z week C3 117 MemAdapt_q90 val validation 1.2: 65.1 s, cost 1777.7, violating 0.60%
+2026-11-23T10:19:26Z heartbeat: 522 running/queued, 14 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:19:28Z week C3 117 MemAdapt_q90 val validation 1.3: 60.5 s, cost 1862.4, violating 0.30%
+2026-11-23T10:19:29Z week C3 117 MemAdapt_q90 val validation 1.4: 60.3 s, cost 1947.8, violating 0.30%
+2026-11-23T10:20:29Z heartbeat: 520 running/queued, 16 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:20:32Z week C3 117 MemAdapt_q90 val validation 1.5: 60.9 s, cost 2033.2, violating 0.30%
+2026-11-23T10:20:39Z week C3 118 PRISM val validation 0.005: 67.5 s, cost 1912.1, violating 0.45%
+2026-11-23T10:21:39Z heartbeat: 519 running/queued, 18 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:21:42Z week C3 118 PRISM val validation 0.01: 67.8 s, cost 1703.9, violating 0.89%
+2026-11-23T10:21:50Z week C3 118 PRISM val validation 0.02: 68.3 s, cost 1539.2, violating 1.19%
+2026-11-23T10:22:50Z heartbeat: 517 running/queued, 20 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:22:54Z week C3 118 PRISM val validation 0.03: 68.6 s, cost 1460.5, violating 1.34%
+2026-11-23T10:23:00Z week C3 118 PRISM val validation 0.05: 67.8 s, cost 1140.9, violating 91.37%
+2026-11-23T10:24:00Z heartbeat: 515 running/queued, 22 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:24:04Z week C3 118 PRISM val validation 0.08: 68.3 s, cost 1015.0, violating 100.00%
+2026-11-23T10:24:05Z week C3 118 MemAdapt_q90 val validation 0.6: 61.9 s, cost 1240.6, violating 1.79%
+2026-11-23T10:25:05Z heartbeat: 514 running/queued, 24 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:25:08Z week C3 118 MemAdapt_q90 val validation 0.8: 60.6 s, cost 1343.2, violating 1.49%
+2026-11-23T10:25:08Z week C3 118 MemAdapt_q90 val validation 0.7: 61.2 s, cost 1287.6, violating 1.64%
+2026-11-23T10:26:08Z heartbeat: 512 running/queued, 26 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:26:11Z week C3 118 MemAdapt_q90 val validation 0.9: 60.8 s, cost 1405.2, violating 1.49%
+2026-11-23T10:26:12Z week C3 118 MemAdapt_q90 val validation 1.0: 60.8 s, cost 1470.5, violating 1.49%
+2026-11-23T10:27:12Z heartbeat: 510 running/queued, 28 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:27:15Z week C3 118 MemAdapt_q90 val validation 1.1: 60.7 s, cost 1538.7, violating 1.34%
+2026-11-23T10:27:15Z week C3 118 MemAdapt_q90 val validation 1.2: 60.6 s, cost 1608.3, violating 1.04%
+2026-11-23T10:28:15Z heartbeat: 508 running/queued, 30 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:28:17Z week C3 118 MemAdapt_q90 val validation 1.3: 60.1 s, cost 1678.7, violating 0.89%
+2026-11-23T10:28:18Z week C3 118 MemAdapt_q90 val validation 1.4: 60.1 s, cost 1749.6, violating 0.89%
+2026-11-23T10:29:18Z heartbeat: 506 running/queued, 32 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:29:20Z week C3 118 MemAdapt_q90 val validation 1.5: 60.0 s, cost 1820.8, violating 0.74%
+2026-11-23T10:29:28Z week C3 119 PRISM val validation 0.005: 67.5 s, cost 1887.0, violating 0.60%
+2026-11-23T10:30:28Z heartbeat: 505 running/queued, 34 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:30:30Z week C3 119 PRISM val validation 0.01: 68.2 s, cost 1705.6, violating 0.60%
+2026-11-23T10:30:39Z week C3 119 PRISM val validation 0.02: 68.5 s, cost 1549.4, violating 0.74%
+2026-11-23T10:31:39Z heartbeat: 503 running/queued, 36 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:31:42Z week C3 119 PRISM val validation 0.03: 68.4 s, cost 1471.4, violating 0.89%
+2026-11-23T10:31:50Z week C3 119 PRISM val validation 0.05: 68.9 s, cost 1142.0, violating 91.67%
+2026-11-23T10:32:50Z heartbeat: 501 running/queued, 38 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:32:53Z week C3 119 PRISM val validation 0.08: 68.6 s, cost 1024.9, violating 100.00%
+2026-11-23T10:32:55Z week C3 119 MemAdapt_q90 val validation 0.6: 62.3 s, cost 1259.1, violating 2.53%
+2026-11-23T10:33:55Z heartbeat: 500 running/queued, 40 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:33:57Z week C3 119 MemAdapt_q90 val validation 0.7: 62.2 s, cost 1304.5, violating 1.79%
+2026-11-23T10:33:59Z week C3 119 MemAdapt_q90 val validation 0.8: 61.4 s, cost 1359.6, violating 1.19%
+2026-11-23T10:34:59Z heartbeat: 498 running/queued, 42 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:35:01Z week C3 119 MemAdapt_q90 val validation 0.9: 61.2 s, cost 1420.8, violating 1.19%
+2026-11-23T10:35:02Z week C3 119 MemAdapt_q90 val validation 1.0: 60.8 s, cost 1486.7, violating 1.04%
+2026-11-23T10:36:02Z heartbeat: 496 running/queued, 44 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:36:06Z week C3 119 MemAdapt_q90 val validation 1.1: 62.3 s, cost 1554.7, violating 0.60%
+2026-11-23T10:36:07Z week C3 119 MemAdapt_q90 val validation 1.2: 61.7 s, cost 1625.1, violating 0.60%
+2026-11-23T10:37:07Z heartbeat: 494 running/queued, 46 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:37:10Z week C3 119 MemAdapt_q90 val validation 1.3: 61.2 s, cost 1695.6, violating 0.60%
+2026-11-23T10:37:11Z week C3 119 MemAdapt_q90 val validation 1.4: 61.1 s, cost 1766.7, violating 0.60%
+2026-11-23T10:38:11Z heartbeat: 492 running/queued, 48 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:38:13Z week C3 119 MemAdapt_q90 val validation 1.5: 61.0 s, cost 1838.5, violating 0.60%
+2026-11-23T10:38:21Z week C3 120 PRISM val validation 0.005: 67.3 s, cost 1907.2, violating 0.45%
+2026-11-23T10:39:21Z heartbeat: 491 running/queued, 50 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:39:24Z week C3 120 PRISM val validation 0.01: 67.7 s, cost 1685.0, violating 0.74%
+2026-11-23T10:39:31Z week C3 120 PRISM val validation 0.02: 67.4 s, cost 1542.2, violating 0.74%
+2026-11-23T10:40:31Z heartbeat: 489 running/queued, 52 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:40:34Z week C3 120 PRISM val validation 0.03: 67.6 s, cost 1456.0, violating 1.34%
+2026-11-23T10:40:41Z week C3 120 PRISM val validation 0.05: 67.7 s, cost 1137.6, violating 90.03%
+2026-11-23T10:41:41Z heartbeat: 487 running/queued, 54 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:41:44Z week C3 120 PRISM val validation 0.08: 68.0 s, cost 1019.8, violating 100.00%
+2026-11-23T10:41:46Z week C3 120 MemAdapt_q90 val validation 0.6: 62.3 s, cost 1242.3, violating 2.53%
+2026-11-23T10:42:46Z heartbeat: 486 running/queued, 56 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:42:48Z week C3 120 MemAdapt_q90 val validation 0.7: 61.2 s, cost 1290.1, violating 2.08%
+2026-11-23T10:42:49Z week C3 120 MemAdapt_q90 val validation 0.8: 61.0 s, cost 1346.7, violating 1.49%
+2026-11-23T10:43:49Z heartbeat: 484 running/queued, 58 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:43:51Z week C3 120 MemAdapt_q90 val validation 0.9: 60.7 s, cost 1409.3, violating 1.49%
+2026-11-23T10:43:52Z week C3 120 MemAdapt_q90 val validation 1.0: 60.5 s, cost 1475.7, violating 1.34%
+2026-11-23T10:44:52Z heartbeat: 482 running/queued, 60 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:44:54Z week C3 120 MemAdapt_q90 val validation 1.1: 60.2 s, cost 1544.6, violating 1.04%
+2026-11-23T10:44:55Z week C3 120 MemAdapt_q90 val validation 1.2: 60.3 s, cost 1614.9, violating 0.74%
+2026-11-23T10:45:55Z heartbeat: 480 running/queued, 62 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:45:57Z week C3 120 MemAdapt_q90 val validation 1.3: 60.6 s, cost 1686.3, violating 0.74%
+2026-11-23T10:45:58Z week C3 120 MemAdapt_q90 val validation 1.4: 60.5 s, cost 1757.6, violating 0.60%
+2026-11-23T10:46:58Z heartbeat: 478 running/queued, 64 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:47:00Z week C3 120 MemAdapt_q90 val validation 1.5: 60.6 s, cost 1829.6, violating 0.45%
+2026-11-23T10:47:08Z week C3 121 PRISM val validation 0.005: 67.1 s, cost 1858.4, violating 0.15%
+2026-11-23T10:48:08Z heartbeat: 477 running/queued, 66 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:48:09Z week C3 121 PRISM val validation 0.01: 66.3 s, cost 1615.4, violating 0.60%
+2026-11-23T10:48:17Z week C3 121 PRISM val validation 0.02: 66.6 s, cost 1491.0, violating 0.74%
+2026-11-23T10:49:17Z heartbeat: 475 running/queued, 68 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:49:19Z week C3 121 PRISM val validation 0.03: 67.5 s, cost 1411.1, violating 0.45%
+2026-11-23T10:49:28Z week C3 121 PRISM val validation 0.05: 68.0 s, cost 1107.8, violating 87.65%
+2026-11-23T10:50:28Z heartbeat: 473 running/queued, 70 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:50:30Z week C3 121 PRISM val validation 0.08: 68.1 s, cost 978.0, violating 99.40%
+2026-11-23T10:50:32Z week C3 121 MemAdapt_q90 val validation 0.6: 61.9 s, cost 1214.6, violating 1.04%
+2026-11-23T10:51:32Z heartbeat: 472 running/queued, 72 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:51:34Z week C3 121 MemAdapt_q90 val validation 0.7: 61.2 s, cost 1256.4, violating 1.04%
+2026-11-23T10:51:36Z week C3 121 MemAdapt_q90 val validation 0.8: 61.1 s, cost 1307.2, violating 0.74%
+2026-11-23T10:52:36Z heartbeat: 470 running/queued, 74 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:52:37Z week C3 121 MemAdapt_q90 val validation 0.9: 60.6 s, cost 1364.7, violating 0.60%
+2026-11-23T10:52:39Z week C3 121 MemAdapt_q90 val validation 1.0: 60.7 s, cost 1426.2, violating 0.60%
+2026-11-23T10:53:39Z heartbeat: 468 running/queued, 76 weeks run, 850 reused, 0/125 groups done
+2026-11-23T10:53:40Z week C3 121 MemAdapt_q90 val validation 1.1: 61.2 s, cost 1490.6, violating 0.60%
+2026-11-23T10:53:43Z week C3 121 MemAdapt_q90 val validation 1.2: 61.6 s, cost 1556.6, violating 0.45%
+2026-11-23T10:54:43Z week C3 121 MemAdapt_q90 val validation 1.3: 60.3 s, cost 1623.0, violating 0.45%
+2026-11-23T10:54:46Z week C3 121 MemAdapt_q90 val validation 1.4: 60.5 s, cost 1690.3, violating 0.45%
+2026-11-23T10:55:46Z week C3 121 MemAdapt_q90 val validation 1.5: 60.7 s, cost 1758.1, violating 0.45%
+2026-11-23T10:55:58Z week C3 122 PRISM val validation 0.005: 69.2 s, cost 2209.8, violating 1.04%
+2026-11-23T10:56:57Z week C3 122 PRISM val validation 0.01: 68.2 s, cost 2036.2, violating 1.34%
+2026-11-23T10:57:09Z week C3 122 PRISM val validation 0.02: 68.2 s, cost 1898.9, violating 1.79%
+2026-11-23T10:58:08Z week C3 122 PRISM val validation 0.03: 68.4 s, cost 1790.2, violating 2.08%
+2026-11-23T10:58:20Z week C3 122 PRISM val validation 0.05: 68.6 s, cost 1319.8, violating 93.01%
+2026-11-23T10:59:20Z week C3 122 PRISM val validation 0.08: 69.2 s, cost 1236.7, violating 98.96%
+2026-11-23T10:59:26Z week C3 122 MemAdapt_q90 val validation 0.6: 62.7 s, cost 1373.1, violating 3.72%
+2026-11-23T11:00:26Z heartbeat: 458 running/queued, 88 weeks run, 850 reused, 0/125 groups done
+2026-11-23T11:00:26Z week C3 122 MemAdapt_q90 val validation 0.7: 63.5 s, cost 1449.6, violating 3.27%
+2026-11-23T11:00:32Z week C3 122 MemAdapt_q90 val validation 0.8: 63.1 s, cost 1532.8, violating 2.98%
+2026-11-23T11:01:32Z heartbeat: 456 running/queued, 90 weeks run, 850 reused, 0/125 groups done
+2026-11-23T11:01:32Z week C3 122 MemAdapt_q90 val validation 0.9: 63.6 s, cost 1619.9, violating 2.83%
+2026-11-23T11:01:37Z week C3 122 MemAdapt_q90 val validation 1.0: 63.2 s, cost 1708.8, violating 2.38%
+2026-11-23T11:02:37Z week C3 122 MemAdapt_q90 val validation 1.1: 62.6 s, cost 1799.0, violating 2.08%
+2026-11-23T11:02:43Z week C3 122 MemAdapt_q90 val validation 1.2: 62.5 s, cost 1889.6, violating 1.79%
+2026-11-23T11:03:42Z week C3 122 MemAdapt_q90 val validation 1.3: 61.7 s, cost 1980.9, violating 1.34%
+2026-11-23T11:03:47Z week C3 122 MemAdapt_q90 val validation 1.4: 61.6 s, cost 2072.4, violating 1.19%
+2026-11-23T11:04:46Z week C3 122 MemAdapt_q90 val validation 1.5: 62.0 s, cost 2164.2, violating 1.04%
+2026-11-23T11:04:58Z week C3 123 PRISM val validation 0.005: 68.3 s, cost 2079.1, violating 0.60%
+2026-11-23T11:05:57Z week C3 123 PRISM val validation 0.01: 67.9 s, cost 1880.7, violating 0.45%
+2026-11-23T11:06:08Z week C3 123 PRISM val validation 0.02: 68.1 s, cost 1699.8, violating 0.74%
+2026-11-23T11:07:07Z week C3 123 PRISM val validation 0.03: 68.1 s, cost 1589.1, violating 0.74%
+2026-11-23T11:07:19Z week C3 123 PRISM val validation 0.05: 68.0 s, cost 1242.8, violating 89.29%
+2026-11-23T11:08:18Z week C3 123 PRISM val validation 0.08: 68.1 s, cost 1120.0, violating 98.81%
+2026-11-23T11:08:24Z week C3 123 MemAdapt_q90 val validation 0.6: 62.2 s, cost 1288.4, violating 2.38%
+2026-11-23T11:09:22Z week C3 123 MemAdapt_q90 val validation 0.7: 62.0 s, cost 1348.5, violating 1.93%
+2026-11-23T11:09:29Z week C3 123 MemAdapt_q90 val validation 0.8: 62.5 s, cost 1417.0, violating 1.79%
+2026-11-23T11:10:27Z week C3 123 MemAdapt_q90 val validation 0.9: 61.5 s, cost 1490.8, violating 1.49%
+2026-11-23T11:10:33Z week C3 123 MemAdapt_q90 val validation 1.0: 61.7 s, cost 1567.7, violating 1.34%
+2026-11-23T11:11:31Z week C3 123 MemAdapt_q90 val validation 1.1: 61.3 s, cost 1645.7, violating 1.34%
+2026-11-23T11:11:37Z week C3 123 MemAdapt_q90 val validation 1.2: 61.4 s, cost 1725.6, violating 0.89%
+2026-11-23T11:12:35Z week C3 123 MemAdapt_q90 val validation 1.3: 61.5 s, cost 1805.4, violating 0.60%
+2026-11-23T11:12:41Z week C3 123 MemAdapt_q90 val validation 1.4: 61.5 s, cost 1885.6, violating 0.60%
+2026-11-23T11:13:38Z week C3 123 MemAdapt_q90 val validation 1.5: 60.9 s, cost 1966.4, violating 0.45%
+2026-11-23T11:13:51Z week C3 124 PRISM val validation 0.005: 67.4 s, cost 2042.6, violating 0.89%
+2026-11-23T11:14:48Z week C3 124 PRISM val validation 0.01: 67.0 s, cost 1783.6, violating 0.89%
+2026-11-23T11:15:01Z week C3 124 PRISM val validation 0.02: 67.3 s, cost 1600.7, violating 1.34%
+2026-11-23T11:15:57Z week C3 124 PRISM val validation 0.03: 67.0 s, cost 1500.0, violating 1.64%
+2026-11-23T11:16:11Z week C3 124 PRISM val validation 0.05: 67.6 s, cost 1193.4, violating 86.01%
+2026-11-23T11:17:08Z week C3 124 PRISM val validation 0.08: 68.0 s, cost 1057.5, violating 100.00%
+2026-11-23T11:17:15Z week C3 124 MemAdapt_q90 val validation 0.6: 61.8 s, cost 1257.6, violating 2.23%
+2026-11-23T11:18:12Z week C3 124 MemAdapt_q90 val validation 0.7: 61.4 s, cost 1310.5, violating 1.93%
+2026-11-23T11:18:19Z week C3 124 MemAdapt_q90 val validation 0.8: 61.2 s, cost 1372.5, violating 1.79%
+2026-11-23T11:19:16Z week C3 124 MemAdapt_q90 val validation 0.9: 61.6 s, cost 1439.7, violating 1.79%
+2026-11-23T11:19:23Z week C3 124 MemAdapt_q90 val validation 1.0: 61.5 s, cost 1510.4, violating 1.34%
+2026-11-23T11:20:19Z week C3 124 MemAdapt_q90 val validation 1.1: 60.3 s, cost 1583.2, violating 1.34%
+2026-11-23T11:20:26Z week C3 124 MemAdapt_q90 val validation 1.2: 60.5 s, cost 1657.6, violating 1.19%
+2026-11-23T11:21:22Z week C3 124 MemAdapt_q90 val validation 1.3: 60.6 s, cost 1732.1, violating 1.19%
+2026-11-23T11:21:29Z week C3 124 MemAdapt_q90 val validation 1.4: 60.7 s, cost 1807.0, violating 1.19%
+2026-11-23T11:22:25Z week C3 124 MemAdapt_q90 val validation 1.5: 60.6 s, cost 1882.7, violating 1.04%
+2026-11-23T11:22:40Z week C3 125 PRISM val validation 0.005: 68.5 s, cost 2140.2, violating 0.30%
+2026-11-23T11:23:35Z week C3 125 PRISM val validation 0.01: 67.8 s, cost 1933.8, violating 0.60%
+2026-11-23T11:23:51Z week C3 125 PRISM val validation 0.02: 68.1 s, cost 1730.7, violating 1.04%
+2026-11-23T11:24:45Z week C3 125 PRISM val validation 0.03: 67.6 s, cost 1628.4, violating 1.19%
+2026-11-23T11:25:01Z week C3 125 PRISM val validation 0.05: 67.4 s, cost 1268.7, violating 86.61%
+2026-11-23T11:25:56Z week C3 125 PRISM val validation 0.08: 67.7 s, cost 1148.7, violating 100.00%
+2026-11-23T11:26:05Z week C3 125 MemAdapt_q90 val validation 0.6: 61.6 s, cost 1294.6, violating 2.38%
+2026-11-23T11:26:59Z week C3 125 MemAdapt_q90 val validation 0.7: 60.9 s, cost 1361.5, violating 2.23%
+2026-11-23T11:27:08Z week C3 125 MemAdapt_q90 val validation 0.8: 61.0 s, cost 1436.2, violating 2.08%
+2026-11-23T11:28:02Z week C3 125 MemAdapt_q90 val validation 0.9: 60.3 s, cost 1515.4, violating 2.08%
+2026-11-23T11:28:11Z week C3 125 MemAdapt_q90 val validation 1.0: 60.4 s, cost 1596.9, violating 1.79%
+2026-11-23T11:29:05Z week C3 125 MemAdapt_q90 val validation 1.1: 60.2 s, cost 1679.8, violating 1.04%
+2026-11-23T11:29:14Z week C3 125 MemAdapt_q90 val validation 1.2: 60.4 s, cost 1763.7, violating 0.89%
+2026-11-23T11:30:08Z week C3 125 MemAdapt_q90 val validation 1.3: 60.6 s, cost 1847.5, violating 0.60%
+2026-11-23T11:30:18Z week C3 125 MemAdapt_q90 val validation 1.4: 60.8 s, cost 1931.7, violating 0.45%
+2026-11-23T11:31:11Z week C3 125 MemAdapt_q90 val validation 1.5: 60.4 s, cost 2016.4, violating 0.45%
+2026-11-23T11:31:29Z week C3 126 PRISM val validation 0.005: 68.5 s, cost 1889.4, violating 0.30%
+2026-11-23T11:32:21Z week C3 126 PRISM val validation 0.01: 68.1 s, cost 1691.0, violating 0.60%
+2026-11-23T11:32:39Z week C3 126 PRISM val validation 0.02: 67.9 s, cost 1561.4, violating 0.60%
+2026-11-23T11:33:31Z week C3 126 PRISM val validation 0.03: 67.5 s, cost 1472.8, violating 0.89%
+2026-11-23T11:33:50Z week C3 126 PRISM val validation 0.05: 68.0 s, cost 1146.2, violating 91.82%
+2026-11-23T11:34:42Z week C3 126 PRISM val validation 0.08: 68.4 s, cost 1033.6, violating 100.00%
+2026-11-23T11:34:54Z week C3 126 MemAdapt_q90 val validation 0.6: 62.3 s, cost 1254.8, violating 1.64%
+2026-11-23T11:35:46Z week C3 126 MemAdapt_q90 val validation 0.7: 61.4 s, cost 1301.9, violating 1.49%
+2026-11-23T11:35:58Z week C3 126 MemAdapt_q90 val validation 0.8: 61.5 s, cost 1358.5, violating 1.19%
+2026-11-23T11:36:50Z week C3 126 MemAdapt_q90 val validation 0.9: 60.9 s, cost 1421.4, violating 0.89%
+2026-11-23T11:37:02Z week C3 126 MemAdapt_q90 val validation 1.0: 61.0 s, cost 1488.2, violating 0.74%
+2026-11-23T11:37:53Z week C3 126 MemAdapt_q90 val validation 1.1: 60.9 s, cost 1557.2, violating 0.60%
+2026-11-23T11:38:06Z week C3 126 MemAdapt_q90 val validation 1.2: 61.1 s, cost 1627.8, violating 0.60%
+2026-11-23T11:38:57Z week C3 126 MemAdapt_q90 val validation 1.3: 61.7 s, cost 1699.4, violating 0.60%
+2026-11-23T11:39:10Z week C3 126 MemAdapt_q90 val validation 1.4: 62.0 s, cost 1771.3, violating 0.60%
+2026-11-23T11:40:00Z week C3 126 MemAdapt_q90 val validation 1.5: 60.4 s, cost 1843.8, violating 0.60%
+2026-11-23T11:40:21Z week C3 127 PRISM val validation 0.005: 68.1 s, cost 2059.3, violating 0.74%
+2026-11-23T11:41:11Z week C3 127 PRISM val validation 0.01: 68.0 s, cost 1872.3, violating 0.89%
+2026-11-23T11:41:32Z week C3 127 PRISM val validation 0.02: 68.3 s, cost 1703.1, violating 1.04%
+2026-11-23T11:42:22Z week C3 127 PRISM val validation 0.03: 69.0 s, cost 1600.1, violating 1.19%
+2026-11-23T11:42:43Z week C3 127 PRISM val validation 0.05: 69.0 s, cost 1247.8, violating 92.26%
+2026-11-23T11:43:34Z week C3 127 PRISM val validation 0.08: 69.2 s, cost 1127.4, violating 100.00%
+2026-11-23T11:43:49Z week C3 127 MemAdapt_q90 val validation 0.6: 62.6 s, cost 1311.0, violating 2.53%
+2026-11-23T11:44:39Z week C3 127 MemAdapt_q90 val validation 0.7: 62.6 s, cost 1370.8, violating 2.08%
+2026-11-23T11:44:53Z week C3 127 MemAdapt_q90 val validation 0.8: 62.1 s, cost 1439.9, violating 1.49%
+2026-11-23T11:45:45Z week C3 127 MemAdapt_q90 val validation 0.9: 62.5 s, cost 1514.0, violating 1.19%
+2026-11-23T11:45:58Z week C3 127 MemAdapt_q90 val validation 1.0: 62.1 s, cost 1591.2, violating 1.19%
+2026-11-23T11:46:49Z week C3 127 MemAdapt_q90 val validation 1.1: 62.2 s, cost 1670.3, violating 1.04%
+2026-11-23T11:47:03Z week C3 127 MemAdapt_q90 val validation 1.2: 61.9 s, cost 1750.2, violating 1.04%
+2026-11-23T11:47:54Z week C3 127 MemAdapt_q90 val validation 1.3: 61.7 s, cost 1830.6, violating 1.04%
+2026-11-23T11:48:07Z week C3 127 MemAdapt_q90 val validation 1.4: 61.6 s, cost 1911.5, violating 0.89%
+2026-11-23T11:48:59Z week C3 127 MemAdapt_q90 val validation 1.5: 62.6 s, cost 1992.0, violating 0.89%
+2026-11-23T11:49:18Z week C3 128 PRISM val validation 0.005: 68.4 s, cost 1888.3, violating 0.89%
+2026-11-23T11:50:09Z week C3 128 PRISM val validation 0.01: 67.7 s, cost 1697.8, violating 1.04%
+2026-11-23T11:50:28Z week C3 128 PRISM val validation 0.02: 67.6 s, cost 1555.0, violating 1.34%
+2026-11-23T11:51:20Z week C3 128 PRISM val validation 0.03: 68.0 s, cost 1476.4, violating 1.49%
+2026-11-23T11:51:38Z week C3 128 PRISM val validation 0.05: 67.9 s, cost 1161.8, violating 88.84%
+2026-11-23T11:52:30Z week C3 128 PRISM val validation 0.08: 68.3 s, cost 1029.0, violating 100.00%
+2026-11-23T11:52:43Z week C3 128 MemAdapt_q90 val validation 0.6: 62.0 s, cost 1253.7, violating 2.83%
+2026-11-23T11:53:34Z week C3 128 MemAdapt_q90 val validation 0.7: 61.5 s, cost 1302.8, violating 2.68%
+2026-11-23T11:53:47Z week C3 128 MemAdapt_q90 val validation 0.8: 61.6 s, cost 1360.7, violating 2.53%
+2026-11-23T11:54:39Z week C3 128 MemAdapt_q90 val validation 0.9: 61.8 s, cost 1424.9, violating 1.79%
+2026-11-23T11:54:51Z week C3 128 MemAdapt_q90 val validation 1.0: 61.6 s, cost 1493.3, violating 1.79%
+2026-11-23T11:55:42Z week C3 128 MemAdapt_q90 val validation 1.1: 60.9 s, cost 1563.4, violating 1.64%
+2026-11-23T11:55:55Z week C3 128 MemAdapt_q90 val validation 1.2: 61.4 s, cost 1635.0, violating 1.04%
+2026-11-23T11:56:46Z week C3 128 MemAdapt_q90 val validation 1.3: 60.7 s, cost 1707.5, violating 1.04%
+2026-11-23T11:56:59Z week C3 128 MemAdapt_q90 val validation 1.4: 60.6 s, cost 1780.3, violating 1.04%
+2026-11-23T11:57:49Z week C3 128 MemAdapt_q90 val validation 1.5: 60.5 s, cost 1853.1, violating 0.89%
+2026-11-23T11:58:09Z week C3 129 PRISM val validation 0.005: 67.8 s, cost 2119.1, violating 0.30%
+2026-11-23T11:58:59Z week C3 129 PRISM val validation 0.01: 68.0 s, cost 1945.8, violating 0.45%
+2026-11-23T11:59:19Z week C3 129 PRISM val validation 0.02: 68.0 s, cost 1777.1, violating 0.89%
+2026-11-23T12:00:11Z week C3 129 PRISM val validation 0.03: 68.9 s, cost 1663.2, violating 1.19%
+2026-11-23T12:00:34Z week C3 129 PRISM val validation 0.05: 71.8 s, cost 1262.8, violating 89.88%
+2026-11-23T12:01:25Z week C3 129 PRISM val validation 0.08: 71.7 s, cost 1154.6, violating 99.40%
+2026-11-23T12:01:39Z week C3 129 MemAdapt_q90 val validation 0.6: 62.8 s, cost 1314.1, violating 2.98%
+2026-11-23T12:02:30Z week C3 129 MemAdapt_q90 val validation 0.7: 62.3 s, cost 1379.9, violating 2.68%
+2026-11-23T12:02:45Z week C3 129 MemAdapt_q90 val validation 0.8: 62.8 s, cost 1453.4, violating 2.08%
+2026-11-23T12:03:34Z week C3 129 MemAdapt_q90 val validation 0.9: 61.5 s, cost 1531.4, violating 1.79%
+2026-11-23T12:03:49Z week C3 129 MemAdapt_q90 val validation 1.0: 61.4 s, cost 1612.5, violating 1.49%
+2026-11-23T12:04:38Z week C3 129 MemAdapt_q90 val validation 1.1: 61.1 s, cost 1695.4, violating 1.04%
+2026-11-23T12:04:52Z week C3 129 MemAdapt_q90 val validation 1.2: 61.2 s, cost 1778.2, violating 0.89%
+2026-11-23T12:05:42Z week C3 129 MemAdapt_q90 val validation 1.3: 61.4 s, cost 1862.5, violating 0.74%
+2026-11-23T12:05:57Z week C3 129 MemAdapt_q90 val validation 1.4: 61.9 s, cost 1946.2, violating 0.45%
+2026-11-23T12:06:45Z week C3 129 MemAdapt_q90 val validation 1.5: 61.4 s, cost 2030.6, violating 0.45%
+2026-11-23T12:07:07Z week C3 130 PRISM val validation 0.005: 68.0 s, cost 2121.3, violating 0.15%
+2026-11-23T12:07:56Z week C3 130 PRISM val validation 0.01: 68.1 s, cost 1943.5, violating 0.30%
+2026-11-23T12:08:18Z week C3 130 PRISM val validation 0.02: 68.0 s, cost 1751.7, violating 1.34%
+2026-11-23T12:09:08Z week C3 130 PRISM val validation 0.03: 69.2 s, cost 1626.3, violating 1.79%
+2026-11-23T12:09:31Z week C3 130 PRISM val validation 0.05: 70.6 s, cost 1265.0, violating 87.65%
+2026-11-23T12:10:20Z week C3 130 PRISM val validation 0.08: 68.8 s, cost 1149.7, violating 100.00%
+2026-11-23T12:10:36Z week C3 130 MemAdapt_q90 val validation 0.6: 62.5 s, cost 1319.1, violating 2.38%
+2026-11-23T12:11:24Z week C3 130 MemAdapt_q90 val validation 0.7: 62.2 s, cost 1380.9, violating 2.38%
+2026-11-23T12:11:41Z week C3 130 MemAdapt_q90 val validation 0.8: 61.9 s, cost 1451.6, violating 2.38%
+2026-11-23T12:12:29Z week C3 130 MemAdapt_q90 val validation 0.9: 61.9 s, cost 1527.1, violating 1.93%
+2026-11-23T12:12:45Z week C3 130 MemAdapt_q90 val validation 1.0: 61.9 s, cost 1606.0, violating 1.64%
+2026-11-23T12:13:32Z week C3 130 MemAdapt_q90 val validation 1.1: 60.2 s, cost 1686.6, violating 1.34%
+2026-11-23T12:13:49Z week C3 130 MemAdapt_q90 val validation 1.2: 60.5 s, cost 1767.8, violating 1.19%
+2026-11-23T12:14:36Z week C3 130 MemAdapt_q90 val validation 1.3: 61.5 s, cost 1849.7, violating 1.19%
+2026-11-23T12:14:53Z week C3 130 MemAdapt_q90 val validation 1.4: 61.6 s, cost 1932.0, violating 1.04%
+2026-11-23T12:15:40Z week C3 130 MemAdapt_q90 val validation 1.5: 62.0 s, cost 2014.3, violating 0.89%
+2026-11-23T12:16:05Z week C1C2 106 PRISM test stationary 0.02: 69.6 s, cost 1203.3, violating 2.53%
+2026-11-23T12:17:03Z week C1C2 106 PRISM test growth 0.02: 79.0 s, cost 1554.5, violating 2.08%
+2026-11-23T12:17:17Z week C1C2 106 PRISM test bursty 0.02: 69.5 s, cost 1369.1, violating 1.93%
+2026-11-23T12:18:17Z heartbeat: 335 running/queued, 228 weeks run, 850 reused, 0/125 groups done
+2026-11-23T12:18:21Z week C1C2 106 QuantProv_q90 test stationary 1.1: 61.2 s, cost 1132.3, violating 3.12%
+2026-11-23T12:18:23Z week C1C2 106 PRISM test new_spike 0.02: 77.1 s, cost 1675.2, violating 1.49%
+2026-11-23T12:18:23Z group done C1C2 106 PRISM: selected 0.02 expansions -
+2026-11-23T12:19:23Z heartbeat: 333 running/queued, 230 weeks run, 850 reused, 1/125 groups done
+2026-11-23T12:19:29Z week C1C2 106 QuantProv_q90 test bursty 1.1: 62.8 s, cost 1304.6, violating 3.12%
+2026-11-23T12:19:37Z week C1C2 106 QuantProv_q90 test growth 1.1: 72.7 s, cost 1495.8, violating 2.98%
+2026-11-23T12:20:13Z week C1C2 106 Reactive test stationary 0.55: 33.4 s, cost 1793.7, violating 1.34%
+2026-11-23T12:20:42Z week C1C2 106 QuantProv_q90 test new_spike 1.1: 70.0 s, cost 1617.3, violating 2.08%
+2026-11-23T12:20:42Z group done C1C2 106 QuantProv_q90: selected 1.1 expansions -
+2026-11-23T12:21:00Z week C1C2 106 Reactive test growth 0.55: 43.8 s, cost 2283.6, violating 1.93%
+2026-11-23T12:21:20Z week C1C2 106 Reactive test bursty 0.55: 34.8 s, cost 1871.8, violating 1.04%
+2026-11-23T12:21:46Z week C1C2 106 Reactive test new_spike 0.55: 42.9 s, cost 2197.2, violating 1.93%
+2026-11-23T12:21:46Z group done C1C2 106 Reactive: selected 0.55 expansions -
+2026-11-23T12:22:30Z week C1C2 107 PRISM test stationary 0.01: 67.4 s, cost 1368.7, violating 1.04%
+2026-11-23T12:23:06Z week C1C2 107 PRISM test growth 0.01: 76.6 s, cost 1740.5, violating 0.89%
+2026-11-23T12:23:40Z week C1C2 107 PRISM test bursty 0.01: 67.5 s, cost 1519.9, violating 1.19%
+2026-11-23T12:24:26Z week C1C2 107 PRISM test new_spike 0.01: 76.5 s, cost 1695.1, violating 1.04%
+2026-11-23T12:24:26Z group done C1C2 107 PRISM: selected 0.01 expansions -
+2026-11-23T12:24:44Z week C1C2 107 QuantProv_q90 test stationary 1.3: 61.4 s, cost 1363.7, violating 1.19%
+2026-11-23T12:25:41Z week C1C2 107 QuantProv_q90 test growth 1.3: 71.5 s, cost 1799.5, violating 1.34%
+2026-11-23T12:25:48Z week C1C2 107 QuantProv_q90 test bursty 1.3: 61.8 s, cost 1613.4, violating 1.04%
+2026-11-23T12:26:24Z week C1C2 107 Reactive test stationary 0.55: 32.8 s, cost 1799.1, violating 2.08%
+2026-11-23T12:26:54Z week C1C2 107 QuantProv_q90 test new_spike 1.3: 69.8 s, cost 1737.3, violating 1.04%
+2026-11-23T12:26:54Z group done C1C2 107 QuantProv_q90: selected 1.3 expansions -
+2026-11-23T12:27:10Z week C1C2 107 Reactive test growth 0.55: 43.2 s, cost 2281.3, violating 2.38%
+2026-11-23T12:27:30Z week C1C2 107 Reactive test bursty 0.55: 33.9 s, cost 1848.7, violating 1.64%
+2026-11-23T12:27:54Z week C1C2 107 Reactive test new_spike 0.55: 41.0 s, cost 2181.3, violating 1.19%
+2026-11-23T12:27:54Z group done C1C2 107 Reactive: selected 0.55 expansions -
+2026-11-23T12:28:40Z week C1C2 108 PRISM test stationary 0.01: 66.6 s, cost 1248.6, violating 0.89%
+2026-11-23T12:29:15Z week C1C2 108 PRISM test growth 0.01: 77.0 s, cost 1540.9, violating 1.34%
+2026-11-23T12:29:51Z week C1C2 108 PRISM test bursty 0.01: 68.8 s, cost 1368.7, violating 2.53%
+2026-11-23T12:30:35Z week C1C2 108 PRISM test new_spike 0.01: 76.6 s, cost 1548.5, violating 1.04%
+2026-11-23T12:30:35Z group done C1C2 108 PRISM: selected 0.01 expansions -
+2026-11-23T12:30:56Z week C1C2 108 QuantProv_q90 test stationary 1.4: 62.1 s, cost 1239.7, violating 0.89%
+2026-11-23T12:31:50Z week C1C2 108 QuantProv_q90 test growth 1.4: 72.4 s, cost 1564.7, violating 1.19%
+2026-11-23T12:32:01Z week C1C2 108 QuantProv_q90 test bursty 1.4: 62.8 s, cost 1379.3, violating 2.23%
+2026-11-23T12:32:37Z week C1C2 108 Reactive test stationary 0.55: 33.5 s, cost 1827.6, violating 2.38%
+2026-11-23T12:33:03Z week C1C2 108 QuantProv_q90 test new_spike 1.4: 69.7 s, cost 1615.8, violating 0.60%
+2026-11-23T12:33:03Z group done C1C2 108 QuantProv_q90: selected 1.4 expansions -
+2026-11-23T12:33:24Z week C1C2 108 Reactive test growth 0.55: 43.9 s, cost 2332.3, violating 2.08%
+2026-11-23T12:33:40Z week C1C2 108 Reactive test bursty 0.55: 34.5 s, cost 1917.8, violating 1.64%
+2026-11-23T12:34:09Z week C1C2 108 Reactive test new_spike 0.55: 41.8 s, cost 2221.5, violating 2.08%
+2026-11-23T12:34:09Z group done C1C2 108 Reactive: selected 0.55 expansions -
+2026-11-23T12:34:50Z week C1C2 109 PRISM test stationary 0.01: 67.1 s, cost 1254.2, violating 0.74%
+2026-11-23T12:35:29Z week C1C2 109 PRISM test growth 0.01: 76.3 s, cost 1593.1, violating 0.45%
+2026-11-23T12:35:59Z week C1C2 109 PRISM test bursty 0.01: 66.5 s, cost 1404.0, violating 1.19%
+2026-11-23T12:36:47Z week C1C2 109 PRISM test new_spike 0.01: 74.8 s, cost 1609.2, violating 0.89%
+2026-11-23T12:36:47Z group done C1C2 109 PRISM: selected 0.01 expansions -
+2026-11-23T12:37:01Z week C1C2 109 QuantProv_q90 test stationary 1.3: 59.8 s, cost 1165.7, violating 1.04%
+2026-11-23T12:38:00Z week C1C2 109 QuantProv_q90 test growth 1.3: 69.5 s, cost 1521.8, violating 0.89%
+2026-11-23T12:38:04Z week C1C2 109 QuantProv_q90 test bursty 1.3: 60.5 s, cost 1380.1, violating 1.64%
+2026-11-23T12:38:38Z week C1C2 109 Reactive test stationary 0.55: 31.8 s, cost 1685.2, violating 0.74%
+2026-11-23T12:39:12Z week C1C2 109 QuantProv_q90 test new_spike 1.3: 68.9 s, cost 1600.6, violating 0.74%
+2026-11-23T12:39:12Z group done C1C2 109 QuantProv_q90: selected 1.3 expansions -
+2026-11-23T12:39:24Z week C1C2 109 Reactive test growth 0.55: 42.3 s, cost 2152.6, violating 1.19%
+2026-11-23T12:39:47Z week C1C2 109 Reactive test bursty 0.55: 32.8 s, cost 1760.4, violating 1.19%
+2026-11-23T12:40:07Z week C1C2 109 Reactive test new_spike 0.55: 40.0 s, cost 2067.7, violating 1.19%
+2026-11-23T12:40:07Z group done C1C2 109 Reactive: selected 0.55 expansions -
+2026-11-23T12:40:57Z week C1C2 110 PRISM test stationary 0.01: 67.7 s, cost 1315.7, violating 1.34%
+2026-11-23T12:41:28Z week C1C2 110 PRISM test growth 0.01: 78.2 s, cost 1639.5, violating 1.34%
+2026-11-23T12:42:09Z week C1C2 110 PRISM test bursty 0.01: 69.1 s, cost 1508.0, violating 1.34%
+2026-11-23T12:42:47Z week C1C2 110 PRISM test new_spike 0.01: 75.7 s, cost 1668.3, violating 1.04%
+2026-11-23T12:42:47Z group done C1C2 110 PRISM: selected 0.01 expansions -
+2026-11-23T12:43:12Z week C1C2 110 QuantProv_q90 test stationary 1.4: 60.3 s, cost 1288.0, violating 1.49%
+2026-11-23T12:44:01Z week C1C2 110 QuantProv_q90 test growth 1.4: 70.2 s, cost 1674.0, violating 1.49%
+2026-11-23T12:44:17Z week C1C2 110 QuantProv_q90 test bursty 1.4: 62.2 s, cost 1636.5, violating 1.19%
+2026-11-23T12:44:53Z week C1C2 110 Reactive test stationary 0.6: 33.7 s, cost 1659.7, violating 2.38%
+2026-11-23T12:45:14Z week C1C2 110 QuantProv_q90 test new_spike 1.4: 70.1 s, cost 1742.5, violating 0.89%
+2026-11-23T12:45:14Z group done C1C2 110 QuantProv_q90: selected 1.4 expansions -
+2026-11-23T12:45:39Z week C1C2 110 Reactive test growth 0.6: 43.1 s, cost 2141.5, violating 3.27%
+2026-11-23T12:45:51Z week C1C2 110 Reactive test bursty 0.6: 34.1 s, cost 1732.1, violating 2.53%
+2026-11-23T12:46:24Z week C1C2 110 Reactive test new_spike 0.6: 41.1 s, cost 2035.2, violating 2.68%
+2026-11-23T12:46:24Z group done C1C2 110 Reactive: selected 0.6 expansions -
+2026-11-23T12:47:01Z week C1C2 111 PRISM test stationary 0.01: 67.1 s, cost 1223.1, violating 1.19%
+2026-11-23T12:47:45Z week C1C2 111 PRISM test growth 0.01: 77.7 s, cost 1582.0, violating 0.89%
+2026-11-23T12:48:11Z week C1C2 111 PRISM test bursty 0.01: 67.9 s, cost 1436.1, violating 1.34%
+2026-11-23T12:49:05Z week C1C2 111 PRISM test new_spike 0.01: 77.2 s, cost 1615.9, violating 0.60%
+2026-11-23T12:49:05Z group done C1C2 111 PRISM: selected 0.01 expansions -
+2026-11-23T12:49:16Z week C1C2 111 QuantProv_q90 test stationary 1.3: 61.8 s, cost 1165.9, violating 1.34%
+2026-11-23T12:50:16Z heartbeat: 273 running/queued, 290 weeks run, 850 reused, 16/125 groups done
+2026-11-23T12:50:18Z week C1C2 111 QuantProv_q90 test growth 1.3: 69.7 s, cost 1542.1, violating 1.34%
+2026-11-23T12:50:19Z week C1C2 111 QuantProv_q90 test bursty 1.3: 60.4 s, cost 1439.9, violating 1.64%
+2026-11-23T12:50:54Z week C1C2 111 Reactive test stationary 0.55: 33.0 s, cost 1751.6, violating 1.19%
+2026-11-23T12:51:31Z week C1C2 111 QuantProv_q90 test new_spike 1.3: 70.2 s, cost 1616.2, violating 0.74%
+2026-11-23T12:51:31Z group done C1C2 111 QuantProv_q90: selected 1.3 expansions -
+2026-11-23T12:51:40Z week C1C2 111 Reactive test growth 0.55: 42.8 s, cost 2253.0, violating 2.08%
+2026-11-23T12:52:08Z week C1C2 111 Reactive test bursty 0.55: 34.4 s, cost 1826.3, violating 1.34%
+2026-11-23T12:52:26Z week C1C2 111 Reactive test new_spike 0.55: 42.1 s, cost 2160.9, violating 2.08%
+2026-11-23T12:52:26Z group done C1C2 111 Reactive: selected 0.55 expansions -
+2026-11-23T12:53:18Z week C1C2 112 PRISM test stationary 0.01: 66.7 s, cost 1208.6, violating 1.19%
+2026-11-23T12:53:45Z week C1C2 112 PRISM test growth 0.01: 75.6 s, cost 1557.7, violating 1.04%
+2026-11-23T12:54:28Z week C1C2 112 PRISM test bursty 0.01: 67.7 s, cost 1420.1, violating 1.49%
+2026-11-23T12:55:05Z week C1C2 112 PRISM test new_spike 0.01: 76.7 s, cost 1495.4, violating 1.79%
+2026-11-23T12:55:05Z group done C1C2 112 PRISM: selected 0.01 expansions -
+2026-11-23T12:55:32Z week C1C2 112 QuantProv_q90 test stationary 1.4: 61.2 s, cost 1199.3, violating 1.19%
+2026-11-23T12:56:18Z week C1C2 112 QuantProv_q90 test growth 1.4: 70.5 s, cost 1576.2, violating 0.89%
+2026-11-23T12:56:35Z week C1C2 112 QuantProv_q90 test bursty 1.4: 61.3 s, cost 1487.9, violating 1.64%
+2026-11-23T12:57:10Z week C1C2 112 Reactive test stationary 0.6: 32.2 s, cost 1626.4, violating 1.93%
+2026-11-23T12:57:30Z week C1C2 112 QuantProv_q90 test new_spike 1.4: 68.4 s, cost 1546.7, violating 1.19%
+2026-11-23T12:57:30Z group done C1C2 112 QuantProv_q90: selected 1.4 expansions -
+2026-11-23T12:57:56Z week C1C2 112 Reactive test growth 0.6: 42.8 s, cost 2090.1, violating 1.93%
+2026-11-23T12:58:06Z week C1C2 112 Reactive test bursty 0.6: 33.6 s, cost 1713.9, violating 2.23%
+2026-11-23T12:58:40Z week C1C2 112 Reactive test new_spike 0.6: 41.2 s, cost 2014.8, violating 2.53%
+2026-11-23T12:58:40Z group done C1C2 112 Reactive: selected 0.6 expansions -
+2026-11-23T12:59:16Z week C1C2 113 PRISM test stationary 0.01: 67.8 s, cost 1411.5, violating 1.49%
+2026-11-23T13:00:01Z week C1C2 113 PRISM test growth 0.01: 77.7 s, cost 1756.8, violating 1.34%
+2026-11-23T13:00:26Z week C1C2 113 PRISM test bursty 0.01: 67.4 s, cost 1510.9, violating 1.64%
+2026-11-23T13:01:22Z week C1C2 113 PRISM test new_spike 0.01: 77.1 s, cost 1775.2, violating 0.89%
+2026-11-23T13:01:22Z group done C1C2 113 PRISM: selected 0.01 expansions -
+2026-11-23T13:01:30Z week C1C2 113 QuantProv_q90 val validation 1.6: 60.8 s, cost 1391.5, violating 1.49%
+2026-11-23T13:01:58Z week C1C2 113 Reactive test stationary 0.55: 33.6 s, cost 1769.1, violating 1.04%
+2026-11-23T13:02:17Z week C1C2 113 Reactive test growth 0.55: 43.7 s, cost 2263.0, violating 1.93%
+2026-11-23T13:02:35Z week C1C2 113 Reactive test bursty 0.55: 34.6 s, cost 1860.5, violating 1.04%
+2026-11-23T13:03:02Z week C1C2 113 Reactive test new_spike 0.55: 42.3 s, cost 2169.5, violating 1.04%
+2026-11-23T13:03:02Z group done C1C2 113 Reactive: selected 0.55 expansions -
+2026-11-23T13:03:45Z week C1C2 114 PRISM test stationary 0.03: 67.4 s, cost 1162.2, violating 2.68%
+2026-11-23T13:04:22Z week C1C2 114 PRISM test growth 0.03: 76.4 s, cost 1524.7, violating 2.68%
+2026-11-23T13:04:55Z week C1C2 114 PRISM test bursty 0.03: 67.3 s, cost 1275.7, violating 2.83%
+2026-11-23T13:05:41Z week C1C2 114 PRISM test new_spike 0.03: 76.1 s, cost 1514.8, violating 2.98%
+2026-11-23T13:05:41Z group done C1C2 114 PRISM: selected 0.03 expansions -
+2026-11-23T13:05:58Z week C1C2 114 QuantProv_q90 test stationary 1.1: 61.0 s, cost 1126.0, violating 2.68%
+2026-11-23T13:06:55Z week C1C2 114 QuantProv_q90 test growth 1.1: 70.4 s, cost 1496.5, violating 2.83%
+2026-11-23T13:07:02Z week C1C2 114 QuantProv_q90 test bursty 1.1: 60.6 s, cost 1229.4, violating 3.12%
+2026-11-23T13:07:37Z week C1C2 114 Reactive test stationary 0.55: 32.5 s, cost 1813.7, violating 1.64%
+2026-11-23T13:08:07Z week C1C2 114 QuantProv_q90 test new_spike 1.1: 69.2 s, cost 1490.6, violating 3.27%
+2026-11-23T13:08:07Z group done C1C2 114 QuantProv_q90: selected 1.1 expansions -
+2026-11-23T13:08:23Z week C1C2 114 Reactive test growth 0.55: 43.1 s, cost 2320.1, violating 2.08%
+2026-11-23T13:08:43Z week C1C2 114 Reactive test bursty 0.55: 33.5 s, cost 1852.2, violating 1.49%
+2026-11-23T13:09:08Z week C1C2 114 Reactive test new_spike 0.55: 41.7 s, cost 2223.8, violating 1.49%
+2026-11-23T13:09:08Z group done C1C2 114 Reactive: selected 0.55 expansions -
+2026-11-23T13:09:54Z week C1C2 115 PRISM test stationary 0.03: 67.9 s, cost 1304.6, violating 1.64%
+2026-11-23T13:10:30Z week C1C2 115 PRISM test growth 0.03: 78.6 s, cost 1643.8, violating 2.23%
+2026-11-23T13:11:05Z week C1C2 115 PRISM test bursty 0.03: 69.0 s, cost 1391.3, violating 2.98%
+2026-11-23T13:11:50Z week C1C2 115 PRISM test new_spike 0.03: 77.2 s, cost 1735.2, violating 1.19%
+2026-11-23T13:11:50Z group done C1C2 115 PRISM: selected 0.03 expansions -
+2026-11-23T13:12:10Z week C1C2 115 QuantProv_q90 test stationary 1.1: 61.7 s, cost 1247.3, violating 2.38%
+2026-11-23T13:13:05Z week C1C2 115 QuantProv_q90 test growth 1.1: 71.0 s, cost 1593.1, violating 2.23%
+2026-11-23T13:13:14Z week C1C2 115 QuantProv_q90 test bursty 1.1: 61.2 s, cost 1357.4, violating 3.57%
+2026-11-23T13:13:49Z week C1C2 115 Reactive test stationary 0.55: 33.3 s, cost 1803.0, violating 0.89%
+2026-11-23T13:14:18Z week C1C2 115 QuantProv_q90 test new_spike 1.1: 70.5 s, cost 1699.8, violating 1.64%
+2026-11-23T13:14:18Z group done C1C2 115 QuantProv_q90: selected 1.1 expansions -
+2026-11-23T13:14:37Z week C1C2 115 Reactive test growth 0.55: 44.1 s, cost 2317.3, violating 2.08%
+2026-11-23T13:14:56Z week C1C2 115 Reactive test bursty 0.55: 34.6 s, cost 1901.3, violating 2.23%
+2026-11-23T13:15:21Z week C1C2 115 Reactive test new_spike 0.55: 41.4 s, cost 2220.5, violating 1.93%
+2026-11-23T13:15:21Z group done C1C2 115 Reactive: selected 0.55 expansions -
+2026-11-23T13:16:05Z week C1C2 116 PRISM test stationary 0.02: 66.9 s, cost 1268.5, violating 1.64%
+2026-11-23T13:16:42Z week C1C2 116 PRISM test growth 0.02: 77.5 s, cost 1626.0, violating 1.49%
+2026-11-23T13:17:16Z week C1C2 116 PRISM test bursty 0.02: 68.2 s, cost 1512.5, violating 1.64%
+2026-11-23T13:18:00Z week C1C2 116 PRISM test new_spike 0.02: 74.3 s, cost 1652.0, violating 1.34%
+2026-11-23T13:18:00Z group done C1C2 116 PRISM: selected 0.02 expansions -
+2026-11-23T13:18:19Z week C1C2 116 QuantProv_q90 test stationary 1.1: 60.3 s, cost 1185.4, violating 1.79%
+2026-11-23T13:19:14Z week C1C2 116 QuantProv_q90 test growth 1.1: 70.9 s, cost 1543.4, violating 1.79%
+2026-11-23T13:19:24Z week C1C2 116 QuantProv_q90 test bursty 1.1: 62.1 s, cost 1474.4, violating 1.93%
+2026-11-23T13:19:59Z week C1C2 116 Reactive test stationary 0.55: 32.4 s, cost 1753.8, violating 1.34%
+2026-11-23T13:20:25Z week C1C2 116 QuantProv_q90 test new_spike 1.1: 68.0 s, cost 1588.5, violating 1.79%
+2026-11-23T13:20:25Z group done C1C2 116 QuantProv_q90: selected 1.1 expansions -
+2026-11-23T13:20:45Z week C1C2 116 Reactive test growth 0.55: 42.6 s, cost 2252.1, violating 2.08%
+2026-11-23T13:21:02Z week C1C2 116 Reactive test bursty 0.55: 34.3 s, cost 1839.0, violating 1.49%
+2026-11-23T13:21:30Z week C1C2 116 Reactive test new_spike 0.55: 41.8 s, cost 2156.9, violating 1.34%
+2026-11-23T13:21:30Z group done C1C2 116 Reactive: selected 0.55 expansions -
+2026-11-23T13:22:13Z week C1C2 117 PRISM test stationary 0.03: 68.3 s, cost 1143.8, violating 1.93%
+2026-11-23T13:22:51Z week C1C2 117 PRISM test growth 0.03: 78.2 s, cost 1476.3, violating 1.79%
+2026-11-23T13:23:23Z week C1C2 117 PRISM test bursty 0.03: 67.0 s, cost 1253.1, violating 1.93%
+2026-11-23T13:24:09Z week C1C2 117 PRISM test new_spike 0.03: 74.9 s, cost 1563.5, violating 1.64%
+2026-11-23T13:24:09Z group done C1C2 117 PRISM: selected 0.03 expansions -
+2026-11-23T13:24:26Z week C1C2 117 QuantProv_q90 test stationary 1.0: 60.4 s, cost 1063.1, violating 2.23%
+2026-11-23T13:25:24Z week C1C2 117 QuantProv_q90 test growth 1.0: 71.1 s, cost 1384.7, violating 2.53%
+2026-11-23T13:25:30Z week C1C2 117 QuantProv_q90 test bursty 1.0: 61.7 s, cost 1149.6, violating 3.42%
+2026-11-23T13:26:05Z week C1C2 117 Reactive test stationary 0.55: 32.6 s, cost 1730.2, violating 0.60%
+2026-11-23T13:26:36Z week C1C2 117 QuantProv_q90 test new_spike 1.0: 69.2 s, cost 1451.8, violating 3.27%
+2026-11-23T13:26:36Z group done C1C2 117 QuantProv_q90: selected 1.0 expansions -
+2026-11-23T13:26:50Z week C1C2 117 Reactive test growth 0.55: 42.2 s, cost 2214.6, violating 1.79%
+2026-11-23T13:27:12Z week C1C2 117 Reactive test bursty 0.55: 33.1 s, cost 1787.2, violating 0.60%
+2026-11-23T13:27:34Z week C1C2 117 Reactive test new_spike 0.55: 40.4 s, cost 2142.7, violating 1.49%
+2026-11-23T13:27:34Z group done C1C2 117 Reactive: selected 0.55 expansions -
+2026-11-23T13:28:22Z week C1C2 118 PRISM test stationary 0.01: 67.5 s, cost 1407.4, violating 1.79%
+2026-11-23T13:28:55Z week C1C2 118 PRISM test growth 0.01: 77.5 s, cost 1770.2, violating 1.79%
+2026-11-23T13:29:33Z week C1C2 118 PRISM test bursty 0.01: 68.4 s, cost 1483.7, violating 1.49%
+2026-11-23T13:30:14Z week C1C2 118 PRISM test new_spike 0.01: 76.3 s, cost 1747.1, violating 1.49%
+2026-11-23T13:30:14Z group done C1C2 118 PRISM: selected 0.01 expansions -
+2026-11-23T13:30:37Z week C1C2 118 QuantProv_q90 test stationary 1.1: 61.3 s, cost 1295.1, violating 2.38%
+2026-11-23T13:31:29Z week C1C2 118 QuantProv_q90 test growth 1.1: 71.7 s, cost 1676.6, violating 2.23%
+2026-11-23T13:31:42Z week C1C2 118 QuantProv_q90 test bursty 1.1: 63.1 s, cost 1377.3, violating 2.53%
+2026-11-23T13:32:18Z week C1C2 118 Reactive test stationary 0.6: 32.7 s, cost 1693.7, violating 2.23%
+2026-11-23T13:32:42Z week C1C2 118 QuantProv_q90 test new_spike 1.1: 70.0 s, cost 1623.7, violating 2.23%
+2026-11-23T13:32:42Z group done C1C2 118 QuantProv_q90: selected 1.1 expansions -
+2026-11-23T13:33:05Z week C1C2 118 Reactive test growth 0.6: 43.6 s, cost 2193.1, violating 3.72%
+2026-11-23T13:33:19Z week C1C2 118 Reactive test bursty 0.6: 34.3 s, cost 1750.2, violating 2.53%
+2026-11-23T13:33:50Z week C1C2 118 Reactive test new_spike 0.6: 41.4 s, cost 2078.9, violating 2.38%
+2026-11-23T13:33:50Z group done C1C2 118 Reactive: selected 0.6 expansions -
+2026-11-23T13:34:28Z week C1C2 119 PRISM test stationary 0.02: 66.0 s, cost 1098.5, violating 1.49%
+2026-11-23T13:35:10Z week C1C2 119 PRISM test growth 0.02: 77.0 s, cost 1397.3, violating 1.79%
+2026-11-23T13:35:38Z week C1C2 119 PRISM test bursty 0.02: 68.2 s, cost 1384.6, violating 1.34%
+2026-11-23T13:36:29Z week C1C2 119 PRISM test new_spike 0.02: 75.8 s, cost 1612.3, violating 0.74%
+2026-11-23T13:36:29Z group done C1C2 119 PRISM: selected 0.02 expansions -
+2026-11-23T13:36:41Z week C1C2 119 QuantProv_q90 test stationary 1.2: 60.0 s, cost 1098.6, violating 1.64%
+2026-11-23T13:37:41Z heartbeat: 184 running/queued, 383 weeks run, 850 reused, 39/125 groups done
+2026-11-23T13:37:42Z week C1C2 119 QuantProv_q90 test growth 1.2: 69.7 s, cost 1416.8, violating 1.34%
+2026-11-23T13:37:44Z week C1C2 119 QuantProv_q90 test bursty 1.2: 60.2 s, cost 1380.7, violating 1.34%
+2026-11-23T13:38:19Z week C1C2 119 Reactive test stationary 0.55: 33.1 s, cost 1748.7, violating 0.89%
+2026-11-23T13:38:55Z week C1C2 119 QuantProv_q90 test new_spike 1.2: 69.6 s, cost 1624.6, violating 1.04%
+2026-11-23T13:38:55Z group done C1C2 119 QuantProv_q90: selected 1.2 expansions -
+2026-11-23T13:39:06Z week C1C2 119 Reactive test growth 0.55: 42.9 s, cost 2246.0, violating 1.49%
+2026-11-23T13:39:32Z week C1C2 119 Reactive test bursty 0.55: 34.4 s, cost 1825.6, violating 1.49%
+2026-11-23T13:39:50Z week C1C2 119 Reactive test new_spike 0.55: 41.5 s, cost 2158.5, violating 1.49%
+2026-11-23T13:39:50Z group done C1C2 119 Reactive: selected 0.55 expansions -
+2026-11-23T13:40:42Z week C1C2 120 PRISM test stationary 0.02: 67.6 s, cost 1223.4, violating 1.04%
+2026-11-23T13:41:11Z week C1C2 120 PRISM test growth 0.02: 77.4 s, cost 1543.4, violating 1.64%
+2026-11-23T13:41:52Z week C1C2 120 PRISM test bursty 0.02: 66.8 s, cost 1368.9, violating 1.34%
+2026-11-23T13:42:29Z week C1C2 120 PRISM test new_spike 0.02: 75.0 s, cost 1550.8, violating 1.49%
+2026-11-23T13:42:29Z group done C1C2 120 PRISM: selected 0.02 expansions -
+2026-11-23T13:42:55Z week C1C2 120 QuantProv_q90 test stationary 1.2: 61.0 s, cost 1199.5, violating 1.49%
+2026-11-23T13:43:44Z week C1C2 120 QuantProv_q90 test growth 1.2: 71.9 s, cost 1541.5, violating 1.93%
+2026-11-23T13:44:00Z week C1C2 120 QuantProv_q90 test bursty 1.2: 62.3 s, cost 1365.7, violating 1.34%
+2026-11-23T13:44:34Z week C1C2 120 Reactive test stationary 0.55: 32.0 s, cost 1751.7, violating 1.04%
+2026-11-23T13:44:56Z week C1C2 120 QuantProv_q90 test new_spike 1.2: 68.6 s, cost 1554.3, violating 1.64%
+2026-11-23T13:44:56Z group done C1C2 120 QuantProv_q90: selected 1.2 expansions -
+2026-11-23T13:45:21Z week C1C2 120 Reactive test growth 0.55: 43.0 s, cost 2250.6, violating 1.49%
+2026-11-23T13:45:32Z week C1C2 120 Reactive test bursty 0.55: 33.7 s, cost 1806.1, violating 0.89%
+2026-11-23T13:46:06Z week C1C2 120 Reactive test new_spike 0.55: 41.7 s, cost 2155.4, violating 1.34%
+2026-11-23T13:46:06Z group done C1C2 120 Reactive: selected 0.55 expansions -
+2026-11-23T13:46:43Z week C1C2 121 PRISM test stationary 0.03: 67.6 s, cost 1107.9, violating 1.19%
+2026-11-23T13:47:26Z week C1C2 121 PRISM test growth 0.03: 77.3 s, cost 1481.3, violating 1.19%
+2026-11-23T13:47:52Z week C1C2 121 PRISM test bursty 0.03: 66.5 s, cost 1258.0, violating 1.64%
+2026-11-23T13:48:45Z week C1C2 121 PRISM test new_spike 0.03: 75.8 s, cost 1421.1, violating 2.68%
+2026-11-23T13:48:45Z group done C1C2 121 PRISM: selected 0.03 expansions -
+2026-11-23T13:48:55Z week C1C2 121 QuantProv_q90 test stationary 1.1: 60.7 s, cost 1087.8, violating 1.49%
+2026-11-23T13:49:55Z heartbeat: 160 running/queued, 407 weeks run, 850 reused, 45/125 groups done
+2026-11-23T13:49:59Z week C1C2 121 QuantProv_q90 test bursty 1.1: 61.7 s, cost 1212.5, violating 2.08%
+2026-11-23T13:50:00Z week C1C2 121 QuantProv_q90 test growth 1.1: 71.4 s, cost 1457.1, violating 1.04%
+2026-11-23T13:50:35Z week C1C2 121 Reactive test stationary 0.6: 32.8 s, cost 1654.8, violating 2.38%
+2026-11-23T13:51:12Z week C1C2 121 QuantProv_q90 test new_spike 1.1: 69.3 s, cost 1411.7, violating 1.93%
+2026-11-23T13:51:12Z group done C1C2 121 QuantProv_q90: selected 1.1 expansions -
+2026-11-23T13:51:22Z week C1C2 121 Reactive test growth 0.6: 43.3 s, cost 2124.0, violating 3.12%
+2026-11-23T13:51:59Z week C1C2 121 Reactive test bursty 0.6: 44.3 s, cost 1725.0, violating 2.38%
+2026-11-23T13:52:19Z week C1C2 121 Reactive test new_spike 0.6: 53.1 s, cost 2029.2, violating 2.68%
+2026-11-23T13:52:19Z group done C1C2 121 Reactive: selected 0.6 expansions -
+2026-11-23T13:53:11Z week C1C2 122 PRISM val validation 0.003: 68.7 s, cost 1672.5, violating 0.89%
+2026-11-23T13:53:23Z week C1C2 122 QuantProv_q90 val validation 1.6: 61.5 s, cost 1506.5, violating 1.34%
+2026-11-23T13:53:46Z week C1C2 122 Reactive test stationary 0.55: 32.5 s, cost 1730.2, violating 1.04%
+2026-11-23T13:54:09Z week C1C2 122 Reactive test growth 0.55: 43.4 s, cost 2212.5, violating 1.64%
+2026-11-23T13:54:23Z week C1C2 122 Reactive test bursty 0.55: 34.8 s, cost 1824.2, violating 1.19%
+2026-11-23T13:54:54Z week C1C2 122 Reactive test new_spike 0.55: 41.3 s, cost 2105.9, violating 1.64%
+2026-11-23T13:54:54Z group done C1C2 122 Reactive: selected 0.55 expansions -
+2026-11-23T13:55:34Z week C1C2 123 PRISM test stationary 0.02: 68.2 s, cost 1307.0, violating 1.19%
+2026-11-23T13:56:16Z week C1C2 123 PRISM test growth 0.02: 78.8 s, cost 1688.3, violating 1.34%
+2026-11-23T13:56:45Z week C1C2 123 PRISM test bursty 0.02: 67.9 s, cost 1423.4, violating 1.64%
+2026-11-23T13:57:35Z week C1C2 123 PRISM test new_spike 0.02: 75.7 s, cost 1699.2, violating 1.04%
+2026-11-23T13:57:35Z group done C1C2 123 PRISM: selected 0.02 expansions -
+2026-11-23T13:57:49Z week C1C2 123 QuantProv_q90 test stationary 1.3: 61.4 s, cost 1353.3, violating 0.74%
+2026-11-23T13:58:49Z heartbeat: 150 running/queued, 425 weeks run, 850 reused, 49/125 groups done
+2026-11-23T13:58:51Z week C1C2 123 QuantProv_q90 test growth 1.3: 72.0 s, cost 1788.7, violating 0.89%
+2026-11-23T13:58:53Z week C1C2 123 QuantProv_q90 test bursty 1.3: 61.8 s, cost 1519.1, violating 1.49%
+2026-11-23T13:59:42Z week C1C2 123 Reactive test stationary 0.55: 46.5 s, cost 1747.9, violating 0.30%
+2026-11-23T14:00:19Z week C1C2 123 QuantProv_q90 test new_spike 1.3: 85.0 s, cost 1832.4, violating 0.74%
+2026-11-23T14:00:19Z group done C1C2 123 QuantProv_q90: selected 1.3 expansions -
+2026-11-23T14:00:31Z week C1C2 123 Reactive test growth 0.55: 45.2 s, cost 2250.4, violating 1.79%
+2026-11-23T14:00:57Z week C1C2 123 Reactive test bursty 0.55: 35.6 s, cost 1836.1, violating 1.79%
+2026-11-23T14:01:18Z week C1C2 123 Reactive test new_spike 0.55: 43.1 s, cost 2163.2, violating 1.19%
+2026-11-23T14:01:18Z group done C1C2 123 Reactive: selected 0.55 expansions -
+2026-11-23T14:02:08Z week C1C2 124 PRISM test stationary 0.02: 68.5 s, cost 1154.2, violating 1.64%
+2026-11-23T14:02:40Z week C1C2 124 PRISM test growth 0.02: 78.6 s, cost 1479.6, violating 1.79%
+2026-11-23T14:03:20Z week C1C2 124 PRISM test bursty 0.02: 68.8 s, cost 1288.7, violating 1.93%
+2026-11-23T14:04:03Z week C1C2 124 PRISM test new_spike 0.02: 80.1 s, cost 1430.9, violating 2.08%
+2026-11-23T14:04:03Z group done C1C2 124 PRISM: selected 0.02 expansions -
+2026-11-23T14:04:34Z week C1C2 124 QuantProv_q90 test stationary 1.2: 71.9 s, cost 1136.9, violating 1.64%
+2026-11-23T14:05:21Z week C1C2 124 QuantProv_q90 test growth 1.2: 73.0 s, cost 1487.0, violating 1.79%
+2026-11-23T14:05:35Z week C1C2 124 QuantProv_q90 test bursty 1.2: 58.3 s, cost 1280.3, violating 2.08%
+2026-11-23T14:06:08Z week C1C2 124 Reactive test stationary 0.55: 30.9 s, cost 1719.1, violating 0.74%
+2026-11-23T14:06:30Z week C1C2 124 QuantProv_q90 test new_spike 1.2: 66.3 s, cost 1445.6, violating 1.64%
+2026-11-23T14:06:30Z group done C1C2 124 QuantProv_q90: selected 1.2 expansions -
+2026-11-23T14:06:53Z week C1C2 124 Reactive test growth 0.55: 41.8 s, cost 2220.2, violating 1.19%
+2026-11-23T14:07:05Z week C1C2 124 Reactive test bursty 0.55: 33.0 s, cost 1799.4, violating 1.19%
+2026-11-23T14:07:37Z week C1C2 124 Reactive test new_spike 0.55: 41.4 s, cost 2119.6, violating 1.34%
+2026-11-23T14:07:37Z group done C1C2 124 Reactive: selected 0.55 expansions -
+2026-11-23T14:08:16Z week C1C2 125 PRISM test stationary 0.02: 68.0 s, cost 1156.2, violating 1.64%
+2026-11-23T14:08:59Z week C1C2 125 PRISM test growth 0.02: 78.2 s, cost 1498.4, violating 1.79%
+2026-11-23T14:09:28Z week C1C2 125 PRISM test bursty 0.02: 68.8 s, cost 1340.9, violating 1.93%
+2026-11-23T14:10:19Z week C1C2 125 PRISM test new_spike 0.02: 77.3 s, cost 1593.4, violating 1.34%
+2026-11-23T14:10:19Z group done C1C2 125 PRISM: selected 0.02 expansions -
+2026-11-23T14:10:32Z week C1C2 125 QuantProv_q90 test stationary 1.2: 61.4 s, cost 1144.6, violating 1.79%
+2026-11-23T14:11:32Z heartbeat: 126 running/queued, 449 weeks run, 850 reused, 55/125 groups done
+2026-11-23T14:11:35Z week C1C2 125 QuantProv_q90 test growth 1.2: 72.7 s, cost 1501.1, violating 1.64%
+2026-11-23T14:11:37Z week C1C2 125 QuantProv_q90 test bursty 1.2: 62.6 s, cost 1335.3, violating 2.38%
+2026-11-23T14:12:13Z week C1C2 125 Reactive test stationary 0.55: 33.8 s, cost 1740.0, violating 1.64%
+2026-11-23T14:12:50Z week C1C2 125 QuantProv_q90 test new_spike 1.2: 70.9 s, cost 1604.6, violating 1.49%
+2026-11-23T14:12:50Z group done C1C2 125 QuantProv_q90: selected 1.2 expansions -
+2026-11-23T14:13:00Z week C1C2 125 Reactive test growth 0.55: 43.2 s, cost 2236.6, violating 1.93%
+2026-11-23T14:13:27Z week C1C2 125 Reactive test bursty 0.55: 34.7 s, cost 1820.8, violating 1.49%
+2026-11-23T14:13:45Z week C1C2 125 Reactive test new_spike 0.55: 41.9 s, cost 2131.3, violating 1.04%
+2026-11-23T14:13:45Z group done C1C2 125 Reactive: selected 0.55 expansions -
+2026-11-23T14:14:39Z week C1C2 126 PRISM test stationary 0.05: 69.5 s, cost 1121.9, violating 2.08%
+2026-11-23T14:15:09Z week C1C2 126 PRISM test growth 0.05: 80.0 s, cost 1516.9, violating 1.79%
+2026-11-23T14:15:52Z week C1C2 126 PRISM test bursty 0.05: 70.0 s, cost 1382.4, violating 3.12%
+2026-11-23T14:16:30Z week C1C2 126 PRISM test new_spike 0.05: 77.8 s, cost 1509.2, violating 3.57%
+2026-11-23T14:16:30Z group done C1C2 126 PRISM: selected 0.05 expansions -
+2026-11-23T14:16:57Z week C1C2 126 QuantProv_q90 test stationary 1.1: 62.9 s, cost 1160.3, violating 1.93%
+2026-11-23T14:17:47Z week C1C2 126 QuantProv_q90 test growth 1.1: 73.7 s, cost 1541.6, violating 1.93%
+2026-11-23T14:18:04Z week C1C2 126 QuantProv_q90 test bursty 1.1: 63.8 s, cost 1396.2, violating 2.98%
+2026-11-23T14:18:41Z week C1C2 126 Reactive test stationary 0.55: 34.4 s, cost 1809.7, violating 1.19%
+2026-11-23T14:19:02Z week C1C2 126 QuantProv_q90 test new_spike 1.1: 71.7 s, cost 1557.1, violating 2.23%
+2026-11-23T14:19:02Z group done C1C2 126 QuantProv_q90: selected 1.1 expansions -
+2026-11-23T14:19:29Z week C1C2 126 Reactive test growth 0.55: 45.0 s, cost 2328.7, violating 1.79%
+2026-11-23T14:19:41Z week C1C2 126 Reactive test bursty 0.55: 36.3 s, cost 1889.7, violating 1.04%
+2026-11-23T14:20:17Z week C1C2 126 Reactive test new_spike 0.55: 43.9 s, cost 2255.7, violating 1.93%
+2026-11-23T14:20:17Z group done C1C2 126 Reactive: selected 0.55 expansions -
+2026-11-23T14:20:52Z week C1C2 127 PRISM test stationary 0.03: 68.2 s, cost 1035.1, violating 2.08%
+2026-11-23T14:21:39Z week C1C2 127 PRISM test growth 0.03: 79.4 s, cost 1351.8, violating 1.93%
+2026-11-23T14:22:04Z week C1C2 127 PRISM test bursty 0.03: 69.9 s, cost 1282.4, violating 2.83%
+2026-11-23T14:23:01Z week C1C2 127 PRISM test new_spike 0.03: 77.9 s, cost 1447.9, violating 2.83%
+2026-11-23T14:23:01Z group done C1C2 127 PRISM: selected 0.03 expansions -
+2026-11-23T14:23:09Z week C1C2 127 QuantProv_q90 test stationary 1.3: 61.9 s, cost 1137.0, violating 1.79%
+2026-11-23T14:24:09Z heartbeat: 102 running/queued, 473 weeks run, 850 reused, 61/125 groups done
+2026-11-23T14:24:13Z week C1C2 127 QuantProv_q90 test bursty 1.3: 62.0 s, cost 1363.8, violating 1.93%
+2026-11-23T14:24:16Z week C1C2 127 QuantProv_q90 test growth 1.3: 71.9 s, cost 1476.2, violating 1.49%
+2026-11-23T14:24:51Z week C1C2 127 Reactive test stationary 0.55: 32.9 s, cost 1740.1, violating 1.04%
+2026-11-23T14:25:26Z week C1C2 127 QuantProv_q90 test new_spike 1.3: 69.7 s, cost 1569.0, violating 1.19%
+2026-11-23T14:25:26Z group done C1C2 127 QuantProv_q90: selected 1.3 expansions -
+2026-11-23T14:25:39Z week C1C2 127 Reactive test growth 0.55: 43.9 s, cost 2221.3, violating 1.49%
+2026-11-23T14:26:04Z week C1C2 127 Reactive test bursty 0.55: 34.8 s, cost 1820.6, violating 1.04%
+2026-11-23T14:26:25Z week C1C2 127 Reactive test new_spike 0.55: 42.9 s, cost 2126.8, violating 1.34%
+2026-11-23T14:26:25Z group done C1C2 127 Reactive: selected 0.55 expansions -
+2026-11-23T14:27:15Z week C1C2 128 PRISM val validation 0.003: 68.5 s, cost 1450.1, violating 0.89%
+2026-11-23T14:27:29Z week C1C2 128 QuantProv_q90 test stationary 1.4: 62.2 s, cost 1267.3, violating 1.79%
+2026-11-23T14:28:29Z heartbeat: 97 running/queued, 482 weeks run, 850 reused, 63/125 groups done
+2026-11-23T14:28:31Z week C1C2 128 QuantProv_q90 test growth 1.4: 72.2 s, cost 1649.4, violating 1.64%
+2026-11-23T14:28:35Z week C1C2 128 QuantProv_q90 test bursty 1.4: 62.7 s, cost 1329.7, violating 1.64%
+2026-11-23T14:29:11Z week C1C2 128 Reactive test stationary 0.55: 33.2 s, cost 1730.0, violating 0.60%
+2026-11-23T14:29:44Z week C1C2 128 QuantProv_q90 test new_spike 1.4: 70.1 s, cost 1678.4, violating 1.19%
+2026-11-23T14:29:44Z group done C1C2 128 QuantProv_q90: selected 1.4 expansions -
+2026-11-23T14:29:58Z week C1C2 128 Reactive test growth 0.55: 44.5 s, cost 2212.9, violating 0.60%
+2026-11-23T14:30:21Z week C1C2 128 Reactive test bursty 0.55: 33.9 s, cost 1792.3, violating 0.89%
+2026-11-23T14:30:43Z week C1C2 128 Reactive test new_spike 0.55: 41.8 s, cost 2115.1, violating 1.19%
+2026-11-23T14:30:43Z group done C1C2 128 Reactive: selected 0.55 expansions -
+2026-11-23T14:31:32Z week C1C2 129 PRISM test stationary 0.02: 68.4 s, cost 1201.2, violating 1.49%
+2026-11-23T14:32:07Z week C1C2 129 PRISM test growth 0.02: 79.6 s, cost 1535.4, violating 1.79%
+2026-11-23T14:32:44Z week C1C2 129 PRISM test bursty 0.02: 69.5 s, cost 1353.1, violating 2.08%
+2026-11-23T14:33:26Z week C1C2 129 PRISM test new_spike 0.02: 76.6 s, cost 1689.8, violating 1.34%
+2026-11-23T14:33:26Z group done C1C2 129 PRISM: selected 0.02 expansions -
+2026-11-23T14:33:48Z week C1C2 129 QuantProv_q90 test stationary 1.2: 61.3 s, cost 1168.5, violating 1.79%
+2026-11-23T14:34:42Z week C1C2 129 QuantProv_q90 test growth 1.2: 72.2 s, cost 1531.2, violating 1.93%
+2026-11-23T14:34:54Z week C1C2 129 QuantProv_q90 test bursty 1.2: 62.9 s, cost 1357.3, violating 2.23%
+2026-11-23T14:35:30Z week C1C2 129 Reactive test stationary 0.55: 34.1 s, cost 1717.2, violating 0.74%
+2026-11-23T14:35:57Z week C1C2 129 QuantProv_q90 test new_spike 1.2: 71.7 s, cost 1711.3, violating 1.19%
+2026-11-23T14:35:57Z group done C1C2 129 QuantProv_q90: selected 1.2 expansions -
+2026-11-23T14:36:17Z week C1C2 129 Reactive test growth 0.55: 43.2 s, cost 2208.0, violating 1.19%
+2026-11-23T14:36:34Z week C1C2 129 Reactive test bursty 0.55: 34.3 s, cost 1796.1, violating 0.89%
+2026-11-23T14:37:01Z week C1C2 129 Reactive test new_spike 0.55: 41.1 s, cost 2117.4, violating 0.89%
+2026-11-23T14:37:01Z group done C1C2 129 Reactive: selected 0.55 expansions -
+2026-11-23T14:37:45Z week C1C2 130 PRISM test stationary 0.02: 68.6 s, cost 1133.3, violating 1.64%
+2026-11-23T14:38:23Z week C1C2 130 PRISM test growth 0.02: 78.7 s, cost 1462.9, violating 1.34%
+2026-11-23T14:38:58Z week C1C2 130 PRISM test bursty 0.02: 70.4 s, cost 1359.4, violating 1.93%
+2026-11-23T14:39:44Z week C1C2 130 PRISM test new_spike 0.02: 77.3 s, cost 1547.5, violating 2.08%
+2026-11-23T14:39:44Z group done C1C2 130 PRISM: selected 0.02 expansions -
+2026-11-23T14:40:03Z week C1C2 130 QuantProv_q90 test stationary 1.2: 62.5 s, cost 1127.3, violating 1.64%
+2026-11-23T14:41:00Z week C1C2 130 QuantProv_q90 test growth 1.2: 72.1 s, cost 1472.3, violating 1.34%
+2026-11-23T14:41:09Z week C1C2 130 QuantProv_q90 test bursty 1.2: 63.5 s, cost 1350.7, violating 2.83%
+2026-11-23T14:41:46Z week C1C2 130 Reactive test stationary 0.55: 34.1 s, cost 1733.7, violating 0.60%
+2026-11-23T14:42:14Z week C1C2 130 QuantProv_q90 test new_spike 1.2: 71.3 s, cost 1559.7, violating 2.38%
+2026-11-23T14:42:14Z group done C1C2 130 QuantProv_q90: selected 1.2 expansions -
+2026-11-23T14:42:34Z week C1C2 130 Reactive test growth 0.55: 44.3 s, cost 2209.5, violating 1.34%
+2026-11-23T14:42:52Z week C1C2 130 Reactive test bursty 0.55: 35.2 s, cost 1874.3, violating 1.19%
+2026-11-23T14:43:19Z week C1C2 130 Reactive test new_spike 0.55: 42.3 s, cost 2127.1, violating 0.74%
+2026-11-23T14:43:19Z group done C1C2 130 Reactive: selected 0.55 expansions -
+2026-11-23T14:44:04Z week C3 106 PRISM test stationary 0.03: 69.3 s, cost 1659.2, violating 2.23%
+2026-11-23T14:44:04Z group done C3 106 PRISM: selected 0.03 expansions -
+2026-11-23T14:44:25Z week C3 106 MemAdapt_q90 test stationary 0.7: 62.7 s, cost 1383.8, violating 2.98%
+2026-11-23T14:44:25Z group done C3 106 MemAdapt_q90: selected 0.7 expansions -
+2026-11-23T14:45:15Z week C3 107 PRISM test stationary 0.03: 68.2 s, cost 1910.7, violating 0.89%
+2026-11-23T14:45:15Z group done C3 107 PRISM: selected 0.03 expansions -
+2026-11-23T14:45:29Z week C3 107 MemAdapt_q90 test stationary 1.1: 61.9 s, cost 1844.2, violating 1.04%
+2026-11-23T14:45:29Z group done C3 107 MemAdapt_q90: selected 1.1 expansions -
+2026-11-23T14:46:26Z week C3 108 PRISM test stationary 0.03: 68.6 s, cost 1552.8, violating 1.19%
+2026-11-23T14:46:26Z group done C3 108 PRISM: selected 0.03 expansions -
+2026-11-23T14:46:34Z week C3 108 MemAdapt_q90 test stationary 1.1: 62.4 s, cost 1625.3, violating 0.89%
+2026-11-23T14:46:34Z group done C3 108 MemAdapt_q90: selected 1.1 expansions -
+2026-11-23T14:47:34Z heartbeat: 60 running/queued, 519 weeks run, 850 reused, 77/125 groups done
+2026-11-23T14:47:36Z week C3 109 PRISM test stationary 0.03: 67.6 s, cost 1513.7, violating 0.89%
+2026-11-23T14:47:36Z group done C3 109 PRISM: selected 0.03 expansions -
+2026-11-23T14:47:38Z week C3 109 MemAdapt_q90 test stationary 1.0: 61.0 s, cost 1515.8, violating 0.89%
+2026-11-23T14:47:38Z group done C3 109 MemAdapt_q90: selected 1.0 expansions -
+2026-11-23T14:48:38Z heartbeat: 58 running/queued, 521 weeks run, 850 reused, 79/125 groups done
+2026-11-23T14:48:43Z week C3 110 MemAdapt_q90 test stationary 1.1: 62.4 s, cost 1678.6, violating 1.19%
+2026-11-23T14:48:43Z group done C3 110 MemAdapt_q90: selected 1.1 expansions -
+2026-11-23T14:48:48Z week C3 110 PRISM test stationary 0.03: 69.0 s, cost 1636.9, violating 1.04%
+2026-11-23T14:48:48Z group done C3 110 PRISM: selected 0.03 expansions -
+2026-11-23T14:49:48Z heartbeat: 56 running/queued, 523 weeks run, 850 reused, 81/125 groups done
+2026-11-23T14:49:53Z week C3 111 MemAdapt_q90 test stationary 0.7: 62.6 s, cost 1321.0, violating 2.23%
+2026-11-23T14:49:53Z group done C3 111 MemAdapt_q90: selected 0.7 expansions -
+2026-11-23T14:49:55Z week C3 111 PRISM test stationary 0.03: 69.1 s, cost 1499.3, violating 1.04%
+2026-11-23T14:49:55Z group done C3 111 PRISM: selected 0.03 expansions -
+2026-11-23T14:50:55Z heartbeat: 54 running/queued, 525 weeks run, 850 reused, 83/125 groups done
+2026-11-23T14:50:59Z week C3 112 MemAdapt_q90 test stationary 0.9: 61.6 s, cost 1431.2, violating 1.04%
+2026-11-23T14:50:59Z group done C3 112 MemAdapt_q90: selected 0.9 expansions -
+2026-11-23T14:51:04Z week C3 112 PRISM test stationary 0.03: 68.6 s, cost 1512.0, violating 1.04%
+2026-11-23T14:51:04Z group done C3 112 PRISM: selected 0.03 expansions -
+2026-11-23T14:52:04Z heartbeat: 52 running/queued, 527 weeks run, 850 reused, 85/125 groups done
+2026-11-23T14:52:09Z week C3 113 MemAdapt_q90 test stationary 1.0: 62.7 s, cost 1756.6, violating 1.79%
+2026-11-23T14:52:09Z group done C3 113 MemAdapt_q90: selected 1.0 expansions -
+2026-11-23T14:52:11Z week C3 113 PRISM test stationary 0.03: 69.6 s, cost 1904.6, violating 1.34%
+2026-11-23T14:52:11Z group done C3 113 PRISM: selected 0.03 expansions -
+2026-11-23T14:53:11Z heartbeat: 50 running/queued, 529 weeks run, 850 reused, 87/125 groups done
+2026-11-23T14:53:16Z week C3 114 MemAdapt_q90 test stationary 0.7: 61.9 s, cost 1369.6, violating 2.98%
+2026-11-23T14:53:16Z group done C3 114 MemAdapt_q90: selected 0.7 expansions -
+2026-11-23T14:53:20Z week C3 114 PRISM test stationary 0.03: 68.0 s, cost 1658.5, violating 1.79%
+2026-11-23T14:53:20Z group done C3 114 PRISM: selected 0.03 expansions -
+2026-11-23T14:54:20Z heartbeat: 48 running/queued, 531 weeks run, 850 reused, 89/125 groups done
+2026-11-23T14:54:25Z week C3 115 MemAdapt_q90 test stationary 0.8: 62.1 s, cost 1575.7, violating 1.93%
+2026-11-23T14:54:25Z group done C3 115 MemAdapt_q90: selected 0.8 expansions -
+2026-11-23T14:54:28Z week C3 115 PRISM test stationary 0.03: 69.0 s, cost 1931.9, violating 1.04%
+2026-11-23T14:54:28Z group done C3 115 PRISM: selected 0.03 expansions -
+2026-11-23T14:55:28Z heartbeat: 46 running/queued, 533 weeks run, 850 reused, 91/125 groups done
+2026-11-23T14:55:32Z week C3 116 MemAdapt_q90 test stationary 0.8: 62.1 s, cost 1504.7, violating 1.79%
+2026-11-23T14:55:32Z group done C3 116 MemAdapt_q90: selected 0.8 expansions -
+2026-11-23T14:55:36Z week C3 116 PRISM test stationary 0.03: 68.7 s, cost 1787.2, violating 1.19%
+2026-11-23T14:55:36Z group done C3 116 PRISM: selected 0.03 expansions -
+2026-11-23T14:56:36Z heartbeat: 44 running/queued, 535 weeks run, 850 reused, 93/125 groups done
+2026-11-23T14:56:40Z week C3 117 MemAdapt_q90 test stationary 0.7: 61.7 s, cost 1364.7, violating 1.79%
+2026-11-23T14:56:40Z group done C3 117 MemAdapt_q90: selected 0.7 expansions -
+2026-11-23T14:56:43Z week C3 117 PRISM test stationary 0.03: 68.3 s, cost 1651.3, violating 0.74%
+2026-11-23T14:56:43Z group done C3 117 PRISM: selected 0.03 expansions -
+2026-11-23T14:57:43Z heartbeat: 42 running/queued, 537 weeks run, 850 reused, 95/125 groups done
+2026-11-23T14:57:50Z week C3 118 MemAdapt_q90 val validation 0.5: 63.8 s, cost 1206.3, violating 2.68%
+2026-11-23T14:57:52Z week C3 118 PRISM test stationary 0.03: 69.0 s, cost 2004.1, violating 1.19%
+2026-11-23T14:57:52Z group done C3 118 PRISM: selected 0.03 expansions -
+2026-11-23T14:58:52Z heartbeat: 41 running/queued, 539 weeks run, 850 reused, 96/125 groups done
+2026-11-23T14:58:58Z week C3 119 MemAdapt_q90 test stationary 0.7: 63.1 s, cost 1308.6, violating 1.93%
+2026-11-23T14:58:58Z group done C3 119 MemAdapt_q90: selected 0.7 expansions -
+2026-11-23T14:59:02Z week C3 119 PRISM test stationary 0.03: 70.1 s, cost 1495.6, violating 1.04%
+2026-11-23T14:59:02Z group done C3 119 PRISM: selected 0.03 expansions -
+2026-11-23T15:00:02Z heartbeat: 39 running/queued, 541 weeks run, 850 reused, 98/125 groups done
+2026-11-23T15:00:08Z week C3 120 MemAdapt_q90 test stationary 0.8: 62.9 s, cost 1462.3, violating 1.64%
+2026-11-23T15:00:08Z group done C3 120 MemAdapt_q90: selected 0.8 expansions -
+2026-11-23T15:00:10Z week C3 120 PRISM test stationary 0.03: 69.4 s, cost 1690.2, violating 0.74%
+2026-11-23T15:00:10Z group done C3 120 PRISM: selected 0.03 expansions -
+2026-11-23T15:01:10Z heartbeat: 37 running/queued, 543 weeks run, 850 reused, 100/125 groups done
+2026-11-23T15:01:17Z week C3 121 MemAdapt_q90 val validation 0.5: 64.4 s, cost 1184.8, violating 2.08%
+2026-11-23T15:01:20Z week C3 121 PRISM test stationary 0.03: 70.2 s, cost 1559.1, violating 0.45%
+2026-11-23T15:01:20Z group done C3 121 PRISM: selected 0.03 expansions -
+2026-11-23T15:02:20Z heartbeat: 36 running/queued, 545 weeks run, 850 reused, 101/125 groups done
+2026-11-23T15:02:25Z week C3 122 MemAdapt_q90 test stationary 1.2: 61.8 s, cost 1833.3, violating 0.60%
+2026-11-23T15:02:25Z group done C3 122 MemAdapt_q90: selected 1.2 expansions -
+2026-11-23T15:02:28Z week C3 122 PRISM test stationary 0.02: 68.4 s, cost 1885.6, violating 0.30%
+2026-11-23T15:02:28Z group done C3 122 PRISM: selected 0.02 expansions -
+2026-11-23T15:03:28Z heartbeat: 34 running/queued, 547 weeks run, 850 reused, 103/125 groups done
+2026-11-23T15:03:33Z week C3 123 MemAdapt_q90 test stationary 0.7: 62.4 s, cost 1455.5, violating 2.38%
+2026-11-23T15:03:33Z group done C3 123 MemAdapt_q90: selected 0.7 expansions -
+2026-11-23T15:03:36Z week C3 123 PRISM test stationary 0.03: 69.1 s, cost 1876.4, violating 0.89%
+2026-11-23T15:03:36Z group done C3 123 PRISM: selected 0.03 expansions -
+2026-11-23T15:04:36Z heartbeat: 32 running/queued, 549 weeks run, 850 reused, 105/125 groups done
+2026-11-23T15:04:41Z week C3 124 MemAdapt_q90 test stationary 0.7: 61.7 s, cost 1329.0, violating 2.38%
+2026-11-23T15:04:41Z group done C3 124 MemAdapt_q90: selected 0.7 expansions -
+2026-11-23T15:04:43Z week C3 124 PRISM test stationary 0.03: 67.7 s, cost 1573.8, violating 1.34%
+2026-11-23T15:04:43Z group done C3 124 PRISM: selected 0.03 expansions -
+2026-11-23T15:05:43Z heartbeat: 30 running/queued, 551 weeks run, 850 reused, 107/125 groups done
+2026-11-23T15:05:47Z week C3 125 MemAdapt_q90 test stationary 1.0: 61.6 s, cost 1557.8, violating 1.49%
+2026-11-23T15:05:47Z group done C3 125 MemAdapt_q90: selected 1.0 expansions -
+2026-11-23T15:05:52Z week C3 125 PRISM test stationary 0.03: 68.5 s, cost 1556.7, violating 1.79%
+2026-11-23T15:05:52Z group done C3 125 PRISM: selected 0.03 expansions -
+2026-11-23T15:06:52Z heartbeat: 28 running/queued, 553 weeks run, 850 reused, 109/125 groups done
+2026-11-23T15:06:58Z week C3 126 MemAdapt_q90 val validation 0.5: 63.7 s, cost 1220.2, violating 2.68%
+2026-11-23T15:06:59Z week C3 126 PRISM test stationary 0.03: 69.2 s, cost 1710.7, violating 1.49%
+2026-11-23T15:06:59Z group done C3 126 PRISM: selected 0.03 expansions -
+2026-11-23T15:07:59Z heartbeat: 27 running/queued, 555 weeks run, 850 reused, 110/125 groups done
+2026-11-23T15:08:04Z week C3 127 MemAdapt_q90 test stationary 0.8: 61.8 s, cost 1356.6, violating 1.79%
+2026-11-23T15:08:04Z group done C3 127 MemAdapt_q90: selected 0.8 expansions -
+2026-11-23T15:08:09Z week C3 127 PRISM test stationary 0.03: 68.6 s, cost 1480.2, violating 1.49%
+2026-11-23T15:08:09Z group done C3 127 PRISM: selected 0.03 expansions -
+2026-11-23T15:09:09Z heartbeat: 25 running/queued, 557 weeks run, 850 reused, 112/125 groups done
+2026-11-23T15:09:14Z week C3 128 MemAdapt_q90 test stationary 0.9: 62.0 s, cost 1499.3, violating 1.64%
+2026-11-23T15:09:14Z group done C3 128 MemAdapt_q90: selected 0.9 expansions -
+2026-11-23T15:09:14Z week C3 128 PRISM test stationary 0.03: 68.3 s, cost 1600.5, violating 1.49%
+2026-11-23T15:09:14Z group done C3 128 PRISM: selected 0.03 expansions -
+2026-11-23T15:10:14Z heartbeat: 23 running/queued, 559 weeks run, 850 reused, 114/125 groups done
+2026-11-23T15:10:23Z week C3 129 MemAdapt_q90 test stationary 0.9: 66.2 s, cost 1506.1, violating 1.64%
+2026-11-23T15:10:23Z group done C3 129 MemAdapt_q90: selected 0.9 expansions -
+2026-11-23T15:10:30Z week C3 129 PRISM test stationary 0.03: 74.0 s, cost 1637.3, violating 1.19%
+2026-11-23T15:10:30Z group done C3 129 PRISM: selected 0.03 expansions -
+2026-11-23T15:11:30Z heartbeat: 21 running/queued, 561 weeks run, 850 reused, 116/125 groups done
+2026-11-23T15:11:46Z week C3 130 PRISM test stationary 0.03: 79.8 s, cost 1531.8, violating 1.49%
+2026-11-23T15:11:46Z group done C3 130 PRISM: selected 0.03 expansions -
+2026-11-23T15:11:46Z week C3 130 MemAdapt_q90 test stationary 0.9: 72.9 s, cost 1464.9, violating 1.34%
+2026-11-23T15:11:46Z group done C3 130 MemAdapt_q90: selected 0.9 expansions -
+2026-11-23T15:12:46Z heartbeat: 19 running/queued, 563 weeks run, 850 reused, 118/125 groups done
+2026-11-23T15:13:00Z week C1C2 113 QuantProv_q90 test stationary 1.5: 70.6 s, cost 1501.5, violating 0.89%
+2026-11-23T15:13:13Z week C1C2 113 QuantProv_q90 test growth 1.5: 82.8 s, cost 1943.6, violating 0.89%
+2026-11-23T15:14:10Z week C1C2 113 QuantProv_q90 test bursty 1.5: 67.2 s, cost 1647.3, violating 1.04%
+2026-11-23T15:14:31Z week C1C2 113 QuantProv_q90 test new_spike 1.5: 74.6 s, cost 1979.9, violating 0.45%
+2026-11-23T15:14:31Z group done C1C2 113 QuantProv_q90: selected 1.5 expansions [1.6]
+2026-11-23T15:15:21Z week C1C2 122 PRISM test stationary 0.005: 68.3 s, cost 1485.2, violating 0.45%
+2026-11-23T15:15:59Z week C1C2 122 PRISM test growth 0.005: 84.5 s, cost 1815.5, violating 0.74%
+2026-11-23T15:16:46Z week C1C2 122 PRISM test bursty 0.005: 83.1 s, cost 1644.9, violating 0.30%
+2026-11-23T15:17:32Z week C1C2 122 PRISM test new_spike 0.005: 89.6 s, cost 1758.9, violating 0.30%
+2026-11-23T15:17:32Z group done C1C2 122 PRISM: selected 0.005 expansions [0.003]
+2026-11-23T15:17:56Z week C1C2 122 QuantProv_q90 test stationary 1.5: 65.0 s, cost 1405.7, violating 0.60%
+2026-11-23T15:18:54Z week C1C2 122 QuantProv_q90 test growth 1.5: 79.1 s, cost 1859.7, violating 0.15%
+2026-11-23T15:19:08Z week C1C2 122 QuantProv_q90 test bursty 1.5: 70.0 s, cost 1639.7, violating 0.60%
+2026-11-23T15:20:08Z heartbeat: 8 running/queued, 574 weeks run, 850 reused, 120/125 groups done
+2026-11-23T15:20:58Z week C1C2 122 QuantProv_q90 test new_spike 1.5: 120.9 s, cost 1801.5, violating 0.30%
+2026-11-23T15:20:58Z group done C1C2 122 QuantProv_q90: selected 1.5 expansions [1.6]
+2026-11-23T15:21:14Z week C1C2 128 PRISM test stationary 0.005: 121.8 s, cost 1370.5, violating 1.34%
+2026-11-23T15:22:14Z heartbeat: 6 running/queued, 576 weeks run, 850 reused, 121/125 groups done
+2026-11-23T15:23:07Z week C1C2 128 PRISM test bursty 0.005: 109.4 s, cost 1432.0, violating 1.34%
+2026-11-23T15:23:09Z week C1C2 128 PRISM test growth 0.005: 125.6 s, cost 1723.6, violating 1.04%
+2026-11-23T15:24:09Z heartbeat: 4 running/queued, 578 weeks run, 850 reused, 121/125 groups done
+2026-11-23T15:24:43Z week C3 118 MemAdapt_q90 test stationary 0.6: 90.1 s, cost 1427.4, violating 2.98%
+2026-11-23T15:24:43Z group done C3 118 MemAdapt_q90: selected 0.6 expansions [0.5]
+2026-11-23T15:24:55Z week C1C2 128 PRISM test new_spike 0.005: 102.9 s, cost 1708.3, violating 1.34%
+2026-11-23T15:24:55Z group done C1C2 128 PRISM: selected 0.005 expansions [0.003]
+2026-11-23T15:25:43Z week C3 121 MemAdapt_q90 test stationary 0.6: 57.5 s, cost 1279.3, violating 2.53%
+2026-11-23T15:25:43Z group done C3 121 MemAdapt_q90: selected 0.6 expansions [0.5]
+2026-11-23T15:25:54Z week C3 126 MemAdapt_q90 test stationary 0.6: 57.2 s, cost 1339.7, violating 2.83%
+2026-11-23T15:25:54Z group done C3 126 MemAdapt_q90: selected 0.6 expansions [0.5]
+2026-11-23T15:25:55Z end: 582 weeks run, 850 reused from cache, 0 failures, 125/125 groups done

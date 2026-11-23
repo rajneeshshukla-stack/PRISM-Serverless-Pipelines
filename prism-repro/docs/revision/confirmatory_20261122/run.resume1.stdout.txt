@@ -1,0 +1,554 @@
+2026-11-22T23:55:27Z start: sets ['C1C2', 'C3'], 125 groups, workers 4, commit fd8b01a, driver 3f909dc9780d
+2026-11-22T23:56:27Z heartbeat: 1048 running/queued, 0 weeks run, 27 reused, 0/125 groups done
+2026-11-22T23:57:27Z heartbeat: 1060 running/queued, 0 weeks run, 27 reused, 0/125 groups done
+2026-11-22T23:58:18Z week C1C2 106 PRISM val validation 0.005: 159.6 s, cost 1335.4, violating 0.15%
+2026-11-22T23:58:18Z week C1C2 106 PRISM val validation 0.03: 159.9 s, cost 1025.3, violating 2.53%
+2026-11-22T23:58:19Z week C1C2 106 PRISM val validation 0.01: 160.3 s, cost 1193.0, violating 0.60%
+2026-11-22T23:58:19Z week C1C2 106 PRISM val validation 0.02: 161.0 s, cost 1077.3, violating 1.49%
+2026-11-22T23:59:19Z heartbeat: 1056 running/queued, 4 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:00:20Z heartbeat: 1056 running/queued, 4 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:00:56Z week C1C2 106 QuantProv_q90 val validation 0.7: 151.2 s, cost 865.2, violating 5.36%
+2026-11-23T00:00:57Z week C1C2 106 QuantProv_q90 val validation 0.6: 152.7 s, cost 833.5, violating 7.89%
+2026-11-23T00:01:09Z week C1C2 106 PRISM val validation 0.05: 165.9 s, cost 947.9, violating 3.42%
+2026-11-23T00:01:09Z week C1C2 106 PRISM val validation 0.08: 165.2 s, cost 907.0, violating 4.02%
+2026-11-23T00:02:09Z heartbeat: 1052 running/queued, 8 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:03:09Z heartbeat: 1056 running/queued, 8 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:03:28Z week C1C2 106 QuantProv_q90 val validation 0.8: 146.7 s, cost 903.2, violating 3.87%
+2026-11-23T00:03:29Z week C1C2 106 QuantProv_q90 val validation 0.9: 146.4 s, cost 945.4, violating 2.98%
+2026-11-23T00:03:40Z week C1C2 106 QuantProv_q90 val validation 1.1: 145.3 s, cost 1036.1, violating 1.49%
+2026-11-23T00:03:40Z week C1C2 106 QuantProv_q90 val validation 1.0: 145.5 s, cost 990.1, violating 2.38%
+2026-11-23T00:04:40Z heartbeat: 1052 running/queued, 12 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:05:40Z heartbeat: 1052 running/queued, 12 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:05:52Z week C1C2 106 QuantProv_q90 val validation 1.3: 137.8 s, cost 1130.8, violating 1.04%
+2026-11-23T00:05:53Z week C1C2 106 QuantProv_q90 val validation 1.2: 139.9 s, cost 1083.5, violating 1.04%
+2026-11-23T00:06:09Z week C1C2 106 QuantProv_q90 val validation 1.5: 143.6 s, cost 1226.6, violating 0.45%
+2026-11-23T00:06:09Z week C1C2 106 QuantProv_q90 val validation 1.4: 143.9 s, cost 1178.6, violating 0.89%
+2026-11-23T00:07:09Z heartbeat: 1048 running/queued, 16 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:07:16Z week C1C2 106 Reactive val validation 0.4: 79.3 s, cost 2164.0, violating 0.15%
+2026-11-23T00:07:18Z week C1C2 106 Reactive val validation 0.45: 79.1 s, cost 1985.6, violating 0.15%
+2026-11-23T00:07:28Z week C1C2 106 Reactive val validation 0.5: 73.7 s, cost 1842.2, violating 0.60%
+2026-11-23T00:07:30Z week C1C2 106 Reactive val validation 0.55: 75.4 s, cost 1741.2, violating 1.34%
+2026-11-23T00:08:30Z heartbeat: 1048 running/queued, 20 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:08:36Z week C1C2 106 Reactive val validation 0.6: 75.6 s, cost 1660.4, violating 2.83%
+2026-11-23T00:08:37Z week C1C2 106 Reactive val validation 0.65: 74.9 s, cost 1602.5, violating 4.46%
+2026-11-23T00:08:50Z week C1C2 106 Reactive val validation 0.7: 77.8 s, cost 1561.2, violating 6.25%
+2026-11-23T00:08:52Z week C1C2 106 Reactive val validation 0.75: 77.2 s, cost 1523.1, violating 9.23%
+2026-11-23T00:09:52Z heartbeat: 1044 running/queued, 24 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:09:59Z week C1C2 106 Reactive val validation 0.8: 77.7 s, cost 1487.6, violating 10.57%
+2026-11-23T00:10:00Z week C1C2 106 Reactive val validation 0.85: 77.8 s, cost 1466.6, violating 12.65%
+2026-11-23T00:10:11Z week C1C2 106 Reactive val validation 0.9: 75.5 s, cost 1442.1, violating 14.43%
+2026-11-23T00:11:11Z heartbeat: 1041 running/queued, 27 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:11:27Z week C1C2 108 PRISM val validation 0.005: 150.3 s, cost 1286.2, violating 1.49%
+2026-11-23T00:12:27Z heartbeat: 1044 running/queued, 28 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:12:32Z week C1C2 108 PRISM val validation 0.02: 146.5 s, cost 1032.7, violating 2.53%
+2026-11-23T00:12:33Z week C1C2 108 PRISM val validation 0.01: 148.5 s, cost 1141.7, violating 1.93%
+2026-11-23T00:12:43Z week C1C2 108 PRISM val validation 0.03: 147.4 s, cost 988.2, violating 2.98%
+2026-11-23T00:13:43Z heartbeat: 1041 running/queued, 31 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:14:00Z week C1C2 108 PRISM val validation 0.05: 148.7 s, cost 921.0, violating 4.61%
+2026-11-23T00:14:54Z week C1C2 108 QuantProv_q90 val validation 0.6: 137.0 s, cost 820.1, violating 10.71%
+2026-11-23T00:15:03Z week C1C2 108 QuantProv_q90 val validation 0.7: 135.3 s, cost 847.8, violating 7.59%
+2026-11-23T00:15:03Z week C1C2 108 PRISM val validation 0.08: 146.7 s, cost 900.3, violating 3.87%
+2026-11-23T00:16:03Z heartbeat: 1037 running/queued, 35 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:16:22Z week C1C2 108 QuantProv_q90 val validation 0.8: 136.6 s, cost 881.6, violating 5.36%
+2026-11-23T00:17:12Z week C1C2 108 QuantProv_q90 val validation 0.9: 133.1 s, cost 919.6, violating 4.46%
+2026-11-23T00:17:21Z week C1C2 108 QuantProv_q90 val validation 1.0: 133.9 s, cost 960.6, violating 3.57%
+2026-11-23T00:17:21Z week C1C2 108 QuantProv_q90 val validation 1.1: 133.4 s, cost 1003.1, violating 2.68%
+2026-11-23T00:18:21Z heartbeat: 1037 running/queued, 39 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:18:40Z week C1C2 108 QuantProv_q90 val validation 1.2: 133.8 s, cost 1047.0, violating 2.53%
+2026-11-23T00:19:32Z week C1C2 108 QuantProv_q90 val validation 1.3: 135.1 s, cost 1091.2, violating 2.08%
+2026-11-23T00:19:39Z week C1C2 108 QuantProv_q90 val validation 1.4: 132.4 s, cost 1135.9, violating 1.79%
+2026-11-23T00:19:42Z week C1C2 108 QuantProv_q90 val validation 1.5: 135.0 s, cost 1180.7, violating 1.79%
+2026-11-23T00:19:58Z week C1C2 108 Reactive val validation 0.4: 73.3 s, cost 2157.7, violating 0.15%
+2026-11-23T00:20:50Z week C1C2 108 Reactive val validation 0.45: 72.7 s, cost 1982.6, violating 0.30%
+2026-11-23T00:20:59Z week C1C2 108 Reactive val validation 0.5: 75.3 s, cost 1850.1, violating 0.74%
+2026-11-23T00:21:02Z week C1C2 108 Reactive val validation 0.55: 75.0 s, cost 1749.9, violating 1.64%
+2026-11-23T00:21:17Z week C1C2 108 Reactive val validation 0.6: 74.3 s, cost 1670.4, violating 2.98%
+2026-11-23T00:22:09Z week C1C2 108 Reactive val validation 0.65: 74.2 s, cost 1617.1, violating 5.21%
+2026-11-23T00:22:19Z week C1C2 108 Reactive val validation 0.7: 75.2 s, cost 1579.8, violating 7.14%
+2026-11-23T00:22:21Z week C1C2 108 Reactive val validation 0.75: 74.5 s, cost 1540.2, violating 8.33%
+2026-11-23T00:22:39Z week C1C2 108 Reactive val validation 0.8: 77.4 s, cost 1508.8, violating 10.86%
+2026-11-23T00:23:28Z week C1C2 108 Reactive val validation 0.85: 74.7 s, cost 1484.5, violating 12.65%
+2026-11-23T00:23:39Z week C1C2 108 Reactive val validation 0.9: 74.4 s, cost 1463.8, violating 13.10%
+2026-11-23T00:24:39Z heartbeat: 1026 running/queued, 54 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:24:51Z week C1C2 109 PRISM val validation 0.005: 144.0 s, cost 1298.0, violating 1.49%
+2026-11-23T00:25:09Z week C1C2 109 PRISM val validation 0.01: 145.6 s, cost 1166.0, violating 1.93%
+2026-11-23T00:26:01Z week C1C2 109 PRISM val validation 0.02: 147.7 s, cost 1071.0, violating 2.23%
+2026-11-23T00:26:10Z week C1C2 109 PRISM val validation 0.03: 146.8 s, cost 1012.2, violating 2.68%
+2026-11-23T00:27:10Z heartbeat: 1026 running/queued, 58 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:27:30Z week C1C2 109 PRISM val validation 0.05: 154.9 s, cost 942.8, violating 3.42%
+2026-11-23T00:27:47Z week C1C2 109 PRISM val validation 0.08: 152.9 s, cost 915.5, violating 3.42%
+2026-11-23T00:28:28Z week C1C2 109 QuantProv_q90 val validation 0.6: 143.1 s, cost 835.3, violating 7.59%
+2026-11-23T00:28:45Z week C1C2 109 QuantProv_q90 val validation 0.7: 148.5 s, cost 865.3, violating 4.91%
+2026-11-23T00:29:45Z heartbeat: 1026 running/queued, 62 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:30:01Z week C1C2 109 QuantProv_q90 val validation 0.8: 146.5 s, cost 901.5, violating 4.32%
+2026-11-23T00:30:18Z week C1C2 109 QuantProv_q90 val validation 0.9: 146.1 s, cost 942.1, violating 3.87%
+2026-11-23T00:30:57Z week C1C2 109 QuantProv_q90 val validation 1.0: 143.5 s, cost 985.5, violating 2.68%
+2026-11-23T00:31:09Z week C1C2 109 QuantProv_q90 val validation 1.1: 139.5 s, cost 1030.6, violating 2.23%
+2026-11-23T00:32:09Z heartbeat: 1022 running/queued, 66 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:32:27Z week C1C2 109 QuantProv_q90 val validation 1.2: 140.6 s, cost 1076.3, violating 2.23%
+2026-11-23T00:32:44Z week C1C2 109 QuantProv_q90 val validation 1.3: 141.4 s, cost 1122.9, violating 1.79%
+2026-11-23T00:33:27Z week C1C2 109 QuantProv_q90 val validation 1.4: 144.6 s, cost 1169.6, violating 1.79%
+2026-11-23T00:33:43Z week C1C2 109 QuantProv_q90 val validation 1.5: 147.3 s, cost 1216.5, violating 1.64%
+2026-11-23T00:33:56Z week C1C2 109 Reactive val validation 0.4: 84.3 s, cost 2206.2, violating 0.30%
+2026-11-23T00:34:13Z week C1C2 109 Reactive val validation 0.45: 84.1 s, cost 2040.6, violating 0.89%
+2026-11-23T00:34:55Z week C1C2 109 Reactive val validation 0.5: 82.1 s, cost 1912.0, violating 1.04%
+2026-11-23T00:35:08Z week C1C2 109 Reactive val validation 0.55: 80.5 s, cost 1813.9, violating 1.79%
+2026-11-23T00:35:20Z week C1C2 109 Reactive val validation 0.6: 78.8 s, cost 1736.6, violating 2.68%
+2026-11-23T00:35:36Z week C1C2 109 Reactive val validation 0.65: 78.2 s, cost 1670.6, violating 4.02%
+2026-11-23T00:36:15Z week C1C2 109 Reactive val validation 0.7: 74.5 s, cost 1627.3, violating 6.85%
+2026-11-23T00:36:27Z week C1C2 109 Reactive val validation 0.75: 74.9 s, cost 1585.9, violating 8.78%
+2026-11-23T00:36:43Z week C1C2 109 Reactive val validation 0.8: 78.4 s, cost 1568.0, violating 11.31%
+2026-11-23T00:37:01Z week C1C2 109 Reactive val validation 0.85: 80.3 s, cost 1537.3, violating 12.65%
+2026-11-23T00:37:42Z week C1C2 109 Reactive val validation 0.9: 82.5 s, cost 1511.6, violating 14.88%
+2026-11-23T00:38:42Z heartbeat: 1011 running/queued, 81 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:39:14Z week C1C2 110 PRISM val validation 0.005: 162.0 s, cost 1518.7, violating 0.89%
+2026-11-23T00:39:33Z week C1C2 110 PRISM val validation 0.01: 164.4 s, cost 1357.4, violating 1.34%
+2026-11-23T00:39:51Z week C1C2 110 PRISM val validation 0.02: 164.6 s, cost 1264.5, violating 2.23%
+2026-11-23T00:40:30Z week C1C2 110 PRISM val validation 0.03: 163.3 s, cost 1222.3, violating 2.68%
+2026-11-23T00:41:30Z heartbeat: 1011 running/queued, 85 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:41:51Z week C1C2 110 PRISM val validation 0.05: 150.7 s, cost 1149.5, violating 3.72%
+2026-11-23T00:42:06Z week C1C2 110 PRISM val validation 0.08: 147.6 s, cost 1044.9, violating 4.61%
+2026-11-23T00:42:09Z week C1C2 110 QuantProv_q90 val validation 0.6: 133.1 s, cost 904.2, violating 7.14%
+2026-11-23T00:42:49Z week C1C2 110 QuantProv_q90 val validation 0.7: 134.1 s, cost 954.5, violating 6.55%
+2026-11-23T00:43:49Z heartbeat: 1011 running/queued, 89 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:44:08Z week C1C2 110 QuantProv_q90 val validation 0.8: 132.0 s, cost 1009.1, violating 4.76%
+2026-11-23T00:44:20Z week C1C2 110 QuantProv_q90 val validation 0.9: 129.4 s, cost 1066.4, violating 4.46%
+2026-11-23T00:44:23Z week C1C2 110 QuantProv_q90 val validation 1.0: 129.3 s, cost 1125.0, violating 4.02%
+2026-11-23T00:45:01Z week C1C2 110 QuantProv_q90 val validation 1.1: 126.6 s, cost 1184.4, violating 3.42%
+2026-11-23T00:46:01Z heartbeat: 1007 running/queued, 93 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:46:17Z week C1C2 110 QuantProv_q90 val validation 1.2: 124.9 s, cost 1244.1, violating 2.68%
+2026-11-23T00:46:31Z week C1C2 110 QuantProv_q90 val validation 1.3: 126.3 s, cost 1304.1, violating 2.53%
+2026-11-23T00:46:32Z week C1C2 110 QuantProv_q90 val validation 1.4: 124.1 s, cost 1364.3, violating 1.79%
+2026-11-23T00:47:08Z week C1C2 110 QuantProv_q90 val validation 1.5: 122.7 s, cost 1424.4, violating 1.19%
+2026-11-23T00:47:25Z week C1C2 110 Reactive val validation 0.4: 63.6 s, cost 2238.3, violating 0.15%
+2026-11-23T00:47:40Z week C1C2 110 Reactive val validation 0.45: 64.7 s, cost 2060.6, violating 0.30%
+2026-11-23T00:47:43Z week C1C2 110 Reactive val validation 0.5: 66.0 s, cost 1920.8, violating 0.74%
+2026-11-23T00:48:19Z week C1C2 110 Reactive val validation 0.55: 66.5 s, cost 1818.7, violating 1.34%
+2026-11-23T00:48:35Z week C1C2 110 Reactive val validation 0.6: 66.3 s, cost 1721.1, violating 1.79%
+2026-11-23T00:48:50Z week C1C2 110 Reactive val validation 0.65: 65.3 s, cost 1650.7, violating 2.98%
+2026-11-23T00:48:52Z week C1C2 110 Reactive val validation 0.7: 65.3 s, cost 1598.3, violating 4.91%
+2026-11-23T00:49:29Z week C1C2 110 Reactive val validation 0.75: 65.2 s, cost 1554.2, violating 8.04%
+2026-11-23T00:49:45Z week C1C2 110 Reactive val validation 0.8: 65.5 s, cost 1516.5, violating 9.08%
+2026-11-23T00:49:59Z week C1C2 110 Reactive val validation 0.85: 65.1 s, cost 1480.3, violating 11.31%
+2026-11-23T00:50:01Z week C1C2 110 Reactive val validation 0.9: 63.9 s, cost 1456.9, violating 13.69%
+2026-11-23T00:51:01Z heartbeat: 996 running/queued, 108 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:51:43Z week C1C2 111 PRISM val validation 0.005: 129.2 s, cost 1335.9, violating 0.89%
+2026-11-23T00:51:57Z week C1C2 111 PRISM val validation 0.01: 127.2 s, cost 1220.4, violating 1.34%
+2026-11-23T00:52:10Z week C1C2 111 PRISM val validation 0.02: 126.5 s, cost 1129.6, violating 2.08%
+2026-11-23T00:52:12Z week C1C2 111 PRISM val validation 0.03: 126.7 s, cost 1078.9, violating 2.08%
+2026-11-23T00:53:12Z heartbeat: 996 running/queued, 112 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:53:54Z week C1C2 111 PRISM val validation 0.05: 127.2 s, cost 994.0, violating 2.83%
+2026-11-23T00:54:06Z week C1C2 111 PRISM val validation 0.08: 125.1 s, cost 919.3, violating 4.32%
+2026-11-23T00:54:07Z week C1C2 111 QuantProv_q90 val validation 0.6: 113.0 s, cost 838.5, violating 7.44%
+2026-11-23T00:54:11Z week C1C2 111 QuantProv_q90 val validation 0.7: 115.3 s, cost 877.2, violating 5.36%
+2026-11-23T00:55:11Z heartbeat: 996 running/queued, 116 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:55:51Z week C1C2 111 QuantProv_q90 val validation 0.8: 112.7 s, cost 921.2, violating 3.72%
+2026-11-23T00:56:04Z week C1C2 111 QuantProv_q90 val validation 1.0: 112.6 s, cost 1018.3, violating 2.23%
+2026-11-23T00:56:04Z week C1C2 111 QuantProv_q90 val validation 0.9: 114.1 s, cost 968.9, violating 3.27%
+2026-11-23T00:56:09Z week C1C2 111 QuantProv_q90 val validation 1.1: 113.6 s, cost 1068.8, violating 2.08%
+2026-11-23T00:57:09Z heartbeat: 992 running/queued, 120 weeks run, 27 reused, 0/125 groups done
+2026-11-23T00:57:49Z week C1C2 111 QuantProv_q90 val validation 1.2: 114.0 s, cost 1119.8, violating 2.08%
+2026-11-23T00:58:00Z week C1C2 111 QuantProv_q90 val validation 1.3: 112.5 s, cost 1171.3, violating 1.93%
+2026-11-23T00:58:03Z week C1C2 111 QuantProv_q90 val validation 1.4: 115.0 s, cost 1222.9, violating 1.64%
+2026-11-23T00:58:06Z week C1C2 111 QuantProv_q90 val validation 1.5: 112.8 s, cost 1274.5, violating 1.64%
+2026-11-23T00:58:56Z week C1C2 111 Reactive val validation 0.4: 62.0 s, cost 2153.2, violating 0.15%
+2026-11-23T00:59:08Z week C1C2 111 Reactive val validation 0.45: 63.6 s, cost 1976.1, violating 0.15%
+2026-11-23T00:59:10Z week C1C2 111 Reactive val validation 0.5: 62.2 s, cost 1832.5, violating 0.45%
+2026-11-23T00:59:15Z week C1C2 111 Reactive val validation 0.55: 64.7 s, cost 1727.5, violating 1.34%
+2026-11-23T01:00:02Z week C1C2 111 Reactive val validation 0.6: 62.7 s, cost 1652.8, violating 2.53%
+2026-11-23T01:00:15Z week C1C2 111 Reactive val validation 0.65: 63.1 s, cost 1591.5, violating 4.61%
+2026-11-23T01:00:17Z week C1C2 111 Reactive val validation 0.7: 63.3 s, cost 1543.2, violating 6.99%
+2026-11-23T01:00:21Z week C1C2 111 Reactive val validation 0.75: 61.9 s, cost 1512.7, violating 10.27%
+2026-11-23T01:01:08Z week C1C2 111 Reactive val validation 0.8: 62.2 s, cost 1491.6, violating 11.46%
+2026-11-23T01:01:23Z week C1C2 111 Reactive val validation 0.85: 63.4 s, cost 1469.6, violating 13.24%
+2026-11-23T01:01:25Z week C1C2 111 Reactive val validation 0.9: 63.1 s, cost 1441.1, violating 15.03%
+2026-11-23T01:02:25Z heartbeat: 981 running/queued, 135 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:02:32Z week C1C2 112 PRISM val validation 0.005: 126.8 s, cost 1367.6, violating 1.34%
+2026-11-23T01:03:18Z week C1C2 112 PRISM val validation 0.01: 125.4 s, cost 1243.8, violating 1.79%
+2026-11-23T01:03:34Z week C1C2 112 PRISM val validation 0.02: 126.9 s, cost 1123.5, violating 2.08%
+2026-11-23T01:03:36Z week C1C2 112 PRISM val validation 0.03: 127.1 s, cost 1068.1, violating 2.53%
+2026-11-23T01:04:36Z heartbeat: 981 running/queued, 139 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:04:42Z week C1C2 112 PRISM val validation 0.05: 125.6 s, cost 985.5, violating 3.42%
+2026-11-23T01:05:29Z week C1C2 112 PRISM val validation 0.08: 127.1 s, cost 926.7, violating 4.17%
+2026-11-23T01:05:37Z week C1C2 112 QuantProv_q90 val validation 0.6: 118.2 s, cost 851.9, violating 8.04%
+2026-11-23T01:05:38Z week C1C2 112 QuantProv_q90 val validation 0.7: 117.5 s, cost 886.9, violating 5.95%
+2026-11-23T01:06:38Z heartbeat: 981 running/queued, 143 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:06:44Z week C1C2 112 QuantProv_q90 val validation 0.8: 117.9 s, cost 928.2, violating 4.76%
+2026-11-23T01:07:31Z week C1C2 112 QuantProv_q90 val validation 0.9: 117.1 s, cost 973.1, violating 3.42%
+2026-11-23T01:07:39Z week C1C2 112 QuantProv_q90 val validation 1.0: 117.8 s, cost 1020.7, violating 2.83%
+2026-11-23T01:07:41Z week C1C2 112 QuantProv_q90 val validation 1.1: 118.1 s, cost 1069.2, violating 2.38%
+2026-11-23T01:08:41Z heartbeat: 977 running/queued, 147 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:08:44Z week C1C2 112 QuantProv_q90 val validation 1.2: 115.4 s, cost 1118.5, violating 2.38%
+2026-11-23T01:09:32Z week C1C2 112 QuantProv_q90 val validation 1.3: 116.7 s, cost 1168.3, violating 2.08%
+2026-11-23T01:09:37Z week C1C2 112 QuantProv_q90 val validation 1.4: 114.0 s, cost 1218.2, violating 1.93%
+2026-11-23T01:09:40Z week C1C2 112 QuantProv_q90 val validation 1.5: 115.3 s, cost 1268.3, violating 1.64%
+2026-11-23T01:09:52Z week C1C2 112 Reactive val validation 0.4: 63.2 s, cost 2190.7, violating 0.00%
+2026-11-23T01:10:42Z week C1C2 112 Reactive val validation 0.45: 65.3 s, cost 2008.9, violating 0.30%
+2026-11-23T01:10:48Z week C1C2 112 Reactive val validation 0.5: 66.7 s, cost 1863.8, violating 0.60%
+2026-11-23T01:10:50Z week C1C2 112 Reactive val validation 0.55: 65.9 s, cost 1758.4, violating 1.34%
+2026-11-23T01:11:01Z week C1C2 112 Reactive val validation 0.6: 65.2 s, cost 1672.6, violating 1.79%
+2026-11-23T01:11:52Z week C1C2 112 Reactive val validation 0.65: 65.3 s, cost 1604.6, violating 3.57%
+2026-11-23T01:11:58Z week C1C2 112 Reactive val validation 0.7: 65.1 s, cost 1548.8, violating 5.80%
+2026-11-23T01:12:00Z week C1C2 112 Reactive val validation 0.75: 65.0 s, cost 1514.9, violating 8.04%
+2026-11-23T01:12:10Z week C1C2 112 Reactive val validation 0.8: 64.6 s, cost 1484.4, violating 10.86%
+2026-11-23T01:13:00Z week C1C2 112 Reactive val validation 0.85: 63.9 s, cost 1460.2, violating 12.20%
+2026-11-23T01:13:05Z week C1C2 112 Reactive val validation 0.9: 63.1 s, cost 1432.7, violating 14.14%
+2026-11-23T01:14:05Z heartbeat: 966 running/queued, 162 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:14:10Z week C1C2 113 PRISM val validation 0.005: 125.4 s, cost 1440.0, violating 1.19%
+2026-11-23T01:14:19Z week C1C2 113 PRISM val validation 0.01: 124.6 s, cost 1274.9, violating 1.93%
+2026-11-23T01:15:09Z week C1C2 113 PRISM val validation 0.02: 125.3 s, cost 1186.2, violating 2.23%
+2026-11-23T01:15:17Z week C1C2 113 PRISM val validation 0.03: 127.5 s, cost 1140.9, violating 2.53%
+2026-11-23T01:16:17Z heartbeat: 966 running/queued, 166 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:16:20Z week C1C2 113 PRISM val validation 0.05: 125.9 s, cost 1075.5, violating 3.57%
+2026-11-23T01:16:30Z week C1C2 113 PRISM val validation 0.08: 127.1 s, cost 979.2, violating 4.32%
+2026-11-23T01:17:09Z week C1C2 113 QuantProv_q90 val validation 0.6: 116.0 s, cost 865.6, violating 7.29%
+2026-11-23T01:17:16Z week C1C2 113 QuantProv_q90 val validation 0.7: 115.3 s, cost 909.0, violating 5.95%
+2026-11-23T01:18:16Z heartbeat: 966 running/queued, 170 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:18:18Z week C1C2 113 QuantProv_q90 val validation 0.8: 114.4 s, cost 957.6, violating 4.76%
+2026-11-23T01:18:28Z week C1C2 113 QuantProv_q90 val validation 0.9: 113.3 s, cost 1008.8, violating 3.42%
+2026-11-23T01:19:09Z week C1C2 113 QuantProv_q90 val validation 1.0: 115.0 s, cost 1062.1, violating 3.27%
+2026-11-23T01:19:14Z week C1C2 113 QuantProv_q90 val validation 1.1: 113.7 s, cost 1116.1, violating 2.98%
+2026-11-23T01:20:14Z heartbeat: 962 running/queued, 174 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:20:15Z week C1C2 113 QuantProv_q90 val validation 1.2: 113.0 s, cost 1170.7, violating 2.23%
+2026-11-23T01:20:26Z week C1C2 113 QuantProv_q90 val validation 1.3: 114.4 s, cost 1225.7, violating 2.08%
+2026-11-23T01:21:07Z week C1C2 113 QuantProv_q90 val validation 1.4: 114.4 s, cost 1280.7, violating 2.08%
+2026-11-23T01:21:12Z week C1C2 113 QuantProv_q90 val validation 1.5: 113.9 s, cost 1336.0, violating 1.64%
+2026-11-23T01:21:23Z week C1C2 113 Reactive val validation 0.4: 63.3 s, cost 2190.4, violating 0.15%
+2026-11-23T01:21:34Z week C1C2 113 Reactive val validation 0.45: 63.4 s, cost 2011.5, violating 0.15%
+2026-11-23T01:22:16Z week C1C2 113 Reactive val validation 0.5: 65.1 s, cost 1871.1, violating 0.89%
+2026-11-23T01:22:20Z week C1C2 113 Reactive val validation 0.55: 63.9 s, cost 1770.5, violating 1.93%
+2026-11-23T01:22:33Z week C1C2 113 Reactive val validation 0.6: 65.8 s, cost 1690.5, violating 2.83%
+2026-11-23T01:22:42Z week C1C2 113 Reactive val validation 0.65: 64.2 s, cost 1630.9, violating 3.57%
+2026-11-23T01:23:25Z week C1C2 113 Reactive val validation 0.7: 64.1 s, cost 1572.8, violating 4.91%
+2026-11-23T01:23:28Z week C1C2 113 Reactive val validation 0.75: 63.7 s, cost 1538.5, violating 7.44%
+2026-11-23T01:23:40Z week C1C2 113 Reactive val validation 0.8: 62.4 s, cost 1510.3, violating 9.67%
+2026-11-23T01:23:51Z week C1C2 113 Reactive val validation 0.85: 64.8 s, cost 1477.6, violating 11.46%
+2026-11-23T01:24:31Z week C1C2 113 Reactive val validation 0.9: 62.6 s, cost 1456.5, violating 12.80%
+2026-11-23T01:25:31Z heartbeat: 948 running/queued, 189 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:25:36Z week C1C2 114 PRISM val validation 0.005: 124.0 s, cost 1340.3, violating 0.89%
+2026-11-23T01:25:49Z week C1C2 114 PRISM val validation 0.01: 125.4 s, cost 1225.1, violating 1.19%
+2026-11-23T01:26:00Z week C1C2 114 PRISM val validation 0.02: 124.9 s, cost 1127.3, violating 1.34%
+2026-11-23T01:26:40Z week C1C2 114 PRISM val validation 0.03: 124.2 s, cost 1072.8, violating 1.64%
+2026-11-23T01:27:40Z heartbeat: 948 running/queued, 193 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:27:45Z week C1C2 114 PRISM val validation 0.05: 125.2 s, cost 986.9, violating 3.12%
+2026-11-23T01:27:58Z week C1C2 114 PRISM val validation 0.08: 124.2 s, cost 914.9, violating 3.57%
+2026-11-23T01:27:58Z week C1C2 114 QuantProv_q90 val validation 0.6: 113.9 s, cost 838.9, violating 8.93%
+2026-11-23T01:28:40Z week C1C2 114 QuantProv_q90 val validation 0.7: 116.5 s, cost 875.8, violating 5.65%
+2026-11-23T01:29:40Z heartbeat: 948 running/queued, 197 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:29:43Z week C1C2 114 QuantProv_q90 val validation 0.8: 114.1 s, cost 918.2, violating 4.17%
+2026-11-23T01:29:55Z week C1C2 114 QuantProv_q90 val validation 1.0: 112.7 s, cost 1012.7, violating 2.08%
+2026-11-23T01:29:56Z week C1C2 114 QuantProv_q90 val validation 0.9: 113.9 s, cost 964.4, violating 2.98%
+2026-11-23T01:30:37Z week C1C2 114 QuantProv_q90 val validation 1.1: 112.6 s, cost 1062.2, violating 1.49%
+2026-11-23T01:31:37Z heartbeat: 944 running/queued, 201 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:31:41Z week C1C2 114 QuantProv_q90 val validation 1.2: 113.9 s, cost 1112.3, violating 1.49%
+2026-11-23T01:31:54Z week C1C2 114 QuantProv_q90 val validation 1.3: 114.7 s, cost 1162.7, violating 1.34%
+2026-11-23T01:31:55Z week C1C2 114 QuantProv_q90 val validation 1.4: 115.0 s, cost 1213.2, violating 1.34%
+2026-11-23T01:32:35Z week C1C2 114 QuantProv_q90 val validation 1.5: 113.8 s, cost 1263.8, violating 1.04%
+2026-11-23T01:32:48Z week C1C2 114 Reactive val validation 0.4: 62.4 s, cost 2191.6, violating 0.30%
+2026-11-23T01:33:01Z week C1C2 114 Reactive val validation 0.45: 62.6 s, cost 2014.1, violating 0.45%
+2026-11-23T01:33:01Z week C1C2 114 Reactive val validation 0.5: 62.0 s, cost 1869.5, violating 1.04%
+2026-11-23T01:33:42Z week C1C2 114 Reactive val validation 0.55: 62.6 s, cost 1770.0, violating 1.79%
+2026-11-23T01:33:54Z week C1C2 114 Reactive val validation 0.6: 62.2 s, cost 1693.4, violating 2.68%
+2026-11-23T01:34:07Z week C1C2 114 Reactive val validation 0.65: 61.6 s, cost 1630.0, violating 5.36%
+2026-11-23T01:34:10Z week C1C2 114 Reactive val validation 0.7: 64.1 s, cost 1581.7, violating 6.99%
+2026-11-23T01:34:49Z week C1C2 114 Reactive val validation 0.75: 62.9 s, cost 1538.9, violating 9.08%
+2026-11-23T01:35:00Z week C1C2 114 Reactive val validation 0.8: 62.1 s, cost 1501.7, violating 10.86%
+2026-11-23T01:35:14Z week C1C2 114 Reactive val validation 0.85: 63.3 s, cost 1470.2, violating 12.95%
+2026-11-23T01:35:17Z week C1C2 114 Reactive val validation 0.9: 62.9 s, cost 1467.4, violating 14.14%
+2026-11-23T01:36:17Z heartbeat: 933 running/queued, 216 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:37:03Z week C1C2 115 PRISM val validation 0.005: 129.9 s, cost 1396.5, violating 1.04%
+2026-11-23T01:37:14Z week C1C2 115 PRISM val validation 0.01: 128.3 s, cost 1273.7, violating 1.34%
+2026-11-23T01:37:26Z week C1C2 115 PRISM val validation 0.02: 127.5 s, cost 1177.5, violating 1.64%
+2026-11-23T01:37:29Z week C1C2 115 PRISM val validation 0.03: 127.7 s, cost 1128.9, violating 1.64%
+2026-11-23T01:38:29Z heartbeat: 933 running/queued, 220 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:39:17Z week C1C2 115 PRISM val validation 0.05: 128.9 s, cost 1037.7, violating 2.98%
+2026-11-23T01:39:28Z week C1C2 115 PRISM val validation 0.08: 129.9 s, cost 946.9, violating 3.57%
+2026-11-23T01:39:30Z week C1C2 115 QuantProv_q90 val validation 0.7: 116.1 s, cost 914.1, violating 4.46%
+2026-11-23T01:39:30Z week C1C2 115 QuantProv_q90 val validation 0.6: 119.9 s, cost 873.8, violating 6.55%
+2026-11-23T01:40:30Z heartbeat: 933 running/queued, 224 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:41:26Z week C1C2 115 QuantProv_q90 val validation 0.8: 124.7 s, cost 960.3, violating 4.02%
+2026-11-23T01:41:38Z week C1C2 115 QuantProv_q90 val validation 1.0: 123.6 s, cost 1061.4, violating 2.53%
+2026-11-23T01:41:38Z week C1C2 115 QuantProv_q90 val validation 0.9: 126.0 s, cost 1009.8, violating 3.12%
+2026-11-23T01:41:40Z week C1C2 115 QuantProv_q90 val validation 1.1: 125.7 s, cost 1114.0, violating 1.93%
+2026-11-23T01:42:40Z heartbeat: 929 running/queued, 228 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:43:36Z week C1C2 115 QuantProv_q90 val validation 1.2: 125.7 s, cost 1167.2, violating 1.64%
+2026-11-23T01:43:47Z week C1C2 115 QuantProv_q90 val validation 1.4: 124.0 s, cost 1274.3, violating 1.34%
+2026-11-23T01:43:47Z week C1C2 115 QuantProv_q90 val validation 1.3: 124.8 s, cost 1220.7, violating 1.49%
+2026-11-23T01:43:50Z week C1C2 115 QuantProv_q90 val validation 1.5: 125.2 s, cost 1328.1, violating 1.19%
+2026-11-23T01:44:49Z week C1C2 115 Reactive val validation 0.4: 68.6 s, cost 2197.4, violating 0.15%
+2026-11-23T01:44:58Z week C1C2 115 Reactive val validation 0.5: 66.2 s, cost 1876.8, violating 0.45%
+2026-11-23T01:44:59Z week C1C2 115 Reactive val validation 0.45: 68.4 s, cost 2020.5, violating 0.30%
+2026-11-23T01:45:02Z week C1C2 115 Reactive val validation 0.55: 67.8 s, cost 1773.0, violating 1.34%
+2026-11-23T01:45:59Z week C1C2 115 Reactive val validation 0.6: 65.5 s, cost 1688.0, violating 2.53%
+2026-11-23T01:46:07Z week C1C2 115 Reactive val validation 0.65: 65.3 s, cost 1621.5, violating 4.32%
+2026-11-23T01:46:09Z week C1C2 115 Reactive val validation 0.7: 64.9 s, cost 1567.9, violating 6.40%
+2026-11-23T01:46:11Z week C1C2 115 Reactive val validation 0.75: 64.6 s, cost 1526.3, violating 8.18%
+2026-11-23T01:47:10Z week C1C2 115 Reactive val validation 0.8: 66.3 s, cost 1492.6, violating 10.57%
+2026-11-23T01:47:17Z week C1C2 115 Reactive val validation 0.85: 65.0 s, cost 1464.9, violating 12.50%
+2026-11-23T01:47:20Z week C1C2 115 Reactive val validation 0.9: 66.2 s, cost 1443.9, violating 13.99%
+2026-11-23T01:48:20Z heartbeat: 918 running/queued, 243 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:48:24Z week C1C2 116 PRISM val validation 0.005: 127.9 s, cost 1281.2, violating 0.60%
+2026-11-23T01:49:23Z week C1C2 116 PRISM val validation 0.01: 128.5 s, cost 1171.0, violating 1.49%
+2026-11-23T01:49:30Z week C1C2 116 PRISM val validation 0.03: 125.8 s, cost 1035.0, violating 2.38%
+2026-11-23T01:49:31Z week C1C2 116 PRISM val validation 0.02: 129.5 s, cost 1083.1, violating 1.93%
+2026-11-23T01:50:31Z heartbeat: 918 running/queued, 247 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:50:35Z week C1C2 116 PRISM val validation 0.05: 126.9 s, cost 963.2, violating 3.57%
+2026-11-23T01:51:33Z week C1C2 116 QuantProv_q90 val validation 0.7: 118.0 s, cost 879.9, violating 5.95%
+2026-11-23T01:51:34Z week C1C2 116 QuantProv_q90 val validation 0.6: 119.6 s, cost 847.7, violating 7.89%
+2026-11-23T01:51:35Z week C1C2 116 PRISM val validation 0.08: 127.6 s, cost 922.9, violating 3.57%
+2026-11-23T01:52:35Z heartbeat: 914 running/queued, 251 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:52:37Z week C1C2 116 QuantProv_q90 val validation 0.8: 118.0 s, cost 918.5, violating 4.61%
+2026-11-23T01:53:34Z week C1C2 116 QuantProv_q90 val validation 0.9: 116.7 s, cost 961.2, violating 3.12%
+2026-11-23T01:53:36Z week C1C2 116 QuantProv_q90 val validation 1.0: 117.1 s, cost 1006.4, violating 2.38%
+2026-11-23T01:53:37Z week C1C2 116 QuantProv_q90 val validation 1.1: 117.1 s, cost 1053.2, violating 1.79%
+2026-11-23T01:54:37Z heartbeat: 914 running/queued, 255 weeks run, 27 reused, 0/125 groups done
+2026-11-23T01:54:37Z week C1C2 116 QuantProv_q90 val validation 1.2: 115.9 s, cost 1101.1, violating 1.64%
+2026-11-23T01:55:35Z week C1C2 116 QuantProv_q90 val validation 1.3: 116.1 s, cost 1149.3, violating 1.19%
+2026-11-23T01:55:36Z week C1C2 116 QuantProv_q90 val validation 1.4: 115.9 s, cost 1197.7, violating 1.04%
+2026-11-23T01:55:39Z week C1C2 116 QuantProv_q90 val validation 1.5: 117.1 s, cost 1246.4, violating 0.89%
+2026-11-23T01:55:46Z week C1C2 116 Reactive val validation 0.4: 64.7 s, cost 2199.8, violating 0.15%
+2026-11-23T01:56:42Z week C1C2 116 Reactive val validation 0.45: 62.5 s, cost 2020.7, violating 0.30%
+2026-11-23T01:56:44Z week C1C2 116 Reactive val validation 0.5: 63.4 s, cost 1881.2, violating 0.60%
+2026-11-23T01:56:50Z week C1C2 116 Reactive val validation 0.55: 66.4 s, cost 1777.7, violating 1.34%
+2026-11-23T01:56:57Z week C1C2 116 Reactive val validation 0.6: 66.2 s, cost 1704.7, violating 2.83%
+2026-11-23T01:57:51Z week C1C2 116 Reactive val validation 0.65: 65.5 s, cost 1639.5, violating 4.02%
+2026-11-23T01:57:54Z week C1C2 116 Reactive val validation 0.7: 65.1 s, cost 1594.3, violating 6.55%
+2026-11-23T01:57:59Z week C1C2 116 Reactive val validation 0.75: 64.8 s, cost 1553.6, violating 8.63%
+2026-11-23T01:58:05Z week C1C2 116 Reactive val validation 0.8: 64.3 s, cost 1525.0, violating 10.12%
+2026-11-23T01:59:00Z week C1C2 116 Reactive val validation 0.85: 64.2 s, cost 1490.0, violating 12.05%
+2026-11-23T01:59:03Z week C1C2 116 Reactive val validation 0.9: 64.7 s, cost 1475.1, violating 13.84%
+2026-11-23T02:00:03Z heartbeat: 903 running/queued, 270 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:00:09Z week C1C2 117 PRISM val validation 0.005: 125.7 s, cost 1444.5, violating 0.60%
+2026-11-23T02:00:18Z week C1C2 117 PRISM val validation 0.01: 128.4 s, cost 1297.5, violating 1.19%
+2026-11-23T02:01:10Z week C1C2 117 PRISM val validation 0.02: 126.1 s, cost 1194.2, violating 1.49%
+2026-11-23T02:01:13Z week C1C2 117 PRISM val validation 0.03: 125.3 s, cost 1154.1, violating 1.79%
+2026-11-23T02:02:13Z heartbeat: 903 running/queued, 274 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:02:18Z week C1C2 117 PRISM val validation 0.05: 124.6 s, cost 1079.7, violating 2.53%
+2026-11-23T02:02:28Z week C1C2 117 PRISM val validation 0.08: 126.1 s, cost 1001.9, violating 3.27%
+2026-11-23T02:03:09Z week C1C2 117 QuantProv_q90 val validation 0.6: 115.3 s, cost 868.2, violating 6.10%
+2026-11-23T02:03:12Z week C1C2 117 QuantProv_q90 val validation 0.7: 115.1 s, cost 914.4, violating 4.91%
+2026-11-23T02:04:12Z heartbeat: 903 running/queued, 278 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:04:16Z week C1C2 117 QuantProv_q90 val validation 0.8: 113.5 s, cost 965.4, violating 3.72%
+2026-11-23T02:04:26Z week C1C2 117 QuantProv_q90 val validation 0.9: 113.7 s, cost 1019.3, violating 2.38%
+2026-11-23T02:05:08Z week C1C2 117 QuantProv_q90 val validation 1.0: 114.6 s, cost 1074.7, violating 1.93%
+2026-11-23T02:05:11Z week C1C2 117 QuantProv_q90 val validation 1.1: 114.2 s, cost 1130.6, violating 1.93%
+2026-11-23T02:06:11Z heartbeat: 899 running/queued, 282 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:06:17Z week C1C2 117 QuantProv_q90 val validation 1.2: 116.6 s, cost 1187.2, violating 1.64%
+2026-11-23T02:06:22Z week C1C2 117 QuantProv_q90 val validation 1.3: 112.2 s, cost 1244.0, violating 1.49%
+2026-11-23T02:07:06Z week C1C2 117 QuantProv_q90 val validation 1.4: 113.8 s, cost 1300.8, violating 1.19%
+2026-11-23T02:07:09Z week C1C2 117 QuantProv_q90 val validation 1.5: 114.4 s, cost 1357.8, violating 0.60%
+2026-11-23T02:07:25Z week C1C2 117 Reactive val validation 0.4: 64.2 s, cost 2150.2, violating 0.15%
+2026-11-23T02:07:32Z week C1C2 117 Reactive val validation 0.45: 65.9 s, cost 1972.5, violating 0.15%
+2026-11-23T02:08:17Z week C1C2 117 Reactive val validation 0.55: 63.3 s, cost 1735.2, violating 1.64%
+2026-11-23T02:08:17Z week C1C2 117 Reactive val validation 0.5: 66.4 s, cost 1834.3, violating 0.60%
+2026-11-23T02:08:33Z week C1C2 117 Reactive val validation 0.6: 64.2 s, cost 1649.9, violating 2.53%
+2026-11-23T02:08:39Z week C1C2 117 Reactive val validation 0.65: 62.6 s, cost 1595.1, violating 4.02%
+2026-11-23T02:09:25Z week C1C2 117 Reactive val validation 0.7: 63.7 s, cost 1548.3, violating 5.65%
+2026-11-23T02:09:26Z week C1C2 117 Reactive val validation 0.75: 64.0 s, cost 1508.7, violating 8.04%
+2026-11-23T02:09:42Z week C1C2 117 Reactive val validation 0.8: 64.9 s, cost 1481.8, violating 10.57%
+2026-11-23T02:09:46Z week C1C2 117 Reactive val validation 0.85: 62.6 s, cost 1453.5, violating 12.50%
+2026-11-23T02:10:32Z week C1C2 117 Reactive val validation 0.9: 63.1 s, cost 1435.2, violating 15.03%
+2026-11-23T02:11:32Z heartbeat: 888 running/queued, 297 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:11:37Z week C1C2 118 PRISM val validation 0.005: 126.7 s, cost 1318.1, violating 0.89%
+2026-11-23T02:11:53Z week C1C2 118 PRISM val validation 0.01: 126.0 s, cost 1176.7, violating 1.19%
+2026-11-23T02:11:58Z week C1C2 118 PRISM val validation 0.02: 127.9 s, cost 1068.6, violating 2.08%
+2026-11-23T02:12:42Z week C1C2 118 PRISM val validation 0.03: 125.6 s, cost 1015.6, violating 2.23%
+2026-11-23T02:13:42Z heartbeat: 888 running/queued, 301 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:13:47Z week C1C2 118 PRISM val validation 0.05: 126.4 s, cost 946.6, violating 3.27%
+2026-11-23T02:14:00Z week C1C2 118 QuantProv_q90 val validation 0.6: 117.7 s, cost 825.7, violating 7.74%
+2026-11-23T02:14:04Z week C1C2 118 PRISM val validation 0.08: 127.6 s, cost 902.0, violating 3.42%
+2026-11-23T02:14:41Z week C1C2 118 QuantProv_q90 val validation 0.7: 114.8 s, cost 857.6, violating 5.36%
+2026-11-23T02:15:41Z heartbeat: 888 running/queued, 305 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:15:46Z week C1C2 118 QuantProv_q90 val validation 0.8: 114.7 s, cost 895.5, violating 3.72%
+2026-11-23T02:16:01Z week C1C2 118 QuantProv_q90 val validation 0.9: 116.6 s, cost 937.2, violating 2.83%
+2026-11-23T02:16:03Z week C1C2 118 QuantProv_q90 val validation 1.0: 114.2 s, cost 981.6, violating 2.08%
+2026-11-23T02:16:40Z week C1C2 118 QuantProv_q90 val validation 1.1: 114.4 s, cost 1027.5, violating 1.93%
+2026-11-23T02:17:40Z heartbeat: 884 running/queued, 309 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:17:44Z week C1C2 118 QuantProv_q90 val validation 1.2: 114.1 s, cost 1074.0, violating 1.79%
+2026-11-23T02:18:01Z week C1C2 118 QuantProv_q90 val validation 1.4: 114.2 s, cost 1168.4, violating 1.49%
+2026-11-23T02:18:02Z week C1C2 118 QuantProv_q90 val validation 1.3: 116.4 s, cost 1121.2, violating 1.93%
+2026-11-23T02:18:37Z week C1C2 118 QuantProv_q90 val validation 1.5: 113.1 s, cost 1215.9, violating 1.34%
+2026-11-23T02:18:52Z week C1C2 118 Reactive val validation 0.4: 63.4 s, cost 2119.8, violating 0.15%
+2026-11-23T02:19:08Z week C1C2 118 Reactive val validation 0.5: 62.8 s, cost 1803.3, violating 0.30%
+2026-11-23T02:19:09Z week C1C2 118 Reactive val validation 0.45: 63.8 s, cost 1943.3, violating 0.15%
+2026-11-23T02:19:46Z week C1C2 118 Reactive val validation 0.55: 64.4 s, cost 1700.7, violating 1.04%
+2026-11-23T02:19:59Z week C1C2 118 Reactive val validation 0.6: 63.0 s, cost 1617.7, violating 1.93%
+2026-11-23T02:20:17Z week C1C2 118 Reactive val validation 0.7: 62.8 s, cost 1509.2, violating 6.10%
+2026-11-23T02:20:17Z week C1C2 118 Reactive val validation 0.65: 64.6 s, cost 1552.1, violating 3.87%
+2026-11-23T02:20:52Z week C1C2 118 Reactive val validation 0.75: 62.5 s, cost 1473.6, violating 7.59%
+2026-11-23T02:21:08Z week C1C2 118 Reactive val validation 0.8: 65.2 s, cost 1447.6, violating 9.97%
+2026-11-23T02:21:26Z week C1C2 118 Reactive val validation 0.85: 64.4 s, cost 1417.8, violating 11.46%
+2026-11-23T02:21:27Z week C1C2 118 Reactive val validation 0.9: 65.3 s, cost 1404.0, violating 12.35%
+2026-11-23T02:22:27Z heartbeat: 873 running/queued, 324 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:23:05Z week C1C2 119 PRISM val validation 0.005: 128.4 s, cost 1313.8, violating 0.60%
+2026-11-23T02:23:20Z week C1C2 119 PRISM val validation 0.01: 127.8 s, cost 1166.1, violating 1.04%
+2026-11-23T02:23:38Z week C1C2 119 PRISM val validation 0.03: 126.9 s, cost 1027.3, violating 2.08%
+2026-11-23T02:23:41Z week C1C2 119 PRISM val validation 0.02: 130.4 s, cost 1073.7, violating 1.64%
+2026-11-23T02:24:41Z heartbeat: 873 running/queued, 328 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:25:17Z week C1C2 119 PRISM val validation 0.05: 128.3 s, cost 952.8, violating 3.27%
+2026-11-23T02:25:33Z week C1C2 119 PRISM val validation 0.08: 128.3 s, cost 913.7, violating 3.87%
+2026-11-23T02:25:39Z week C1C2 119 QuantProv_q90 val validation 0.6: 117.0 s, cost 837.9, violating 8.48%
+2026-11-23T02:25:43Z week C1C2 119 QuantProv_q90 val validation 0.7: 117.2 s, cost 868.8, violating 6.40%
+2026-11-23T02:26:43Z heartbeat: 873 running/queued, 332 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:27:17Z week C1C2 119 QuantProv_q90 val validation 0.8: 115.7 s, cost 906.3, violating 4.32%
+2026-11-23T02:27:33Z week C1C2 119 QuantProv_q90 val validation 0.9: 116.6 s, cost 947.9, violating 2.98%
+2026-11-23T02:27:39Z week C1C2 119 QuantProv_q90 val validation 1.0: 116.1 s, cost 992.2, violating 2.23%
+2026-11-23T02:27:41Z week C1C2 119 QuantProv_q90 val validation 1.1: 114.3 s, cost 1038.3, violating 2.08%
+2026-11-23T02:28:41Z heartbeat: 869 running/queued, 336 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:29:17Z week C1C2 119 QuantProv_q90 val validation 1.2: 115.1 s, cost 1084.9, violating 1.79%
+2026-11-23T02:29:32Z week C1C2 119 QuantProv_q90 val validation 1.3: 114.5 s, cost 1132.4, violating 1.49%
+2026-11-23T02:29:37Z week C1C2 119 QuantProv_q90 val validation 1.4: 113.7 s, cost 1180.1, violating 0.74%
+2026-11-23T02:29:40Z week C1C2 119 QuantProv_q90 val validation 1.5: 114.8 s, cost 1227.9, violating 0.60%
+2026-11-23T02:30:25Z week C1C2 119 Reactive val validation 0.4: 64.2 s, cost 2186.6, violating 0.15%
+2026-11-23T02:30:40Z week C1C2 119 Reactive val validation 0.45: 63.9 s, cost 2007.4, violating 0.30%
+2026-11-23T02:30:46Z week C1C2 119 Reactive val validation 0.5: 64.1 s, cost 1868.2, violating 0.74%
+2026-11-23T02:30:49Z week C1C2 119 Reactive val validation 0.55: 64.3 s, cost 1773.7, violating 1.64%
+2026-11-23T02:31:34Z week C1C2 119 Reactive val validation 0.6: 65.3 s, cost 1702.5, violating 2.98%
+2026-11-23T02:31:50Z week C1C2 119 Reactive val validation 0.65: 65.8 s, cost 1646.1, violating 4.76%
+2026-11-23T02:31:55Z week C1C2 119 Reactive val validation 0.7: 64.5 s, cost 1612.6, violating 7.74%
+2026-11-23T02:31:58Z week C1C2 119 Reactive val validation 0.75: 65.1 s, cost 1579.2, violating 10.27%
+2026-11-23T02:32:43Z week C1C2 119 Reactive val validation 0.8: 64.2 s, cost 1545.0, violating 11.61%
+2026-11-23T02:32:58Z week C1C2 119 Reactive val validation 0.85: 63.5 s, cost 1517.5, violating 14.14%
+2026-11-23T02:33:03Z week C1C2 119 Reactive val validation 0.9: 64.3 s, cost 1492.4, violating 15.18%
+2026-11-23T02:34:03Z heartbeat: 858 running/queued, 351 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:34:08Z week C1C2 120 PRISM val validation 0.005: 125.3 s, cost 1316.7, violating 0.60%
+2026-11-23T02:34:51Z week C1C2 120 PRISM val validation 0.01: 124.8 s, cost 1166.4, violating 0.74%
+2026-11-23T02:35:08Z week C1C2 120 PRISM val validation 0.02: 125.5 s, cost 1071.8, violating 1.49%
+2026-11-23T02:35:13Z week C1C2 120 PRISM val validation 0.03: 125.6 s, cost 1020.9, violating 2.68%
+2026-11-23T02:36:13Z heartbeat: 858 running/queued, 355 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:36:18Z week C1C2 120 PRISM val validation 0.05: 125.9 s, cost 943.7, violating 3.72%
+2026-11-23T02:37:01Z week C1C2 120 PRISM val validation 0.08: 125.3 s, cost 901.4, violating 4.02%
+2026-11-23T02:37:08Z week C1C2 120 QuantProv_q90 val validation 0.6: 116.2 s, cost 827.1, violating 8.63%
+2026-11-23T02:37:11Z week C1C2 120 QuantProv_q90 val validation 0.7: 113.9 s, cost 859.4, violating 5.95%
+2026-11-23T02:38:11Z heartbeat: 858 running/queued, 359 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:38:17Z week C1C2 120 QuantProv_q90 val validation 0.8: 116.0 s, cost 897.9, violating 4.46%
+2026-11-23T02:39:01Z week C1C2 120 QuantProv_q90 val validation 0.9: 115.5 s, cost 940.2, violating 3.87%
+2026-11-23T02:39:08Z week C1C2 120 QuantProv_q90 val validation 1.0: 116.1 s, cost 985.0, violating 2.83%
+2026-11-23T02:39:09Z week C1C2 120 QuantProv_q90 val validation 1.1: 113.7 s, cost 1031.5, violating 2.68%
+2026-11-23T02:40:09Z heartbeat: 854 running/queued, 363 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:40:14Z week C1C2 120 QuantProv_q90 val validation 1.2: 113.0 s, cost 1078.4, violating 1.93%
+2026-11-23T02:40:59Z week C1C2 120 QuantProv_q90 val validation 1.3: 114.4 s, cost 1126.3, violating 1.49%
+2026-11-23T02:41:07Z week C1C2 120 QuantProv_q90 val validation 1.5: 114.0 s, cost 1222.0, violating 1.34%
+2026-11-23T02:41:09Z week C1C2 120 QuantProv_q90 val validation 1.4: 116.1 s, cost 1174.0, violating 1.19%
+2026-11-23T02:41:20Z week C1C2 120 Reactive val validation 0.4: 61.8 s, cost 2146.5, violating 0.15%
+2026-11-23T02:42:07Z week C1C2 120 Reactive val validation 0.45: 63.9 s, cost 1972.4, violating 0.15%
+2026-11-23T02:42:14Z week C1C2 120 Reactive val validation 0.5: 62.8 s, cost 1835.1, violating 0.60%
+2026-11-23T02:42:15Z week C1C2 120 Reactive val validation 0.55: 62.4 s, cost 1743.4, violating 1.34%
+2026-11-23T02:42:28Z week C1C2 120 Reactive val validation 0.6: 63.2 s, cost 1665.4, violating 2.38%
+2026-11-23T02:43:14Z week C1C2 120 Reactive val validation 0.65: 62.6 s, cost 1599.3, violating 2.98%
+2026-11-23T02:43:23Z week C1C2 120 Reactive val validation 0.75: 63.2 s, cost 1525.1, violating 7.59%
+2026-11-23T02:43:23Z week C1C2 120 Reactive val validation 0.7: 64.6 s, cost 1553.8, violating 4.46%
+2026-11-23T02:43:36Z week C1C2 120 Reactive val validation 0.8: 64.2 s, cost 1495.6, violating 10.42%
+2026-11-23T02:44:21Z week C1C2 120 Reactive val validation 0.85: 62.7 s, cost 1477.6, violating 12.05%
+2026-11-23T02:44:30Z week C1C2 120 Reactive val validation 0.9: 63.4 s, cost 1454.2, violating 13.69%
+2026-11-23T02:45:30Z heartbeat: 843 running/queued, 378 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:45:32Z week C1C2 121 PRISM val validation 0.005: 124.1 s, cost 1302.8, violating 0.45%
+2026-11-23T02:45:46Z week C1C2 121 PRISM val validation 0.01: 125.9 s, cost 1131.3, violating 0.60%
+2026-11-23T02:46:30Z week C1C2 121 PRISM val validation 0.02: 125.2 s, cost 1030.3, violating 1.19%
+2026-11-23T02:46:42Z week C1C2 121 PRISM val validation 0.03: 128.2 s, cost 978.4, violating 1.64%
+2026-11-23T02:47:41Z week C1C2 121 PRISM val validation 0.05: 125.0 s, cost 910.9, violating 2.53%
+2026-11-23T02:47:57Z week C1C2 121 PRISM val validation 0.08: 126.9 s, cost 882.6, violating 3.57%
+2026-11-23T02:48:29Z week C1C2 121 QuantProv_q90 val validation 0.6: 114.6 s, cost 808.0, violating 8.18%
+2026-11-23T02:48:40Z week C1C2 121 QuantProv_q90 val validation 0.7: 113.5 s, cost 836.5, violating 6.25%
+2026-11-23T02:49:38Z week C1C2 121 QuantProv_q90 val validation 0.8: 113.7 s, cost 871.4, violating 4.17%
+2026-11-23T02:49:55Z week C1C2 121 QuantProv_q90 val validation 0.9: 113.8 s, cost 910.3, violating 2.98%
+2026-11-23T02:50:26Z week C1C2 121 QuantProv_q90 val validation 1.0: 113.5 s, cost 951.9, violating 2.08%
+2026-11-23T02:50:37Z week C1C2 121 QuantProv_q90 val validation 1.1: 113.2 s, cost 994.9, violating 1.04%
+2026-11-23T02:51:36Z week C1C2 121 QuantProv_q90 val validation 1.2: 113.3 s, cost 1039.2, violating 1.04%
+2026-11-23T02:51:53Z week C1C2 121 QuantProv_q90 val validation 1.3: 114.1 s, cost 1083.8, violating 0.89%
+2026-11-23T02:52:24Z week C1C2 121 QuantProv_q90 val validation 1.4: 113.7 s, cost 1128.8, violating 0.74%
+2026-11-23T02:52:36Z week C1C2 121 QuantProv_q90 val validation 1.5: 114.4 s, cost 1174.0, violating 0.60%
+2026-11-23T02:52:42Z week C1C2 121 Reactive val validation 0.4: 62.2 s, cost 2119.0, violating 0.15%
+2026-11-23T02:53:01Z week C1C2 121 Reactive val validation 0.45: 63.6 s, cost 1946.2, violating 0.15%
+2026-11-23T02:53:32Z week C1C2 121 Reactive val validation 0.5: 63.9 s, cost 1803.8, violating 0.30%
+2026-11-23T02:53:43Z week C1C2 121 Reactive val validation 0.55: 63.1 s, cost 1696.6, violating 0.74%
+2026-11-23T02:53:50Z week C1C2 121 Reactive val validation 0.6: 63.2 s, cost 1610.3, violating 1.19%
+2026-11-23T02:54:08Z week C1C2 121 Reactive val validation 0.65: 62.4 s, cost 1547.5, violating 2.53%
+2026-11-23T02:54:39Z week C1C2 121 Reactive val validation 0.7: 62.9 s, cost 1497.9, violating 4.46%
+2026-11-23T02:54:49Z week C1C2 121 Reactive val validation 0.75: 62.3 s, cost 1460.2, violating 6.99%
+2026-11-23T02:54:56Z week C1C2 121 Reactive val validation 0.8: 62.3 s, cost 1438.6, violating 10.12%
+2026-11-23T02:55:15Z week C1C2 121 Reactive val validation 0.85: 63.1 s, cost 1409.7, violating 11.90%
+2026-11-23T02:55:45Z week C1C2 121 Reactive val validation 0.9: 62.3 s, cost 1400.3, violating 13.84%
+2026-11-23T02:56:45Z heartbeat: 828 running/queued, 405 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:57:01Z week C1C2 122 PRISM val validation 0.005: 127.0 s, cost 1510.0, violating 1.93%
+2026-11-23T02:57:07Z week C1C2 122 PRISM val validation 0.01: 127.1 s, cost 1343.3, violating 2.38%
+2026-11-23T02:57:27Z week C1C2 122 PRISM val validation 0.02: 127.5 s, cost 1274.0, violating 2.83%
+2026-11-23T02:58:00Z week C1C2 122 PRISM val validation 0.03: 130.5 s, cost 1236.8, violating 3.12%
+2026-11-23T02:59:00Z heartbeat: 828 running/queued, 409 weeks run, 27 reused, 0/125 groups done
+2026-11-23T02:59:13Z week C1C2 122 PRISM val validation 0.05: 127.7 s, cost 1174.5, violating 3.87%
+2026-11-23T02:59:22Z week C1C2 122 PRISM val validation 0.08: 130.1 s, cost 1058.6, violating 5.21%
+2026-11-23T02:59:29Z week C1C2 122 QuantProv_q90 val validation 0.6: 118.6 s, cost 915.6, violating 8.18%
+2026-11-23T03:00:01Z week C1C2 122 QuantProv_q90 val validation 0.7: 117.0 s, cost 967.1, violating 6.40%
+2026-11-23T03:01:01Z heartbeat: 825 running/queued, 413 weeks run, 27 reused, 0/125 groups done
+2026-11-23T03:01:16Z week C1C2 122 QuantProv_q90 val validation 0.8: 118.6 s, cost 1023.4, violating 5.95%
+2026-11-23T03:01:22Z week C1C2 122 QuantProv_q90 val validation 0.9: 115.0 s, cost 1081.6, violating 5.06%
+2026-11-23T03:01:29Z week C1C2 122 QuantProv_q90 val validation 1.0: 115.6 s, cost 1141.2, violating 4.17%
+2026-11-23T03:02:03Z week C1C2 122 QuantProv_q90 val validation 1.1: 117.2 s, cost 1201.6, violating 3.57%
+2026-11-23T03:03:03Z heartbeat: 821 running/queued, 417 weeks run, 27 reused, 0/125 groups done
+2026-11-23T03:03:16Z week C1C2 122 QuantProv_q90 val validation 1.2: 115.7 s, cost 1262.1, violating 2.98%
+2026-11-23T03:03:22Z week C1C2 122 QuantProv_q90 val validation 1.3: 115.8 s, cost 1323.0, violating 2.68%
+2026-11-23T03:03:30Z week C1C2 122 QuantProv_q90 val validation 1.4: 116.1 s, cost 1384.0, violating 2.08%
+2026-11-23T03:04:03Z week C1C2 122 QuantProv_q90 val validation 1.5: 116.2 s, cost 1445.2, violating 1.64%
+2026-11-23T03:04:25Z week C1C2 122 Reactive val validation 0.4: 65.0 s, cost 2232.1, violating 0.00%
+2026-11-23T03:04:31Z week C1C2 122 Reactive val validation 0.45: 65.3 s, cost 2049.4, violating 0.00%
+2026-11-23T03:04:38Z week C1C2 122 Reactive val validation 0.5: 64.5 s, cost 1906.8, violating 0.60%
+2026-11-23T03:05:13Z week C1C2 122 Reactive val validation 0.55: 65.2 s, cost 1810.1, violating 1.19%
+2026-11-23T03:05:34Z week C1C2 122 Reactive val validation 0.6: 64.5 s, cost 1724.6, violating 2.83%
+2026-11-23T03:05:42Z week C1C2 122 Reactive val validation 0.65: 66.0 s, cost 1656.2, violating 3.87%
+2026-11-23T03:05:48Z week C1C2 122 Reactive val validation 0.7: 65.3 s, cost 1607.9, violating 6.25%
+2026-11-23T03:06:23Z week C1C2 122 Reactive val validation 0.75: 66.1 s, cost 1576.7, violating 8.04%
+2026-11-23T03:06:43Z week C1C2 122 Reactive val validation 0.8: 64.7 s, cost 1546.8, violating 9.97%
+2026-11-23T03:06:52Z week C1C2 122 Reactive val validation 0.85: 65.6 s, cost 1516.2, violating 12.50%
+2026-11-23T03:06:59Z week C1C2 122 Reactive val validation 0.9: 67.2 s, cost 1500.8, violating 13.69%
+2026-11-23T03:07:59Z heartbeat: 807 running/queued, 432 weeks run, 27 reused, 0/125 groups done
+2026-11-23T03:08:34Z week C1C2 123 PRISM val validation 0.005: 126.7 s, cost 1389.8, violating 0.60%
+2026-11-23T03:08:56Z week C1C2 123 PRISM val validation 0.01: 128.7 s, cost 1265.2, violating 1.19%
+2026-11-23T03:09:06Z week C1C2 123 PRISM val validation 0.02: 130.0 s, cost 1177.0, violating 1.79%
+2026-11-23T03:09:11Z week C1C2 123 PRISM val validation 0.03: 127.6 s, cost 1120.3, violating 2.38%
+2026-11-23T03:10:11Z heartbeat: 807 running/queued, 436 weeks run, 27 reused, 0/125 groups done
+2026-11-23T03:10:46Z week C1C2 123 PRISM val validation 0.05: 127.8 s, cost 1031.9, violating 2.98%
+2026-11-23T03:11:08Z week C1C2 123 QuantProv_q90 val validation 0.6: 117.9 s, cost 858.0, violating 8.04%
+2026-11-23T03:11:08Z week C1C2 123 PRISM val validation 0.08: 128.2 s, cost 942.2, violating 3.87%
+2026-11-23T03:11:13Z week C1C2 123 QuantProv_q90 val validation 0.7: 117.1 s, cost 898.9, violating 5.06%
+2026-11-23T03:12:13Z heartbeat: 807 running/queued, 440 weeks run, 27 reused, 0/125 groups done
+2026-11-23T03:12:45Z week C1C2 123 QuantProv_q90 val validation 0.8: 114.9 s, cost 945.5, violating 3.87%
+2026-11-23T03:13:07Z week C1C2 123 QuantProv_q90 val validation 0.9: 114.9 s, cost 995.1, violating 2.83%
+2026-11-23T03:13:09Z week C1C2 123 QuantProv_q90 val validation 1.0: 116.1 s, cost 1046.7, violating 2.53%
+2026-11-23T03:13:13Z week C1C2 123 QuantProv_q90 val validation 1.1: 116.0 s, cost 1099.2, violating 2.23%
+2026-11-23T03:14:13Z heartbeat: 803 running/queued, 444 weeks run, 27 reused, 0/125 groups done
+2026-11-23T03:14:44Z week C1C2 123 QuantProv_q90 val validation 1.2: 114.6 s, cost 1152.4, violating 2.08%
+2026-11-23T03:15:07Z week C1C2 123 QuantProv_q90 val validation 1.3: 115.2 s, cost 1205.9, violating 1.79%
+2026-11-23T03:15:08Z week C1C2 123 QuantProv_q90 val validation 1.4: 114.7 s, cost 1259.3, violating 1.19%
+2026-11-23T03:15:11Z week C1C2 123 QuantProv_q90 val validation 1.5: 114.2 s, cost 1313.2, violating 0.89%
+2026-11-23T03:15:53Z week C1C2 123 Reactive val validation 0.4: 64.8 s, cost 2213.9, violating 0.45%
+2026-11-23T03:16:15Z week C1C2 123 Reactive val validation 0.45: 63.9 s, cost 2029.9, violating 0.45%
+2026-11-23T03:16:17Z week C1C2 123 Reactive val validation 0.5: 64.4 s, cost 1888.1, violating 0.74%
+2026-11-23T03:16:20Z week C1C2 123 Reactive val validation 0.55: 64.6 s, cost 1791.2, violating 1.79%
+2026-11-23T03:17:02Z week C1C2 123 Reactive val validation 0.6: 64.9 s, cost 1708.9, violating 3.42%
+2026-11-23T03:17:24Z week C1C2 123 Reactive val validation 0.65: 64.7 s, cost 1646.5, violating 4.61%
+2026-11-23T03:17:26Z week C1C2 123 Reactive val validation 0.7: 64.7 s, cost 1595.0, violating 6.55%
+2026-11-23T03:17:30Z week C1C2 123 Reactive val validation 0.75: 65.8 s, cost 1557.3, violating 8.63%
+2026-11-23T03:18:11Z week C1C2 123 Reactive val validation 0.8: 64.8 s, cost 1522.9, violating 10.12%
+2026-11-23T03:18:33Z week C1C2 123 Reactive val validation 0.85: 64.6 s, cost 1493.5, violating 12.20%
+2026-11-23T03:18:35Z week C1C2 123 Reactive val validation 0.9: 64.5 s, cost 1471.1, violating 14.14%
+2026-11-23T03:19:35Z heartbeat: 792 running/queued, 459 weeks run, 27 reused, 0/125 groups done
+2026-11-23T03:19:41Z week C1C2 124 PRISM val validation 0.005: 125.8 s, cost 1393.0, violating 0.89%
+2026-11-23T03:20:21Z week C1C2 124 PRISM val validation 0.01: 125.8 s, cost 1216.5, violating 1.19%
+2026-11-23T03:20:44Z week C1C2 124 PRISM val validation 0.02: 126.8 s, cost 1115.5, violating 1.79%
+2026-11-23T03:20:44Z week C1C2 124 PRISM val validation 0.03: 125.3 s, cost 1057.5, violating 2.38%
+2026-11-23T03:21:44Z heartbeat: 792 running/queued, 463 weeks run, 27 reused, 0/125 groups done
+2026-11-23T03:21:56Z week C1C2 124 PRISM val validation 0.05: 131.6 s, cost 970.2, violating 3.12%
+2026-11-23T03:22:41Z week C1C2 124 PRISM val validation 0.08: 135.8 s, cost 914.0, violating 4.46%
+2026-11-23T03:22:57Z week C1C2 124 QuantProv_q90 val validation 0.6: 128.5 s, cost 837.4, violating 8.93%
+2026-11-23T03:22:57Z week C1C2 124 QuantProv_q90 val validation 0.7: 128.8 s, cost 873.4, violating 5.95%
+2026-11-23T03:23:57Z heartbeat: 792 running/queued, 467 weeks run, 27 reused, 0/125 groups done
+2026-11-23T03:24:17Z week C1C2 124 QuantProv_q90 val validation 0.8: 136.7 s, cost 915.2, violating 4.46%
+2026-11-23T03:24:57Z week C1C2 124 QuantProv_q90 val validation 0.9: 132.0 s, cost 960.8, violating 2.98%
+2026-11-23T03:25:09Z week C1C2 124 QuantProv_q90 val validation 1.1: 127.3 s, cost 1057.0, violating 2.08%
+2026-11-23T03:25:12Z week C1C2 124 QuantProv_q90 val validation 1.0: 130.5 s, cost 1008.3, violating 2.53%
+2026-11-23T03:26:12Z heartbeat: 788 running/queued, 471 weeks run, 27 reused, 0/125 groups done
+2026-11-23T03:26:23Z week C1C2 124 QuantProv_q90 val validation 1.2: 121.6 s, cost 1106.8, violating 1.64%
+2026-11-23T03:27:06Z week C1C2 124 QuantProv_q90 val validation 1.3: 124.4 s, cost 1156.6, violating 1.79%
+2026-11-23T03:27:25Z week C1C2 124 QuantProv_q90 val validation 1.4: 131.4 s, cost 1207.0, violating 1.79%
+2026-11-23T03:27:30Z week C1C2 124 QuantProv_q90 val validation 1.5: 133.3 s, cost 1257.3, violating 1.64%
+2026-11-23T03:27:49Z week C1C2 124 Reactive val validation 0.4: 81.7 s, cost 2172.7, violating 0.30%

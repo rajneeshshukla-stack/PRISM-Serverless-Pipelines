@@ -1,0 +1,95 @@
+2026-11-22T22:49:32Z start: sets ['C1C2', 'C3'], 125 groups, workers 6, commit fd8b01a, driver 3f909dc9780d
+2026-11-22T22:50:09Z bundle 107 65721002596b843f: built in 35.5 s, 17781013 bytes
+2026-11-22T22:50:09Z bundle 106 08caf472dd52761b: built in 35.9 s, 17781013 bytes
+2026-11-22T22:50:09Z bundle 108 65721002596b843f: built in 36.0 s, 17781013 bytes
+2026-11-22T22:50:10Z bundle 108 08caf472dd52761b: built in 36.6 s, 17781013 bytes
+2026-11-22T22:50:19Z bundle 107 08caf472dd52761b: built in 45.2 s, 17781013 bytes
+2026-11-22T22:50:19Z bundle 106 65721002596b843f: built in 45.9 s, 17781013 bytes
+2026-11-22T22:50:44Z bundle 110 65721002596b843f: built in 33.5 s, 17781013 bytes
+2026-11-22T22:50:55Z bundle 110 08caf472dd52761b: built in 45.5 s, 17781013 bytes
+2026-11-22T22:50:56Z bundle 109 65721002596b843f: built in 46.6 s, 17781013 bytes
+2026-11-22T22:50:57Z bundle 109 08caf472dd52761b: built in 47.8 s, 17781013 bytes
+2026-11-22T22:51:12Z bundle 111 65721002596b843f: built in 52.9 s, 17781013 bytes
+2026-11-22T22:51:18Z bundle 111 08caf472dd52761b: built in 58.8 s, 17781013 bytes
+2026-11-22T22:51:21Z bundle 112 08caf472dd52761b: built in 36.7 s, 17781013 bytes
+2026-11-22T22:51:34Z bundle 112 65721002596b843f: built in 38.7 s, 17781013 bytes
+2026-11-22T22:51:42Z bundle 114 08caf472dd52761b: built in 29.6 s, 17781013 bytes
+2026-11-22T22:51:48Z bundle 113 08caf472dd52761b: built in 51.3 s, 17781013 bytes
+2026-11-22T22:51:54Z bundle 113 65721002596b843f: built in 56.2 s, 17781013 bytes
+2026-11-22T22:52:08Z bundle 115 08caf472dd52761b: built in 47.3 s, 17781013 bytes
+2026-11-22T22:52:09Z bundle 115 65721002596b843f: built in 35.0 s, 17781013 bytes
+2026-11-22T22:52:11Z bundle 114 65721002596b843f: built in 53.4 s, 17781013 bytes
+2026-11-22T22:52:25Z bundle 116 08caf472dd52761b: built in 42.4 s, 17781013 bytes
+2026-11-22T22:52:37Z bundle 116 65721002596b843f: built in 49.0 s, 17781013 bytes
+2026-11-22T22:52:45Z bundle 117 08caf472dd52761b: built in 51.3 s, 17781013 bytes
+2026-11-22T22:52:47Z bundle 118 08caf472dd52761b: built in 37.4 s, 17781013 bytes
+2026-11-22T22:52:55Z bundle 118 65721002596b843f: built in 43.4 s, 17781013 bytes
+2026-11-22T22:52:57Z bundle 117 65721002596b843f: built in 48.0 s, 17781013 bytes
+2026-11-22T22:53:15Z bundle 120 08caf472dd52761b: built in 28.9 s, 17781013 bytes
+2026-11-22T22:53:17Z bundle 120 65721002596b843f: built in 29.5 s, 17781013 bytes
+2026-11-22T22:53:18Z bundle 119 08caf472dd52761b: built in 52.2 s, 17781013 bytes
+2026-11-22T22:53:21Z bundle 119 65721002596b843f: built in 43.4 s, 17781013 bytes
+2026-11-22T22:53:33Z bundle 121 08caf472dd52761b: built in 37.4 s, 17781013 bytes
+2026-11-22T22:53:43Z bundle 121 65721002596b843f: built in 45.5 s, 17781013 bytes
+2026-11-22T22:53:47Z bundle 122 08caf472dd52761b: built in 31.9 s, 17781013 bytes
+2026-11-22T22:53:51Z bundle 122 65721002596b843f: built in 33.4 s, 17781013 bytes
+2026-11-22T22:53:55Z bundle 123 65721002596b843f: built in 33.8 s, 17781013 bytes
+2026-11-22T22:54:05Z bundle 123 08caf472dd52761b: built in 46.8 s, 17781013 bytes
+2026-11-22T22:54:09Z bundle 124 08caf472dd52761b: built in 35.2 s, 17781013 bytes
+2026-11-22T22:54:21Z bundle 124 65721002596b843f: built in 37.8 s, 17781013 bytes
+2026-11-22T22:54:35Z bundle 126 08caf472dd52761b: built in 39.8 s, 17781013 bytes
+2026-11-22T22:54:35Z bundle 126 65721002596b843f: built in 30.6 s, 17781013 bytes
+2026-11-22T22:54:37Z bundle 125 08caf472dd52761b: built in 50.1 s, 17781013 bytes
+2026-11-22T22:54:44Z bundle 125 65721002596b843f: built in 53.0 s, 17781013 bytes
+2026-11-22T22:55:00Z bundle 127 08caf472dd52761b: built in 51.1 s, 17781013 bytes
+2026-11-22T22:55:04Z bundle 128 08caf472dd52761b: built in 28.8 s, 17781013 bytes
+2026-11-22T22:55:05Z bundle 128 65721002596b843f: built in 29.4 s, 17781013 bytes
+2026-11-22T22:55:09Z bundle 127 65721002596b843f: built in 48.4 s, 17781013 bytes
+2026-11-22T22:55:23Z bundle 129 08caf472dd52761b: built in 44.6 s, 17781013 bytes
+2026-11-22T22:55:28Z bundle 129 65721002596b843f: built in 43.8 s, 17781013 bytes
+2026-11-22T22:55:30Z bundle 130 08caf472dd52761b: built in 29.5 s, 17781013 bytes
+2026-11-22T22:55:47Z bundle 130 65721002596b843f: built in 42.8 s, 17781013 bytes
+2026-11-22T22:56:47Z heartbeat: 1048 running/queued, 0 weeks run, 0 reused, 0/125 groups done
+2026-11-22T22:57:47Z heartbeat: 1075 running/queued, 0 weeks run, 0 reused, 0/125 groups done
+2026-11-22T22:58:47Z heartbeat: 1075 running/queued, 0 weeks run, 0 reused, 0/125 groups done
+2026-11-22T22:58:57Z week C1C2 107 PRISM val validation 0.01: 219.0 s, cost 1209.0, violating 1.34%
+2026-11-22T22:58:57Z week C1C2 107 PRISM val validation 0.005: 223.9 s, cost 1313.4, violating 0.74%
+2026-11-22T22:59:31Z week C1C2 107 PRISM val validation 0.02: 238.5 s, cost 1126.7, violating 2.23%
+2026-11-22T22:59:32Z week C1C2 107 PRISM val validation 0.08: 216.2 s, cost 914.7, violating 4.76%
+2026-11-22T22:59:35Z week C1C2 107 PRISM val validation 0.05: 237.3 s, cost 983.5, violating 3.42%
+2026-11-22T22:59:50Z week C1C2 107 PRISM val validation 0.03: 252.9 s, cost 1072.9, violating 2.68%
+2026-11-22T23:00:50Z heartbeat: 1069 running/queued, 6 weeks run, 0 reused, 0/125 groups done
+2026-11-22T23:01:50Z heartbeat: 1073 running/queued, 6 weeks run, 0 reused, 0/125 groups done
+2026-11-22T23:02:47Z week C1C2 107 QuantProv_q90 val validation 0.8: 187.5 s, cost 916.7, violating 3.72%
+2026-11-22T23:03:00Z week C1C2 107 QuantProv_q90 val validation 0.7: 235.8 s, cost 872.7, violating 5.95%
+2026-11-22T23:03:01Z week C1C2 107 QuantProv_q90 val validation 0.6: 235.1 s, cost 834.3, violating 7.44%
+2026-11-22T23:03:07Z week C1C2 107 QuantProv_q90 val validation 1.1: 187.1 s, cost 1063.9, violating 2.53%
+2026-11-22T23:03:09Z week C1C2 107 QuantProv_q90 val validation 0.9: 210.0 s, cost 964.1, violating 3.42%
+2026-11-22T23:03:42Z week C1C2 107 QuantProv_q90 val validation 1.0: 237.1 s, cost 1013.4, violating 2.98%
+2026-11-22T23:04:42Z heartbeat: 1067 running/queued, 12 weeks run, 0 reused, 0/125 groups done
+2026-11-22T23:05:23Z week C1C2 107 Reactive val validation 0.4: 127.7 s, cost 2151.1, violating 0.30%
+2026-11-22T23:05:37Z week C1C2 107 Reactive val validation 0.45: 108.8 s, cost 1980.4, violating 0.60%
+2026-11-22T23:06:03Z week C1C2 107 QuantProv_q90 val validation 1.2: 186.5 s, cost 1114.9, violating 2.23%
+2026-11-22T23:06:29Z week C1C2 107 QuantProv_q90 val validation 1.5: 196.1 s, cost 1269.2, violating 1.49%
+2026-11-22T23:06:50Z week C1C2 107 QuantProv_q90 val validation 1.4: 219.9 s, cost 1217.7, violating 1.79%
+2026-11-22T23:06:51Z week C1C2 107 QuantProv_q90 val validation 1.3: 224.6 s, cost 1166.1, violating 1.79%
+2026-11-22T23:07:18Z week C1C2 107 Reactive val validation 0.55: 95.4 s, cost 1736.5, violating 1.64%
+2026-11-22T23:07:42Z week C1C2 107 Reactive val validation 0.5: 129.0 s, cost 1840.4, violating 1.04%
+2026-11-22T23:08:34Z week C1C2 107 Reactive val validation 0.6: 138.9 s, cost 1654.8, violating 2.83%
+2026-11-22T23:08:37Z week C1C2 107 Reactive val validation 0.65: 117.4 s, cost 1594.4, violating 4.17%
+2026-11-22T23:09:06Z week C1C2 107 Reactive val validation 0.75: 129.1 s, cost 1510.4, violating 9.52%
+2026-11-22T23:09:08Z week C1C2 107 Reactive val validation 0.7: 127.2 s, cost 1547.6, violating 7.14%
+2026-11-22T23:09:22Z week C1C2 107 Reactive val validation 0.8: 114.4 s, cost 1478.9, violating 11.01%
+2026-11-22T23:09:51Z week C1C2 107 Reactive val validation 0.85: 119.7 s, cost 1449.0, violating 12.80%
+2026-11-22T23:10:24Z week C1C2 107 Reactive val validation 0.9: 101.5 s, cost 1432.5, violating 14.29%
+2026-11-22T23:11:24Z heartbeat: 1056 running/queued, 27 weeks run, 0 reused, 0/125 groups done
+2026-11-22T23:11:56Z FAILED C3 113 MemAdapt_q90 val validation 1.3
+2026-11-22T23:11:56Z FAILED C1C2 123 QuantProv_q90 val validation 1.1
+2026-11-22T23:11:56Z FAILED C1C2 121 QuantProv_q90 val validation 1.3
+2026-11-22T23:11:56Z FAILED C1C2 110 Reactive val validation 0.4
+2026-11-22T23:11:56Z FAILED C1C2 129 PRISM val validation 0.08
+2026-11-22T23:11:56Z FAILED C3 112 MemAdapt_q90 val validation 1.0
+2026-11-22T23:11:56Z FAILED C1C2 124 Reactive val validation 0.4
+2026-11-22T23:11:56Z FAILED C1C2 110 QuantProv_q90 val validation 1.3
+2026-11-22T23:11:56Z FAILED C1C2 110 QuantProv_q90 val validation 1.4
+2026-11-22T23:11:56Z FAILED C3 113 MemAdapt_q90 val validation 1.4

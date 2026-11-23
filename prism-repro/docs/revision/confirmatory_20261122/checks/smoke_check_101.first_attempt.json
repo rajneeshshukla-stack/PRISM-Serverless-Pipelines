@@ -1,0 +1,83 @@
+{
+ "label": "EXPLORATORY smoke check, development seed 101, validation week; PRE-CALIBRATION defaults",
+ "n_requests": 6122799,
+ "checks": {
+  "A telemetry cutoff, PRISM": {
+   "decisions": 2016,
+   "violations": [],
+   "ok": true
+  },
+  "B exact attainment, PRISM": {
+   "requests_counted": 6122799.0,
+   "requests": 6122799,
+   "ontime_integer": true,
+   "record_attainment_reported": 0.9965162991631769,
+   "record_attainment_from_counts": 0.9965162991631769,
+   "windows": 672,
+   "violating_window_rate_reported": 0.022321428571428572,
+   "violating_window_rate_recomputed": 0.022321428571428572,
+   "runtime_s": 100.3,
+   "ok": true
+  },
+  "A telemetry cutoff, QuantProv_q90": {
+   "decisions": 2016,
+   "violations": [],
+   "ok": true
+  },
+  "B exact attainment, QuantProv_q90": {
+   "requests_counted": 6122799.0,
+   "requests": 6122799,
+   "ontime_integer": true,
+   "record_attainment_reported": 0.995814495951933,
+   "record_attainment_from_counts": 0.995814495951933,
+   "windows": 672,
+   "violating_window_rate_reported": 0.02976190476190476,
+   "violating_window_rate_recomputed": 0.02976190476190476,
+   "runtime_s": 84.7,
+   "ok": true
+  },
+  "D shared forecasting and smoothing (R6.4)": {
+   "forecast_arrays_identical": {
+    "q_raw": true,
+    "q_cal": true,
+    "s": true,
+    "y": true
+   },
+   "prism_reads": "q_cal",
+   "quantprov_reads": "q_cal",
+   "prism_scale_in": {
+    "use_hysteresis": true,
+    "factor": 0.85,
+    "applies_when": "memory unchanged"
+   },
+   "quantprov_scale_in": {
+    "factor": 0.85
+   },
+   "ok": true
+  },
+  "C no lookahead, QuantProv_q90": {
+   "epoch": 1000,
+   "cut_minute": 4999,
+   "decisions_identical_up_to_k": true,
+   "memory_identical_up_to_k": true,
+   "later_decisions_changed": true,
+   "forecasts_identical_up_to_k": {
+    "q_raw": true,
+    "q_cal": true,
+    "s": true,
+    "y": false
+   },
+   "ok": false
+  },
+  "C no lookahead, Reactive": {
+   "epoch": 1000,
+   "cut_minute": 4999,
+   "decisions_identical_up_to_k": true,
+   "memory_identical_up_to_k": true,
+   "later_decisions_changed": true,
+   "ok": true
+  }
+ },
+ "all_ok": false,
+ "runtime_s": 604.7
+}
