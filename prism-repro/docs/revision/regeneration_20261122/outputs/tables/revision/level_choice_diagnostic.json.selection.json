@@ -1,0 +1,11 @@
+{
+ "selections": {
+  "101": 0.05,
+  "102": 0.03,
+  "103": 0.08,
+  "104": 0.08,
+  "105": 0.08
+ },
+ "replaced": "SEL = {101: 0.02, 102: 0.03, 103: 0.05, 104: 0.05, 105: 0.05}   # results/tables/E1_selected_parameters.md",
+ "with_": "SEL = {101: 0.05, 102: 0.03, 103: 0.08, 104: 0.08, 105: 0.08}   # regenerated E1 selections (level_choice_regenerated.py)"
+}

@@ -1,0 +1,2 @@
+seed,scenario,epochs,total_ms_median,total_ms_p99,total_ms_max,forecast_ms_median,forecast_ms_p99,optimise_ms_median,optimise_ms_p99,online_vs_batch_max_rel_diff,online_equals_batch_identical,busy_fraction_at_5min,synthetic,exp,status,started_utc,platform,processor,python
+101,stationary,2016,10.1068,20.1293,28.4744,7.6785,13.8241,2.3182,10.689,0.0,True,0.0,True,E10,ok,2026-11-23T17:15:40+00:00,Windows-11-10.0.26200-SP0,"Intel64 Family 6 Model 142 Stepping 12, GenuineIntel",3.12.9

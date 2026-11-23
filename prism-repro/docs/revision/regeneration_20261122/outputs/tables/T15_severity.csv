@@ -1,0 +1,7 @@
+Policy,Late records/week,Attainment in violating windows,Worst-window attainment,Longest run (windows),Mean run,Runs/week
+OnDemand,"47,592",98.75%,97.86%,2.1,1.09,116.0
+Static,"25,459",98.81%,98.51%,1.2,1.01,13.4
+Scheduled,"26,970",98.83%,98.36%,1.3,1.02,18.9
+Reactive,"24,025",98.83%,98.50%,1.0,1.00,12.9
+PredHead,"30,605",98.75%,98.16%,1.1,1.00,26.6
+PRISM,"24,221",98.74%,98.31%,1.0,1.00,11.9

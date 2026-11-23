@@ -1,0 +1,12 @@
+# Validation week: cheapest grid point whose mean (over traces) violating-window rate is under a threshold
+
+| Policy        |   min mean cost with ≤1% viol |   min mean cost with ≤2% viol |
+|:--------------|------------------------------:|------------------------------:|
+| Static        |                         1,418 |                         1,418 |
+| Scheduled     |                         1,241 |                         1,154 |
+| Reactive      |                         1,478 |                         1,344 |
+| PredHead      |                         1,041 |                           839 |
+| PredHead+hyst |                         1,077 |                           911 |
+| QuantProv_q90 |                         1,091 |                           941 |
+| QuantProv_q99 |                         1,141 |                         1,006 |
+| PRISM         |                         1,068 |                           920 |

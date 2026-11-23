@@ -1,0 +1,3 @@
+2026-11-22T22:41:00Z START E8: <prism-repro>/venv/Scripts/python experiments/run_experiments.py --exp E8 --seeds 101 102 103 104 105
+2026-11-23T00:40:34Z END   E8: exit 0, 7175 s
+2026-11-23T00:40:35Z LANE2 DONE

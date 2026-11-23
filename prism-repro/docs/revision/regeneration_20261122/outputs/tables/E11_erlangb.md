@@ -1,0 +1,8 @@
+# PRISM vs PRISM-EB, both validation-tuned under the fast simulator
+
+| Scenario   | PRISM         | PRISM-EB      |   max |cost diff| (USD) | viol diff range (pp)   |
+|:-----------|:--------------|:--------------|------------------------:|:-----------------------|
+| stationary | 981 / 1.55%   | 981 / 1.55%   |                       0 | +0.00 … +0.00          |
+| growth     | 1,273 / 1.31% | 1,273 / 1.31% |                       0 | +0.00 … +0.00          |
+| bursty     | 1,076 / 2.14% | 1,076 / 2.14% |                       0 | +0.00 … +0.00          |
+| new_spike  | 1,270 / 2.11% | 1,270 / 2.11% |                       0 | +0.00 … +0.00          |

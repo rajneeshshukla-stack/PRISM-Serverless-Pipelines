@@ -1,0 +1,8 @@
+2026-11-22T22:41:00Z START tests_full: <prism-repro>/venv/Scripts/python -m unittest discover -s tests -v
+2026-11-22T22:48:01Z END   tests_full: exit 0, 421 s
+2026-11-22T22:48:01Z START E1: <prism-repro>/venv/Scripts/python experiments/run_experiments.py --exp E1 --seeds 101 102 103 104 105
+2026-11-22T23:56:39Z END   E1: exit 0, 4118 s
+2026-11-22T23:56:39Z START E9: <prism-repro>/venv/Scripts/python experiments/run_experiments.py --exp E9 --seeds 101 102 103
+2026-11-23T00:03:31Z END   E9: exit 1, 412 s
+2026-11-23T00:03:31Z START E12: <prism-repro>/venv/Scripts/python scripts/revision/e12_event_retune.py . results/raw/E12 101 102 103 104 105
+2026-11-23T03:34:20Z NOTE  lane1 script stopped by the operator at 03:29Z and E12 stopped at 03:34Z after seed 103 completed (E12 resumes per run); C1-C3 to run alone; remaining steps later, one at a time

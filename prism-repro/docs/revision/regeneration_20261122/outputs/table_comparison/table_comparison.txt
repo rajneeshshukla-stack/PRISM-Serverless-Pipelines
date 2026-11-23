@@ -1,0 +1,397 @@
+Stored results/tables versus regenerated tree: 71 files; differs 65, new (no stored file) 6
+
+## E10_overhead.csv: 1 of 3 lines differ
+  stored:      101,stationary,2016,7.3587,17.0546,22.8083,5.4757,9.4506,1.8059,9.0584,0.0,True,0.0,True,E10,ok,2026-10-29T23:49:18+00:00,Linux-6.18.44-fc-v185-x86_64-with-glibc2.39,x86_64,3.12.3
+  regenerated: 101,stationary,2016,10.1068,20.1293,28.4744,7.6785,13.8241,2.3182,10.689,0.0,True,0.0,True,E10,ok,2026-11-23T17:15:40+00:00,Windows-11-10.0.26200-SP0,"Intel64 Family 6 Model 142 Stepping 12, GenuineIn
+## E10_overhead.md: 3 of 6 lines differ
+  stored:      |   seed | scenario   |   epochs |   total_ms_median |   total_ms_p99 |   total_ms_max |   forecast_ms_median |   forecast_ms_p99 |   optimise_ms_median |   optimise_ms_p99 |   online_vs_batch_max_rel
+  stored:      |-------:|:-----------|---------:|------------------:|---------------:|---------------:|---------------------:|------------------:|---------------------:|------------------:|--------------------------
+  regenerated: |   seed | scenario   |   epochs |   total_ms_median |   total_ms_p99 |   total_ms_max |   forecast_ms_median |   forecast_ms_p99 |   optimise_ms_median |   optimise_ms_p99 |   online_vs_batch_max_rel
+  regenerated: |-------:|:-----------|---------:|------------------:|---------------:|---------------:|---------------------:|------------------:|---------------------:|------------------:|--------------------------
+## E11_erlangb.csv: 4 of 6 lines differ
+  stored:      stationary,"1,073 / 1.28%","1,069 / 1.43%",90,-0.15 … +0.30
+  stored:      growth,"1,396 / 1.22%","1,391 / 1.31%",108,-0.15 … +0.45
+  regenerated: stationary,981 / 1.55%,981 / 1.55%,0,+0.00 … +0.00
+  regenerated: growth,"1,273 / 1.31%","1,273 / 1.31%",0,+0.00 … +0.00
+## E11_erlangb.md: 4 of 9 lines differ
+  stored:      | stationary | 1,073 / 1.28% | 1,069 / 1.43% |                      90 | -0.15 … +0.30          |
+  stored:      | growth     | 1,396 / 1.22% | 1,391 / 1.31% |                     108 | -0.15 … +0.45          |
+  regenerated: | stationary | 981 / 1.55%   | 981 / 1.55%   |                       0 | +0.00 … +0.00          |
+  regenerated: | growth     | 1,273 / 1.31% | 1,273 / 1.31% |                       0 | +0.00 … +0.00          |
+## E1_aggregate_all_test_weeks.csv: 9 of 11 lines differ
+  stored:      OnDemand,997,18.72,0%,20
+  stored:      Static,"1,491",1.26,70%,20
+  regenerated: OnDemand,997,18.91,0%,20
+  regenerated: Static,"1,372",2.06,70%,20
+## E1_aggregate_all_test_weeks.md: 9 of 14 lines differ
+  stored:      | OnDemand      |               997 |                        18.72 | 0%                              |           20 |
+  stored:      | Static        |             1,491 |                         1.26 | 70%                             |           20 |
+  regenerated: | OnDemand      |               997 |                        18.91 | 0%                              |           20 |
+  regenerated: | Static        |             1,372 |                         2.06 | 70%                             |           20 |
+## E1_selected_parameters.csv: 5 of 7 lines differ
+  stored:      101,99.0,1.8,0.55,1.4,0.02,1.4,1.1,0.9
+  stored:      102,99.0,1.8,0.6,1.6,0.03,1.6,1.3,0.9
+  regenerated: 101,97.0,1.4,0.65,1.1,0.05,1.2,0.8,0.7
+  regenerated: 102,99.0,1.4,0.75,1.5,0.03,1.3,0.9,0.8
+## E1_selected_parameters.md: 5 of 10 lines differ
+  stored:      |    101 |       99 |         1.8 |       0.55 |        1.4 |    0.02 |             1.4 |             1.1 |             0.9 |
+  stored:      |    102 |       99 |         1.8 |       0.6  |        1.6 |    0.03 |             1.6 |             1.3 |             0.9 |
+  regenerated: |    101 |       97 |         1.4 |       0.65 |        1.1 |    0.05 |             1.2 |             0.8 |             0.7 |
+  regenerated: |    102 |       99 |         1.4 |       0.75 |        1.5 |    0.03 |             1.3 |             0.9 |             0.8 |
+## E3_ablation_conformal_oracle.csv: 4 of 6 lines differ
+  stored:      stationary,"1,073 / 1.28%",943 / 2.62%,937 / 0.33%,5/5
+  stored:      growth,"1,396 / 1.22%","1,223 / 2.41%","1,216 / 0.42%",5/5
+  regenerated: stationary,981 / 1.55%,910 / 2.08%,919 / 0.12%,5/5
+  regenerated: growth,"1,273 / 1.31%","1,183 / 1.90%","1,196 / 0.09%",5/5
+## E3_ablation_conformal_oracle.md: 4 of 9 lines differ
+  stored:      | stationary | 1,073 / 1.28% | 943 / 2.62%    | 937 / 0.33%   | 5/5                                                 |
+  stored:      | growth     | 1,396 / 1.22% | 1,223 / 2.41%  | 1,216 / 0.42% | 5/5                                                 |
+  regenerated: | stationary | 981 / 1.55%   | 910 / 2.08%    | 919 / 0.12%   | 5/5                                                 |
+  regenerated: | growth     | 1,273 / 1.31% | 1,183 / 1.90%  | 1,196 / 0.09% | 5/5                                                 |
+## E3_quantile_vs_scenario_feasibility.csv: 2 of 4 lines differ
+  stored:      stationary,98.9%,100.0%,-0.04%,+0.00,1.80,1.62
+  stored:      new_spike,99.5%,100.0%,-0.02%,+0.00,1.80,1.66
+  regenerated: stationary,92.6%,100.0%,-0.25%,+0.03,3.43,1.99
+  regenerated: new_spike,97.6%,100.0%,-0.09%,+0.03,3.55,2.02
+## E3_quantile_vs_scenario_feasibility.md: 2 of 9 lines differ
+  stored:      | stationary | 98.9%                           | 100.0%             | -0.04%      |                0 |                     1.8 |                   1.62 |
+  stored:      | new_spike  | 99.5%                           | 100.0%             | -0.02%      |                0 |                     1.8 |                   1.66 |
+  regenerated: | stationary | 92.6%                           | 100.0%             | -0.25%      |             0.03 |                    3.43 |                   1.99 |
+  regenerated: | new_spike  | 97.6%                           | 100.0%             | -0.09%      |             0.03 |                    3.55 |                   2.02 |
+## E6_caps.csv: 8 of 10 lines differ
+  stored:      stationary,None,"1,149",0.86%,0.37%,253,5
+  stored:      stationary,250,"1,145",0.86%,0.47%,250,5
+  regenerated: stationary,None,"1,131",0.83%,0.17%,246,5
+  regenerated: stationary,250,"1,128",0.83%,0.27%,244,5
+## E6_caps.md: 8 of 13 lines differ
+  stored:      | stationary | None  |  1,149 | 0.86%               | 0.37%               |                253 |        5 |
+  stored:      | stationary | 250   |  1,145 | 0.86%               | 0.47%               |                250 |        5 |
+  regenerated: | stationary | None  |  1,131 | 0.83%               | 0.17%               |                246 |        5 |
+  regenerated: | stationary | 250   |  1,128 | 0.83%               | 0.27%               |                244 |        5 |
+## E9_inflight_and_sampling.csv: 10 of 14 lines differ
+  stored:      stationary,Static,0.012,1.097,1.5,2.2,3.41
+  stored:      stationary,Scheduled,0.023,1.097,1.5,2.2,3.41
+  regenerated: stationary,Static,0.037,1.1,1.5,2.222,3.5
+  regenerated: stationary,Scheduled,0.045,1.098,1.5,2.222,3.466
+  stored:      new_spike,Static,0.034,1.083,1.462,2.167,3.4
+  stored:      new_spike,Scheduled,0.049,1.084,1.462,2.167,3.394
+  regenerated: new_spike,Static,0.072,1.088,1.468,2.189,3.529
+  regenerated: new_spike,Scheduled,0.087,1.087,1.467,2.175,3.471
+## E9_inflight_and_sampling.md: 10 of 17 lines differ
+  stored:      | stationary | Static    |                0.012 |                1.097 |                1.5   |                2.2   |                3.41  |
+  stored:      | stationary | Scheduled |                0.023 |                1.097 |                1.5   |                2.2   |                3.41  |
+  regenerated: | stationary | Static    |                0.037 |                1.1   |                1.5   |                2.222 |                3.5   |
+  regenerated: | stationary | Scheduled |                0.045 |                1.098 |                1.5   |                2.222 |                3.466 |
+  stored:      | new_spike  | Static    |                0.034 |                1.083 |                1.462 |                2.167 |                3.4   |
+  stored:      | new_spike  | Scheduled |                0.049 |                1.084 |                1.462 |                2.167 |                3.394 |
+  regenerated: | new_spike  | Static    |                0.072 |                1.088 |                1.468 |                2.189 |                3.529 |
+  regenerated: | new_spike  | Scheduled |                0.087 |                1.087 |                1.467 |                2.175 |                3.471 |
+## F3_validation_frontier.csv: 76 of 78 lines differ
+  stored:      OnDemand,,868.2761447036901,0.16755952380952382
+  stored:      PRISM,0.005,1268.1304592660347,0.005952380952380952
+  regenerated: OnDemand,,868.2761447036901,0.16547619047619047
+  regenerated: PRISM,0.005,1224.196301709761,0.003869047619047619
+## F3_validation_frontier_summary.csv: 7 of 10 lines differ
+  stored:      Scheduled,"1,329","1,329"
+  stored:      Reactive,"1,666","1,478"
+  regenerated: Scheduled,"1,241","1,154"
+  regenerated: Reactive,"1,478","1,344"
+## F3_validation_frontier_summary.md: 10 of 13 lines differ
+  stored:      | Policy        | min mean cost with ≤1% viol   |   min mean cost with ≤2% viol |
+  stored:      |:--------------|:------------------------------|------------------------------:|
+  regenerated: | Policy        |   min mean cost with ≤1% viol |   min mean cost with ≤2% viol |
+  regenerated: |:--------------|------------------------------:|------------------------------:|
+## R1_real_traces.json: 753 of 988 lines differ
+  stored:          859.4066744367501,
+  regenerated:     859.4067744369501,
+  stored:          0.8928571428571428,
+  stored:          1.636904761904762,
+  regenerated:     0.4464285714285714,
+  regenerated:     1.488095238095238,
+  stored:           "val_vw": 0.004464285714285714,
+  regenerated:      "val_vw": 0.005952380952380952,
+## R1_real_traces.md: 31 of 49 lines differ
+  stored:      | On-demand | None, None, None, None, None | 895 ± 143 | 6.85 ± 13.26 | 3/5 | 0.00 |
+  stored:      | Static | 50, 50, 99, 99.9, 50 | 1,389 ± 1,214 | 0.68 ± 0.56 | 5/5 | 0.50 |
+  regenerated: | On-demand | None, None, None, None, None | 895 ± 143 | 6.82 ± 14.41 | 3/5 | 0.00 |
+  regenerated: | Static | 50, 50, 95, 99.9, 50 | 1,349 ± 1,235 | 0.74 ± 0.95 | 5/5 | 0.53 |
+  stored:      | PredHead | +8.5 ± 12.4 (0) | -0.33 ± 0.48 (3) |
+  stored:      | PredHead+S | +2.1 ± 2.8 (1) | -0.30 ± 0.43 (3) |
+  regenerated: | PredHead | +8.9 ± 15.9 (0) | -0.03 ± 0.08 (1) |
+  regenerated: | PredHead+S | +2.1 ± 0.6 (0) | -0.06 ± 0.17 (1) |
+  stored:      | huawei_fn150 | 4.5 | 0.842 | 0.973 | 0.939 | 0.990 |
+  stored:      | huawei_fn72 | 5.6 | 0.854 | 0.978 | 0.948 | 0.989 |
+  regenerated: | huawei_fn150 | 4.5 | 0.835 | 0.972 | 0.938 | 0.990 |
+  regenerated: | huawei_fn72 | 5.6 | 0.860 | 0.977 | 0.945 | 0.989 |
+## R2_quantprov_memory.json: 585 of 524 lines differ
+  stored:         "cost": 988.658653390959,
+  stored:         "viol": 1.7857142857142856,
+  regenerated:    "cost": 935.9221683108506,
+  regenerated:    "viol": 1.8601190476190477,
+  stored:          0.8,
+  stored:          0.8
+  regenerated:     0.7,
+  regenerated:     0.7
+  stored:         "cost": 1329.9429598789188,
+  regenerated:    "cost": 1330.5356491612388,
+## R2_quantprov_memory.md: 6 of 9 lines differ
+  stored:      | 0.5 | 14.5 | 996 / 1.56 | 989 / 1.79 | 1,106 / 1.19 | 1,330 / 0.00 | 1,490 / 0.00 | 897 / 1.79 | 1,241 / 0.00 | identical |
+  stored:      | 0.5 | 13.0 | 1,741 / 0.00 | 1,368 / 69.72 | 1,616 / 69.35 | 1,330 / 0.07 | 1,490 / 0.00 | 1,055 / 70.54 | 1,241 / 0.00 | identical |
+  regenerated: | 0.5 | 14.5 | 939 / 1.79 | 936 / 1.86 | 996 / 1.86 | 1,331 / 0.00 | 1,493 / 0.00 | 910 / 1.79 | 1,241 / 0.00 | identical |
+  regenerated: | 0.5 | 13.0 | 1,706 / 0.00 | 887 / 100.00 | 996 / 100.00 | 1,331 / 0.00 | 1,493 / 0.00 | 825 / 100.00 | 1,241 / 0.00 | identical |
+## T10_fast_vs_event.csv: 6 of 8 lines differ
+  stored:      OnDemand,"1,000","1,008",+0.78%,18.28%,38.47%,2.10,99.34 / 98.82,0.213% / 0.494%,0% / 0%,12
+  stored:      Static,"1,493","1,494",+0.05%,1.14%,4.75%,4.16,99.71 / 99.59,0.034% / 0.094%,67% / 8%,12
+  regenerated: OnDemand,"1,000","1,008",+0.78%,19.20%,38.47%,2.00,99.32 / 98.82,0.213% / 0.494%,0% / 0%,12
+  regenerated: Static,"1,296","1,299",+0.20%,2.94%,13.29%,4.52,99.61 / 99.35,0.075% / 0.217%,50% / 8%,12
+## T10_fast_vs_event.md: 6 of 11 lines differ
+  stored:      | OnDemand  |       1,000 |        1,008 | +0.78%           | 18.28%      | 38.47%       |                    2.1  | 99.34 / 98.82            | 0.213% / 0.494%               | 0% / 0%              |  
+  stored:      | Static    |       1,493 |        1,494 | +0.05%           | 1.14%       | 4.75%        |                    4.16 | 99.71 / 99.59            | 0.034% / 0.094%               | 67% / 8%             |  
+  regenerated: | OnDemand  |       1,000 |        1,008 | +0.78%           | 19.20%      | 38.47%       |                    2    | 99.32 / 98.82            | 0.213% / 0.494%               | 0% / 0%              |  
+  regenerated: | Static    |       1,296 |        1,299 | +0.20%           | 2.94%       | 13.29%       |                    4.52 | 99.61 / 99.35            | 0.075% / 0.217%               | 50% / 8%             |  
+## T10b_prism_vs_predhead_fidelity.csv: 4 of 6 lines differ
+  stored:      stationary,-0.74,-1.19,+169,+168
+  stored:      growth,-0.55,-1.34,+212,+212
+  regenerated: stationary,-0.79,-0.79,+146,+146
+  regenerated: growth,-0.79,-1.34,+187,+188
+## T10b_prism_vs_predhead_fidelity.md: 4 of 9 lines differ
+  stored:      | stationary |                           -0.74 |                            -1.19 |                             +169 |                              +168 |
+  stored:      | growth     |                           -0.55 |                            -1.34 |                             +212 |                              +212 |
+  regenerated: | stationary |                           -0.79 |                            -0.79 |                             +146 |                              +146 |
+  regenerated: | growth     |                           -0.79 |                            -1.34 |                             +187 |                              +188 |
+## T11_overflow_estimates.csv: 2 of 4 lines differ
+  stored:      stationary,1.11%,1.13% (+2%),1.12% (+1%),0.79% (-28%),1.37% (+24%)
+  stored:      new_spike,1.80%,1.82% (+1%),1.94% (+8%),1.43% (-20%),2.15% (+20%)
+  regenerated: stationary,3.06%,3.11% (+2%),3.04% (-1%),2.17% (-29%),3.71% (+21%)
+  regenerated: new_spike,4.26%,4.30% (+1%),4.45% (+4%),3.39% (-20%),5.00% (+17%)
+## T11_overflow_estimates.md: 2 of 7 lines differ
+  stored:      | stationary | 1.11%         | 1.13% (+2%)            | 1.12% (+1%)      | 0.79% (-28%)       | 1.37% (+24%)             |
+  stored:      | new_spike  | 1.80%         | 1.82% (+1%)            | 1.94% (+8%)      | 1.43% (-20%)       | 2.15% (+20%)             |
+  regenerated: | stationary | 3.06%         | 3.11% (+2%)            | 3.04% (-1%)      | 2.17% (-29%)       | 3.71% (+21%)             |
+  regenerated: | new_spike  | 4.26%         | 4.30% (+1%)            | 4.45% (+4%)      | 3.39% (-20%)       | 5.00% (+17%)             |
+## T13_infeasibility.csv: 6 of 8 lines differ
+  stored:      0.005,3.62%,0.0043,0.0391,1231,1.1%,0.4%,20
+  stored:      0.01,1.60%,0.0045,0.0315,551,1.3%,0.7%,20
+  regenerated: 0.005,3.24%,0.0034,0.0285,1101,0.6%,0.3%,20
+  regenerated: 0.01,0.99%,0.0038,0.0278,357,0.6%,0.6%,20
+## T13_infeasibility.md: 6 of 11 lines differ
+  stored:      | 0.005 | 3.62%               |                 0.0043 |           0.0391 |              1231 | 1.1%                     | 0.4%                   |           20 |
+  stored:      | 0.01  | 1.60%               |                 0.0045 |           0.0315 |               551 | 1.3%                     | 0.7%                   |           20 |
+  regenerated: | 0.005 | 3.24%               |                 0.0034 |           0.0285 |              1101 | 0.6%                     | 0.3%                   |           20 |
+  regenerated: | 0.01  | 0.99%               |                 0.0038 |           0.0278 |               357 | 0.6%                     | 0.6%                   |           20 |
+## T14_hysteresis.csv: 24 of 26 lines differ
+  stored:      stationary,0.005,with,"1,334",0.45%,"1,994","63,928",285,0.012%,13.03
+  stored:      stationary,0.005,without,"1,208",0.62%,"1,943","73,692",242,0.017%,13.05
+  regenerated: stationary,0.005,with,"1,298",0.30%,"1,993","64,266",285,0.012%,13.08
+  regenerated: stationary,0.005,without,"1,171",0.51%,"1,945","74,230",241,0.017%,13.10
+## T14_hysteresis.md: 24 of 29 lines differ
+  stored:      | stationary | 0.005 | with         |  1,334 | 0.45%               |                   1,994 |               63,928 |                285 | 0.012%             |     13.03 |
+  stored:      | stationary | 0.005 | without      |  1,208 | 0.62%               |                   1,943 |               73,692 |                242 | 0.017%             |     13.05 |
+  regenerated: | stationary | 0.005 | with         |  1,298 | 0.30%               |                   1,993 |               64,266 |                285 | 0.012%             |     13.08 |
+  regenerated: | stationary | 0.005 | without      |  1,171 | 0.51%               |                   1,945 |               74,230 |                241 | 0.017%             |     13.1  |
+## T15_severity.csv: 6 of 8 lines differ
+  stored:      OnDemand,"46,376",98.60%,97.33%,2.5,1.10,113.8
+  stored:      Static,"20,323",98.81%,98.50%,1.1,1.00,8.4
+  regenerated: OnDemand,"47,592",98.75%,97.86%,2.1,1.09,116.0
+  regenerated: Static,"25,459",98.81%,98.51%,1.2,1.01,13.4
+## T15_severity.md: 6 of 11 lines differ
+  stored:      | OnDemand  |              46,376 | 98.60%                            | 97.33%                    |                     2.5 |       1.1  |       113.8 |
+  stored:      | Static    |              20,323 | 98.81%                            | 98.50%                    |                     1.1 |       1    |         8.4 |
+  regenerated: | OnDemand  |              47,592 | 98.75%                            | 97.86%                    |                     2.1 |       1.09 |       116   |
+  regenerated: | Static    |              25,459 | 98.81%                            | 98.51%                    |                     1.2 |       1.01 |        13.4 |
+## T18_reference_forecasters.csv: 1 of 6 lines differ
+  stored:      gbm,13.7,78.2,68.7,29.8,85.1%,96.0%
+  regenerated: gbm,13.7,78.3,68.5,30.2,84.9%,96.0%
+## T18_reference_forecasters.md: 1 of 9 lines differ
+  stored:      | gbm            |              13.7 |          78.2 |          68.7 |           29.8 | 85.1%     | 96.0%     |
+  regenerated: | gbm            |              13.7 |          78.3 |          68.5 |           30.2 | 84.9%     | 96.0%     |
+## T19_reference_downstream.csv: 8 of 10 lines differ
+  stored:      gbm + PRISM,"1,073 / 1.28%","1,396 / 1.22%","1,202 / 1.40%","1,395 / 1.55%"
+  stored:      gbm + QuantProv q99,"1,150 / 0.92%","1,512 / 0.83%","1,301 / 0.95%","1,516 / 0.98%"
+  regenerated: gbm + PRISM,981 / 1.55%,"1,273 / 1.31%","1,076 / 2.14%","1,270 / 2.11%"
+  regenerated: gbm + QuantProv q99,"1,048 / 1.40%","1,364 / 1.31%","1,173 / 1.37%","1,386 / 1.25%"
+## T19_reference_downstream.md: 8 of 13 lines differ
+  stored:      | gbm + PRISM                    | 1,073 / 1.28% | 1,396 / 1.22% | 1,202 / 1.40% | 1,395 / 1.55% |
+  stored:      | gbm + QuantProv q99            | 1,150 / 0.92% | 1,512 / 0.83% | 1,301 / 0.95% | 1,516 / 0.98% |
+  regenerated: | gbm + PRISM                    | 981 / 1.55%   | 1,273 / 1.31% | 1,076 / 2.14% | 1,270 / 2.11% |
+  regenerated: | gbm + QuantProv q99            | 1,048 / 1.40% | 1,364 / 1.31% | 1,173 / 1.37% | 1,386 / 1.25% |
+## T20_feature_ablation.csv: 20 of 22 lines differ
+  stored:      stationary,gbm,12.2,44.9,97.2%,"1,073",1.28%
+  stored:      stationary,gbm_no_trigger,14.7,50.9,97.3%,"1,090",1.28%
+  regenerated: stationary,gbm,12.2,44.8,97.3%,981,1.55%
+  regenerated: stationary,gbm_no_trigger,14.7,50.7,97.3%,978,1.85%
+## T20_feature_ablation.md: 20 of 25 lines differ
+  stored:      | stationary       | gbm            |       12.2 |            44.9 | 97.2%              |        1,073 | 1.28%        |
+  stored:      | stationary       | gbm_no_trigger |       14.7 |            50.9 | 97.3%              |        1,090 | 1.28%        |
+  regenerated: | stationary       | gbm            |       12.2 |            44.8 | 97.3%              |          981 | 1.55%        |
+  regenerated: | stationary       | gbm_no_trigger |       14.7 |            50.7 | 97.3%              |          978 | 1.85%        |
+## T4_forecast_coverage.csv: 4 of 6 lines differ
+  stored:      stationary,12.2 ± 0.6,0.506 ± 0.014,0.866 ± 0.008,0.972 ± 0.005,0.989 ± 0.001,0.980 ± 0.003
+  stored:      growth,12.2 ± 0.5,0.498 ± 0.006,0.859 ± 0.010,0.973 ± 0.004,0.989 ± 0.001,0.981 ± 0.003
+  regenerated: stationary,12.2 ± 0.7,0.505 ± 0.015,0.863 ± 0.002,0.973 ± 0.004,0.989 ± 0.001,0.980 ± 0.003
+  regenerated: growth,12.1 ± 0.6,0.498 ± 0.006,0.859 ± 0.005,0.974 ± 0.003,0.989 ± 0.001,0.980 ± 0.002
+## T4_forecast_coverage.md: 4 of 9 lines differ
+  stored:      | stationary | 12.2 ± 0.6        | 0.506 ± 0.014 | 0.866 ± 0.008 | 0.972 ± 0.005 | 0.989 ± 0.001     | 0.980 ± 0.003     |
+  stored:      | growth     | 12.2 ± 0.5        | 0.498 ± 0.006 | 0.859 ± 0.010 | 0.973 ± 0.004 | 0.989 ± 0.001     | 0.981 ± 0.003     |
+  regenerated: | stationary | 12.2 ± 0.7        | 0.505 ± 0.015 | 0.863 ± 0.002 | 0.973 ± 0.004 | 0.989 ± 0.001     | 0.980 ± 0.003     |
+  regenerated: | growth     | 12.1 ± 0.6        | 0.498 ± 0.006 | 0.859 ± 0.005 | 0.974 ± 0.003 | 0.989 ± 0.001     | 0.980 ± 0.002     |
+## T5_test_weeks.csv: 36 of 38 lines differ
+  stored:      stationary,OnDemand,868 ± 13,16.76 ± 1.28,99.36,13.79,0%,0%,5
+  stored:      stationary,Static,"1,412 ± 18",0.48 ± 0.36,99.74,13.20,24%,100%,5
+  regenerated: stationary,OnDemand,868 ± 13,16.93 ± 0.71,99.35,13.79,0%,0%,5
+  regenerated: stationary,Static,"1,291 ± 192",1.10 ± 1.39,99.68,13.26,28%,80%,5
+## T5_test_weeks.md: 36 of 43 lines differ
+  stored:      | stationary | OnDemand      | 868 ± 13     | 16.76 ± 1.28            |                   99.36 |             13.79 | 0%                    | 0%        |   5 |
+  stored:      | stationary | Static        | 1,412 ± 18   | 0.48 ± 0.36             |                   99.74 |             13.2  | 24%                   | 100%      |   5 |
+  regenerated: | stationary | OnDemand      | 868 ± 13     | 16.93 ± 0.71            |                   99.35 |             13.79 | 0%                    | 0%        |   5 |
+  regenerated: | stationary | Static        | 1,291 ± 192  | 1.10 ± 1.39             |                   99.68 |             13.26 | 28%                   | 80%       |   5 |
+## T6_paired_PRISM_vs_PredHead.csv: 4 of 6 lines differ
+  stored:      stationary,144 ± 75,15.6 ± 8.3,-0.57 ± 0.40,0,4,5
+  stored:      growth,189 ± 94,15.7 ± 8.0,-0.45 ± 0.35,0,4,5
+  regenerated: stationary,122 ± 50,14.1 ± 5.3,-0.65 ± 0.56,0,5,5
+  regenerated: growth,156 ± 63,13.9 ± 5.0,-0.86 ± 0.40,0,5,5
+## T6_paired_PRISM_vs_PredHead.md: 4 of 9 lines differ
+  stored:      | stationary | 144 ± 75          | 15.6 ± 8.3      | -0.57 ± 0.40                 |                      0 |                               4 |   5 |
+  stored:      | growth     | 189 ± 94          | 15.7 ± 8.0      | -0.45 ± 0.35                 |                      0 |                               4 |   5 |
+  regenerated: | stationary | 122 ± 50          | 14.1 ± 5.3      | -0.65 ± 0.56                 |                      0 |                               5 |   5 |
+  regenerated: | growth     | 156 ± 63          | 13.9 ± 5.0      | -0.86 ± 0.40                 |                      0 |                               5 |   5 |
+## T6_paired_PRISM_vs_PredHeadHyst.csv: 4 of 6 lines differ
+  stored:      stationary,71 ± 42,7.1 ± 4.2,-0.42 ± 0.24,0,5,5
+  stored:      growth,91 ± 54,7.0 ± 4.2,-0.27 ± 0.27,0,4,5
+  regenerated: stationary,57 ± 51,6.1 ± 5.1,-0.39 ± 0.21,0,5,5
+  regenerated: growth,69 ± 74,5.6 ± 5.7,-0.42 ± 0.40,0,4,5
+## T6_paired_PRISM_vs_PredHeadHyst.md: 4 of 9 lines differ
+  stored:      | stationary | 71 ± 42           | 7.1 ± 4.2       | -0.42 ± 0.24                 |                      0 |                               5 |   5 |
+  stored:      | growth     | 91 ± 54           | 7.0 ± 4.2       | -0.27 ± 0.27                 |                      0 |                               4 |   5 |
+  regenerated: | stationary | 57 ± 51           | 6.1 ± 5.1       | -0.39 ± 0.21                 |                      0 |                               5 |   5 |
+  regenerated: | growth     | 69 ± 74           | 5.6 ± 5.7       | -0.42 ± 0.40                 |                      0 |                               4 |   5 |
+## T6_paired_PRISM_vs_QuantProvq90.csv: 4 of 6 lines differ
+  stored:      stationary,-37 ± 100,-2.8 ± 7.5,0.00 ± 0.18,4,2,5
+  stored:      growth,-60 ± 132,-3.6 ± 7.5,0.06 ± 0.10,5,0,5
+  regenerated: stationary,16 ± 23,1.6 ± 2.3,-0.18 ± 0.30,1,3,5
+  regenerated: growth,16 ± 28,1.3 ± 2.2,-0.18 ± 0.36,1,3,5
+## T6_paired_PRISM_vs_QuantProvq90.md: 4 of 9 lines differ
+  stored:      | stationary | -37 ± 100         | -2.8 ± 7.5      | 0.00 ± 0.18                  |                      4 |                               2 |   5 |
+  stored:      | growth     | -60 ± 132         | -3.6 ± 7.5      | 0.06 ± 0.10                  |                      5 |                               0 |   5 |
+  regenerated: | stationary | 16 ± 23           | 1.6 ± 2.3       | -0.18 ± 0.30                 |                      1 |                               3 |   5 |
+  regenerated: | growth     | 16 ± 28           | 1.3 ± 2.2       | -0.18 ± 0.36                 |                      1 |                               3 |   5 |
+## T7_frozen_vs_retuned.csv: 4 of 6 lines differ
+  stored:      stationary,928 / 1.85%,924 / 1.82%,"1,073 / 1.28%","1,028 / 1.52%"
+  stored:      growth,"1,208 / 1.67%","1,177 / 1.85%","1,396 / 1.22%","1,282 / 1.79%"
+  regenerated: stationary,859 / 2.20%,925 / 1.79%,981 / 1.55%,982 / 1.49%
+  regenerated: growth,"1,117 / 2.17%","1,159 / 1.93%","1,273 / 1.31%","1,234 / 1.43%"
+## T7_frozen_vs_retuned.md: 4 of 9 lines differ
+  stored:      | stationary | 928 / 1.85%       | 924 / 1.82%                     | 1,073 / 1.28%  | 1,028 / 1.52%                |
+  stored:      | growth     | 1,208 / 1.67%     | 1,177 / 1.85%                   | 1,396 / 1.22%  | 1,282 / 1.79%                |
+  regenerated: | stationary | 859 / 2.20%       | 925 / 1.79%                     | 981 / 1.55%    | 982 / 1.49%                  |
+  regenerated: | growth     | 1,117 / 2.17%     | 1,159 / 1.93%                   | 1,273 / 1.31%  | 1,234 / 1.43%                |
+## T8_memory_regimes.csv: 7 of 9 lines differ
+  stored:      0.5,14.5,0.02,"1,162 / 0.67% / 1%","1,162 / 0.67%",897 / 1.79%,870 / 15.92%,2
+  stored:      0.5,13.0,0.01,"1,746 / 0.00% / 100%",940 / 79.46%,"1,069 / 70.46%",870 / 91.52%,2
+  regenerated: 0.5,14.5,0.02,"1,137 / 0.67% / 0%","1,137 / 0.67%",910 / 1.79%,870 / 17.19%,2
+  regenerated: 0.5,13.0,0.01,"1,706 / 0.00% / 100%","1,565 / 100.00%",825 / 100.00%,870 / 100.00%,2
+## T8_memory_regimes.md: 7 of 12 lines differ
+  stored:      |          0.5  |             14.5 |  0.02 | 1,162 / 0.67% / 1%                                 | 1,162 / 0.67%         | 897 / 1.79%                              | 870 / 15.92%  |        2 |
+  stored:      |          0.5  |             13   |  0.01 | 1,746 / 0.00% / 100%                               | 940 / 79.46%          | 1,069 / 70.46%                           | 870 / 91.52%  |        2 |
+  regenerated: |          0.5  |             14.5 |  0.02 | 1,137 / 0.67% / 0%                                 | 1,137 / 0.67%         | 910 / 1.79%                              | 870 / 17.19%  |        2 |
+  regenerated: |          0.5  |             13   |  0.01 | 1,706 / 0.00% / 100%                               | 1,565 / 100.00%       | 825 / 100.00%                            | 870 / 100.00% |        2 |
+## T9_sensitivity.csv: 10 of 12 lines differ
+  stored:      default,stationary,870 / 15.92%,"1,414 / 0.37%","1,588 / 1.04%",936 / 1.49%,"1,197 / 0.67%"
+  stored:      default,growth,"1,136 / 16.15%","1,577 / 2.46%","2,053 / 1.19%","1,217 / 1.34%","1,539 / 0.67%"
+  regenerated: default,stationary,870 / 17.19%,"1,414 / 0.22%","1,425 / 1.49%",911 / 2.01%,"1,076 / 0.97%"
+  regenerated: default,growth,"1,136 / 17.41%","1,577 / 0.89%","1,842 / 1.26%","1,185 / 1.79%","1,392 / 0.82%"
+## T9_sensitivity.md: 10 of 15 lines differ
+  stored:      | default     | stationary  | 870 / 15.92%   | 1,414 / 0.37% | 1,588 / 1.04% | 936 / 1.49%   | 1,197 / 0.67% |
+  stored:      | default     | growth      | 1,136 / 16.15% | 1,577 / 2.46% | 2,053 / 1.19% | 1,217 / 1.34% | 1,539 / 0.67% |
+  regenerated: | default     | stationary  | 870 / 17.19%   | 1,414 / 0.22% | 1,425 / 1.49% | 911 / 2.01%   | 1,076 / 0.97% |
+  regenerated: | default     | growth      | 1,136 / 17.41% | 1,577 / 0.89% | 1,842 / 1.26% | 1,185 / 1.79% | 1,392 / 0.82% |
+## revision/E12_event_level_retuning_analysis.txt: 51 of 90 lines differ
+  stored:      PredHead        {101: 2.0, 102: 1.9, 103: 1.7, 104: 2.0, 105: 1.8}
+  stored:      PredHead+hyst   {101: 1.7, 102: 2.0, 103: 1.4, 104: 1.9, 105: 1.8}
+  regenerated: PredHead        {101: 2.0, 102: 2.0, 103: 1.7, 104: 2.0, 105: 1.9}
+  regenerated: PredHead+hyst   {101: 1.7, 102: 2.0, 103: 1.4, 104: 1.8, 105: 1.7}
+  stored:      QuantProv_q90   {101: 1.64, 102: 1.93, 103: 1.34, 104: 1.49, 105: 1.19}
+  stored:      PRISM           {101: 1.79, 102: 1.49, 103: 1.34, 104: 0.89, 105: 1.04}
+  regenerated: QuantProv_q90   {101: 1.64, 102: 1.93, 103: 1.34, 104: 1.19, 105: 1.19}
+  regenerated: PRISM           {101: 1.93, 102: 1.79, 103: 1.49, 104: 1.04, 105: 1.49}
+  stored:         PredHead          1,035 ±   34 |  3.18 ± 0.73 | meet 0/5
+  stored:         PredHead+hyst     1,132 ±   93 |  2.41 ± 1.21 | meet 2/5
+  regenerated:    PredHead          1,045 ±   38 |  3.10 ± 0.73 | meet 0/5
+  regenerated:    PredHead+hyst     1,118 ±   88 |  2.44 ± 0.99 | meet 2/5
+## revision/E4b_fixed_memory_summary.json: 677 of 1895 lines differ
+  stored:          "cost": 1159.7206662110032,
+  regenerated:     "cost": 1136.9012257631896,
+  stored:          "share_ge2048": 0.8928571428571428,
+  regenerated:     "share_ge2048": 0.0,
+  stored:          "cost": 1159.5874119773575,
+  regenerated:     "cost": 1136.9012257631896,
+## revision/E8_reference_forecasters_analysis.txt: 16 of 30 lines differ
+  stored:      gbm             n=20 MAPE  13.7  pin50   78.2  pin90   68.7  pin99  29.8  cov90  85.1%  cov99  96.0%  cov99cal  98.8%
+  regenerated: gbm             n=20 MAPE  13.7  pin50   78.3  pin90   68.5  pin99  30.2  cov90  84.9%  cov99  96.0%  cov99cal  98.8%
+  stored:      gbm stationary: 12.2/97.2 | growth: 12.2/97.3 | bursty: 14.0/96.0 | new_spike: 16.3/93.4
+  regenerated: gbm stationary: 12.2/97.3 | growth: 12.1/97.4 | bursty: 14.0/96.0 | new_spike: 16.3/93.4
+  stored:      PRISM[gbm]                     1,073 / 1.28 | 1,396 / 1.22 | 1,202 / 1.40 | 1,395 / 1.55 || all20: 1,267 / 1.36 / meet 80%  n=5 params=[0.02, 0.03, 0.05]
+  stored:      QuantProv_q99[gbm]             1,150 / 0.92 | 1,512 / 0.83 | 1,301 / 0.95 | 1,516 / 0.98 || all20: 1,370 / 0.92 / meet 100%  n=5 params=[0.7, 0.8, 0.9]
+  regenerated: PRISM[gbm]                     981 / 1.55 | 1,273 / 1.31 | 1,076 / 2.14 | 1,270 / 2.11 || all20: 1,150 / 1.78 / meet 60%  n=5 params=[0.03, 0.05, 0.08]
+  regenerated: QuantProv_q99[gbm]             1,048 / 1.40 | 1,364 / 1.31 | 1,173 / 1.37 | 1,386 / 1.25 || all20: 1,243 / 1.33 / meet 85%  n=5 params=[0.6, 0.7, 0.8]
+## revision/level_choice_diagnostic.json: 170 of 341 lines differ
+  stored:         "eps": 0.02,
+  regenerated:    "eps": 0.05,
+  stored:         "feasible_epochs": 2012,
+  regenerated:    "feasible_epochs": 2016,
+  stored:         "non_default_memory": 12,
+  stored:         "miss": 0.002476724873321401,
+  regenerated:    "non_default_memory": 0,
+  regenerated:    "miss": 0.003133693143278604,
+## revision/matched_compliance_pertrace.txt: 27 of 31 lines differ
+  stored:         PRISM          [1377, 1287, 1476, 1369, 1210]
+  stored:         QuantProv_q90  [1333, 1283, 1539, 1375, 1219]
+  regenerated:    PRISM          [1228, 1262, 1335, 1328, 1170]
+  regenerated:    QuantProv_q90  [1232, 1313, 1389, 1342, 1195]
+  stored:         PRISM          [1226, 1220, 1376, 1251, 1175]
+  stored:         QuantProv_q90  [1243, 1216, 1407, 1265, 1150]
+  regenerated:    PRISM          [1156, 1181, 1233, 1222, 'n.r.']
+  regenerated:    QuantProv_q90  [1167, 1176, 1256, 1253, 1116]
+  stored:         PRISM          [1160, 1172, 1286, 1190, 1140]
+  stored:         QuantProv_q90  [1158, 1172, 1303, 1181, 1127]
+  regenerated:    PRISM          [1119, 1122, 1163, 1158, 'n.r.']
+  regenerated:    QuantProv_q90  [1121, 1122, 1191, 1179, 1073]
+## revision/pc_billing_bounds.txt: 29 of 37 lines differ
+  stored:      PRISM           added env/week    64,106   init 0.30–0.51%   activation-lag 2.53%   both(upper) 3.04%
+  stored:      PredHead        added env/week    66,172   init 0.36–0.62%   activation-lag 3.11%   both(upper) 3.73%
+  regenerated: PRISM           added env/week    53,178   init 0.27–0.46%   activation-lag 2.31%   both(upper) 2.77%
+  regenerated: PredHead        added env/week    52,663   init 0.31–0.53%   activation-lag 2.67%   both(upper) 3.21%
+  stored:         PRISM             1,336    1,236    1,182
+  stored:         QuantProv_q90     1,354    1,236    1,168
+  regenerated:    PRISM             1,271    1,178    1,124
+  regenerated:    QuantProv_q90     1,291    1,198    1,137
+  stored:         PRISM             1,378    1,273    1,216
+  stored:         QuantProv_q90     1,399    1,275    1,203
+  regenerated:    PRISM             1,310    1,212    1,154
+  regenerated:    QuantProv_q90     1,332    1,234    1,169
+## revision/pc_billing_runs.csv: 1855 of 1902 lines differ
+  stored:      101,val,stationary,OnDemand,OnDemand,,877.0780085560501,0.16666666666666666,0.0,0.0,0.0,0.0
+  stored:      101,val,stationary,Static,Static-50,50.0,830.586950610907,0.14732142857142858,0.0,0.0,0.0,0.0
+  regenerated: 101,val,stationary,OnDemand,OnDemand,,877.0780085560501,0.16517857142857142,0.0,0.0,0.0,0.0
+  regenerated: 101,val,stationary,Static,Static-50,50.0,830.586950610907,0.14434523809523808,0.0,0.0,0.0,0.0
+  stored:      101,test,stationary,Scheduled,Scheduled-1.0,1.0,991.0743934628113,0.06994047619047619,3512.0,0.20486619839999998,0.3512007024,1.7560140480000002
+  stored:      101,test,stationary,Scheduled,Scheduled-1.2,1.2,1075.6550699479933,0.05505952380952381,4202.0,0.24511610639999998,0.4202008404,2.1010168080000002
+  regenerated: 101,test,stationary,Scheduled,Scheduled-1.0,1.0,991.0743934628113,0.06547619047619048,3512.0,0.20486619839999998,0.3512007024,1.7560140480000002
+  regenerated: 101,test,stationary,Scheduled,Scheduled-1.2,1.2,1075.6550699479933,0.02976190476190476,4202.0,0.24511610639999998,0.4202008404,2.1010168080000002
+  stored:      101,test,growth,Scheduled,Scheduled-1.2,1.2,1247.0485079651314,0.0818452380952381,4202.0,0.24511610639999998,0.4202008404,2.1010168080000002
+  stored:      101,test,growth,Scheduled,Scheduled-1.4,1.4,1331.5879854051514,0.0625,4900.0,0.28583268000000006,0.49000098000000003,2.4500196
+  regenerated: 101,test,growth,Scheduled,Scheduled-1.2,1.2,1247.0485079651314,0.07142857142857142,4202.0,0.24511610639999998,0.4202008404,2.1010168080000002
+  regenerated: 101,test,growth,Scheduled,Scheduled-1.4,1.4,1331.5879854051514,0.049107142857142856,4900.0,0.28583268000000006,0.49000098000000003,2.4500196
+## revision/posthoc_matched_compliance.txt: 99 of 184 lines differ
+  stored:      | 101 | 99.0 | 1.8 | 0.55 | 1.4 | 1.4 | 1.1 | 0.9 | 0.02 |
+  stored:      | 102 | 99.0 | 1.8 | 0.6 | 1.6 | 1.6 | 1.3 | 0.9 | 0.03 |
+  regenerated: | 101 | 97.0 | 1.4 | 0.65 | 1.1 | 1.2 | 0.8 | 0.7 | 0.05 |
+  regenerated: | 102 | 99.0 | 1.4 | 0.75 | 1.5 | 1.3 | 0.9 | 0.8 | 0.03 |
+  stored:      | 101 | 905 / 1.64 | 1,177 / 1.34 | 940 / 2.38 | 1,129 / 6.99 |
+  stored:      | 102 | 966 / 1.34 | 1,257 / 1.34 | 991 / 2.38 | 1,206 / 5.95 |
+  regenerated: | 101 | 837 / 2.38 | 1,087 / 2.23 | 870 / 3.57 | 1,049 / 8.63 |
+  regenerated: | 102 | 940 / 1.79 | 1,223 / 1.79 | 964 / 3.12 | 1,175 / 5.06 |
+  stored:      | 101 | 1,006 / 1.19 | 1,313 / 1.04 | 1,045 / 1.79 | 1,243 / 2.68 |
+  stored:      | 102 | 1,081 / 0.89 | 1,408 / 0.89 | 1,107 / 1.79 | 1,339 / 1.19 |
+  regenerated: | 101 | 939 / 1.79 | 1,226 / 1.19 | 975 / 2.68 | 1,167 / 3.72 |
+  regenerated: | 102 | 979 / 1.19 | 1,275 / 1.19 | 1,005 / 2.68 | 1,217 / 2.23 |
