@@ -23,7 +23,8 @@ FIG = os.path.join(ROOT, "results", "figures")
 os.makedirs(TAB, exist_ok=True)
 os.makedirs(FIG, exist_ok=True)
 
-from prism_repro.experiment import select_by_rule  # noqa: E402
+from prism_repro.config import PrismConfig  # noqa: E402
+from prism_repro.experiment import make_policy, select_by_rule  # noqa: E402
 
 SCEN = ["stationary", "growth", "bursty", "new_spike"]
 MAIN = ["OnDemand", "Static", "Scheduled", "Reactive", "PredHead", "PRISM"]
@@ -32,12 +33,36 @@ SUMMARY: dict = {"_note": "All values are from SYNTHETIC simulations of this rei
 STATUS: dict = {}
 
 
+# PRISM's main configuration is named after its risk model (policies.PRISM: 'PRISM_EB' for Erlang-B, the default since
+# f119bee; 'PRISM' for Eq. (5)). The tables below select it as "PRISM" (policy, label and run-id prefix), so rows
+# and array keys of the main configuration are read with that name. E11 and E11occ compare risk models explicitly
+# and are read as stored. Stored files are never changed.
+MAIN_PRISM_VARIANT = make_policy(dict(family="PRISM", param=PrismConfig().eps)).variant   # the name ignores eps
+KEEP_RISK_LABELS = {"E11", "E11occ"}
+
+
+def _canon(o, exp):
+    if MAIN_PRISM_VARIANT == "PRISM" or exp in KEEP_RISK_LABELS:
+        return o
+    if isinstance(o, str):
+        return o.replace(MAIN_PRISM_VARIANT, "PRISM")
+    if isinstance(o, list):
+        return [_canon(x, exp) for x in o]
+    if isinstance(o, dict):
+        return {k: _canon(v, exp) for k, v in o.items()}
+    return o
+
+
 def rows(exp):
     p = os.path.join(RAW, exp, "rows.jsonl")
     if not os.path.exists(p):
         STATUS[exp] = "not executed"
         return pd.DataFrame()
-    df = pd.DataFrame([json.loads(l) for l in open(p)])
+    raw = [json.loads(l) for l in open(p)]
+    names = {r.get("policy") for r in raw}
+    if MAIN_PRISM_VARIANT != "PRISM" and exp not in KEEP_RISK_LABELS and {"PRISM", MAIN_PRISM_VARIANT} <= names:
+        raise ValueError(f"{exp} holds both 'PRISM' and '{MAIN_PRISM_VARIANT}' rows; they are different risk models")
+    df = pd.DataFrame([_canon(r, exp) for r in raw])
     # a chunk interrupted between writing rows and arrays is rerun: keep the last copy of each run.
     # Rows without a run_id (forecast-only rows) are keyed by (seed, scenario, forecaster).
     parts = []
@@ -55,9 +80,25 @@ def rows(exp):
     return df
 
 
+class _Arrays:
+    """An .npz file read with the main configuration's keys named as in rows(); arrays load on access."""
+
+    def __init__(self, z, exp):
+        self._z = z
+        self._key = {_canon(k, exp): k for k in z.files}
+        assert len(self._key) == len(z.files), f"key collision in {exp} arrays"
+        self.files = list(self._key)
+
+    def __getitem__(self, k):
+        return self._z[self._key[k]]
+
+    def __contains__(self, k):
+        return k in self._key
+
+
 def arrays(exp, seed):
     p = os.path.join(RAW, exp, f"arrays_seed{seed}.npz")
-    return np.load(p) if os.path.exists(p) else None
+    return _Arrays(np.load(p), exp) if os.path.exists(p) else None
 
 
 def tci(x):

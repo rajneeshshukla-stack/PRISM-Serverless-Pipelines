@@ -1,0 +1,8 @@
+# Paired differences PRISM minus PredHead+hyst per trace (test weeks)
+
+| Scenario   | Cost diff (USD)   | Cost diff (%)   | Violating-window diff (pp)   |   traces PRISM cheaper |   traces PRISM fewer violations |   n |
+|:-----------|:------------------|:----------------|:-----------------------------|-----------------------:|--------------------------------:|----:|
+| stationary | 37 ± 56           | 3.8 ± 5.6       | -0.21 ± 0.28                 |                      1 |                               4 |   5 |
+| growth     | 47 ± 71           | 3.8 ± 5.4       | -0.45 ± 0.41                 |                      1 |                               4 |   5 |
+| bursty     | 90 ± 67           | 9.3 ± 6.4       | -0.89 ± 0.68                 |                      0 |                               4 |   5 |
+| new_spike  | 84 ± 82           | 7.1 ± 6.7       | -1.40 ± 1.87                 |                      1 |                               5 |   5 |

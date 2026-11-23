@@ -1,0 +1,5 @@
+2026-11-23T20:50:55Z START E3 E7 E9 (parallel): python experiments/run_experiments.py --exp <E> --seeds ...
+2026-11-23T21:15:47Z END E7 exit 0
+2026-11-23T21:17:41Z END E3 exit 0
+2026-11-23T21:44:29Z END E9 exit 0
+2026-11-23T21:45:15Z END analyze (scripts/analyze.py, no label normalisation)

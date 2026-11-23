@@ -1,0 +1,8 @@
+# Frozen (validation-tuned) vs test-retuned parameters (cost USD / violating windows); retuned uses test-week knowledge and is a diagnostic only
+
+| Scenario   | PredHead frozen   | PredHead retuned (diagnostic)   | PRISM frozen   | PRISM retuned (diagnostic)   |
+|:-----------|:------------------|:--------------------------------|:---------------|:-----------------------------|
+| stationary | 863 / 2.17%       | 920 / 1.79%                     | 968 / 1.70%    | 979 / 1.52%                  |
+| growth     | 1,123 / 2.14%     | 1,166 / 1.93%                   | 1,261 / 1.34%  | 1,236 / 1.43%                |
+| bursty     | 893 / 3.57%       | 1,054 / 1.99%                   | 1,053 / 2.35%  | 1,102 / 1.79%                |
+| new_spike  | 1,082 / 7.62%     | 1,305 / 1.85%                   | 1,241 / 2.62%  | 1,313 / 1.22%                |

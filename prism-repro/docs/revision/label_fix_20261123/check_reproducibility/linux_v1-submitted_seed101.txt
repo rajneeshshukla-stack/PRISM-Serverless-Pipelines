@@ -1,0 +1,16 @@
+== check_reproducibility.py --seed 101 --scenario stationary (v1-submitted tree, Linux)
+OnDemand             identical=True cost 865.051646 vs 865.051646
+Static-95            identical=True cost 1013.273785 vs 1013.273785
+Reactive-0.6         identical=True cost 1478.312253 vs 1478.312253
+PredHead-1.3         identical=True cost 880.531295 vs 880.531295
+QuantProv_q90-1.0    identical=True cost 1071.641902 vs 1071.641902
+PRISM-0.05           identical=True cost 1017.026959 vs 1017.026959
+ALL IDENTICAL
+== check_reproducibility.py --seed 101 --scenario new_spike (v1-submitted tree, Linux)
+OnDemand             identical=True cost 1085.047162 vs 1085.047162
+Static-95            identical=True cost 1163.768839 vs 1163.768839
+Reactive-0.6         identical=True cost 1855.611184 vs 1855.611184
+PredHead-1.3         identical=True cost 1100.240334 vs 1100.240334
+QuantProv_q90-1.0    identical=True cost 1374.147583 vs 1374.147583
+PRISM-0.05           identical=True cost 1295.534557 vs 1295.534557
+ALL IDENTICAL

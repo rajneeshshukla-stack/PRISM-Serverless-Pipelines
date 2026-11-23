@@ -1,0 +1,37 @@
+{
+ "raw": {
+  "E1": {
+   "rows": [
+    1900,
+    1900
+   ],
+   "same_run_keys": true,
+   "result_fields_differing": {
+    "mean_excess_infeasible": 32,
+    "max_excess": 2
+   },
+   "provenance_or_timing_fields_differing": {
+    "runtime_s": 1900,
+    "source_sha256": 1900,
+    "sim_seconds": 1900,
+    "started_utc": 1900,
+    "decision_ms_p99": 1900,
+    "decision_ms_median": 1900
+   },
+   "array_files": [
+    5,
+    5
+   ],
+   "array_keys": 9950,
+   "array_keys_differing": 0,
+   "first_differing_keys": []
+  }
+ },
+ "tables": {},
+ "summary": {
+  "tables": 0,
+  "identical": 0,
+  "differing": [],
+  "no_counterpart": []
+ }
+}
