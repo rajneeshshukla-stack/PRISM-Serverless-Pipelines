@@ -23,10 +23,12 @@ on demand, cap 8, laptop client; three blocks on ONE afternoon). Rebuilt from th
   PASS  smoke check (repo) OK
   PASS  split: per cell 29 FIT + 10 CHECK visits, CHECK 4/3/3 over the blocks (block order random per cell)
   PASS  no invocation used in both FIT and CHECK (split is by visit)
+  PASS  one configuration update per visit, 624 with a wait time
   PASS  prespecified analysis: FIT 15,592 / CHECK 5,400 invocations
   flagged (not a pass/fail check): runtime version recorded in 0 of 21248 invocations
   unmatched CloudWatch REPORTs kept and excluded: 24 ({'prism-mcal-aggregate-3008': 8, 'prism-mcal-load-2048': 8, 'prism-mcal-transform-512': 8}; all without Init: True)
   client overhead s: median 0.081, p99 0.585, max 211.7; 38 invocations over 5 s in 5 batches
+  configuration updates (environment only, 1-s polling): 624; median 1.594 s, p95 1.894 s, range 1.531-2.203 s
 
 ## Blocks (CST, UTC-6)
   block 0: 2026-11-22 11:17:59 to 2026-11-22 12:02:06, 6968 invocations, 208 visits

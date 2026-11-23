@@ -60,7 +60,7 @@
 
 ## Coverage and integrity (`build_output.txt`, `tables/coverage.csv`)
 
-All 22 checks pass.
+All 23 checks pass.
 
 | Check | Result |
 |---|---|
@@ -141,6 +141,20 @@ Descriptive, not prespecified (`repeatability.csv`).
 | Warm median Duration | within 0.41% |
 | Init median | 1.0-4.1% apart; block 2 above block 0 in all 16 cells, by 1-5 ms |
 | P median | max/min 1.01-1.23. P is measured at the client, so it includes the network |
+
+### Configuration updates
+
+Source: `config_updates.csv`, added 22 Nov 2026.
+
+- Each of the 624 visits began with one `UpdateFunctionConfiguration` call. It changed only an environment variable, to
+  force cold starts; memory was never changed.
+- The client then polled `GetFunctionConfiguration` every 1 s until `LastUpdateStatus` was `Successful`.
+- All 624 updates completed in 1.53-2.20 s: median 1.59 s, p95 1.89 s. Neither the block nor the memory size made a
+  difference.
+- With 1-s polling, these times are an upper bound on the platform's update time, with a resolution of about 1 s.
+  They include the client's API round trips.
+- They are not memory-change times. The live integration run measured those separately
+  (`../aws_live_integration/`).
 
 ### Billing
 
@@ -229,6 +243,7 @@ This holds for the declared workload only: on demand, us-east-2, at most 8 in fl
 | `tables/eq3_comparison.csv` | measured I, P and P_mean factors relative to 1024 MB against the Eq. (3) factor |
 | `tables/billing.csv` | billed GB-s, requests and USD at list price per block, campaign and smoke |
 | `tables/client_stalls.csv` | batches with more than 5 s of client overhead |
+| `tables/config_updates.csv` | configuration-update completion times (environment-only updates, 1-s polling) per block × memory |
 | `tables/unmatched_reports.csv` | the 24 excluded REPORTs, by function |
 
 ## Reproduce
@@ -249,6 +264,8 @@ prism-repro/venv/Scripts/python prism-repro/docs/revision/aws_memcal_20261122/an
 - **Exit status:** 1 if any integrity check or the sanitization scan fails.
 - **Time:** about 3.5 min.
 - **Verification:** a rebuild into a fresh directory on 22 Nov 2026 reproduced all 16 generated files byte for byte.
+  A second rebuild, after `config_updates.csv` and its check were added, reproduced the 15 earlier tables and
+  `sources.sha256` byte for byte. Only `build_output.txt` changed, gaining the new check and summary line.
 - **Line endings:** the repository's analysis writes `decomposition_fit.csv` and `decomposition_check.csv` with
   CRLF line endings. Git stores them with LF (`core.autocrlf`), so compare a rebuild with a checkout ignoring line
   endings for those two files.

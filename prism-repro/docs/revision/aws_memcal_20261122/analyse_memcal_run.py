@@ -258,6 +258,25 @@ def main():
     checks["no invocation used in both FIT and CHECK (split is by visit)"] = all(
         split[r["visit_id"]] in ("fit", "check") for r in inv)
 
+    # ------------------------------------------------------------ configuration-update waits (one per visit)
+    # update_wait_s: from the UpdateFunctionConfiguration call (environment variables only, to force cold starts;
+    # memory is never changed) until GetFunctionConfiguration reports LastUpdateStatus Successful, polled every 1 s
+    # from the client, so the resolution is about 1 s and the API round trips are included.
+    vrows = [r for r in recs if r["type"] == "visit_done"]
+    vcell = {r["visit_id"]: (r["block"], r["variant"], r["memory_mb"]) for r in inv}
+    checks["one configuration update per visit, 624 with a wait time"] = (
+        len(vrows) == 624 and all(isinstance(v.get("update_wait_s"), (int, float)) for v in vrows)
+        and {v["visit_id"] for v in vrows} == set(vcell))
+    cu_rows = []
+    for b in (0, 1, 2, "all"):
+        for m in SIZES + ("all",):
+            w = np.array([v["update_wait_s"] for v in vrows if (b == "all" or vcell[v["visit_id"]][0] == b)
+                          and (m == "all" or vcell[v["visit_id"]][2] == m)], float)
+            cu_rows.append({"block": b, "memory_mb": m, "updates": len(w), "median_s": round(float(np.median(w)), 3),
+                            "p95_s": round(float(np.quantile(w, .95)), 3), "min_s": round(float(w.min()), 3),
+                            "max_s": round(float(w.max()), 3)})
+    write(out, "config_updates.csv", cu_rows)
+
     # ------------------------------------------------------------ billing (list price, not the bill)
     bill_rows = []
     for scope, rs in [(f"block {b}", by_block[b]) for b in (0, 1, 2)] + [("campaign", inv), ("smoke", sinv)]:
@@ -325,6 +344,9 @@ def main():
     P(f"  unmatched CloudWatch REPORTs kept and excluded: {len(extras)} ({dict((f, n) for (f, i), n in ex.items())}; all without Init: {not any(i for _, i in ex)})")
     P(f"  client overhead s: median {np.median(ov):.3f}, p99 {np.quantile(ov, .99):.3f}, max {max(ov):.1f}; "
       f"{sum(o > 5 for o in ov)} invocations over 5 s in {len(st_rows)} batches")
+    ca = next(r for r in cu_rows if r["block"] == "all" and r["memory_mb"] == "all")
+    P(f"  configuration updates (environment only, 1-s polling): {ca['updates']}; median {ca['median_s']} s, "
+      f"p95 {ca['p95_s']} s, range {ca['min_s']}-{ca['max_s']} s")
     P("")
     P("## Blocks (CST, UTC-6)")
     import datetime as dt
