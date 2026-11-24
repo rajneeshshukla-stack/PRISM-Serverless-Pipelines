@@ -3,9 +3,9 @@
 PRE-CALIBRATION throughout (assumed constants). The manuscript, the submitted `results/`, `CHECKSUMS.sha256` and the frozen
 prespecification are unchanged. The fix, its tests and this folder are committed together (not pushed).
 
-**Not in this commit** (referenced, still local): `../regeneration_20261122/` (the Windows regeneration, its
-workaround scripts and `r76_matched_1pct.py`, which `r76_endpoints.py` reads), `../confirmatory_20261122/` (C1-C3,
-Windows, pre-calibration), and the Git-ignored rebuild trees under `private/regen_labelfix_20261123/`.
+**Related evidence.** `../regeneration_20261122/` (Windows regeneration) and `../confirmatory_20261122/` (C1-C3, Windows,
+pre-calibration) are committed separately. The rebuild trees under `private/regen_labelfix_20261123/` stay local
+(Git-ignored); their inputs are published as the archive described in section 7.
 
 ## 1. Unfavourable and null findings first
 
@@ -153,3 +153,69 @@ Reactive 1.76% / 12.25% on both.
 - `check_reproducibility/`, `env/`, `logs/` and `outputs/`: the check outputs, environments, logs and tables.
 - `linux_check_repro.sh`, `linux_tag_e1.sh` and `linux_rebuild.sh`: the Linux commands, run from the user's WSL home.
 - `SHA256SUMS` (LF).
+- `reproduce_analysis.py`, `tools/` and `release_inputs.sha256`: the reproduction package (section 7).
+
+## 7. Reproduction package (prepared 23 Nov 2026 after 6e0f05c)
+
+**What failed in a clean checkout of 6e0f05c.** `r76_endpoints.py` raised `FileNotFoundError`. It executes
+`../regeneration_20261122/r76_matched_1pct.py`, which is not committed. The analysis chain for R7.6 also needs
+`normalize_labels.py`, and the E11 table needs `e11_occupancy.py`; both are only in the uncommitted regeneration folder.
+The completed experiment rows are only in Git-ignored local trees.
+
+**Added:**
+- `tools/normalize_labels.py` and `tools/r76_matched_1pct.py`: byte-identical copies of the regeneration scripts.
+- `tools/e11_occupancy.py`: a copy with an optional raw-directory argument and with assertions on the arms. E11occ must be
+  Eq. (5) (`occupancy`), E11 must be Erlang-B, and E1's main configuration must be labelled `PRISM_EB` with no override.
+  The table and its method are unchanged.
+- `r76_endpoints.py` now looks in `tools/` first.
+- `reproduce_analysis.py`, which runs the whole analysis workflow from a checkout and completed rows into a fresh
+  directory. It runs no simulation.
+- `release_inputs.sha256`: the 74 input files the workflow needs, as `windows/<EXP>/...` and `linux/<EXP>/...`, about
+  35 MB and 30 MB.
+
+**Command:**
+
+```
+python docs/revision/label_fix_20261123/reproduce_analysis.py --code <checkout>/prism-repro --out <new dir> \
+    --input E1=<rows> --input E3=<rows> --input E7=<rows> --input E9=<rows> [--input E11=<rows> --input E11occ=<rows>]
+```
+
+Here `<rows>` is a directory holding `<EXP>/rows.jsonl` and `arrays_*.npz` as the current code wrote them.
+
+**Checks (23 Nov 2026).** The package was run from a clean checkout of 6e0f05c plus the files above, into fresh
+directories, on the completed rows. Both platforms' analyses ran on Windows with the pinned `venv/`.
+- Windows rows (E1, E11 and E11occ from the regeneration; E3, E7 and E9 from the normal-path rebuild):
+  - Input checks: E1 holds 1,900 rows, with the main configuration as 150 `PRISM_EB` rows and no `PRISM` rows.
+    `selections()["PRISM"]` returns them (eps 0.05, 0.03, 0.08, 0.08, 0.08).
+  - Table V has PRISM in all four scenarios with n = 5, and `E1_selected_parameters` agrees with `selections()`.
+  - All 39 `analyze.py` tables are byte-identical to the verified normal-path tables.
+  - `pc_billing_runs.csv`, `pc_billing_bounds.txt`, `r76_matched_1pct.txt` and `E11_erlangb_regenerated.md` are
+    byte-identical to the verified regeneration outputs.
+  - The E11 table compares Eq. (5) with Erlang-B, and E11's explicit Erlang-B rows equal E1's main configuration run for
+    run.
+  - The R7.6 endpoints equal `outputs/r76_endpoints_full_precision.json` exactly (difference 0.0).
+- Linux rows (E1, E3, E7 and E9 from the Linux rebuild):
+  - The same input checks hold (eps 0.08, 0.03, 0.08, 0.08, 0.08).
+  - All 37 tables are byte-identical to `outputs/linux_tables/`.
+  - `pc_billing_bounds.txt` and `r76_matched_1pct.txt` are identical to `outputs/linux_revision/`.
+  - The endpoints, trace counts and unbracketed trace are identical.
+- Negative checks of `tools/e11_occupancy.py` both fail with an AssertionError, as intended: E11 rows supplied as E11occ,
+  and normalised E1 labels.
+
+**Limits that remain, unchanged by the package:**
+- The `scripts/revision/` analyses select PRISM by the literal `'PRISM'`, so the package runs `normalize_labels.py` on a
+  copy first. The stock E11 table in `scripts/analyze.py` remains degenerate on the current code, and the E11
+  comparison comes from `tools/e11_occupancy.py`.
+- `linux_*.sh` assume a WSL home layout (`~/prism_linux`). The experiment rebuild commands in section 4 are full
+  simulations, outside this analysis workflow.
+- `scripts/check_reproducibility.py` writes into `results/verification/`, so run it in a separate checkout only.
+
+**Release inputs.** The 74 input files listed in `release_inputs.sha256` are packed as
+`prism_r36_reproduction_inputs_20261123.tar.gz`. It holds the `windows/` and `linux/` folders under `prism_r36_inputs/`,
+plus the manifest, about 42.5 MB. Its SHA-256 is
+`52c1c701655a08f17516bae56ae4f92be79b139a19e0b3e18128d05d62f27dd2`. After extraction, 74 of 74 files match the
+manifest. It is not in Git and not yet published.
+
+**Still needed for a self-contained release:**
+1. Publish that archive with the code. Without it, only the code path is reproducible, not the numbers.
+2. Push the branch and give the reviewers access through the editor (author's action).

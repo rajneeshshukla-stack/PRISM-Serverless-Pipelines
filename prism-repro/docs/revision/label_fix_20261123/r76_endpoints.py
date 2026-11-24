@@ -13,7 +13,10 @@ import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 WIN, LIN, REPO, OUT = sys.argv[1:5]
-src = open(os.path.join(HERE, "..", "regeneration_20261122", "r76_matched_1pct.py"), encoding="utf-8").read()
+# tools/r76_matched_1pct.py is a byte-identical release copy of ../regeneration_20261122/r76_matched_1pct.py
+_cands = [os.path.join(HERE, "tools", "r76_matched_1pct.py"),
+          os.path.join(HERE, "..", "regeneration_20261122", "r76_matched_1pct.py")]
+src = open(next(p for p in _cands if os.path.exists(p)), encoding="utf-8").read()
 head = src[:src.index("regen = load(")]
 ns = {"__name__": "r76", "__file__": "r76_matched_1pct.py"}
 sys.argv = ["r76_matched_1pct.py", WIN, REPO, os.devnull]
