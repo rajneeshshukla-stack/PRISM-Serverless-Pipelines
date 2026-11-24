@@ -341,3 +341,167 @@ D2, pending the author's confirmation of [3]).
   provisioning decision, so adding it to Table V would not test a concurrency controller. We explain this in Section
   II [and, if confirmed against the AWS documentation, note that our reactive baseline follows the provider's
   target-tracking rule for provisioned concurrency]."
+
+## J. Drafts from the multi-memory AWS calibration (memcal-1; R2.8, R3.1, R6.2, R2.14; also R1.2, R4.3, R5.M2)
+
+Prepared 22 Nov 2026 from commit fd8b01a (`prism-repro/docs/revision/aws_memcal_20261122/`). Not applied: the
+manuscript is not in the repository. **Every section, table and figure reference below is [pending]** until the
+drafts are placed in the current text.
+
+**Scope of the evidence:**
+- The four docpipe-1 stage functions were invoked **individually**, on demand, with no Step Functions and no
+  provisioned concurrency. PRISM's controller did not run.
+- The handlers import only standard-library modules and do no application start-up work (`INIT_ROWS = 0`).
+- The client was a laptop in us-east-2, with at most 8 invocations in flight.
+- The three blocks were repeats on one afternoon (22 Nov 2026), not on separate days.
+
+Section G's "quota of 10" premise is superseded for the on-demand rows: those were run here, at a concurrency limit
+read as 400 (D7). The provisioned-concurrency rows of G are still unmeasured.
+
+**J1. Measurements on AWS Lambda (new subsection [section: pending]; new table [table: pending]) — R2.8, R6.2.**
+- **Text:** "We measured the four stage functions on AWS Lambda (us-east-2, on demand, x86_64, Python 3.12) at 512,
+  1024, 2048 and 3008 MB: 20,992 invocations, 1,312 per stage and size (312 forced cold, 1,000 warm). They ran in
+  three consecutive blocks on one afternoon, each with every stage and size in randomised order, from a client
+  outside AWS with at most eight invocations in flight. Every invocation was matched by request ID to Lambda's own
+  REPORT record, with no errors or throttling. Warm execution time halved from 512 to 1024 MB (2.01-2.04 times
+  faster), fell 1.73-1.75 times more at 2048 MB and did not fall further at 3008 MB [table: pending]. Lambda's
+  reported initialisation (Init Duration) had a median of 113.7-116.0 ms for every stage and size (5th-95th
+  percentiles 94.7-136.6 ms). The first-call penalty seen by the client (median cold minus median warm end-to-end
+  time) was 226-258 ms for three stages at every size. For the aggregate stage it was 513, 374, 315 and 309 ms; there
+  the cold invocation's own execution was longer, while initialisation did not change. Across the three blocks,
+  median warm execution times agreed within 0.41% and median initialisation within 1.1-4.6 ms. The functions do no
+  application start-up work, so these values describe the platform, not the 6 s initialisation assumed in the
+  simulations."
+- **Table** [table: pending]: per stage × memory, the warm Duration median, the Init Duration median (p05-p95) and
+  the client-observed first-call penalty P. Source: `tables/timings.csv` (block = all) and
+  `tables/decomposition_fit.csv`. The warm medians in ms are:
+
+  | Stage | 512 MB | 1024 MB | 2048 MB | 3008 MB |
+  |---|---|---|---|---|
+  | ingest | 1,624 | 801 | 463 | 463 |
+  | transform | 8,039 | 3,994 | 2,292 | 2,287 |
+  | aggregate | 5,093 | 2,529 | 1,451 | 1,451 |
+  | load | 2,453 | 1,205 | 689 | 688 |
+
+**J2. What Eq. (3) models ([section: pending], where Eq. (3) is defined) — R3.1, R1.2, R5.M2.**
+- **Add after Eq. (3):** "Eq. (3) models the time from a request's arrival at a cold environment to the start of
+  service, which includes the platform's initialisation, environment creation and any extra work of the first call.
+  On AWS Lambda, the platform's reported initialisation did not change with memory for our stage functions (slope of
+  log initialisation on log memory between +0.001 and +0.008, against −0.273 implied by Eq. (3) over 512-3008 MB).
+  The first-call penalty seen by the client fell at Eq. (3)'s rate only for a stage whose first call does CPU-bound
+  work (slope −0.288, 95% interval −0.309 to −0.269), and at less than half that rate pooled over the four stages
+  (−0.116, 95% interval −0.131 to −0.100) [section: pending]. We therefore read Eq. (3) as a model of the first-call
+  penalty, not of the platform's initialisation; its magnitude for application start-up was not measured."
+- **Do not change** Eq. (3)'s parameters in the text until the simulator is recalibrated and the tables are
+  regenerated. How the simulator should represent application start-up remains open (R5.M2).
+
+**J3. Threats to validity ([section: pending]) — R2.8, R3.1, R6.2.**
+- **Add:** "The platform measurements cover on-demand invocations of the stage functions from a client outside
+  AWS, on one afternoon, for functions without application start-up work. They do not cover provisioned-concurrency
+  activation, overflow under a burst, day-to-day variation or the provider's bill. The simulator's constants have not
+  yet been recalibrated on them."
+
+**J4. Cost against the bill ([section: pending], where the cost model is defined) — R2.14.**
+- **Add:** "For the measurement campaign, the usage reported by Lambda gives 55,234.5 billed GB-s and 20,992
+  requests, USD 0.92 at the public us-east-2 list prices (duration and requests only; free tier not assumed).
+  Billed duration equalled the reported duration plus initialisation, rounded up to 1 ms, in 21,154 of 21,248
+  invocations; the other 94 were 1 ms higher, all where the reported sum was a whole number of milliseconds.
+  Reconciliation with the provider's billing records is pending [section: pending]."
+- **Do not claim** a reconciliation. Cost Explorer returned DataUnavailableException and showed no service-level
+  amounts (author-reported; no saved output).
+
+## K. Drafts from the confirmatory closed-loop runs and the regeneration (22-23 Nov 2026; not applied)
+
+Sources: `prism-repro/docs/revision/confirmatory_20261122/RESULTS.md` (C1-C3, prespecified, PRE-CALIBRATION);
+`prism-repro/docs/revision/regeneration_20261122/README.md` (every stored table rebuilt at fd8b01a, PRE-CALIBRATION);
+`prism-repro/docs/revision/graphical_abstract_20261122/caption.md`. The manuscript is not in the repository; locations
+are the reviewers' citations, **[check against current text]**.
+
+**K1. Primary evaluation structure (R4.11(b), R2.1, R4.2, R6.4, R6.5).**
+- **§V, evaluation protocol.** "All primary comparisons are run in the event-level simulator in closed loop. Each
+  epoch, every policy sees the telemetry of minutes up to 5k - 2 only, and window attainment is computed from every
+  request's latency. The comparisons C1-C3, the traces (seeds 106-130), the split, the tuning rule, the grid-edge
+  expansion and the inference rules were fixed before the runs (prespecification, d16fbea)."
+- **§VI-A, main results:** one table (K2). **§VI-B onwards, exploratory:** per-scenario breakdowns, matched-compliance
+  frontiers (post hoc), memory regimes, real-trace replays, sensitivity sweeps, fast-simulator screening; each
+  labelled. **Supplement:** the fast-simulator tables, regenerated (K5). **Repository:** provenance prose (E10).
+
+**K2. Main comparison table [table number pending].** Unfavourable and null rows are not to be reordered away.
+Caption: "Prespecified; pre-calibration constants; 25 traces (seeds 106-130); closed-loop event-level simulator;
+paired by trace (df 24). A difference requires the 95% interval to exclude zero; a tie requires it within +/-2%;
+similar compliance requires the violating-window interval within +/-0.5 points. Cost is the simulator's modelled
+weekly cost at the assumed prices, not an AWS charge." Row order: C1 (the primary baseline R6.4 asks for; null), C3
+(unfavourable), C2 (favourable).
+
+| Comparison | Modelled mean weekly cost (USD) | Pooled violating windows | Weeks meeting 2% | Cost, PRISM minus comparator | Violating windows, points | Call |
+|---|---|---|---|---|---|---|
+| C1: PRISM vs QuantProv-q90 (14.5 s, 4 scenarios) | 1,456.5 vs 1,454.6 | 1.58% vs 1.69% | 81 vs 72 of 100 | +0.30% [-1.42, +2.01]; cheaper on 11, costlier on 14 | -0.106 [-0.274, +0.062] | not distinguishable; not a tie (upper end 2.01%); similar compliance |
+| C3: PRISM vs MemAdapt-q90 (12 s, stationary) | 1,672.8 vs 1,487.6 | 1.17% vs 1.83% | 24 vs 17 of 25 | +13.06% [+8.50, +17.63]; costlier on 21 | -0.655 [-0.921, -0.389] | PRISM costlier; cost comparison confounded by compliance |
+| C2: PRISM vs Reactive | 1,456.5 vs 1,982.9 | 1.58% vs 1.56% | 81 vs 75 of 100 | -26.49% [-28.76, -24.23]; cheaper on 25 | +0.018 [-0.296, +0.332] | PRISM cheaper; similar compliance |
+
+**K3. R3.3: Table X next to Table V, and the unmatched test.**
+- Place Table X directly after the main results, as the reason the primary evaluation is event-level.
+- §V-A: "The event-level simulator draws no peak concurrency; each request is placed within its minute and routed
+  individually, so its evaluation does not use the matched peak draw behind Eq. (14). Changing that draw's parameter
+  from 0.45 to 0.90 leaves the event-level outcome of a fixed schedule bit-identical, while the fast simulator's
+  changes."
+- Table X values: the submitted Table X gives PRISM 1.44% (fast) and 3.75% (event level); the regenerated one
+  1.69% and 6.14%. Its driver (E9) needs the released-code lookup fix before the table is rebuilt for the paper.
+
+**K4. R5.M7(f): rename the "calibrated-90%-quantile rule".** "the offset-scaled q0.9 rule (QuantProv-q90)", defined
+once: "the q0.9 forecast, scaled by the conformal offset that targets 99% coverage of the window peak, times a tuned
+factor a".
+
+**K5. R3.6: regeneration statement (§V-E or data availability).** "Every table was regenerated from one commit
+(fd8b01a) in one environment (Windows 11, Python 3.12.9, numpy 2.4.4, scipy 1.17.1, scikit-learn 1.8.0). Three
+experiment drivers (E3, E7, E9) required a one-line correction of a policy-label lookup to run at that commit; the
+correction, every other deviation, the commands and the checksums are in the repository." Do **not** write that the
+released scripts regenerate every table unchanged. [Platform: the regeneration ran on Windows 11, while REPRODUCE.md
+names Linux x86-64 as the reference platform for forecast-driven results; state whichever platform the reported
+tables come from (decision pending). Release of the corrected code to the reviewers: author's action.]
+
+**K6. Numbers that change with the regeneration (if the paper reports regenerated tables).**
+- Table V new spike: PRISM 2.11% violating windows (was 1.55%), SLO met 2 of 5 traces (was 4 of 5).
+- Suppl. Table S4: PRISM 1,150 USD / 1.78% (was 1,267 / 1.36%); PRISM now costs more than QuantProv-q90 (1,142).
+- Table VI against QuantProv-q90: +1.6, +1.3, 0.0, -0.1% (was -2.8 to -3.9%); every interval still includes 0.
+- Table XII (Huawei): PRISM is not the lowest-violating family (QuantProv-q90 0.18%, PRISM 0.33%).
+- E11 (Eq. (5) against Erlang-B): use `E11_erlangb_regenerated.md`; the stock table is degenerate on the current code.
+- Table X: PRISM 1.69% fast, 6.14% event level (was 1.44%, 3.75%); see K3.
+- E1 and Table XII selections: PRISM at eps 0.08, the top of its grid, on 3 of 5 development traces and 4 of 5
+  Huawei traces; state the grid edge.
+- Causes: only the 1.0% matched comparison is decomposed (exact attainment and Erlang-B, plus a platform residual);
+  do not attribute the other shifts.
+- Platform (23 Nov 2026, `prism-repro/docs/revision/label_fix_20261123/`): the submitted results reproduce exactly on
+  Linux x86-64 with the pinned versions, not on Windows; every value above is the Windows regeneration. With the
+  current code, Linux gives Table V new spike PRISM 2.62% (smoothed 4.02%, unsmoothed 7.62%), S4 PRISM 1,130 against
+  QuantProv-q90 1,139 USD (the ordering reverses), Table X 1.98% / 6.99%, and the 1.0% matched comparison
+  -1.98 +/- 2.09% (includes zero; 1.5% excludes it narrowly). Report one platform and state it; C1-C3 ran on Windows.
+- Graphical abstract: 2.11 / 4.11 / 7.92% (was 1.55 / 3.24 / 6.67%); caption range 13-27% (was 14-29%).
+
+**K7. R5.M7 and R7.6: wording limits.**
+- Do not state or imply a cost advantage over QuantProv-q90: C1 is not distinguishable (+0.30% [-1.42, +2.01]) and
+  not a tie; Tables VI and XII intervals include 0.
+- Matched compliance (R7.6; POST HOC, must not be presented as confirmatory). Agreed wording:
+  "In the post hoc matched-compliance analysis, we used test-week results from five development traces in the fast
+  simulator with assumed constants. The interpolated paired cost interval excluded zero at the 1.5% target on Linux
+  (-1.8% [-3.3%, -0.3%]) and at the 1.0% target on Windows (-2.3% [-4.3%, -0.3%]), both on all five traces. In both
+  cases, the endpoint closest to zero was within 0.3 percentage points of zero, and the target at which the interval
+  excluded zero varied by platform. No regenerated interval fell entirely within +/-2%, the tie margin prespecified
+  for C1-C3 and used here as a benchmark. These results therefore provide only limited, platform- and
+  target-specific evidence of lower cost: they do not establish a cost advantage that is consistent across targets
+  or platforms, and they leave equivalence unestablished. The estimates at the 2.0% target on both platforms, and at
+  the 1.5% target on Windows, used four traces, because PRISM's frontier did not bracket the target on trace 105."
+  Full-precision figures: `prism-repro/docs/revision/label_fix_20261123/outputs/r76_endpoints_full_precision.json`.
+  The submitted code gave -0.4% [-3.7%, +2.9%] at 1.0% (stored rows, a Linux result); the change to the corrected
+  code includes 0 on both platforms (-1.9 +/- 2.4 points Windows, -1.6 +/- 2.0 Linux) and comes mostly from exact
+  attainment together with Erlang-B. Do not attribute it to exact attainment alone.
+- Two different 1.0% statistics: the pooled matched difference ("within 1.6%"; -1.5% Windows, -1.7% Linux) and the
+  paired per-trace mean (-2.3% Windows, -2.0% Linux, with the intervals above). Cite each with its scope.
+- Memory (C3): the memory-adaptive q90 rule is 13% cheaper than PRISM at 12 s but meets the target in fewer weeks
+  (17 against 24 of 25), so the comparison is confounded by compliance; do not write that it meets the target as PRISM
+  does, except for the fast-simulator regimes. Do not call any comparison a tie unless its interval lies within +/-2%.
+- The savings against Static and Reactive hold in the regenerated tables (vs Static -12.6 to -18.3%; vs Reactive
+  -23.5 to -26.9%, matched compliance, POST HOC) and in C2 (-26.49%, confirmatory).
+
+**K8. Graphical abstract (R4.10, R5.m5).** `prism-repro/docs/revision/graphical_abstract_20261122/caption.md`
+(sections 1-4).
