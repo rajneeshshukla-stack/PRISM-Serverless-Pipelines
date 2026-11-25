@@ -1,0 +1,22 @@
+{
+ "week": "test",
+ "param": null,
+ "runtime_s": 47.6,
+ "n_requests": 6273140,
+ "share_mem_ge_2048": 0.0,
+ "cost": 905.1214911075027,
+ "violating_window_rate": 0.33035714285714285,
+ "record_attainment": 0.9889895650344166,
+ "cold_start_ratio": 0.004538636153505262,
+ "overflow_share": 1.0,
+ "p99_latency": 14.765,
+ "mean_provisioned": 0.0,
+ "scenario": "bursty",
+ "seed": 102,
+ "family": "OnDemand",
+ "set": "OD",
+ "cfg_sha": "65721002596b843f",
+ "counts_sha256": "9a1723a205da9797e247210a55dfcc40c94b7d3a8aee251f9e74518da8b647d6",
+ "pid": 1037,
+ "finished_utc": "2026-11-24T21:18:34Z"
+}

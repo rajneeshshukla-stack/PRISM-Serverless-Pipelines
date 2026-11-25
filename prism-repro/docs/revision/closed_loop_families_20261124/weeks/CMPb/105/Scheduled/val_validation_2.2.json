@@ -1,0 +1,22 @@
+{
+ "week": "val",
+ "param": 2.2,
+ "runtime_s": 33.6,
+ "n_requests": 6085213,
+ "share_mem_ge_2048": 0.0,
+ "cost": 1484.7514440215468,
+ "violating_window_rate": 0.004464285714285714,
+ "record_attainment": 0.9973910527043178,
+ "cold_start_ratio": 0.00019802100600258362,
+ "overflow_share": 0.0027025348167763474,
+ "p99_latency": 13.195,
+ "mean_provisioned": 387.10714285714283,
+ "scenario": "validation",
+ "seed": 105,
+ "family": "Scheduled",
+ "set": "CMPb",
+ "cfg_sha": "65721002596b843f",
+ "counts_sha256": "c8cc4e73fbaa821d8463a506a0423ed2f3940ed0513953654e5b27d4873cef85",
+ "pid": 826,
+ "finished_utc": "2026-11-24T21:00:21Z"
+}

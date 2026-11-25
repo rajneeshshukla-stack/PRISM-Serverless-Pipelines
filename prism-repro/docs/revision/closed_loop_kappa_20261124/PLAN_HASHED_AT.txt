@@ -1,0 +1,7 @@
+PLAN.md last modified 2026-11-24T15:53:53Z (file time), before the run started at 2026-11-24T15:54:34Z (run_stdout.txt).
+Hashed into PLAN.sha256 at 2026-11-24T15:57:49Z. By then a few validation weeks had finished, and two validation-week
+log lines (PRISM arm A, trace 103, eps 0.02 and 0.03) had been seen in a progress check. No test-week result had been
+seen. PLAN.md was not changed after 15:53:53Z.
+Driver: the K run (and later sens) loaded scripts/revision/closed_loop_exploratory.py as copied into the clean clone
+before 15:54Z. Later edits (15:56-15:58Z) only added the separate `ondemand` command and a usage line. week_task, sens
+and the set definitions K, CMPe and CMPb are unchanged by them.
