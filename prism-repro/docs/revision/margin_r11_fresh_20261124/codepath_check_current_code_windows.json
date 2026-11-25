@@ -1,0 +1,9 @@
+{
+ "schedule_identical": false,
+ "P_max_abs_diff": 41.0,
+ "mem_differs_epochs": 0,
+ "val_violating_recomputed": 0.023809523809523808,
+ "val_violating_stored": 0.019345238095238096,
+ "cost_recomputed": 981.6106507615693,
+ "cost_stored": 1008.3550532885927
+}

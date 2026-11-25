@@ -1,0 +1,13 @@
+R1.1(b): uniform safety-margin rule, leave one trace out. PRE-CALIBRATION, OPEN LOOP, POST HOC replay of PRISM's
+stored E12-selected schedules, event-level simulator, development traces 101-105 (20 weeks). Plan: PLAN.md.
+
+In-sample (all 20 weeks): weeks meeting 2% by margin: 0% 13/20 (cost +0.0%), 10% 16/20 (cost +6.1%), 20% 17/20 (cost +11.8%), 30% 19/20 (cost +17.7%), 50% 20/20 (cost +29.2%)
+
+## strict (q = 1.0): chosen margin per held-out trace 101: 50%, 102: 50%, 103: 10%, 104: 50%, 105: 50%
+   held-out weeks meeting 2%: 16/20 (95% Clopper-Pearson 56-94%); mean cost of the margin +24.9% (range +5.5 to +31.6%)
+   held-out failures: 103 bursty: 2.83% at margin 10%; 103 growth: 2.08% at margin 10%; 103 new_spike: 2.38% at margin 10%; 103 stationary: 2.23% at margin 10%
+
+## lenient (q = 0.9): chosen margin per held-out trace 101: 30%, 102: 30%, 103: 10%, 104: 30%, 105: 30%
+   held-out weeks meeting 2%: 16/20 (95% Clopper-Pearson 56-94%); mean cost of the margin +15.5% (range +5.5 to +19.1%)
+   held-out failures: 103 bursty: 2.83% at margin 10%; 103 growth: 2.08% at margin 10%; 103 new_spike: 2.38% at margin 10%; 103 stationary: 2.23% at margin 10%
+

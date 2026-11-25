@@ -1,0 +1,21 @@
+R1.1(b) revised margin rule on fresh traces 131-135. EXPLORATORY, PRE-CALIBRATION, OPEN LOOP, event-level, Windows. Plan: docs/revision/margin_r11_fresh_20261124/PLAN.md
+
+eligible weeks: 20 of 20; selected eps per seed: {131: 0.01, 132: 0.005, 133: 0.02, 134: 0.005, 135: 0.005}
+
+margin 0: 16/20 weeks meet 2% (95% Clopper-Pearson 56-94%); cost of the margin mean +0.0% (range +0.0 to +0.0%)
+   failures: 133 bursty eps 0.02: 2.08% at margin 0%; 133 growth eps 0.02: 2.08% at margin 0%; 133 new_spike eps 0.02: 2.08% at margin 0%; 134 new_spike eps 0.005: 2.08% at margin 0%
+rule E (eps-dependent 10%/50%): 20/20 weeks meet 2% (95% Clopper-Pearson 83-100%); cost of the margin mean +6.1% (range +5.4 to +6.6%)
+   failures: none
+rule U (uniform 50%): 20/20 weeks meet 2% (95% Clopper-Pearson 83-100%); cost of the margin mean +29.2% (range +25.8 to +31.8%)
+   failures: none
+uniform 10%: 20/20 weeks meet 2% (95% Clopper-Pearson 83-100%); cost of the margin mean +6.1% (range +5.4 to +6.6%)
+   failures: none
+
+prespecified criterion (rule E: >= 18 of 20 fresh weeks meet 2%): PASS
+
+validation-week event-level violating % by eps (selection input):
+  131: 0.005: 1.49, 0.01: 1.79, 0.02: 2.38, 0.03: 2.83, 0.05: 3.42, 0.08: 4.17
+  132: 0.005: 1.34, 0.01: 2.08, 0.02: 2.68, 0.03: 2.83, 0.05: 3.27, 0.08: 4.17
+  133: 0.005: 1.04, 0.01: 1.49, 0.02: 1.93, 0.03: 2.23, 0.05: 3.42, 0.08: 3.27
+  134: 0.005: 1.64, 0.01: 2.23, 0.02: 2.83, 0.03: 3.42, 0.05: 4.61, 0.08: 5.21
+  135: 0.005: 2.23, 0.01: 2.38, 0.02: 2.83, 0.03: 2.98, 0.05: 3.87, 0.08: 5.21

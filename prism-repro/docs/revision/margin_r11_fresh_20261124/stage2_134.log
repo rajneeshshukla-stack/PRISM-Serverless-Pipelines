@@ -1,0 +1,6 @@
+[134] val eps 0.005: viol 0.0164 56s
+[134] val eps 0.01: viol 0.0223 52s
+[134] val eps 0.02: viol 0.0283 50s
+[134] val eps 0.03: viol 0.0342 52s
+[134] val eps 0.05: viol 0.0461 49s
+[134] val eps 0.08: viol 0.0521 46s

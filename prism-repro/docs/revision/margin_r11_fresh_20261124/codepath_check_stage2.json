@@ -1,0 +1,9 @@
+{
+ "val_violating_replayed": 0.019345238095238096,
+ "val_violating_stored": 0.019345238095238096,
+ "cost_replayed": 1008.3562082815505,
+ "cost_stored": 1008.3550532885927,
+ "identical_violating": true,
+ "cost_abs_diff": 0.0011549929578222873,
+ "runtime_s": 27.39989100000821
+}

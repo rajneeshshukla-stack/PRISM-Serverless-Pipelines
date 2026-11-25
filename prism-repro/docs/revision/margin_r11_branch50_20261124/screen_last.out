@@ -1,0 +1,157 @@
+[136] val eps 0.03: 2.530% (28s)
+[136] val eps 0.05: 2.976% (27s)
+[136] val eps 0.08: 3.125% (26s)
+[136] val eps 0.005: 1.190% (24s)
+[136] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[137] val eps 0.03: 2.976% (25s)
+[137] val eps 0.05: 3.125% (25s)
+[137] val eps 0.08: 4.464% (25s)
+[137] val eps 0.005: 1.488% (25s)
+[137] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[138] val eps 0.03: 2.530% (25s)
+[138] val eps 0.05: 2.976% (26s)
+[138] val eps 0.08: 4.167% (25s)
+[138] val eps 0.005: 1.190% (25s)
+[138] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[139] val eps 0.03: 2.827% (24s)
+[139] val eps 0.05: 3.423% (24s)
+[139] val eps 0.08: 4.315% (24s)
+[139] val eps 0.005: 1.339% (24s)
+[139] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[140] val eps 0.03: 2.232% (24s)
+[140] val eps 0.05: 3.125% (24s)
+[140] val eps 0.08: 3.571% (25s)
+[140] val eps 0.005: 0.446% (25s)
+[140] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[141] val eps 0.03: 2.827% (26s)
+[141] val eps 0.05: 3.720% (27s)
+[141] val eps 0.08: 4.464% (32s)
+[141] val eps 0.005: 1.339% (29s)
+[141] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[142] val eps 0.03: 2.381% (26s)
+[142] val eps 0.05: 2.827% (25s)
+[142] val eps 0.08: 3.720% (25s)
+[142] val eps 0.005: 1.339% (32s)
+[142] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[143] val eps 0.03: 2.381% (25s)
+[143] val eps 0.05: 2.976% (25s)
+[143] val eps 0.08: 3.423% (26s)
+[143] val eps 0.005: 1.488% (25s)
+[143] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[144] val eps 0.03: 3.869% (27s)
+[144] val eps 0.05: 4.315% (27s)
+[144] val eps 0.08: 4.911% (30s)
+[144] val eps 0.005: 1.786% (28s)
+[144] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[145] val eps 0.03: 2.827% (32s)
+[145] val eps 0.05: 3.869% (32s)
+[145] val eps 0.08: 3.869% (29s)
+[145] val eps 0.005: 1.339% (28s)
+[145] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[146] val eps 0.03: 2.381% (25s)
+[146] val eps 0.05: 3.125% (30s)
+[146] val eps 0.08: 3.571% (25s)
+[146] val eps 0.005: 0.893% (29s)
+[146] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[147] val eps 0.03: 2.827% (26s)
+[147] val eps 0.05: 3.869% (28s)
+[147] val eps 0.08: 4.464% (25s)
+[147] val eps 0.005: 0.595% (25s)
+[147] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[148] val eps 0.03: 3.125% (25s)
+[148] val eps 0.05: 3.423% (26s)
+[148] val eps 0.08: 4.464% (24s)
+[148] val eps 0.005: 1.786% (23s)
+[148] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[149] val eps 0.03: 3.423% (20s)
+[149] val eps 0.05: 4.018% (20s)
+[149] val eps 0.08: 5.208% (20s)
+[149] val eps 0.005: 2.232% (20s)
+[149] val eps 0.01: 2.083% (21s)
+[149] val eps 0.02: 2.827% (20s)
+[149] nothing meets so far: all six (fallback); selected 0.01; eligible False
+[150] val eps 0.03: 2.976% (21s)
+[150] val eps 0.05: 4.018% (21s)
+[150] val eps 0.08: 5.208% (21s)
+[150] val eps 0.005: 1.190% (21s)
+[150] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[151] val eps 0.03: 2.232% (20s)
+[151] val eps 0.05: 2.976% (20s)
+[151] val eps 0.08: 3.571% (20s)
+[151] val eps 0.005: 1.042% (20s)
+[151] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[152] val eps 0.03: 1.935% (19s)
+[152] val eps 0.05: 2.232% (19s)
+[152] val eps 0.08: 2.381% (21s)
+[152] val eps 0.005: 0.744% (21s)
+[152] val eps 0.01: 1.042% (19s)
+[152] val eps 0.02: 1.488% (20s)
+[152] high meets: all six; selected 0.03; eligible True
+[153] val eps 0.03: 2.530% (26s)
+[153] val eps 0.05: 3.720% (25s)
+[153] val eps 0.08: 4.911% (22s)
+[153] val eps 0.005: 1.190% (20s)
+[153] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[154] val eps 0.03: 3.274% (20s)
+[154] val eps 0.05: 4.167% (21s)
+[154] val eps 0.08: 5.208% (20s)
+[154] val eps 0.005: 1.488% (20s)
+[154] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[155] val eps 0.03: 2.381% (20s)
+[155] val eps 0.05: 3.423% (20s)
+[155] val eps 0.08: 4.018% (20s)
+[155] val eps 0.005: 1.190% (20s)
+[155] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[156] val eps 0.03: 2.679% (20s)
+[156] val eps 0.05: 3.571% (20s)
+[156] val eps 0.08: 3.869% (20s)
+[156] val eps 0.005: 1.339% (20s)
+[156] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[157] val eps 0.03: 2.827% (20s)
+[157] val eps 0.05: 2.976% (20s)
+[157] val eps 0.08: 4.167% (21s)
+[157] val eps 0.005: 1.786% (20s)
+[157] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[158] val eps 0.03: 2.976% (20s)
+[158] val eps 0.05: 3.571% (20s)
+[158] val eps 0.08: 4.464% (26s)
+[158] val eps 0.005: 1.339% (24s)
+[158] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[159] val eps 0.03: 2.232% (26s)
+[159] val eps 0.05: 3.125% (22s)
+[159] val eps 0.08: 3.720% (23s)
+[159] val eps 0.005: 1.637% (23s)
+[159] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[160] val eps 0.03: 2.381% (22s)
+[160] val eps 0.05: 2.679% (26s)
+[160] val eps 0.08: 2.976% (21s)
+[160] val eps 0.005: 0.893% (25s)
+[160] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[161] val eps 0.03: 2.232% (28s)
+[161] val eps 0.05: 4.018% (23s)
+[161] val eps 0.08: 4.613% (23s)
+[161] val eps 0.005: 0.893% (20s)
+[161] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[162] val eps 0.03: 1.786% (23s)
+[162] val eps 0.05: 2.827% (27s)
+[162] val eps 0.08: 4.018% (29s)
+[162] val eps 0.005: 0.893% (24s)
+[162] val eps 0.01: 1.339% (22s)
+[162] val eps 0.02: 1.488% (28s)
+[162] high meets: all six; selected 0.03; eligible True
+[163] val eps 0.03: 2.679% (28s)
+[163] val eps 0.05: 3.423% (27s)
+[163] val eps 0.08: 4.018% (22s)
+[163] val eps 0.005: 1.042% (22s)
+[163] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[164] val eps 0.03: 2.976% (23s)
+[164] val eps 0.05: 3.423% (22s)
+[164] val eps 0.08: 4.167% (22s)
+[164] val eps 0.005: 0.893% (28s)
+[164] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+[165] val eps 0.03: 2.827% (20s)
+[165] val eps 0.05: 3.869% (21s)
+[165] val eps 0.08: 4.464% (26s)
+[165] val eps 0.005: 1.190% (23s)
+[165] no high meets; 0.005 meets -> ineligible; selected None; eligible False
+search bound reached (seed 165)
