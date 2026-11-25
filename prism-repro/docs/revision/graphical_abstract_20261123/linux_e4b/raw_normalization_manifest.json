@@ -1,0 +1,77 @@
+{
+ "note": "Why: on the current code PRISM's risk model defaults to Erlang-B (f119bee), so policies.PRISM labels its runs\n'PRISM_EB...' where the submitted runs (Eq. (5) default) read 'PRISM...'. scripts/analyze.py and the revision analyses\nselect PRISM by the literal 'PRISM', so run unchanged they would drop PRISM from the regenerated tables. The regenerated\nPRISM rows *are* PRISM in its revised main configuration, so the analysis copy relabels them.",
+ "files": [
+  {
+   "experiment": "E4",
+   "file": "arrays_seed101.npz",
+   "copied_verbatim": false,
+   "relabelled_strings": 112,
+   "sha256_regenerated": "80735aec7ef28ccd79df10f601f69fd5732b168fc263bffa6a2c3fd6a47ad69b",
+   "sha256_analysis_copy": "a54240122f18d91c92df36d4b4795b76fb326c833bd9f23ba1a241e596d144ee"
+  },
+  {
+   "experiment": "E4",
+   "file": "arrays_seed102.npz",
+   "copied_verbatim": false,
+   "relabelled_strings": 112,
+   "sha256_regenerated": "866d5f8693f570432836905781ff667c62bbaebf5f4146ba72f6a7ca46f8e50e",
+   "sha256_analysis_copy": "446da1561de914886fc8c01a092cc8328b9203aa61b3c2b92bcbe83d586e08b0"
+  },
+  {
+   "experiment": "E4",
+   "file": "rows.jsonl",
+   "copied_verbatim": false,
+   "relabelled_strings": 84,
+   "sha256_regenerated": "23521ce10f5c9fcdd9aae0b9ff5cce4ea41317a5568f0b4942d7b18a03240c0c",
+   "sha256_analysis_copy": "715466e63e3ee55772a0000dd37dc1330bfbf780b3d8fa7da6d84b6ae231bac6"
+  },
+  {
+   "experiment": "E4b",
+   "file": "e4b_ondemand_seed101.jsonl",
+   "copied_verbatim": false,
+   "relabelled_strings": 0,
+   "sha256_regenerated": "fb220b98ee8713bb4e79b5c22b4f2cfd927d5323f954136fca0385c7bdae54f3",
+   "sha256_analysis_copy": "fb220b98ee8713bb4e79b5c22b4f2cfd927d5323f954136fca0385c7bdae54f3"
+  },
+  {
+   "experiment": "E4b",
+   "file": "e4b_ondemand_seed102.jsonl",
+   "copied_verbatim": false,
+   "relabelled_strings": 0,
+   "sha256_regenerated": "30541f191bf7429dc4e7f298e693d3734bc54fa15aba49053d5b9d04178ab382",
+   "sha256_analysis_copy": "30541f191bf7429dc4e7f298e693d3734bc54fa15aba49053d5b9d04178ab382"
+  },
+  {
+   "experiment": "E4b",
+   "file": "e4b_prism_eps_seed101.jsonl",
+   "copied_verbatim": false,
+   "relabelled_strings": 0,
+   "sha256_regenerated": "25263df528abba9f95bdd08d6d5f7d618804098878066d812a9f02cb0f86cb47",
+   "sha256_analysis_copy": "25263df528abba9f95bdd08d6d5f7d618804098878066d812a9f02cb0f86cb47"
+  },
+  {
+   "experiment": "E4b",
+   "file": "e4b_prism_eps_seed102.jsonl",
+   "copied_verbatim": false,
+   "relabelled_strings": 0,
+   "sha256_regenerated": "07a74e1e96e782a5739614204d2263906b0a2f87abea86e0290589ab72277cd3",
+   "sha256_analysis_copy": "07a74e1e96e782a5739614204d2263906b0a2f87abea86e0290589ab72277cd3"
+  },
+  {
+   "experiment": "E4b",
+   "file": "e4b_seed101.jsonl",
+   "copied_verbatim": false,
+   "relabelled_strings": 0,
+   "sha256_regenerated": "68a1aac739d1e6bfcd3958e0a41f09613a7e0290704904b500b7d9a4704e94eb",
+   "sha256_analysis_copy": "68a1aac739d1e6bfcd3958e0a41f09613a7e0290704904b500b7d9a4704e94eb"
+  },
+  {
+   "experiment": "E4b",
+   "file": "e4b_seed102.jsonl",
+   "copied_verbatim": false,
+   "relabelled_strings": 0,
+   "sha256_regenerated": "1fcf4bad640fe629e04d3019468cf548f57ff73dc5db2890a0096833532ca347",
+   "sha256_analysis_copy": "1fcf4bad640fe629e04d3019468cf548f57ff73dc5db2890a0096833532ca347"
+  }
+ ]
+}

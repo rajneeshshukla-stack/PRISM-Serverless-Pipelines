@@ -1,0 +1,43 @@
+{
+ "headline": {
+  "PredHead": {
+   "cost": 1082.0,
+   "cost_h": 66.0,
+   "viol": 7.62,
+   "viol_h": 2.31,
+   "slo_met": "0%",
+   "n": 5
+  },
+  "PRISM": {
+   "cost": 1241.0,
+   "cost_h": 135.0,
+   "viol": 2.62,
+   "viol_h": 1.5,
+   "slo_met": "20%",
+   "n": 5
+  },
+  "PredHead+hyst": {
+   "cost": 1157.0,
+   "cost_h": 74.0,
+   "viol": 4.02,
+   "viol_h": 2.67,
+   "slo_met": "20%",
+   "n": 5
+  }
+ },
+ "caption_range_pct": [
+  13.03,
+  27.21
+ ],
+ "share_ge2048": [
+  100.0,
+  100.0,
+  100.0,
+  100.0
+ ],
+ "default_deadline": [
+  -32.04,
+  -1.89
+ ]
+}
+Under a new spike, PRISM violated 2.62% of 15-minute windows (95% interval +/-1.50), against 4.02% (+/-2.67) for smoothed headroom and 7.62% (+/-2.31) for unsmoothed headroom, at a weekly cost of USD 1,241, against 1,157 and 1,082: both headroom rules were cheaper, and PRISM did not meet the 2% target on average (it met the target on 1 of 5 traces). When the default 1024 MB cannot meet the deadline, PRISM selects a larger memory size if its risk budget is small enough (2048 MB or more in every epoch at eps 0.02); a fixed 2048 MB headroom rule met the deadline at 13-27% lower cost in the regimes tested (two traces, post hoc, no caps), and adaptation to changes in execution characteristics within a run was not tested. Fast simulator, assumed constants, five development traces, Linux x86-64.

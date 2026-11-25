@@ -47,7 +47,7 @@ Pipelines: A Chance-Constrained Formulation and a Simulation Study under Workloa
 
 > "When the default 1024 MB cannot meet the deadline, PRISM selects a larger memory size if its risk budget eps is
 > small enough; a fixed 2048 MB headroom rule met the deadline at 14-29% lower cost in the regimes tested (two traces,
-> post hoc, no caps), and changing memory within a run was not tested."
+> post hoc, no caps), and adaptation to changes in execution characteristics within a run was not tested."
 
 Check of each figure in that sentence:
 - **"14-29% lower cost":** `results/tables/revision/E4b_fixed_memory_summary.json`, field `best_PredHead_2048_vs_best_PRISM_pct`. Headroom at 2048 MB against PRISM's best setting is 28.7% cheaper at 13 s, 24.2% at 12 s and 14.3% at 11 s (non-scaling 0.5), and 15.3% at 12 s (non-scaling 0.15). At the default 14.5 s headroom at 2048 MB costs 24.6% more, so the claim holds only in the short-slack regimes.
