@@ -13,7 +13,8 @@ from typing import Dict, Optional, Sequence
 
 WARM_MEAN_1024 = {"ingest": 0.8, "transform": 4.0, "aggregate": 2.5, "load": 1.2}
 PRICES_UNVERIFIED = {"lambda_gb_s": 0.0000166667, "lambda_request": 0.20 / 1e6, "sfn_request": 1.00 / 1e6,
-                     "sfn_gb_s": 0.00001667, "logs_ingest_gb": 0.50, "logs_storage_gb_month": 0.03}
+                     "sfn_gb_s": 0.00001667, "logs_ingest_gb": 0.50, "logs_storage_gb_month": 0.03,
+                     "lambda_pc_gb_s": 0.0000041667}   # provisioned concurrency, per configured GB-s (x86; UNVERIFIED)
 
 
 def _d(d1024, m, model):

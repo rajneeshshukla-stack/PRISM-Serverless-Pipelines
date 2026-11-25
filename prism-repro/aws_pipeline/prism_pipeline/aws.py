@@ -156,7 +156,9 @@ def verify(region: str = DEFAULT_REGION, execute: bool = False, cl=None) -> List
 
 # --------------------------------------------------------------------------- deploy
 def deploy(manifest_path: str, region: str = DEFAULT_REGION, execute: bool = False, memory_mb: int = DEFAULT_MEMORY,
-           init_rows: int = 0, sink: str = "none", cl=None, sleep=time.sleep) -> List[str]:
+           init_rows: int = 0, sink: str = "none", cl=None, sleep=time.sleep, alias: Optional[str] = None) -> List[str]:
+    """alias (pc_mode='apply'): publish each function as version 1, create `alias` on it, and let the state machine
+    invoke the alias ARNs, because provisioned concurrency cannot be configured on $LATEST."""
     if sink != "none":
         raise ValueError("the prepared live test uses sink 'none'; an S3 sink needs a bucket (decision P4)")
     plan = [f"iam.create_role {LAMBDA_ROLE} (trust lambda.amazonaws.com) + attach {BASIC_POLICY}",
@@ -166,6 +168,9 @@ def deploy(manifest_path: str, region: str = DEFAULT_REGION, execute: bool = Fal
         plan.append(f"logs.create_log_group /aws/lambda/{function_name(s)} retention={LOG_RETENTION_DAYS} d tags={TAG}")
         plan.append(f"lambda.create_function {function_name(s)} handler=docpipe.{s} runtime={RUNTIME} arch={ARCH} "
                     f"memory={memory_mb} MB timeout={TIMEOUT_S}s env={base_environment(s, init_rows=init_rows)}")
+    if alias:
+        plan.append(f"lambda.publish_version + lambda.create_alias {alias} for each function; the state machine and "
+                    f"the IAM invoke policy use the alias ARNs <function ARN>:{alias}")
     plan.append(f"stepfunctions.create_state_machine {STATE_MACHINE} type=EXPRESS logging=OFF "
                 f"definition=asl.definition(4 Task states, no Retry)")
     if not allowed(execute, cl):
@@ -176,7 +181,7 @@ def deploy(manifest_path: str, region: str = DEFAULT_REGION, execute: bool = Fal
     tags_iam = [{"Key": k, "Value": v} for k, v in TAG.items()]
     man = {"region": region, "account": acct, "prefix": PREFIX, "tag": TAG, "created_wall_ns": time.time_ns(),
            "roles": {}, "functions": {}, "log_groups": [], "state_machine": None, "memory_mb": memory_mb,
-           "init_rows": init_rows, "sink": sink}
+           "init_rows": init_rows, "sink": sink, "alias": alias}
     _save(man, manifest_path)
 
     def role(name, service, attach=None, inline=None):
@@ -223,8 +228,17 @@ def deploy(manifest_path: str, region: str = DEFAULT_REGION, execute: bool = Fal
         _save(man, manifest_path)
         from .campaign import wait_updated
         wait_updated(lam, fn, sleep=sleep)
+    if alias:
+        from .adapter import publish_alias
+        vers = publish_alias(lam, {s: function_name(s) for s in STAGES}, alias, sleep=sleep)
+        for s in STAGES:
+            fn = function_name(s)
+            man["functions"][fn].update(alias_arn=f"{arns[s]}:{alias}", versions=[vers[fn]])
+        _save(man, manifest_path)
+    unq = [arns[s] for s in STAGES]
+    arns = {s: man["functions"][function_name(s)].get("alias_arn", arns[s]) for s in STAGES}
     inline = {"Version": "2012-10-17", "Statement": [{"Effect": "Allow", "Action": "lambda:InvokeFunction",
-                                                      "Resource": [arns[s] for s in STAGES]}]}
+                                                      "Resource": sorted(set(unq) | set(arns.values()))}]}
     srole = role(SFN_ROLE, "states.amazonaws.com", inline=inline)
     defn = asl.definition(arns)
     asl.validate(defn)
@@ -252,7 +266,14 @@ def deploy(manifest_path: str, region: str = DEFAULT_REGION, execute: bool = Fal
 REPORTS_FILE, COLLECT_STATE_FILE, COVERAGE_FILE = "cloudwatch_reports.jsonl", "cloudwatch_collect_state.json", \
     "cloudwatch_coverage.json"
 COLLECT_ATTEMPTS = 5                  # per page; backoff 1, 2, 4, 8 s between attempts
-ARMS_WITH_RECORDS = ("smoke", "baseline_ondemand", "adapter_schedule")
+ARMS_WITH_RECORDS = ("smoke", "baseline_ondemand", "adapter_schedule", "adapter_prism")
+
+
+def _arms_in(run_dir: str):
+    """Every arm directory of the run that has a records.jsonl, so no recorded arm can escape the coverage check."""
+    if not os.path.isdir(run_dir):
+        return []
+    return sorted(d for d in os.listdir(run_dir) if os.path.isfile(os.path.join(run_dir, d, "records.jsonl")))
 
 
 def _run_dir(manifest_path: str) -> str:
@@ -366,10 +387,14 @@ def collect_reports(manifest_path: str, start_ms: Optional[int] = None, end_ms: 
     return plan
 
 
-def report_coverage(run_dir: str, arms=ARMS_WITH_RECORDS) -> dict:
+def report_coverage(run_dir: str, arms=None) -> dict:
     """Local check: every Lambda request ID the arms recorded must have a captured REPORT. Writes and returns
     <run dir>/cloudwatch_coverage.json. complete = the collection finished, at least one ID was expected, and none is
-    missing. REPORT lines without a recorded ID (calibration probes, other invocations) are counted as extras."""
+    missing. REPORT lines without a recorded ID (calibration probes, other invocations) are counted as extras.
+    arms=None checks every arm directory that has a records.jsonl (smoke, baseline_ondemand, adapter_schedule,
+    adapter_prism, ...)."""
+    if arms is None:
+        arms = _arms_in(run_dir)
     expected, no_id = {}, 0
     for arm in arms:
         for rec in _jsonl(os.path.join(run_dir, arm, "records.jsonl")):
@@ -417,6 +442,8 @@ def teardown(manifest_path: Optional[str], region: str = DEFAULT_REGION, execute
     re-applied, and listed under 'retained_log_groups' in the manifest (delete them later with cleanup_log_groups).
     'always' deletes them regardless (the old behaviour); 'never' keeps them."""
     plan = [f"stepfunctions.delete_state_machine {STATE_MACHINE}",
+            "lambda.delete_provisioned_concurrency_config on the manifest's alias for each function (if an alias was "
+            "deployed)",
             f"lambda.delete_function {', '.join(functions().values())} (manifest, or prefix '{PREFIX}-' AND tag {TAG})",
             f"logs.delete_log_group /aws/lambda/{PREFIX}-<stage> for each, ONLY if REPORT coverage is complete "
             f"({COVERAGE_FILE}); otherwise kept with {LOG_RETENTION_DAYS}-day retention and listed in the manifest",
@@ -447,6 +474,13 @@ def teardown(manifest_path: Optional[str], region: str = DEFAULT_REGION, execute
             if f["FunctionName"].startswith(PREFIX + "-") and _tagged_function(lam, f["FunctionName"]):
                 names.add(f["FunctionName"])
     retained = []
+    if man.get("alias"):                                      # provisioned concurrency first (it is billed while set)
+        for fn in sorted(names):
+            try:
+                lam.delete_provisioned_concurrency_config(FunctionName=fn, Qualifier=man["alias"])
+            except Exception as e:                            # noqa: BLE001
+                if _code(e) not in ("ProvisionedConcurrencyConfigNotFoundException", "ResourceNotFoundException"):
+                    raise
     for fn in sorted(names):
         _ignore(lam.delete_function, "ResourceNotFoundException", FunctionName=fn)
         if keep_logs:

@@ -74,7 +74,7 @@ class LiveTelemetry:
     def counts(self, upto: int):
         """Per-bin arrays for bins [0, upto] from the finished records (unscaled)."""
         n, S = self.n, self.S
-        arr = np.zeros((n, S)); cold = np.zeros((n, S)); comp = np.zeros((n, S))
+        arr = np.zeros((n, S)); cold = np.zeros((n, S)); comp = np.zeros((n, S)); od = np.zeros((n, S))
         ivals = [[] for _ in range(S)]
         with self._lock:
             recs = list(self.records)
@@ -87,7 +87,11 @@ class LiveTelemetry:
                 ba, bf = self._bin(a), self._bin(f)
                 if 0 <= ba < n:
                     arr[ba, s] += 1
-                    cold[ba, s] += bool(st.get("cold"))
+                    # an environment initialised for provisioned concurrency did its INIT at allocation, not on this
+                    # request: neither on demand nor a request-path cold start (handler trace field init_type)
+                    pcenv = st.get("init_type") == "provisioned-concurrency"
+                    od[ba, s] += not pcenv
+                    cold[ba, s] += bool(st.get("cold")) and not pcenv
                 if 0 <= bf < n:
                     comp[bf, s] += 1
                 ivals[s].append(((a - self.t0) / 1e9, (f - self.t0) / 1e9))
@@ -110,6 +114,7 @@ class LiveTelemetry:
                     lvl += ev[j][1]
                     j += 1
                 K[b, s] = max(K[b, s], lvl)
+        self._od = od
         return arr, cold, comp, K
 
     def view(self, upto: int):
@@ -126,7 +131,7 @@ class LiveTelemetry:
         c = self.scale
         v.arrivals[:hi] = arr[:hi] * c
         v.N[:hi] = arr[:hi, 0] * c
-        v.n_od[:hi] = (arr[:hi] - 0.0) * c            # P is never applied at quota 10: every execution is on demand
+        v.n_od[:hi] = self._od[:hi] * c               # executions not served by a provisioned environment
         v.cold[:hi] = cold[:hi] * c
         v.completed[:hi] = comp[:hi] * c
         v.K[:hi] = K[:hi] * c
@@ -152,19 +157,59 @@ class PolicyOnly:
         return self.policy.decide(k, tel)
 
 
+def _err_code(e) -> str:
+    r = getattr(e, "response", None)
+    return (r or {}).get("Error", {}).get("Code", type(e).__name__) if isinstance(r, dict) else type(e).__name__
+
+
+def publish_alias(lam, functions: Dict[str, str], alias: str, sleep=time.sleep, poll_s: float = 1.0) -> Dict[str, str]:
+    """Publish $LATEST of every stage as a new version and point `alias` at it (created on first use). Provisioned
+    concurrency cannot be configured on $LATEST, only on a published version or an alias (provisioned-concurrency.html),
+    so in pc_mode='apply' every configuration change (memory, environment, cold-start nonce) is published this way and
+    the state machine invokes the alias. Returns {function: version}. The alias must carry no provisioned concurrency
+    when it is repointed: callers delete it first (LambdaActuator.clear_pc), so no reallocation behaviour is assumed."""
+    out = {}
+    for fn in functions.values():
+        v = lam.publish_version(FunctionName=fn)["Version"]
+        try:
+            lam.update_alias(FunctionName=fn, Name=alias, FunctionVersion=v)
+        except Exception as e:                                # noqa: BLE001
+            if _err_code(e) != "ResourceNotFoundException":
+                raise
+            lam.create_alias(FunctionName=fn, Name=alias, FunctionVersion=v)
+        out[fn] = v
+    return out
+
+
 class LambdaActuator:
+    """Applies one epoch's decision. Output keeps what was requested apart from what was confirmed:
+    memory_requested / memory_applied (read back from every stage; through the alias in 'apply' mode);
+    pc_requested (the controller's live P, after an optional cap: pc_clipped) / pc_submitted (sent to
+    PutProvisionedConcurrencyConfig, None = unchanged) / pc_accepted (the API accepted the request) / pc_refused
+    (stage -> reason: quota pre-check or the API's error code) / pc_status_after (GetProvisionedConcurrencyConfig right
+    after). A configuration request is never reported as readiness: pc_applied stays None here, and readiness (READY,
+    available >= requested) is observed only by poll_pc / PcMonitor, which time-stamp it.
+    pc_mode='record' (default): P is recorded, never sent (pc_status 'recorded_not_applied').
+    pc_mode='apply': needs `alias` (published versions); refused actions are recorded and the arm continues."""
+
     def __init__(self, lambda_client, functions: Dict[str, str], pc_mode: str = "record",
                  account_settings: Optional[dict] = None, sleep=time.sleep, poll_s: float = 1.0,
-                 timeout_s: float = 120.0, mono=time.monotonic):
+                 timeout_s: float = 120.0, mono=time.monotonic, alias: Optional[str] = None,
+                 pc_cap_per_stage: Optional[int] = None):
         if pc_mode not in ("record", "apply"):
             raise ValueError("pc_mode must be 'record' or 'apply'")
-        self.lam, self.functions, self.pc_mode = lambda_client, functions, pc_mode
+        if pc_mode == "apply" and not alias:
+            raise ValueError("pc_mode='apply' needs an alias: provisioned concurrency cannot be set on $LATEST")
+        self.lam, self.functions, self.pc_mode, self.alias = lambda_client, functions, pc_mode, alias
         self.account = account_settings
         self.sleep, self.poll_s, self.timeout_s, self.mono = sleep, poll_s, timeout_s, mono
+        self.pc_cap = pc_cap_per_stage
         self.mem = None
+        self.pc_cur = [0] * len(functions)                    # provisioned concurrency currently configured (accepted)
 
     def current_memory(self) -> int:
-        ms = {self.lam.get_function_configuration(FunctionName=f)["MemorySize"] for f in self.functions.values()}
+        q = {"Qualifier": self.alias} if self.alias else {}
+        ms = {self.lam.get_function_configuration(FunctionName=f, **q)["MemorySize"] for f in self.functions.values()}
         if len(ms) != 1:
             raise RuntimeError(f"stages have different memory sizes {sorted(ms)}; PRISM sets one size")
         self.mem = ms.pop()
@@ -188,10 +233,58 @@ class LambdaActuator:
             self.sleep(self.poll_s)
         return cfgs
 
+    def _unreserved(self) -> int:
+        if self.account is None:
+            self.account = self.lam.get_account_settings()["AccountLimit"]
+        return int(self.account.get("UnreservedConcurrentExecutions", 0))
+
+    def clear_pc(self) -> Dict[str, str]:
+        """Delete every provisioned-concurrency configuration on the alias (before repointing it or at an arm reset)."""
+        out = {}
+        if not self.alias:
+            return out
+        for i, fn in enumerate(self.functions.values()):
+            try:
+                self.lam.delete_provisioned_concurrency_config(FunctionName=fn, Qualifier=self.alias)
+                out[fn] = "deleted"
+            except Exception as e:                            # noqa: BLE001
+                if _err_code(e) not in ("ProvisionedConcurrencyConfigNotFoundException", "ResourceNotFoundException"):
+                    raise
+                out[fn] = "none"
+            self.pc_cur[i] = 0
+        return out
+
+    def poll_pc(self) -> List[dict]:
+        """One read of every stage's provisioned-concurrency state on the alias (read only)."""
+        rows = []
+        for i, (s, fn) in enumerate(self.functions.items()):
+            if not self.alias:
+                break
+            try:
+                c = self.lam.get_provisioned_concurrency_config(FunctionName=fn, Qualifier=self.alias)
+                rows.append({"stage": s, "configured": self.pc_cur[i], "status": c.get("Status"),
+                             "requested": c.get("RequestedProvisionedConcurrentExecutions"),
+                             "allocated": c.get("AllocatedProvisionedConcurrentExecutions"),
+                             "available": c.get("AvailableProvisionedConcurrentExecutions"),
+                             "reason": c.get("StatusReason")})
+            except Exception as e:                            # noqa: BLE001
+                code = _err_code(e)
+                if code not in ("ProvisionedConcurrencyConfigNotFoundException", "ResourceNotFoundException"):
+                    raise
+                rows.append({"stage": s, "configured": self.pc_cur[i], "status": "NONE", "requested": 0,
+                             "allocated": 0, "available": 0, "reason": None})
+        return rows
+
     def apply(self, P, mem: int) -> dict:
-        out = {"memory_requested": int(mem), "memory_changed": False, "memory_update_s": None,
-               "pc_requested": [int(x) for x in np.ceil(np.asarray(P, float))], "pc_applied": None,
-               "pc_mode": self.pc_mode}
+        pc_req = [int(x) for x in np.ceil(np.asarray(P, float))]
+        clipped = None
+        if self.pc_cap is not None and any(x > self.pc_cap for x in pc_req):
+            clipped = list(pc_req)
+            pc_req = [min(x, self.pc_cap) for x in pc_req]
+        out = {"memory_requested": int(mem), "memory_applied": None, "memory_changed": False, "memory_update_s": None,
+               "pc_requested": pc_req, "pc_clipped_from": clipped, "pc_applied": None, "pc_mode": self.pc_mode,
+               "pc_submitted": None, "pc_accepted": None, "pc_refused": {}, "pc_status_after": None,
+               "pc_status": "none_requested" if sum(pc_req) == 0 else "recorded_not_applied"}
         if self.mem is None:
             self.current_memory()
         if int(mem) != self.mem:
@@ -201,17 +294,106 @@ class LambdaActuator:
             for fn, c in self._wait_all(list(self.functions.values())).items():
                 if int(c.get("MemorySize", mem)) != int(mem):
                     raise RuntimeError(f"{fn}: MemorySize {c.get('MemorySize')} after update to {mem}")
+            if self.alias:                                # the alias serves a published version: republish
+                out["pc_cleared_for_memory_change"] = self.clear_pc()
+                out["published_versions"] = publish_alias(self.lam, self.functions, self.alias, sleep=self.sleep,
+                                                          poll_s=self.poll_s)
+                for fn in self.functions.values():
+                    got = int(self.lam.get_function_configuration(FunctionName=fn, Qualifier=self.alias)["MemorySize"])
+                    if got != int(mem):
+                        raise RuntimeError(f"{fn}:{self.alias}: MemorySize {got} after publishing {mem}")
             out.update(memory_changed=True, memory_update_s=self.mono() - t0, memory_from=self.mem)
             self.mem = int(mem)
-        if self.pc_mode == "apply" and sum(out["pc_requested"]) > 0:
-            acct = self.account or {}
-            unres = acct.get("UnreservedConcurrentExecutions", 0)
-            if unres - sum(out["pc_requested"]) < UNRESERVED_MIN:
-                raise PermissionError(f"provisioned concurrency {sum(out['pc_requested'])} would leave "
-                                      f"{unres - sum(out['pc_requested'])} unreserved (< {UNRESERVED_MIN}); "
-                                      "not possible at this account's quota")
-            raise NotImplementedError("pc_mode='apply' needs published versions and aliases (SPEC.md, P7)")
+        out["memory_applied"] = int(self.mem)          # confirmed: unchanged, or every stage reported the new size
+        if self.pc_mode != "apply":
+            return out
+        if pc_req == self.pc_cur:
+            out["pc_status"] = "unchanged" if sum(pc_req) else "none_requested"
+            return out
+        unres = self._unreserved()
+        if sum(pc_req) > unres - UNRESERVED_MIN:
+            out["pc_status"] = "refused_quota"
+            out["pc_refused"] = {"all": f"total {sum(pc_req)} > unreserved {unres} - {UNRESERVED_MIN} (pre-check; "
+                                        "nothing sent, the previous configuration stays)"}
+            return out
+        sub, acc = [None] * len(pc_req), [None] * len(pc_req)
+        for i, (s, fn) in enumerate(self.functions.items()):
+            if pc_req[i] == self.pc_cur[i]:
+                continue
+            sub[i] = pc_req[i]
+            try:
+                if pc_req[i] > 0:
+                    self.lam.put_provisioned_concurrency_config(FunctionName=fn, Qualifier=self.alias,
+                                                                ProvisionedConcurrentExecutions=pc_req[i])
+                else:
+                    self.lam.delete_provisioned_concurrency_config(FunctionName=fn, Qualifier=self.alias)
+                acc[i] = True
+                self.pc_cur[i] = pc_req[i]
+            except Exception as e:                            # noqa: BLE001  (refused: recorded, arm continues)
+                acc[i] = False
+                out["pc_refused"][s] = f"{_err_code(e)}: {e}"
+        out.update(pc_submitted=sub, pc_accepted=acc, pc_configured=list(self.pc_cur), pc_status_after=self.poll_pc())
+        out["pc_status"] = ("requested_pending_readiness" if not out["pc_refused"] else
+                            "partially_refused" if any(acc) else "refused")
         return out
+
+
+class PcMonitor:
+    """Background reader of provisioned-concurrency readiness (apply mode): one poll_pc() every period_s, appended to
+    pc_status.jsonl with a wall-clock time stamp. Activation lag is computed from these rows (pc_readiness)."""
+
+    def __init__(self, actuator: LambdaActuator, path: str, period_s: float = 10.0, wall_ns=time.time_ns,
+                 sleep=time.sleep):
+        self.act, self.path, self.period_s, self.wall_ns, self.sleep = actuator, path, period_s, wall_ns, sleep
+        self._stop = threading.Event()
+        self._thread = None
+        self.error = None
+
+    def poll_once(self):
+        rows = self.act.poll_pc()
+        t = self.wall_ns()
+        with open(self.path, "a", encoding="utf-8") as f:
+            for r in rows:
+                f.write(json.dumps(dict(r, wall_ns=t), separators=(",", ":")) + "\n")
+        return rows
+
+    def _run(self):
+        try:
+            while not self._stop.is_set():
+                self.poll_once()
+                self._stop.wait(self.period_s)
+        except Exception as e:                                # noqa: BLE001  (recorded)
+            self.error = f"{type(e).__name__}: {e}"
+
+    def start(self):
+        self._thread = threading.Thread(target=self._run, daemon=True)
+        self._thread.start()
+
+    def stop(self):
+        self._stop.set()
+        if self._thread:
+            self._thread.join()
+        self.poll_once()                                      # a final reading at the arm's end
+
+
+def pc_readiness(decisions: List[dict], status_rows: List[dict], stages) -> List[dict]:
+    """Per accepted provisioned-concurrency request: the first later poll showing READY with available >= requested
+    (activation lag = that poll's time - the request's applied_wall_ns, resolution = the polling period), or
+    'not ready by arm end'. Readiness is observed, never inferred from the request."""
+    out = []
+    for d in decisions:
+        a = d.get("actuation") or {}
+        for i, s in enumerate(stages):
+            if not (a.get("pc_accepted") or [None] * len(stages))[i] or not a["pc_submitted"][i]:
+                continue
+            n, t_req = a["pc_submitted"][i], d["applied_wall_ns"]
+            ready = next((r for r in status_rows if r["stage"] == s and r["wall_ns"] >= t_req and r["status"] == "READY"
+                          and (r.get("requested") or 0) == n and (r.get("allocated") or 0) >= n), None)
+            out.append({"k": d["k"], "stage": s, "requested": n, "requested_wall_ns": t_req,
+                        "ready_wall_ns": ready["wall_ns"] if ready else None,
+                        "activation_lag_s": (ready["wall_ns"] - t_req) / 1e9 if ready else None,
+                        "status": "ready" if ready else "not ready by arm end"})
+    return out
 
 
 class ControllerAdapter:

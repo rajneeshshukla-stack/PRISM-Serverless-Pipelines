@@ -111,7 +111,7 @@ def stage_rows(result: dict) -> List[dict]:
         row = {k: t.get(k) for k in ("stage", "aws_request_id", "function", "function_version", "memory_mb",
                                        "env_id", "cold", "module_init_s", "env_start_wall_ns", "start_wall_ns",
                                        "end_wall_ns", "handler_s", "k", "init_rows", "in_bytes", "out_bytes",
-                                       "nonce")}
+                                       "nonce", "init_type")}
         c = client.get(t.get("stage"))
         if c:
             row.update(client_s=c.get("client_s"), report=c.get("report"), report_source=c.get("report_source"),

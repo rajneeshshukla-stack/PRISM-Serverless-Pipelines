@@ -14,7 +14,9 @@ import os
 def _spec(a):
     from .livetest import TestSpec
     return TestSpec(seed=a.seed, n_records=a.records, rate_per_min=a.rate, bin_s=a.bin_s,
-                    schedule_mb=[int(x) for x in a.schedule.split(",")])
+                    schedule_mb=[int(x) for x in a.schedule.split(",")], mode=a.mode, trace_seed=a.trace_seed,
+                    scenario=a.scenario, n_epochs=a.epochs, thin=a.thin, prism_eps=a.eps, forecaster=a.forecaster,
+                    pc_mode=a.pc_mode, pc_cap=a.pc_cap)
 
 
 def main(argv=None) -> int:
@@ -26,6 +28,17 @@ def main(argv=None) -> int:
     p.add_argument("--rate", type=float, default=12.0, help="arrivals per minute")
     p.add_argument("--bin-s", type=float, default=12.0, help="seconds per controller bin (60 = paper time)")
     p.add_argument("--schedule", default="1024,512,2048,1024,1024", help="adapter arm memory per epoch")
+    p.add_argument("--mode", choices=("schedule", "prism_replay"), default="schedule",
+                   help="prism_replay (R6.1): PRISM's controller vs OnDemand on the same thinned trace replay")
+    p.add_argument("--trace-seed", type=int, default=101)
+    p.add_argument("--scenario", default="stationary")
+    p.add_argument("--epochs", type=int, default=8, help="prism_replay: decision epochs replayed (5 minutes each)")
+    p.add_argument("--thin", type=float, default=1 / 60, help="prism_replay: fraction of trace requests kept")
+    p.add_argument("--eps", type=float, default=0.02, help="prism_replay: PRISM risk budget")
+    p.add_argument("--forecaster", default="gbm", help="prism_replay: PRISM's forecaster")
+    p.add_argument("--pc-mode", choices=("record", "apply"), default="record",
+                   help="prism_replay: 'apply' configures PRISM's provisioned concurrency through a published alias")
+    p.add_argument("--pc-cap", type=int, default=4, help="apply: provisioned concurrency cap per stage (cost bound)")
     sub = p.add_subparsers(dest="cmd", required=True)
     sub.add_parser("plan")
     s = sub.add_parser("estimate"); s.add_argument("--out")

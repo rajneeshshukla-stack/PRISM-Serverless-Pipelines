@@ -1,0 +1,307 @@
+{
+ "gbm": {
+  "decisions": [
+   {
+    "k": 0,
+    "observed_upto_bin": -2,
+    "P_model": [
+     21.0,
+     102.0,
+     64.0,
+     31.0
+    ],
+    "P_live": [
+     1,
+     2,
+     2,
+     1
+    ],
+    "memory": 1024
+   },
+   {
+    "k": 1,
+    "observed_upto_bin": 3,
+    "P_model": [
+     17.0,
+     86.0,
+     54.0,
+     26.0
+    ],
+    "P_live": [
+     1,
+     2,
+     1,
+     1
+    ],
+    "memory": 1024
+   },
+   {
+    "k": 2,
+    "observed_upto_bin": 8,
+    "P_model": [
+     14.0,
+     73.0,
+     45.0,
+     22.0
+    ],
+    "P_live": [
+     1,
+     2,
+     1,
+     1
+    ],
+    "memory": 1024
+   },
+   {
+    "k": 3,
+    "observed_upto_bin": 13,
+    "P_model": [
+     15.0,
+     71.0,
+     45.0,
+     22.0
+    ],
+    "P_live": [
+     1,
+     2,
+     1,
+     1
+    ],
+    "memory": 1024
+   },
+   {
+    "k": 4,
+    "observed_upto_bin": 18,
+    "P_model": [
+     12.0,
+     60.0,
+     38.0,
+     18.0
+    ],
+    "P_live": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "memory": 1024
+   },
+   {
+    "k": 5,
+    "observed_upto_bin": 23,
+    "P_model": [
+     20.0,
+     98.0,
+     61.0,
+     30.0
+    ],
+    "P_live": [
+     1,
+     2,
+     2,
+     1
+    ],
+    "memory": 1024
+   },
+   {
+    "k": 6,
+    "observed_upto_bin": 28,
+    "P_model": [
+     18.0,
+     88.0,
+     55.0,
+     27.0
+    ],
+    "P_live": [
+     1,
+     2,
+     1,
+     1
+    ],
+    "memory": 1024
+   },
+   {
+    "k": 7,
+    "observed_upto_bin": 33,
+    "P_model": [
+     15.0,
+     74.0,
+     46.0,
+     22.0
+    ],
+    "P_live": [
+     1,
+     2,
+     1,
+     1
+    ],
+    "memory": 1024
+   }
+  ],
+  "pc_changes_after_epoch_0": 5,
+  "memory_values": [
+   1024
+  ],
+  "pc_gb_s": 12300.0
+ },
+ "seasonal_naive": {
+  "decisions": [
+   {
+    "k": 0,
+    "observed_upto_bin": -2,
+    "P_model": [
+     18.0,
+     90.0,
+     56.0,
+     27.0
+    ],
+    "P_live": [
+     1,
+     2,
+     1,
+     1
+    ],
+    "memory": 1024
+   },
+   {
+    "k": 1,
+    "observed_upto_bin": 3,
+    "P_model": [
+     15.0,
+     76.0,
+     47.0,
+     22.0
+    ],
+    "P_live": [
+     1,
+     2,
+     1,
+     1
+    ],
+    "memory": 1024
+   },
+   {
+    "k": 2,
+    "observed_upto_bin": 8,
+    "P_model": [
+     12.0,
+     64.0,
+     39.0,
+     18.0
+    ],
+    "P_live": [
+     1,
+     2,
+     1,
+     1
+    ],
+    "memory": 1024
+   },
+   {
+    "k": 3,
+    "observed_upto_bin": 13,
+    "P_model": [
+     10.0,
+     54.0,
+     33.0,
+     15.0
+    ],
+    "P_live": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "memory": 1024
+   },
+   {
+    "k": 4,
+    "observed_upto_bin": 18,
+    "P_model": [
+     8.0,
+     45.0,
+     28.0,
+     12.0
+    ],
+    "P_live": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "memory": 1024
+   },
+   {
+    "k": 5,
+    "observed_upto_bin": 23,
+    "P_model": [
+     9.0,
+     43.0,
+     27.0,
+     13.0
+    ],
+    "P_live": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "memory": 1024
+   },
+   {
+    "k": 6,
+    "observed_upto_bin": 28,
+    "P_model": [
+     13.0,
+     63.0,
+     40.0,
+     19.0
+    ],
+    "P_live": [
+     1,
+     2,
+     1,
+     1
+    ],
+    "memory": 1024
+   },
+   {
+    "k": 7,
+    "observed_upto_bin": 33,
+    "P_model": [
+     11.0,
+     53.0,
+     34.0,
+     16.0
+    ],
+    "P_live": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "memory": 1024
+   }
+  ],
+  "pc_changes_after_epoch_0": 3,
+  "memory_values": [
+   1024
+  ],
+  "pc_gb_s": 10800.0
+ },
+ "plan": {
+  "records_per_arm": 323,
+  "first_offset_s": 3.025806,
+  "last_offset_s": 2390.956324,
+  "estimate": {
+   "records_per_arm": 323,
+   "arm_length_s": 2400.0,
+   "expected_usd": 0.1053,
+   "upper_usd": 0.1511,
+   "pc_ceiling_usd": 0.47,
+   "total_upper_usd": 0.6211,
+   "prices": "UNVERIFIED list prices (estimate.PRICES_UNVERIFIED)"
+  },
+  "note": "offline preview from synthesised on-demand telemetry at the warm 1024-MB means; live decisions depend on measured completions and can differ"
+ }
+}

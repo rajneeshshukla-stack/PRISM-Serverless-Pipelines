@@ -308,10 +308,16 @@ class TestAdapter(unittest.TestCase):
         self.assertEqual(tel.mem.tolist(), [1024] * 5 + [2048] * 10 + [512] * 5)
 
     def test_provisioned_concurrency_refused_at_quota_10(self):
-        act = LambdaActuator(self.cl["lambda"], aws.functions(), pc_mode="apply",
+        # 23 Nov 2026 (R6.1): a refusal is now recorded explicitly and the arm continues (it used to raise
+        # PermissionError); apply mode needs an alias, since provisioned concurrency cannot be set on $LATEST.
+        with self.assertRaises(ValueError):
+            LambdaActuator(self.cl["lambda"], aws.functions(), pc_mode="apply")
+        from prism_pipeline.adapter import publish_alias
+        publish_alias(self.cl["lambda"], aws.functions(), "live")
+        act = LambdaActuator(self.cl["lambda"], aws.functions(), pc_mode="apply", alias="live",
                              account_settings=self.cl["lambda"].get_account_settings()["AccountLimit"])
-        with self.assertRaises(PermissionError):
-            act.apply([3, 0, 0, 0], 1024)
+        ref = act.apply([3, 0, 0, 0], 1024)
+        self.assertEqual((ref["pc_status"], ref["pc_applied"], ref["memory_applied"]), ("refused_quota", None, 1024))
         rec = LambdaActuator(self.cl["lambda"], aws.functions()).apply([3, 5, 1, 0], 1024)
         self.assertEqual((rec["pc_requested"], rec["pc_applied"], rec["memory_changed"]), ([3, 5, 1, 0], None, False))
         self.assertEqual(self.cl["lambda"].pc_calls, 0)

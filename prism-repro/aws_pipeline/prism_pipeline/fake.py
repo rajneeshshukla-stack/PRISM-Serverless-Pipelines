@@ -50,9 +50,9 @@ class _Paginator:
 
 
 class _Ctx:
-    def __init__(self, rid, fn, mem):
+    def __init__(self, rid, fn, mem, version="$LATEST"):
         self.aws_request_id, self.function_name, self.memory_limit_in_mb = rid, fn, mem
-        self.function_version = "$LATEST"
+        self.function_version = version
 
 
 # --------------------------------------------------------------------------- logs
@@ -112,7 +112,7 @@ class FakeLambda:
     def __init__(self, logs: Optional[FakeLogs] = None, account_limit: int = 10, unreserved: Optional[int] = None,
                  slow: Optional[Callable[[int], float]] = None, runtime_init_s: float = 0.0,
                  create_s: float = 0.0, p_drop_tail_report: float = 0.0, seed: int = 1, sleep=time.sleep,
-                 update_polls: int = 1):
+                 update_polls: int = 1, pc_ready_polls: int = 2):
         import random
         self.logs = logs or FakeLogs()
         self.account_limit = account_limit
@@ -128,6 +128,8 @@ class FakeLambda:
         self.in_flight = self.max_in_flight = self.calls = self.throttles = self.updates = 0
         self.pc_calls = 0
         self.network_calls = 0
+        self.pc_ready_polls = pc_ready_polls             # get_provisioned_concurrency_config calls until READY
+        self.pc_invocations = 0
 
     # ---- management
     def create_function(self, FunctionName, Runtime, Role, Handler, Code, Timeout, MemorySize, Architectures,
@@ -140,7 +142,8 @@ class FakeLambda:
                                       "env": dict(Environment["Variables"]), "tags": dict(Tags or {}), "gen": 0,
                                       "idle": [], "pending": 0, "timeout": Timeout, "zip_bytes": len(Code["ZipFile"]),
                                       "runtime": Runtime, "architectures": list(Architectures),
-                                      "code_sha256": base64.b64encode(hashlib.sha256(Code["ZipFile"]).digest()).decode()}
+                                      "code_sha256": base64.b64encode(hashlib.sha256(Code["ZipFile"]).digest()).decode(),
+                                      "versions": {}, "aliases": {}, "pc": {}}
         return {"FunctionArn": arn, "State": "Pending"}
 
     def delete_function(self, FunctionName):
@@ -178,7 +181,14 @@ class FakeLambda:
             self.updates += 1
         return {"LastUpdateStatus": "InProgress"}
 
-    def get_function_configuration(self, FunctionName):
+    def get_function_configuration(self, FunctionName, Qualifier=None):
+        if Qualifier not in (None, "$LATEST"):
+            with self._lock:
+                f = self._get(FunctionName)
+                v = self._version(f, Qualifier)
+                return {"FunctionName": FunctionName, "FunctionArn": f"{f['arn']}:{Qualifier}", "Version": v,
+                        "MemorySize": f["versions"][v]["memory"], "State": "Active", "LastUpdateStatus": "Successful",
+                        "Environment": {"Variables": dict(f["versions"][v]["env"])}}
         with self._lock:
             f = self._get(FunctionName)
             st = "InProgress" if f["pending"] > 0 else "Successful"
@@ -188,9 +198,87 @@ class FakeLambda:
                     "Runtime": f.get("runtime"), "Handler": f["handler"], "Timeout": f["timeout"],
                     "Architectures": list(f.get("architectures") or []), "CodeSha256": f.get("code_sha256")}
 
-    def put_provisioned_concurrency_config(self, **kw):
-        self.pc_calls += 1
-        raise FakeClientError("InvalidParameterValueException", "quota too low for provisioned concurrency")
+    # ---- versions, aliases, provisioned concurrency (rules as in provisioned-concurrency.html: not on $LATEST; at most
+    # the unreserved account concurrency minus 100; allocation is not immediate; status IN_PROGRESS | READY | FAILED)
+    def publish_version(self, FunctionName):
+        with self._lock:
+            f = self._get(FunctionName)
+            v = str(len(f["versions"]) + 1)
+            f["versions"][v] = {"memory": f["memory"], "env": dict(f["env"]), "idle": []}
+        return {"Version": v, "FunctionArn": f"{f['arn']}:{v}", "MemorySize": f["memory"], "State": "Active"}
+
+    def _version(self, f, q):
+        if q in f["aliases"]:
+            return f["aliases"][q]
+        if q in f["versions"]:
+            return q
+        raise FakeClientError("ResourceNotFoundException", f"qualifier {q}")
+
+    def create_alias(self, FunctionName, Name, FunctionVersion):
+        with self._lock:
+            f = self._get(FunctionName)
+            if Name in f["aliases"]:
+                raise FakeClientError("ResourceConflictException", Name)
+            if FunctionVersion not in f["versions"]:
+                raise FakeClientError("ResourceNotFoundException", FunctionVersion)
+            f["aliases"][Name] = FunctionVersion
+        return {"AliasArn": f"{f['arn']}:{Name}", "Name": Name, "FunctionVersion": FunctionVersion}
+
+    def update_alias(self, FunctionName, Name, FunctionVersion):
+        with self._lock:
+            f = self._get(FunctionName)
+            if Name not in f["aliases"] or FunctionVersion not in f["versions"]:
+                raise FakeClientError("ResourceNotFoundException", f"{Name} -> {FunctionVersion}")
+            if Name in f["pc"]:                               # stricter than documented: forces explicit handling
+                raise FakeClientError("ResourceConflictException",
+                                      "fake: delete the alias's provisioned concurrency before repointing it")
+            f["aliases"][Name] = FunctionVersion
+        return {"AliasArn": f"{f['arn']}:{Name}", "Name": Name, "FunctionVersion": FunctionVersion}
+
+    def put_provisioned_concurrency_config(self, FunctionName, Qualifier, ProvisionedConcurrentExecutions):
+        with self._lock:
+            self.pc_calls += 1
+            f = self._get(FunctionName)
+            if Qualifier == "$LATEST":
+                raise FakeClientError("InvalidParameterValueException", "provisioned concurrency is not allowed on $LATEST")
+            self._version(f, Qualifier)
+            n = int(ProvisionedConcurrentExecutions)
+            others = sum(c["requested"] for fn, g in self.fns.items() for q, c in g["pc"].items()
+                         if (fn, q) != (FunctionName, Qualifier))
+            if n < 1 or others + n > self.unreserved - 100:
+                raise FakeClientError("InvalidParameterValueException",
+                                      f"provisioned concurrency {others + n} exceeds unreserved {self.unreserved} - 100")
+            f["pc"][Qualifier] = {"requested": n, "allocated": 0, "polls": self.pc_ready_polls, "status": "IN_PROGRESS",
+                                  "pool": [], "busy": 0}
+        return {"RequestedProvisionedConcurrentExecutions": n, "Status": "IN_PROGRESS"}
+
+    def get_provisioned_concurrency_config(self, FunctionName, Qualifier):
+        with self._lock:
+            f = self._get(FunctionName)
+            c = f["pc"].get(Qualifier)
+            if c is None:
+                raise FakeClientError("ProvisionedConcurrencyConfigNotFoundException", f"{FunctionName}:{Qualifier}")
+            if c["status"] == "IN_PROGRESS":
+                c["polls"] -= 1
+                if c["polls"] <= 0:
+                    c["status"], c["allocated"] = "READY", c["requested"]
+            out = {"RequestedProvisionedConcurrentExecutions": c["requested"], "Status": c["status"],
+                   "AllocatedProvisionedConcurrentExecutions": c["allocated"],
+                   "AvailableProvisionedConcurrentExecutions": max(c["allocated"] - c["busy"], 0)}
+            ver = self._version(f, Qualifier)
+            need = c["allocated"] - len(c["pool"]) - c["busy"]
+            venv = dict(f["versions"][ver]["env"])
+        for _ in range(max(need, 0)):                         # initialised at allocation, not at invocation
+            mod, _, _ = self._new_env(FunctionName, dict(venv, AWS_LAMBDA_INITIALIZATION_TYPE="provisioned-concurrency"))
+            with self._lock:
+                c["pool"].append(mod)
+        return out
+
+    def delete_provisioned_concurrency_config(self, FunctionName, Qualifier):
+        with self._lock:
+            f = self._get(FunctionName)
+            if f["pc"].pop(Qualifier, None) is None:
+                raise FakeClientError("ProvisionedConcurrencyConfigNotFoundException", f"{FunctionName}:{Qualifier}")
 
     def _get(self, fn):
         if fn not in self.fns:
@@ -220,7 +308,10 @@ class FakeLambda:
         mod._ENV = dict(env)
         return mod, init_s, lines
 
-    def invoke(self, FunctionName, InvocationType="RequestResponse", LogType="None", Payload=b"{}"):
+    def invoke(self, FunctionName, InvocationType="RequestResponse", LogType="None", Payload=b"{}", Qualifier=None):
+        if Qualifier is None and ":" in FunctionName:
+            FunctionName, Qualifier = FunctionName.split(":", 1)
+        pc = None
         with self._lock:
             self.calls += 1
             if self.in_flight + 1 > self.account_limit:
@@ -229,16 +320,30 @@ class FakeLambda:
             self.in_flight += 1
             self.max_in_flight = max(self.max_in_flight, self.in_flight)
             f = self._get(FunctionName)
-            gen, mem, env, handler = f["gen"], f["memory"], dict(f["env"]), f["handler"]
-            slot = f["idle"].pop() if f["idle"] else None
+            handler = f["handler"]
+            if Qualifier in (None, "$LATEST"):
+                ver, gen, mem, env, pool = "$LATEST", f["gen"], f["memory"], dict(f["env"]), f["idle"]
+            else:
+                ver = self._version(f, Qualifier)
+                vv = f["versions"][ver]
+                gen, mem, env, pool = ("v", ver), vv["memory"], dict(vv["env"]), vv["idle"]
+                c = f["pc"].get(Qualifier)
+                if c is not None and c["status"] == "READY" and c["pool"]:
+                    pc = c                                    # served by a provisioned environment
+            if pc is not None:
+                slot = pc["pool"].pop()
+                pc["busy"] += 1
+                self.pc_invocations += 1
+            else:
+                slot = pool.pop() if pool else None
             rid = str(uuid.UUID(int=self.rng.getrandbits(128)))
             drop = self.rng.random() < self.p_drop
         group = f"/aws/lambda/{FunctionName}"
-        lines: List[str] = [f"START RequestId: {rid} Version: $LATEST"]
+        lines: List[str] = [f"START RequestId: {rid} Version: {ver}"]
         init_ms = None
         try:
             if slot is None:
-                mod, init_s, ilines = self._new_env(FunctionName, env)
+                mod, init_s, ilines = self._new_env(FunctionName, dict(env, AWS_LAMBDA_INITIALIZATION_TYPE="on-demand"))
                 lines = [f"INIT_START Runtime Version: python:3.12.fake	Runtime Version ARN: "
                          f"arn:aws:lambda:us-east-2::runtime:fake"] + ilines + lines
                 init_total = self.runtime_init_s + init_s * self.slow(mem)
@@ -254,7 +359,7 @@ class FakeLambda:
             t0 = time.perf_counter()
             err = None
             try:
-                out = getattr(mod, handler.split(".", 1)[1])(ev, _Ctx(rid, FunctionName, mem))
+                out = getattr(mod, handler.split(".", 1)[1])(ev, _Ctx(rid, FunctionName, mem, ver))
             except Exception as e:                            # Lambda's unhandled-error response
                 out, err = {"errorMessage": str(e), "errorType": type(e).__name__}, "Unhandled"
             host = time.perf_counter() - t0
@@ -279,8 +384,15 @@ class FakeLambda:
             with self._lock:
                 self.in_flight -= 1
                 fcur = self.fns.get(FunctionName)
-                if fcur is not None and fcur["gen"] == gen and "mod" in locals():
-                    fcur["idle"].append(mod)                  # a retired environment is not reused
+                if pc is not None:
+                    pc["busy"] -= 1
+                    if fcur is not None and fcur["pc"].get(Qualifier) is pc:
+                        pc["pool"].append(slot)               # back to the provisioned pool
+                elif fcur is not None and "mod" in locals():
+                    if gen == fcur["gen"]:
+                        fcur["idle"].append(mod)              # a retired environment is not reused
+                    elif isinstance(gen, tuple) and gen[1] in fcur["versions"]:
+                        fcur["versions"][gen[1]]["idle"].append(mod)
 
 
 # --------------------------------------------------------------------------- step functions
@@ -326,7 +438,7 @@ class FakeStepFunctions:
                 "stateMachineArn": stateMachineArn, "name": name, "input": input, "startDate": t0}
         while True:
             st = d["States"][cur]
-            fn = st["Resource"].rsplit(":", 1)[-1]
+            fn = st["Resource"].split(":function:", 1)[-1]          # "name" or "name:alias"
             try:
                 r = self.lam.invoke(FunctionName=fn, InvocationType="RequestResponse", Payload=json.dumps(data).encode())
             except FakeClientError as e:

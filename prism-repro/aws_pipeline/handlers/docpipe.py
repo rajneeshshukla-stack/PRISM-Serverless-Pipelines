@@ -264,7 +264,9 @@ def _run(stage, event, context):
              "env_id": ENV_ID, "cold": first, "module_init_s": MODULE_INIT_S if first else 0.0,
              "env_start_wall_ns": _T0_WALL_NS, "start_wall_ns": start_ns, "end_wall_ns": time.time_ns(),
              "handler_s": t1 - t0, "k": k, "init_rows": INIT_ROWS, "in_bytes": in_bytes,
-             "configured_stage": _ENV.get("PRISM_STAGE", ""), "nonce": _ENV.get("PRISM_COLD_NONCE", "")}
+             "configured_stage": _ENV.get("PRISM_STAGE", ""), "nonce": _ENV.get("PRISM_COLD_NONCE", ""),
+             # set by Lambda per environment: "provisioned-concurrency" or "on-demand" (provisioned-concurrency.html)
+             "init_type": _ENV.get("AWS_LAMBDA_INITIALIZATION_TYPE", "")}
     out["trace"].append(entry)
     out["workload"] = WORKLOAD
     size = len(json.dumps(out, separators=(",", ":")))

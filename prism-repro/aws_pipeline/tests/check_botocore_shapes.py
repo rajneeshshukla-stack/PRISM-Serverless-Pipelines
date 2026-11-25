@@ -8,7 +8,9 @@ clients on its real authorised path; the authorisation variable is set inside th
 because no request can leave it.
 
 Not part of `unittest discover` (it needs botocore). Run from prism-repro/aws_pipeline:
-  ../venv/Scripts/python tests/check_botocore_shapes.py <out dir>
+  ../venv/Scripts/python tests/check_botocore_shapes.py <out dir> [replay]
+"replay" checks the R6.1 sequence instead: mode prism_replay with pc_mode apply (published versions, alias, provisioned
+concurrency put/get/delete), fake account concurrency 400.
 It uses aws_measurement/.venv-aws's site-packages for boto3 if the project venv has none (nothing is installed).
 """
 import collections
@@ -67,7 +69,7 @@ def hooked_clients(fakes, calls):
     return out
 
 
-def main(out_dir):
+def main(out_dir, replay=False):
     real = socket.socket
 
     class Blocked(real):
@@ -79,9 +81,13 @@ def main(out_dir):
     try:
         from prism_pipeline.livetest import run
         from prism_pipeline.selftest import scaled_spec
-        fakes = fake_cloud(account_limit=10)
+        spec = scaled_spec()
+        if replay:
+            spec.mode, spec.n_epochs, spec.thin, spec.bin_s, spec.forecaster = "prism_replay", 4, 1 / 600, 1.0,                 "seasonal_naive"
+            spec.pc_mode, spec.pc_poll_s, spec.pc_initial_wait_s = "apply", 0.05, 5.0
+        fakes = fake_cloud(account_limit=400 if replay else 10)
         cl = hooked_clients(fakes, calls)
-        r = run(out_dir, scaled_spec(), cl=cl, execute=True)
+        r = run(out_dir, spec, cl=cl, execute=True)
         bad = []
         try:                                            # a deliberately wrong parameter must be rejected locally
             cl["lambda"].update_function_configuration(FunctionName="x", MemorySizeMB=512)
@@ -106,4 +112,4 @@ def main(out_dir):
 if __name__ == "__main__":
     d = sys.argv[1] if len(sys.argv) > 1 else tempfile.mkdtemp()
     os.makedirs(d, exist_ok=True)
-    raise SystemExit(main(d))
+    raise SystemExit(main(d, replay=len(sys.argv) > 2 and sys.argv[2] == "replay"))
