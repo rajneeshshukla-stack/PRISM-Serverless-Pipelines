@@ -497,7 +497,7 @@ tables come from (decision pending). Release of the corrected code to the review
   attainment together with Erlang-B. Do not attribute it to exact attainment alone.
 - Two different 1.0% statistics: the pooled matched difference ("within 1.6%"; -1.5% Windows, -1.7% Linux) and the
   paired per-trace mean (-2.3% Windows, -2.0% Linux, with the intervals above). Cite each with its scope.
-- Memory (C3): the memory-adaptive q90 rule is 13% cheaper than PRISM at 12 s but meets the target in fewer weeks
+- Memory (C3) *[corrected by M18: PRISM costs 13% more; the rule is not "13% cheaper"]*: the memory-adaptive q90 rule is 13% cheaper than PRISM at 12 s but meets the target in fewer weeks
   (17 against 24 of 25), so the comparison is confounded by compliance; do not write that it meets the target as PRISM
   does, except for the fast-simulator regimes. Do not call any comparison a tie unless its interval lies within +/-2%.
 - The savings against Static and Reactive hold in the regenerated tables (vs Static -12.6 to -18.3%; vs Reactive
@@ -505,3 +505,355 @@ tables come from (decision pending). Release of the corrected code to the review
 
 **K8. Graphical abstract (R4.10, R5.m5).** `prism-repro/docs/revision/graphical_abstract_20261122/caption.md`
 (sections 1-4).
+
+## L. Drafts from the 23 Nov 2026 pass on R1.1, R2.7, R2.14, R3.2, R4.4, R4.5, R4.10, R5.m5, R6.1, R7.6 (not applied)
+
+All simulation figures are PRE-CALIBRATION. Platform and set are stated per item.
+
+**L1. Billing (R2.14), [section: pending], where the cost model is defined.** "Lambda bills each on-demand invocation's
+duration plus initialisation rounded up to the next millisecond. On 21,248 invocations on AWS Lambda the billed
+duration followed this rule exactly. Our simulator bills mean durations without rounding. Applying the rule changes
+weekly costs by at most 0.09% and the paired differences of the main comparisons by at most 0.011 percentage points,
+so no comparison changes (`prism-repro/docs/revision/billing_r214_20261123/`). Billing rules for provisioned
+concurrency (increments, activation timing, recycling) could not be verified, because no provisioned concurrency was
+configured in our measurements; we state them as modelled." Reconciliation with the AWS bill: [pending; table in the
+same folder].
+
+**L2. Operator margin (R1.1), Section VIII or a deployment note.** "A uniform margin on every stage's provisioned
+capacity that meets the 2% target on four development traces did not transfer to the fifth. In a leave-one-trace-out
+check of event-level replays, the chosen margin met the target in 16 of 20 held-out weeks (95% interval 56-94%). All
+four failures were on the trace that needed a 20-50% margin, at 15.5-24.9% higher cost
+(`prism-repro/docs/revision/margin_r11_20261123/`). We therefore do not recommend a single margin. The required margin
+depends on the workload, and on AWS it also depends on the functions' start-up time, which we have not measured for
+real start-up work."
+
+**L3. Within-run change (R2.7) and RQ4 (R4.4).** Keep I1. Add to Section VIII: "Neither PRISM nor the baselines learn
+execution or initialisation times online; both read them from the configured latency model. A within-run change in
+these characteristics would therefore not reach their memory decisions, and testing it needs online estimation first
+(`prism-repro/docs/revision/r27_within_run_20261123/NOTE.md`)."
+
+**L4. Motivation (R4.5), Section I.** "Consider a synchronous document-ingestion service: a client submits a document,
+and four stages (ingest, transform, aggregate, load) must finish before the request returns, within a per-record
+deadline of 14.5 s. Unlike an asynchronous batch pipeline, each record waits on its own result, so a cold start on any
+stage counts against that record's deadline. This is the case for which AWS recommends provisioned concurrency." We
+implemented this pipeline on AWS Lambda and Step Functions as a proposed workload, not a production application. In a
+fixed-schedule end-to-end test, 39 of 40 records met the 14.5 s deadline at 1024 MB
+(`prism-repro/docs/revision/aws_live_integration/`). We measured each stage directly at four memory sizes
+(`prism-repro/docs/revision/aws_memcal_20261122/`). A live adaptive comparison is pending (L5). [Check the AWS
+guidance citation against the current documentation before use.]
+
+**L5. Live validation (R6.1), Section VIII.** "PRISM's controller has been tested end to end against a local stand-in
+for the AWS interfaces. It has not been validated live: the live tests ran a fixed memory schedule. A live comparison
+on identical records needs a trace-replay arm, and provisioned concurrency on published aliases, which our account's
+quota prevented (`prism-repro/docs/revision/r61_live_plan_20261123/PLAN.md`)."
+
+**L6. Graphical abstract (R4.10, R5.m5).** Draft figure and caption in
+`prism-repro/docs/revision/graphical_abstract_20261123/`, from one result set (current code, Linux x86-64,
+pre-calibration). It shows violating windows of 2.62 / 4.02 / 7.62% and costs of USD 1,241 / 1,157 / 1,082, and the
+caption's 2048 MB range is 13-27%. Replace these with the reported version's values (README table).
+
+**L7. Hybrid histogram (R3.2).** Keep I3. Rerunning `prism-repro/scripts/revision/hybrid_histogram_check.py` on 23 Nov
+2026 reproduced `hybrid_windows.txt` byte for byte. On all 40 workloads the policy gives pre-warm 0 and keep-alive 1.1
+min; the longest idle gap is 240 min on one Huawei 2025 trace and at most 3 min on the others. The identity of [3] is
+still to be confirmed.
+
+**L8. R7.6.** K7's agreed paragraph is unchanged. It was checked against `r76_endpoints_full_precision.json` on 23 Nov
+2026: the interpolated intervals, the bracketing counts, and the separation from the cheapest-setting estimates.
+
+## M. Scope and use case locked (23 Nov 2026; R4.4, R4.5; not applied)
+
+Decisions: `notes/decisions_pending.md`, "Decisions recorded 23 Nov 2026". This section supersedes the RQ4 text of I1,
+and the drafts in L3 and L4. Check every location against the current text.
+
+**M1. RQ4 (Section I and the RQ4 row of Table XIII), replacement.** *[Corrected by M18, 24 Nov 2026: apply the M18 text.]* "RQ4: With one memory size shared by all stages
+and chosen at each decision epoch, and with execution characteristics fixed within each run, can moving to a larger
+memory size restore deadline compliance when the default size cannot meet it, and at what cost?"
+
+**M2. Answer to RQ4 (results and conclusions).** *[Corrected by M18, 24 Nov 2026: apply the M18 text.]*
+> "Yes, in the fixed regimes tested. At 12-13 s deadlines, where 1024 MB cannot meet the deadline, PRISM and a simple
+> warm-feasibility rule both move to 2048 MB and meet the target in every test week. At equal compliance PRISM costs
+> 8-28% more than the rule (fast simulator, five development traces; the rule's setting was at the bottom of its grid,
+> so the rule could be cheaper still). In the prespecified closed-loop comparison at 12 s the rule costs 13% less but
+> meets the target in fewer weeks (17 against 24 of 25), so cost there is confounded by compliance. Joint memory
+> optimisation therefore shows no cost benefit over the simple rule in these regimes."
+
+Labels: pre-calibration; the fast-simulator figures are exploratory, and C3 ran on Windows.
+
+**M3. Limitation (Section VIII).** *[Corrected by M18, 24 Nov 2026: apply the M18 text.]* "RQ4 is answered only for one memory size shared by all stages and for execution
+characteristics (execution time, CPU intensity, memory demand, initialisation latency) fixed within each run. PRISM
+changes memory within a run in response to load, but neither PRISM nor the baselines estimate execution or
+initialisation times online. Adaptation to changes in those characteristics within a run, and per-stage memory sizes,
+were not tested."
+
+**M4. Graphical-abstract caption, replacing "memory adaptation helping satisfy tighter latency targets".** *[Corrected by M18, 24 Nov 2026: apply the M18 text.]*
+> "When the default 1024 MB cannot meet the deadline, PRISM selects a larger memory size if its risk budget is small
+> enough; a fixed 2048 MB headroom rule met the deadline at [13-27% (regenerated) or 14-29% (submitted)] lower cost
+> in the regimes tested (two traces, post hoc, no caps), and adaptation to changes in execution characteristics
+> within a run was not tested."
+
+**M5. Reply to R4.4.** "We narrowed RQ4 as suggested. It now asks whether, with one memory size shared by all stages and
+execution characteristics fixed within each run, moving to a larger memory size restores deadline compliance when the
+default size cannot, and at what cost. In those regimes it does, but a simple rule that picks the smallest
+warm-feasible size does the same at lower cost: PRISM costs 8-28% more at equal compliance in our exploratory
+simulations, and in the prespecified closed-loop comparison the rule is cheaper but less compliant. We therefore claim
+no benefit of joint memory optimisation. Section VIII states that per-stage memory and changes in execution
+characteristics within a run were not tested, and the graphical-abstract caption is narrowed accordingly."
+[Manuscript: pending.]
+
+**M6. R2.7 (status unchanged).** The within-run experiment remains unrun; the reply of 23 Nov 2026 stands. Wording to
+avoid anywhere:
+- "memory adaptation" without its scope;
+- "changing memory within a run was not tested" (inaccurate: PRISM does change memory within runs; corrected in both
+  caption drafts);
+- "within-run changes" without "in execution characteristics".
+
+R2.6's "It adapts as intended" refers to adaptation across regimes and should say so. That is flagged for the author.
+
+**M7. Motivation (Section I), the use case (R4.5).** *[Corrected by M18, 24 Nov 2026: apply the M18 text.]*
+> "Consider a synchronous document-ingestion service. A client submits a document and waits while four stages
+> (ingest, transform, aggregate and load) process it, and the result must return within a per-record deadline of
+> 14.5 s. Because the caller waits, start-up delay on any stage, a cold start, adds directly to that record's response
+> time. AWS notes that interactive workloads benefit most from provisioned concurrency, while asynchronous
+> data-processing pipelines usually do not need it [AWS Lambda Developer Guide, provisioned concurrency,
+> https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html, accessed 23 Nov 2026]. A synchronous
+> pipeline with per-record deadlines is the interactive case. Provisioned concurrency can help when demand can be
+> anticipated, because environments must be prepared in advance: they come online a minute or two after they are
+> configured, and they run, and are billed, continually while configured [same guide]. We use this pipeline as a
+> synthetic workload, not as a production application."
+
+Evidence sentence, for Section V or VIII:
+> "We implemented the pipeline on AWS Lambda and Step Functions. A fixed-schedule end-to-end test (40 records per arm)
+> checked deployment, orchestration and deadline accounting: 39 of 40 records met 14.5 s at 1024 MB. Direct
+> invocations of each stage at four memory sizes measured service and initialisation times (20,992 invocations). A
+> live comparison of PRISM's adaptive controller with a baseline on identical records is pending."
+
+Sources: `prism-repro/aws_pipeline/SPEC.md`, `prism-repro/docs/revision/aws_live_integration/`,
+`prism-repro/docs/revision/aws_memcal_20261122/` and `prism-repro/docs/revision/r61_live_plan_20261123/PLAN.md`.
+
+**M8. Reply to R4.5.** "Added to the motivation: a synchronous document-ingestion pipeline in which the caller waits
+while four stages process each record within a 14.5 s deadline. AWS's guidance identifies interactive workloads as
+those that benefit most from provisioned concurrency, and says asynchronous data-processing pipelines usually do not need
+it; our pipeline is the synchronous case. It is a synthetic workload that we implemented on AWS Lambda and Step
+Functions, not a production application." [Manuscript: pending.]
+
+**M9. Manuscript edits pending.**
+- M1 in Section I and Table XIII.
+- M2 in results and conclusions.
+- M3 in Section VIII.
+- M4 in the graphical-abstract caption, with the version's range.
+- M7 in Section I, with the reference entry for the AWS guide.
+- The M7 evidence sentence in Section V or VIII.
+
+**M10. R2.7, checked against M (23 Nov 2026; `prism-repro/docs/revision/r27_r32_review_20261123/NOTE.md`).**
+- **Answered:** the benefit question for load-driven memory changes in fixed regimes. PRISM changes memory with load
+  (1.8 changes per week at 13 s), while the baseline keeps one size per regime (0 changes), and PRISM costs 8-28% more at
+  equal compliance.
+- **Not answered:** shifts in execution characteristics within a run. Reply: the tracker's R2.7 reply of 23 Nov 2026.
+  Section VIII: M3.
+- **Wording (applied to the tracker replies, 23 Nov 2026).** R2.6 "It adapts as intended" becomes "It selected the
+  intended size for each tested regime (1024 MB at the default deadline, 2048 MB in every short-slack regime) and held
+  that size for the run". R7.4 "verified to adapt" becomes "verified to select the intended size for each tested regime
+  and to hold it for the run". The credit for regime-level selection is unchanged.
+
+**M11. R3.2 scope statement (Section II), refining I3.**
+> "We did not add the hybrid histogram policy of [3] to Table V, because it does not decide how many concurrent
+> instances to run, which is what Table V compares. It sets, per application, how long to keep the application loaded
+> and when to pre-warm it, and its authors leave aside the cold starts caused by load spikes that need new instances.
+> On 35 of our 40 traces requests arrive every minute, so the policy never unloads the application. On one sparse
+> trace it unloads the application sooner than a 10-minute keep-alive, and application cold starts occur. On every
+> trace it leaves instance scaling to the platform. Table V's On-demand baseline also leaves instance scaling to the
+> platform, but we did not compare the two directly."
+
+*Corrected 23 Nov 2026 (R6.1 pass): the earlier draft said the policy is "equivalent to on-demand execution with the
+application always loaded: our On-demand baseline". The sparse trace has application cold starts, and no direct
+comparison supports equivalence.*
+
+[Confirm that [3] is Shahrad et al., USENIX ATC 2020.]
+
+**M12. If the author prefers an explicit Table V row.** Run the smallest faithful test in the NOTE:
+1. Reproduce the published Figure 15 relation on the Azure Functions 2019 trace first.
+2. Then add the row as exploratory, with its expected result stated in advance.
+
+**M13. R6.1 limitation sentence (Section VIII), unchanged in substance until the live run (23 Nov 2026).**
+> "PRISM's controller has not yet been validated on a live platform. The four-stage pipeline ran end to end on AWS
+> Lambda under a fixed memory schedule, and a paired live comparison with an on-demand baseline on identical records,
+> with PRISM's provisioned concurrency applied, is prepared but not yet run; the compliance and cost results reported
+> here are from simulation."
+
+Replace it with the measured result only after the run in `prism-repro/docs/revision/r61_live_plan_20261123/PLAN.md`
+meets its validity criteria (section 9). At the 14.5 s deadline PRISM keeps 1024 MB throughout, so the live
+comparison will not bear on memory adaptation.
+
+**M14. R3.2 after the reproduction attempt (24 Nov 2026; `prism-repro/docs/revision/hybrid_reproduction_r32_20261124/`).**
+Add to M11 (Section II), and give the attempt in the supplement:
+> "We implemented the policy as specified and tested it first against its published behaviour on the Azure Functions
+> 2019 trace, with criteria fixed in advance. It reproduced the direction of the published result but not its
+> magnitude (2.1 rather than 2.5 times fewer cold starts, at 12% less rather than equal idle memory). Its ARIMA
+> component and the conversion of the minute-level trace are not specified, so we do not report it as a reproduced
+> baseline. On the Table V test weeks every stage is invoked in every minute, so its decisions coincide with the
+> platform keep-alive of our On-demand baseline, and it sets no instance count."
+
+Do not describe the policy as reproduced. The equivalence holds at the level of decisions on the Table V traces; no
+Table V row was simulated.
+
+**M15. R2.7, the within-run shift (24 Nov 2026; `prism-repro/docs/revision/r27_shift_20261124/`).**
+Reply addition (EXPLORATORY; not part of RQ4, which stays narrowed):
+> "We added an exploratory experiment with a step increase in execution time during the week. Both an
+> online-estimating PRISM variant and a one-time memory configuration received the same estimate of the new execution
+> times. For the prespecified 50% increase, dynamic memory gave no benefit. The variant re-planned to 2048 MB, which
+> could not meet the deadline target after the shift, because its risk budget tolerated more warm misses than the
+> window target allows, while a one-time choice of 3008 MB met the target at about 30% higher cost. For a smaller 25%
+> increase, examined afterwards, dynamic memory met the target at 7-9% lower cost than the best one-time choice. Shifts
+> in memory demand or initialisation latency were not tested."
+
+Section VIII limitation: add that the benefit of dynamic memory under execution shifts depends on the shift's size,
+and on the risk budget relative to the window target.
+
+**M16. R2.14(a) (24 Nov 2026; `prism-repro/docs/revision/billing_r214_pc_20261124/`).**
+Reply addition:
+> "We implemented the provisioned-concurrency charges for which AWS states the rule: capacity billed from enabling,
+> rounded up to five minutes, which includes the activation time; invocations on provisioned environments; and overflow
+> at on-demand rates. The implementation reproduces AWS's worked pricing examples. The charges for initialising and
+> recycling provisioned environments are not specified by AWS, so we do not model them and state this."
+
+Do not claim that the simulator's costs include these components until they are applied there.
+
+**M16 addendum (24 Nov 2026).** On PRISM's schedules, the simulator's capacity charges equal AWS's rule exactly,
+because capacity changes only at five-minute boundaries. Enabling each increase one epoch early, so that it is ready
+in time, would add 6.2-7.4% to PRISM's weekly cost. That is a bound under an assumption, and it is not yet computed
+for the comparators. It belongs in the cost discussion (Section VI or VIII) next to the 1-2% sensitivity bounds.
+
+**M17. R1.1 reply and Section VIII text (24 Nov 2026; `prism-repro/docs/revision/margin_r11_fresh_20261124/`,
+`margin_r11_branch50_20261124/`).** Use the tracker's R1.1 suggested response. It answers the two questions
+separately:
+- **(a) Violations on Lambda:** not yet known. In the event-level replays every violation comes from initialisation
+  occupancy, so the size on Lambda depends on the application's real start-up time. The live comparison is pending.
+- **(b) Margin:** a conditional simulation recommendation of 10% when the validation-selected ε ≤ 0.02 (20 of 20
+  fresh weeks, 5 of 5 traces, +6.1% cost, open loop, pre-calibration). No recommendation for ε ≥ 0.03, which only 2
+  of 30 further fresh traces selected. No production margin until the calibrated closed-loop evaluation and the live
+  check.
+
+Do not present the 10% rule as a production margin or as an AWS result.
+
+**M18. Corrections from the 24 Nov 2026 check against code and saved results (supersede the marked parts of M1, M2,
+M3, M4, M7 and K7).** The sources are `notes/manuscript_edit_checklist_20261124.md` and the files cited there.
+
+1. **M1.** PRISM shares one memory size across stages but re-decides it hourly (`PrismConfig.memory_every` = 12
+   five-minute epochs). It is not chosen at every epoch. Replacement:
+   > "RQ4: With one memory size shared by all stages and chosen hourly, and with execution characteristics fixed
+   > within each run, can moving to a larger memory size restore deadline compliance when the default size cannot
+   > meet it, and at what cost?"
+2. **M2.** At 13 s the selected PRISM setting used 2048 and 3008 MB in 4 of 5 weeks, so not only 2048 MB. In C3 the
+   stored effect is "PRISM minus comparator" (+13.06%), so "the rule costs 13% less" inverts the base. Replacement:
+   > "Yes, in the fixed regimes tested. At 12-13 s deadlines, where 1024 MB cannot meet the deadline, a simple
+   > warm-feasibility rule moves to 2048 MB and PRISM to 2048 MB or more (at 13 s it switched between 2048 and
+   > 3008 MB with load), and both meet the target in every test week. At equal compliance PRISM costs 8-28% more than
+   > the rule (fast simulator, five development traces; the rule's setting was at the bottom of its grid, so the rule
+   > could be cheaper still). In the prespecified closed-loop comparison at 12 s, PRISM costs 13% more than the rule
+   > (+13.06% [+8.50, +17.63]) but meets the target in more weeks (24 against 17 of 25), so cost there is confounded
+   > by compliance. Joint memory optimisation therefore shows no cost benefit over the simple rule in these regimes."
+3. **M3 and M4.** Their "was not tested" depends on whether the separate R2.7 exploratory experiment
+   (`prism-repro/docs/revision/r27_shift_20261124/`) is reported in the paper or supplement.
+   - **If it is not reported:** keep M3 and M4.
+   - **If it is reported,** M3's last sentence becomes:
+     > "Per-stage memory sizes were not tested, and changes in execution characteristics within a run were examined
+     > only in a separate exploratory experiment (a step increase in execution time), which found no benefit of
+     > dynamic memory at the prespecified size."
+
+     M4's last clause becomes:
+     > "and changes in execution characteristics within a run were examined only in a separate exploratory test."
+   - The main study's scope (one shared size, fixed execution characteristics) is unchanged either way.
+4. **M7.** "[Same guide]" covers two different pages. The "a minute or two" sentence is on
+   `lambda-concurrency.html`. Cite both:
+   > [AWS Lambda Developer Guide, "Configuring provisioned concurrency for an Event Function",
+   > https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html; and "Understanding Lambda Event
+   > Function scaling", https://docs.aws.amazon.com/lambda/latest/dg/lambda-concurrency.html; both accessed 23 Nov
+   > 2026.]
+
+   Page titles are as fetched (`notes/decisions_pending.md`).
+5. **K7, C3 bullet.** Read:
+   > "PRISM costs 13% more than the memory-adaptive q90 rule at 12 s (+13.06% [+8.50, +17.63]), but the rule meets
+   > the target in fewer weeks (17 against 24 of 25), so the comparison is confounded by compliance."
+
+   The rest of K7 is verified unchanged against the full-precision outputs.
+
+**M19. Corrections from the 24 Nov 2026 reply pass on R4.4, R4.5, R4.10 and R5.m5 (supersede the marked parts of M7
+and M4; nothing applied).**
+1. **M7 evidence sentence: name the arm.** The 39 of 40 is the **baseline arm** (on-demand at a fixed 1024 MB) of the
+   live integration test, not the fixed-schedule arm. The fixed-schedule arm (1024, 512, 2048, then 1024 MB; no
+   forecast, no provisioned concurrency) met 29 of 40, with 9 of its 11 misses on records whose stages all ran at
+   512 MB (`prism-repro/docs/revision/aws_live_integration/RESULTS.md`, "Paired deadline results"). Replacement:
+   > "We implemented the pipeline on AWS Lambda and Step Functions Express. One end-to-end integration run (40
+   > records per arm) checked deployment, orchestration and deadline accounting: on demand at a fixed 1024 MB, 39 of
+   > 40 records met 14.5 s; under a fixed memory schedule that included 512 MB, 29 of 40 did, with most misses at
+   > 512 MB. Direct invocations of each stage at four memory sizes measured service and initialisation times (20,992
+   > invocations). A live comparison of PRISM's adaptive controller with a baseline on identical records is pending."
+2. **M4 / caption draft: name the comparison base and the criterion.** In
+   `prism-repro/docs/revision/graphical_abstract_20261123/caption_draft.txt`, "met the deadline at 13-27% lower cost"
+   becomes "met the 2% target at 13-27% lower cost than PRISM's best setting". The figure is
+   1 − cost(fixed 2048 MB headroom) / cost(PRISM best setting), mean over two traces, settings chosen post hoc with
+   test-week knowledge, no caps: 27.21% (13 s), 22.36% (12 s), 13.03% (11 s), all at non-scaling 0.5, and 13.66%
+   (12 s, non-scaling 0.15) (`.../graphical_abstract_20261123/linux_e4b/E4b_fixed_memory_summary.json`,
+   `scripts/revision/analyze_e4b.py`). At 11 s the headroom rule's violating windows (1.86%) exceed PRISM's (1.19%),
+   though both are within 2%. Submitted (Table S14): 14-29%. Apply when the caption is regenerated. The draft file
+   itself is left unchanged, so it still matches its checksums and build output.
+3. **Title of the submitted graphical abstract.** The author's copy of the submitted image (final submission folder,
+   31 Oct 2026; the image itself is not in the repository) is titled "PRISM: Predictive Resource and SLA Management
+   for Serverless Data Pipelines". The article title, which the draft uses exactly, is "Joint Cost-SLA Provisioning
+   of Concurrency and Memory for Serverless Data Pipelines: A Chance-Constrained Formulation and a Simulation Study
+   under Workload Shift" (the submission PDF's title page and its "Graphical Abstract Caption" page). This replaces
+   the checklist's guess that the image carried the `src/prism_repro/__init__.py` name. Byte identity of this copy
+   with the image embedded in the submission PDF was not checked. Confirm the title in the submission system.
+4. **Decision record.** `notes/decisions_pending.md` ("Decisions recorded 23 Nov 2026") said memory is "chosen per
+   decision epoch". It is chosen hourly, as in M18(1). Corrected there with a dated note.
+
+**M20. B3 and the R2.12 and R5.M5 replies after the closed-loop κ study (24 Nov 2026;
+`prism-repro/docs/revision/closed_loop_kappa_20261124/`; EXPLORATORY, PRE-CALIBRATION; nothing applied).**
+
+**What changes.** B3's statement that the floor "acts as a conservative constant" holds in the fast simulator only.
+Under the closed loop, the estimate is active at the eps the tuning selects:
+- κ mean about 0.42, at the floor in about 0.2% of test epochs;
+- lowering the floor to 0.001 changes about 0.6% of decisions and no outcome;
+- freezing κ at 0.1 changes about 98% of decisions, and is 7-9% cheaper at 0.5-1.0 more points of violating windows
+  at fixed eps;
+- retuned, neither change gives a cost difference distinguishable from 0 (five development traces).
+
+**Sentence to add after B3's text:**
+> "Under closed-loop event-level evaluation the estimate does not sit at its floor: at the risk budgets the tuning
+> selects, it averages about 0.42 and is at the floor in about 0.2% of test epochs, because event-level cold starts per
+> overflow request are several times those of the fast simulator. It reaches the floor only at large budgets (in up to
+> 62% of epochs at ε = 0.08). Freezing it at 0.1 changes almost every decision, yet after ε is retuned neither freezing
+> it nor lowering the floor changes cost distinguishably (five development traces, exploratory, pre-calibration). The
+> estimator sets the operating point; its effect on the tuned cost-compliance outcome is absorbed by the ε tuning."
+
+**Correction to the R5.M5 reply.** Its last sentence ("we keep it and describe it as a conservative constant") is
+correct for the fast simulator only. It should carry that scope and add the closed-loop result above. The tracker
+reply is corrected in the same pass.
+
+**M21. Calibration pass (24 Nov 2026; `prism-repro/docs/revision/calibration_20261124/`): claims that rest on the
+assumed Eq. (2) memory scaling (nothing applied).**
+
+**What changed.** The AWS measurements contradict Eq. (2) above 2048 MB: there is no speed-up from 2048 to 3008 MB,
+because one vCPU is the limit.
+- The Eq. (2) form fails held-out in 16/16 cells.
+- The measured per-size factors pass within the 0.41% block repeatability in 16/16, with factor errors <= 0.30%.
+
+**Smoke test** (development trace 101, fast simulator), with the measured factors:
+- at 14.5 s, PRISM's results are identical (1024 MB is the reference);
+- at 13 s, the selections and SLA verdicts are unchanged, but costs fall 23-34%. PRISM stops using 3008 MB, and its
+  premium over MemAdapt goes from +28.7% to +10.4%.
+
+**Claims to scope until the calibrated evaluation recomputes them:**
+1. the RQ4 cost premium, "PRISM costs 8-28% more" (M18(2); R4.4, R2.6, R2.7 replies);
+2. "at 13 s PRISM used 2048 and 3008 MB" (R4.4);
+3. the fixed-2048 MB headroom saving, "13-27%" (or 14-29% submitted) (R4.4, R5.m5 caption);
+4. the R2.7 shift test's "a one-time 3008 MB choice met the target" (R2.7, R4.4, M15). Under the measured scaling,
+   3008 MB is no faster than 2048 MB, so that result depends on the assumed model.
+
+**Wording.** Each carries "under the assumed memory-scaling model (Eq. (2)); to be recomputed with the measured
+per-size scaling".
+
+**R4.8.** The reply's "measured distribution" is incorrect. The 6 s start-up is declared, not measured. The truncated
+distribution's parameters are a stated assumption (decision P3).
+
+**Numbering.** The input-size distribution is SPEC.md decision P2, not P4.

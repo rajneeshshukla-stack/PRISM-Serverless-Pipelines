@@ -418,8 +418,10 @@ not stored):
 - It reduces the provider's wasted memory.
 
 **On all 40 workloads studied**, from the check `prism-repro/scripts/revision/hybrid_histogram_check.py`, the policy
-gives pre-warm 0 and keep-alive 1.1 minutes, and never unloads the application. It decides nothing about concurrent
-instances.
+gives pre-warm 0 and keep-alive 1.1 minutes, and decides nothing about concurrent instances. It never unloads the
+application on the 35 traces without an idle minute; on the sparse trace r2_00 it does, and application cold starts
+occur (0.0049%, against 0.0005% under a fixed 10-minute keep-alive). *Corrected 23 Nov 2026: this said it never
+unloads the application on all 40.*
 
 **Blocked.**
 - There is no instance-level or concurrency rule to reproduce.
@@ -431,3 +433,90 @@ instances.
 - (d)(1), checking Reactive against AWS target tracking, not yet done.
 
 The author must confirm that [3] is this paper. Checked 22 Nov 2026: the submitted manuscript and its bibliography are not in the working tree, in `review-inputs/` or in any Git ref (`v1-submitted`, `main`, `closed-loop`), so the identity of [3] is **unverified**. Nothing here reproduces the published baseline.
+
+**Update 24 Nov 2026: reproduction attempted, not reproduced** (`prism-repro/docs/revision/hybrid_reproduction_r32_20261124/README.md`).
+- The Azure Functions 2019 trace is now held privately (official release, "CC-BY Attribution License"; not committed).
+- The policy was implemented as in Section 4.2, without ARIMA, whose trigger is unspecified. It was tested on days
+  1-7 against criteria fixed beforehand in PLAN.md.
+- Fixed keep-alive was reproduced. The hybrid policy's direction was reproduced (75th-percentile application cold
+  starts 25.0% against 52.6%), but not its magnitude: 2.1x fewer cold starts at 0.88 of the memory, against the
+  published 2.5x at the same memory.
+- Criteria A3 and B1 failed, so no Table V row was produced.
+- On the 25 Table V test weeks the policy's image decisions are identical to the platform's 10-minute keep-alive
+  (every stage is invoked every minute), and it sets no instance count.
+- Still the author's decision: the scope statement (M11, M14), or a row reported as a documented, unreproduced
+  deviation. [3] is still unverified.
+
+## Decisions recorded 23 Nov 2026: scope and use case locked (R4.4, R4.5)
+
+Both decisions are settled. Applying the manuscript edits is pending (`notes/manuscript_proposals.md` section M). No
+new runs were made.
+
+### R4.4 (with R2.7): RQ4 narrowed to shared memory and fixed execution characteristics
+
+**Decision.** RQ4 asks only about one memory size shared by all four stages, chosen hourly, in workload
+regimes whose execution characteristics are fixed within each run: execution time, CPU intensity, memory demand and
+initialisation latency. It refines D4 (22 Nov 2026). *Corrected 24 Nov 2026 (R4.4/R4.5/R4.10/R5.m5 reply pass): this
+said "chosen per decision epoch"; memory is re-decided every 12 five-minute epochs (`PrismConfig.memory_every` = 12;
+`policies.PRISM.decide`), concurrency every epoch, as in M18(1).*
+
+**Supporting evidence (verified 23 Nov 2026).**
+- `prism-repro/docs/revision/memadapt/summary.txt` (7980b69; fast simulator, development traces 101-105, stationary
+  weeks, Windows, pre-calibration, exploratory).
+  - Where 1024 MB cannot meet the deadline, at 12-13 s, MemAdapt moves to 2048 MB and PRISM to 2048 MB or more (at
+    13 s its selected setting used 2048 and 3008 MB in 4 of 5 weeks), and both meet 2% in 5 of 5 weeks with identical
+    violating windows: 0.00% at 13 s, 0.03% at 12 s with non-scaling 0.5, 0.00% at 12 s with 0.15. *Corrected 24 Nov
+    2026: this said both move to 2048 MB (memadapt rows, `mems_used`).*
+  - In those matched-compliance regimes PRISM costs +27.9%, +19.8% and +8.3% more.
+  - MemAdapt's selection there is a = 0.6, the bottom of its grid, so its cost is an upper bound and PRISM's excess is
+    not overstated.
+  - At 11 s compliance differs (PRISM 1.22%, 5 of 5 weeks; MemAdapt 1.61%, 3 of 5) and PRISM costs 4.7% more, so cost
+    alone is not comparable there.
+  - At 14.5 s, 1024 MB suffices; compliance differs slightly (1.55% against 1.73%, 3 of 5 each) and PRISM costs 1.6%
+    more.
+- `prism-repro/docs/revision/confirmatory_20261122/RESULTS.md` (C3; closed-loop event level, 12 s, 25 traces, Windows,
+  pre-calibration):
+  - PRISM minus MemAdapt-q90 cost +13.06% [+8.50, +17.63];
+  - violating windows -0.655 points [-0.921, -0.389]: PRISM is more compliant;
+  - weeks meeting 2%: 24 against 17 of 25;
+  - the cost comparison is confounded by compliance.
+- PRISM does change memory within runs in response to load: 1.8 changes per week at 13 s, 0.2 at 12 s
+  (memadapt/summary.txt). What is untested is adaptation to changes in execution characteristics. Neither controller
+  could see such a change, because both read execution and initialisation times from the configured latency model
+  (`prism-repro/docs/revision/r27_within_run_20261123/NOTE.md`).
+
+**Implications for R2.7 (status unchanged).** The requested within-run experiment remains unrun. The reply states the
+limitation and the online-estimation prerequisite. Wording to avoid or fix:
+- "changing memory within a run was not tested": inaccurate, because PRISM does change memory within runs. Corrected in
+  the graphical-abstract caption drafts.
+- "within-run changes were not tested" (R4.4 reply): ambiguous. Replaced by "changes in execution characteristics
+  within a run".
+- "It adapts as intended" (R2.6 reply): it means across regimes. Flagged for the author; not changed in this pass.
+
+### R4.5: the study's use case
+
+**Decision.** The use case is a synchronous, four-stage, synthetic document-ingestion pipeline: ingest, transform,
+aggregate, load. Each record carries a 14.5 s end-to-end deadline, and the caller waits for the result
+(`prism-repro/aws_pipeline/SPEC.md`, "Proposed representative workload"; `config.deadline`). It is a proposed workload,
+not a production application.
+
+**AWS guidance, verified 23 Nov 2026** (public documentation, read only):
+- AWS Lambda Developer Guide, page titled as fetched "Configuring provisioned concurrency for an Event Function",
+  https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html:
+  - "Generally, interactive workloads benefit the most from the feature."
+  - "Asynchronous workloads, such as data processing pipelines, are often less latency sensitive and so do not usually
+    need provisioned concurrency."
+  - Provisioned concurrency is "useful for reducing cold start latencies for functions".
+- Page titled as fetched "Understanding Lambda Event Function scaling",
+  https://docs.aws.amazon.com/lambda/latest/dg/lambda-concurrency.html: provisioned concurrency "doesn't come online
+  immediately after you configure it"; Lambda "starts allocating provisioned concurrency after a minute or two of
+  preparation".
+
+**Evidence kept separate:**
+1. the completed fixed-schedule end-to-end test (`prism-repro/docs/revision/aws_live_integration/`);
+2. the direct Lambda stage measurements (`prism-repro/docs/revision/aws_memcal_20261122/`);
+3. the pending live adaptive-controller comparison (`prism-repro/docs/revision/r61_live_plan_20261123/PLAN.md`).
+
+**Also found.** The same page states that "Lambda bills you for initialization even if the environment instance never
+processes a request". This is a sourced provisioned-concurrency billing rule for R2.14(a), to be taken up in that row; it
+is not applied in this pass.
