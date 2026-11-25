@@ -1,0 +1,75 @@
+{
+ "seed": 101,
+ "c_star": 1.0,
+ "eta": 0.0001,
+ "w0": [
+  0.018022547658232177,
+  0.07771396668566057,
+  0.050218443296644974,
+  0.025799164342360126
+ ],
+ "sigma": [
+  0.004482858259298162,
+  0.013425823721714214,
+  0.009223051520485609,
+  0.005678130723681915
+ ],
+ "u_unstable": 141.4213562373095,
+ "cost": 959.8561900680545,
+ "violating_window_rate": 0.011904761904761904,
+ "stages": [
+  {
+   "stage": 0,
+   "w_final": -80.08175946735511,
+   "first_epoch_w_outside_half_to_double_w0": 213,
+   "first_epoch_eta_u2_gt_2": 298,
+   "share_capped_feedback_minutes_overall": 0.005555555555555556,
+   "share_capped_in_day_before_first_bad": 0.036619718309859155,
+   "w_trend_day_before_first_bad": [
+    0.018022547658232177,
+    0.017256163749087526
+   ],
+   "P_at_first_bad": 26.0,
+   "epochs_P_zero": 1716
+  },
+  {
+   "stage": 1,
+   "w_final": 0.07746874208781675,
+   "first_epoch_w_outside_half_to_double_w0": null,
+   "first_epoch_eta_u2_gt_2": null,
+   "share_capped_feedback_minutes_overall": 0.046130952380952384,
+   "share_capped_in_day_before_first_bad": null,
+   "w_trend_day_before_first_bad": null,
+   "P_at_first_bad": null,
+   "epochs_P_zero": 0
+  },
+  {
+   "stage": 2,
+   "w_final": 0.05130530781993312,
+   "first_epoch_w_outside_half_to_double_w0": 1068,
+   "first_epoch_eta_u2_gt_2": null,
+   "share_capped_feedback_minutes_overall": 0.04474206349206349,
+   "share_capped_in_day_before_first_bad": 0.041666666666666664,
+   "w_trend_day_before_first_bad": [
+    0.046980987496025396,
+    0.03983801337208961
+   ],
+   "P_at_first_bad": 167.0,
+   "epochs_P_zero": 0
+  },
+  {
+   "stage": 3,
+   "w_final": 0.02846497995382725,
+   "first_epoch_w_outside_half_to_double_w0": 111,
+   "first_epoch_eta_u2_gt_2": 1068,
+   "share_capped_feedback_minutes_overall": 0.037698412698412696,
+   "share_capped_in_day_before_first_bad": 0.05225225225225225,
+   "w_trend_day_before_first_bad": [
+    0.025799164342360126,
+    0.024003324301338204
+   ],
+   "P_at_first_bad": 44.0,
+   "epochs_P_zero": 1
+  }
+ ]
+}

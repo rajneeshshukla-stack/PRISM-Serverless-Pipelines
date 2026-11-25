@@ -73,9 +73,15 @@ python scripts/revision/hybrid_histogram_check.py . "../additional data/derived/
   histogram.
 - **App-level cold starts:** at most 0.005% under the policy, and at most 0.0005% under a fixed 10-minute keep-alive.
 
-On these workloads the policy therefore never unloads the application. It equals the paper's "No Unloading" case and
-decides nothing about how many concurrent instances to provision, which is the decision PRISM and every Table V family
-make.
+On the 35 traces with no idle minute the policy therefore never unloads the application, which is the paper's "No
+Unloading" case. On the sparse Region 2 trace r2_00 (6,512 empty minutes, idle gaps up to 240 minutes) it does unload
+it, and application cold starts occur: 0.0049% under the policy against 0.0005% under a fixed 10-minute keep-alive. On
+the other four Region 2 traces (idle gaps of 2-3 minutes) the application cold-start rate is 0.0000% at the reported
+precision. On every trace the policy decides nothing about how many concurrent instances to provision, which is the
+decision PRISM and every Table V family make.
+
+*Corrected 23 Nov 2026: this paragraph previously said that the policy never unloads the application on these
+workloads, which the sparse trace r2_00 contradicts.*
 
 ## Disposition
 

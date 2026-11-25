@@ -1,0 +1,225 @@
+{
+ "label": "EXPLORATORY; Azure Functions 2019 trace, days 1-7 (CC-BY, cite Shahrad et al. ATC'20); paper's simulator (execution time 0, equal memory); hybrid without ARIMA",
+ "apps": 21546,
+ "load_s": 78.2,
+ "run_s": 206.4,
+ "results": {
+  "fixed_10": {
+   "apps": 21546,
+   "p75_app_cold_pct": 52.60318061340401,
+   "median_app_cold_pct": 5.976839838652861,
+   "always_cold_apps_pct": 15.933351898264178,
+   "wasted_min_total": 91793879.0,
+   "invocations": 6257408066,
+   "cold_total": 1055734,
+   "wasted_vs_fixed10": 1.0
+  },
+  "fixed_5": {
+   "apps": 21546,
+   "p75_app_cold_pct": 66.66666666666667,
+   "median_app_cold_pct": 12.827037647357079,
+   "always_cold_apps_pct": 17.68309663046505,
+   "wasted_min_total": 83365617.0,
+   "invocations": 6257408066,
+   "cold_total": 2018242,
+   "wasted_vs_fixed10": 0.908182744951872
+  },
+  "fixed_20": {
+   "apps": 21546,
+   "p75_app_cold_pct": 48.148148148148145,
+   "median_app_cold_pct": 2.272727272727273,
+   "always_cold_apps_pct": 14.578111946532998,
+   "wasted_min_total": 99469173.0,
+   "invocations": 6257408066,
+   "cold_total": 506062,
+   "wasted_vs_fixed10": 1.0836144423093832
+  },
+  "fixed_30": {
+   "apps": 21546,
+   "p75_app_cold_pct": 37.890749601275914,
+   "median_app_cold_pct": 1.2966123119706738,
+   "always_cold_apps_pct": 13.728766360345308,
+   "wasted_min_total": 104094839.0,
+   "invocations": 6257408066,
+   "cold_total": 344202,
+   "wasted_vs_fixed10": 1.1340063208354012
+  },
+  "fixed_45": {
+   "apps": 21546,
+   "p75_app_cold_pct": 33.333333333333336,
+   "median_app_cold_pct": 0.9226280031040655,
+   "always_cold_apps_pct": 13.557040750023205,
+   "wasted_min_total": 108761642.0,
+   "invocations": 6257408066,
+   "cold_total": 299645,
+   "wasted_vs_fixed10": 1.1848463447110673
+  },
+  "fixed_60": {
+   "apps": 21546,
+   "p75_app_cold_pct": 25.0,
+   "median_app_cold_pct": 0.5255207049565271,
+   "always_cold_apps_pct": 11.3895850737956,
+   "wasted_min_total": 112857909.0,
+   "invocations": 6257408066,
+   "cold_total": 139823,
+   "wasted_vs_fixed10": 1.229470965052038
+  },
+  "fixed_90": {
+   "apps": 21546,
+   "p75_app_cold_pct": 22.22222222222222,
+   "median_app_cold_pct": 0.3858026988327682,
+   "always_cold_apps_pct": 11.231783161607723,
+   "wasted_min_total": 116295993.0,
+   "invocations": 6257408066,
+   "cold_total": 115840,
+   "wasted_vs_fixed10": 1.266925357844394
+  },
+  "fixed_120": {
+   "apps": 21546,
+   "p75_app_cold_pct": 20.0,
+   "median_app_cold_pct": 0.32388855086754925,
+   "always_cold_apps_pct": 10.846560846560847,
+   "wasted_min_total": 119274760.0,
+   "invocations": 6257408066,
+   "cold_total": 96498,
+   "wasted_vs_fixed10": 1.2993759638374145
+  },
+  "no_unloading": {
+   "apps": 21546,
+   "p75_app_cold_pct": 3.8461538461538463,
+   "median_app_cold_pct": 0.12763247061276617,
+   "always_cold_apps_pct": 2.8357931866703794,
+   "wasted_min_total": 196217252.0,
+   "invocations": 6257408066,
+   "cold_total": 21546,
+   "wasted_vs_fixed10": 2.13758536122
+  },
+  "hybrid_60min_I": {
+   "apps": 21546,
+   "p75_app_cold_pct": 34.78260869565217,
+   "median_app_cold_pct": 1.7701525382671355,
+   "always_cold_apps_pct": 11.3895850737956,
+   "wasted_min_total": 74522244.1,
+   "invocations": 6257408066,
+   "cold_total": 696888,
+   "wasted_vs_fixed10": 0.8118432831452737,
+   "standard_share_mean": 0.21088760137507426,
+   "prewarm_share_mean": 0.24377047816611352
+  },
+  "hybrid_120min_I": {
+   "apps": 21546,
+   "p75_app_cold_pct": 29.62962962962963,
+   "median_app_cold_pct": 1.4605734489990807,
+   "always_cold_apps_pct": 10.846560846560847,
+   "wasted_min_total": 76302575.7,
+   "invocations": 6257408066,
+   "cold_total": 637150,
+   "wasted_vs_fixed10": 0.8312381667627315,
+   "standard_share_mean": 0.18399509448495413,
+   "prewarm_share_mean": 0.2674410760494912
+  },
+  "hybrid_180min_I": {
+   "apps": 21546,
+   "p75_app_cold_pct": 27.272727272727273,
+   "median_app_cold_pct": 1.3982517389973368,
+   "always_cold_apps_pct": 10.605216745567622,
+   "wasted_min_total": 78495443.1,
+   "invocations": 6257408066,
+   "cold_total": 625718,
+   "wasted_vs_fixed10": 0.8551272040698922,
+   "standard_share_mean": 0.17884761749579134,
+   "prewarm_share_mean": 0.2723013709257786
+  },
+  "hybrid_240min_I": {
+   "apps": 21546,
+   "p75_app_cold_pct": 25.0,
+   "median_app_cold_pct": 1.355022778519166,
+   "always_cold_apps_pct": 10.294254153903276,
+   "wasted_min_total": 80524993.0,
+   "invocations": 6257408066,
+   "cold_total": 618481,
+   "wasted_vs_fixed10": 0.8772370650117095,
+   "standard_share_mean": 0.1765412253152424,
+   "prewarm_share_mean": 0.2746635479513141
+  },
+  "hybrid_60min_II": {
+   "apps": 21546,
+   "p75_app_cold_pct": 33.333333333333336,
+   "median_app_cold_pct": 1.7391304347826086,
+   "always_cold_apps_pct": 11.3895850737956,
+   "wasted_min_total": 74690970.4,
+   "invocations": 6257408066,
+   "cold_total": 691276,
+   "wasted_vs_fixed10": 0.8136813828294587,
+   "standard_share_mean": 0.21088760137507426,
+   "prewarm_share_mean": 0.24377047816611352
+  },
+  "hybrid_120min_II": {
+   "apps": 21546,
+   "p75_app_cold_pct": 29.024193548387096,
+   "median_app_cold_pct": 1.4382002801120448,
+   "always_cold_apps_pct": 10.846560846560847,
+   "wasted_min_total": 76503103.7,
+   "invocations": 6257408066,
+   "cold_total": 634341,
+   "wasted_vs_fixed10": 0.8334227132944235,
+   "standard_share_mean": 0.18399509448495413,
+   "prewarm_share_mean": 0.2674410760494912
+  },
+  "hybrid_180min_II": {
+   "apps": 21546,
+   "p75_app_cold_pct": 26.923076923076923,
+   "median_app_cold_pct": 1.380632840794369,
+   "always_cold_apps_pct": 10.605216745567622,
+   "wasted_min_total": 78714246.1,
+   "invocations": 6257408066,
+   "cold_total": 623003,
+   "wasted_vs_fixed10": 0.8575108379503169,
+   "standard_share_mean": 0.17884761749579134,
+   "prewarm_share_mean": 0.2723013709257786
+  },
+  "hybrid_240min_II": {
+   "apps": 21546,
+   "p75_app_cold_pct": 25.0,
+   "median_app_cold_pct": 1.3358574201113411,
+   "always_cold_apps_pct": 10.294254153903276,
+   "wasted_min_total": 80764863.0,
+   "invocations": 6257408066,
+   "cold_total": 615860,
+   "wasted_vs_fixed10": 0.8798502022122847,
+   "standard_share_mean": 0.1765412253152424,
+   "prewarm_share_mean": 0.2746635479513141
+  },
+  "derived_I": {
+   "p75_ratio_fixed10_over_hybrid4h": 2.1041272245361604,
+   "wasted_fixed2h_over_hybrid4h": 1.4812141616702779,
+   "p75_fixed2h_minus_hybrid4h": -5.0,
+   "B4_always_cold_apps_pct_published_10.5": 10.294254153903276
+  },
+  "derived_II": {
+   "p75_ratio_fixed10_over_hybrid4h": 2.1041272245361604,
+   "wasted_fixed2h_over_hybrid4h": 1.4768149857444814,
+   "p75_fixed2h_minus_hybrid4h": -5.0,
+   "B4_always_cold_apps_pct_published_10.5": 10.294254153903276
+  }
+ },
+ "criteria": {
+  "A1 fixed 10-min p75 in [47.3, 53.3] (published 50.3)": true,
+  "A2 fixed 60-min p75 in [22, 28] (published 25)": true,
+  "A3 no unloading: always-cold apps in [3.0, 4.0]% (published 3.5)": false,
+  "A4 fixed 2-h wasted / fixed 10-min in [1.20, 1.35] (published 'almost 30% higher')": true,
+  "B1[I] hybrid 4-h wasted / fixed 10-min in [0.90, 1.10]": false,
+  "B2[I] p75 ratio fixed 10-min / hybrid 4-h in [2.0, 3.0] (published 2.5x)": true,
+  "B3[I] fixed 2-h p75 within 5 points of hybrid 4-h, and wasted fixed 2-h / hybrid 4-h in [1.30, 1.70]": true,
+  "B1[II] hybrid 4-h wasted / fixed 10-min in [0.90, 1.10]": false,
+  "B2[II] p75 ratio fixed 10-min / hybrid 4-h in [2.0, 3.0] (published 2.5x)": true,
+  "B3[II] fixed 2-h p75 within 5 points of hybrid 4-h, and wasted fixed 2-h / hybrid 4-h in [1.30, 1.70]": true
+ },
+ "verdict": {
+  "stage_A_pass": false,
+  "stage_B_pass_I": false,
+  "stage_B_pass_II": false,
+  "reproduction_pass": false,
+  "interpretation_used": null
+ }
+}

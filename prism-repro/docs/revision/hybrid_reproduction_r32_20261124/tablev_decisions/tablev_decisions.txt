@@ -1,0 +1,29 @@
+EXPLORATORY decision check; NOT a Table V comparison (reproduction did not pass); fast-simulator synthetic development traces, test weeks
+
+  101 stationary         empty min   0  min/minute   98  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  101 growth             empty min   0  min/minute  149  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  101 bursty             empty min   0  min/minute   98  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  101 new_spike          empty min   0  min/minute  118  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  101 shifted_triggers   empty min   0  min/minute  111  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  102 stationary         empty min   0  min/minute  117  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  102 growth             empty min   0  min/minute  172  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  102 bursty             empty min   0  min/minute  117  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  102 new_spike          empty min   0  min/minute  145  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  102 shifted_triggers   empty min   0  min/minute  117  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  103 stationary         empty min   0  min/minute  127  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  103 growth             empty min   0  min/minute  176  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  103 bursty             empty min   0  min/minute  127  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  103 new_spike          empty min   0  min/minute  140  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  103 shifted_triggers   empty min   0  min/minute  122  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  104 stationary         empty min   0  min/minute  109  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  104 growth             empty min   0  min/minute  164  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  104 bursty             empty min   0  min/minute  109  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  104 new_spike          empty min   0  min/minute  127  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  104 shifted_triggers   empty min   0  min/minute  113  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  105 stationary         empty min   0  min/minute  122  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  105 growth             empty min   0  min/minute  191  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  105 bursty             empty min   0  min/minute  122  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  105 new_spike          empty min   0  min/minute  151  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+  105 shifted_triggers   empty min   0  min/minute  123  max IT 1 min  pre-warm max 0.0  loaded until 1.1 min  ITs outside window 0  ITs > platform 10 min 0  app cold starts 1 / 1
+
+decisions identical to the platform keep-alive on all 25: True
