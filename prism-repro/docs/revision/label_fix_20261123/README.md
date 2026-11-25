@@ -219,3 +219,45 @@ manifest. It is not in Git and not yet published.
 **Still needed for a self-contained release:**
 1. Publish that archive with the code. Without it, only the code path is reproducible, not the numbers.
 2. Push the branch and give the reviewers access through the editor (author's action).
+
+## 8. Clean-checkout check of the release candidate (24 Nov 2026)
+
+**What ran.** A `git archive` of HEAD 3edc386 (which contains this package, d6cc440) was unpacked into a fresh
+directory, and the input archive into another (`prism_r36_reproduction_inputs_20261123.tar.gz`, SHA-256 52c1c701...,
+74 of 74 files match its manifest; the manifest equals the committed `release_inputs.sha256` apart from line endings).
+The section 7 command then ran from the checkout into fresh output directories, once with `windows/` (E1, E3, E7, E9,
+E11, E11occ) and once with `linux/` (E1, E3, E7, E9), with the pinned Windows `venv/`. No simulation.
+
+**Result: reproduced.**
+- Every built-in check passed, on both input sets:
+  - E1 holds 1,900 rows;
+  - the main configuration is 150 `PRISM_EB` rows, with no `PRISM` rows;
+  - PRISM eps: 0.05, 0.03, 0.08, 0.08, 0.08 (Windows); 0.08, 0.03, 0.08, 0.08, 0.08 (Linux);
+  - Table V has PRISM with n = 5 in all four scenarios;
+  - E11 compares Eq. (5) with Erlang-B, and its Erlang-B rows equal E1's main configuration.
+- **Windows tables.** 37 of 39 `analyze.py` tables are byte-identical to the regeneration's. The other 2
+  (`E3_quantile_vs_scenario_feasibility`) differ only in the measured decision-time column (4.26 against 1.99 ms), as
+  recorded in section 4. The archived E3 rows are the normal-path rebuild, so 4.26 is the expected value.
+- **Linux tables.** 37 of 37 tables equal `outputs/linux_tables/`, apart from line endings (this run wrote CRLF).
+- `pc_billing_bounds.txt` and `r76_matched_1pct.txt` are identical on both platforms. `E11_erlangb_regenerated.md` is
+  identical.
+- **R7.6.** Every endpoint the runner emits equals `outputs/r76_endpoints_full_precision.json`: 14 Windows and 13 Linux
+  regenerated values, and 12 stored, with 0 differing.
+
+**Defect found and fixed.** On Windows with `core.autocrlf=true`, a checkout writes the committed checksum manifests
+with CRLF. `sha256sum -c release_inputs.sha256` then fails on every line, because the carriage return is read as part
+of each file name.
+- **Fix:** `prism-repro/.gitattributes` (new, not yet committed) keeps `*.sha256`, `SHA256SUMS` and `SHA256SUMS.*` at
+  LF in every checkout.
+- **Tested:** an archive made with these attributes writes the manifest with LF, and it verifies 74 of 74 inputs.
+- No tracked file changes content.
+- **Until the attribute file is committed:** on Windows, verify with
+  `tr -d '\r' < release_inputs.sha256 | sha256sum -c`.
+
+**Still open:**
+- committing the attribute file;
+- publishing the input archive;
+- reviewer access through the editor (the author's actions).
+
+The analysis outputs are platform-independent aggregations: the Linux rows give the Linux tables whether the analysis
+runs on Windows or Linux. The underlying experiment rows differ by platform (section 4).
