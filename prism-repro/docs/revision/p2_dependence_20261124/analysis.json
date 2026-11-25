@@ -1,0 +1,614 @@
+{
+ "request_streams_identical": true,
+ "weeks": {
+  "I145": 62,
+  "S145": 68,
+  "I13": 67,
+  "S13": 10
+ },
+ "G1_fixed_14.5": {
+  "PRISM": {
+   "n": 5,
+   "cost_pct": [
+    -8.66746112643742,
+    4.894629711675285
+   ],
+   "viol_pp": [
+    -1.7559523809523807,
+    0.6044031301025604
+   ],
+   "cost_excl0": true,
+   "verdict_flips": [
+    103,
+    104
+   ],
+   "per_trace": {
+    "101": {
+     "IND": {
+      "cost": 1236.9,
+      "viol": 1.935,
+      "meets": true,
+      "mem": {
+       "1024": 0.8988,
+       "2048": 0.1012
+      }
+     },
+     "SHR": {
+      "cost": 1101.2,
+      "viol": 0.149,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "102": {
+     "IND": {
+      "cost": 1306.0,
+      "viol": 1.19,
+      "meets": true,
+      "mem": {
+       "1024": 0.9167,
+       "2048": 0.0833
+      }
+     },
+     "SHR": {
+      "cost": 1124.7,
+      "viol": 0.149,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "103": {
+     "IND": {
+      "cost": 1194.1,
+      "viol": 2.53,
+      "meets": false,
+      "mem": {
+       "1024": 0.9821,
+       "2048": 0.0179
+      }
+     },
+     "SHR": {
+      "cost": 1118.0,
+      "viol": 0.149,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "104": {
+     "IND": {
+      "cost": 1187.4,
+      "viol": 2.381,
+      "meets": false,
+      "mem": {
+       "1024": 0.994,
+       "2048": 0.006
+      }
+     },
+     "SHR": {
+      "cost": 1088.1,
+      "viol": 0.446,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "105": {
+     "IND": {
+      "cost": 1153.9,
+      "viol": 1.786,
+      "meets": true,
+      "mem": {
+       "1024": 0.9881,
+       "2048": 0.0119
+      }
+     },
+     "SHR": {
+      "cost": 1110.8,
+      "viol": 0.149,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    }
+   }
+  },
+  "MemAdapt_q90": {
+   "n": 5,
+   "cost_pct": [
+    14.669011798028382,
+    0.047348675466257616
+   ],
+   "viol_pp": [
+    -1.9047619047619047,
+    0.850751544936614
+   ],
+   "cost_excl0": true,
+   "verdict_flips": [
+    101,
+    103,
+    104
+   ],
+   "per_trace": {
+    "101": {
+     "IND": {
+      "cost": 1239.4,
+      "viol": 2.232,
+      "meets": false,
+      "mem": {
+       "1024": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1420.9,
+      "viol": 0.0,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "102": {
+     "IND": {
+      "cost": 1454.0,
+      "viol": 1.042,
+      "meets": true,
+      "mem": {
+       "1024": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1667.0,
+      "viol": 0.0,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "103": {
+     "IND": {
+      "cost": 1153.6,
+      "viol": 2.827,
+      "meets": false,
+      "mem": {
+       "1024": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1323.6,
+      "viol": 0.149,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "104": {
+     "IND": {
+      "cost": 1203.7,
+      "viol": 2.232,
+      "meets": false,
+      "mem": {
+       "1024": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1380.2,
+      "viol": 0.0,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "105": {
+     "IND": {
+      "cost": 1190.5,
+      "viol": 1.488,
+      "meets": true,
+      "mem": {
+       "1024": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1364.9,
+      "viol": 0.149,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    }
+   }
+  }
+ },
+ "G3_fixed_13": {
+  "PRISM": {
+   "n": 5,
+   "cost_pct": [
+    8.801847378997474,
+    3.0279788245089883
+   ],
+   "viol_pp": [
+    -0.02976190476190476,
+    0.08263229479755335
+   ],
+   "cost_excl0": true,
+   "verdict_flips": [],
+   "per_trace": {
+    "101": {
+     "IND": {
+      "cost": 1118.3,
+      "viol": 0.298,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1196.6,
+      "viol": 0.298,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "102": {
+     "IND": {
+      "cost": 1168.6,
+      "viol": 0.149,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1306.9,
+      "viol": 0.149,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "103": {
+     "IND": {
+      "cost": 1135.2,
+      "viol": 0.149,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1219.3,
+      "viol": 0.149,
+      "meets": true,
+      "mem": {
+       "2048": 0.994,
+       "3008": 0.006
+      }
+     }
+    },
+    "104": {
+     "IND": {
+      "cost": 1124.7,
+      "viol": 0.595,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1248.9,
+      "viol": 0.595,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "105": {
+     "IND": {
+      "cost": 1126.8,
+      "viol": 0.298,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1202.5,
+      "viol": 0.149,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    }
+   }
+  },
+  "MemAdapt_q90": {
+   "n": 5,
+   "cost_pct": [
+    -0.008838067338184671,
+    0.02117179407679848
+   ],
+   "viol_pp": [
+    0.059523809523809514,
+    0.3356539681992619
+   ],
+   "cost_excl0": false,
+   "verdict_flips": [],
+   "per_trace": {
+    "101": {
+     "IND": {
+      "cost": 1006.4,
+      "viol": 0.744,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1006.1,
+      "viol": 0.893,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "102": {
+     "IND": {
+      "cost": 1048.0,
+      "viol": 1.042,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1048.0,
+      "viol": 0.744,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "103": {
+     "IND": {
+      "cost": 1021.3,
+      "viol": 0.893,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1021.4,
+      "viol": 0.893,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "104": {
+     "IND": {
+      "cost": 1006.6,
+      "viol": 0.595,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1006.4,
+      "viol": 1.042,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    },
+    "105": {
+     "IND": {
+      "cost": 1013.2,
+      "viol": 0.446,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     },
+     "SHR": {
+      "cost": 1013.2,
+      "viol": 0.446,
+      "meets": true,
+      "mem": {
+       "2048": 1.0
+      }
+     }
+    }
+   }
+  },
+  "premium_IND": {
+   "per_trace": {
+    "101": 11.118839427662955,
+    "102": 11.50763358778625,
+    "103": 11.15245275629101,
+    "104": 11.732565070534474,
+    "105": 11.212001579155142
+   },
+   "mean": 11.344698484285967
+  },
+  "premium_SHR": {
+   "per_trace": {
+    "101": 18.934499552728347,
+    "102": 24.70419847328245,
+    "103": 19.375367143136867,
+    "104": 24.095786963434033,
+    "105": 18.683379392025262
+   },
+   "mean": 21.158646304921394
+  }
+ },
+ "G2_retuned_14.5": {
+  "I145|102|PRISM": {
+   "selected": 0.01,
+   "expansions": [],
+   "edge": false,
+   "test": {
+    "cost": 1306.0,
+    "viol": 1.19,
+    "meets": true,
+    "share_ge2048": 0.0833
+   }
+  },
+  "I145|101|PRISM": {
+   "selected": 0.002,
+   "expansions": [
+    0.003,
+    0.002
+   ],
+   "edge": true,
+   "test": {
+    "cost": 1192.5,
+    "viol": 0.0,
+    "meets": true,
+    "share_ge2048": 1.0
+   }
+  },
+  "I145|102|MemAdapt_q90": {
+   "selected": 1.5,
+   "expansions": [
+    1.6
+   ],
+   "edge": false,
+   "test": {
+    "cost": 1454.0,
+    "viol": 1.042,
+    "meets": true,
+    "share_ge2048": 0.0
+   }
+  },
+  "I145|103|PRISM": {
+   "selected": 0.03,
+   "expansions": [],
+   "edge": false,
+   "test": {
+    "cost": 1194.1,
+    "viol": 2.53,
+    "meets": false,
+    "share_ge2048": 0.0179
+   }
+  },
+  "I145|101|MemAdapt_q90": {
+   "selected": 1.3,
+   "expansions": [],
+   "edge": false,
+   "test": {
+    "cost": 1239.4,
+    "viol": 2.232,
+    "meets": false,
+    "share_ge2048": 0.0
+   }
+  },
+  "I145|103|MemAdapt_q90": {
+   "selected": 1.1,
+   "expansions": [],
+   "edge": false,
+   "test": {
+    "cost": 1153.6,
+    "viol": 2.827,
+    "meets": false,
+    "share_ge2048": 0.0
+   }
+  },
+  "S145|102|PRISM": {
+   "selected": 0.01,
+   "expansions": [],
+   "edge": false,
+   "test": {
+    "cost": 1124.7,
+    "viol": 0.149,
+    "meets": true,
+    "share_ge2048": 1.0
+   }
+  },
+  "S145|101|PRISM": {
+   "selected": 0.01,
+   "expansions": [],
+   "edge": false,
+   "test": {
+    "cost": 1101.2,
+    "viol": 0.149,
+    "meets": true,
+    "share_ge2048": 1.0
+   }
+  },
+  "S145|102|MemAdapt_q90": {
+   "selected": 0.4,
+   "expansions": [
+    0.5,
+    0.4
+   ],
+   "edge": true,
+   "test": {
+    "cost": 960.0,
+    "viol": 0.595,
+    "meets": true,
+    "share_ge2048": 1.0
+   }
+  },
+  "S145|103|PRISM": {
+   "selected": 0.01,
+   "expansions": [],
+   "edge": false,
+   "test": {
+    "cost": 1118.0,
+    "viol": 0.149,
+    "meets": true,
+    "share_ge2048": 1.0
+   }
+  },
+  "S145|101|MemAdapt_q90": {
+   "selected": 0.4,
+   "expansions": [
+    0.5,
+    0.4
+   ],
+   "edge": true,
+   "test": {
+    "cost": 939.7,
+    "viol": 0.149,
+    "meets": true,
+    "share_ge2048": 1.0
+   }
+  },
+  "S145|103|MemAdapt_q90": {
+   "selected": 0.4,
+   "expansions": [
+    0.5,
+    0.4
+   ],
+   "edge": true,
+   "test": {
+    "cost": 948.2,
+    "viol": 0.595,
+    "meets": true,
+    "share_ge2048": 1.0
+   }
+  }
+ }
+}

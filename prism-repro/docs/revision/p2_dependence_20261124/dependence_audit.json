@@ -1,0 +1,250 @@
+{
+ "audit": {
+  "plan_records": 40,
+  "plan_distinct_n_words": 40,
+  "plan_n_words": {
+   "min": 1560,
+   "max": 5951,
+   "mean": 3129.625,
+   "median": 3139.5,
+   "sd_log": 0.24887105960256725
+  },
+  "arms": {
+   "baseline_ondemand": {
+    "records": 40,
+    "complete_4_stage": 40,
+    "distinct_n_words": 40,
+    "records_all_stages_same_memory": {
+     "1024": 40
+    },
+    "records_mixed_memory": 0,
+    "cold_stages_per_record": {
+     "0": 34,
+     "1": 3,
+     "2": 1,
+     "4": 2
+    },
+    "fields": [
+     "aws_request_id",
+     "cold",
+     "end_wall_ns",
+     "env_id",
+     "env_start_wall_ns",
+     "function",
+     "function_version",
+     "handler_s",
+     "in_bytes",
+     "init_rows",
+     "k",
+     "memory_mb",
+     "module_init_s",
+     "nonce",
+     "out_bytes",
+     "stage",
+     "start_wall_ns"
+    ]
+   },
+   "adapter_schedule": {
+    "records": 40,
+    "complete_4_stage": 40,
+    "distinct_n_words": 40,
+    "records_all_stages_same_memory": {
+     "1024": 11,
+     "512": 11,
+     "2048": 11
+    },
+    "records_mixed_memory": 7,
+    "cold_stages_per_record": {
+     "0": 24,
+     "1": 9,
+     "2": 2,
+     "3": 2,
+     "4": 3
+    },
+    "fields": [
+     "aws_request_id",
+     "cold",
+     "end_wall_ns",
+     "env_id",
+     "env_start_wall_ns",
+     "function",
+     "function_version",
+     "handler_s",
+     "in_bytes",
+     "init_rows",
+     "k",
+     "memory_mb",
+     "module_init_s",
+     "nonce",
+     "out_bytes",
+     "stage",
+     "start_wall_ns"
+    ]
+   }
+  }
+ },
+ "fit_baseline_1024": {
+  "n_records": 34,
+  "distinct_n_words": 34,
+  "intercept": [
+   -8.179725758687441,
+   -6.808708028181145,
+   -6.543272759224115,
+   -7.559790636972737
+  ],
+  "slope": [
+   0.9951393465811925,
+   1.0255531353876064,
+   0.9301401257851752,
+   0.9644569676571437
+  ],
+  "r2_size": [
+   0.9975612717075045,
+   0.9941031292970993,
+   0.9985037430509909,
+   0.9933322900980199
+  ],
+  "residual_sd_log": [
+   0.011667898882719572,
+   0.018730530993354116,
+   0.008538340343577306,
+   0.018737893531477014
+  ],
+  "total_sd_log": [
+   0.2326638807111918,
+   0.24019131837243726,
+   0.2173643871761021,
+   0.22596981914372205
+  ],
+  "residual_corr_mean": 0.0359339112108918,
+  "residual_corr_pairs": [
+   0.08064146844732371,
+   -0.007825253862877718,
+   -0.19422155128928195,
+   0.052095553885361315,
+   0.3462827977895612,
+   -0.06136954770473576
+  ],
+  "total_corr_mean": 0.9961468096466167,
+  "total_corr_pairs": [
+   0.9961365088772199,
+   0.9980174481238382,
+   0.9946613445232839,
+   0.9964557507760338,
+   0.995888986131522,
+   0.9957208194478028
+  ],
+  "bootstrap_95": {
+   "slope": [
+    [
+     0.9751091552303918,
+     0.9909822232098578,
+     0.9171899990605753,
+     0.9380907272417208
+    ],
+    [
+     1.0109957172466102,
+     1.053230209586918,
+     0.9416623246641515,
+     0.9906900855159074
+    ]
+   ],
+   "residual_corr_mean": [
+    -0.08881850837380152,
+    0.13911562150359957
+   ],
+   "total_corr_mean": [
+    0.9927439293733074,
+    0.9978493368419019
+   ],
+   "r2_size": [
+    [
+     0.9946619624366272,
+     0.9887019639727208,
+     0.9966733775265335,
+     0.9866655785071567
+    ],
+    [
+     0.9990453404955446,
+     0.9971490526745597,
+     0.9994073447951437,
+     0.996892845924903
+    ]
+   ]
+  }
+ },
+ "check_schedule_1024": {
+  "n_records": 8,
+  "shared_documents_with_fit": 8,
+  "mean_abs_log_error": 0.012587374479643053,
+  "per_stage_mean_log_error": [
+   -0.01296814985285694,
+   0.01645887973732732,
+   -0.0031654456276615506,
+   -0.002251569520547418
+  ]
+ },
+ "schedule_512": {
+  "n_records": 5,
+  "slope": [
+   0.9355319954391211,
+   0.9107106025806044,
+   0.8985040812577066,
+   0.759479871789355
+  ],
+  "r2_size": [
+   0.9995210680553899,
+   0.9790341356323649,
+   0.9932145175798354,
+   0.9861597056274204
+  ],
+  "residual_corr_mean": 0.43980992292629956,
+  "total_corr_mean": 0.9946254077205055
+ },
+ "schedule_2048": {
+  "n_records": 10,
+  "slope": [
+   1.0062981563947246,
+   1.0331995274863748,
+   0.9051154927069194,
+   1.0461750211901524
+  ],
+  "r2_size": [
+   0.9997320161153278,
+   0.9614262551713253,
+   0.9984560558357455,
+   0.9956491799612666
+  ],
+  "residual_corr_mean": 0.102969568786138,
+  "total_corr_mean": 0.9899628890084649
+ },
+ "check_22nov_1024": {
+  "n_records": 2,
+  "distinct_n_words": 1,
+  "n_words_range": [
+   3565,
+   3565
+  ],
+  "k_ratio": {
+   "ingest": 0.9894,
+   "transform": 0.9917,
+   "aggregate": 1.0226,
+   "load": 1.0277
+  },
+  "per_stage_mean_log_error": [
+   0.019583002101509057,
+   0.0679479567589304,
+   0.01697847496636884,
+   -0.006737090257200179
+  ],
+  "per_stage_sd_log_error": [
+   0.02377423190560065,
+   0.008731483439684084,
+   0.009433505372535487,
+   0.01428642406116757
+  ],
+  "mean_abs_log_error": 0.028652865289841633,
+  "residual_corr_mean": null,
+  "note": "all-warm 1024 MB records only; too few and too narrow in size to test the slope or the residual correlation, so this checks the level on another day and deployment only"
+ }
+}

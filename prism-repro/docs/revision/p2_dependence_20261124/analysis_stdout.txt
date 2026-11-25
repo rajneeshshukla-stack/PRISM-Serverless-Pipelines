@@ -1,0 +1,39 @@
+{"request_streams_identical": true, "weeks": {"I145": 62, "S145": 68, "I13": 67, "S13": 10}}
+G1_fixed_14.5 PRISM SHR-IND cost -8.67 +/- 4.89% viol -1.756 +/- 0.604 pp flips [103, 104]
+    101 IND {'cost': 1236.9, 'viol': 1.935, 'meets': True, 'mem': {1024: 0.8988, 2048: 0.1012}} | SHR {'cost': 1101.2, 'viol': 0.149, 'meets': True, 'mem': {2048: 1.0}}
+    102 IND {'cost': 1306.0, 'viol': 1.19, 'meets': True, 'mem': {1024: 0.9167, 2048: 0.0833}} | SHR {'cost': 1124.7, 'viol': 0.149, 'meets': True, 'mem': {2048: 1.0}}
+    103 IND {'cost': 1194.1, 'viol': 2.53, 'meets': False, 'mem': {1024: 0.9821, 2048: 0.0179}} | SHR {'cost': 1118.0, 'viol': 0.149, 'meets': True, 'mem': {2048: 1.0}}
+    104 IND {'cost': 1187.4, 'viol': 2.381, 'meets': False, 'mem': {1024: 0.994, 2048: 0.006}} | SHR {'cost': 1088.1, 'viol': 0.446, 'meets': True, 'mem': {2048: 1.0}}
+    105 IND {'cost': 1153.9, 'viol': 1.786, 'meets': True, 'mem': {1024: 0.9881, 2048: 0.0119}} | SHR {'cost': 1110.8, 'viol': 0.149, 'meets': True, 'mem': {2048: 1.0}}
+G1_fixed_14.5 MemAdapt_q90 SHR-IND cost +14.67 +/- 0.05% viol -1.905 +/- 0.851 pp flips [101, 103, 104]
+    101 IND {'cost': 1239.4, 'viol': 2.232, 'meets': False, 'mem': {1024: 1.0}} | SHR {'cost': 1420.9, 'viol': 0.0, 'meets': True, 'mem': {2048: 1.0}}
+    102 IND {'cost': 1454.0, 'viol': 1.042, 'meets': True, 'mem': {1024: 1.0}} | SHR {'cost': 1667.0, 'viol': 0.0, 'meets': True, 'mem': {2048: 1.0}}
+    103 IND {'cost': 1153.6, 'viol': 2.827, 'meets': False, 'mem': {1024: 1.0}} | SHR {'cost': 1323.6, 'viol': 0.149, 'meets': True, 'mem': {2048: 1.0}}
+    104 IND {'cost': 1203.7, 'viol': 2.232, 'meets': False, 'mem': {1024: 1.0}} | SHR {'cost': 1380.2, 'viol': 0.0, 'meets': True, 'mem': {2048: 1.0}}
+    105 IND {'cost': 1190.5, 'viol': 1.488, 'meets': True, 'mem': {1024: 1.0}} | SHR {'cost': 1364.9, 'viol': 0.149, 'meets': True, 'mem': {2048: 1.0}}
+G3_fixed_13 PRISM SHR-IND cost +8.80 +/- 3.03% viol -0.030 +/- 0.083 pp flips []
+    101 IND {'cost': 1118.3, 'viol': 0.298, 'meets': True, 'mem': {2048: 1.0}} | SHR {'cost': 1196.6, 'viol': 0.298, 'meets': True, 'mem': {2048: 1.0}}
+    102 IND {'cost': 1168.6, 'viol': 0.149, 'meets': True, 'mem': {2048: 1.0}} | SHR {'cost': 1306.9, 'viol': 0.149, 'meets': True, 'mem': {2048: 1.0}}
+    103 IND {'cost': 1135.2, 'viol': 0.149, 'meets': True, 'mem': {2048: 1.0}} | SHR {'cost': 1219.3, 'viol': 0.149, 'meets': True, 'mem': {2048: 0.994, 3008: 0.006}}
+    104 IND {'cost': 1124.7, 'viol': 0.595, 'meets': True, 'mem': {2048: 1.0}} | SHR {'cost': 1248.9, 'viol': 0.595, 'meets': True, 'mem': {2048: 1.0}}
+    105 IND {'cost': 1126.8, 'viol': 0.298, 'meets': True, 'mem': {2048: 1.0}} | SHR {'cost': 1202.5, 'viol': 0.149, 'meets': True, 'mem': {2048: 1.0}}
+G3_fixed_13 MemAdapt_q90 SHR-IND cost -0.01 +/- 0.02% viol +0.060 +/- 0.336 pp flips []
+    101 IND {'cost': 1006.4, 'viol': 0.744, 'meets': True, 'mem': {2048: 1.0}} | SHR {'cost': 1006.1, 'viol': 0.893, 'meets': True, 'mem': {2048: 1.0}}
+    102 IND {'cost': 1048.0, 'viol': 1.042, 'meets': True, 'mem': {2048: 1.0}} | SHR {'cost': 1048.0, 'viol': 0.744, 'meets': True, 'mem': {2048: 1.0}}
+    103 IND {'cost': 1021.3, 'viol': 0.893, 'meets': True, 'mem': {2048: 1.0}} | SHR {'cost': 1021.4, 'viol': 0.893, 'meets': True, 'mem': {2048: 1.0}}
+    104 IND {'cost': 1006.6, 'viol': 0.595, 'meets': True, 'mem': {2048: 1.0}} | SHR {'cost': 1006.4, 'viol': 1.042, 'meets': True, 'mem': {2048: 1.0}}
+    105 IND {'cost': 1013.2, 'viol': 0.446, 'meets': True, 'mem': {2048: 1.0}} | SHR {'cost': 1013.2, 'viol': 0.446, 'meets': True, 'mem': {2048: 1.0}}
+G3_fixed_13 premium_IND 11.34 {101: 11.1, 102: 11.5, 103: 11.2, 104: 11.7, 105: 11.2}
+G3_fixed_13 premium_SHR 21.16 {101: 18.9, 102: 24.7, 103: 19.4, 104: 24.1, 105: 18.7}
+G2 I145|101|MemAdapt_q90 {'selected': 1.3, 'expansions': [], 'edge': False, 'test': {'cost': 1239.4, 'viol': 2.232, 'meets': False, 'share_ge2048': 0.0}}
+G2 I145|101|PRISM {'selected': 0.002, 'expansions': [0.003, 0.002], 'edge': True, 'test': {'cost': 1192.5, 'viol': 0.0, 'meets': True, 'share_ge2048': 1.0}}
+G2 I145|102|MemAdapt_q90 {'selected': 1.5, 'expansions': [1.6], 'edge': False, 'test': {'cost': 1454.0, 'viol': 1.042, 'meets': True, 'share_ge2048': 0.0}}
+G2 I145|102|PRISM {'selected': 0.01, 'expansions': [], 'edge': False, 'test': {'cost': 1306.0, 'viol': 1.19, 'meets': True, 'share_ge2048': 0.0833}}
+G2 I145|103|MemAdapt_q90 {'selected': 1.1, 'expansions': [], 'edge': False, 'test': {'cost': 1153.6, 'viol': 2.827, 'meets': False, 'share_ge2048': 0.0}}
+G2 I145|103|PRISM {'selected': 0.03, 'expansions': [], 'edge': False, 'test': {'cost': 1194.1, 'viol': 2.53, 'meets': False, 'share_ge2048': 0.0179}}
+G2 S145|101|MemAdapt_q90 {'selected': 0.4, 'expansions': [0.5, 0.4], 'edge': True, 'test': {'cost': 939.7, 'viol': 0.149, 'meets': True, 'share_ge2048': 1.0}}
+G2 S145|101|PRISM {'selected': 0.01, 'expansions': [], 'edge': False, 'test': {'cost': 1101.2, 'viol': 0.149, 'meets': True, 'share_ge2048': 1.0}}
+G2 S145|102|MemAdapt_q90 {'selected': 0.4, 'expansions': [0.5, 0.4], 'edge': True, 'test': {'cost': 960.0, 'viol': 0.595, 'meets': True, 'share_ge2048': 1.0}}
+G2 S145|102|PRISM {'selected': 0.01, 'expansions': [], 'edge': False, 'test': {'cost': 1124.7, 'viol': 0.149, 'meets': True, 'share_ge2048': 1.0}}
+G2 S145|103|MemAdapt_q90 {'selected': 0.4, 'expansions': [0.5, 0.4], 'edge': True, 'test': {'cost': 948.2, 'viol': 0.595, 'meets': True, 'share_ge2048': 1.0}}
+G2 S145|103|PRISM {'selected': 0.01, 'expansions': [], 'edge': False, 'test': {'cost': 1118.0, 'viol': 0.149, 'meets': True, 'share_ge2048': 1.0}}

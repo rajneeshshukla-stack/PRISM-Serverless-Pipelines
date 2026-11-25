@@ -1,0 +1,47 @@
+{
+ "source": "memcal-1 FIT-split warm Duration medians (../aws_memcal_20261122/tables/heldout_check.csv, fit_split_value), ratio to the same stage's 1024 MB FIT median",
+ "stages": [
+  "ingest",
+  "transform",
+  "aggregate",
+  "load"
+ ],
+ "exec_factor_measured": [
+  [
+   512,
+   [
+    2.026158,
+    2.013151,
+    2.012798,
+    2.033747
+   ]
+  ],
+  [
+   1024,
+   [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ]
+  ],
+  [
+   2048,
+   [
+    0.57838,
+    0.574046,
+    0.57394,
+    0.571574
+   ]
+  ],
+  [
+   3008,
+   [
+    0.578199,
+    0.572444,
+    0.573641,
+    0.570857
+   ]
+  ]
+ ]
+}

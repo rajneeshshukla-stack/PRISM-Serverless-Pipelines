@@ -1,0 +1,69 @@
+diff --git a/prism-repro/src/prism_repro/config.py b/prism-repro/src/prism_repro/config.py
+index a2fe001..317f2bc 100644
+--- a/prism-repro/src/prism_repro/config.py
++++ b/prism-repro/src/prism_repro/config.py
+@@ -61,6 +61,12 @@ class PipelineConfig:
+     init_max_s: Optional[float] = None
+     mem_options: Tuple[int, ...] = (512, 1024, 2048, 3008)
+     nonscaling: float = 0.5  # Eq. (2)
++    # Calibration candidate (24 Nov 2026, R2.8(b), R7.5(d); OPT-IN, default unchanged): how warm execution time scales
++    # with memory. "eq2": the submitted Eq. (2) with `nonscaling` (legacy). "measured": per-stage factors relative to
++    # 1024 MB from exec_factor_measured ((MB, (f_stage1, ..., f_stageS)), ...), e.g. memcal-1 FIT-split medians; the
++    # 1024 MB reference stays warm_mean_1024, so every factor at 1024 MB must be 1.
++    exec_scaling: str = "eq2"
++    exec_factor_measured: Optional[Tuple[Tuple[int, Tuple[float, ...]], ...]] = None
+     init_nonscaling: float = 0.7  # §III-A, Eq. (3)
+     # R1.2 / R5.M2: direction of the init-vs-memory relation. "eq3": Eq. (3), init shortens as
+     # memory grows (submitted model). "constant": init_mean_1024 at every size. "inverted":
+@@ -113,6 +119,16 @@ class PipelineConfig:
+             raise ValueError("invalid timing parameters")
+         if (7 * 1440) % self.window_min or self.window_min % 1:
+             raise ValueError("window length must divide a week")
++        if self.exec_scaling not in ("eq2", "measured"):
++            raise ValueError("exec_scaling must be 'eq2' or 'measured'")
++        if self.exec_scaling == "measured":
++            fm = dict(self.exec_factor_measured or ())
++            if any(int(m) not in fm for m in self.mem_options):
++                raise ValueError("exec_factor_measured must give factors for every memory option")
++            if any(len(f) != self.n_stages or any(not (x > 0) for x in f) for f in fm.values()):
++                raise ValueError("exec_factor_measured needs one positive factor per stage at every size")
++            if 1024 in fm and any(abs(x - 1.0) > 1e-9 for x in fm[1024]):
++                raise ValueError("exec_factor_measured factors at 1024 MB must be 1 (warm_mean_1024 is the reference)")
+         if self.init_scaling not in ("eq3", "constant", "inverted", "measured"):
+             raise ValueError("init_scaling must be 'eq3', 'constant', 'inverted' or 'measured'")
+         if self.init_scaling == "measured":
+diff --git a/prism-repro/src/prism_repro/latency.py b/prism-repro/src/prism_repro/latency.py
+index b71acab..ecc49bb 100644
+--- a/prism-repro/src/prism_repro/latency.py
++++ b/prism-repro/src/prism_repro/latency.py
+@@ -19,7 +19,12 @@ def duration_factor(m: float, nonscaling: float) -> float:
+ 
+ 
+ def stage_means(cfg: PipelineConfig, m: float) -> np.ndarray:
+-    """Mean warm execution time per stage (s) at memory m."""
++    """Mean warm execution time per stage (s) at memory m: Eq. (2) (legacy), or measured per-size factors."""
++    if getattr(cfg, "exec_scaling", "eq2") == "measured":
++        fm = dict(cfg.exec_factor_measured or ())
++        if int(m) != m or int(m) not in fm:
++            raise ValueError(f"no measured execution-time factor for {m} MB (sizes: {sorted(fm)})")
++        return np.asarray(cfg.warm_mean_1024, float) * np.asarray(fm[int(m)], float)
+     return np.asarray(cfg.warm_mean_1024, float) * duration_factor(m, cfg.nonscaling)
+ 
+ 
+@@ -123,7 +128,7 @@ def attainment_table(cfg, m: int) -> np.ndarray:
+     key = (int(m), cfg.n_stages, tuple(cfg.warm_mean_1024), cfg.exec_shape, cfg.overhead_mean,
+            cfg.overhead_shape, cfg.init_mean_1024, cfg.init_shape, cfg.nonscaling,
+            cfg.init_nonscaling, cfg.deadline, cfg.exact_attainment_draws, cfg.init_max_s,
+-           cfg.init_scaling, cfg.init_mean_measured)
++           cfg.init_scaling, cfg.init_mean_measured, cfg.exec_scaling, cfg.exec_factor_measured)
+     hit = _ATTAIN_CACHE.get(key)
+     if hit is not None:
+         return hit
+@@ -174,6 +179,6 @@ def miss_table(cfg: PipelineConfig) -> dict:
+     """{m: (v_w, rho)} for all memory options, cached on the latency-relevant fields."""
+     keys = ("warm_mean_1024", "exec_shape", "overhead_mean", "overhead_shape", "init_mean_1024",
+             "init_shape", "nonscaling", "init_nonscaling", "deadline", "init_max_s",
+-            "init_scaling", "init_mean_measured")
++            "init_scaling", "init_mean_measured", "exec_scaling", "exec_factor_measured")
+     items = tuple((k, getattr(cfg, k)) for k in keys)
+     return {m: _miss_cached((items, m)) for m in cfg.mem_options}

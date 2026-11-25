@@ -1,0 +1,155 @@
+2026-11-24T22:25:28Z week E14_legacy 101 PRISM test stationary 0.01: cost 1286.7, violating 1.79%, >=2048 MB 11.9%
+2026-11-24T22:25:28Z week E14_legacy 102 PRISM test stationary 0.01: cost 1350.7, violating 1.19%, >=2048 MB 10.1%
+2026-11-24T22:26:54Z week E14_legacy 103 PRISM test stationary 0.03: cost 1197.5, violating 2.53%, >=2048 MB 1.8%
+2026-11-24T22:26:54Z week E14_legacy 104 PRISM test stationary 0.03: cost 1188.1, violating 2.38%, >=2048 MB 0.6%
+2026-11-24T22:28:17Z week E14_legacy 105 PRISM test stationary 0.03: cost 1155.8, violating 1.79%, >=2048 MB 1.2%
+2026-11-24T22:28:17Z week E14_meas 101 PRISM test stationary 0.01: cost 1236.9, violating 1.93%, >=2048 MB 10.1%
+2026-11-24T22:29:40Z week E14_meas 102 PRISM test stationary 0.01: cost 1306.0, violating 1.19%, >=2048 MB 8.3%
+2026-11-24T22:29:40Z week E14_meas 103 PRISM test stationary 0.03: cost 1194.1, violating 2.53%, >=2048 MB 1.8%
+2026-11-24T22:31:01Z week E14_meas 104 PRISM test stationary 0.03: cost 1187.4, violating 2.38%, >=2048 MB 0.6%
+2026-11-24T22:31:02Z week E14_meas 105 PRISM test stationary 0.03: cost 1153.9, violating 1.79%, >=2048 MB 1.2%
+2026-11-24T22:31:02Z E14 done
+2026-11-24T22:32:31Z week C13_legacy 101 PRISM test stationary 0.01: cost 1788.7, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T22:32:31Z week C13_legacy 101 MemAdapt_q90 test stationary 0.6: cost 1308.0, violating 1.93%, >=2048 MB 100.0%
+2026-11-24T22:33:50Z week C13_legacy 102 PRISM test stationary 0.01: cost 1949.9, violating 0.30%, >=2048 MB 100.0%
+2026-11-24T22:33:50Z week C13_legacy 102 MemAdapt_q90 test stationary 0.6: cost 1363.4, violating 1.64%, >=2048 MB 100.0%
+2026-11-24T22:35:13Z week C13_legacy 103 PRISM test stationary 0.01: cost 1857.2, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T22:35:13Z week C13_legacy 103 MemAdapt_q90 test stationary 0.6: cost 1327.3, violating 1.64%, >=2048 MB 100.0%
+2026-11-24T22:36:29Z week C13_legacy 104 PRISM test stationary 0.01: cost 1845.4, violating 1.04%, >=2048 MB 100.0%
+2026-11-24T22:36:29Z week C13_legacy 104 MemAdapt_q90 test stationary 0.6: cost 1308.7, violating 2.23%, >=2048 MB 100.0%
+2026-11-24T22:37:52Z week C13_legacy 105 PRISM test stationary 0.01: cost 1790.7, violating 0.74%, >=2048 MB 100.0%
+2026-11-24T22:37:52Z week C13_legacy 105 MemAdapt_q90 test stationary 0.6: cost 1317.1, violating 1.19%, >=2048 MB 100.0%
+2026-11-24T22:39:09Z week C13_meas 101 PRISM test stationary 0.01: cost 1118.3, violating 0.30%, >=2048 MB 100.0%
+2026-11-24T22:39:09Z week C13_meas 101 MemAdapt_q90 test stationary 0.6: cost 1006.4, violating 0.74%, >=2048 MB 100.0%
+2026-11-24T22:40:34Z week C13_meas 102 PRISM test stationary 0.01: cost 1168.6, violating 0.15%, >=2048 MB 100.0%
+2026-11-24T22:40:34Z week C13_meas 102 MemAdapt_q90 test stationary 0.6: cost 1048.0, violating 1.04%, >=2048 MB 100.0%
+2026-11-24T22:41:53Z week C13_meas 103 PRISM test stationary 0.01: cost 1135.2, violating 0.15%, >=2048 MB 100.0%
+2026-11-24T22:41:53Z week C13_meas 103 MemAdapt_q90 test stationary 0.6: cost 1021.3, violating 0.89%, >=2048 MB 100.0%
+2026-11-24T22:43:19Z week C13_meas 104 PRISM test stationary 0.01: cost 1124.7, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T22:43:19Z week C13_meas 104 MemAdapt_q90 test stationary 0.6: cost 1006.6, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T22:44:37Z week C13_meas 105 PRISM test stationary 0.01: cost 1126.8, violating 0.30%, >=2048 MB 100.0%
+2026-11-24T22:44:37Z week C13_meas 105 MemAdapt_q90 test stationary 0.6: cost 1013.2, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T22:44:37Z F13 done
+2026-11-24T22:46:07Z week C13_legacy 101 PRISM val validation 0.005: cost 1822.1, violating 1.04%, >=2048 MB 100.0%
+2026-11-24T22:46:07Z week C13_legacy 101 PRISM val validation 0.01: cost 1653.8, violating 1.34%, >=2048 MB 100.0%
+2026-11-24T22:47:21Z week C13_legacy 101 PRISM val validation 0.02: cost 1272.8, violating 75.00%, >=2048 MB 20.8%
+2026-11-24T22:47:21Z week C13_legacy 101 PRISM val validation 0.03: cost 1155.9, violating 91.22%, >=2048 MB 4.2%
+2026-11-24T22:48:35Z week C13_legacy 101 PRISM val validation 0.05: cost 1075.9, violating 96.88%, >=2048 MB 0.0%
+2026-11-24T22:48:35Z week C13_legacy 101 PRISM val validation 0.08: cost 1001.3, violating 98.51%, >=2048 MB 0.0%
+2026-11-24T22:48:35Z group C13_legacy 101 PRISM: selected 0.01 expansions -
+2026-11-24T22:49:47Z week C13_legacy 101 MemAdapt_q90 val validation 0.6: cost 1287.3, violating 1.93%, >=2048 MB 100.0%
+2026-11-24T22:49:47Z week C13_legacy 101 MemAdapt_q90 val validation 0.7: cost 1339.1, violating 2.08%, >=2048 MB 100.0%
+2026-11-24T22:50:55Z week C13_legacy 101 MemAdapt_q90 val validation 0.8: cost 1399.7, violating 1.93%, >=2048 MB 100.0%
+2026-11-24T22:50:55Z week C13_legacy 101 MemAdapt_q90 val validation 0.9: cost 1465.7, violating 1.64%, >=2048 MB 100.0%
+2026-11-24T22:52:04Z week C13_legacy 101 MemAdapt_q90 val validation 1.0: cost 1536.0, violating 1.64%, >=2048 MB 100.0%
+2026-11-24T22:52:05Z week C13_legacy 101 MemAdapt_q90 val validation 1.1: cost 1608.6, violating 1.34%, >=2048 MB 100.0%
+2026-11-24T22:53:13Z week C13_legacy 101 MemAdapt_q90 val validation 1.2: cost 1682.3, violating 1.34%, >=2048 MB 100.0%
+2026-11-24T22:53:13Z week C13_legacy 101 MemAdapt_q90 val validation 1.3: cost 1757.3, violating 1.34%, >=2048 MB 100.0%
+2026-11-24T22:54:22Z week C13_legacy 101 MemAdapt_q90 val validation 1.4: cost 1832.3, violating 1.04%, >=2048 MB 100.0%
+2026-11-24T22:54:22Z week C13_legacy 101 MemAdapt_q90 val validation 1.5: cost 1907.8, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T22:55:14Z week C13_legacy 101 MemAdapt_q90 val validation 0.5: cost 1248.5, violating 2.08%, >=2048 MB 100.0%
+2026-11-24T22:55:14Z group C13_legacy 101 MemAdapt_q90: selected 0.6 expansions [0.5]
+2026-11-24T22:56:40Z week C13_legacy 102 PRISM val validation 0.005: cost 1855.9, violating 0.74%, >=2048 MB 100.0%
+2026-11-24T22:56:40Z week C13_legacy 102 PRISM val validation 0.01: cost 1677.1, violating 0.89%, >=2048 MB 100.0%
+2026-11-24T22:57:53Z week C13_legacy 102 PRISM val validation 0.02: cost 1294.6, violating 73.51%, >=2048 MB 23.2%
+2026-11-24T22:57:53Z week C13_legacy 102 PRISM val validation 0.03: cost 1191.8, violating 89.58%, >=2048 MB 6.5%
+2026-11-24T22:59:08Z week C13_legacy 102 PRISM val validation 0.05: cost 1095.8, violating 96.43%, >=2048 MB 0.0%
+2026-11-24T22:59:09Z week C13_legacy 102 PRISM val validation 0.08: cost 1010.4, violating 98.66%, >=2048 MB 0.0%
+2026-11-24T22:59:09Z group C13_legacy 102 PRISM: selected 0.01 expansions -
+2026-11-24T23:00:22Z week C13_legacy 102 MemAdapt_q90 val validation 0.6: cost 1298.1, violating 1.93%, >=2048 MB 100.0%
+2026-11-24T23:00:22Z week C13_legacy 102 MemAdapt_q90 val validation 0.7: cost 1353.0, violating 1.64%, >=2048 MB 100.0%
+2026-11-24T23:01:31Z week C13_legacy 102 MemAdapt_q90 val validation 0.8: cost 1416.6, violating 1.49%, >=2048 MB 100.0%
+2026-11-24T23:01:32Z week C13_legacy 102 MemAdapt_q90 val validation 0.9: cost 1486.4, violating 1.19%, >=2048 MB 100.0%
+2026-11-24T23:02:39Z week C13_legacy 102 MemAdapt_q90 val validation 1.0: cost 1559.8, violating 1.34%, >=2048 MB 100.0%
+2026-11-24T23:02:40Z week C13_legacy 102 MemAdapt_q90 val validation 1.1: cost 1634.6, violating 1.19%, >=2048 MB 100.0%
+2026-11-24T23:03:47Z week C13_legacy 102 MemAdapt_q90 val validation 1.2: cost 1711.5, violating 1.04%, >=2048 MB 100.0%
+2026-11-24T23:03:47Z week C13_legacy 102 MemAdapt_q90 val validation 1.3: cost 1788.3, violating 0.89%, >=2048 MB 100.0%
+2026-11-24T23:04:57Z week C13_legacy 102 MemAdapt_q90 val validation 1.4: cost 1865.5, violating 0.74%, >=2048 MB 100.0%
+2026-11-24T23:04:58Z week C13_legacy 102 MemAdapt_q90 val validation 1.5: cost 1942.8, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T23:05:49Z week C13_legacy 102 MemAdapt_q90 val validation 0.5: cost 1256.2, violating 2.53%, >=2048 MB 100.0%
+2026-11-24T23:05:49Z group C13_legacy 102 MemAdapt_q90: selected 0.6 expansions [0.5]
+2026-11-24T23:07:14Z week C13_legacy 103 PRISM val validation 0.005: cost 1792.7, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T23:07:14Z week C13_legacy 103 PRISM val validation 0.01: cost 1603.9, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T23:08:27Z week C13_legacy 103 PRISM val validation 0.02: cost 1262.6, violating 68.15%, >=2048 MB 28.6%
+2026-11-24T23:08:28Z week C13_legacy 103 PRISM val validation 0.03: cost 1147.9, violating 87.65%, >=2048 MB 8.3%
+2026-11-24T23:09:38Z week C13_legacy 103 PRISM val validation 0.05: cost 1059.4, violating 95.54%, >=2048 MB 1.8%
+2026-11-24T23:09:39Z week C13_legacy 103 PRISM val validation 0.08: cost 967.0, violating 99.26%, >=2048 MB 0.0%
+2026-11-24T23:09:39Z group C13_legacy 103 PRISM: selected 0.01 expansions -
+2026-11-24T23:10:48Z week C13_legacy 103 MemAdapt_q90 val validation 0.6: cost 1243.9, violating 1.64%, >=2048 MB 100.0%
+2026-11-24T23:10:48Z week C13_legacy 103 MemAdapt_q90 val validation 0.7: cost 1295.1, violating 1.34%, >=2048 MB 100.0%
+2026-11-24T23:11:55Z week C13_legacy 103 MemAdapt_q90 val validation 0.8: cost 1355.1, violating 0.89%, >=2048 MB 100.0%
+2026-11-24T23:11:55Z week C13_legacy 103 MemAdapt_q90 val validation 0.9: cost 1420.6, violating 0.89%, >=2048 MB 100.0%
+2026-11-24T23:13:02Z week C13_legacy 103 MemAdapt_q90 val validation 1.0: cost 1490.0, violating 0.89%, >=2048 MB 100.0%
+2026-11-24T23:13:02Z week C13_legacy 103 MemAdapt_q90 val validation 1.1: cost 1561.4, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T23:14:07Z week C13_legacy 103 MemAdapt_q90 val validation 1.2: cost 1633.7, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T23:14:08Z week C13_legacy 103 MemAdapt_q90 val validation 1.3: cost 1706.9, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T23:15:13Z week C13_legacy 103 MemAdapt_q90 val validation 1.4: cost 1780.0, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T23:15:14Z week C13_legacy 103 MemAdapt_q90 val validation 1.5: cost 1854.0, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T23:16:04Z week C13_legacy 103 MemAdapt_q90 val validation 0.5: cost 1205.1, violating 2.08%, >=2048 MB 100.0%
+2026-11-24T23:16:04Z group C13_legacy 103 MemAdapt_q90: selected 0.6 expansions [0.5]
+2026-11-24T23:17:28Z week C13_meas 101 PRISM val validation 0.005: cost 1189.7, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T23:17:28Z week C13_meas 101 PRISM val validation 0.01: cost 1104.8, violating 0.89%, >=2048 MB 100.0%
+2026-11-24T23:18:40Z week C13_meas 101 PRISM val validation 0.02: cost 1181.3, violating 79.46%, >=2048 MB 15.5%
+2026-11-24T23:18:40Z week C13_meas 101 PRISM val validation 0.03: cost 1139.7, violating 91.52%, >=2048 MB 4.2%
+2026-11-24T23:19:56Z week C13_meas 101 PRISM val validation 0.05: cost 1075.9, violating 96.88%, >=2048 MB 0.0%
+2026-11-24T23:19:56Z week C13_meas 101 PRISM val validation 0.08: cost 1001.3, violating 98.51%, >=2048 MB 0.0%
+2026-11-24T23:19:56Z group C13_meas 101 PRISM: selected 0.01 expansions -
+2026-11-24T23:21:06Z week C13_meas 101 MemAdapt_q90 val validation 0.6: cost 991.4, violating 1.04%, >=2048 MB 100.0%
+2026-11-24T23:21:06Z week C13_meas 101 MemAdapt_q90 val validation 0.7: cost 1029.9, violating 1.04%, >=2048 MB 100.0%
+2026-11-24T23:22:13Z week C13_meas 101 MemAdapt_q90 val validation 0.8: cost 1075.2, violating 1.04%, >=2048 MB 100.0%
+2026-11-24T23:22:13Z week C13_meas 101 MemAdapt_q90 val validation 0.9: cost 1125.2, violating 0.89%, >=2048 MB 100.0%
+2026-11-24T23:23:21Z week C13_meas 101 MemAdapt_q90 val validation 1.0: cost 1177.7, violating 0.89%, >=2048 MB 100.0%
+2026-11-24T23:23:21Z week C13_meas 101 MemAdapt_q90 val validation 1.1: cost 1232.9, violating 0.74%, >=2048 MB 100.0%
+2026-11-24T23:24:28Z week C13_meas 101 MemAdapt_q90 val validation 1.2: cost 1289.1, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T23:24:28Z week C13_meas 101 MemAdapt_q90 val validation 1.3: cost 1345.9, violating 0.30%, >=2048 MB 100.0%
+2026-11-24T23:25:36Z week C13_meas 101 MemAdapt_q90 val validation 1.4: cost 1403.2, violating 0.30%, >=2048 MB 100.0%
+2026-11-24T23:25:36Z week C13_meas 101 MemAdapt_q90 val validation 1.5: cost 1461.0, violating 0.15%, >=2048 MB 100.0%
+2026-11-24T23:26:28Z week C13_meas 101 MemAdapt_q90 val validation 0.5: cost 962.1, violating 1.04%, >=2048 MB 100.0%
+2026-11-24T23:27:20Z week C13_meas 101 MemAdapt_q90 val validation 0.4: cost 945.2, violating 1.04%, >=2048 MB 100.0%
+2026-11-24T23:28:11Z week C13_meas 101 MemAdapt_q90 test stationary 0.4: cost 940.1, violating 0.74%, >=2048 MB 100.0%
+2026-11-24T23:28:11Z group C13_meas 101 MemAdapt_q90: selected 0.4 expansions [0.5, 0.4]
+2026-11-24T23:29:35Z week C13_meas 102 PRISM val validation 0.005: cost 1198.8, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T23:29:35Z week C13_meas 102 PRISM val validation 0.01: cost 1111.0, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T23:30:49Z week C13_meas 102 PRISM val validation 0.02: cost 1207.3, violating 76.64%, >=2048 MB 19.6%
+2026-11-24T23:30:49Z week C13_meas 102 PRISM val validation 0.03: cost 1169.6, violating 89.58%, >=2048 MB 6.5%
+2026-11-24T23:32:03Z week C13_meas 102 PRISM val validation 0.05: cost 1095.8, violating 96.43%, >=2048 MB 0.0%
+2026-11-24T23:32:04Z week C13_meas 102 PRISM val validation 0.08: cost 1010.4, violating 98.66%, >=2048 MB 0.0%
+2026-11-24T23:32:04Z group C13_meas 102 PRISM: selected 0.01 expansions -
+2026-11-24T23:33:14Z week C13_meas 102 MemAdapt_q90 val validation 0.6: cost 999.3, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T23:33:15Z week C13_meas 102 MemAdapt_q90 val validation 0.7: cost 1040.3, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T23:34:23Z week C13_meas 102 MemAdapt_q90 val validation 0.8: cost 1087.9, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T23:34:24Z week C13_meas 102 MemAdapt_q90 val validation 0.9: cost 1140.5, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T23:35:30Z week C13_meas 102 MemAdapt_q90 val validation 1.0: cost 1196.0, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T23:35:30Z week C13_meas 102 MemAdapt_q90 val validation 1.1: cost 1253.1, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T23:36:37Z week C13_meas 102 MemAdapt_q90 val validation 1.2: cost 1311.0, violating 0.15%, >=2048 MB 100.0%
+2026-11-24T23:36:38Z week C13_meas 102 MemAdapt_q90 val validation 1.3: cost 1369.7, violating 0.15%, >=2048 MB 100.0%
+2026-11-24T23:37:44Z week C13_meas 102 MemAdapt_q90 val validation 1.4: cost 1428.9, violating 0.15%, >=2048 MB 100.0%
+2026-11-24T23:37:45Z week C13_meas 102 MemAdapt_q90 val validation 1.5: cost 1487.8, violating 0.00%, >=2048 MB 100.0%
+2026-11-24T23:38:36Z week C13_meas 102 MemAdapt_q90 val validation 0.5: cost 968.3, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T23:39:28Z week C13_meas 102 MemAdapt_q90 val validation 0.4: cost 949.9, violating 0.74%, >=2048 MB 100.0%
+2026-11-24T23:40:20Z week C13_meas 102 MemAdapt_q90 test stationary 0.4: cost 960.1, violating 1.04%, >=2048 MB 100.0%
+2026-11-24T23:40:20Z group C13_meas 102 MemAdapt_q90: selected 0.4 expansions [0.5, 0.4]
+2026-11-24T23:41:43Z week C13_meas 103 PRISM val validation 0.005: cost 1149.6, violating 0.30%, >=2048 MB 100.0%
+2026-11-24T23:41:43Z week C13_meas 103 PRISM val validation 0.01: cost 1065.8, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T23:42:55Z week C13_meas 103 PRISM val validation 0.02: cost 1155.8, violating 72.47%, >=2048 MB 24.4%
+2026-11-24T23:42:55Z week C13_meas 103 PRISM val validation 0.03: cost 1125.4, violating 87.65%, >=2048 MB 8.3%
+2026-11-24T23:44:07Z week C13_meas 103 PRISM val validation 0.05: cost 1055.8, violating 95.54%, >=2048 MB 1.8%
+2026-11-24T23:44:07Z week C13_meas 103 PRISM val validation 0.08: cost 967.0, violating 99.26%, >=2048 MB 0.0%
+2026-11-24T23:44:07Z group C13_meas 103 PRISM: selected 0.01 expansions -
+2026-11-24T23:45:16Z week C13_meas 103 MemAdapt_q90 val validation 0.6: cost 958.0, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T23:45:16Z week C13_meas 103 MemAdapt_q90 val validation 0.7: cost 996.2, violating 0.30%, >=2048 MB 100.0%
+2026-11-24T23:46:23Z week C13_meas 103 MemAdapt_q90 val validation 0.8: cost 1041.2, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T23:46:23Z week C13_meas 103 MemAdapt_q90 val validation 0.9: cost 1090.3, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T23:47:28Z week C13_meas 103 MemAdapt_q90 val validation 1.0: cost 1142.6, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T23:47:29Z week C13_meas 103 MemAdapt_q90 val validation 1.1: cost 1196.8, violating 0.30%, >=2048 MB 100.0%
+2026-11-24T23:48:34Z week C13_meas 103 MemAdapt_q90 val validation 1.2: cost 1251.9, violating 0.15%, >=2048 MB 100.0%
+2026-11-24T23:48:34Z week C13_meas 103 MemAdapt_q90 val validation 1.3: cost 1307.6, violating 0.15%, >=2048 MB 100.0%
+2026-11-24T23:49:40Z week C13_meas 103 MemAdapt_q90 val validation 1.4: cost 1363.5, violating 0.15%, >=2048 MB 100.0%
+2026-11-24T23:49:41Z week C13_meas 103 MemAdapt_q90 val validation 1.5: cost 1419.8, violating 0.15%, >=2048 MB 100.0%
+2026-11-24T23:50:31Z week C13_meas 103 MemAdapt_q90 val validation 0.5: cost 929.1, violating 0.45%, >=2048 MB 100.0%
+2026-11-24T23:51:24Z week C13_meas 103 MemAdapt_q90 val validation 0.4: cost 912.2, violating 0.60%, >=2048 MB 100.0%
+2026-11-24T23:52:16Z week C13_meas 103 MemAdapt_q90 test stationary 0.4: cost 948.2, violating 0.89%, >=2048 MB 100.0%
+2026-11-24T23:52:16Z group C13_meas 103 MemAdapt_q90: selected 0.4 expansions [0.5, 0.4]
+2026-11-24T23:52:16Z R13 done
+2026-11-24T23:52:16Z end
+exit 0

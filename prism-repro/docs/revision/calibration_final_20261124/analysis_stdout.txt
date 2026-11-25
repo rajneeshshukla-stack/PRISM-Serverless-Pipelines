@@ -1,0 +1,66 @@
+{
+ "request_streams_identical": true,
+ "weeks": {
+  "E14_legacy": 5,
+  "E14_meas": 5,
+  "C13_legacy": 61,
+  "C13_meas": 67
+ },
+ "E14_legacy_equals_K": {
+  "101": {
+   "cost_equal": true,
+   "viol_equal": true,
+   "all_keys_equal": true
+  },
+  "102": {
+   "cost_equal": true,
+   "viol_equal": true,
+   "all_keys_equal": true
+  },
+  "103": {
+   "cost_equal": true,
+   "viol_equal": true,
+   "all_keys_equal": true
+  },
+  "104": {
+   "cost_equal": true,
+   "viol_equal": true,
+   "all_keys_equal": true
+  },
+  "105": {
+   "cost_equal": true,
+   "viol_equal": true,
+   "all_keys_equal": true
+  }
+ }
+}
+E14 101 1286.7 -> 1236.9 -3.87% 1.786 -> 1.935 
+E14 102 1350.7 -> 1306.0 -3.31% 1.19 -> 1.19 
+E14 103 1197.5 -> 1194.1 -0.28% 2.53 -> 2.53 
+E14 104 1188.1 -> 1187.4 -0.06% 2.381 -> 2.381 
+E14 105 1155.8 -> 1153.9 -0.17% 1.786 -> 1.786 
+F13 PRISM 101 1788.7 -> 1118.3 | viol 0.446 -> 0.298 | mem legacy {512: 0.0, 1024: 0.0, 2048: 0.9702380952380952, 3008: 0.02976190476190476} measured {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0}
+F13 PRISM 102 1949.9 -> 1168.6 | viol 0.298 -> 0.149 | mem legacy {512: 0.0, 1024: 0.0, 2048: 0.9523809523809523, 3008: 0.047619047619047616} measured {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0}
+F13 PRISM 103 1857.2 -> 1135.2 | viol 0.446 -> 0.149 | mem legacy {512: 0.0, 1024: 0.0, 2048: 0.9583333333333334, 3008: 0.041666666666666664} measured {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0}
+F13 PRISM 104 1845.4 -> 1124.7 | viol 1.042 -> 0.595 | mem legacy {512: 0.0, 1024: 0.0, 2048: 0.9583333333333334, 3008: 0.041666666666666664} measured {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0}
+F13 PRISM 105 1790.7 -> 1126.8 | viol 0.744 -> 0.298 | mem legacy {512: 0.0, 1024: 0.0, 2048: 0.9702380952380952, 3008: 0.02976190476190476} measured {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0}
+F13 PRISM measured - legacy: cost -38.51 +/- 1.52%, viol -0.298 +/- 0.185 pp
+F13 MemAdapt_q90 101 1308.0 -> 1006.4 | viol 1.935 -> 0.744 | mem legacy {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0} measured {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0}
+F13 MemAdapt_q90 102 1363.4 -> 1048.0 | viol 1.637 -> 1.042 | mem legacy {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0} measured {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0}
+F13 MemAdapt_q90 103 1327.3 -> 1021.3 | viol 1.637 -> 0.893 | mem legacy {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0} measured {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0}
+F13 MemAdapt_q90 104 1308.7 -> 1006.6 | viol 2.232 -> 0.595 | mem legacy {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0} measured {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0}
+F13 MemAdapt_q90 105 1317.1 -> 1013.2 | viol 1.19 -> 0.446 | mem legacy {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0} measured {512: 0.0, 1024: 0.0, 2048: 1.0, 3008: 0.0}
+F13 MemAdapt_q90 measured - legacy: cost -23.08 +/- 0.04%, viol -0.982 +/- 0.532 pp
+F13 PRISM - MemAdapt premium: {'legacy': (39.33, {101: 36.74920040967451, 102: 43.01591091050705, 103: 39.92463688369756, 104: 41.009381824892934, 105: 35.96119584694276}), 'measured': (11.34, {101: 11.117075626629193, 102: 11.509169688546715, 103: 11.152653840154567, 104: 11.727917373835172, 105: 11.211589426395907})}
+R13 C13_legacy|101|MemAdapt_q90 {'selected': 0.6, 'expansions': [0.5], 'at_widened_edge': False, 'test': {'cost': 1308.0, 'viol_pct': 1.935, 'meets': True, 'mem_share': None}}
+R13 C13_legacy|101|PRISM {'selected': 0.01, 'expansions': [], 'at_widened_edge': False, 'test': {'cost': 1788.7, 'viol_pct': 0.446, 'meets': True, 'mem_share': None}}
+R13 C13_legacy|102|MemAdapt_q90 {'selected': 0.6, 'expansions': [0.5], 'at_widened_edge': False, 'test': {'cost': 1363.4, 'viol_pct': 1.637, 'meets': True, 'mem_share': None}}
+R13 C13_legacy|102|PRISM {'selected': 0.01, 'expansions': [], 'at_widened_edge': False, 'test': {'cost': 1949.9, 'viol_pct': 0.298, 'meets': True, 'mem_share': None}}
+R13 C13_legacy|103|MemAdapt_q90 {'selected': 0.6, 'expansions': [0.5], 'at_widened_edge': False, 'test': {'cost': 1327.3, 'viol_pct': 1.637, 'meets': True, 'mem_share': None}}
+R13 C13_legacy|103|PRISM {'selected': 0.01, 'expansions': [], 'at_widened_edge': False, 'test': {'cost': 1857.2, 'viol_pct': 0.446, 'meets': True, 'mem_share': None}}
+R13 C13_meas|101|MemAdapt_q90 {'selected': 0.4, 'expansions': [0.5, 0.4], 'at_widened_edge': True, 'test': {'cost': 940.1, 'viol_pct': 0.744, 'meets': True, 'mem_share': None}}
+R13 C13_meas|101|PRISM {'selected': 0.01, 'expansions': [], 'at_widened_edge': False, 'test': {'cost': 1118.3, 'viol_pct': 0.298, 'meets': True, 'mem_share': None}}
+R13 C13_meas|102|MemAdapt_q90 {'selected': 0.4, 'expansions': [0.5, 0.4], 'at_widened_edge': True, 'test': {'cost': 960.1, 'viol_pct': 1.042, 'meets': True, 'mem_share': None}}
+R13 C13_meas|102|PRISM {'selected': 0.01, 'expansions': [], 'at_widened_edge': False, 'test': {'cost': 1168.6, 'viol_pct': 0.149, 'meets': True, 'mem_share': None}}
+R13 C13_meas|103|MemAdapt_q90 {'selected': 0.4, 'expansions': [0.5, 0.4], 'at_widened_edge': True, 'test': {'cost': 948.2, 'viol_pct': 0.893, 'meets': True, 'mem_share': None}}
+R13 C13_meas|103|PRISM {'selected': 0.01, 'expansions': [], 'at_widened_edge': False, 'test': {'cost': 1135.2, 'viol_pct': 0.149, 'meets': True, 'mem_share': None}}

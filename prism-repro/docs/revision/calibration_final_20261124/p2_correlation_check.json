@@ -1,0 +1,146 @@
+{
+ "legacy_eq2|14.5|512": {
+  "vw_independent": 0.2511225,
+  "vw_common": 0.314435,
+  "p99_independent_s": 19.498072257581285,
+  "p99_common_s": 24.92970263882317
+ },
+ "legacy_eq2|14.5|1024": {
+  "vw_independent": 0.0023525,
+  "vw_common": 0.0332575,
+  "p99_independent_s": 13.146578631369986,
+  "p99_common_s": 16.75499016422277
+ },
+ "legacy_eq2|14.5|2048": {
+  "vw_independent": 5e-06,
+  "vw_common": 0.0025975,
+  "p99_independent_s": 9.93922376694029,
+  "p99_common_s": 12.621381310068942
+ },
+ "legacy_eq2|14.5|3008": {
+  "vw_independent": 0.0,
+  "vw_common": 0.00078,
+  "p99_independent_s": 8.944801553762275,
+  "p99_common_s": 11.345724548212631
+ },
+ "legacy_eq2|13.0|512": {
+  "vw_independent": 0.4854925,
+  "vw_common": 0.45659,
+  "p99_independent_s": 19.498072257581285,
+  "p99_common_s": 24.92970263882317
+ },
+ "legacy_eq2|13.0|1024": {
+  "vw_independent": 0.01179,
+  "vw_common": 0.07165,
+  "p99_independent_s": 13.146578631369986,
+  "p99_common_s": 16.75499016422277
+ },
+ "legacy_eq2|13.0|2048": {
+  "vw_independent": 8.5e-05,
+  "vw_common": 0.0074975,
+  "p99_independent_s": 9.93922376694029,
+  "p99_common_s": 12.621381310068942
+ },
+ "legacy_eq2|13.0|3008": {
+  "vw_independent": 2.5e-06,
+  "vw_common": 0.002495,
+  "p99_independent_s": 8.944801553762275,
+  "p99_common_s": 11.345724548212631
+ },
+ "legacy_eq2|12.0|512": {
+  "vw_independent": 0.66996,
+  "vw_common": 0.5663925,
+  "p99_independent_s": 19.498072257581285,
+  "p99_common_s": 24.92970263882317
+ },
+ "legacy_eq2|12.0|1024": {
+  "vw_independent": 0.03383,
+  "vw_common": 0.1175075,
+  "p99_independent_s": 13.146578631369986,
+  "p99_common_s": 16.75499016422277
+ },
+ "legacy_eq2|12.0|2048": {
+  "vw_independent": 0.00042,
+  "vw_common": 0.015815,
+  "p99_independent_s": 9.93922376694029,
+  "p99_common_s": 12.621381310068942
+ },
+ "legacy_eq2|12.0|3008": {
+  "vw_independent": 5.5e-05,
+  "vw_common": 0.0059125,
+  "p99_independent_s": 8.944801553762275,
+  "p99_common_s": 11.345724548212631
+ },
+ "measured|14.5|512": {
+  "vw_independent": 0.8487425,
+  "vw_common": 0.6914825,
+  "p99_independent_s": 26.071588415234984,
+  "p99_common_s": 33.38460148335263
+ },
+ "measured|14.5|1024": {
+  "vw_independent": 0.0023525,
+  "vw_common": 0.0332575,
+  "p99_independent_s": 13.146578631369986,
+  "p99_common_s": 16.75499016422277
+ },
+ "measured|14.5|2048": {
+  "vw_independent": 0.0,
+  "vw_common": 9.75e-05,
+  "p99_independent_s": 7.703315876389407,
+  "p99_common_s": 9.755451433221168
+ },
+ "measured|14.5|3008": {
+  "vw_independent": 0.0,
+  "vw_common": 0.0001225,
+  "p99_independent_s": 7.706981156167895,
+  "p99_common_s": 9.760544014702914
+ },
+ "measured|13.0|512": {
+  "vw_independent": 0.9551925,
+  "vw_common": 0.80965,
+  "p99_independent_s": 26.071588415234984,
+  "p99_common_s": 33.38460148335263
+ },
+ "measured|13.0|1024": {
+  "vw_independent": 0.01179,
+  "vw_common": 0.07165,
+  "p99_independent_s": 13.146578631369986,
+  "p99_common_s": 16.75499016422277
+ },
+ "measured|13.0|2048": {
+  "vw_independent": 0.0,
+  "vw_common": 0.000445,
+  "p99_independent_s": 7.703315876389407,
+  "p99_common_s": 9.755451433221168
+ },
+ "measured|13.0|3008": {
+  "vw_independent": 0.0,
+  "vw_common": 0.000465,
+  "p99_independent_s": 7.706981156167895,
+  "p99_common_s": 9.760544014702914
+ },
+ "measured|12.0|512": {
+  "vw_independent": 0.9857975,
+  "vw_common": 0.8753325,
+  "p99_independent_s": 26.071588415234984,
+  "p99_common_s": 33.38460148335263
+ },
+ "measured|12.0|1024": {
+  "vw_independent": 0.03383,
+  "vw_common": 0.1175075,
+  "p99_independent_s": 13.146578631369986,
+  "p99_common_s": 16.75499016422277
+ },
+ "measured|12.0|2048": {
+  "vw_independent": 0.0,
+  "vw_common": 0.001205,
+  "p99_independent_s": 7.703315876389407,
+  "p99_common_s": 9.755451433221168
+ },
+ "measured|12.0|3008": {
+  "vw_independent": 0.0,
+  "vw_common": 0.001155,
+  "p99_independent_s": 7.706981156167895,
+  "p99_common_s": 9.760544014702914
+ }
+}
