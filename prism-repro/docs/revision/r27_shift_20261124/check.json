@@ -1,0 +1,55 @@
+{
+ "all_identical": true,
+ "fields": {
+  "cost": [
+   true,
+   true
+  ],
+  "cost_pc": [
+   true,
+   true
+  ],
+  "cost_pcd": [
+   true,
+   true
+  ],
+  "cost_od": [
+   true,
+   true
+  ],
+  "cost_init": [
+   true,
+   true
+  ],
+  "cost_req": [
+   true,
+   true
+  ],
+  "record_attainment": [
+   true,
+   true
+  ],
+  "p99_latency": [
+   true,
+   true
+  ],
+  "overflow_share": [
+   true,
+   true
+  ],
+  "cold_start_ratio": [
+   true,
+   true
+  ],
+  "violating_window_rate": [
+   true,
+   true
+  ],
+  "slo_met": [
+   true,
+   true
+  ]
+ },
+ "ref_violating": 0.005952380952380952,
+ "ref_cost": 1122.9333343199721
+}
