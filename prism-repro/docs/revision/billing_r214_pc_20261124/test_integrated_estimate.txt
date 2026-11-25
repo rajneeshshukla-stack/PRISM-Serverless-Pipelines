@@ -1,0 +1,9 @@
+test_decomposition (docs.revision.billing_r214_pc_20261124.test_integrated_estimate.T.test_decomposition) ... ok
+test_prices_are_the_simulators (docs.revision.billing_r214_pc_20261124.test_integrated_estimate.T.test_prices_are_the_simulators) ... ok
+test_rounding_hand_case_1024 (docs.revision.billing_r214_pc_20261124.test_integrated_estimate.T.test_rounding_hand_case_1024) ... ok
+test_rounding_memory_share (docs.revision.billing_r214_pc_20261124.test_integrated_estimate.T.test_rounding_memory_share) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

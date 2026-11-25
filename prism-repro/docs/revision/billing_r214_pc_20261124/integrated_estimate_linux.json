@@ -1,0 +1,727 @@
+{
+ "label": "EXPLORATORY revised estimate on saved E1 rows (validation-selected settings, development traces, test weeks); PRE-CALIBRATION; historical tables unchanged",
+ "rows_dir": "linux",
+ "decomposition_max_relative_gap": 0.0,
+ "rows_checked": 1900,
+ "cost_increase_pct": {
+  "as_run": {
+   "min": 0.0,
+   "max": 0.0,
+   "mean": 0.0
+  },
+  "rounding_mid": {
+   "min": 0.008229045242931606,
+   "max": 0.01550927803497753,
+   "mean": 0.011640460802008493
+  },
+  "rounding_upper": {
+   "min": 0.016458090485847142,
+   "max": 0.03101855606993323,
+   "mean": 0.023280921604015258
+  }
+ },
+ "max_paired_shift_rounding_points": 0.005942332393988892,
+ "classification_changes_rounding": [],
+ "paired": {
+  "QuantProv_q90|stationary": {
+   "as_run": {
+    "mean": 0.3750573946117975,
+    "hw": 3.4011985525767803
+   },
+   "rounding_mid": {
+    "mean": 0.3749939031574451,
+    "hw": 3.400734748250391
+   },
+   "rounding_upper": {
+    "mean": 0.3749304265717765,
+    "hw": 3.400271057195381
+   },
+   "lead_bound_only": {
+    "mean": 0.2303028909416774,
+    "hw": 3.593859197972374
+   },
+   "max_shift_rounding_points": 0.0001269680400209916,
+   "excl0": {
+    "as_run": false,
+    "rounding_mid": false,
+    "rounding_upper": false,
+    "lead_bound_only": false
+   }
+  },
+  "QuantProv_q90|growth": {
+   "as_run": {
+    "mean": -0.23161355519651478,
+    "hw": 3.4472024152875185
+   },
+   "rounding_mid": {
+    "mean": -0.23158471490944893,
+    "hw": 3.4467260049850537
+   },
+   "rounding_upper": {
+    "mean": -0.231555882691698,
+    "hw": 3.4462497113002737
+   },
+   "lead_bound_only": {
+    "mean": -0.3981999904785104,
+    "hw": 3.6516589872591756
+   },
+   "max_shift_rounding_points": 5.767250481678032e-05,
+   "excl0": {
+    "as_run": false,
+    "rounding_mid": false,
+    "rounding_upper": false,
+    "lead_bound_only": false
+   }
+  },
+  "QuantProv_q90|bursty": {
+   "as_run": {
+    "mean": -1.9713811787630706,
+    "hw": 4.689928921929657
+   },
+   "rounding_mid": {
+    "mean": -1.9711141887349324,
+    "hw": 4.689348432033329
+   },
+   "rounding_upper": {
+    "mean": -1.9708472628691056,
+    "hw": 4.688768072476325
+   },
+   "lead_bound_only": {
+    "mean": -2.267545438934613,
+    "hw": 4.939274721512012
+   },
+   "max_shift_rounding_points": 0.000533915893965009,
+   "excl0": {
+    "as_run": false,
+    "rounding_mid": false,
+    "rounding_upper": false,
+    "lead_bound_only": false
+   }
+  },
+  "QuantProv_q90|new_spike": {
+   "as_run": {
+    "mean": -1.5218135067178453,
+    "hw": 3.905495989501245
+   },
+   "rounding_mid": {
+    "mean": -1.5215899831135382,
+    "hw": 3.9049729612616675
+   },
+   "rounding_upper": {
+    "mean": -1.5213665154478828,
+    "hw": 3.9044500558618576
+   },
+   "lead_bound_only": {
+    "mean": -1.8115955375705568,
+    "hw": 4.1424855269484535
+   },
+   "max_shift_rounding_points": 0.0004469912699625045,
+   "excl0": {
+    "as_run": false,
+    "rounding_mid": false,
+    "rounding_upper": false,
+    "lead_bound_only": false
+   }
+  },
+  "QuantProv_q99|stationary": {
+   "as_run": {
+    "mean": -6.048760099571197,
+    "hw": 8.068926246203398
+   },
+   "rounding_mid": {
+    "mean": -6.047979319789579,
+    "hw": 8.067925438231644
+   },
+   "rounding_upper": {
+    "mean": -6.047198720437999,
+    "hw": 8.066924852492063
+   },
+   "lead_bound_only": {
+    "mean": -4.576899595185752,
+    "hw": 8.228742655949532
+   },
+   "max_shift_rounding_points": 0.0015613791331983151,
+   "excl0": {
+    "as_run": false,
+    "rounding_mid": false,
+    "rounding_upper": false,
+    "lead_bound_only": false
+   }
+  },
+  "QuantProv_q99|growth": {
+   "as_run": {
+    "mean": -6.7695998887893465,
+    "hw": 7.848924518677884
+   },
+   "rounding_mid": {
+    "mean": -6.768739281139089,
+    "hw": 7.84795537459517
+   },
+   "rounding_upper": {
+    "mean": -6.7678788714279365,
+    "hw": 7.846986445327537
+   },
+   "lead_bound_only": {
+    "mean": -5.329952036869134,
+    "hw": 8.023644249308655
+   },
+   "max_shift_rounding_points": 0.0017210173614099489,
+   "excl0": {
+    "as_run": false,
+    "rounding_mid": false,
+    "rounding_upper": false,
+    "lead_bound_only": false
+   }
+  },
+  "QuantProv_q99|bursty": {
+   "as_run": {
+    "mean": -8.732190610110505,
+    "hw": 9.672989256865078
+   },
+   "rounding_mid": {
+    "mean": -8.731171864849971,
+    "hw": 9.67189367091226
+   },
+   "rounding_upper": {
+    "mean": -8.730153336092284,
+    "hw": 9.670798312322328
+   },
+   "lead_bound_only": {
+    "mean": -7.413883628103396,
+    "hw": 10.01100964596235
+   },
+   "max_shift_rounding_points": 0.002037274018221069,
+   "excl0": {
+    "as_run": false,
+    "rounding_mid": false,
+    "rounding_upper": false,
+    "lead_bound_only": false
+   }
+  },
+  "QuantProv_q99|new_spike": {
+   "as_run": {
+    "mean": -8.25001672923475,
+    "hw": 8.596814538795735
+   },
+   "rounding_mid": {
+    "mean": -8.248998621523338,
+    "hw": 8.595775800746724
+   },
+   "rounding_upper": {
+    "mean": -8.247980739307716,
+    "hw": 8.594737286820175
+   },
+   "lead_bound_only": {
+    "mean": -6.804116615830838,
+    "hw": 8.864966387941182
+   },
+   "max_shift_rounding_points": 0.00203598992703391,
+   "excl0": {
+    "as_run": false,
+    "rounding_mid": false,
+    "rounding_upper": false,
+    "lead_bound_only": false
+   }
+  },
+  "PredHead|stationary": {
+   "as_run": {
+    "mean": 11.95995175344771,
+    "hw": 5.579756813338256
+   },
+   "rounding_mid": {
+    "mean": 11.957970745295853,
+    "hw": 5.579071241187705
+   },
+   "rounding_upper": {
+    "mean": 11.955990302714582,
+    "hw": 5.578385865347046
+   },
+   "lead_bound_only": {
+    "mean": 10.680082708636323,
+    "hw": 5.610892045834254
+   },
+   "max_shift_rounding_points": 0.003961450733127592,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": true
+   }
+  },
+  "PredHead|growth": {
+   "as_run": {
+    "mean": 12.184554210736962,
+    "hw": 5.100602891119188
+   },
+   "rounding_mid": {
+    "mean": 12.182551099872512,
+    "hw": 5.099995514454372
+   },
+   "rounding_upper": {
+    "mean": 12.180548561933847,
+    "hw": 5.0993883121068215
+   },
+   "lead_bound_only": {
+    "mean": 10.850018649736626,
+    "hw": 5.149445252068776
+   },
+   "max_shift_rounding_points": 0.004005648803115491,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": true
+   }
+  },
+  "PredHead|bursty": {
+   "as_run": {
+    "mean": 17.770223281539437,
+    "hw": 5.855649982319861
+   },
+   "rounding_mid": {
+    "mean": 17.767251688062398,
+    "hw": 5.855081490271989
+   },
+   "rounding_upper": {
+    "mean": 17.764280949145448,
+    "hw": 5.854513140481488
+   },
+   "lead_bound_only": {
+    "mean": 16.67693783707581,
+    "hw": 5.913564796137602
+   },
+   "max_shift_rounding_points": 0.005942332393988892,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": true
+   }
+  },
+  "PredHead|new_spike": {
+   "as_run": {
+    "mean": 14.533424731583903,
+    "hw": 6.1438239304603135
+   },
+   "rounding_mid": {
+    "mean": 14.53084918452081,
+    "hw": 6.14309133112343
+   },
+   "rounding_upper": {
+    "mean": 14.528274382081275,
+    "hw": 6.1423589323500565
+   },
+   "lead_bound_only": {
+    "mean": 13.603904257059886,
+    "hw": 6.155506696188518
+   },
+   "max_shift_rounding_points": 0.00515034950262816,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": true
+   }
+  },
+  "PredHead+hyst|stationary": {
+   "as_run": {
+    "mean": 3.8485027894350403,
+    "hw": 5.560240119643788
+   },
+   "rounding_mid": {
+    "mean": 3.8478996554004086,
+    "hw": 5.559514607464095
+   },
+   "rounding_upper": {
+    "mean": 3.847296677590755,
+    "hw": 5.558789276634662
+   },
+   "lead_bound_only": {
+    "mean": 4.053285076700601,
+    "hw": 5.930816778364456
+   },
+   "max_shift_rounding_points": 0.001206111844285207,
+   "excl0": {
+    "as_run": false,
+    "rounding_mid": false,
+    "rounding_upper": false,
+    "lead_bound_only": false
+   }
+  },
+  "PredHead+hyst|growth": {
+   "as_run": {
+    "mean": 3.8027912368939134,
+    "hw": 5.408139155928171
+   },
+   "rounding_mid": {
+    "mean": 3.8022008853332325,
+    "hw": 5.407427131591231
+   },
+   "rounding_upper": {
+    "mean": 3.8016106869985626,
+    "hw": 5.406715286171318
+   },
+   "lead_bound_only": {
+    "mean": 4.017493423743912,
+    "hw": 5.792761475553878
+   },
+   "max_shift_rounding_points": 0.0011805498953507687,
+   "excl0": {
+    "as_run": false,
+    "rounding_mid": false,
+    "rounding_upper": false,
+    "lead_bound_only": false
+   }
+  },
+  "PredHead+hyst|bursty": {
+   "as_run": {
+    "mean": 9.291999089212734,
+    "hw": 6.437256622872966
+   },
+   "rounding_mid": {
+    "mean": 9.290554399657488,
+    "hw": 6.436447702613634
+   },
+   "rounding_upper": {
+    "mean": 9.28911009010842,
+    "hw": 6.435638986268901
+   },
+   "lead_bound_only": {
+    "mean": 9.873605881766917,
+    "hw": 6.88994975798637
+   },
+   "max_shift_rounding_points": 0.0028889991043143937,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": true
+   }
+  },
+  "PredHead+hyst|new_spike": {
+   "as_run": {
+    "mean": 7.143092149985816,
+    "hw": 6.67866567943363
+   },
+   "rounding_mid": {
+    "mean": 7.141966808864129,
+    "hw": 6.67775312147834
+   },
+   "rounding_upper": {
+    "mean": 7.14084176534548,
+    "hw": 6.676840799001529
+   },
+   "lead_bound_only": {
+    "mean": 7.6862445692705945,
+    "hw": 7.122094947008983
+   },
+   "max_shift_rounding_points": 0.0022503846403356675,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": true
+   }
+  },
+  "Reactive|stationary": {
+   "as_run": {
+    "mean": -28.30941351650251,
+    "hw": 9.51723192957827
+   },
+   "rounding_mid": {
+    "mean": -28.306836030560447,
+    "hw": 9.516345034267719
+   },
+   "rounding_upper": {
+    "mean": -28.304258997307148,
+    "hw": 9.515458286551258
+   },
+   "lead_bound_only": {
+    "mean": -26.860049415292963,
+    "hw": 10.252491081714222
+   },
+   "max_shift_rounding_points": 0.005154519195361473,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": true
+   }
+  },
+  "Reactive|growth": {
+   "as_run": {
+    "mean": -27.678233380763754,
+    "hw": 9.333597478878515
+   },
+   "rounding_mid": {
+    "mean": -27.675701802813307,
+    "hw": 9.33272068150194
+   },
+   "rounding_upper": {
+    "mean": -27.673170674691875,
+    "hw": 9.3318440314987
+   },
+   "lead_bound_only": {
+    "mean": -26.258203240856353,
+    "hw": 10.024197758029878
+   },
+   "max_shift_rounding_points": 0.005062706071878864,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": true
+   }
+  },
+  "Reactive|bursty": {
+   "as_run": {
+    "mean": -25.405455678438166,
+    "hw": 9.787623539680078
+   },
+   "rounding_mid": {
+    "mean": -25.403173670980426,
+    "hw": 9.78672491230097
+   },
+   "rounding_upper": {
+    "mean": -25.400892059324228,
+    "hw": 9.785826434007124
+   },
+   "lead_bound_only": {
+    "mean": -23.697515120418185,
+    "hw": 10.55623148607931
+   },
+   "max_shift_rounding_points": 0.004563619113937989,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": true
+   }
+  },
+  "Reactive|new_spike": {
+   "as_run": {
+    "mean": -26.459961336325733,
+    "hw": 10.07711561646915
+   },
+   "rounding_mid": {
+    "mean": -26.457535551308627,
+    "hw": 10.076167071328124
+   },
+   "rounding_upper": {
+    "mean": -26.455110192123822,
+    "hw": 10.075218683616205
+   },
+   "lead_bound_only": {
+    "mean": -24.756945357832194,
+    "hw": 10.866322952377356
+   },
+   "max_shift_rounding_points": 0.004851144201911239,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": true
+   }
+  },
+  "Static|stationary": {
+   "as_run": {
+    "mean": -24.386882962564737,
+    "hw": 11.286490292356804
+   },
+   "rounding_mid": {
+    "mean": -24.384585798816666,
+    "hw": 11.28567178699723
+   },
+   "rounding_upper": {
+    "mean": -24.382289056442357,
+    "hw": 11.284853375488668
+   },
+   "lead_bound_only": {
+    "mean": -20.196351039649265,
+    "hw": 12.029816342491248
+   },
+   "max_shift_rounding_points": 0.004593906122380531,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": true
+   }
+  },
+  "Static|growth": {
+   "as_run": {
+    "mean": -12.9716520991023,
+    "hw": 11.20159957895552
+   },
+   "rounding_mid": {
+    "mean": -12.970355181425173,
+    "hw": 11.200418953182622
+   },
+   "rounding_upper": {
+    "mean": -12.969058532977176,
+    "hw": 11.199238547070742
+   },
+   "lead_bound_only": {
+    "mean": -8.166349722528926,
+    "hw": 12.008522764086008
+   },
+   "max_shift_rounding_points": 0.0025935661251246245,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": false
+   }
+  },
+  "Static|bursty": {
+   "as_run": {
+    "mean": -19.147679070602827,
+    "hw": 9.861563951067733
+   },
+   "rounding_mid": {
+    "mean": -19.14587437343446,
+    "hw": 9.860777912392559
+   },
+   "rounding_upper": {
+    "mean": -19.144070012924114,
+    "hw": 9.8599919768999
+   },
+   "lead_bound_only": {
+    "mean": -14.418437055692175,
+    "hw": 10.449291454614464
+   },
+   "max_shift_rounding_points": 0.003609057678712446,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": true
+   }
+  },
+  "Static|new_spike": {
+   "as_run": {
+    "mean": -12.75573959038642,
+    "hw": 10.370795101976432
+   },
+   "rounding_mid": {
+    "mean": -12.754460522605957,
+    "hw": 10.369718128393266
+   },
+   "rounding_upper": {
+    "mean": -12.753181716419054,
+    "hw": 10.36864134983022
+   },
+   "lead_bound_only": {
+    "mean": -7.794474078476443,
+    "hw": 11.129771249969467
+   },
+   "max_shift_rounding_points": 0.0025578739673672857,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": false
+   }
+  },
+  "Scheduled|stationary": {
+   "as_run": {
+    "mean": -17.918485133303246,
+    "hw": 10.341408335886578
+   },
+   "rounding_mid": {
+    "mean": -17.916590030165157,
+    "hw": 10.340278538329432
+   },
+   "rounding_upper": {
+    "mean": -17.914695307636226,
+    "hw": 10.339148962488899
+   },
+   "lead_bound_only": {
+    "mean": -13.82923974951434,
+    "hw": 11.437818631542228
+   },
+   "max_shift_rounding_points": 0.0037898256670203523,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": true
+   }
+  },
+  "Scheduled|growth": {
+   "as_run": {
+    "mean": -6.4288516262078845,
+    "hw": 11.139926047278777
+   },
+   "rounding_mid": {
+    "mean": -6.428189292776113,
+    "hw": 11.138483009967146
+   },
+   "rounding_upper": {
+    "mean": -6.427527110787784,
+    "hw": 11.137040310896053
+   },
+   "lead_bound_only": {
+    "mean": -1.7201387096556229,
+    "hw": 12.376475930599156
+   },
+   "max_shift_rounding_points": 0.0013245154201007026,
+   "excl0": {
+    "as_run": false,
+    "rounding_mid": false,
+    "rounding_upper": false,
+    "lead_bound_only": false
+   }
+  },
+  "Scheduled|bursty": {
+   "as_run": {
+    "mean": -12.173551981390702,
+    "hw": 11.068189450025203
+   },
+   "rounding_mid": {
+    "mean": -12.172274780024718,
+    "hw": 11.066967637728128
+   },
+   "rounding_upper": {
+    "mean": -12.17099783910265,
+    "hw": 11.065746071277387
+   },
+   "lead_bound_only": {
+    "mean": -7.5102177991036285,
+    "hw": 12.258487465698202
+   },
+   "max_shift_rounding_points": 0.0025541422880515086,
+   "excl0": {
+    "as_run": true,
+    "rounding_mid": true,
+    "rounding_upper": true,
+    "lead_bound_only": false
+   }
+  },
+  "Scheduled|new_spike": {
+   "as_run": {
+    "mean": -5.931510750337706,
+    "hw": 11.485404109623978
+   },
+   "rounding_mid": {
+    "mean": -5.930879229749529,
+    "hw": 11.483914096792462
+   },
+   "rounding_upper": {
+    "mean": -5.930247850255905,
+    "hw": 11.48242442618815
+   },
+   "lead_bound_only": {
+    "mean": -1.0484107384488426,
+    "hw": 12.779740009513368
+   },
+   "max_shift_rounding_points": 0.001262900081800744,
+   "excl0": {
+    "as_run": false,
+    "rounding_mid": false,
+    "rounding_upper": false,
+    "lead_bound_only": false
+   }
+  }
+ }
+}
