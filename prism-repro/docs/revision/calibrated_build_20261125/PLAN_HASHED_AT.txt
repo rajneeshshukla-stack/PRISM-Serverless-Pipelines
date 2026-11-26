@@ -1,0 +1,1 @@
+RUN_PLAN.md, ADOPTED_DECISIONS.md and ADDENDUM.md hashed 2026-11-25T05:32:06Z, before the build and before any run of this pass

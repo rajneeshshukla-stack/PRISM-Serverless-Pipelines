@@ -1,0 +1,20 @@
+CAL145C sha 47dfd93b71879e5d vs CAL145 698d05115bf50809; fields differing: ['init_scaling']
+  init_scaling constant init_max_s 10.0 init_shape 0.3 init_mean_1024 6.0
+  512 MB: mean new 5.8247 old 7.0085; untrunc new 6.0000
+  1024 MB: mean new 5.8247 old 5.8247; untrunc new 6.0000
+  2048 MB: mean new 5.8247 old 5.0497; untrunc new 6.0000
+  3008 MB: mean new 5.8247 old 4.7826; untrunc new 6.0000
+  new: draws at 2048 == draws at 1024 (same multipliers): True ; quantiles 50/90/99/max [ 5.668  8.057  9.644 10.   ]
+  new vs old at 1024 MB identical draws: True ; attainment table at 1024 identical: True
+  attainment k cold, 2048 MB new [0.9999 0.9312 0.1865 0.0011 0.    ] old [0.9999 0.964  0.3904 0.0116 0.    ]
+  init_factor(1024) eq3 = 1.0
+CAL12C sha 97bb96e3a3e18119 vs CAL12 7c9ec37c98b58d7e; fields differing: ['init_scaling']
+  init_scaling constant init_max_s 10.0 init_shape 0.3 init_mean_1024 6.0
+  512 MB: mean new 5.8247 old 7.0085; untrunc new 6.0000
+  1024 MB: mean new 5.8247 old 5.8247; untrunc new 6.0000
+  2048 MB: mean new 5.8247 old 5.0497; untrunc new 6.0000
+  3008 MB: mean new 5.8247 old 4.7826; untrunc new 6.0000
+  new: draws at 2048 == draws at 1024 (same multipliers): True ; quantiles 50/90/99/max [ 5.668  8.057  9.644 10.   ]
+  new vs old at 1024 MB identical draws: True ; attainment table at 1024 identical: True
+  attainment k cold, 2048 MB new [0.9988 0.6789 0.0218 0.     0.    ] old [9.988e-01 7.972e-01 8.100e-02 2.000e-04 0.000e+00]
+  init_factor(1024) eq3 = 1.0

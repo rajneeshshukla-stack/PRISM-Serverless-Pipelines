@@ -1,0 +1,98 @@
+{
+ "CAL (rho 0.998, start-up <10 s)|14.5|512": {
+  "v_w": 0.6912675,
+  "cold_miss": 0.9910125
+ },
+ "CAL (rho 0.998, start-up <10 s)|14.5|1024": {
+  "v_w": 0.0328375,
+  "cold_miss": 0.489635
+ },
+ "CAL (rho 0.998, start-up <10 s)|14.5|2048": {
+  "v_w": 0.0001375,
+  "cold_miss": 0.0363075
+ },
+ "CAL (rho 0.998, start-up <10 s)|14.5|3008": {
+  "v_w": 0.0001375,
+  "cold_miss": 0.02764
+ },
+ "CAL (rho 0.998, start-up <10 s)|12.0|512": {
+  "v_w": 0.875265,
+  "cold_miss": 0.9994925
+ },
+ "CAL (rho 0.998, start-up <10 s)|12.0|1024": {
+  "v_w": 0.11837,
+  "cold_miss": 0.8142125
+ },
+ "CAL (rho 0.998, start-up <10 s)|12.0|2048": {
+  "v_w": 0.0012425,
+  "cold_miss": 0.202635
+ },
+ "CAL (rho 0.998, start-up <10 s)|12.0|3008": {
+  "v_w": 0.00123,
+  "cold_miss": 0.1670275
+ },
+ "rho 0 sensitivity|14.5|512": {
+  "v_w": 0.848845,
+  "cold_miss": 0.9998975
+ },
+ "rho 0 sensitivity|14.5|1024": {
+  "v_w": 0.0021625,
+  "cold_miss": 0.5153925
+ },
+ "rho 0 sensitivity|14.5|2048": {
+  "v_w": 0.0,
+  "cold_miss": 0.015615
+ },
+ "rho 0 sensitivity|14.5|3008": {
+  "v_w": 0.0,
+  "cold_miss": 0.01047
+ },
+ "rho 0 sensitivity|12.0|512": {
+  "v_w": 0.9857975,
+  "cold_miss": 1.0
+ },
+ "rho 0 sensitivity|12.0|1024": {
+  "v_w": 0.0337425,
+  "cold_miss": 0.9015425
+ },
+ "rho 0 sensitivity|12.0|2048": {
+  "v_w": 5e-06,
+  "cold_miss": 0.163895
+ },
+ "rho 0 sensitivity|12.0|3008": {
+  "v_w": 5e-06,
+  "cold_miss": 0.126
+ },
+ "untruncated start-up sensitivity|14.5|512": {
+  "v_w": 0.6912675,
+  "cold_miss": 0.99251
+ },
+ "untruncated start-up sensitivity|14.5|1024": {
+  "v_w": 0.0328375,
+  "cold_miss": 0.5057625
+ },
+ "untruncated start-up sensitivity|14.5|2048": {
+  "v_w": 0.0001375,
+  "cold_miss": 0.0430675
+ },
+ "untruncated start-up sensitivity|14.5|3008": {
+  "v_w": 0.0001375,
+  "cold_miss": 0.03172
+ },
+ "untruncated start-up sensitivity|12.0|512": {
+  "v_w": 0.875265,
+  "cold_miss": 0.999575
+ },
+ "untruncated start-up sensitivity|12.0|1024": {
+  "v_w": 0.11837,
+  "cold_miss": 0.8201725
+ },
+ "untruncated start-up sensitivity|12.0|2048": {
+  "v_w": 0.0012425,
+  "cold_miss": 0.2092475
+ },
+ "untruncated start-up sensitivity|12.0|3008": {
+  "v_w": 0.00123,
+  "cold_miss": 0.171125
+ }
+}

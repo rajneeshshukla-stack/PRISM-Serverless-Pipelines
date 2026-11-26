@@ -1,0 +1,24 @@
+CAL (rho 0.998, start-up <10 s)     14.5 s  512 MB  warm miss  69.127%  one-cold-stage miss  99.10%
+CAL (rho 0.998, start-up <10 s)     14.5 s 1024 MB  warm miss   3.284%  one-cold-stage miss  48.96%
+CAL (rho 0.998, start-up <10 s)     14.5 s 2048 MB  warm miss   0.014%  one-cold-stage miss   3.63%
+CAL (rho 0.998, start-up <10 s)     14.5 s 3008 MB  warm miss   0.014%  one-cold-stage miss   2.76%
+CAL (rho 0.998, start-up <10 s)     12.0 s  512 MB  warm miss  87.526%  one-cold-stage miss  99.95%
+CAL (rho 0.998, start-up <10 s)     12.0 s 1024 MB  warm miss  11.837%  one-cold-stage miss  81.42%
+CAL (rho 0.998, start-up <10 s)     12.0 s 2048 MB  warm miss   0.124%  one-cold-stage miss  20.26%
+CAL (rho 0.998, start-up <10 s)     12.0 s 3008 MB  warm miss   0.123%  one-cold-stage miss  16.70%
+rho 0 sensitivity                   14.5 s  512 MB  warm miss  84.885%  one-cold-stage miss  99.99%
+rho 0 sensitivity                   14.5 s 1024 MB  warm miss   0.216%  one-cold-stage miss  51.54%
+rho 0 sensitivity                   14.5 s 2048 MB  warm miss   0.000%  one-cold-stage miss   1.56%
+rho 0 sensitivity                   14.5 s 3008 MB  warm miss   0.000%  one-cold-stage miss   1.05%
+rho 0 sensitivity                   12.0 s  512 MB  warm miss  98.580%  one-cold-stage miss 100.00%
+rho 0 sensitivity                   12.0 s 1024 MB  warm miss   3.374%  one-cold-stage miss  90.15%
+rho 0 sensitivity                   12.0 s 2048 MB  warm miss   0.001%  one-cold-stage miss  16.39%
+rho 0 sensitivity                   12.0 s 3008 MB  warm miss   0.001%  one-cold-stage miss  12.60%
+untruncated start-up sensitivity    14.5 s  512 MB  warm miss  69.127%  one-cold-stage miss  99.25%
+untruncated start-up sensitivity    14.5 s 1024 MB  warm miss   3.284%  one-cold-stage miss  50.58%
+untruncated start-up sensitivity    14.5 s 2048 MB  warm miss   0.014%  one-cold-stage miss   4.31%
+untruncated start-up sensitivity    14.5 s 3008 MB  warm miss   0.014%  one-cold-stage miss   3.17%
+untruncated start-up sensitivity    12.0 s  512 MB  warm miss  87.526%  one-cold-stage miss  99.96%
+untruncated start-up sensitivity    12.0 s 1024 MB  warm miss  11.837%  one-cold-stage miss  82.02%
+untruncated start-up sensitivity    12.0 s 2048 MB  warm miss   0.124%  one-cold-stage miss  20.92%
+untruncated start-up sensitivity    12.0 s 3008 MB  warm miss   0.123%  one-cold-stage miss  17.11%

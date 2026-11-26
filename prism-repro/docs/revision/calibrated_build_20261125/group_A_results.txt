@@ -1,0 +1,49 @@
+Group A: CAL (per-size factors, rho 0.998, start-up truncated at 10 s), 14.5 s, traces 101-105, prespecified tuning; stationary test week
+
+trace family            sel  edge compliant val? | test:    cost  viol% attain% >=2048%
+  101 PRISM            0.01     -            yes |        1099.5   0.15   99.96   100.0
+  101 QuantProv_q90     0.4   YES           none |         810.3 100.00   96.24     0.0
+  101 Reactive          1.0   YES           none |        1458.9 100.00   96.33     0.0
+  101 MemAdapt_q90      0.4   YES            yes |         939.6   0.15   99.94   100.0
+  102 PRISM            0.01     -            yes |        1123.6   0.15   99.96   100.0
+  102 QuantProv_q90     0.4   YES           none |         828.4 100.00   96.25     0.0
+  102 Reactive          1.0   YES           none |        1404.0 100.00   96.35     0.0
+  102 MemAdapt_q90      0.4   YES            yes |         960.0   0.60   99.93   100.0
+  103 PRISM            0.01     -            yes |        1117.6   0.15   99.96   100.0
+  103 QuantProv_q90     0.4   YES           none |         817.7 100.00   96.23     0.0
+  103 Reactive          1.0   YES           none |        1412.0 100.00   96.36     0.0
+  103 MemAdapt_q90      0.4   YES            yes |         948.2   0.60   99.93   100.0
+  104 PRISM            0.01     -            yes |        1085.6   0.45   99.95   100.0
+  104 QuantProv_q90     0.4   YES           none |         800.6 100.00   96.25     0.0
+  104 Reactive          1.0   YES           none |        1388.5 100.00   96.35     0.0
+  104 MemAdapt_q90      0.4   YES            yes |         928.4   0.30   99.93   100.0
+  105 PRISM            0.01     -            yes |        1110.3   0.15   99.96   100.0
+  105 QuantProv_q90     0.4   YES           none |         817.1 100.00   96.26     0.0
+  105 Reactive          1.0   YES           none |        1429.5 100.00   96.34     0.0
+  105 MemAdapt_q90      0.4   YES            yes |         947.7   0.30   99.94   100.0
+
+Neighbouring validation weeks (param: cost / violating % / >=2048 MB %):
+  101 QuantProv_q90: selected 0.4: 815.0 / 100.0 / 0.0  | 0.5: 830.3 / 100.0 / 0.0; 0.6: 857.1 / 100.0 / 0.0
+  101 Reactive: selected 1.0: 1448.0 / 100.0 / 0.0  | 0.9: 1488.5 / 100.0 / 0.0; 0.95: 1466.6 / 100.0 / 0.0
+  101 MemAdapt_q90: selected 0.4: 945.1 / 0.74 / 100.0  | 0.5: 961.9 / 0.74 / 100.0; 0.6: 991.2 / 0.74 / 100.0
+  102 QuantProv_q90: selected 0.4: 818.9 / 100.0 / 0.0  | 0.5: 835.5 / 100.0 / 0.0; 0.6: 864.0 / 100.0 / 0.0
+  102 Reactive: selected 1.0: 1455.9 / 100.0 / 0.0  | 0.9: 1488.1 / 100.0 / 0.0; 0.95: 1472.6 / 100.0 / 0.0
+  102 MemAdapt_q90: selected 0.4: 949.9 / 0.15 / 100.0  | 0.5: 968.3 / 0.15 / 100.0; 0.6: 999.3 / 0.15 / 100.0
+  103 QuantProv_q90: selected 0.4: 786.1 / 100.0 / 0.0  | 0.5: 801.3 / 100.0 / 0.0; 0.6: 827.9 / 100.0 / 0.0
+  103 Reactive: selected 1.0: 1364.2 / 100.0 / 0.0  | 0.9: 1412.4 / 100.0 / 0.0; 0.95: 1388.5 / 100.0 / 0.0
+  103 MemAdapt_q90: selected 0.4: 912.2 / 0.3 / 100.0  | 0.5: 929.0 / 0.15 / 100.0; 0.6: 958.0 / 0.15 / 100.0
+  104 QuantProv_q90: selected 0.4: 803.9 / 100.0 / 0.0  | 0.5: 828.5 / 100.0 / 0.0; 0.6: 864.8 / 100.0 / 0.0
+  104 Reactive: selected 1.0: 1397.8 / 100.0 / 0.0  | 0.9: 1447.5 / 100.0 / 0.0; 0.95: 1423.8 / 100.0 / 0.0
+  104 MemAdapt_q90: selected 0.4: 932.4 / 0.15 / 100.0  | 0.5: 959.2 / 0.15 / 100.0; 0.6: 999.2 / 0.15 / 100.0
+  105 QuantProv_q90: selected 0.4: 811.5 / 100.0 / 0.0  | 0.5: 832.5 / 100.0 / 0.0; 0.6: 865.0 / 100.0 / 0.0
+  105 Reactive: selected 1.0: 1406.3 / 100.0 / 0.0  | 0.9: 1446.1 / 100.0 / 0.0; 0.95: 1425.9 / 100.0 / 0.0
+  105 MemAdapt_q90: selected 0.4: 941.3 / 0.15 / 100.0  | 0.5: 964.4 / 0.15 / 100.0; 0.6: 999.9 / 0.15 / 100.0
+
+Rule 1 (14.5 s P2 finding): VERIFIED
+  >=2048 MB in >=95% of epochs on every trace: {'PRISM': True, 'MemAdapt_q90': True}
+  traces meeting 2%: {'PRISM': 5, 'MemAdapt_q90': 5} (need >=4 each)
+  PRISM costlier than MemAdapt: 5/5 (need >=4); premium %: {101: 17.0, 102: 17.0, 103: 17.9, 104: 16.9, 105: 17.2}
+
+Unresolved edges (traces): {'PRISM': [], 'QuantProv_q90': [101, 102, 103, 104, 105], 'Reactive': [101, 102, 103, 104, 105], 'MemAdapt_q90': [101, 102, 103, 104, 105]}
+C1-C2 edge rule (no C1-C2 family at an unresolved edge on >=2/5): FAILED for {'QuantProv_q90': [101, 102, 103, 104, 105], 'Reactive': [101, 102, 103, 104, 105]}
+Identical request streams per (trace, week) across families: True
