@@ -7,6 +7,9 @@ R. Shukla, E. Ramasamy, V. Shukla, P. Gupta (manuscript V2.8, submission candida
 > code with the paper. Repository: https://github.com/rajneeshshukla-stack/PRISM-Serverless-Pipelines
 > (private during review). The licence and the archive (DOI) are still to be chosen (`LICENSE_PENDING.md`). Until a licence is added, default copyright applies.
 
+> **Revision (November 2026):** the reproducibility index for the revised manuscript is
+> [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md). The sections below describe the submitted (v1) results.
+
 ## What this is
 
 The implementation of PRISM, all baselines, both simulators (fast per-minute and event-level) and the

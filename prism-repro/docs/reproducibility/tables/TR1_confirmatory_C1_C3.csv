@@ -1,0 +1,4 @@
+comparison,pair,traces,cost_diff_pct,cost_ci95,cost_call,viol_diff_pts,viol_ci95,compliance_call,traces_cheaper_costlier
+C1,PRISM vs QuantProv_q90,25,+0.30,"[-1.42, +2.01]","not distinguishable (includes 0, exceeds +/-2%)",-0.106,"[-0.274, +0.062]",similar compliance (within +/-0.5 points),11 / 14
+C2,PRISM vs Reactive,25,-26.49,"[-28.76, -24.23]",difference: PRISM cheaper,+0.018,"[-0.296, +0.332]",similar compliance (within +/-0.5 points),25 / 0
+C3,PRISM vs MemAdapt_q90,25,+13.06,"[+8.50, +17.63]",difference: PRISM costlier,-0.655,"[-0.921, -0.389]",cost comparison confounded by compliance,4 / 21

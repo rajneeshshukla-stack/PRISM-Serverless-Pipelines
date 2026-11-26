@@ -1,0 +1,12 @@
+quantity,policy,value,half_width_95,unit,n_traces,source
+violating windows,PRISM,2.11,1.32,% of 15-min windows,5,regeneration_20261122/outputs/tables/T5_test_weeks.md new_spike
+weekly cost,PRISM,1270.0,123.0,USD/week (simulated),5,same
+violating windows,PredHead+hyst,4.11,2.28,% of 15-min windows,5,regeneration_20261122/outputs/tables/T5_test_weeks.md new_spike
+weekly cost,PredHead+hyst,1150.0,54.0,USD/week (simulated),5,same
+violating windows,PredHead,7.92,2.42,% of 15-min windows,5,regeneration_20261122/outputs/tables/T5_test_weeks.md new_spike
+weekly cost,PredHead,1077.0,69.0,USD/week (simulated),5,same
+PRISM traces meeting 2%,PRISM,40%,,share of 5 traces,5,"same, SLO met"
+2048 MB headroom cheaper than best PRISM,ns0.5 D13.0,27.27,,%,2,regeneration_20261122/outputs/tables/revision/E4b_fixed_memory_summary.json
+2048 MB headroom cheaper than best PRISM,ns0.5 D12.0,22.24,,%,2,regeneration_20261122/outputs/tables/revision/E4b_fixed_memory_summary.json
+2048 MB headroom cheaper than best PRISM,ns0.5 D11.0,12.88,,%,2,regeneration_20261122/outputs/tables/revision/E4b_fixed_memory_summary.json
+2048 MB headroom cheaper than best PRISM,ns0.15 D12.0,13.5,,%,2,regeneration_20261122/outputs/tables/revision/E4b_fixed_memory_summary.json
