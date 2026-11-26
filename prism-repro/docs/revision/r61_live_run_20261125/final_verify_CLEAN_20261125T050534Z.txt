@@ -1,0 +1,10 @@
+# R6.1 final cleanup check (read-only), sanitized record
+# Command (run sheet section 6, read-only): $PY -m prism_pipeline --region us-east-2 verify --execute
+# Ran after the in-run teardown reported NOT CLEAN (state machine still listed while DELETING).
+# Source: the session's saved output of that command (148 bytes, SHA-256 13f42089c1da20802e68a7f9e471e29795af7948f3ce48677dfb2ecebb3e196a),
+#   copied verbatim below. Line endings normalised to LF and the shell's exit-status line dropped (exit code 0).
+# It contains no account ID, ARN, request or execution ID: the resource lists are empty.
+# Copied into this folder 25 Nov 2026; no AWS call was made to produce this file.
+2026-11-25T05:05:34Z after 2 checks:
+remaining: {'functions': [], 'state_machines': [], 'log_groups': [], 'roles': []}
+CLEAN
