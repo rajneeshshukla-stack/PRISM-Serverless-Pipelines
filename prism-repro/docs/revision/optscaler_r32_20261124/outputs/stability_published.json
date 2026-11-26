@@ -1,0 +1,191 @@
+{
+ "summary": {
+  "runs": 20,
+  "all_costs_equal": true,
+  "w_ratio_min": 0.31695620331894,
+  "w_ratio_max": 1.202033907335367,
+  "epochs_P_zero": 0
+ },
+ "runs": [
+  {
+   "seed": 101,
+   "scenario": "stationary",
+   "cost": 1364.5513988180628,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.6604292401504852,
+   "w_ratio_max": 1.1916908025846387,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 101,
+   "scenario": "growth",
+   "cost": 1758.6674564316154,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.6179553084278375,
+   "w_ratio_max": 1.125177348242851,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 101,
+   "scenario": "bursty",
+   "cost": 1392.1098871133315,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.31695620331894,
+   "w_ratio_max": 1.1890010732032827,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 101,
+   "scenario": "new_spike",
+   "cost": 1660.5967061975277,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.640555274577785,
+   "w_ratio_max": 1.1365477546501672,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 102,
+   "scenario": "stationary",
+   "cost": 1377.0881886445918,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.6297928685494879,
+   "w_ratio_max": 1.1811990165014241,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 102,
+   "scenario": "growth",
+   "cost": 1777.5449837086985,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.6095289905387079,
+   "w_ratio_max": 1.1277961593930061,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 102,
+   "scenario": "bursty",
+   "cost": 1395.6716270835477,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.6297928685503559,
+   "w_ratio_max": 1.1431114303331082,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 102,
+   "scenario": "new_spike",
+   "cost": 1686.1697727027495,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.6466704582422849,
+   "w_ratio_max": 1.1190919201669636,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 103,
+   "scenario": "stationary",
+   "cost": 1375.627895047539,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.6029997978945872,
+   "w_ratio_max": 1.202033907335367,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 103,
+   "scenario": "growth",
+   "cost": 1777.8966945438485,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.5375455531723675,
+   "w_ratio_max": 1.1425102412844519,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 103,
+   "scenario": "bursty",
+   "cost": 1401.6247468167094,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.4799128097527284,
+   "w_ratio_max": 1.1945376244201082,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 103,
+   "scenario": "new_spike",
+   "cost": 1688.1909011235996,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.5875987490713185,
+   "w_ratio_max": 1.1279405585566609,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 104,
+   "scenario": "stationary",
+   "cost": 1340.6922854273876,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.5842359808186424,
+   "w_ratio_max": 1.1882129877436396,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 104,
+   "scenario": "growth",
+   "cost": 1732.1631888973263,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.5502763235072643,
+   "w_ratio_max": 1.1386747729579576,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 104,
+   "scenario": "bursty",
+   "cost": 1365.9232540937467,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.4753326195553459,
+   "w_ratio_max": 1.188175879978354,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 104,
+   "scenario": "new_spike",
+   "cost": 1646.8653719729257,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.6010024802340439,
+   "w_ratio_max": 1.1359628167114308,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 105,
+   "scenario": "stationary",
+   "cost": 1377.7504431705386,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.4402519522756775,
+   "w_ratio_max": 1.1697178907264345,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 105,
+   "scenario": "growth",
+   "cost": 1775.164109970085,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.4243543462650766,
+   "w_ratio_max": 1.1104628516230248,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 105,
+   "scenario": "bursty",
+   "cost": 1400.3724992525842,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.44025157003381626,
+   "w_ratio_max": 1.1621314852746567,
+   "epochs_P_zero": 0
+  },
+  {
+   "seed": 105,
+   "scenario": "new_spike",
+   "cost": 1673.0770910213955,
+   "cost_equals_rows": true,
+   "w_ratio_min": 0.43883909565329016,
+   "w_ratio_max": 1.1272786530998513,
+   "epochs_P_zero": 0
+  }
+ ]
+}

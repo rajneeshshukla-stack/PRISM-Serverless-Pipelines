@@ -37,7 +37,7 @@ class QuantileGBM:
 
     def fit(self, t_lo: int, t_hi: int):
         """Fit on decision minutes t in [t_lo, t_hi) whose targets lie inside [.., t_hi)."""
-        ts = np.arange(max(t_lo, self.fb.min_t), t_hi - 6)
+        ts = np.arange(max(t_lo, self.fb.min_t), t_hi - self.fb.h_hi)
         X, lev = self.fb.matrix(ts)
         y = self.fb.target(ts) / lev
         for tau in TAUS:
@@ -81,7 +81,7 @@ class RatioQuantileForecaster:
         return self._ewma[ts]
 
     def fit(self, t_lo, t_hi):
-        ts = np.arange(max(t_lo, self.fb.min_t), t_hi - 6)
+        ts = np.arange(max(t_lo, self.fb.min_t), t_hi - self.fb.h_hi)
         f = np.maximum(self.point(ts), 1.0)
         r = self.fb.target(ts) / f
         self.ratio_q = np.quantile(r, TAUS)
@@ -105,11 +105,18 @@ class ConformalScaler:
     s_max: float = 0.8
     delay: int = 2
     s: float = 0.0
+    # R2.11: independent offsets for q0.9 (target miss target_q90) and q0.99 (target). Off by
+    # default: one offset, driven by q0.99 misses, scales both (submitted Eq. (13)).
+    per_quantile: bool = False
+    target_q90: float = 0.10
 
     def run(self, q_raw: np.ndarray, y: np.ndarray, s0: float = 0.0):
         """Batch replay over consecutive epochs. Returns (calibrated quantiles, offset used
         at each epoch, number of order reversals before re-ordering). The offset used at
-        epoch k incorporates outcomes of epochs <= k - delay (§IV-B)."""
+        epoch k incorporates outcomes of epochs <= k - delay (§IV-B). With per_quantile the
+        offset array has shape (K, 2): columns for q0.9 and q0.99."""
+        if self.per_quantile:
+            return self._run_per_quantile(q_raw, y, s0)
         K = len(q_raw)
         s_used = np.empty(K)
         s = s0
@@ -128,10 +135,35 @@ class ConformalScaler:
         self.s = s
         return q, s_used, rev
 
+    def _run_per_quantile(self, q_raw, y, s0):
+        K = len(q_raw)
+        s_used = np.empty((K, 2))
+        s = np.broadcast_to(np.asarray(s0, float), (2,)).copy()
+        tgt = np.array([self.target_q90, self.target])
+        pending = []  # (epoch index, (U90, U99))
+        for k in range(K):
+            while pending and pending[0][0] <= k - self.delay:
+                j, U = pending.pop(0)
+                if np.isfinite(y[j]):
+                    s = np.clip(s + self.gamma * ((y[j] > U) - tgt), self.s_min, self.s_max)
+            s_used[k] = s
+            pending.append((k, q_raw[k, 2:4] * np.exp(s)))
+        q = calibrate(q_raw, s_used)
+        rev = int(np.sum(np.any(np.diff(apply_offset(q_raw, s_used), axis=1) < 0, axis=1)))
+        self.s = s
+        return q, s_used, rev
+
 
 def apply_offset(q_raw, s):
+    """Scale q0.9 and q0.99 by exp(s). s is one offset per row (shared, Eq. (13)) or, for
+    per-quantile calibration (R2.11), shape (..., 2) with columns for q0.9 and q0.99."""
     q = np.array(q_raw, float, copy=True)
-    f = np.exp(np.asarray(s, float))
+    s = np.asarray(s, float)
+    if s.ndim >= 1 and s.shape[-1] == 2 and s.shape[:-1] == q.shape[:-1]:
+        q[..., 2] = q[..., 2] * np.exp(s[..., 0])
+        q[..., 3] = q[..., 3] * np.exp(s[..., 1])
+        return q
+    f = np.exp(s)
     q[..., 2] = q[..., 2] * f
     q[..., 3] = q[..., 3] * f
     return q

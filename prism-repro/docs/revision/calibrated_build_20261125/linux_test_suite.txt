@@ -1,0 +1,233 @@
+test_closed_form_means_per_direction (test_analytic.TestInitScalingDirection.test_closed_form_means_per_direction) ... ok
+test_rho_per_direction_against_independent_monte_carlo (test_analytic.TestInitScalingDirection.test_rho_per_direction_against_independent_monte_carlo) ... ok
+test_C02_break_even (test_analytic.TestLatencyAndPrices.test_C02_break_even) ... ok
+test_C03_doubling_memory (test_analytic.TestLatencyAndPrices.test_C03_doubling_memory) ... ok
+test_C04_exponential_tail_exact (test_analytic.TestLatencyAndPrices.test_C04_exponential_tail_exact) ... ok
+test_C06_table3_miss_probabilities (test_analytic.TestLatencyAndPrices.test_C06_table3_miss_probabilities) ... ok
+test_C39_window_share (test_analytic.TestLatencyAndPrices.test_C39_window_share) ... ok
+test_break_even_is_cost_indifference (test_analytic.TestLatencyAndPrices.test_break_even_is_cost_indifference)
+At utilisation u, a provisioned env costs pc + u*pcd per GB-s of capacity versus ... ok
+test_lognormal_mean_one (test_analytic.TestLatencyAndPrices.test_lognormal_mean_one) ... ok
+test_stage_cost_hand_example (test_analytic.TestLatencyAndPrices.test_stage_cost_hand_example) ... ok
+test_C01_reported_values (test_analytic.TestOverflowFormulas.test_C01_reported_values) ... ok
+test_C05_ceff_is_upper45_mean_with_intensity (test_analytic.TestOverflowFormulas.test_C05_ceff_is_upper45_mean_with_intensity)
+c_eff ~ E_Z[mean of the upper 45 % of Poisson(c Z)], Z=exp(0.148 N) — the same ... ok
+test_erlang_b_matches_recursion_and_sum (test_analytic.TestOverflowFormulas.test_erlang_b_matches_recursion_and_sum) ... ok
+test_monotonicity (test_analytic.TestOverflowFormulas.test_monotonicity) ... ok
+test_occupancy_matches_bruteforce (test_analytic.TestOverflowFormulas.test_occupancy_matches_bruteforce) ... ok
+test_record_violation_limits (test_analytic.TestOverflowFormulas.test_record_violation_limits) ... ok
+test_zero_load (test_analytic.TestOverflowFormulas.test_zero_load) ... ok
+test_default_is_untruncated_and_cited_shares_hold (test_analytic.TestTruncatedInit.test_default_is_untruncated_and_cited_shares_hold) ... ok
+test_gate_no_init_above_cap_at_any_size (test_analytic.TestTruncatedInit.test_gate_no_init_above_cap_at_any_size) ... ok
+test_monotone_map_keeps_common_random_numbers (test_analytic.TestTruncatedInit.test_monotone_map_keeps_common_random_numbers) ... ok
+test_risk_tables_move_in_the_right_direction (test_analytic.TestTruncatedInit.test_risk_tables_move_in_the_right_direction) ... ok
+test_clipping (test_controller.TestConformal.test_clipping) ... ok
+test_delay_two_epochs (test_controller.TestConformal.test_delay_two_epochs)
+A miss at epoch 3 may affect the offset used at epoch 5 but not at epochs <= 4 ... ok
+test_long_run_miss_rate_near_target (test_controller.TestConformal.test_long_run_miss_rate_near_target) ... ok
+test_initial_offset (test_controller.TestConformalInitialOffset.test_initial_offset) ... ok
+test_warmup_is_a_continuous_prefix_replay (test_controller.TestConformalWarmup.test_warmup_is_a_continuous_prefix_replay) ... ok
+test_main_configuration_uses_erlangb (test_controller.TestDefaultRiskModel.test_main_configuration_uses_erlangb) ... ok
+test_infeasible_prefers_least_violating (test_controller.TestEpsMonotonicity.test_infeasible_prefers_least_violating)
+The fallback must not pick a cheap, badly-violating candidate. ... ok
+test_tightening_eps_is_monotone (test_controller.TestEpsMonotonicity.test_tightening_eps_is_monotone) ... ok
+test_no_lookahead (test_controller.TestFeatures.test_no_lookahead) ... ok
+test_target (test_controller.TestFeatures.test_target) ... ok
+test_zero_demand_floor (test_controller.TestFeatures.test_zero_demand_floor) ... ok
+test_training_split (test_controller.TestForecastTrainingSplit.test_training_split) ... ok
+test_C07_pools_drain (test_controller.TestHysteresis.test_C07_pools_drain) ... ok
+test_matches_optimizer_evaluate (test_controller.TestIntegerSearchEvaluator.test_matches_optimizer_evaluate) ... ok
+test_horizon_and_delay_follow_lag (test_controller.TestLagHorizon.test_horizon_and_delay_follow_lag) ... ok
+test_target_and_features_at_lag_10 (test_controller.TestLagHorizon.test_target_and_features_at_lag_10) ... ok
+test_cost_not_monotone_in_P (test_controller.TestOptimizer.test_cost_not_monotone_in_P)
+§3.5: above the break-even utilisation more capacity can be cheaper. ... ok
+test_infeasible_flag_and_cap (test_controller.TestOptimizer.test_infeasible_flag_and_cap) ... ok
+test_matches_scalar_reference (test_controller.TestOptimizer.test_matches_scalar_reference) ... ok
+test_quantile_mode_feasibility_equivalence (test_controller.TestOptimizer.test_quantile_mode_feasibility_equivalence)
+§4.3: with v monotone in demand, scenario feasibility == check at the 1-delta scenario. ... ok
+test_zero_demand_no_provisioning (test_controller.TestOptimizer.test_zero_demand_no_provisioning) ... ok
+test_shared_mode_unchanged (test_controller.TestPerQuantileCalibration.test_shared_mode_unchanged) ... ok
+test_shared_overcovers_q90_and_independent_does_not (test_controller.TestPerQuantileCalibration.test_shared_overcovers_q90_and_independent_does_not) ... ok
+test_C08_all_offsets_monotone (test_controller.TestQuantileOrdering.test_C08_all_offsets_monotone) ... ok
+test_upper_far_below_median (test_controller.TestQuantileOrdering.test_upper_far_below_median) ... ok
+test_unit_phi_matches_common_demand_evaluator (test_controller.TestStageDemandEvaluator.test_unit_phi_matches_common_demand_evaluator) ... ok
+test_closed_loop_decisions_replayed_open_loop_give_the_same_run (test_des_closed_loop.TestBothModes.test_closed_loop_decisions_replayed_open_loop_give_the_same_run) ... ok
+test_closed_loop_replaying_a_schedule_equals_the_open_loop (test_des_closed_loop.TestBothModes.test_closed_loop_replaying_a_schedule_equals_the_open_loop) ... ok
+test_open_loop_unchanged_without_a_controller (test_des_closed_loop.TestBothModes.test_open_loop_unchanged_without_a_controller)
+E9 and E12 call simulate_events(cfg, draws, P_epoch, mem_epoch, want_inflight=..., sample_seed=...). ... ok
+test_prism_closed_loop (test_des_closed_loop.TestConservationAcrossBoundaries.test_prism_closed_loop) ... ok
+test_requests_spanning_several_epochs (test_des_closed_loop.TestConservationAcrossBoundaries.test_requests_spanning_several_epochs) ... ok
+test_controller_never_sees_beyond_its_feedback_delay (test_des_closed_loop.TestNoLookahead.test_controller_never_sees_beyond_its_feedback_delay) ... ok
+test_decisions_do_not_move_when_later_minutes_change (test_des_closed_loop.TestNoLookahead.test_decisions_do_not_move_when_later_minutes_change) ... ok
+test_cold_hit_estimate_follows_event_level_telemetry (test_des_closed_loop.TestObservedOutcomes.test_cold_hit_estimate_follows_event_level_telemetry) ... ok
+test_conformal_offset_is_computed_from_observed_arrivals (test_des_closed_loop.TestObservedOutcomes.test_conformal_offset_is_computed_from_observed_arrivals) ... ok
+test_trimmed_history_gives_identical_forecasts (test_des_closed_loop.TestOnlineForecastTrim.test_trimmed_history_gives_identical_forecasts)
+The feature builder is given counts from a week-aligned start (runtime); forecasts must not change. Epochs ... ok
+test_provisional_split_with_out_of_sample_warmup (test_des_closed_loop.TestValidationWeek.test_provisional_split_with_out_of_sample_warmup) ... ok
+test_submitted_split (test_des_closed_loop.TestValidationWeek.test_submitted_split) ... ok
+test_all_on_demand_and_all_provisioned (test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_all_on_demand_and_all_provisioned) ... ok
+test_exact_ties_keep_the_stage_major_order (test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_exact_ties_keep_the_stage_major_order) ... ok
+test_executions_spanning_several_epochs (test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_executions_spanning_several_epochs) ... ok
+test_memory_change_every_epoch_truncated_init_unbilled (test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_memory_change_every_epoch_truncated_init_unbilled) ... ok
+test_oracle_is_the_stage_major_code_at_3bd1f33 (test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_oracle_is_the_stage_major_code_at_3bd1f33) ... ok
+test_order_sensitive_ties_across_minutes (test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_order_sensitive_ties_across_minutes) ... ok
+test_partial_last_epoch_and_boundary_arrivals (test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_partial_last_epoch_and_boundary_arrivals) ... ok
+test_realistic_windows_three_seeds_two_scenarios (test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_realistic_windows_three_seeds_two_scenarios) ... ok
+test_conservation_gate (test_des_online.TestEventTelemetry.test_conservation_gate) ... ok
+test_emitting_telemetry_changes_nothing_else (test_des_online.TestEventTelemetry.test_emitting_telemetry_changes_nothing_else) ... ok
+test_stage_telemetry_hand_trace (test_des_online.TestEventTelemetry.test_stage_telemetry_hand_trace) ... ok
+test_online_equals_batch (test_des_online.TestOnlineFeatures.test_online_equals_batch) ... ok
+test_cold_occupancy_and_keepalive_expiry (test_des_online.TestStagePass.test_cold_occupancy_and_keepalive_expiry) ... ok
+test_erlang_b_oracle (test_des_online.TestStagePass.test_erlang_b_oracle)
+Poisson arrivals into a pool of P provisioned envs: overflow share = B(P, c). ... ok
+test_erlangb_accuracy_vs_eq5_gap (test_des_online.TestStagePass.test_erlangb_accuracy_vs_eq5_gap)
+R3.4 / R4.9 gate: against the event-level simulator at mean load, Erlang-B is ... ok
+test_full_pipeline_deterministic_and_bounded (test_des_online.TestStagePass.test_full_pipeline_deterministic_and_bounded) ... ok
+test_inflight_sweep (test_des_online.TestStagePass.test_inflight_sweep) ... ok
+test_provisioned_loss_routing (test_des_online.TestStagePass.test_provisioned_loss_routing) ... ok
+test_default (test_exec_common.TestRhoZeroIsLegacy.test_default) ... ok
+test_event_draws_identical (test_exec_common.TestRhoZeroIsLegacy.test_event_draws_identical) ... ok
+test_exec_mult_identity (test_exec_common.TestRhoZeroIsLegacy.test_exec_mult_identity) ... ok
+test_marginals_and_correlation (test_exec_common.TestShared.test_marginals_and_correlation) ... ok
+test_miss_table_reflects_rho (test_exec_common.TestShared.test_miss_table_reflects_rho) ... ok
+test_needs_separate_stream (test_exec_common.TestShared.test_needs_separate_stream) ... ok
+test_rho_one_equal_across_stages (test_exec_common.TestShared.test_rho_one_equal_across_stages) ... ok
+test_validation (test_exec_common.TestShared.test_validation) ... ok
+test_default_is_eq2 (test_exec_measured.TestLegacyUnchanged.test_default_is_eq2) ... ok
+test_legacy_values_by_hand (test_exec_measured.TestLegacyUnchanged.test_legacy_values_by_hand) ... ok
+test_caches_distinguish_modes (test_exec_measured.TestMeasuredLookup.test_caches_distinguish_modes) ... ok
+test_lookup_and_units_seconds (test_exec_measured.TestMeasuredLookup.test_lookup_and_units_seconds) ... ok
+test_plateau (test_exec_measured.TestMeasuredLookup.test_plateau) ... ok
+test_unsupported_memory (test_exec_measured.TestMeasuredLookup.test_unsupported_memory) ... ok
+test_bad_mode (test_exec_measured.TestValidation.test_bad_mode) ... ok
+test_measured_without_factors (test_exec_measured.TestValidation.test_measured_without_factors) ... ok
+test_missing_size (test_exec_measured.TestValidation.test_missing_size) ... ok
+test_reference_must_be_one (test_exec_measured.TestValidation.test_reference_must_be_one) ... ok
+test_wrong_stage_count_or_sign (test_exec_measured.TestValidation.test_wrong_stage_count_or_sign) ... ok
+test_mixed_risk_models_refused (test_main_prism_variant.MainPrismVariant.test_mixed_risk_models_refused) ... ~/prism_linux/calibrated_92e3e68/prism-repro/tests/../experiments/run_experiments.py:89: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpnh9zcwxc/E1/rows.jsonl' mode='r' encoding='utf-8'>
+  return [json.loads(l) for l in open(p)]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_naming_follows_risk_model (test_main_prism_variant.MainPrismVariant.test_naming_follows_risk_model) ... ok
+test_selection_keyed_prism_for_main_configuration (test_main_prism_variant.MainPrismVariant.test_selection_keyed_prism_for_main_configuration) ... ~/prism_linux/calibrated_92e3e68/prism-repro/tests/../experiments/run_experiments.py:89: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpil_mqgti/E1/rows.jsonl' mode='r' encoding='utf-8'>
+  return [json.loads(l) for l in open(p)]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_submitted_style_rows_unchanged (test_main_prism_variant.MainPrismVariant.test_submitted_style_rows_unchanged) ... ~/prism_linux/calibrated_92e3e68/prism-repro/tests/../experiments/run_experiments.py:89: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpu5kg6ps3/E1/rows.jsonl' mode='r' encoding='utf-8'>
+  return [json.loads(l) for l in open(p)]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_binary_converted_at_checkout_fails (test_manifest_verify.TestVerifyLineEndings.test_binary_converted_at_checkout_fails) ... ok
+test_checkout_conversion_is_not_a_mismatch (test_manifest_verify.TestVerifyLineEndings.test_checkout_conversion_is_not_a_mismatch) ... ok
+test_content_change_still_fails (test_manifest_verify.TestVerifyLineEndings.test_content_change_still_fails) ... ok
+test_missing_file_still_fails (test_manifest_verify.TestVerifyLineEndings.test_missing_file_still_fails) ... ok
+test_root_without_verify_is_refused_before_any_write (test_manifest_verify.TestVerifyLineEndings.test_root_without_verify_is_refused_before_any_write) ... usage: build_manifest.py [-h] [--verify] [--root ROOT]
+build_manifest.py: error: --root is only valid with --verify
+ok
+test_text_paths (test_manifest_verify.TestVerifyLineEndings.test_text_paths) ... ok
+test_unknown_suffix_and_crlf_record_are_byte_checked (test_manifest_verify.TestVerifyLineEndings.test_unknown_suffix_and_crlf_record_are_byte_checked) ... ok
+test_verify_main_on_other_root (test_manifest_verify.TestVerifyLineEndings.test_verify_main_on_other_root) ... ok
+test_capacity_at_the_chosen_memory_and_log (test_memadapt.TestMemAdapt.test_capacity_at_the_chosen_memory_and_log) ... ok
+test_make_policy_and_validation (test_memadapt.TestMemAdapt.test_make_policy_and_validation) ... ok
+test_memory_follows_warm_feasibility (test_memadapt.TestMemAdapt.test_memory_follows_warm_feasibility) ... ok
+test_is_quantprov_when_the_default_memory_qualifies (test_memadapt.TestMemAdaptReplay.test_is_quantprov_when_the_default_memory_qualifies) ... ok
+test_moves_the_whole_replay_to_2048_at_a_short_deadline (test_memadapt.TestMemAdaptReplay.test_moves_the_whole_replay_to_2048_at_a_short_deadline) ... ok
+test_shares (test_regression_anchors.TestImpossibleInitAnchors.test_shares) ... ok
+test_integer_search_static_gap (test_regression_anchors.TestOptimalityGapAnchors.test_integer_search_static_gap) ... verified 6 files: 4 byte-identical, 2 identical after CRLF->LF line-ending normalisation (text files), 0 mismatches, 0 missing
+eps=0.005 m=1024 gap=5.901%
+eps=0.005 m=1024 gap=4.979%
+eps=0.005 m=2048 gap=3.200%
+eps=0.005 m=2048 gap=3.127%
+eps=0.01 m=1024 gap=4.324%
+eps=0.01 m=1024 gap=2.427%
+eps=0.01 m=2048 gap=2.425%
+eps=0.01 m=2048 gap=2.051%
+eps=0.02 m=1024 gap=1.521%
+eps=0.02 m=1024 gap=2.362%
+eps=0.02 m=2048 gap=1.682%
+eps=0.02 m=2048 gap=1.676%
+eps=0.05 m=1024 gap=2.426%
+eps=0.05 m=1024 gap=1.917%
+eps=0.05 m=2048 gap=1.682%
+eps=0.05 m=2048 gap=1.676%
+~/prism_linux/calibrated_92e3e68/prism-repro/tests/../scripts/revision/integer_search_gap.py:101: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp573m6nf0.json' mode='w' encoding='utf-8'>
+  json.dump(dict(rows=rows, totals=tot, environment=sys.version), open(out_path, 'w'), indent=1)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_stage_demand_gaps (test_regression_anchors.TestOptimalityGapAnchors.test_stage_demand_gaps) ... {'configurations': 16, 'max_gap': 0.05900797438636307, 'mean_gap': 0.02711030222629346, 'min_gap': 0.015209283818280564}
+common eps=0.01: gap 4.82%
+common eps=0.02: gap 1.52%
+common eps=0.05: gap 2.37%
+filter_half_at_2 eps=0.01: gap 6.35%
+filter_half_at_2 eps=0.02: gap 5.25%
+filter_half_at_2 eps=0.05: gap 3.59%
+fanout_x3_at_3 eps=0.01: family INFEASIBLE at level_hi=1.15; feasible at level_hi=4.0 with gap 19.04%
+fanout_x3_at_3 eps=0.02: family INFEASIBLE at level_hi=1.15; feasible at level_hi=4.0 with gap 17.40%
+fanout_x3_at_3 eps=0.05: family INFEASIBLE at level_hi=1.15; feasible at level_hi=2.0 with gap 15.66%
+batch_10to1_at_4 eps=0.01: gap 4.86%
+batch_10to1_at_4 eps=0.02: gap 6.19%
+batch_10to1_at_4 eps=0.05: gap 6.31%
+~/prism_linux/calibrated_92e3e68/prism-repro/tests/../scripts/revision/stage_demand_gap.py:153: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpn3blqczs.json' mode='w' encoding='utf-8'>
+  json.dump(dict(rows=rows, by_profile=by, environment=sys.version),
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_values_at_printed_precision (test_regression_anchors.TestOverflowAnchors.test_values_at_printed_precision) ... ok
+test_two_independent_runs_identical (test_simulation.TestByteIdenticalRerun.test_two_independent_runs_identical) ... ok
+test_curve_interval_and_leave_one_out (test_simulation.TestEpsWindowMapping.test_curve_interval_and_leave_one_out) ... ok
+test_cost_matches_independent_formula (test_simulation.TestFastSimulator.test_cost_matches_independent_formula) ... ok
+test_invariants_and_determinism (test_simulation.TestFastSimulator.test_invariants_and_determinism) ... ok
+test_keepalive_cold_start_count_hand_example (test_simulation.TestFastSimulator.test_keepalive_cold_start_count_hand_example) ... ok
+test_provisioned_covers_all (test_simulation.TestFastSimulator.test_provisioned_covers_all) ... ok
+test_audit_flags_edges_by_rule (test_simulation.TestGridEdgeAudit.test_audit_flags_edges_by_rule) ... ok
+test_wide_grids_extend_past_both_edges (test_simulation.TestGridEdgeAudit.test_wide_grids_extend_past_both_edges) ... ok
+test_runs (test_simulation.TestMetricsAndTuning.test_runs) ... ok
+test_selection_rule (test_simulation.TestMetricsAndTuning.test_selection_rule) ... ok
+test_weighted_quantile (test_simulation.TestMetricsAndTuning.test_weighted_quantile) ... ok
+test_window_attainment (test_simulation.TestMetricsAndTuning.test_window_attainment) ... ok
+test_seeds_fixed_and_checksums_reproduce (test_simulation.TestRevisionTraceSet.test_seeds_fixed_and_checksums_reproduce) ... ok
+test_bursty_has_more_burst_mass (test_simulation.TestWorkload.test_bursty_has_more_burst_mass) ... ok
+test_first_21_days_identical (test_simulation.TestWorkload.test_first_21_days_identical) ... ok
+test_growth_and_spike (test_simulation.TestWorkload.test_growth_and_spike) ... ok
+test_mean_rate (test_simulation.TestWorkload.test_mean_rate) ... ok
+test_synthetic_label_and_determinism (test_simulation.TestWorkload.test_synthetic_label_and_determinism) ... ok
+test_pre_week_pool_expires_minute_by_minute (test_stage21_fixes.TestM12.test_pre_week_pool_expires_minute_by_minute) ... ok
+test_reactive_first_epoch_window_ends_at_visible_horizon (test_stage21_fixes.TestM12.test_reactive_first_epoch_window_ends_at_visible_horizon) ... ok
+test_event_level_memory_change_prevents_reuse (test_stage21_fixes.TestM5.test_event_level_memory_change_prevents_reuse) ... ok
+test_fast_simulator_memory_change_empties_warm_pool (test_stage21_fixes.TestM5.test_fast_simulator_memory_change_empties_warm_pool) ... ok
+test_candidate_family (test_stage_demand.TestStageDemand.test_candidate_family) ... ok
+test_event_level_refuses_phi (test_stage_demand.TestStageDemand.test_event_level_refuses_phi) ... ok
+test_fast_simulator_scales_concurrency_and_counts (test_stage_demand.TestStageDemand.test_fast_simulator_scales_concurrency_and_counts) ... ok
+test_optimizer_matches_the_static_probe (test_stage_demand.TestStageDemand.test_optimizer_matches_the_static_probe)
+End-to-end model and the static probe agree: for every candidate of the paper's family, the ... ok
+test_rules_follow_phi (test_stage_demand.TestStageDemand.test_rules_follow_phi) ... ok
+test_validation_and_default (test_stage_demand.TestStageDemand.test_validation_and_default) ... ok
+test_default_configuration_matches_pre_feature_code (test_stage_demand_guard.TestUnitStageDemandIsByteIdentical.test_default_configuration_matches_pre_feature_code) ... FAIL
+test_explicit_unit_phi_matches_pre_feature_code (test_stage_demand_guard.TestUnitStageDemandIsByteIdentical.test_explicit_unit_phi_matches_pre_feature_code) ... FAIL
+
+======================================================================
+FAIL: test_default_configuration_matches_pre_feature_code (test_stage_demand_guard.TestUnitStageDemandIsByteIdentical.test_default_configuration_matches_pre_feature_code)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "~/prism_linux/calibrated_92e3e68/prism-repro/tests/test_stage_demand_guard.py", line 124, in test_default_configuration_matches_pre_feature_code
+    self.assertEqual(got[k], v, f"{k} moved at unit demand")
+AssertionError: '136b49fff25ebda847da4ac47c264697fe0ed5febb4fed15c7cdff4a24af2b01' != '3c7df4154faf10b77d3749650ea11274002947b614716cc7b4cd844134c8e683'
+- 136b49fff25ebda847da4ac47c264697fe0ed5febb4fed15c7cdff4a24af2b01
++ 3c7df4154faf10b77d3749650ea11274002947b614716cc7b4cd844134c8e683
+ : optimizer moved at unit demand
+
+======================================================================
+FAIL: test_explicit_unit_phi_matches_pre_feature_code (test_stage_demand_guard.TestUnitStageDemandIsByteIdentical.test_explicit_unit_phi_matches_pre_feature_code)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "~/prism_linux/calibrated_92e3e68/prism-repro/tests/test_stage_demand_guard.py", line 132, in test_explicit_unit_phi_matches_pre_feature_code
+    self.assertEqual(got[k], v, f"{k} moved at explicit phi = 1")
+AssertionError: '136b49fff25ebda847da4ac47c264697fe0ed5febb4fed15c7cdff4a24af2b01' != '3c7df4154faf10b77d3749650ea11274002947b614716cc7b4cd844134c8e683'
+- 136b49fff25ebda847da4ac47c264697fe0ed5febb4fed15c7cdff4a24af2b01
++ 3c7df4154faf10b77d3749650ea11274002947b614716cc7b4cd844134c8e683
+ : optimizer moved at explicit phi = 1
+
+----------------------------------------------------------------------
+Ran 147 tests in 128.707s
+
+FAILED (failures=2)
+{'common': {'mean_gap': 0.029030187962473003, 'infeasible': 0, 'max_gap_after_widening': None}, 'filter_half_at_2': {'mean_gap': 0.05064581754441982, 'infeasible': 0, 'max_gap_after_widening': None}, 'fanout_x3_at_3': {'mean_gap': None, 'infeasible': 3, 'max_gap_after_widening': 0.22598712129570123}, 'batch_10to1_at_4': {'mean_gap': 0.05783731616124841, 'infeasible': 0, 'max_gap_after_widening': None}}

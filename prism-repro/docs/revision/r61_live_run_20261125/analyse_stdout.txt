@@ -1,0 +1,450 @@
+{
+ "run_folder": "r61_prism_replay_20261124-213827",
+ "code": {
+  "git_head": "92e3e68",
+  "uncommitted_paths": [
+   "prism-repro/aws_pipeline/runs/"
+  ]
+ },
+ "spec": {
+  "mode": "prism_replay",
+  "pc_mode": "apply",
+  "bin_s": 60.0,
+  "n_epochs": 8,
+  "thin": 0.016666666666666666,
+  "prism_eps": 0.02,
+  "forecaster": "gbm",
+  "pc_cap": 4,
+  "trace_seed": 101,
+  "scenario": "stationary",
+  "week": "test",
+  "deadline_s": 14.5,
+  "cap": 8,
+  "alias": "live",
+  "seed": 20261122
+ },
+ "calibration_k": {
+  "ingest": 386,
+  "transform": 4868,
+  "aggregate": 2259,
+  "load": 1928
+ },
+ "smoke": {
+  "n": 3,
+  "met": 3,
+  "missed": 0,
+  "failed": 0,
+  "shed_client_cap": 0
+ },
+ "arms": {
+  "baseline_ondemand": {
+   "input_coverage": {
+    "records": 323,
+    "planned": 323,
+    "identical_to_plan": true
+   },
+   "summary": {
+    "n": 323,
+    "met": 314,
+    "missed": 9,
+    "failed": 0,
+    "shed_client_cap": 0,
+    "max_in_flight": 7,
+    "cap": 8
+   },
+   "outcomes": {
+    "met": 314,
+    "missed": 9
+   },
+   "e2e_s": {
+    "p50": 8.551,
+    "p95": 13.587,
+    "p99": 16.718,
+    "max": 20.019
+   },
+   "memory_of_records": {
+    "1024": 323
+   },
+   "cold_stages_per_record": {
+    "0": 314,
+    "1": 4,
+    "2": 4,
+    "4": 1
+   },
+   "init_types": {
+    "on-demand": 16
+   },
+   "fully_warm_1024": {
+    "denominator": 314,
+    "excluded": {
+     "shed_or_failed": 0,
+     "at_least_one_cold_stage": 9,
+     "other_memory_sizes": 0
+    },
+    "misses_e2e": 8,
+    "rate_e2e": 0.02548,
+    "ci95_e2e": [
+     0.01106,
+     0.04958
+    ],
+    "misses_sfn_billed_duration": 8,
+    "denominator_billed": 314,
+    "ci95_sfn_billed": [
+     0.01106,
+     0.04958
+    ],
+    "misses_stage_span": 8,
+    "ci95_stage_span": [
+     0.01106,
+     0.04958
+    ],
+    "missed_words": [
+     5305,
+     5418,
+     5539,
+     5562,
+     5892,
+     5915,
+     6812,
+     7120
+    ],
+    "words_quantiles": {
+     "median": 2939,
+     "max": 7120
+    }
+   },
+   "all_misses_fully_warm": false
+  },
+  "adapter_prism": {
+   "input_coverage": {
+    "records": 323,
+    "planned": 323,
+    "identical_to_plan": true
+   },
+   "summary": {
+    "n": 323,
+    "met": 313,
+    "missed": 10,
+    "failed": 0,
+    "shed_client_cap": 0,
+    "max_in_flight": 7,
+    "cap": 8
+   },
+   "outcomes": {
+    "met": 313,
+    "missed": 10
+   },
+   "e2e_s": {
+    "p50": 8.529,
+    "p95": 13.471,
+    "p99": 16.739,
+    "max": 19.906
+   },
+   "memory_of_records": {
+    "1024": 323
+   },
+   "cold_stages_per_record": {
+    "0": 313,
+    "1": 5,
+    "2": 3,
+    "3": 1,
+    "4": 1
+   },
+   "init_types": {
+    "provisioned-concurrency": 7,
+    "on-demand": 11
+   },
+   "fully_warm_1024": {
+    "denominator": 313,
+    "excluded": {
+     "shed_or_failed": 0,
+     "at_least_one_cold_stage": 10,
+     "other_memory_sizes": 0
+    },
+    "misses_e2e": 9,
+    "rate_e2e": 0.02875,
+    "ci95_e2e": [
+     0.01323,
+     0.05388
+    ],
+    "misses_sfn_billed_duration": 8,
+    "denominator_billed": 313,
+    "ci95_sfn_billed": [
+     0.0111,
+     0.04974
+    ],
+    "misses_stage_span": 8,
+    "ci95_stage_span": [
+     0.0111,
+     0.04974
+    ],
+    "missed_words": [
+     4976,
+     5305,
+     5418,
+     5539,
+     5562,
+     5892,
+     5915,
+     6812,
+     7120
+    ],
+    "words_quantiles": {
+     "median": 2933,
+     "max": 7120
+    }
+   },
+   "all_misses_fully_warm": false
+  }
+ },
+ "prism_decisions": [
+  {
+   "k": 0,
+   "observed_upto_bin": -2,
+   "decided_before_applied": true,
+   "memory_requested": 1024,
+   "memory_applied": 1024,
+   "pc_requested": [
+    1,
+    2,
+    2,
+    1
+   ],
+   "pc_clipped_from": null,
+   "pc_accepted": [
+    true,
+    true,
+    true,
+    true
+   ],
+   "pc_refused": {},
+   "pc_status": "requested_pending_readiness"
+  },
+  {
+   "k": 1,
+   "observed_upto_bin": 3,
+   "decided_before_applied": true,
+   "memory_requested": 1024,
+   "memory_applied": 1024,
+   "pc_requested": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "pc_clipped_from": null,
+   "pc_accepted": [
+    null,
+    null,
+    true,
+    null
+   ],
+   "pc_refused": {},
+   "pc_status": "requested_pending_readiness"
+  },
+  {
+   "k": 2,
+   "observed_upto_bin": 8,
+   "decided_before_applied": true,
+   "memory_requested": 1024,
+   "memory_applied": 1024,
+   "pc_requested": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "pc_clipped_from": null,
+   "pc_accepted": null,
+   "pc_refused": {},
+   "pc_status": "unchanged"
+  },
+  {
+   "k": 3,
+   "observed_upto_bin": 13,
+   "decided_before_applied": true,
+   "memory_requested": 1024,
+   "memory_applied": 1024,
+   "pc_requested": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "pc_clipped_from": null,
+   "pc_accepted": null,
+   "pc_refused": {},
+   "pc_status": "unchanged"
+  },
+  {
+   "k": 4,
+   "observed_upto_bin": 18,
+   "decided_before_applied": true,
+   "memory_requested": 1024,
+   "memory_applied": 1024,
+   "pc_requested": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "pc_clipped_from": null,
+   "pc_accepted": null,
+   "pc_refused": {},
+   "pc_status": "unchanged"
+  },
+  {
+   "k": 5,
+   "observed_upto_bin": 23,
+   "decided_before_applied": true,
+   "memory_requested": 1024,
+   "memory_applied": 1024,
+   "pc_requested": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "pc_clipped_from": null,
+   "pc_accepted": null,
+   "pc_refused": {},
+   "pc_status": "unchanged"
+  },
+  {
+   "k": 6,
+   "observed_upto_bin": 28,
+   "decided_before_applied": true,
+   "memory_requested": 1024,
+   "memory_applied": 1024,
+   "pc_requested": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "pc_clipped_from": null,
+   "pc_accepted": null,
+   "pc_refused": {},
+   "pc_status": "unchanged"
+  },
+  {
+   "k": 7,
+   "observed_upto_bin": 33,
+   "decided_before_applied": true,
+   "memory_requested": 1024,
+   "memory_applied": 1024,
+   "pc_requested": [
+    1,
+    2,
+    1,
+    1
+   ],
+   "pc_clipped_from": null,
+   "pc_accepted": null,
+   "pc_refused": {},
+   "pc_status": "unchanged"
+  }
+ ],
+ "pc_readiness": [
+  {
+   "k": 0,
+   "stage": "ingest",
+   "requested": 1,
+   "status": "ready",
+   "activation_lag_s": 82.8
+  },
+  {
+   "k": 0,
+   "stage": "transform",
+   "requested": 2,
+   "status": "ready",
+   "activation_lag_s": 82.8
+  },
+  {
+   "k": 0,
+   "stage": "aggregate",
+   "requested": 2,
+   "status": "ready",
+   "activation_lag_s": 82.8
+  },
+  {
+   "k": 0,
+   "stage": "load",
+   "requested": 1,
+   "status": "ready",
+   "activation_lag_s": 82.8
+  },
+  {
+   "k": 1,
+   "stage": "aggregate",
+   "requested": 1,
+   "status": "ready",
+   "activation_lag_s": 20.1
+  }
+ ],
+ "pc_initial_wait": {
+  "timeout_s": 300.0,
+  "waited_s": 82.78100000000268,
+  "not_ready": [],
+  "ready": true
+ },
+ "served_by_init_type": {
+  "baseline_ondemand": {
+   "aggregate:on-demand": 323,
+   "ingest:on-demand": 323,
+   "load:on-demand": 323,
+   "transform:on-demand": 323
+  },
+  "adapter_prism": {
+   "aggregate:on-demand": 64,
+   "aggregate:provisioned-concurrency": 259,
+   "ingest:on-demand": 32,
+   "ingest:provisioned-concurrency": 291,
+   "load:on-demand": 49,
+   "load:provisioned-concurrency": 274,
+   "transform:on-demand": 35,
+   "transform:provisioned-concurrency": 288
+  }
+ },
+ "paired": {
+  "baseline_ondemand|adapter_prism": {
+   "common_records": 323,
+   "only_a": 0,
+   "only_b": 0,
+   "outcomes_a_b": {
+    "met|met": 313,
+    "met|missed": 1,
+    "missed|missed": 9
+   },
+   "e2e_diff_s": {
+    "p50": -0.08703050000000001,
+    "p05": -0.5716101200000009,
+    "p95": 0.40232328999999895
+   },
+   "same_documents": true
+  }
+ },
+ "cost_usd_estimate_unverified_prices": {
+  "lambda_duration": 0.0926721186772,
+  "lambda_requests": 0.0005168000000000001,
+  "sfn_requests": 0.000646,
+  "sfn_duration": 0.005892532437500001
+ },
+ "report_coverage": {
+  "expected_request_ids": 2596,
+  "matched": 2596,
+  "missing": 0,
+  "extra_reports": 56,
+  "stage_rows_without_request_id": 0,
+  "collection_status": "complete",
+  "complete": true
+ },
+ "teardown_in_run": [
+  "remaining after teardown: {'functions': [], 'state_machines': ['prism-pipe-docpipe'], 'log_groups': [], 'roles': []}",
+  "NOT CLEAN: delete the listed resources by hand and re-run verify"
+ ],
+ "predictions_section_3a": {
+  "independent_stages": 0.00216,
+  "p2_shared_stage_rho_0.998": 0.03283
+ }
+}

@@ -1,0 +1,35 @@
+Existing held-out check (aws_memcal_20261122/tables/heldout_check.csv): 37 of 56 inside the CHECK 95% interval
+
+warm Duration median (Eq. 2 form): 0/16
+  miss: ingest 512 MB: predicted 1.5059, observed 1.6290 [1.6266, 1.6342], rel -0.0756
+  miss: ingest 1024 MB: predicted 0.8498, observed 0.8016 [0.8006, 0.8026], rel +0.0602
+  miss: ingest 2048 MB: predicted 0.5218, observed 0.4626 [0.4622, 0.4633], rel +0.1281
+  miss: ingest 3008 MB: predicted 0.4171, observed 0.4627 [0.4620, 0.4634], rel -0.0985
+  miss: transform 512 MB: predicted 7.4805, observed 8.0343 [8.0120, 8.0601], rel -0.0689
+  miss: transform 1024 MB: predicted 4.2167, observed 3.9926 [3.9869, 3.9979], rel +0.0561
+  miss: transform 2048 MB: predicted 2.5848, observed 2.2893 [2.2839, 2.2942], rel +0.1291
+  miss: transform 3008 MB: predicted 2.0640, observed 2.2871 [2.2846, 2.2906], rel -0.0975
+  miss: aggregate 512 MB: predicted 4.7358, observed 5.0948 [5.0877, 5.1015], rel -0.0705
+  miss: aggregate 1024 MB: predicted 2.6711, observed 2.5291 [2.5229, 2.5333], rel +0.0561
+  miss: aggregate 2048 MB: predicted 1.6387, observed 1.4500 [1.4485, 1.4526], rel +0.1301
+  miss: aggregate 3008 MB: predicted 1.3092, observed 1.4502 [1.4471, 1.4536], rel -0.0972
+  miss: load 512 MB: predicted 2.2752, observed 2.4575 [2.4539, 2.4623], rel -0.0742
+  miss: load 1024 MB: predicted 1.2775, observed 1.2050 [1.2034, 1.2064], rel +0.0601
+  miss: load 2048 MB: predicted 0.7786, observed 0.6885 [0.6871, 0.6895], rel +0.1310
+  miss: load 3008 MB: predicted 0.6194, observed 0.6891 [0.6873, 0.6906], rel -0.1011
+
+P_mean (Eq. 3 form): 4/4
+
+P_mean (measured mode (fit-split mean)): 4/4
+
+I (Eq. 3 form): 14/16
+  miss: transform 3008 MB: predicted 0.1146, observed 0.1171 [0.1148, 0.1188], rel -0.0217
+  miss: load 1024 MB: predicted 0.1148, observed 0.1128 [0.1121, 0.1146], rel +0.0177
+
+I (measured mode (fit-split mean)): 15/16
+  miss: aggregate 3008 MB: predicted 0.1160, observed 0.1140 [0.1131, 0.1152], rel +0.0181
+
+Measured per-size execution-time mode (FIT factors), on CHECK:
+  absolute, inside the CHECK interval: 14/16; within the 0.41% between-block repeatability: 16/16; |rel error| max 0.0041
+  scaling factor vs CHECK factor (12 non-reference cells): |rel error| max 0.0030, mean 0.0014
+  Eq. (2) form on the same cells: |rel error| max 0.1310, mean 0.0896

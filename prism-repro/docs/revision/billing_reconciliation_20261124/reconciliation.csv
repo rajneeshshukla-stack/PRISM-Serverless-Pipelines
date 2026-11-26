@@ -1,0 +1,10 @@
+line,requests,gb_s,source
+memcal-1 calibration blocks 0-2 (17:17-19:51 UTC),20992,55234.505812,REPORT records
+memcal-1 smoke run (17:11-17:13 UTC),256,687.3705,REPORT records
+"memcal-1 log groups, REPORTs without a campaign record (17:01-20:03 UTC)",24,77.059875,REPORT records
+"live test, 22 Nov 09:02 CST (15:02-15:08 UTC)",100,168.197,REPORT records
+subtotal with REPORT records,21372,56167.133187,sum
+"live test, 21 Nov 20:30 CST (02:30-02:55 UTC 22 Nov): stage invocations with saved request IDs",332,,run records; REPORT lines not saved (0 saved)
+"export: us-east-2 Lambda, 22 Nov 2026 UTC",21784.0,57005.562125,"Cost Explorer, Estimated"
+residual after REPORT-attributed lines,412.0,838.428938,export - subtotal
+residual after also counting the 21 Nov live test's saved request IDs,80.0,,unattributed

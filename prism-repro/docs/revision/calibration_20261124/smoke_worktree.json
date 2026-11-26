@@ -1,0 +1,621 @@
+{
+ "legacy|14.5": {
+  "miss_table": {
+   "512": [
+    0.251265,
+    0.9904
+   ],
+   "1024": [
+    0.0021625,
+    0.5310075
+   ],
+   "2048": [
+    2e-05,
+    0.094195
+   ],
+   "3008": [
+    2.5e-06,
+    0.0362625
+   ]
+  },
+  "PRISM": {
+   "selected": 0.05,
+   "validation": [
+    {
+     "param": 0.005,
+     "cost": 1203.452541842978,
+     "violating_window_rate": 0.005952380952380952,
+     "share_ge2048": 0.11904761904761904,
+     "mems": [
+      1024,
+      2048
+     ]
+    },
+    {
+     "param": 0.01,
+     "cost": 1109.3120518019973,
+     "violating_window_rate": 0.008928571428571428,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    },
+    {
+     "param": 0.02,
+     "cost": 1051.259582813857,
+     "violating_window_rate": 0.010416666666666666,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    },
+    {
+     "param": 0.03,
+     "cost": 1012.0601689521408,
+     "violating_window_rate": 0.011904761904761904,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    },
+    {
+     "param": 0.05,
+     "cost": 958.0105140727709,
+     "violating_window_rate": 0.01488095238095238,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    },
+    {
+     "param": 0.08,
+     "cost": 924.8466469074281,
+     "violating_window_rate": 0.020833333333333332,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    }
+   ],
+   "tests": {
+    "stationary": {
+     "cost": 1000.8861581302461,
+     "viol": 0.011904761904761904,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    },
+    "new_spike": {
+     "cost": 1258.5384215723916,
+     "viol": 0.01636904761904762,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    }
+   }
+  }
+ },
+ "legacy|13.0": {
+  "miss_table": {
+   "512": [
+    0.4876525,
+    0.99902
+   ],
+   "1024": [
+    0.01182,
+    0.7827775
+   ],
+   "2048": [
+    0.0001275,
+    0.2543925
+   ],
+   "3008": [
+    2e-05,
+    0.1224375
+   ]
+  },
+  "PRISM": {
+   "selected": 0.01,
+   "validation": [
+    {
+     "param": 0.005,
+     "cost": 1660.343439928811,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 0.01,
+     "cost": 1574.645412679155,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 0.02,
+     "cost": 1133.8935368863154,
+     "violating_window_rate": 0.9821428571428571,
+     "share_ge2048": 0.017857142857142856,
+     "mems": [
+      1024,
+      2048
+     ]
+    },
+    {
+     "param": 0.03,
+     "cost": 1078.2321211999633,
+     "violating_window_rate": 1.0,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    },
+    {
+     "param": 0.05,
+     "cost": 1018.9909673042634,
+     "violating_window_rate": 1.0,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    },
+    {
+     "param": 0.08,
+     "cost": 959.7025793917227,
+     "violating_window_rate": 1.0,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    }
+   ],
+   "tests": {
+    "stationary": {
+     "cost": 1690.036736600368,
+     "viol": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048,
+      3008
+     ]
+    },
+    "new_spike": {
+     "cost": 2090.6638289362086,
+     "viol": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    }
+   }
+  },
+  "MemAdapt_q90": {
+   "selected": 0.6,
+   "validation": [
+    {
+     "param": 0.6,
+     "cost": 1285.9040610538425,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 0.7,
+     "cost": 1336.5166737955647,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 0.8,
+     "cost": 1396.5119765373058,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 0.9,
+     "cost": 1462.682738285625,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 1.0,
+     "cost": 1532.9562016697994,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 1.1,
+     "cost": 1605.7409778478532,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 1.2,
+     "cost": 1679.8152327329767,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 1.3,
+     "cost": 1754.9119425538538,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 1.4,
+     "cost": 1830.0386130167726,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 1.5,
+     "cost": 1905.8104697695048,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    }
+   ],
+   "tests": {
+    "stationary": {
+     "cost": 1312.958449614125,
+     "viol": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    "new_spike": {
+     "cost": 1657.485353818714,
+     "viol": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    }
+   }
+  }
+ },
+ "measured|14.5": {
+  "miss_table": {
+   "512": [
+    0.848845,
+    0.99991
+   ],
+   "1024": [
+    0.0021625,
+    0.5310075
+   ],
+   "2048": [
+    0.0,
+    0.0233
+   ],
+   "3008": [
+    0.0,
+    0.01501
+   ]
+  },
+  "PRISM": {
+   "selected": 0.05,
+   "validation": [
+    {
+     "param": 0.005,
+     "cost": 1150.0730650702428,
+     "violating_window_rate": 0.005952380952380952,
+     "share_ge2048": 0.1488095238095238,
+     "mems": [
+      1024,
+      2048
+     ]
+    },
+    {
+     "param": 0.01,
+     "cost": 1109.3120518019973,
+     "violating_window_rate": 0.008928571428571428,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    },
+    {
+     "param": 0.02,
+     "cost": 1051.259582813857,
+     "violating_window_rate": 0.010416666666666666,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    },
+    {
+     "param": 0.03,
+     "cost": 1012.0601689521408,
+     "violating_window_rate": 0.011904761904761904,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    },
+    {
+     "param": 0.05,
+     "cost": 958.0105140727709,
+     "violating_window_rate": 0.01488095238095238,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    },
+    {
+     "param": 0.08,
+     "cost": 924.8466469074281,
+     "violating_window_rate": 0.020833333333333332,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    }
+   ],
+   "tests": {
+    "stationary": {
+     "cost": 1000.8861581302461,
+     "viol": 0.011904761904761904,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    },
+    "new_spike": {
+     "cost": 1258.5384215723916,
+     "viol": 0.01636904761904762,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    }
+   }
+  }
+ },
+ "measured|13.0": {
+  "miss_table": {
+   "512": [
+    0.955305,
+    0.9999975
+   ],
+   "1024": [
+    0.01182,
+    0.7827775
+   ],
+   "2048": [
+    0.0,
+    0.081265
+   ],
+   "3008": [
+    0.0,
+    0.0577925
+   ]
+  },
+  "PRISM": {
+   "selected": 0.01,
+   "validation": [
+    {
+     "param": 0.005,
+     "cost": 1164.139195141413,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 0.01,
+     "cost": 1097.9118033307136,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 0.02,
+     "cost": 1129.4096023007173,
+     "violating_window_rate": 0.9821428571428571,
+     "share_ge2048": 0.017857142857142856,
+     "mems": [
+      1024,
+      2048
+     ]
+    },
+    {
+     "param": 0.03,
+     "cost": 1078.2321211999633,
+     "violating_window_rate": 1.0,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    },
+    {
+     "param": 0.05,
+     "cost": 1018.9909673042634,
+     "violating_window_rate": 1.0,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    },
+    {
+     "param": 0.08,
+     "cost": 959.7025793917227,
+     "violating_window_rate": 1.0,
+     "share_ge2048": 0.0,
+     "mems": [
+      1024
+     ]
+    }
+   ],
+   "tests": {
+    "stationary": {
+     "cost": 1112.5441317078323,
+     "viol": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    "new_spike": {
+     "cost": 1390.4626773698694,
+     "viol": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    }
+   }
+  },
+  "MemAdapt_q90": {
+   "selected": 0.6,
+   "validation": [
+    {
+     "param": 0.6,
+     "cost": 988.5636687444666,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 0.7,
+     "cost": 1026.352267446138,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 0.8,
+     "cost": 1071.2609174753363,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 0.9,
+     "cost": 1121.5505724115362,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 1.0,
+     "cost": 1174.751160937247,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 1.1,
+     "cost": 1229.827565043235,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 1.2,
+     "cost": 1286.5520928354842,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 1.3,
+     "cost": 1343.4848607744264,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 1.4,
+     "cost": 1401.3995722680959,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    {
+     "param": 1.5,
+     "cost": 1459.1240992456053,
+     "violating_window_rate": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    }
+   ],
+   "tests": {
+    "stationary": {
+     "cost": 1007.9296673071459,
+     "viol": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    },
+    "new_spike": {
+     "cost": 1272.3786101991761,
+     "viol": 0.0,
+     "share_ge2048": 1.0,
+     "mems": [
+      2048
+     ]
+    }
+   }
+  }
+ }
+}

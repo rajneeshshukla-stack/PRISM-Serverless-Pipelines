@@ -1,0 +1,64 @@
+{
+ "prepare": {
+  "design_sha256": "76ab39d7f00b5192f9a793f85afd70186dc2e381676dca2e8c2bf38b35c965fd",
+  "workload_spec_sha256": "2a7afbb00aea21a3afd29b37e3acdd757e15bee6d246e24fc22bdb8745039656",
+  "visits": 624,
+  "invocations": 20992
+ },
+ "preflight": [
+  "sts.get_caller_identity",
+  "lambda.get_account_settings (ConcurrentExecutions, Unreserved...)",
+  "lambda.list_functions, logs.describe_log_groups, iam.get_role: any 'prism-mcal-' leftover (read only)",
+  "region us-east-2: ConcurrentExecutions=10, UnreservedConcurrentExecutions=10; leftovers={'functions': [], 'log_groups': [], 'roles': []}"
+ ],
+ "deploy": [
+  "deployed 16 functions; manifest <run dir>/manifest.json"
+ ],
+ "smoke": [
+  "visits run 16, max in flight 8 (cap 8)",
+  "smoke check: {\"invocations\": 256, \"errors\": 0, \"cold\": 128, \"warm\": 128, \"cold_in_cold_batches\": 128, \"cold_with_init_in_tail\": 128, \"warm_with_init_in_tail\": 0, \"tail_report_missing\": 0, \"memory_mismatch\": 0, \"k_mismatch\": 0, \"request_id_mismatch\": 0, \"runtime_versions\": [\"python:3.12.fake\"], \"ok\": true}",
+  "SMOKE OK"
+ ],
+ "block_0": [
+  "visits run 208, max in flight 8 (cap 8)"
+ ],
+ "block_1": [
+  "visits run 208, max in flight 8 (cap 8)"
+ ],
+ "block_2": [
+  "visits run 208, max in flight 8 (cap 8)"
+ ],
+ "collect": [
+  "wrote 21248 new REPORT records to <run dir>/cloudwatch_reports.jsonl (21248 in total)",
+  "collection complete"
+ ],
+ "coverage": {
+  "expected_request_ids": 21248,
+  "matched": 21248,
+  "missing": 0,
+  "extra_reports": 0,
+  "invocations_without_request_id": 0,
+  "tail_and_cloudwatch_both": 21248,
+  "tail_and_cloudwatch_differ": 0,
+  "collection_status": "complete",
+  "complete": true
+ },
+ "teardown": [
+  "remaining after teardown: {'functions': [], 'log_groups': [], 'roles': []}",
+  "CLEAN"
+ ],
+ "cleanup_logs": [
+  "deleted (or already absent) 16 log groups; remaining: {'functions': [], 'log_groups': [], 'roles': []}",
+  "CLEAN"
+ ],
+ "verify": [
+  "remaining: {'functions': [], 'log_groups': [], 'roles': []}",
+  "CLEAN"
+ ],
+ "fake_lambda": {
+  "calls": 21248,
+  "max_in_flight": 8,
+  "throttles": 0,
+  "updates": 640
+ }
+}

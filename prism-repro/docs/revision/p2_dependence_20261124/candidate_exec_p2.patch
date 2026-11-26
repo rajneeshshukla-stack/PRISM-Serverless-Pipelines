@@ -1,0 +1,158 @@
+diff --git a/prism-repro/src/prism_repro/config.py b/prism-repro/src/prism_repro/config.py
+index a2fe001..02d6d05 100644
+--- a/prism-repro/src/prism_repro/config.py
++++ b/prism-repro/src/prism_repro/config.py
+@@ -61,6 +61,16 @@ class PipelineConfig:
+     init_max_s: Optional[float] = None
+     mem_options: Tuple[int, ...] = (512, 1024, 2048, 3008)
+     nonscaling: float = 0.5  # Eq. (2)
++    # Calibration candidate (24 Nov 2026, R2.8(b), R7.5(d); OPT-IN, default unchanged): how warm execution time scales
++    # with memory. "eq2": the submitted Eq. (2) with `nonscaling` (legacy). "measured": per-stage factors relative to
++    # 1024 MB from exec_factor_measured ((MB, (f_stage1, ..., f_stageS)), ...), e.g. memcal-1 FIT-split medians; the
++    # 1024 MB reference stays warm_mean_1024, so every factor at 1024 MB must be 1.
++    exec_scaling: str = "eq2"
++    exec_factor_measured: Optional[Tuple[Tuple[int, Tuple[float, ...]], ...]] = None
++    # P2 candidate (24 Nov 2026; OPT-IN): correlation rho of the stages' log execution multipliers within a request.
++    # 0 = independent stages (legacy, bit-identical); 1 = one shared factor (e.g. one document drives every stage).
++    # The marginal sigma (exec_shape) and mean (1) are unchanged for every rho.
++    exec_common_frac: float = 0.0
+     init_nonscaling: float = 0.7  # §III-A, Eq. (3)
+     # R1.2 / R5.M2: direction of the init-vs-memory relation. "eq3": Eq. (3), init shortens as
+     # memory grows (submitted model). "constant": init_mean_1024 at every size. "inverted":
+@@ -113,6 +123,18 @@ class PipelineConfig:
+             raise ValueError("invalid timing parameters")
+         if (7 * 1440) % self.window_min or self.window_min % 1:
+             raise ValueError("window length must divide a week")
++        if not (0.0 <= self.exec_common_frac <= 1.0):
++            raise ValueError("exec_common_frac must be in [0, 1]")
++        if self.exec_scaling not in ("eq2", "measured"):
++            raise ValueError("exec_scaling must be 'eq2' or 'measured'")
++        if self.exec_scaling == "measured":
++            fm = dict(self.exec_factor_measured or ())
++            if any(int(m) not in fm for m in self.mem_options):
++                raise ValueError("exec_factor_measured must give factors for every memory option")
++            if any(len(f) != self.n_stages or any(not (x > 0) for x in f) for f in fm.values()):
++                raise ValueError("exec_factor_measured needs one positive factor per stage at every size")
++            if 1024 in fm and any(abs(x - 1.0) > 1e-9 for x in fm[1024]):
++                raise ValueError("exec_factor_measured factors at 1024 MB must be 1 (warm_mean_1024 is the reference)")
+         if self.init_scaling not in ("eq3", "constant", "inverted", "measured"):
+             raise ValueError("init_scaling must be 'eq3', 'constant', 'inverted' or 'measured'")
+         if self.init_scaling == "measured":
+diff --git a/prism-repro/src/prism_repro/des.py b/prism-repro/src/prism_repro/des.py
+index b5e5c18..48ccae7 100644
+--- a/prism-repro/src/prism_repro/des.py
++++ b/prism-repro/src/prism_repro/des.py
+@@ -41,7 +41,7 @@ from dataclasses import dataclass
+ import numpy as np
+ 
+ from .config import PipelineConfig
+-from .latency import init_mean, init_seconds, lognormal_mult, stage_demand, stage_means
++from .latency import exec_mult, init_mean, init_seconds, lognormal_mult, stage_demand, stage_means
+ from .metrics import severity, weighted_quantile_hist, window_attainment
+ from .simulator import Telemetry
+ 
+@@ -57,7 +57,9 @@ class EventDraws:
+         order = np.argsort(self.arrival, kind="stable")
+         self.arrival, self.minute = self.arrival[order], self.minute[order]
+         n = len(self.arrival)
+-        self.ex = lognormal_mult(rng.standard_normal((S, n)), cfg.exec_shape).astype(np.float32)
++        # P2 option: the common factor is per request (shared across stages), from its own stream
++        self.ex = exec_mult(rng.standard_normal((S, n)).T, cfg,
++                            np.random.default_rng([seed, 900 + key])).T.astype(np.float32)
+         self.ov = (cfg.overhead_mean * lognormal_mult(rng.standard_normal((S, n)), cfg.overhead_shape)).astype(np.float32)
+         self.init = lognormal_mult(rng.standard_normal((S, n)), cfg.init_shape).astype(np.float32)
+         self.n, self.n_min = n, n_min
+diff --git a/prism-repro/src/prism_repro/latency.py b/prism-repro/src/prism_repro/latency.py
+index b71acab..7053066 100644
+--- a/prism-repro/src/prism_repro/latency.py
++++ b/prism-repro/src/prism_repro/latency.py
+@@ -19,7 +19,12 @@ def duration_factor(m: float, nonscaling: float) -> float:
+ 
+ 
+ def stage_means(cfg: PipelineConfig, m: float) -> np.ndarray:
+-    """Mean warm execution time per stage (s) at memory m."""
++    """Mean warm execution time per stage (s) at memory m: Eq. (2) (legacy), or measured per-size factors."""
++    if getattr(cfg, "exec_scaling", "eq2") == "measured":
++        fm = dict(cfg.exec_factor_measured or ())
++        if int(m) != m or int(m) not in fm:
++            raise ValueError(f"no measured execution-time factor for {m} MB (sizes: {sorted(fm)})")
++        return np.asarray(cfg.warm_mean_1024, float) * np.asarray(fm[int(m)], float)
+     return np.asarray(cfg.warm_mean_1024, float) * duration_factor(m, cfg.nonscaling)
+ 
+ 
+@@ -86,6 +91,19 @@ def gb(m: float) -> float:
+     return m / 1024.0
+ 
+ 
++def exec_mult(z: np.ndarray, cfg: PipelineConfig, rng_common=None) -> np.ndarray:
++    """Execution multipliers from per-stage standard normals z (stage axis last). With exec_common_frac = rho > 0,
++    one common normal per request (from `rng_common`, a separate stream) is mixed in: sqrt(rho) z_c + sqrt(1-rho) z.
++    rho = 0 returns lognormal_mult(z, exec_shape) exactly (legacy draws unchanged)."""
++    rho = float(getattr(cfg, "exec_common_frac", 0.0))
++    if rho == 0.0:
++        return lognormal_mult(z, cfg.exec_shape)
++    if rng_common is None:
++        raise ValueError("exec_common_frac > 0 needs a separate random stream for the common factor")
++    zc = rng_common.standard_normal(z.shape[:-1] + (1,))
++    return lognormal_mult(np.sqrt(rho) * zc + np.sqrt(1.0 - rho) * z, cfg.exec_shape)
++
++
+ def lognormal_mult(z: np.ndarray, sigma: float) -> np.ndarray:
+     """Mean-one log-normal multiplier exp(sigma z - sigma^2/2) (D01)."""
+     return np.exp(sigma * z - 0.5 * sigma * sigma)
+@@ -123,13 +141,13 @@ def attainment_table(cfg, m: int) -> np.ndarray:
+     key = (int(m), cfg.n_stages, tuple(cfg.warm_mean_1024), cfg.exec_shape, cfg.overhead_mean,
+            cfg.overhead_shape, cfg.init_mean_1024, cfg.init_shape, cfg.nonscaling,
+            cfg.init_nonscaling, cfg.deadline, cfg.exact_attainment_draws, cfg.init_max_s,
+-           cfg.init_scaling, cfg.init_mean_measured)
++           cfg.init_scaling, cfg.init_mean_measured, cfg.exec_scaling, cfg.exec_factor_measured, cfg.exec_common_frac)
+     hit = _ATTAIN_CACHE.get(key)
+     if hit is not None:
+         return hit
+     S, n = cfg.n_stages, int(cfg.exact_attainment_draws)
+     rng = np.random.default_rng([20261120, int(m)])
+-    X = lognormal_mult(rng.standard_normal((n, S)), cfg.exec_shape)
++    X = exec_mult(rng.standard_normal((n, S)), cfg, np.random.default_rng([20261124, int(m), 1]))
+     Y = cfg.overhead_mean * lognormal_mult(rng.standard_normal((n, S)), cfg.overhead_shape)
+     I = lognormal_mult(rng.standard_normal((n, S)), cfg.init_shape)
+     warm = (X * stage_means(cfg, m)).sum(-1) + Y.sum(-1)
+@@ -152,7 +170,7 @@ def miss_probabilities(cfg: PipelineConfig, m: float, n: int = 400_000, seed: in
+     rng = np.random.default_rng(seed)
+     S = cfg.n_stages
+     d = stage_means(cfg, m)
+-    ex = d[None, :] * lognormal_mult(rng.standard_normal((n, S)), cfg.exec_shape)
++    ex = d[None, :] * exec_mult(rng.standard_normal((n, S)), cfg, np.random.default_rng([seed, 20261124]))
+     ov = cfg.overhead_mean * lognormal_mult(rng.standard_normal((n, S)), cfg.overhead_shape)
+     warm = ex.sum(1) + ov.sum(1)
+     init = init_seconds(cfg, lognormal_mult(rng.standard_normal(n), cfg.init_shape), m)
+@@ -174,6 +192,6 @@ def miss_table(cfg: PipelineConfig) -> dict:
+     """{m: (v_w, rho)} for all memory options, cached on the latency-relevant fields."""
+     keys = ("warm_mean_1024", "exec_shape", "overhead_mean", "overhead_shape", "init_mean_1024",
+             "init_shape", "nonscaling", "init_nonscaling", "deadline", "init_max_s",
+-            "init_scaling", "init_mean_measured")
++            "init_scaling", "init_mean_measured", "exec_scaling", "exec_factor_measured", "exec_common_frac")
+     items = tuple((k, getattr(cfg, k)) for k in keys)
+     return {m: _miss_cached((items, m)) for m in cfg.mem_options}
+diff --git a/prism-repro/src/prism_repro/simulator.py b/prism-repro/src/prism_repro/simulator.py
+index 8251a8c..17a2865 100644
+--- a/prism-repro/src/prism_repro/simulator.py
++++ b/prism-repro/src/prism_repro/simulator.py
+@@ -21,7 +21,7 @@ import numpy as np
+ from scipy import stats
+ 
+ from .config import PipelineConfig
+-from .latency import (attainment_table, gb, init_mean, init_seconds, lognormal_mult, poisson_binomial, stage_demand,
++from .latency import (attainment_table, exec_mult, gb, init_mean, init_seconds, lognormal_mult, poisson_binomial, stage_demand,
+                       stage_means)
+ from .metrics import severity, weighted_quantile_hist, window_attainment
+ 
+@@ -38,7 +38,8 @@ class WeekDraws:
+         self.cfg, self.n_min = cfg, n_min
+         self.u_peak = rng.uniform(1 - cfg.peak_upper_frac, 1.0, size=(n_min, S))
+         self.z_int = rng.standard_normal(n_min)
+-        self.ex = lognormal_mult(rng.standard_normal((n_min, I, S)), cfg.exec_shape).astype(np.float32)
++        self.ex = exec_mult(rng.standard_normal((n_min, I, S)), cfg,
++                            np.random.default_rng([seed, 900 + week_index])).astype(np.float32)
+         ov = cfg.overhead_mean * lognormal_mult(rng.standard_normal((n_min, I, S)), cfg.overhead_shape)
+         self.ov_sum = ov.sum(-1).astype(np.float32)
+         self.init = lognormal_mult(rng.standard_normal((n_min, I, S)), cfg.init_shape).astype(np.float32)

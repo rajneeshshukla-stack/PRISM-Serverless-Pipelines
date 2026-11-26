@@ -1,0 +1,15 @@
+command (from prism-repro/): python scripts/revision/less_structured_region2.py . --run "../additional data/derived/region2_r29" docs/revision/less_structured_r29_20261122 --workers=4
+HEAD ee24766; src/experiments clean: yes
+start 2026-11-22T15:44:37Z workers=4
+done r2_03 15:48:17Z
+done r2_00 15:48:19Z
+done r2_02 15:48:22Z
+done r2_01 15:48:23Z
+done r2_05 15:51:38Z
+done r2_04 15:51:38Z
+done r2_06 15:51:58Z
+done r2_07 15:52:01Z
+done r2_08 15:54:32Z
+done r2_09 15:54:34Z
+end 2026-11-22T15:54:34Z
+exit 0

@@ -1,0 +1,108 @@
+{
+ "runs": [
+  {
+   "seed": 101,
+   "scenario": "stationary",
+   "eps": 0.02,
+   "base_cost": 1122.9333343199721,
+   "searched_cost": 1105.7956619249424,
+   "saving": 0.01526152254212676,
+   "base_viol": 0.005952380952380952,
+   "searched_viol": 0.00744047619047619,
+   "epochs_improved": 1946,
+   "epochs_feasible": 2013,
+   "median_static_gain_improved": 0.01027596895373202,
+   "runtime_s": 347.7
+  },
+  {
+   "seed": 101,
+   "scenario": "new_spike",
+   "eps": 0.02,
+   "base_cost": 1397.4768940967851,
+   "searched_cost": 1380.800685386779,
+   "saving": 0.011933083674191547,
+   "base_viol": 0.005952380952380952,
+   "searched_viol": 0.005952380952380952,
+   "epochs_improved": 1953,
+   "epochs_feasible": 2015,
+   "median_static_gain_improved": 0.008504847906774209,
+   "runtime_s": 346.2
+  },
+  {
+   "seed": 102,
+   "scenario": "stationary",
+   "eps": 0.03,
+   "base_cost": 1104.1595168060512,
+   "searched_cost": 1086.2746799772153,
+   "saving": 0.016197692957056087,
+   "base_viol": 0.00744047619047619,
+   "searched_viol": 0.008928571428571428,
+   "epochs_improved": 1935,
+   "epochs_feasible": 2015,
+   "median_static_gain_improved": 0.01196936554602191,
+   "runtime_s": 353.4
+  },
+  {
+   "seed": 102,
+   "scenario": "new_spike",
+   "eps": 0.03,
+   "base_cost": 1437.4964083612228,
+   "searched_cost": 1418.186590337102,
+   "saving": 0.013432950448992398,
+   "base_viol": 0.005952380952380952,
+   "searched_viol": 0.005952380952380952,
+   "epochs_improved": 1972,
+   "epochs_feasible": 2015,
+   "median_static_gain_improved": 0.008669047601762618,
+   "runtime_s": 356.5
+  },
+  {
+   "seed": 103,
+   "scenario": "stationary",
+   "eps": 0.05,
+   "base_cost": 1007.3253920683496,
+   "searched_cost": 977.5780346640456,
+   "saving": 0.029531031023871557,
+   "base_viol": 0.020833333333333332,
+   "searched_viol": 0.022321428571428572,
+   "epochs_improved": 1997,
+   "epochs_feasible": 2015,
+   "median_static_gain_improved": 0.012993960665545298,
+   "runtime_s": 368.0
+  },
+  {
+   "seed": 103,
+   "scenario": "new_spike",
+   "eps": 0.05,
+   "base_cost": 1307.391288693248,
+   "searched_cost": 1272.5285109952206,
+   "saving": 0.0266659094331837,
+   "base_viol": 0.017857142857142856,
+   "searched_viol": 0.025297619047619048,
+   "epochs_improved": 1994,
+   "epochs_feasible": 2016,
+   "median_static_gain_improved": 0.013641171282222276,
+   "runtime_s": 368.6
+  }
+ ],
+ "totals": {
+  "runs": 6,
+  "mean_saving": 0.018837031679903676,
+  "min_saving": 0.011933083674191547,
+  "max_saving": 0.029531031023871557,
+  "runs_compliance_worse": 4,
+  "runs_crossing_2pct_target": [
+   "103/new_spike"
+  ],
+  "improved_share_range": [
+   0.9602977667493796,
+   0.9910669975186104
+  ]
+ },
+ "environment": {
+  "python": "3.12.9 (tags/v3.12.9:fdb8142, Feb  4 2025, 15:27:58) [MSC v.1942 64 bit (AMD64)]",
+  "numpy": "2.4.4",
+  "scipy": "1.17.1",
+  "sklearn": "1.8.0"
+ }
+}

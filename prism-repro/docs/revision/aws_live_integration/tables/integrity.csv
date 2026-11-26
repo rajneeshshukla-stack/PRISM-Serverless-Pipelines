@@ -1,0 +1,3 @@
+arm,stage_rows,with_request_id,distinct_request_ids,cold_stage_rows,distinct_environments,report_lines_joined,report_lines_missing
+baseline_ondemand,160,160,160,13,13,0,160
+adapter_schedule,160,160,160,31,31,0,160

@@ -1,0 +1,13 @@
+benchmark,name,runtime,range,sizes,init_slope,init_slope_lo,init_slope_hi,eq3_slope,init_direction,eq3_agreement,significant_increases_between_adjacent_sizes,cmw_slope,cmw_slope_lo,cmw_slope_hi,cmw_direction,cross_check_agrees
+120,uploader,python 3.7,PRISM sizes 512-3008,512/1024/2048/3008,-0.02,-0.046,-0.002,-0.273,decreasing,direction only; flatter than Eq. (3),none,-0.291,-0.432,-0.17,decreasing,True
+120,uploader,python 3.7,all sizes,128/256/512/1024/1536/2048/3008,-0.008,-0.024,0.006,-0.424,inconclusive,inconclusive,128->256,-0.666,-0.717,-0.615,decreasing,False
+210_node,thumbnailer (Node.js),nodejs 10.x,PRISM sizes 512-3008,512/1024/2048/3008,0.029,0.002,0.055,-0.273,increasing,no: increasing,none,-0.461,-0.541,1.629,inconclusive,False
+210_node,thumbnailer (Node.js),nodejs 10.x,all sizes,128/256/512/1024/2048/3008,0.016,0.001,0.029,-0.42,increasing,no: increasing,none,-0.736,-1.507,1.314,inconclusive,False
+210_python,thumbnailer (Python),python 3.7,PRISM sizes 512-3008,512/1024/2048/3008,-0.025,-0.061,0.004,-0.273,inconclusive,inconclusive,none,-0.428,-0.514,-0.406,decreasing,False
+210_python,thumbnailer (Python),python 3.7,all sizes,128/256/512/1024/2048/3008,-0.002,-0.014,0.012,-0.42,inconclusive,inconclusive,none,-0.668,-0.689,-0.653,decreasing,False
+311,compression,python 3.7,PRISM sizes 512-3008,512/1024/2048/3008,-0.018,-0.029,-0.001,-0.273,decreasing,direction only; flatter than Eq. (3),none,-0.318,-0.382,-0.257,decreasing,True
+311,compression,python 3.7,all sizes,256/512/1024/1536/2048/3008,-0.008,-0.023,0.002,-0.35,inconclusive,inconclusive,1536->2048,-0.542,-0.588,-0.496,decreasing,False
+411,image recognition (large package),python 3.7,PRISM sizes 512-3008,512/1024/2048/3008,0.009,-0.009,0.023,-0.273,inconclusive,inconclusive,none,-0.675,-0.757,-0.323,decreasing,False
+411,image recognition (large package),python 3.7,all sizes,512/1024/1536/2048/3008,0.009,-0.009,0.023,-0.275,inconclusive,inconclusive,none,-0.685,-0.768,-0.348,decreasing,False
+503,graph BFS,python 3.7,PRISM sizes 512-3008,512/1024/2048/3008,-0.105,-0.157,-0.075,-0.273,decreasing,direction only; flatter than Eq. (3),none,-0.351,-0.534,-0.168,decreasing,True
+503,graph BFS,python 3.7,all sizes,128/256/512/1024/1536/2048/3008,-0.025,-0.036,-0.018,-0.424,decreasing,direction only; flatter than Eq. (3),128->256,-0.476,-0.57,-0.405,decreasing,True

@@ -1,0 +1,35 @@
+{
+ "Comment": "PRISM four-stage pipeline (proposed document-ingestion workload, aws_pipeline/SPEC.md)",
+ "StartAt": "ingest",
+ "TimeoutSeconds": 120,
+ "States": {
+  "ingest": {
+   "Type": "Task",
+   "Resource": "arn:aws:lambda:us-east-2:<account>:function:prism-pipe-ingest",
+   "TimeoutSeconds": 60,
+   "Comment": "PRISM stage 1 of 4: ingest",
+   "Next": "transform"
+  },
+  "transform": {
+   "Type": "Task",
+   "Resource": "arn:aws:lambda:us-east-2:<account>:function:prism-pipe-transform",
+   "TimeoutSeconds": 60,
+   "Comment": "PRISM stage 2 of 4: transform",
+   "Next": "aggregate"
+  },
+  "aggregate": {
+   "Type": "Task",
+   "Resource": "arn:aws:lambda:us-east-2:<account>:function:prism-pipe-aggregate",
+   "TimeoutSeconds": 60,
+   "Comment": "PRISM stage 3 of 4: aggregate",
+   "Next": "load"
+  },
+  "load": {
+   "Type": "Task",
+   "Resource": "arn:aws:lambda:us-east-2:<account>:function:prism-pipe-load",
+   "TimeoutSeconds": 60,
+   "Comment": "PRISM stage 4 of 4: load",
+   "End": true
+  }
+ }
+}

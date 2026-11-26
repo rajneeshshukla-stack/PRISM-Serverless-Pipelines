@@ -1,0 +1,95 @@
+====================================================================================================
+A. SAVED KAPPA DIAGNOSTIC  prism-repro/docs/revision/kappa_gap/
+  files: 10
+  PASS 10 trace files
+  PASS seeds 101-105 x {stationary, new_spike}, each once
+  PASS every trace has 2016 epochs (7 d x 288 five-minute epochs)
+  PASS denominator: 'cold per on-demand request' = cold starts / on-demand requests, whole week, 4 stages summed (recomputed from totals and per-stage sums in all 30 F/O/C records)
+  PASS denominator: 'cold-start ratio' = cold starts / stage executions (= 4 x pipeline requests), F, O and C (max deviation 1.1e-19)
+  PASS check (a): recorded closed-loop kappa = recomputed
+  Matching: F and O share the schedule by construction (O = simulate_events(cfg, draws, F.P_epoch, F.mem_epoch));
+            draws: EventDraws(cfg, test-week counts, seed, key 3); PRISM eps 0.02 fixed (not tuned), GBM.
+
+  [3.23x] COLD-START RATE RATIO, O/F, cold per on-demand request, mean of 10 per-trace ratios: 3.226  range 2.966-3.594
+          pooled-mean form: O 0.06855 / F 0.02127 = 3.223
+          cold starts O/F 2.879 (2.41-3.19); on-demand requests O/F 0.892 (0.81-0.94)
+  PASS 3.23x (2.97-3.59) reproduced
+
+  [kappa] KAPPA ESTIMATE (EWMA of per-epoch cold/on-demand, alpha 0.1, prior 0.35), epoch mean per trace:
+    fast                  clipped 0.110 [0.101-0.124] | unclipped 0.050 [0.034-0.075] | at floor 89.7%
+    event, F's schedule   clipped 0.330 [0.257-0.452] | unclipped 0.330 [0.256-0.452] | at floor 0.4%
+    event, closed loop    clipped 0.439 [0.397-0.473] | unclipped 0.439 [0.397-0.473] | at floor 0.1%
+    kappa-estimate ratio O/F: clipped 3.00x [2.40-3.72] | unclipped 6.98x [4.34-9.59]
+    kappa-estimate ratio C/F: clipped 3.99x [3.72-4.33] | unclipped 9.34x [6.05-12.72]
+    -> no per-trace kappa-estimate ratio in the saved diagnostic reaches 20x (see max above).
+  violating windows F 0.70% O 2.89% C 1.74%; C vs O cost +8.9% [+7.7,+10.2], viol -1.15 pts [-2.38,-0.60]
+  PASS violating windows 0.70% vs 2.89% reproduced
+  PASS fast kappa at floor 89.7% of epochs reproduced
+  PASS unclipped 0.050 (F) and 0.330 (O) reproduced
+  PASS summary.txt contains 'x3.23 [2.97-3.59]'
+  PASS summary.txt contains 'x2.88 [2.41-3.19]'
+  PASS summary.txt contains 'violating windows 0.70%'
+  PASS summary.txt contains 'violating windows 2.89%'
+  PASS summary.txt contains 'floor  89.7%'
+  PASS summary.txt contains 'unclipped 0.050'
+  PASS summary.txt contains 'cost +8.9% [+7.7, +10.2]'
+  PASS summary.txt contains '-1.15 points [-2.38, -0.60]'
+  PASS summary.txt contains 'recomputed from the final event telemetry: True'
+
+====================================================================================================
+B. CLOSED-LOOP PILOT RERUN  prism-repro/docs/revision/closed_loop_pilot/run_20261121-122241
+  environment: commit 1f1d771, Windows-11-10.0.26200-SP0, python 3.12.9, numpy 2.4.4, scipy 1.17.1, sklearn 1.8.0, seeds [101, 102, 103], stationary
+  label: PRE-CALIBRATION, SUPERSEDES AT RECALIBRATION; exploratory pilot (PRESPECIFICATION.md section 7)
+  PASS seeds 101-103, stationary (PRESPECIFICATION sec. 7)
+  PASS default deadline 14.5 s
+  PASS PRISM kappa floor 0.1 (submitted)
+  PASS 12 group files (12)
+  PASS one group per seed x family
+  PASS every group records the environment's commit
+  PASS every group stationary
+  PASS grids = experiment.GRIDS; selection and edge expansions replayed from saved validation rows (all 12)
+  PASS every violating-window rate is an integer count of 672 fifteen-minute windows
+  PASS seed 101: identical request counts across families (val 6122799, test 6038313)
+  PASS seed 101: pilot test-week count equals kappa_gap stationary test week (6038313)
+  PASS seed 102: identical request counts across families (val 6169299, test 6109888)
+  PASS seed 102: pilot test-week count equals kappa_gap stationary test week (6109888)
+  PASS seed 103: identical request counts across families (val 5921303, test 6090568)
+  PASS seed 103: pilot test-week count equals kappa_gap stationary test week (6090568)
+  PASS 125 closed-loop weeks (summary says 125)
+  runtime: median 78 s, total 2.74 h of recorded week time
+
+  Per trace, test week (<= 13 of 672 windows = met 2%):
+    PRISM          101 sel 0.01   exp -      edge False | val 13/672 cost  1210.7 | test 12/672 (1.79%) met  cost  1298.6 mem>=2048 0.113 kappa 0.442
+    PRISM          102 sel 0.01   exp -      edge False | val 13/672 cost  1248.3 | test 11/672 (1.64%) met  cost  1340.1 mem>=2048 0.137 kappa 0.384
+    PRISM          103 sel 0.02   exp -      edge False | val 13/672 cost  1091.2 | test 16/672 (2.38%) MISS cost  1239.5 mem>=2048 0.060 kappa 0.434
+    QuantProv_q90  101 sel 1.3    exp -      edge False | val 12/672 cost  1172.8 | test 15/672 (2.23%) MISS cost  1256.8 mem>=2048 0.000 kappa nan
+    QuantProv_q90  102 sel 1.5    exp [1.6]  edge False | val 13/672 cost  1297.0 | test  8/672 (1.19%) met  cost  1425.7 mem>=2048 0.000 kappa nan
+    QuantProv_q90  103 sel 1.1    exp -      edge False | val 11/672 cost  1035.8 | test 19/672 (2.83%) MISS cost  1154.7 mem>=2048 0.000 kappa nan
+    Reactive       101 sel 0.55   exp -      edge False | val  8/672 cost  1807.2 | test  8/672 (1.19%) met  cost  1786.5 mem>=2048 0.000 kappa nan
+    Reactive       102 sel 0.55   exp -      edge False | val  9/672 cost  1809.9 | test  7/672 (1.04%) met  cost  1783.0 mem>=2048 0.000 kappa nan
+    Reactive       103 sel 0.55   exp -      edge False | val 11/672 cost  1741.2 | test  8/672 (1.19%) met  cost  1767.4 mem>=2048 0.000 kappa nan
+    MemAdapt_q90   101 sel 1.3    exp -      edge False | val 12/672 cost  1172.8 | test 15/672 (2.23%) MISS cost  1256.8 mem>=2048 0.000 kappa nan
+    MemAdapt_q90   102 sel 1.5    exp [1.6]  edge False | val 13/672 cost  1297.0 | test  8/672 (1.19%) met  cost  1425.7 mem>=2048 0.000 kappa nan
+    MemAdapt_q90   103 sel 1.1    exp -      edge False | val 11/672 cost  1035.8 | test 19/672 (2.83%) MISS cost  1154.7 mem>=2048 0.000 kappa nan
+  MemAdapt-q90 records identical to QuantProv-q90 in every field, all weeks: True; max share of epochs >= 2048 MB in either: 0.0
+  test weeks meeting 2%: {'PRISM': 2, 'QuantProv_q90': 1, 'Reactive': 3, 'MemAdapt_q90': 1}; mean test violating-window rate: PRISM 1.93%, QuantProv_q90 2.08%, Reactive 1.14%, MemAdapt_q90 2.08%
+
+  Paired PRISM minus comparator, 3 traces, 95% t interval (df 2); similar compliance iff interval within +/-0.5 pts:
+    vs QuantProv_q90  cost +1.6 +/- 17.0% [-15.5, +18.6] per trace [3.3, -6.0, 7.3] | viol -0.15 +/- 1.28 pts [-1.43, +1.13] per trace [-0.45, 0.45, -0.45]
+       cost interval excludes 0: False; within +/-2% (tie): False; similar compliance: False
+    vs Reactive       cost -27.3 +/- 6.2% [-33.6, -21.1] per trace [-27.3, -24.8, -29.9] | viol +0.79 +/- 0.85 pts [-0.06, +1.65] per trace [0.6, 0.6, 1.19]
+       cost interval excludes 0: True; within +/-2% (tie): False; similar compliance: False
+    vs MemAdapt_q90   cost +1.6 +/- 17.0% [-15.5, +18.6] per trace [3.3, -6.0, 7.3] | viol -0.15 +/- 1.28 pts [-1.43, +1.13] per trace [-0.45, 0.45, -0.45]
+       cost interval excludes 0: False; within +/-2% (tie): False; similar compliance: False
+
+  summary.txt encoding: utf-16
+  PASS summary.txt contains 'cost +1.6 +/- 17.0%'
+  PASS summary.txt contains 'cost -27.3 +/- 6.2%'
+  PASS summary.txt contains '-0.15 +/- 1.28 points'
+  PASS summary.txt contains '+0.79 +/- 0.85 points'
+  PASS summary.txt contains 'similar compliance (+/-0.5): NO'
+  PASS summary.txt contains '125 closed-loop weeks, median 78 s, total 2.7 CPU-h'
+  PASS summary.txt contains '1.5 ([1.6])'
+  PASS all three comparisons NOT similar compliance in summary.txt
+
+ALL CHECKS PASSED

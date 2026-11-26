@@ -1,0 +1,81 @@
+{
+ "botocore": "1.44.9",
+ "region": "us-east-2",
+ "calls": {
+  "iam.attach_role_policy": 1,
+  "iam.create_role": 1,
+  "iam.delete_role": 1,
+  "iam.detach_role_policy": 1,
+  "iam.get_role": 5,
+  "lambda.create_function": 16,
+  "lambda.delete_function": 16,
+  "lambda.get_account_settings": 1,
+  "lambda.get_function_configuration": 80,
+  "lambda.invoke": 256,
+  "lambda.list_functions": 6,
+  "lambda.list_tags": 16,
+  "lambda.update_function_configuration": 16,
+  "logs.create_log_group": 16,
+  "logs.delete_log_group": 16,
+  "logs.describe_log_groups": 5,
+  "logs.filter_log_events": 32,
+  "logs.put_retention_policy": 32,
+  "sts.get_caller_identity": 2
+ },
+ "negative_control": "wrong parameter rejected by ParamValidationError",
+ "log": {
+  "prepare": {
+   "design_sha256": "76ab39d7f00b5192f9a793f85afd70186dc2e381676dca2e8c2bf38b35c965fd",
+   "workload_spec_sha256": "2a7afbb00aea21a3afd29b37e3acdd757e15bee6d246e24fc22bdb8745039656",
+   "visits": 624,
+   "invocations": 20992
+  },
+  "preflight": [
+   "region us-east-2: ConcurrentExecutions=10, UnreservedConcurrentExecutions=10; leftovers={'functions': [], 'log_groups': [], 'roles': []}"
+  ],
+  "deploy": [
+   "deployed 16 functions; manifest <run dir>/manifest.json"
+  ],
+  "smoke": [
+   "visits run 16, max in flight 8 (cap 8)",
+   "smoke check: {\"invocations\": 256, \"errors\": 0, \"cold\": 128, \"warm\": 128, \"cold_in_cold_batches\": 128, \"cold_with_init_in_tail\": 128, \"warm_with_init_in_tail\": 0, \"tail_report_missing\": 0, \"memory_mismatch\": 0, \"k_mismatch\": 0, \"request_id_mismatch\": 0, \"runtime_versions\": [\"python:3.12.fake\"], \"ok\": true}",
+   "SMOKE OK"
+  ],
+  "collect": [
+   "wrote 255 new REPORT records to <run dir>/cloudwatch_reports.jsonl (255 in total)",
+   "collection complete"
+  ],
+  "collect_rescan": [
+   "wrote 0 new REPORT records to <run dir>/cloudwatch_reports.jsonl (255 in total)",
+   "collection complete"
+  ],
+  "coverage": {
+   "expected_request_ids": 256,
+   "matched": 255,
+   "missing": 1,
+   "extra_reports": 0,
+   "invocations_without_request_id": 0,
+   "tail_and_cloudwatch_both": 255,
+   "tail_and_cloudwatch_differ": 0,
+   "collection_status": "complete",
+   "complete": false
+  },
+  "teardown": [
+   "remaining after teardown: {'functions': [], 'log_groups': ['/aws/lambda/prism-mcal-aggregate-1024', '/aws/lambda/prism-mcal-aggregate-2048', '/aws/lambda/prism-mcal-aggregate-3008', '/aws/lambda/prism-mcal-aggregate-512', '/aws/lambda/prism-mcal-ingest-1024', '/aws/lambda/prism-mcal-ingest-2048', '/aws/lambda/prism-mcal-ingest-3008', '/aws/lambda/prism-mcal-ingest-512', '/aws/lambda/prism-mcal-load-1024', '/aws/lambda/prism-mcal-load-2048', '/aws/lambda/prism-mcal-load-3008', '/aws/lambda/prism-mcal-load-512', '/aws/lambda/prism-mcal-transform-1024', '/aws/lambda/prism-mcal-transform-2048', '/aws/lambda/prism-mcal-transform-3008', '/aws/lambda/prism-mcal-transform-512'], 'roles': []}",
+   "RETAINED 16 log groups (14-day retention): REPORT coverage is not verified complete. Resume collection, re-check coverage, then run cleanup-logs.",
+   "CLEAN except the retained log groups"
+  ],
+  "cleanup_refused": [
+   "REFUSED: REPORT coverage is not complete; run collect and coverage first"
+  ],
+  "cleanup_forced": [
+   "deleted (or already absent) 16 log groups; remaining: {'functions': [], 'log_groups': [], 'roles': []}",
+   "CLEAN"
+  ],
+  "verify": [
+   "remaining: {'functions': [], 'log_groups': [], 'roles': []}",
+   "CLEAN"
+  ]
+ },
+ "ok": true
+}

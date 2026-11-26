@@ -1,0 +1,10 @@
+{"wall_ns": 1795358584539989800, "msg": "preflight: account 000000000000 region us-east-2: ConcurrentExecutions=10, UnreservedConcurrentExecutions=10; leftovers={'functions': [], 'state_machines': [], 'log_groups': [], 'roles': []}"}
+{"wall_ns": 1795358584555794400, "msg": "deployed"}
+{"wall_ns": 1795358586046521700, "msg": "calibrated: {ingest: k=84, transform: k=1354, aggregate: k=417, load: k=309}"}
+{"wall_ns": 1795358587535424400, "msg": "smoke: {'type': 'arm_summary', 'run_id': 'f8f76e3c0b36', 'arm': 'smoke', 'n': 3, 'met': 3, 'missed': 0, 'failed': 0, 'shed_client_cap': 0, 'max_in_flight': 1, 'cap': 1, 'elapsed_s': 1.3870566}"}
+{"wall_ns": 1795358593048696000, "msg": "arm baseline_ondemand done"}
+{"wall_ns": 1795358598570062700, "msg": "arm adapter_schedule done"}
+{"wall_ns": 1795358598617514400, "msg": "collect: collection complete"}
+{"wall_ns": 1795358598680692400, "msg": "coverage: matched 140 of 140, missing 0, collection complete"}
+{"wall_ns": 1795358598712632000, "msg": "analysed"}
+{"wall_ns": 1795358598712632000, "msg": "teardown: remaining after teardown: {'functions': [], 'state_machines': [], 'log_groups': [], 'roles': []}"}

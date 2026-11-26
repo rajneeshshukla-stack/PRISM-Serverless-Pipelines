@@ -1,0 +1,10 @@
+{
+ "platform": "Windows-11-10.0.26200-SP0",
+ "python": "3.12.9",
+ "numpy": "2.4.4",
+ "scipy": "1.17.1",
+ "sklearn": "1.8.0",
+ "git_head": "78ba419c427b15537c2828e22e543ebac3c98479",
+ "src_and_experiments_clean": true,
+ "cpu_count": 8
+}

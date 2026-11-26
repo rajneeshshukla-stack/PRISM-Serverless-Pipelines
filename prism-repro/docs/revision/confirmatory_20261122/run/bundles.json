@@ -1,0 +1,352 @@
+{
+ "107_65721002596b843f": {
+  "seed": 107,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 35.5,
+  "bytes": 17781013,
+  "sha256": "c072a686534394159ca335f57cced8d6c270435be41cee2a053e993a9560f861"
+ },
+ "106_08caf472dd52761b": {
+  "seed": 106,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 35.9,
+  "bytes": 17781013,
+  "sha256": "9fda8389b8b672c8ca6e986d10033fd71c057ae5cc90aa7b8bf61ea3a54c88a5"
+ },
+ "108_65721002596b843f": {
+  "seed": 108,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 36.0,
+  "bytes": 17781013,
+  "sha256": "05e915339cf5f2bec4b2bbae17d644d608d7b66a57c82314f57b9b37964a4bd6"
+ },
+ "108_08caf472dd52761b": {
+  "seed": 108,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 36.6,
+  "bytes": 17781013,
+  "sha256": "b6f1f27124963f7b5f4362c389974528246d0ba3bff23827966b9fb91a1ce882"
+ },
+ "107_08caf472dd52761b": {
+  "seed": 107,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 45.2,
+  "bytes": 17781013,
+  "sha256": "d53017de9020910893ad88ee9cd464ee49d8a68eea84930b458e1b4c3413af98"
+ },
+ "106_65721002596b843f": {
+  "seed": 106,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 45.9,
+  "bytes": 17781013,
+  "sha256": "34367258987b0e646b92147cac67b188020566858821b7d92eddf05239279715"
+ },
+ "110_65721002596b843f": {
+  "seed": 110,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 33.5,
+  "bytes": 17781013,
+  "sha256": "5aed5c7119ad481b8ad7e9794a16ce9216e29790305cdad26a7ffa1aae5c5db2"
+ },
+ "110_08caf472dd52761b": {
+  "seed": 110,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 45.5,
+  "bytes": 17781013,
+  "sha256": "2f768a93a934cd7fd82bd5043f7d6c0e3cea54b2c194ec86cb1fb16e76c2315e"
+ },
+ "109_65721002596b843f": {
+  "seed": 109,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 46.6,
+  "bytes": 17781013,
+  "sha256": "145708330d2dd722d658c3ba17d1457a90cf82ed6349b535ea2bb92778771457"
+ },
+ "109_08caf472dd52761b": {
+  "seed": 109,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 47.8,
+  "bytes": 17781013,
+  "sha256": "1515362fe4aacaed1584edb3801a98104e4007d880578ebf98cbba4a2819984e"
+ },
+ "111_65721002596b843f": {
+  "seed": 111,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 52.9,
+  "bytes": 17781013,
+  "sha256": "87795e5bd7342d4dbf4155c620608e2c47a7f3786deeaae2b45231ebe0cae352"
+ },
+ "111_08caf472dd52761b": {
+  "seed": 111,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 58.8,
+  "bytes": 17781013,
+  "sha256": "8c65ff3a83b63011e5e568f5dfa4cdb247cdf6444a7115c625340c37048a5f47"
+ },
+ "112_08caf472dd52761b": {
+  "seed": 112,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 36.7,
+  "bytes": 17781013,
+  "sha256": "3068ca3112a469b5ac6053e9cbcd557ad5790a67794a486ad766f4d1ae64fc5c"
+ },
+ "112_65721002596b843f": {
+  "seed": 112,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 38.7,
+  "bytes": 17781013,
+  "sha256": "4a5c2e05ac97ca94571982328d66a72d3ca4ff77b409bccb750b02e6ea4bc3d3"
+ },
+ "114_08caf472dd52761b": {
+  "seed": 114,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 29.6,
+  "bytes": 17781013,
+  "sha256": "94c71aef4f399486b1a293228337fc35d737599eb1e04010ad152d72c866487c"
+ },
+ "113_08caf472dd52761b": {
+  "seed": 113,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 51.3,
+  "bytes": 17781013,
+  "sha256": "79c1bd7a9d3bbb7ad26f476ad0a45e91a5a272bcd7f805fe0c9ab77f026e6f0d"
+ },
+ "113_65721002596b843f": {
+  "seed": 113,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 56.2,
+  "bytes": 17781013,
+  "sha256": "e904911089b10019c7354c14dd6902736a2faef957f1bded18e2f6d8bde20e7b"
+ },
+ "115_08caf472dd52761b": {
+  "seed": 115,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 47.3,
+  "bytes": 17781013,
+  "sha256": "6dce441ef412cb08d47bbebdab7a1320b8427694a219f156f1d7b5bc1ac3a832"
+ },
+ "115_65721002596b843f": {
+  "seed": 115,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 35.0,
+  "bytes": 17781013,
+  "sha256": "47ef8e5443b9be43fbe8ad7611859045488ba48d5fea020793e24b89a374b616"
+ },
+ "114_65721002596b843f": {
+  "seed": 114,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 53.4,
+  "bytes": 17781013,
+  "sha256": "71069b043045c3f25b13cd8ae15cabd4256bbc9b89d749f51cb81fe481bc5e0b"
+ },
+ "116_08caf472dd52761b": {
+  "seed": 116,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 42.4,
+  "bytes": 17781013,
+  "sha256": "ab0d9738695313aebcab6f1c0c94378d9bb52b335d38fd10f4957facffbf8538"
+ },
+ "116_65721002596b843f": {
+  "seed": 116,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 49.0,
+  "bytes": 17781013,
+  "sha256": "cd114058885f6c97b76fa91c38fa1356774f9e4442b6548447878aa94c169a1f"
+ },
+ "117_08caf472dd52761b": {
+  "seed": 117,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 51.3,
+  "bytes": 17781013,
+  "sha256": "f58ac866ffe40b98b4e52d3ee827318b8a0fb4a6def41cf046653f86d3fbd630"
+ },
+ "118_08caf472dd52761b": {
+  "seed": 118,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 37.4,
+  "bytes": 17781013,
+  "sha256": "74ea425f34a50a32bc9bbe9a5c7c31dc27546758707dbd211c712862c2f56d59"
+ },
+ "118_65721002596b843f": {
+  "seed": 118,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 43.4,
+  "bytes": 17781013,
+  "sha256": "b0dede343d71b33e28f09a0cfe052deed949274acb705b5e8bea7c42f37e821e"
+ },
+ "117_65721002596b843f": {
+  "seed": 117,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 48.0,
+  "bytes": 17781013,
+  "sha256": "9b31cabb4363e9c83486dbde3ed9023d38c5a170b6f57d3808ebcb13a7f77b4f"
+ },
+ "120_08caf472dd52761b": {
+  "seed": 120,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 28.9,
+  "bytes": 17781013,
+  "sha256": "98f76fef85b1e8024aa9507c284f3a8f402f8c5009a981e48ea496f9ee98fe6e"
+ },
+ "120_65721002596b843f": {
+  "seed": 120,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 29.5,
+  "bytes": 17781013,
+  "sha256": "155d3c84b3918fd5e1ab7985af5299cddf13f037ef1431ad65be7e729447ad54"
+ },
+ "119_08caf472dd52761b": {
+  "seed": 119,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 52.2,
+  "bytes": 17781013,
+  "sha256": "88a2c91f565c84ec2cc42ab2224b584afbdc0f1a1d39bb2d3f16c7afc9dd063e"
+ },
+ "119_65721002596b843f": {
+  "seed": 119,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 43.4,
+  "bytes": 17781013,
+  "sha256": "b53d50b18d72f47a79afbe66e7e2e509f0eb43a48a1e22f407bf1e6b62b80085"
+ },
+ "121_08caf472dd52761b": {
+  "seed": 121,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 37.4,
+  "bytes": 17781013,
+  "sha256": "67581b73018efcbe7269233b0026db58dee93b23b48182551a76cef4d789ba51"
+ },
+ "121_65721002596b843f": {
+  "seed": 121,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 45.5,
+  "bytes": 17781013,
+  "sha256": "dd3b0687bb409c65a8037fc5d83725ee185f1c55e00c4da2e26259fde5a17f76"
+ },
+ "122_08caf472dd52761b": {
+  "seed": 122,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 31.9,
+  "bytes": 17781013,
+  "sha256": "f70b4372197705a26fba756182c4cd0277709242ea5067cdda8916a4b82c7bd0"
+ },
+ "122_65721002596b843f": {
+  "seed": 122,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 33.4,
+  "bytes": 17781013,
+  "sha256": "d858fb39480384e6b4a89f9981f3264f1267b5e2e14f21953cf9ecb8b9104213"
+ },
+ "123_65721002596b843f": {
+  "seed": 123,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 33.8,
+  "bytes": 17781013,
+  "sha256": "0026496051a96ee2d1a2948c021b840b70d651b55c5cfed45559ca6640aadc0c"
+ },
+ "123_08caf472dd52761b": {
+  "seed": 123,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 46.8,
+  "bytes": 17781013,
+  "sha256": "5ba1a250d3e518399d60177e096492d7c2879b757a48d378b29b1f7b4d53c83c"
+ },
+ "124_08caf472dd52761b": {
+  "seed": 124,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 35.2,
+  "bytes": 17781013,
+  "sha256": "07119f8f5a8a7efb4c7a3d7c35e57380fca3b1bbaf9c8537e01b9042b82c3359"
+ },
+ "124_65721002596b843f": {
+  "seed": 124,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 37.8,
+  "bytes": 17781013,
+  "sha256": "2090cfd888aa4704eb2e926d8184f7ab3d6b681a192105ab7a26b28c39c07db3"
+ },
+ "126_08caf472dd52761b": {
+  "seed": 126,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 39.8,
+  "bytes": 17781013,
+  "sha256": "2ca56f287ee8c81a6d0f7da0de5070bcfdb3786758333778924114daa42f2831"
+ },
+ "126_65721002596b843f": {
+  "seed": 126,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 30.6,
+  "bytes": 17781013,
+  "sha256": "762adf17acdadcf7484ba853ab6316d03f87fee5edfe44b1a82aa4428109bebc"
+ },
+ "125_08caf472dd52761b": {
+  "seed": 125,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 50.1,
+  "bytes": 17781013,
+  "sha256": "26868784ae1ad1ca69b84f54f17de99cf4f71215bb2ae4a91e0a5cc7cec45e12"
+ },
+ "125_65721002596b843f": {
+  "seed": 125,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 53.0,
+  "bytes": 17781013,
+  "sha256": "03209eb2cd57f9046cb15f4615b0991cbf8b123d8fbb9494996613dec354c787"
+ },
+ "127_08caf472dd52761b": {
+  "seed": 127,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 51.1,
+  "bytes": 17781013,
+  "sha256": "950a0f0c31d1953347d49560da7759f8e2552fe30dfb6f87d78f343f3be656e6"
+ },
+ "128_08caf472dd52761b": {
+  "seed": 128,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 28.8,
+  "bytes": 17781013,
+  "sha256": "6abeedec02bf9d749641c0677c93d6a41cd1ca4c9391b90fe61fd62f34b9d21e"
+ },
+ "128_65721002596b843f": {
+  "seed": 128,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 29.4,
+  "bytes": 17781013,
+  "sha256": "81aa4116b9b8f9379845473566e5c3b46598e897050ce98968956ce77b4ed88f"
+ },
+ "127_65721002596b843f": {
+  "seed": 127,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 48.4,
+  "bytes": 17781013,
+  "sha256": "fb2709ff889d40e244abfb8fdda24eb4bbc7a59de6abf0d0fa47f5e1ae973760"
+ },
+ "129_08caf472dd52761b": {
+  "seed": 129,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 44.6,
+  "bytes": 17781013,
+  "sha256": "05936a3fba1e8955f0897bc03cf4610c00b53c4183a0d0b51cedf73e1a40b87c"
+ },
+ "129_65721002596b843f": {
+  "seed": 129,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 43.8,
+  "bytes": 17781013,
+  "sha256": "20923244cd06d0f01d22ce2e8985f01e083fc93548b572b77968f3d556b78e0f"
+ },
+ "130_08caf472dd52761b": {
+  "seed": 130,
+  "cfg_sha": "08caf472dd52761b",
+  "build_s": 29.5,
+  "bytes": 17781013,
+  "sha256": "e5f53dcb1cb2c30f89abb3b0bab8312df5d21b022d1e59f2c80dc1531c423a1b"
+ },
+ "130_65721002596b843f": {
+  "seed": 130,
+  "cfg_sha": "65721002596b843f",
+  "build_s": 42.8,
+  "bytes": 17781013,
+  "sha256": "5347bf190e2deb5316f2096d1227298a202ee87d533b8a9c78fccbdb9eb4d13e"
+ }
+}

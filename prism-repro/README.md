@@ -41,7 +41,7 @@ Run from the repository root.
 | Step | Command | Notes |
 |---|---|---|
 | Environment | `python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt` | Pinned versions (Python 3.12.3). Exact reproduction of the forecast-driven runs needs exactly these versions (paper, Supplementary Section S1). |
-| Tests | `python -m unittest discover -s tests -v` | 48 tests (52 with the patch applied; `patches/README.md`) |
+| Tests | `python -m unittest discover -s tests -v` | Count and platforms per run: `docs/TEST_REPORT.md` (48 tests at submission; the patch and the revision regression tests added since). Exact commands and run times: `REPRODUCE.md` |
 | Tables of E1–E11 | `python scripts/analyze.py` | Regenerates `results/tables/` and `results/summary.json` from `results/raw/` |
 | Revision analyses | `python scripts/revision/analyze_e8.py . results/raw/E8/rows.jsonl`; `python scripts/revision/analyze_e12.py results/raw/E12`; `python scripts/revision/posthoc_analysis.py .`; `python scripts/revision/pc_billing_bounds.py .`; `python scripts/revision/matched_compliance_pertrace.py .` | Outputs in `results/tables/revision/` |
 | Fig. 2 and Suppl. Figs. S2–S5 | `python scripts/revision/figures/make_figs.py . <out_dir>` | Output files keep an earlier numbering (`fig3`–`fig7`) |

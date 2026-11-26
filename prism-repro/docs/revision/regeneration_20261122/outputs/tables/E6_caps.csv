@@ -1,0 +1,9 @@
+Scenario,Cap,Cost,Violating windows,Infeasible epochs,Mean provisioned,traces
+stationary,None,"1,131",0.83%,0.17%,246,5
+stationary,250,"1,128",0.83%,0.27%,244,5
+stationary,60,"1,351",0.03%,0.05%,114,5
+stationary,40,"1,316",0.00%,0.13%,99,5
+new_spike,None,"1,484",0.57%,0.08%,336,5
+new_spike,250,"1,515",0.57%,0.23%,297,5
+new_spike,60,"1,687",0.00%,0.08%,134,5
+new_spike,40,"1,777",0.00%,0.22%,113,5

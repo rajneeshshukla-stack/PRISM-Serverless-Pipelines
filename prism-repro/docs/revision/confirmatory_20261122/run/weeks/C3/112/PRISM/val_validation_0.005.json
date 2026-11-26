@@ -1,0 +1,23 @@
+{
+ "week": "val",
+ "param": 0.005,
+ "runtime_s": 106.3,
+ "n_requests": 6100076,
+ "share_mem_ge_2048": 1.0,
+ "cost": 2011.7340488099244,
+ "violating_window_rate": 0.010416666666666666,
+ "record_attainment": 0.9991232896114737,
+ "cold_start_ratio": 0.0003511841491810921,
+ "overflow_share": 0.006299470695119214,
+ "p99_latency": 9.805,
+ "kappa_mean": 0.41610297579759903,
+ "infeasible_share": 0.08085317460317465,
+ "scenario": "validation",
+ "seed": 112,
+ "family": "PRISM",
+ "set": "C3",
+ "cfg_sha": "08caf472dd52761b",
+ "counts_sha256": "40efb7df4e180648ad047a7aba1f46b2fea4a714403ab3bc3ed1fbe532e0c474",
+ "pid": 6820,
+ "finished_utc": "2026-11-23T07:06:07Z"
+}

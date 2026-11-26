@@ -1,0 +1,225 @@
+2026-11-24T15:54:34Z start: sets ['K'], 15 groups, workers 4, commit 3edc386, driver 3f909dc9780d
+2026-11-24T15:54:44Z bundle 103 65721002596b843f: built in 9.1 s, 17781013 bytes
+2026-11-24T15:54:44Z bundle 104 65721002596b843f: built in 9.2 s, 17781013 bytes
+2026-11-24T15:54:44Z bundle 102 65721002596b843f: built in 9.5 s, 17781013 bytes
+2026-11-24T15:54:44Z bundle 101 65721002596b843f: built in 9.5 s, 17781013 bytes
+2026-11-24T15:54:59Z bundle 105 65721002596b843f: built in 15.8 s, 17781013 bytes
+2026-11-24T15:55:59Z heartbeat: 72 running/queued, 0 weeks run, 0 reused, 0/15 groups done
+2026-11-24T15:56:30Z week K 103 PRISM val validation 0.005: 101.7 s, cost 1350.8, violating 1.34%
+2026-11-24T15:56:30Z week K 103 PRISM val validation 0.01: 101.9 s, cost 1202.4, violating 1.34%
+2026-11-24T15:56:30Z week K 103 PRISM val validation 0.02: 101.7 s, cost 1102.1, violating 1.79%
+2026-11-24T15:56:45Z week K 103 PRISM val validation 0.03: 101.5 s, cost 1049.6, violating 1.93%
+2026-11-24T15:57:45Z heartbeat: 86 running/queued, 4 weeks run, 0 reused, 0/15 groups done
+2026-11-24T15:58:22Z week K 103 PRISM_kfloor0001 val validation 0.005: 107.6 s, cost 1344.5, violating 1.49%
+2026-11-24T15:58:22Z week K 103 PRISM val validation 0.05: 108.6 s, cost 964.7, violating 3.12%
+2026-11-24T15:58:23Z week K 103 PRISM val validation 0.08: 108.8 s, cost 905.2, violating 4.17%
+2026-11-24T15:58:40Z week K 103 PRISM_kfloor0001 val validation 0.01: 111.2 s, cost 1201.0, violating 1.34%
+2026-11-24T15:59:40Z heartbeat: 86 running/queued, 8 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:00:21Z week K 103 PRISM_kfloor0001 val validation 0.02: 114.2 s, cost 1098.0, violating 2.08%
+2026-11-24T16:00:22Z week K 103 PRISM_kfloor0001 val validation 0.03: 114.7 s, cost 994.8, violating 2.98%
+2026-11-24T16:00:22Z week K 103 PRISM_kfloor0001 val validation 0.05: 114.4 s, cost 889.2, violating 4.76%
+2026-11-24T16:00:37Z week K 103 PRISM_kfloor0001 val validation 0.08: 113.0 s, cost 861.7, violating 5.80%
+2026-11-24T16:01:37Z heartbeat: 82 running/queued, 12 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:02:06Z week K 103 PRISM_kfrozen01 val validation 0.01: 99.7 s, cost 1083.3, violating 1.64%
+2026-11-24T16:02:06Z week K 103 PRISM_kfrozen01 val validation 0.005: 101.3 s, cost 1185.0, violating 1.34%
+2026-11-24T16:02:07Z week K 103 PRISM_kfrozen01 val validation 0.02: 100.6 s, cost 1024.3, violating 1.93%
+2026-11-24T16:02:23Z week K 103 PRISM_kfrozen01 val validation 0.03: 101.1 s, cost 987.1, violating 2.08%
+2026-11-24T16:03:23Z heartbeat: 82 running/queued, 16 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:03:47Z week K 103 PRISM_kfrozen01 val validation 0.05: 97.8 s, cost 925.9, violating 3.72%
+2026-11-24T16:03:49Z week K 104 PRISM val validation 0.005: 98.2 s, cost 1434.1, violating 0.30%
+2026-11-24T16:03:50Z week K 103 PRISM_kfrozen01 val validation 0.08: 99.5 s, cost 895.8, violating 4.46%
+2026-11-24T16:04:05Z week K 104 PRISM val validation 0.01: 98.4 s, cost 1282.4, violating 1.34%
+2026-11-24T16:05:05Z heartbeat: 82 running/queued, 20 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:05:29Z week K 104 PRISM val validation 0.02: 98.4 s, cost 1184.9, violating 1.64%
+2026-11-24T16:05:31Z week K 104 PRISM val validation 0.05: 97.6 s, cost 1073.3, violating 2.53%
+2026-11-24T16:05:32Z week K 104 PRISM val validation 0.03: 99.0 s, cost 1142.8, violating 1.79%
+2026-11-24T16:05:48Z week K 104 PRISM val validation 0.08: 99.5 s, cost 974.3, violating 4.32%
+2026-11-24T16:06:48Z heartbeat: 78 running/queued, 24 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:07:12Z week K 104 PRISM_kfloor0001 val validation 0.005: 98.8 s, cost 1429.4, violating 0.30%
+2026-11-24T16:07:14Z week K 104 PRISM_kfloor0001 val validation 0.01: 98.8 s, cost 1280.2, violating 1.34%
+2026-11-24T16:07:15Z week K 104 PRISM_kfloor0001 val validation 0.02: 99.8 s, cost 1183.1, violating 1.64%
+2026-11-24T16:07:31Z week K 104 PRISM_kfloor0001 val validation 0.03: 99.1 s, cost 1117.8, violating 2.23%
+2026-11-24T16:08:31Z heartbeat: 78 running/queued, 28 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:08:56Z week K 104 PRISM_kfloor0001 val validation 0.05: 100.7 s, cost 988.1, violating 4.46%
+2026-11-24T16:08:57Z week K 104 PRISM_kfloor0001 val validation 0.08: 99.0 s, cost 872.9, violating 6.40%
+2026-11-24T16:08:59Z week K 104 PRISM_kfrozen01 val validation 0.005: 99.3 s, cost 1245.2, violating 1.19%
+2026-11-24T16:09:14Z week K 104 PRISM_kfrozen01 val validation 0.01: 98.7 s, cost 1156.4, violating 1.34%
+2026-11-24T16:10:14Z heartbeat: 78 running/queued, 32 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:10:37Z week K 104 PRISM_kfrozen01 val validation 0.02: 98.1 s, cost 1089.5, violating 2.08%
+2026-11-24T16:10:39Z week K 104 PRISM_kfrozen01 val validation 0.03: 98.2 s, cost 1047.6, violating 2.83%
+2026-11-24T16:10:42Z week K 104 PRISM_kfrozen01 val validation 0.05: 98.8 s, cost 979.9, violating 3.72%
+2026-11-24T16:10:57Z week K 104 PRISM_kfrozen01 val validation 0.08: 98.8 s, cost 916.9, violating 4.91%
+2026-11-24T16:11:57Z heartbeat: 74 running/queued, 36 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:12:20Z week K 102 PRISM val validation 0.005: 98.8 s, cost 1384.2, violating 1.34%
+2026-11-24T16:12:23Z week K 102 PRISM val validation 0.01: 99.8 s, cost 1247.1, violating 1.93%
+2026-11-24T16:12:27Z week K 102 PRISM val validation 0.02: 101.1 s, cost 1150.2, violating 2.68%
+2026-11-24T16:12:40Z week K 102 PRISM val validation 0.03: 99.6 s, cost 1090.8, violating 2.83%
+2026-11-24T16:13:40Z heartbeat: 74 running/queued, 40 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:14:04Z week K 102 PRISM val validation 0.05: 99.8 s, cost 1007.5, violating 3.72%
+2026-11-24T16:14:09Z week K 102 PRISM val validation 0.08: 101.3 s, cost 943.7, violating 5.36%
+2026-11-24T16:14:10Z week K 102 PRISM_kfloor0001 val validation 0.005: 99.7 s, cost 1380.1, violating 1.49%
+2026-11-24T16:14:25Z week K 102 PRISM_kfloor0001 val validation 0.01: 99.8 s, cost 1246.5, violating 2.08%
+2026-11-24T16:15:25Z heartbeat: 74 running/queued, 44 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:15:48Z week K 102 PRISM_kfloor0001 val validation 0.02: 99.9 s, cost 1150.2, violating 2.68%
+2026-11-24T16:15:53Z week K 102 PRISM_kfloor0001 val validation 0.03: 100.6 s, cost 1057.0, violating 3.57%
+2026-11-24T16:15:54Z week K 102 PRISM_kfloor0001 val validation 0.05: 100.2 s, cost 928.3, violating 5.80%
+2026-11-24T16:16:10Z week K 102 PRISM_kfloor0001 val validation 0.08: 101.6 s, cost 898.1, violating 6.40%
+2026-11-24T16:17:10Z heartbeat: 70 running/queued, 48 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:17:35Z week K 102 PRISM_kfrozen01 val validation 0.005: 102.8 s, cost 1213.8, violating 1.93%
+2026-11-24T16:17:40Z week K 102 PRISM_kfrozen01 val validation 0.01: 102.5 s, cost 1126.3, violating 2.68%
+2026-11-24T16:17:41Z week K 102 PRISM_kfrozen01 val validation 0.02: 102.9 s, cost 1067.7, violating 2.98%
+2026-11-24T16:17:56Z week K 102 PRISM_kfrozen01 val validation 0.03: 102.3 s, cost 1026.8, violating 3.27%
+2026-11-24T16:18:56Z heartbeat: 67 running/queued, 52 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:19:19Z week K 102 PRISM_kfrozen01 val validation 0.05: 100.0 s, cost 964.4, violating 4.76%
+2026-11-24T16:19:23Z week K 102 PRISM_kfrozen01 val validation 0.08: 99.4 s, cost 932.2, violating 5.51%
+2026-11-24T16:19:24Z week K 101 PRISM val validation 0.005: 98.5 s, cost 1365.7, violating 1.49%
+2026-11-24T16:19:40Z week K 101 PRISM val validation 0.01: 100.0 s, cost 1211.0, violating 1.93%
+2026-11-24T16:20:40Z heartbeat: 64 running/queued, 56 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:21:06Z week K 101 PRISM val validation 0.02: 103.0 s, cost 1118.6, violating 2.38%
+2026-11-24T16:21:09Z week K 101 PRISM val validation 0.05: 101.3 s, cost 997.9, violating 3.72%
+2026-11-24T16:21:09Z week K 101 PRISM val validation 0.03: 102.0 s, cost 1069.9, violating 2.53%
+2026-11-24T16:21:27Z week K 101 PRISM val validation 0.08: 103.8 s, cost 945.0, violating 4.17%
+2026-11-24T16:22:27Z heartbeat: 60 running/queued, 60 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:22:50Z week K 101 PRISM_kfloor0001 val validation 0.005: 100.5 s, cost 1365.3, violating 1.49%
+2026-11-24T16:22:54Z week K 101 PRISM_kfloor0001 val validation 0.01: 101.0 s, cost 1210.9, violating 1.93%
+2026-11-24T16:22:54Z week K 101 PRISM_kfloor0001 val validation 0.02: 101.0 s, cost 1104.3, violating 2.68%
+2026-11-24T16:23:11Z week K 101 PRISM_kfloor0001 val validation 0.03: 100.3 s, cost 1028.1, violating 4.76%
+2026-11-24T16:24:11Z heartbeat: 60 running/queued, 64 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:24:35Z week K 101 PRISM_kfloor0001 val validation 0.05: 101.2 s, cost 948.7, violating 6.10%
+2026-11-24T16:24:37Z week K 101 PRISM_kfrozen01 val validation 0.005: 98.7 s, cost 1198.0, violating 1.93%
+2026-11-24T16:24:38Z week K 101 PRISM_kfloor0001 val validation 0.08: 100.5 s, cost 904.8, violating 6.55%
+2026-11-24T16:24:54Z week K 101 PRISM_kfrozen01 val validation 0.01: 99.1 s, cost 1109.8, violating 2.38%
+2026-11-24T16:25:54Z heartbeat: 60 running/queued, 68 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:26:21Z week K 101 PRISM_kfrozen01 val validation 0.03: 98.7 s, cost 1013.2, violating 2.68%
+2026-11-24T16:26:21Z week K 101 PRISM_kfrozen01 val validation 0.02: 101.9 s, cost 1052.5, violating 2.38%
+2026-11-24T16:26:23Z week K 101 PRISM_kfrozen01 val validation 0.05: 100.6 s, cost 959.3, violating 4.61%
+2026-11-24T16:26:39Z week K 101 PRISM_kfrozen01 val validation 0.08: 101.1 s, cost 926.5, violating 5.06%
+2026-11-24T16:27:39Z heartbeat: 56 running/queued, 72 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:28:03Z week K 105 PRISM val validation 0.005: 98.5 s, cost 1420.4, violating 1.04%
+2026-11-24T16:28:04Z week K 105 PRISM val validation 0.01: 99.7 s, cost 1282.7, violating 1.19%
+2026-11-24T16:28:07Z week K 105 PRISM val validation 0.02: 99.2 s, cost 1177.0, violating 1.64%
+2026-11-24T16:28:23Z week K 105 PRISM val validation 0.03: 99.8 s, cost 1124.4, violating 1.79%
+2026-11-24T16:29:23Z heartbeat: 53 running/queued, 76 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:29:48Z week K 105 PRISM val validation 0.05: 101.1 s, cost 1045.3, violating 2.53%
+2026-11-24T16:29:51Z week K 105 PRISM val validation 0.08: 102.9 s, cost 945.4, violating 3.72%
+2026-11-24T16:29:53Z week K 105 PRISM_kfloor0001 val validation 0.005: 102.3 s, cost 1418.1, violating 1.04%
+2026-11-24T16:30:10Z week K 105 PRISM_kfloor0001 val validation 0.01: 103.1 s, cost 1281.7, violating 1.19%
+2026-11-24T16:31:10Z heartbeat: 53 running/queued, 80 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:31:34Z week K 105 PRISM_kfloor0001 val validation 0.02: 102.6 s, cost 1174.9, violating 1.79%
+2026-11-24T16:31:38Z week K 105 PRISM_kfloor0001 val validation 0.03: 102.4 s, cost 1119.6, violating 1.93%
+2026-11-24T16:31:40Z week K 105 PRISM_kfloor0001 val validation 0.05: 102.3 s, cost 996.8, violating 3.27%
+2026-11-24T16:31:57Z week K 105 PRISM_kfloor0001 val validation 0.08: 102.4 s, cost 891.2, violating 5.06%
+2026-11-24T16:32:57Z heartbeat: 49 running/queued, 84 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:33:17Z week K 105 PRISM_kfrozen01 val validation 0.005: 99.5 s, cost 1243.9, violating 1.19%
+2026-11-24T16:33:22Z week K 105 PRISM_kfrozen01 val validation 0.01: 100.2 s, cost 1146.8, violating 1.64%
+2026-11-24T16:33:24Z week K 105 PRISM_kfrozen01 val validation 0.02: 100.0 s, cost 1081.4, violating 2.08%
+2026-11-24T16:33:40Z week K 105 PRISM_kfrozen01 val validation 0.03: 100.0 s, cost 1039.9, violating 2.38%
+2026-11-24T16:34:40Z heartbeat: 49 running/queued, 88 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:35:01Z week K 105 PRISM_kfrozen01 val validation 0.05: 100.1 s, cost 974.0, violating 3.12%
+2026-11-24T16:35:06Z week K 105 PRISM_kfrozen01 val validation 0.08: 100.0 s, cost 925.2, violating 3.87%
+2026-11-24T16:35:07Z week K 103 PRISM test stationary 0.03: 100.2 s, cost 1197.5, violating 2.53%
+2026-11-24T16:35:38Z week K 103 PRISM test growth 0.03: 112.9 s, cost 1556.4, violating 1.93%
+2026-11-24T16:36:38Z heartbeat: 49 running/queued, 92 weeks run, 0 reused, 0/15 groups done
+2026-11-24T16:36:49Z week K 103 PRISM test bursty 0.03: 104.2 s, cost 1318.4, violating 2.68%
+2026-11-24T16:36:54Z week K 103 PRISM_kfloor0001 test stationary 0.01: 103.1 s, cost 1315.5, violating 1.49%
+2026-11-24T16:37:07Z week K 103 PRISM test new_spike 0.03: 115.6 s, cost 1537.7, violating 2.08%
+2026-11-24T16:37:07Z group done K 103 PRISM: selected 0.03 expansions -
+2026-11-24T16:37:42Z week K 103 PRISM_kfloor0001 test growth 0.01: 118.1 s, cost 1667.4, violating 1.64%
+2026-11-24T16:38:37Z week K 103 PRISM_kfloor0001 test bursty 0.01: 104.4 s, cost 1415.7, violating 1.93%
+2026-11-24T16:38:54Z week K 103 PRISM_kfloor0001 test new_spike 0.01: 114.1 s, cost 1657.5, violating 1.64%
+2026-11-24T16:38:54Z group done K 103 PRISM_kfloor0001: selected 0.01 expansions -
+2026-11-24T16:38:54Z week K 103 PRISM_kfrozen01 test stationary 0.02: 102.0 s, cost 1123.6, violating 2.98%
+2026-11-24T16:39:43Z week K 103 PRISM_kfrozen01 test growth 0.02: 115.4 s, cost 1458.8, violating 2.68%
+2026-11-24T16:40:23Z week K 103 PRISM_kfrozen01 test bursty 0.02: 102.5 s, cost 1234.2, violating 2.98%
+2026-11-24T16:40:41Z week K 104 PRISM test stationary 0.03: 102.3 s, cost 1188.1, violating 2.38%
+2026-11-24T16:40:54Z week K 103 PRISM_kfrozen01 test new_spike 0.02: 114.7 s, cost 1457.5, violating 3.12%
+2026-11-24T16:40:54Z group done K 103 PRISM_kfrozen01: selected 0.02 expansions -
+2026-11-24T16:41:43Z week K 104 PRISM test growth 0.03: 114.9 s, cost 1575.9, violating 1.93%
+2026-11-24T16:42:10Z week K 104 PRISM test bursty 0.03: 102.8 s, cost 1387.6, violating 2.53%
+2026-11-24T16:42:38Z week K 104 PRISM_kfloor0001 test stationary 0.02: 99.7 s, cost 1230.4, violating 2.08%
+2026-11-24T16:42:39Z week K 104 PRISM test new_spike 0.03: 113.4 s, cost 1647.0, violating 1.79%
+2026-11-24T16:42:39Z group done K 104 PRISM: selected 0.03 expansions -
+2026-11-24T16:43:39Z heartbeat: 34 running/queued, 107 weeks run, 0 reused, 4/15 groups done
+2026-11-24T16:43:43Z week K 104 PRISM_kfloor0001 test growth 0.02: 115.1 s, cost 1615.1, violating 1.79%
+2026-11-24T16:43:58Z week K 104 PRISM_kfloor0001 test bursty 0.02: 103.7 s, cost 1417.5, violating 2.23%
+2026-11-24T16:44:26Z week K 104 PRISM_kfrozen01 test stationary 0.01: 102.2 s, cost 1179.6, violating 2.38%
+2026-11-24T16:44:37Z week K 104 PRISM_kfloor0001 test new_spike 0.02: 112.7 s, cost 1678.9, violating 1.79%
+2026-11-24T16:44:37Z group done K 104 PRISM_kfloor0001: selected 0.02 expansions -
+2026-11-24T16:45:37Z heartbeat: 30 running/queued, 111 weeks run, 0 reused, 5/15 groups done
+2026-11-24T16:45:42Z week K 104 PRISM_kfrozen01 test growth 0.01: 114.2 s, cost 1558.4, violating 2.23%
+2026-11-24T16:45:44Z week K 104 PRISM_kfrozen01 test bursty 0.01: 101.7 s, cost 1387.6, violating 2.53%
+2026-11-24T16:46:22Z week K 104 PRISM_kfrozen01 test new_spike 0.01: 111.4 s, cost 1634.6, violating 1.64%
+2026-11-24T16:46:22Z group done K 104 PRISM_kfrozen01: selected 0.01 expansions -
+2026-11-24T16:46:23Z week K 102 PRISM test stationary 0.01: 101.7 s, cost 1350.7, violating 1.19%
+2026-11-24T16:47:23Z heartbeat: 26 running/queued, 115 weeks run, 0 reused, 6/15 groups done
+2026-11-24T16:47:30Z week K 102 PRISM test bursty 0.01: 101.6 s, cost 1426.5, violating 2.08%
+2026-11-24T16:47:42Z week K 102 PRISM test growth 0.01: 114.9 s, cost 1703.3, violating 1.04%
+2026-11-24T16:48:10Z week K 102 PRISM_kfloor0001 val validation 0.003: 102.0 s, cost 1497.3, violating 0.89%
+2026-11-24T16:48:21Z week K 102 PRISM test new_spike 0.01: 113.2 s, cost 1690.5, violating 1.04%
+2026-11-24T16:48:21Z group done K 102 PRISM: selected 0.01 expansions -
+2026-11-24T16:49:16Z week K 102 PRISM_kfrozen01 val validation 0.003: 102.3 s, cost 1377.5, violating 1.34%
+2026-11-24T16:49:25Z week K 101 PRISM test stationary 0.01: 99.9 s, cost 1286.7, violating 1.79%
+2026-11-24T16:50:07Z week K 101 PRISM test bursty 0.01: 101.8 s, cost 1412.2, violating 1.79%
+2026-11-24T16:50:11Z week K 101 PRISM test growth 0.01: 116.4 s, cost 1624.5, violating 1.93%
+2026-11-24T16:51:09Z week K 101 PRISM_kfloor0001 test stationary 0.01: 99.9 s, cost 1286.7, violating 1.79%
+2026-11-24T16:51:15Z week K 101 PRISM test new_spike 0.01: 114.2 s, cost 1584.7, violating 1.64%
+2026-11-24T16:51:15Z group done K 101 PRISM: selected 0.01 expansions -
+2026-11-24T16:51:59Z week K 101 PRISM_kfloor0001 test bursty 0.01: 104.3 s, cost 1412.2, violating 1.79%
+2026-11-24T16:52:10Z week K 101 PRISM_kfloor0001 test growth 0.01: 117.6 s, cost 1624.5, violating 1.93%
+2026-11-24T16:53:00Z week K 101 PRISM_kfrozen01 val validation 0.003: 100.9 s, cost 1361.8, violating 1.49%
+2026-11-24T16:53:10Z week K 101 PRISM_kfloor0001 test new_spike 0.01: 116.5 s, cost 1584.7, violating 1.64%
+2026-11-24T16:53:10Z group done K 101 PRISM_kfloor0001: selected 0.01 expansions -
+2026-11-24T16:53:46Z week K 105 PRISM test stationary 0.03: 102.9 s, cost 1155.8, violating 1.79%
+2026-11-24T16:54:12Z week K 105 PRISM test growth 0.03: 117.0 s, cost 1508.8, violating 1.93%
+2026-11-24T16:54:48Z week K 105 PRISM test bursty 0.03: 104.6 s, cost 1362.5, violating 1.93%
+2026-11-24T16:55:08Z week K 105 PRISM test new_spike 0.03: 113.0 s, cost 1514.8, violating 1.79%
+2026-11-24T16:55:08Z group done K 105 PRISM: selected 0.03 expansions -
+2026-11-24T16:55:32Z week K 105 PRISM_kfloor0001 test stationary 0.03: 101.9 s, cost 1152.7, violating 1.93%
+2026-11-24T16:56:14Z week K 105 PRISM_kfloor0001 test growth 0.03: 115.9 s, cost 1508.8, violating 1.93%
+2026-11-24T16:56:36Z week K 105 PRISM_kfloor0001 test bursty 0.03: 103.9 s, cost 1362.5, violating 1.93%
+2026-11-24T16:57:08Z week K 105 PRISM_kfloor0001 test new_spike 0.03: 114.4 s, cost 1514.6, violating 1.79%
+2026-11-24T16:57:08Z group done K 105 PRISM_kfloor0001: selected 0.03 expansions -
+2026-11-24T16:57:18Z week K 105 PRISM_kfrozen01 test stationary 0.01: 102.9 s, cost 1166.7, violating 1.49%
+2026-11-24T16:58:15Z week K 105 PRISM_kfrozen01 test growth 0.01: 116.2 s, cost 1501.7, violating 1.93%
+2026-11-24T16:58:25Z week K 105 PRISM_kfrozen01 test bursty 0.01: 105.0 s, cost 1345.3, violating 1.79%
+2026-11-24T16:59:05Z week K 102 PRISM_kfloor0001 test stationary 0.005: 101.6 s, cost 1501.3, violating 1.04%
+2026-11-24T16:59:05Z week K 105 PRISM_kfrozen01 test new_spike 0.01: 113.2 s, cost 1509.1, violating 1.93%
+2026-11-24T16:59:05Z group done K 105 PRISM_kfrozen01: selected 0.01 expansions -
+2026-11-24T17:00:05Z heartbeat: 11 running/queued, 142 weeks run, 0 reused, 12/15 groups done
+2026-11-24T17:00:15Z week K 102 PRISM_kfloor0001 test bursty 0.005: 105.7 s, cost 1571.5, violating 1.34%
+2026-11-24T17:00:20Z week K 102 PRISM_kfloor0001 test growth 0.005: 119.4 s, cost 1804.8, violating 0.89%
+2026-11-24T17:00:57Z week K 102 PRISM_kfrozen01 test stationary 0.005: 105.4 s, cost 1311.9, violating 1.49%
+2026-11-24T17:01:09Z week K 102 PRISM_kfloor0001 test new_spike 0.005: 117.7 s, cost 1805.6, violating 1.04%
+2026-11-24T17:01:09Z group done K 102 PRISM_kfloor0001: selected 0.005 expansions [0.003]
+2026-11-24T17:02:09Z heartbeat: 7 running/queued, 146 weeks run, 0 reused, 13/15 groups done
+2026-11-24T17:02:10Z week K 102 PRISM_kfrozen01 test bursty 0.005: 105.6 s, cost 1409.4, violating 2.08%
+2026-11-24T17:02:20Z week K 102 PRISM_kfrozen01 test growth 0.005: 120.0 s, cost 1668.5, violating 1.34%
+2026-11-24T17:02:55Z week K 101 PRISM_kfrozen01 test stationary 0.005: 102.7 s, cost 1236.9, violating 1.79%
+2026-11-24T17:02:56Z week K 102 PRISM_kfrozen01 test new_spike 0.005: 115.1 s, cost 1643.7, violating 1.19%
+2026-11-24T17:02:56Z group done K 102 PRISM_kfrozen01: selected 0.005 expansions [0.003]
+2026-11-24T17:03:56Z heartbeat: 3 running/queued, 150 weeks run, 0 reused, 14/15 groups done
+2026-11-24T17:03:58Z week K 101 PRISM_kfrozen01 test bursty 0.005: 92.8 s, cost 1384.5, violating 1.64%
+2026-11-24T17:04:00Z week K 101 PRISM_kfrozen01 test growth 0.005: 105.2 s, cost 1578.6, violating 2.08%
+2026-11-24T17:04:21Z week K 101 PRISM_kfrozen01 test new_spike 0.005: 81.7 s, cost 1542.9, violating 1.93%
+2026-11-24T17:04:21Z group done K 101 PRISM_kfrozen01: selected 0.005 expansions [0.003]
+2026-11-24T17:04:21Z end: 153 weeks run, 0 reused from cache, 0 failures, 15/15 groups done
+run exit 0
+sensitivity tasks to run: 32
+2026-11-24T17:06:18Z sens 101 PRISM_kfrozen01 stationary 0.01: cost 1161.7, violating 2.38%
+2026-11-24T17:06:20Z sens 101 PRISM_kfrozen01 bursty 0.01: cost 1304.3, violating 3.12%
+2026-11-24T17:06:32Z sens 101 PRISM_kfrozen01 new_spike 0.01: cost 1468.6, violating 2.53%
+2026-11-24T17:06:35Z sens 101 PRISM_kfrozen01 growth 0.01: cost 1498.4, violating 2.23%
+2026-11-24T17:08:05Z sens 102 PRISM_kfloor0001 stationary 0.01: cost 1350.7, violating 1.19%
+2026-11-24T17:08:20Z sens 102 PRISM_kfloor0001 bursty 0.01: cost 1426.5, violating 2.08%
+2026-11-24T17:08:25Z sens 102 PRISM_kfloor0001 growth 0.01: cost 1703.6, violating 1.04%
+2026-11-24T17:08:36Z sens 102 PRISM_kfloor0001 new_spike 0.01: cost 1690.5, violating 1.04%
+2026-11-24T17:09:58Z sens 102 PRISM_kfrozen01 stationary 0.01: cost 1231.5, violating 1.64%
+2026-11-24T17:10:18Z sens 102 PRISM_kfrozen01 bursty 0.01: cost 1327.4, violating 2.53%
+2026-11-24T17:10:28Z sens 102 PRISM_kfrozen01 growth 0.01: cost 1586.1, violating 1.79%
+2026-11-24T17:10:40Z sens 102 PRISM_kfrozen01 new_spike 0.01: cost 1564.8, violating 1.93%
+2026-11-24T17:11:52Z sens 103 PRISM_kfloor0001 stationary 0.03: cost 1197.5, violating 2.53%
+2026-11-24T17:12:21Z sens 103 PRISM_kfloor0001 bursty 0.03: cost 1318.4, violating 2.68%
+2026-11-24T17:12:30Z sens 103 PRISM_kfloor0001 growth 0.03: cost 1556.4, violating 1.93%
+2026-11-24T17:12:51Z sens 103 PRISM_kfloor0001 new_spike 0.03: cost 1537.7, violating 2.08%
+2026-11-24T17:13:53Z sens 103 PRISM_kfrozen01 stationary 0.03: cost 1079.0, violating 2.98%
+2026-11-24T17:14:29Z sens 103 PRISM_kfrozen01 bursty 0.03: cost 1183.8, violating 3.87%

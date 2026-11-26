@@ -1,0 +1,1573 @@
+{
+ "raw": {
+  "E1": {
+   "rows": [
+    1900,
+    1900
+   ],
+   "same_run_keys": true,
+   "result_fields_differing": {
+    "billing_utilisation": 1200,
+    "record_attainment": 1189,
+    "cold_start_ratio": 1181,
+    "share_late_in_violating": 1115,
+    "cost_pc": 1200,
+    "attain_in_violating": 1091,
+    "worst_window_attainment": 946,
+    "envs_added": 1198,
+    "late_records": 1189,
+    "cost_od": 1189,
+    "cost_init": 1184,
+    "kappa_mean": 150,
+    "mean_provisioned": 1200,
+    "overflow_share": 1189,
+    "cost": 1200,
+    "cost_pcd": 1189,
+    "minutes_with_change": 1080,
+    "violating_window_rate": 434,
+    "mean_run": 63,
+    "n_runs": 433,
+    "p99_latency": 276,
+    "longest_run": 15,
+    "infeasible_share": 70,
+    "mean_excess_infeasible": 86,
+    "max_excess": 86,
+    "slo_met": 16,
+    "share_mem_ge_2048": 42
+   },
+   "provenance_or_timing_fields_differing": {
+    "decision_ms_p99": 1900,
+    "started_utc": 1900,
+    "source_sha256": 1900,
+    "decision_ms_median": 1898,
+    "sim_seconds": 1900,
+    "runtime_s": 1900
+   },
+   "array_files": [
+    5,
+    5
+   ],
+   "array_keys": 9950,
+   "array_keys_differing": 3937,
+   "first_differing_keys": [
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.005|::P_epoch",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.005|::excess_epoch",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.005|::feasible_epoch",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.005|::kappa_epoch",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.005|::mem_epoch",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.005|::window_attainment",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.005|::window_late",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.01|::P_epoch",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.01|::excess_epoch",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.01|::feasible_epoch",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.01|::kappa_epoch",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.01|::window_attainment",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.01|::window_late",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.02|::P_epoch",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.02|::excess_epoch",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.02|::feasible_epoch",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.02|::kappa_epoch",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.02|::window_attainment",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.02|::window_late",
+    "arrays_seed101.npz:E1|101|bursty|test|PRISM_EB-0.03|::P_epoch"
+   ]
+  },
+  "E3": {
+   "rows": [
+    110,
+    110
+   ],
+   "same_run_keys": false,
+   "result_fields_differing": {
+    "billing_utilisation": 84,
+    "p99_latency": 43,
+    "record_attainment": 84,
+    "cold_start_ratio": 84,
+    "infeasible_share": 29,
+    "share_late_in_violating": 84,
+    "violating_window_rate": 56,
+    "cost_pc": 84,
+    "attain_in_violating": 84,
+    "envs_added": 84,
+    "late_records": 84,
+    "cost_od": 84,
+    "cost_init": 84,
+    "kappa_mean": 84,
+    "mean_excess_infeasible": 41,
+    "mean_provisioned": 84,
+    "max_excess": 41,
+    "minutes_with_change": 82,
+    "overflow_share": 84,
+    "cost": 84,
+    "cost_pcd": 84,
+    "n_runs": 56,
+    "worst_window_attainment": 68,
+    "longest_run": 2,
+    "mean_run": 6,
+    "share_mem_ge_2048": 17,
+    "slo_met": 3
+   },
+   "provenance_or_timing_fields_differing": {
+    "decision_ms_p99": 100,
+    "started_utc": 100,
+    "decision_ms_median": 100,
+    "sim_seconds": 100,
+    "runtime_s": 100
+   },
+   "array_files": [
+    5,
+    5
+   ],
+   "array_keys": 960,
+   "array_keys_differing": 585,
+   "first_differing_keys": [
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.05|oracle::P_epoch (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.05|oracle::excess_epoch (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.05|oracle::feasible_epoch (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.05|oracle::kappa_epoch (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.05|oracle::mem_epoch (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.05|oracle::window_attainment (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.05|oracle::window_late (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.05|oracle::window_records (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.08|oracle::P_epoch (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.08|oracle::excess_epoch (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.08|oracle::feasible_epoch (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.08|oracle::kappa_epoch (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.08|oracle::mem_epoch (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.08|oracle::window_attainment (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.08|oracle::window_late (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|Oracle-0.08|oracle::window_records (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|PRISM_EB-noconf-0.05|noconf::P_epoch (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|PRISM_EB-noconf-0.05|noconf::excess_epoch (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|PRISM_EB-noconf-0.05|noconf::feasible_epoch (missing)",
+    "arrays_seed101.npz:E3|101|bursty|test|PRISM_EB-noconf-0.05|noconf::kappa_epoch (missing)"
+   ]
+  },
+  "E7": {
+   "rows": [
+    180,
+    180
+   ],
+   "same_run_keys": false,
+   "result_fields_differing": {
+    "pinball_50": 100,
+    "pinball_99": 100,
+    "cov99_raw": 84,
+    "cov50": 95,
+    "cov90_raw": 87,
+    "mape_median": 100,
+    "cov99_cal": 51,
+    "pinball_90": 98,
+    "cov90_cal": 79,
+    "max_offset": 64,
+    "min_offset": 57,
+    "billing_utilisation": 64,
+    "record_attainment": 64,
+    "cold_start_ratio": 64,
+    "share_late_in_violating": 64,
+    "cost_pc": 64,
+    "attain_in_violating": 64,
+    "worst_window_attainment": 58,
+    "envs_added": 64,
+    "late_records": 64,
+    "cost_od": 64,
+    "cost_init": 64,
+    "kappa_mean": 64,
+    "mean_provisioned": 64,
+    "minutes_with_change": 60,
+    "overflow_share": 64,
+    "cost": 64,
+    "cost_pcd": 64,
+    "reversals_val_test": 15,
+    "p99_latency": 37,
+    "violating_window_rate": 42,
+    "n_runs": 41,
+    "mean_excess_infeasible": 5,
+    "max_excess": 5,
+    "mean_run": 4,
+    "longest_run": 3
+   },
+   "provenance_or_timing_fields_differing": {
+    "started_utc": 164,
+    "decision_ms_p99": 64,
+    "decision_ms_median": 64,
+    "sim_seconds": 64,
+    "runtime_s": 64
+   },
+   "array_files": [
+    5,
+    5
+   ],
+   "array_keys": 768,
+   "array_keys_differing": 519,
+   "first_differing_keys": [
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.05|gbm_no_norm::P_epoch (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.05|gbm_no_norm::excess_epoch (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.05|gbm_no_norm::feasible_epoch (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.05|gbm_no_norm::kappa_epoch (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.05|gbm_no_norm::mem_epoch (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.05|gbm_no_norm::window_attainment (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.05|gbm_no_norm::window_late (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.05|gbm_no_norm::window_records (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.08|gbm_no_norm::P_epoch (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.08|gbm_no_norm::excess_epoch (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.08|gbm_no_norm::feasible_epoch (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.08|gbm_no_norm::kappa_epoch (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.08|gbm_no_norm::mem_epoch (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.08|gbm_no_norm::window_attainment (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.08|gbm_no_norm::window_late (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_norm]-0.08|gbm_no_norm::window_records (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_prevday]-0.05|gbm_no_prevday::P_epoch (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_prevday]-0.05|gbm_no_prevday::excess_epoch (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_prevday]-0.05|gbm_no_prevday::feasible_epoch (missing)",
+    "arrays_seed101.npz:E7|101|bursty|test|PRISM_EB[gbm_no_prevday]-0.05|gbm_no_prevday::kappa_epoch (missing)"
+   ]
+  },
+  "E9": {
+   "rows": [
+    72,
+    72
+   ],
+   "same_run_keys": false,
+   "result_fields_differing": {
+    "event_cold_start_ratio": 16,
+    "fast_cost": 16,
+    "event_overflow_share": 16,
+    "event_worst_window_attainment": 13,
+    "fast_late_records": 16,
+    "fast_violating_window_rate": 7,
+    "event_share_late_in_violating": 16,
+    "event_attain_in_violating": 16,
+    "fast_attain_in_violating": 16,
+    "fast_cold_start_ratio": 16,
+    "fast_record_attainment": 16,
+    "event_cost": 16,
+    "fast_worst_window_attainment": 10,
+    "fast_overflow_share": 16,
+    "event_record_attainment": 16,
+    "event_late_records": 16,
+    "event_mean_run": 7,
+    "event_violating_window_rate": 11,
+    "event_n_runs": 12,
+    "event_p99_latency": 4,
+    "fast_mean_run": 2,
+    "est_erlangb": 1,
+    "fast_longest_run": 1
+   },
+   "provenance_or_timing_fields_differing": {
+    "started_utc": 64,
+    "runtime_s": 64
+   },
+   "array_files": [
+    12,
+    12
+   ],
+   "array_keys": 192,
+   "array_keys_differing": 80,
+   "first_differing_keys": [
+    "arrays_seed101_bursty.npz:101|bursty|PRISM_EB-0.05::overflow_share_stage (missing)",
+    "arrays_seed101_bursty.npz:101|bursty|PRISM_EB-0.05::window_attainment (missing)",
+    "arrays_seed101_bursty.npz:101|bursty|PRISM_EB-0.08::overflow_share_stage (missing)",
+    "arrays_seed101_bursty.npz:101|bursty|PRISM_EB-0.08::window_attainment (missing)",
+    "arrays_seed101_bursty.npz:101|bursty|PredHead-1.1::overflow_share_stage (missing)",
+    "arrays_seed101_bursty.npz:101|bursty|PredHead-1.1::window_attainment (missing)",
+    "arrays_seed101_bursty.npz:101|bursty|PredHead-1.2::overflow_share_stage (missing)",
+    "arrays_seed101_bursty.npz:101|bursty|PredHead-1.2::window_attainment (missing)",
+    "arrays_seed101_growth.npz:101|growth|PRISM_EB-0.05::overflow_share_stage (missing)",
+    "arrays_seed101_growth.npz:101|growth|PRISM_EB-0.05::window_attainment (missing)",
+    "arrays_seed101_growth.npz:101|growth|PRISM_EB-0.08::overflow_share_stage (missing)",
+    "arrays_seed101_growth.npz:101|growth|PRISM_EB-0.08::window_attainment (missing)",
+    "arrays_seed101_growth.npz:101|growth|PredHead-1.1::overflow_share_stage (missing)",
+    "arrays_seed101_growth.npz:101|growth|PredHead-1.1::window_attainment (missing)",
+    "arrays_seed101_growth.npz:101|growth|PredHead-1.2::overflow_share_stage (missing)",
+    "arrays_seed101_growth.npz:101|growth|PredHead-1.2::window_attainment (missing)",
+    "arrays_seed101_new_spike.npz:101|new_spike|PRISM_EB-0.05::overflow_share_stage (missing)",
+    "arrays_seed101_new_spike.npz:101|new_spike|PRISM_EB-0.05::sampling_flip_direction (missing)",
+    "arrays_seed101_new_spike.npz:101|new_spike|PRISM_EB-0.05::sampling_flip_share (missing)",
+    "arrays_seed101_new_spike.npz:101|new_spike|PRISM_EB-0.05::window_attainment (missing)"
+   ]
+  }
+ },
+ "tables": {
+  "E1_aggregate_all_test_weeks.csv": {
+   "lines": [
+    11,
+    11
+   ],
+   "differing": [
+    [
+     6,
+     "PredHead,985,4.00,20%,20",
+     "PredHead,990,3.88,25%,20"
+    ],
+    [
+     7,
+     "PRISM,\"1,150\",1.78,60%,20",
+     "PRISM,\"1,130\",2.00,50%,20"
+    ],
+    [
+     8,
+     "PredHead+hyst,\"1,058\",2.77,30%,20",
+     "PredHead+hyst,\"1,066\",2.74,35%,20"
+    ],
+    [
+     9,
+     "QuantProv_q90,\"1,142\",1.95,55%,20",
+     "QuantProv_q90,\"1,139\",2.03,40%,20"
+    ],
+    [
+     10,
+     "QuantProv_q99,\"1,243\",1.33,85%,20",
+     "QuantProv_q99,\"1,222\",1.47,75%,20"
+    ]
+   ]
+  },
+  "E1_aggregate_all_test_weeks.md": {
+   "lines": [
+    14,
+    14
+   ],
+   "differing": [
+    [
+     9,
+     "| PredHead      |               985 |                         4    | 20%                             |           20 |",
+     "| PredHead      |               990 |                         3.88 | 25%                             |           20 |"
+    ],
+    [
+     10,
+     "| PRISM         |             1,150 |                         1.78 | 60%                             |           20 |",
+     "| PRISM         |             1,130 |                         2    | 50%                             |           20 |"
+    ],
+    [
+     11,
+     "| PredHead+hyst |             1,058 |                         2.77 | 30%                             |           20 |",
+     "| PredHead+hyst |             1,066 |                         2.74 | 35%                             |           20 |"
+    ],
+    [
+     12,
+     "| QuantProv_q90 |             1,142 |                         1.95 | 55%                             |           20 |",
+     "| QuantProv_q90 |             1,139 |                         2.03 | 40%                             |           20 |"
+    ],
+    [
+     13,
+     "| QuantProv_q99 |             1,243 |                         1.33 | 85%                             |           20 |",
+     "| QuantProv_q99 |             1,222 |                         1.47 | 75%                             |           20 |"
+    ]
+   ]
+  },
+  "E1_selected_parameters.csv": {
+   "lines": [
+    7,
+    7
+   ],
+   "differing": [
+    [
+     2,
+     "101,97.0,1.4,0.65,1.1,0.05,1.2,0.8,0.7",
+     "101,97.0,1.4,0.65,1.2,0.08,1.2,0.8,0.7"
+    ],
+    [
+     3,
+     "102,99.0,1.4,0.75,1.5,0.03,1.3,0.9,0.8",
+     "102,99.0,1.4,0.75,1.5,0.03,1.4,0.9,0.7"
+    ]
+   ]
+  },
+  "E1_selected_parameters.md": {
+   "lines": [
+    10,
+    10
+   ],
+   "differing": [
+    [
+     5,
+     "|    101 |       97 |         1.4 |       0.65 |        1.1 |    0.05 |             1.2 |             0.8 |             0.7 |",
+     "|    101 |       97 |         1.4 |       0.65 |        1.2 |    0.08 |             1.2 |             0.8 |             0.7 |"
+    ],
+    [
+     6,
+     "|    102 |       99 |         1.4 |       0.75 |        1.5 |    0.03 |             1.3 |             0.9 |             0.8 |",
+     "|    102 |       99 |         1.4 |       0.75 |        1.5 |    0.03 |             1.4 |             0.9 |             0.7 |"
+    ]
+   ]
+  },
+  "E3_ablation_conformal_oracle.csv": {
+   "lines": [
+    6,
+    6
+   ],
+   "differing": [
+    [
+     2,
+     "stationary,981 / 1.55%,910 / 2.08%,919 / 0.12%,5/5",
+     "stationary,968 / 1.70%,909 / 2.08%,919 / 0.12%,5/5"
+    ],
+    [
+     3,
+     "growth,\"1,273 / 1.31%\",\"1,183 / 1.90%\",\"1,196 / 0.09%\",5/5",
+     "growth,\"1,261 / 1.34%\",\"1,182 / 1.96%\",\"1,196 / 0.09%\",5/5"
+    ],
+    [
+     4,
+     "bursty,\"1,076 / 2.14%\",943 / 3.54%,958 / 0.12%,5/5",
+     "bursty,\"1,053 / 2.35%\",941 / 3.51%,958 / 0.12%,5/5"
+    ],
+    [
+     5,
+     "new_spike,\"1,270 / 2.11%\",\"1,133 / 4.79%\",\"1,167 / 0.12%\",5/5",
+     "new_spike,\"1,241 / 2.62%\",\"1,131 / 4.79%\",\"1,167 / 0.12%\",5/5"
+    ]
+   ]
+  },
+  "E3_ablation_conformal_oracle.md": {
+   "lines": [
+    9,
+    9
+   ],
+   "differing": [
+    [
+     5,
+     "| stationary | 981 / 1.55%   | 910 / 2.08%    | 919 / 0.12%   | 5/5                                                 |",
+     "| stationary | 968 / 1.70%   | 909 / 2.08%    | 919 / 0.12%   | 5/5                                                 |"
+    ],
+    [
+     6,
+     "| growth     | 1,273 / 1.31% | 1,183 / 1.90%  | 1,196 / 0.09% | 5/5                                                 |",
+     "| growth     | 1,261 / 1.34% | 1,182 / 1.96%  | 1,196 / 0.09% | 5/5                                                 |"
+    ],
+    [
+     7,
+     "| bursty     | 1,076 / 2.14% | 943 / 3.54%    | 958 / 0.12%   | 5/5                                                 |",
+     "| bursty     | 1,053 / 2.35% | 941 / 3.51%    | 958 / 0.12%   | 5/5                                                 |"
+    ],
+    [
+     8,
+     "| new_spike  | 1,270 / 2.11% | 1,133 / 4.79%  | 1,167 / 0.12% | 5/5                                                 |",
+     "| new_spike  | 1,241 / 2.62% | 1,131 / 4.79%  | 1,167 / 0.12% | 5/5                                                 |"
+    ]
+   ]
+  },
+  "E3_quantile_vs_scenario_feasibility.csv": {
+   "lines": [
+    4,
+    4
+   ],
+   "differing": [
+    [
+     2,
+     "stationary,92.6%,100.0%,-0.25%,+0.03,3.43,4.26",
+     "stationary,91.2%,100.0%,-0.29%,-0.00,3.66,3.52"
+    ],
+    [
+     3,
+     "new_spike,97.6%,100.0%,-0.09%,+0.03,3.55,4.37",
+     "new_spike,94.3%,100.0%,-0.19%,+0.15,3.66,3.53"
+    ]
+   ]
+  },
+  "E3_quantile_vs_scenario_feasibility.md": {
+   "lines": [
+    9,
+    9
+   ],
+   "differing": [
+    [
+     7,
+     "| stationary | 92.6%                           | 100.0%             | -0.25%      |             0.03 |                    3.43 |                   4.26 |",
+     "| stationary | 91.2%                           | 100.0%             | -0.29%      |            -0    |                    3.66 |                   3.52 |"
+    ],
+    [
+     8,
+     "| new_spike  | 97.6%                           | 100.0%             | -0.09%      |             0.03 |                    3.55 |                   4.37 |",
+     "| new_spike  | 94.3%                           | 100.0%             | -0.19%      |             0.15 |                    3.66 |                   3.53 |"
+    ]
+   ]
+  },
+  "E9_inflight_and_sampling.csv": {
+   "lines": [
+    14,
+    14
+   ],
+   "differing": [
+    [
+     6,
+     "stationary,PredHead,0.021,1.095,1.5,2.2,3.47",
+     "stationary,PredHead,0.02,1.095,1.5,2.2,3.47"
+    ],
+    [
+     7,
+     "stationary,PRISM,0.014,1.095,1.5,2.206,3.444",
+     "stationary,PRISM,0.031,1.095,1.5,2.208,3.467"
+    ],
+    [
+     12,
+     "new_spike,PredHead,0.057,1.086,1.467,2.182,3.514",
+     "new_spike,PredHead,0.057,1.086,1.467,2.182,3.528"
+    ],
+    [
+     13,
+     "new_spike,PRISM,0.056,1.083,1.462,2.167,3.429",
+     "new_spike,PRISM,0.066,1.085,1.463,2.167,3.455"
+    ]
+   ]
+  },
+  "E9_inflight_and_sampling.md": {
+   "lines": [
+    17,
+    17
+   ],
+   "differing": [
+    [
+     9,
+     "| stationary | PredHead  |                0.021 |                1.095 |                1.5   |                2.2   |                3.47  |",
+     "| stationary | PredHead  |                0.02  |                1.095 |                1.5   |                2.2   |                3.47  |"
+    ],
+    [
+     10,
+     "| stationary | PRISM     |                0.014 |                1.095 |                1.5   |                2.206 |                3.444 |",
+     "| stationary | PRISM     |                0.031 |                1.095 |                1.5   |                2.208 |                3.467 |"
+    ],
+    [
+     15,
+     "| new_spike  | PredHead  |                0.057 |                1.086 |                1.467 |                2.182 |                3.514 |",
+     "| new_spike  | PredHead  |                0.057 |                1.086 |                1.467 |                2.182 |                3.528 |"
+    ],
+    [
+     16,
+     "| new_spike  | PRISM     |                0.056 |                1.083 |                1.462 |                2.167 |                3.429 |",
+     "| new_spike  | PRISM     |                0.066 |                1.085 |                1.463 |                2.167 |                3.455 |"
+    ]
+   ]
+  },
+  "F3_validation_frontier.csv": {
+   "lines": [
+    78,
+    78
+   ],
+   "differing": [
+    [
+     3,
+     "PRISM,0.005,1224.196301709761,0.003869047619047619",
+     "PRISM,0.005,1219.0851317215681,0.0047619047619047615"
+    ],
+    [
+     4,
+     "PRISM,0.01,1128.8426763651762,0.006547619047619047",
+     "PRISM,0.01,1125.4068169995003,0.006547619047619047"
+    ],
+    [
+     5,
+     "PRISM,0.02,1067.6101301425394,0.009226190476190475",
+     "PRISM,0.02,1063.2197233255579,0.008928571428571428"
+    ],
+    [
+     6,
+     "PRISM,0.03,1026.440828069858,0.010714285714285714",
+     "PRISM,0.03,1022.9330911335732,0.01130952380952381"
+    ],
+    [
+     7,
+     "PRISM,0.05,963.7066637977034,0.01488095238095238",
+     "PRISM,0.05,960.3168428682144,0.015178571428571427"
+    ],
+    [
+     8,
+     "PRISM,0.08,920.3696135395509,0.018452380952380953",
+     "PRISM,0.08,918.7587175264473,0.016666666666666666"
+    ],
+    [
+     9,
+     "PredHead,1.0,822.5348747704496,0.02232142857142857",
+     "PredHead,1.0,822.6621068366542,0.02232142857142857"
+    ],
+    [
+     10,
+     "PredHead,1.1,839.384985497537,0.01875",
+     "PredHead,1.1,839.5263828185413,0.019940476190476192"
+    ],
+    [
+     11,
+     "PredHead,1.2,859.9217138687278,0.01755952380952381",
+     "PredHead,1.2,860.0529216263133,0.01755952380952381"
+    ],
+    [
+     12,
+     "PredHead,1.3,882.9117973085025,0.015178571428571427",
+     "PredHead,1.3,883.1160945332579,0.015773809523809523"
+    ],
+    [
+     13,
+     "PredHead,1.4,907.5790669587635,0.013392857142857142",
+     "PredHead,1.4,907.8049547351338,0.013690476190476192"
+    ],
+    [
+     14,
+     "PredHead,1.5,933.3000928187223,0.0125",
+     "PredHead,1.5,933.5155119989668,0.012797619047619047"
+    ]
+   ]
+  },
+  "F3_validation_frontier_summary.csv": {
+   "lines": [
+    10,
+    10
+   ],
+   "differing": [
+    [
+     5,
+     "PredHead,\"1,041\",839",
+     "PredHead,\"1,068\",840"
+    ],
+    [
+     7,
+     "QuantProv_q90,\"1,091\",941",
+     "QuantProv_q90,\"1,086\",938"
+    ],
+    [
+     8,
+     "QuantProv_q99,\"1,141\",\"1,006\"",
+     "QuantProv_q99,\"1,070\",\"1,004\""
+    ],
+    [
+     9,
+     "PRISM,\"1,068\",920",
+     "PRISM,\"1,063\",919"
+    ]
+   ]
+  },
+  "F3_validation_frontier_summary.md": {
+   "lines": [
+    13,
+    13
+   ],
+   "differing": [
+    [
+     8,
+     "| PredHead      |                         1,041 |                           839 |",
+     "| PredHead      |                         1,068 |                           840 |"
+    ],
+    [
+     10,
+     "| QuantProv_q90 |                         1,091 |                           941 |",
+     "| QuantProv_q90 |                         1,086 |                           938 |"
+    ],
+    [
+     11,
+     "| QuantProv_q99 |                         1,141 |                         1,006 |",
+     "| QuantProv_q99 |                         1,070 |                         1,004 |"
+    ],
+    [
+     12,
+     "| PRISM         |                         1,068 |                           920 |",
+     "| PRISM         |                         1,063 |                           919 |"
+    ]
+   ]
+  },
+  "T10_fast_vs_event.csv": {
+   "lines": [
+    8,
+    8
+   ],
+   "differing": [
+    [
+     6,
+     "PredHead,996,996,+0.04%,3.98%,10.04%,2.52,99.57 / 99.44,0.093% / 0.169%,17% / 0%,12",
+     "PredHead,\"1,004\",\"1,004\",+0.05%,3.81%,9.90%,2.60,99.58 / 99.45,0.088% / 0.166%,25% / 0%,12"
+    ],
+    [
+     7,
+     "PRISM,\"1,183\",\"1,184\",+0.09%,1.69%,6.14%,3.64,99.67 / 99.55,0.046% / 0.115%,67% / 0%,12",
+     "PRISM,\"1,155\",\"1,156\",+0.10%,1.98%,6.99%,3.52,99.65 / 99.51,0.056% / 0.133%,50% / 0%,12"
+    ]
+   ]
+  },
+  "T10_fast_vs_event.md": {
+   "lines": [
+    11,
+    11
+   ],
+   "differing": [
+    [
+     9,
+     "| PredHead  |         996 |          996 | +0.04%           | 3.98%       | 10.04%       |                    2.52 | 99.57 / 99.44            | 0.093% / 0.169%               | 17% / 0%             |           12 |",
+     "| PredHead  |       1,004 |        1,004 | +0.05%           | 3.81%       | 9.90%        |                    2.6  | 99.58 / 99.45            | 0.088% / 0.166%               | 25% / 0%             |           12 |"
+    ],
+    [
+     10,
+     "| PRISM     |       1,183 |        1,184 | +0.09%           | 1.69%       | 6.14%        |                    3.64 | 99.67 / 99.55            | 0.046% / 0.115%               | 67% / 0%             |           12 |",
+     "| PRISM     |       1,155 |        1,156 | +0.10%           | 1.98%       | 6.99%        |                    3.52 | 99.65 / 99.51            | 0.056% / 0.133%               | 50% / 0%             |           12 |"
+    ]
+   ]
+  },
+  "T10b_prism_vs_predhead_fidelity.csv": {
+   "lines": [
+    6,
+    6
+   ],
+   "differing": [
+    [
+     2,
+     "stationary,-0.79,-0.79,+146,+146",
+     "stationary,-0.45,-0.40,+120,+121"
+    ],
+    [
+     3,
+     "growth,-0.79,-1.34,+187,+188",
+     "growth,-0.74,-0.69,+155,+157"
+    ],
+    [
+     4,
+     "bursty,-1.64,-1.98,+208,+208",
+     "bursty,-1.19,-1.44,+163,+164"
+    ],
+    [
+     5,
+     "new_spike,-5.95,-11.51,+209,+209",
+     "new_spike,-4.91,-9.08,+167,+167"
+    ]
+   ]
+  },
+  "T10b_prism_vs_predhead_fidelity.md": {
+   "lines": [
+    9,
+    9
+   ],
+   "differing": [
+    [
+     5,
+     "| stationary |                           -0.79 |                            -0.79 |                             +146 |                              +146 |",
+     "| stationary |                           -0.45 |                            -0.4  |                             +120 |                              +121 |"
+    ],
+    [
+     6,
+     "| growth     |                           -0.79 |                            -1.34 |                             +187 |                              +188 |",
+     "| growth     |                           -0.74 |                            -0.69 |                             +155 |                              +157 |"
+    ],
+    [
+     7,
+     "| bursty     |                           -1.64 |                            -1.98 |                             +208 |                              +208 |",
+     "| bursty     |                           -1.19 |                            -1.44 |                             +163 |                              +164 |"
+    ],
+    [
+     8,
+     "| new_spike  |                           -5.95 |                           -11.51 |                             +209 |                              +209 |",
+     "| new_spike  |                           -4.91 |                            -9.08 |                             +167 |                              +167 |"
+    ]
+   ]
+  },
+  "T11_overflow_estimates.csv": {
+   "lines": [
+    4,
+    4
+   ],
+   "differing": [
+    [
+     2,
+     "stationary,3.06%,3.11% (+2%),3.04% (-1%),2.17% (-29%),3.71% (+21%)",
+     "stationary,2.98%,3.03% (+2%),2.95% (-1%),2.11% (-29%),3.62% (+22%)"
+    ],
+    [
+     3,
+     "new_spike,4.26%,4.30% (+1%),4.45% (+4%),3.39% (-20%),5.00% (+17%)",
+     "new_spike,4.23%,4.28% (+1%),4.42% (+5%),3.38% (-20%),4.99% (+18%)"
+    ]
+   ]
+  },
+  "T11_overflow_estimates.md": {
+   "lines": [
+    7,
+    7
+   ],
+   "differing": [
+    [
+     5,
+     "| stationary | 3.06%         | 3.11% (+2%)            | 3.04% (-1%)      | 2.17% (-29%)       | 3.71% (+21%)             |",
+     "| stationary | 2.98%         | 3.03% (+2%)            | 2.95% (-1%)      | 2.11% (-29%)       | 3.62% (+22%)             |"
+    ],
+    [
+     6,
+     "| new_spike  | 4.26%         | 4.30% (+1%)            | 4.45% (+4%)      | 3.39% (-20%)       | 5.00% (+17%)             |",
+     "| new_spike  | 4.23%         | 4.28% (+1%)            | 4.42% (+5%)      | 3.38% (-20%)       | 4.99% (+18%)             |"
+    ]
+   ]
+  },
+  "T13_infeasibility.csv": {
+   "lines": [
+    8,
+    8
+   ],
+   "differing": [
+    [
+     2,
+     "0.005,3.24%,0.0034,0.0285,1101,0.6%,0.3%,20",
+     "0.005,3.12%,0.0036,0.0279,1041,0.6%,0.4%,20"
+    ],
+    [
+     3,
+     "0.01,0.99%,0.0038,0.0278,357,0.6%,0.6%,20",
+     "0.01,0.95%,0.0038,0.0229,338,0.6%,0.6%,20"
+    ],
+    [
+     4,
+     "0.02,0.10%,0.0070,0.0254,40,2.5%,0.7%,20",
+     "0.02,0.10%,0.0064,0.0200,40,2.5%,0.8%,20"
+    ],
+    [
+     5,
+     "0.03,0.03%,0.0072,0.0154,13,7.7%,0.9%,20",
+     "0.03,0.05%,0.0087,0.0229,20,5.0%,0.9%,20"
+    ],
+    [
+     6,
+     "0.05,0.01%,0.0021,0.0022,3,0.0%,1.4%,20",
+     "0.05,0.01%,0.0025,0.0029,4,0.0%,1.4%,20"
+    ]
+   ]
+  },
+  "T13_infeasibility.md": {
+   "lines": [
+    11,
+    11
+   ],
+   "differing": [
+    [
+     5,
+     "| 0.005 | 3.24%               |                 0.0034 |           0.0285 |              1101 | 0.6%                     | 0.3%                   |           20 |",
+     "| 0.005 | 3.12%               |                 0.0036 |           0.0279 |              1041 | 0.6%                     | 0.4%                   |           20 |"
+    ],
+    [
+     6,
+     "| 0.01  | 0.99%               |                 0.0038 |           0.0278 |               357 | 0.6%                     | 0.6%                   |           20 |",
+     "| 0.01  | 0.95%               |                 0.0038 |           0.0229 |               338 | 0.6%                     | 0.6%                   |           20 |"
+    ],
+    [
+     7,
+     "| 0.02  | 0.10%               |                 0.007  |           0.0254 |                40 | 2.5%                     | 0.7%                   |           20 |",
+     "| 0.02  | 0.10%               |                 0.0064 |           0.02   |                40 | 2.5%                     | 0.8%                   |           20 |"
+    ],
+    [
+     8,
+     "| 0.03  | 0.03%               |                 0.0072 |           0.0154 |                13 | 7.7%                     | 0.9%                   |           20 |",
+     "| 0.03  | 0.05%               |                 0.0087 |           0.0229 |                20 | 5.0%                     | 0.9%                   |           20 |"
+    ],
+    [
+     9,
+     "| 0.05  | 0.01%               |                 0.0021 |           0.0022 |                 3 | 0.0%                     | 1.4%                   |           20 |",
+     "| 0.05  | 0.01%               |                 0.0025 |           0.0029 |                 4 | 0.0%                     | 1.4%                   |           20 |"
+    ]
+   ]
+  },
+  "T14_hysteresis.csv": {
+   "lines": [
+    26,
+    26
+   ],
+   "differing": [
+    [
+     2,
+     "stationary,0.005,with,\"1,298\",0.30%,\"1,993\",\"64,266\",285,0.012%,13.08",
+     "stationary,0.005,with,\"1,288\",0.39%,\"1,998\",\"64,135\",284,0.013%,13.09"
+    ],
+    [
+     3,
+     "stationary,0.005,without,\"1,171\",0.51%,\"1,945\",\"74,230\",241,0.017%,13.10",
+     "stationary,0.005,without,\"1,167\",0.57%,\"1,945\",\"73,928\",240,0.017%,13.11"
+    ],
+    [
+     4,
+     "stationary,0.01,with,\"1,198\",0.60%,\"1,998\",\"62,418\",271,0.015%,13.17",
+     "stationary,0.01,with,\"1,195\",0.65%,\"1,998\",\"61,942\",268,0.015%,13.17"
+    ],
+    [
+     5,
+     "stationary,0.01,without,\"1,084\",0.89%,\"1,940\",\"72,432\",226,0.020%,13.19",
+     "stationary,0.01,without,\"1,081\",0.89%,\"1,943\",\"71,705\",224,0.020%,13.19"
+    ],
+    [
+     6,
+     "stationary,0.02,with,\"1,131\",0.83%,\"2,001\",\"57,707\",246,0.019%,13.19",
+     "stationary,0.02,with,\"1,127\",0.83%,\"2,000\",\"57,336\",244,0.019%,13.19"
+    ],
+    [
+     7,
+     "stationary,0.02,without,\"1,023\",1.25%,\"1,944\",\"67,403\",203,0.025%,13.21",
+     "stationary,0.02,without,\"1,021\",1.28%,\"1,939\",\"66,631\",202,0.026%,13.21"
+    ],
+    [
+     8,
+     "stationary,0.03,with,\"1,086\",0.98%,\"2,000\",\"53,925\",228,0.023%,13.21",
+     "stationary,0.03,with,\"1,081\",0.98%,\"1,997\",\"53,560\",226,0.024%,13.21"
+    ],
+    [
+     9,
+     "stationary,0.03,without,984,1.40%,\"1,939\",\"63,186\",187,0.032%,13.23",
+     "stationary,0.03,without,980,1.52%,\"1,937\",\"62,711\",186,0.033%,13.23"
+    ],
+    [
+     10,
+     "stationary,0.05,with,\"1,009\",1.31%,\"1,996\",\"47,159\",197,0.039%,13.25",
+     "stationary,0.05,with,\"1,006\",1.37%,\"1,996\",\"46,764\",195,0.040%,13.26"
+    ],
+    [
+     11,
+     "stationary,0.05,without,921,1.79%,\"1,930\",\"55,678\",161,0.053%,13.29",
+     "stationary,0.05,without,919,1.70%,\"1,932\",\"55,160\",160,0.054%,13.29"
+    ],
+    [
+     12,
+     "stationary,0.08,with,936,1.88%,\"1,992\",\"39,944\",165,0.067%,13.34",
+     "stationary,0.08,with,934,1.90%,\"1,992\",\"39,877\",165,0.068%,13.34"
+    ],
+    [
+     13,
+     "stationary,0.08,without,862,2.05%,\"1,908\",\"47,065\",134,0.084%,13.38",
+     "stationary,0.08,without,861,2.08%,\"1,908\",\"46,952\",133,0.084%,13.38"
+    ]
+   ]
+  },
+  "T14_hysteresis.md": {
+   "lines": [
+    29,
+    29
+   ],
+   "differing": [
+    [
+     5,
+     "| stationary | 0.005 | with         |  1,298 | 0.30%               |                   1,993 |               64,266 |                285 | 0.012%             |     13.08 |",
+     "| stationary | 0.005 | with         |  1,288 | 0.39%               |                   1,998 |               64,135 |                284 | 0.013%             |     13.09 |"
+    ],
+    [
+     6,
+     "| stationary | 0.005 | without      |  1,171 | 0.51%               |                   1,945 |               74,230 |                241 | 0.017%             |     13.1  |",
+     "| stationary | 0.005 | without      |  1,167 | 0.57%               |                   1,945 |               73,928 |                240 | 0.017%             |     13.11 |"
+    ],
+    [
+     7,
+     "| stationary | 0.01  | with         |  1,198 | 0.60%               |                   1,998 |               62,418 |                271 | 0.015%             |     13.17 |",
+     "| stationary | 0.01  | with         |  1,195 | 0.65%               |                   1,998 |               61,942 |                268 | 0.015%             |     13.17 |"
+    ],
+    [
+     8,
+     "| stationary | 0.01  | without      |  1,084 | 0.89%               |                   1,940 |               72,432 |                226 | 0.020%             |     13.19 |",
+     "| stationary | 0.01  | without      |  1,081 | 0.89%               |                   1,943 |               71,705 |                224 | 0.020%             |     13.19 |"
+    ],
+    [
+     9,
+     "| stationary | 0.02  | with         |  1,131 | 0.83%               |                   2,001 |               57,707 |                246 | 0.019%             |     13.19 |",
+     "| stationary | 0.02  | with         |  1,127 | 0.83%               |                   2,000 |               57,336 |                244 | 0.019%             |     13.19 |"
+    ],
+    [
+     10,
+     "| stationary | 0.02  | without      |  1,023 | 1.25%               |                   1,944 |               67,403 |                203 | 0.025%             |     13.21 |",
+     "| stationary | 0.02  | without      |  1,021 | 1.28%               |                   1,939 |               66,631 |                202 | 0.026%             |     13.21 |"
+    ],
+    [
+     11,
+     "| stationary | 0.03  | with         |  1,086 | 0.98%               |                   2,000 |               53,925 |                228 | 0.023%             |     13.21 |",
+     "| stationary | 0.03  | with         |  1,081 | 0.98%               |                   1,997 |               53,560 |                226 | 0.024%             |     13.21 |"
+    ],
+    [
+     12,
+     "| stationary | 0.03  | without      |    984 | 1.40%               |                   1,939 |               63,186 |                187 | 0.032%             |     13.23 |",
+     "| stationary | 0.03  | without      |    980 | 1.52%               |                   1,937 |               62,711 |                186 | 0.033%             |     13.23 |"
+    ],
+    [
+     13,
+     "| stationary | 0.05  | with         |  1,009 | 1.31%               |                   1,996 |               47,159 |                197 | 0.039%             |     13.25 |",
+     "| stationary | 0.05  | with         |  1,006 | 1.37%               |                   1,996 |               46,764 |                195 | 0.040%             |     13.26 |"
+    ],
+    [
+     14,
+     "| stationary | 0.05  | without      |    921 | 1.79%               |                   1,930 |               55,678 |                161 | 0.053%             |     13.29 |",
+     "| stationary | 0.05  | without      |    919 | 1.70%               |                   1,932 |               55,160 |                160 | 0.054%             |     13.29 |"
+    ],
+    [
+     15,
+     "| stationary | 0.08  | with         |    936 | 1.88%               |                   1,992 |               39,944 |                165 | 0.067%             |     13.34 |",
+     "| stationary | 0.08  | with         |    934 | 1.90%               |                   1,992 |               39,877 |                165 | 0.068%             |     13.34 |"
+    ],
+    [
+     16,
+     "| stationary | 0.08  | without      |    862 | 2.05%               |                   1,908 |               47,065 |                134 | 0.084%             |     13.38 |",
+     "| stationary | 0.08  | without      |    861 | 2.08%               |                   1,908 |               46,952 |                133 | 0.084%             |     13.38 |"
+    ]
+   ]
+  },
+  "T15_severity.csv": {
+   "lines": [
+    8,
+    8
+   ],
+   "differing": [
+    [
+     6,
+     "PredHead,\"30,605\",98.75%,98.16%,1.1,1.00,26.6",
+     "PredHead,\"30,211\",98.75%,98.17%,1.2,1.01,25.8"
+    ],
+    [
+     7,
+     "PRISM,\"24,221\",98.74%,98.31%,1.0,1.00,11.9",
+     "PRISM,\"25,276\",98.73%,98.29%,1.0,1.00,13.4"
+    ]
+   ]
+  },
+  "T15_severity.md": {
+   "lines": [
+    11,
+    11
+   ],
+   "differing": [
+    [
+     9,
+     "| PredHead  |              30,605 | 98.75%                            | 98.16%                    |                     1.1 |       1    |        26.6 |",
+     "| PredHead  |              30,211 | 98.75%                            | 98.17%                    |                     1.2 |       1.01 |        25.8 |"
+    ],
+    [
+     10,
+     "| PRISM     |              24,221 | 98.74%                            | 98.31%                    |                     1   |       1    |        11.9 |",
+     "| PRISM     |              25,276 | 98.73%                            | 98.29%                    |                     1   |       1    |        13.4 |"
+    ]
+   ]
+  },
+  "T20_feature_ablation.csv": {
+   "lines": [
+    22,
+    22
+   ],
+   "differing": [
+    [
+     2,
+     "stationary,gbm,12.2,44.8,97.3%,981,1.55%",
+     "stationary,gbm,12.2,44.9,97.2%,968,1.70%"
+    ],
+    [
+     3,
+     "stationary,gbm_no_trigger,14.7,50.7,97.3%,978,1.85%",
+     "stationary,gbm_no_trigger,14.7,50.9,97.3%,968,2.17%"
+    ],
+    [
+     4,
+     "stationary,gbm_no_prevday,12.2,44.5,97.5%,974,1.55%",
+     "stationary,gbm_no_prevday,12.3,44.5,97.5%,960,1.67%"
+    ],
+    [
+     5,
+     "stationary,gbm_no_norm,12.6,47.0,97.1%,994,1.49%",
+     "stationary,gbm_no_norm,12.6,47.1,97.2%,987,1.61%"
+    ],
+    [
+     6,
+     "growth,gbm,12.1,58.4,97.4%,\"1,273\",1.31%",
+     "growth,gbm,12.2,58.7,97.3%,\"1,261\",1.34%"
+    ],
+    [
+     7,
+     "growth,gbm_no_trigger,14.7,66.3,97.2%,\"1,273\",1.73%",
+     "growth,gbm_no_trigger,14.7,66.5,97.3%,\"1,254\",2.14%"
+    ],
+    [
+     8,
+     "growth,gbm_no_prevday,12.2,57.9,97.5%,\"1,271\",1.25%",
+     "growth,gbm_no_prevday,12.2,58.0,97.5%,\"1,254\",1.40%"
+    ],
+    [
+     9,
+     "growth,gbm_no_norm,15.4,80.2,95.4%,\"1,278\",1.25%",
+     "growth,gbm_no_norm,15.5,80.4,95.4%,\"1,251\",1.43%"
+    ],
+    [
+     10,
+     "bursty,gbm,14.0,62.6,96.0%,\"1,076\",2.14%",
+     "bursty,gbm,14.0,62.8,96.0%,\"1,053\",2.35%"
+    ],
+    [
+     11,
+     "bursty,gbm_no_trigger,17.3,69.5,96.0%,\"1,070\",2.29%",
+     "bursty,gbm_no_trigger,17.3,69.5,96.0%,\"1,047\",2.59%"
+    ],
+    [
+     12,
+     "bursty,gbm_no_prevday,13.9,61.7,96.2%,\"1,063\",2.20%",
+     "bursty,gbm_no_prevday,13.9,61.9,96.2%,\"1,044\",2.47%"
+    ],
+    [
+     13,
+     "bursty,gbm_no_norm,14.1,64.9,95.5%,\"1,084\",1.99%",
+     "bursty,gbm_no_norm,14.1,64.8,95.7%,\"1,062\",2.14%"
+    ]
+   ]
+  },
+  "T20_feature_ablation.md": {
+   "lines": [
+    25,
+    25
+   ],
+   "differing": [
+    [
+     5,
+     "| stationary       | gbm            |       12.2 |            44.8 | 97.3%              |          981 | 1.55%        |",
+     "| stationary       | gbm            |       12.2 |            44.9 | 97.2%              |          968 | 1.70%        |"
+    ],
+    [
+     6,
+     "| stationary       | gbm_no_trigger |       14.7 |            50.7 | 97.3%              |          978 | 1.85%        |",
+     "| stationary       | gbm_no_trigger |       14.7 |            50.9 | 97.3%              |          968 | 2.17%        |"
+    ],
+    [
+     7,
+     "| stationary       | gbm_no_prevday |       12.2 |            44.5 | 97.5%              |          974 | 1.55%        |",
+     "| stationary       | gbm_no_prevday |       12.3 |            44.5 | 97.5%              |          960 | 1.67%        |"
+    ],
+    [
+     8,
+     "| stationary       | gbm_no_norm    |       12.6 |            47   | 97.1%              |          994 | 1.49%        |",
+     "| stationary       | gbm_no_norm    |       12.6 |            47.1 | 97.2%              |          987 | 1.61%        |"
+    ],
+    [
+     9,
+     "| growth           | gbm            |       12.1 |            58.4 | 97.4%              |        1,273 | 1.31%        |",
+     "| growth           | gbm            |       12.2 |            58.7 | 97.3%              |        1,261 | 1.34%        |"
+    ],
+    [
+     10,
+     "| growth           | gbm_no_trigger |       14.7 |            66.3 | 97.2%              |        1,273 | 1.73%        |",
+     "| growth           | gbm_no_trigger |       14.7 |            66.5 | 97.3%              |        1,254 | 2.14%        |"
+    ],
+    [
+     11,
+     "| growth           | gbm_no_prevday |       12.2 |            57.9 | 97.5%              |        1,271 | 1.25%        |",
+     "| growth           | gbm_no_prevday |       12.2 |            58   | 97.5%              |        1,254 | 1.40%        |"
+    ],
+    [
+     12,
+     "| growth           | gbm_no_norm    |       15.4 |            80.2 | 95.4%              |        1,278 | 1.25%        |",
+     "| growth           | gbm_no_norm    |       15.5 |            80.4 | 95.4%              |        1,251 | 1.43%        |"
+    ],
+    [
+     13,
+     "| bursty           | gbm            |       14   |            62.6 | 96.0%              |        1,076 | 2.14%        |",
+     "| bursty           | gbm            |       14   |            62.8 | 96.0%              |        1,053 | 2.35%        |"
+    ],
+    [
+     14,
+     "| bursty           | gbm_no_trigger |       17.3 |            69.5 | 96.0%              |        1,070 | 2.29%        |",
+     "| bursty           | gbm_no_trigger |       17.3 |            69.5 | 96.0%              |        1,047 | 2.59%        |"
+    ],
+    [
+     15,
+     "| bursty           | gbm_no_prevday |       13.9 |            61.7 | 96.2%              |        1,063 | 2.20%        |",
+     "| bursty           | gbm_no_prevday |       13.9 |            61.9 | 96.2%              |        1,044 | 2.47%        |"
+    ],
+    [
+     16,
+     "| bursty           | gbm_no_norm    |       14.1 |            64.9 | 95.5%              |        1,084 | 1.99%        |",
+     "| bursty           | gbm_no_norm    |       14.1 |            64.8 | 95.7%              |        1,062 | 2.14%        |"
+    ]
+   ]
+  },
+  "T5_test_weeks.csv": {
+   "lines": [
+    38,
+    38
+   ],
+   "differing": [
+    [
+     6,
+     "stationary,PredHead,859 ± 57,2.20 ± 0.58,99.59,13.39,62%,40%,5",
+     "stationary,PredHead,863 ± 55,2.17 ± 0.52,99.60,13.38,61%,40%,5"
+    ],
+    [
+     7,
+     "stationary,PRISM,981 ± 93,1.55 ± 0.97,99.65,13.29,46%,60%,5",
+     "stationary,PRISM,968 ± 107,1.70 ± 0.96,99.64,13.32,47%,60%,5"
+    ],
+    [
+     8,
+     "stationary,PredHead+hyst,924 ± 46,1.93 ± 0.92,99.61,13.35,52%,60%,5",
+     "stationary,PredHead+hyst,931 ± 62,1.90 ± 0.86,99.62,13.35,51%,60%,5"
+    ],
+    [
+     9,
+     "stationary,QuantProv_q90,965 ± 72,1.73 ± 0.72,99.64,13.32,47%,60%,5",
+     "stationary,QuantProv_q90,963 ± 84,1.79 ± 0.84,99.64,13.32,47%,60%,5"
+    ],
+    [
+     10,
+     "stationary,QuantProv_q99,\"1,048 ± 92\",1.40 ± 0.71,99.68,13.26,40%,80%,5",
+     "stationary,QuantProv_q99,\"1,030 ± 72\",1.49 ± 0.65,99.67,13.27,41%,80%,5"
+    ],
+    [
+     15,
+     "growth,PredHead,\"1,117 ± 74\",2.17 ± 0.56,99.60,13.37,63%,40%,5",
+     "growth,PredHead,\"1,123 ± 71\",2.14 ± 0.55,99.61,13.36,62%,60%,5"
+    ],
+    [
+     16,
+     "growth,PRISM,\"1,273 ± 125\",1.31 ± 0.90,99.66,13.29,46%,80%,5",
+     "growth,PRISM,\"1,261 ± 134\",1.34 ± 0.91,99.65,13.30,47%,80%,5"
+    ],
+    [
+     17,
+     "growth,PredHead+hyst,\"1,204 ± 59\",1.73 ± 1.10,99.62,13.34,52%,60%,5",
+     "growth,PredHead+hyst,\"1,213 ± 81\",1.79 ± 0.95,99.63,13.33,51%,60%,5"
+    ],
+    [
+     18,
+     "growth,QuantProv_q90,\"1,257 ± 106\",1.49 ± 0.79,99.65,13.31,48%,80%,5",
+     "growth,QuantProv_q90,\"1,263 ± 106\",1.55 ± 0.87,99.65,13.30,47%,60%,5"
+    ],
+    [
+     19,
+     "growth,QuantProv_q99,\"1,364 ± 132\",1.31 ± 0.72,99.68,13.26,40%,80%,5",
+     "growth,QuantProv_q99,\"1,353 ± 86\",1.31 ± 0.60,99.68,13.26,41%,80%,5"
+    ],
+    [
+     24,
+     "bursty,PredHead,888 ± 54,3.69 ± 0.59,99.56,13.43,62%,0%,5",
+     "bursty,PredHead,893 ± 52,3.57 ± 0.54,99.57,13.43,61%,0%,5"
+    ],
+    [
+     25,
+     "bursty,PRISM,\"1,076 ± 104\",2.14 ± 1.07,99.66,13.28,40%,60%,5",
+     "bursty,PRISM,\"1,053 ± 109\",2.35 ± 0.99,99.65,13.31,42%,40%,5"
+    ]
+   ]
+  },
+  "T5_test_weeks.md": {
+   "lines": [
+    43,
+    43
+   ],
+   "differing": [
+    [
+     11,
+     "| stationary | PredHead      | 859 ± 57     | 2.20 ± 0.58             |                   99.59 |             13.39 | 62%                   | 40%       |   5 |",
+     "| stationary | PredHead      | 863 ± 55     | 2.17 ± 0.52             |                   99.6  |             13.38 | 61%                   | 40%       |   5 |"
+    ],
+    [
+     12,
+     "| stationary | PRISM         | 981 ± 93     | 1.55 ± 0.97             |                   99.65 |             13.29 | 46%                   | 60%       |   5 |",
+     "| stationary | PRISM         | 968 ± 107    | 1.70 ± 0.96             |                   99.64 |             13.32 | 47%                   | 60%       |   5 |"
+    ],
+    [
+     13,
+     "| stationary | PredHead+hyst | 924 ± 46     | 1.93 ± 0.92             |                   99.61 |             13.35 | 52%                   | 60%       |   5 |",
+     "| stationary | PredHead+hyst | 931 ± 62     | 1.90 ± 0.86             |                   99.62 |             13.35 | 51%                   | 60%       |   5 |"
+    ],
+    [
+     14,
+     "| stationary | QuantProv_q90 | 965 ± 72     | 1.73 ± 0.72             |                   99.64 |             13.32 | 47%                   | 60%       |   5 |",
+     "| stationary | QuantProv_q90 | 963 ± 84     | 1.79 ± 0.84             |                   99.64 |             13.32 | 47%                   | 60%       |   5 |"
+    ],
+    [
+     15,
+     "| stationary | QuantProv_q99 | 1,048 ± 92   | 1.40 ± 0.71             |                   99.68 |             13.26 | 40%                   | 80%       |   5 |",
+     "| stationary | QuantProv_q99 | 1,030 ± 72   | 1.49 ± 0.65             |                   99.67 |             13.27 | 41%                   | 80%       |   5 |"
+    ],
+    [
+     20,
+     "| growth     | PredHead      | 1,117 ± 74   | 2.17 ± 0.56             |                   99.6  |             13.37 | 63%                   | 40%       |   5 |",
+     "| growth     | PredHead      | 1,123 ± 71   | 2.14 ± 0.55             |                   99.61 |             13.36 | 62%                   | 60%       |   5 |"
+    ],
+    [
+     21,
+     "| growth     | PRISM         | 1,273 ± 125  | 1.31 ± 0.90             |                   99.66 |             13.29 | 46%                   | 80%       |   5 |",
+     "| growth     | PRISM         | 1,261 ± 134  | 1.34 ± 0.91             |                   99.65 |             13.3  | 47%                   | 80%       |   5 |"
+    ],
+    [
+     22,
+     "| growth     | PredHead+hyst | 1,204 ± 59   | 1.73 ± 1.10             |                   99.62 |             13.34 | 52%                   | 60%       |   5 |",
+     "| growth     | PredHead+hyst | 1,213 ± 81   | 1.79 ± 0.95             |                   99.63 |             13.33 | 51%                   | 60%       |   5 |"
+    ],
+    [
+     23,
+     "| growth     | QuantProv_q90 | 1,257 ± 106  | 1.49 ± 0.79             |                   99.65 |             13.31 | 48%                   | 80%       |   5 |",
+     "| growth     | QuantProv_q90 | 1,263 ± 106  | 1.55 ± 0.87             |                   99.65 |             13.3  | 47%                   | 60%       |   5 |"
+    ],
+    [
+     24,
+     "| growth     | QuantProv_q99 | 1,364 ± 132  | 1.31 ± 0.72             |                   99.68 |             13.26 | 40%                   | 80%       |   5 |",
+     "| growth     | QuantProv_q99 | 1,353 ± 86   | 1.31 ± 0.60             |                   99.68 |             13.26 | 41%                   | 80%       |   5 |"
+    ],
+    [
+     29,
+     "| bursty     | PredHead      | 888 ± 54     | 3.69 ± 0.59             |                   99.56 |             13.43 | 62%                   | 0%        |   5 |",
+     "| bursty     | PredHead      | 893 ± 52     | 3.57 ± 0.54             |                   99.57 |             13.43 | 61%                   | 0%        |   5 |"
+    ],
+    [
+     30,
+     "| bursty     | PRISM         | 1,076 ± 104  | 2.14 ± 1.07             |                   99.66 |             13.28 | 40%                   | 60%       |   5 |",
+     "| bursty     | PRISM         | 1,053 ± 109  | 2.35 ± 0.99             |                   99.65 |             13.31 | 42%                   | 40%       |   5 |"
+    ]
+   ]
+  },
+  "T6_paired_PRISM_vs_PredHead.csv": {
+   "lines": [
+    6,
+    6
+   ],
+   "differing": [
+    [
+     2,
+     "stationary,122 ± 50,14.1 ± 5.3,-0.65 ± 0.56,0,5,5",
+     "stationary,105 ± 56,12.0 ± 5.6,-0.48 ± 0.50,0,5,5"
+    ],
+    [
+     3,
+     "growth,156 ± 63,13.9 ± 5.0,-0.86 ± 0.40,0,5,5",
+     "growth,138 ± 68,12.2 ± 5.1,-0.80 ± 0.48,0,5,5"
+    ],
+    [
+     4,
+     "bursty,188 ± 62,21.0 ± 6.3,-1.55 ± 0.52,0,5,5",
+     "bursty,160 ± 62,17.8 ± 5.9,-1.22 ± 0.60,0,5,5"
+    ],
+    [
+     5,
+     "new_spike,193 ± 62,17.8 ± 4.8,-5.80 ± 1.54,0,5,5",
+     "new_spike,159 ± 76,14.5 ± 6.1,-5.00 ± 1.36,0,5,5"
+    ]
+   ]
+  },
+  "T6_paired_PRISM_vs_PredHead.md": {
+   "lines": [
+    9,
+    9
+   ],
+   "differing": [
+    [
+     5,
+     "| stationary | 122 ± 50          | 14.1 ± 5.3      | -0.65 ± 0.56                 |                      0 |                               5 |   5 |",
+     "| stationary | 105 ± 56          | 12.0 ± 5.6      | -0.48 ± 0.50                 |                      0 |                               5 |   5 |"
+    ],
+    [
+     6,
+     "| growth     | 156 ± 63          | 13.9 ± 5.0      | -0.86 ± 0.40                 |                      0 |                               5 |   5 |",
+     "| growth     | 138 ± 68          | 12.2 ± 5.1      | -0.80 ± 0.48                 |                      0 |                               5 |   5 |"
+    ],
+    [
+     7,
+     "| bursty     | 188 ± 62          | 21.0 ± 6.3      | -1.55 ± 0.52                 |                      0 |                               5 |   5 |",
+     "| bursty     | 160 ± 62          | 17.8 ± 5.9      | -1.22 ± 0.60                 |                      0 |                               5 |   5 |"
+    ],
+    [
+     8,
+     "| new_spike  | 193 ± 62          | 17.8 ± 4.8      | -5.80 ± 1.54                 |                      0 |                               5 |   5 |",
+     "| new_spike  | 159 ± 76          | 14.5 ± 6.1      | -5.00 ± 1.36                 |                      0 |                               5 |   5 |"
+    ]
+   ]
+  },
+  "T6_paired_PRISM_vs_PredHeadHyst.csv": {
+   "lines": [
+    6,
+    6
+   ],
+   "differing": [
+    [
+     2,
+     "stationary,57 ± 51,6.1 ± 5.1,-0.39 ± 0.21,0,5,5",
+     "stationary,37 ± 56,3.8 ± 5.6,-0.21 ± 0.28,1,4,5"
+    ],
+    [
+     3,
+     "growth,69 ± 74,5.6 ± 5.7,-0.42 ± 0.40,0,4,5",
+     "growth,47 ± 71,3.8 ± 5.4,-0.45 ± 0.41,1,4,5"
+    ],
+    [
+     4,
+     "bursty,121 ± 65,12.5 ± 6.2,-1.16 ± 0.36,0,5,5",
+     "bursty,90 ± 67,9.3 ± 6.4,-0.89 ± 0.68,0,4,5"
+    ],
+    [
+     5,
+     "new_spike,121 ± 81,10.4 ± 6.5,-1.99 ± 1.35,0,5,5",
+     "new_spike,84 ± 82,7.1 ± 6.7,-1.40 ± 1.87,1,5,5"
+    ]
+   ]
+  },
+  "T6_paired_PRISM_vs_PredHeadHyst.md": {
+   "lines": [
+    9,
+    9
+   ],
+   "differing": [
+    [
+     5,
+     "| stationary | 57 ± 51           | 6.1 ± 5.1       | -0.39 ± 0.21                 |                      0 |                               5 |   5 |",
+     "| stationary | 37 ± 56           | 3.8 ± 5.6       | -0.21 ± 0.28                 |                      1 |                               4 |   5 |"
+    ],
+    [
+     6,
+     "| growth     | 69 ± 74           | 5.6 ± 5.7       | -0.42 ± 0.40                 |                      0 |                               4 |   5 |",
+     "| growth     | 47 ± 71           | 3.8 ± 5.4       | -0.45 ± 0.41                 |                      1 |                               4 |   5 |"
+    ],
+    [
+     7,
+     "| bursty     | 121 ± 65          | 12.5 ± 6.2      | -1.16 ± 0.36                 |                      0 |                               5 |   5 |",
+     "| bursty     | 90 ± 67           | 9.3 ± 6.4       | -0.89 ± 0.68                 |                      0 |                               4 |   5 |"
+    ],
+    [
+     8,
+     "| new_spike  | 121 ± 81          | 10.4 ± 6.5      | -1.99 ± 1.35                 |                      0 |                               5 |   5 |",
+     "| new_spike  | 84 ± 82           | 7.1 ± 6.7       | -1.40 ± 1.87                 |                      1 |                               5 |   5 |"
+    ]
+   ]
+  },
+  "T6_paired_PRISM_vs_QuantProvq90.csv": {
+   "lines": [
+    6,
+    6
+   ],
+   "differing": [
+    [
+     2,
+     "stationary,16 ± 23,1.6 ± 2.3,-0.18 ± 0.30,1,3,5",
+     "stationary,4 ± 34,0.4 ± 3.4,-0.09 ± 0.46,2,3,5"
+    ],
+    [
+     3,
+     "growth,16 ± 28,1.3 ± 2.2,-0.18 ± 0.36,1,3,5",
+     "growth,-2 ± 45,-0.2 ± 3.4,-0.21 ± 0.50,2,4,5"
+    ],
+    [
+     4,
+     "bursty,1 ± 39,0.0 ± 3.5,-0.15 ± 0.29,3,3,5",
+     "bursty,-20 ± 52,-2.0 ± 4.7,-0.03 ± 0.40,4,2,5"
+    ],
+    [
+     5,
+     "new_spike,-0 ± 41,-0.1 ± 3.1,-0.18 ± 0.58,3,3,5",
+     "new_spike,-18 ± 50,-1.5 ± 3.9,0.21 ± 0.87,4,2,5"
+    ]
+   ]
+  },
+  "T6_paired_PRISM_vs_QuantProvq90.md": {
+   "lines": [
+    9,
+    9
+   ],
+   "differing": [
+    [
+     5,
+     "| stationary | 16 ± 23           | 1.6 ± 2.3       | -0.18 ± 0.30                 |                      1 |                               3 |   5 |",
+     "| stationary | 4 ± 34            | 0.4 ± 3.4       | -0.09 ± 0.46                 |                      2 |                               3 |   5 |"
+    ],
+    [
+     6,
+     "| growth     | 16 ± 28           | 1.3 ± 2.2       | -0.18 ± 0.36                 |                      1 |                               3 |   5 |",
+     "| growth     | -2 ± 45           | -0.2 ± 3.4      | -0.21 ± 0.50                 |                      2 |                               4 |   5 |"
+    ],
+    [
+     7,
+     "| bursty     | 1 ± 39            | 0.0 ± 3.5       | -0.15 ± 0.29                 |                      3 |                               3 |   5 |",
+     "| bursty     | -20 ± 52          | -2.0 ± 4.7      | -0.03 ± 0.40                 |                      4 |                               2 |   5 |"
+    ],
+    [
+     8,
+     "| new_spike  | -0 ± 41           | -0.1 ± 3.1      | -0.18 ± 0.58                 |                      3 |                               3 |   5 |",
+     "| new_spike  | -18 ± 50          | -1.5 ± 3.9      | 0.21 ± 0.87                  |                      4 |                               2 |   5 |"
+    ]
+   ]
+  },
+  "T7_frozen_vs_retuned.csv": {
+   "lines": [
+    6,
+    6
+   ],
+   "differing": [
+    [
+     2,
+     "stationary,859 / 2.20%,925 / 1.79%,981 / 1.55%,982 / 1.49%",
+     "stationary,863 / 2.17%,920 / 1.79%,968 / 1.70%,979 / 1.52%"
+    ],
+    [
+     3,
+     "growth,\"1,117 / 2.17%\",\"1,159 / 1.93%\",\"1,273 / 1.31%\",\"1,234 / 1.43%\"",
+     "growth,\"1,123 / 2.14%\",\"1,166 / 1.93%\",\"1,261 / 1.34%\",\"1,236 / 1.43%\""
+    ],
+    [
+     4,
+     "bursty,888 / 3.69%,\"1,059 / 1.96%\",\"1,076 / 2.14%\",\"1,125 / 1.61%\"",
+     "bursty,893 / 3.57%,\"1,054 / 1.99%\",\"1,053 / 2.35%\",\"1,102 / 1.79%\""
+    ],
+    [
+     5,
+     "new_spike,\"1,077 / 7.92%\",\"1,311 / 1.76%\",\"1,270 / 2.11%\",\"1,327 / 1.22%\"",
+     "new_spike,\"1,082 / 7.62%\",\"1,305 / 1.85%\",\"1,241 / 2.62%\",\"1,313 / 1.22%\""
+    ]
+   ]
+  },
+  "T7_frozen_vs_retuned.md": {
+   "lines": [
+    9,
+    9
+   ],
+   "differing": [
+    [
+     5,
+     "| stationary | 859 / 2.20%       | 925 / 1.79%                     | 981 / 1.55%    | 982 / 1.49%                  |",
+     "| stationary | 863 / 2.17%       | 920 / 1.79%                     | 968 / 1.70%    | 979 / 1.52%                  |"
+    ],
+    [
+     6,
+     "| growth     | 1,117 / 2.17%     | 1,159 / 1.93%                   | 1,273 / 1.31%  | 1,234 / 1.43%                |",
+     "| growth     | 1,123 / 2.14%     | 1,166 / 1.93%                   | 1,261 / 1.34%  | 1,236 / 1.43%                |"
+    ],
+    [
+     7,
+     "| bursty     | 888 / 3.69%       | 1,059 / 1.96%                   | 1,076 / 2.14%  | 1,125 / 1.61%                |",
+     "| bursty     | 893 / 3.57%       | 1,054 / 1.99%                   | 1,053 / 2.35%  | 1,102 / 1.79%                |"
+    ],
+    [
+     8,
+     "| new_spike  | 1,077 / 7.92%     | 1,311 / 1.76%                   | 1,270 / 2.11%  | 1,327 / 1.22%                |",
+     "| new_spike  | 1,082 / 7.62%     | 1,305 / 1.85%                   | 1,241 / 2.62%  | 1,313 / 1.22%                |"
+    ]
+   ]
+  }
+ },
+ "summary": {
+  "tables": 37,
+  "identical": 0,
+  "differing": [
+   "E1_aggregate_all_test_weeks.csv",
+   "E1_aggregate_all_test_weeks.md",
+   "E1_selected_parameters.csv",
+   "E1_selected_parameters.md",
+   "E3_ablation_conformal_oracle.csv",
+   "E3_ablation_conformal_oracle.md",
+   "E3_quantile_vs_scenario_feasibility.csv",
+   "E3_quantile_vs_scenario_feasibility.md",
+   "E9_inflight_and_sampling.csv",
+   "E9_inflight_and_sampling.md",
+   "F3_validation_frontier.csv",
+   "F3_validation_frontier_summary.csv",
+   "F3_validation_frontier_summary.md",
+   "T10_fast_vs_event.csv",
+   "T10_fast_vs_event.md",
+   "T10b_prism_vs_predhead_fidelity.csv",
+   "T10b_prism_vs_predhead_fidelity.md",
+   "T11_overflow_estimates.csv",
+   "T11_overflow_estimates.md",
+   "T13_infeasibility.csv",
+   "T13_infeasibility.md",
+   "T14_hysteresis.csv",
+   "T14_hysteresis.md",
+   "T15_severity.csv",
+   "T15_severity.md",
+   "T20_feature_ablation.csv",
+   "T20_feature_ablation.md",
+   "T5_test_weeks.csv",
+   "T5_test_weeks.md",
+   "T6_paired_PRISM_vs_PredHead.csv",
+   "T6_paired_PRISM_vs_PredHead.md",
+   "T6_paired_PRISM_vs_PredHeadHyst.csv",
+   "T6_paired_PRISM_vs_PredHeadHyst.md",
+   "T6_paired_PRISM_vs_QuantProvq90.csv",
+   "T6_paired_PRISM_vs_QuantProvq90.md",
+   "T7_frozen_vs_retuned.csv",
+   "T7_frozen_vs_retuned.md"
+  ],
+  "no_counterpart": []
+ }
+}

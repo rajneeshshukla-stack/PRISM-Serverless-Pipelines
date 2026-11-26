@@ -1,0 +1,21 @@
+{
+ "week": "val",
+ "param": 0.5,
+ "runtime_s": 79.5,
+ "n_requests": 6166628,
+ "share_mem_ge_2048": 0.0,
+ "cost": 1888.5239894698207,
+ "violating_window_rate": 0.005952380952380952,
+ "record_attainment": 0.9974097675423262,
+ "cold_start_ratio": 0.0001800011286557256,
+ "overflow_share": 0.0007988158196018669,
+ "p99_latency": 13.195,
+ "scenario": "validation",
+ "seed": 127,
+ "family": "Reactive",
+ "set": "C1C2",
+ "cfg_sha": "65721002596b843f",
+ "counts_sha256": "686eef04417c27fea5ec7e47b75972817ac50888f01428c1404fb62b36165c51",
+ "pid": 6820,
+ "finished_utc": "2026-11-23T04:57:04Z"
+}

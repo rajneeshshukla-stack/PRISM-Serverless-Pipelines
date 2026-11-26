@@ -1,0 +1,11 @@
+quantity,policy,value,half_width_95,unit,n_traces,source
+violating windows,PRISM,2.62,1.5,% of 15-min windows,5,T5_test_weeks.md new_spike
+weekly cost,PRISM,1241.0,135.0,USD/week,5,T5_test_weeks.md new_spike
+violating windows,PredHead+hyst,4.02,2.67,% of 15-min windows,5,T5_test_weeks.md new_spike
+weekly cost,PredHead+hyst,1157.0,74.0,USD/week,5,T5_test_weeks.md new_spike
+violating windows,PredHead,7.62,2.31,% of 15-min windows,5,T5_test_weeks.md new_spike
+weekly cost,PredHead,1082.0,66.0,USD/week,5,T5_test_weeks.md new_spike
+2048 MB headroom cheaper than best PRISM,ns0.5 D13.0,27.21,,%,2,E4b_fixed_memory_summary.json
+2048 MB headroom cheaper than best PRISM,ns0.5 D12.0,22.36,,%,2,E4b_fixed_memory_summary.json
+2048 MB headroom cheaper than best PRISM,ns0.5 D11.0,13.03,,%,2,E4b_fixed_memory_summary.json
+2048 MB headroom cheaper than best PRISM,ns0.15 D12.0,13.66,,%,2,E4b_fixed_memory_summary.json

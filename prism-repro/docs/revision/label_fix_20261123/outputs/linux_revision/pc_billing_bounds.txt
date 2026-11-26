@@ -1,0 +1,36 @@
+## Selected configurations, all 20 test weeks: omitted PC billing as % of modelled cost
+OnDemand        added env/week         0   init 0.00–0.00%   activation-lag 0.00%   both(upper) 0.00%
+PRISM           added env/week    51,386   init 0.27–0.45%   activation-lag 2.27%   both(upper) 2.73%
+PredHead        added env/week    53,564   init 0.32–0.54%   activation-lag 2.70%   both(upper) 3.25%
+PredHead+hyst   added env/week    45,180   init 0.25–0.42%   activation-lag 2.12%   both(upper) 2.54%
+QuantProv_q90   added env/week    54,003   init 0.28–0.47%   activation-lag 2.37%   both(upper) 2.84%
+QuantProv_q99   added env/week    39,690   init 0.19–0.32%   activation-lag 1.62%   both(upper) 1.95%
+Reactive        added env/week    43,232   init 0.16–0.28%   activation-lag 1.39%   both(upper) 1.67%
+Scheduled       added env/week     5,350   init 0.02–0.04%   activation-lag 0.21%   both(upper) 0.25%
+Static          added env/week         0   init 0.00–0.00%   activation-lag 0.00%   both(upper) 0.00%
+
+## Matched compliance, pooled over 20 test weeks: modelled cost vs cost + omitted PC billing (upper bracket)
+cost
+   PRISM             1,267    1,174    1,120
+   QuantProv_q90     1,289    1,196    1,137
+   QuantProv_q99     1,290    1,223    1,173
+   PredHead+hyst     1,309    1,188    1,107
+   PredHead           n.r.    1,189    1,145
+   Static            1,455    1,415    1,376
+   Reactive          1,661    1,586    1,538
+   PRISM vs QuantProv_q90   -1.7%   -1.8%   -1.5%
+   PRISM vs PredHead+hyst   -3.2%   -1.2%   +1.2%
+   PRISM vs Static         -12.9%  -17.0%  -18.6%
+   PRISM vs Reactive       -23.7%  -25.9%  -27.2%
+cost_adj
+   PRISM             1,305    1,208    1,150
+   QuantProv_q90     1,330    1,232    1,169
+   QuantProv_q99     1,317    1,247    1,195
+   PredHead+hyst     1,351    1,223    1,137
+   PredHead           n.r.    1,240    1,192
+   Static            1,455    1,415    1,376
+   Reactive          1,690    1,612    1,563
+   PRISM vs QuantProv_q90   -1.9%   -1.9%   -1.6%
+   PRISM vs PredHead+hyst   -3.4%   -1.3%   +1.2%
+   PRISM vs Static         -10.3%  -14.7%  -16.4%
+   PRISM vs Reactive       -22.8%  -25.1%  -26.4%

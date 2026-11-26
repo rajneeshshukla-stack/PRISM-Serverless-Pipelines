@@ -1,0 +1,10 @@
+run start 2026-11-24T13:40:11Z
+seed 101: c* 1.0, eta 0.0001, 109s
+seed 102: c* 0.95, eta 0.0001, 94s
+<prism-repro>\src\prism_repro\simulator.py:219: RuntimeWarning: invalid value encountered in cast
+  P_epoch=tel.P[::E].astype(np.int32), mem_epoch=mem_min[::E].astype(np.int32))
+seed 103: c* 0.9, eta 0.0001, 94s
+seed 104: c* 1.0, eta 0.0001, 94s
+seed 105: c* 1.0, eta 0.0001, 94s
+exit 0
+run end 2026-11-24T13:48:20Z

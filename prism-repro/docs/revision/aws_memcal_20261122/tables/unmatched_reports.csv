@@ -1,0 +1,4 @@
+function,with_init_duration,reports
+prism-mcal-aggregate-3008,False,8
+prism-mcal-load-2048,False,8
+prism-mcal-transform-512,False,8

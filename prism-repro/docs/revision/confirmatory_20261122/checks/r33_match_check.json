@@ -1,0 +1,56 @@
+{
+ "label": "EXPLORATORY, development seed 101, validation week, PRE-CALIBRATION defaults",
+ "schedule": {
+  "source": "PRISM eps 0.02, fast simulator, validation week",
+  "epochs": 2016,
+  "mean_P": 53.13640873015873,
+  "share_mem_ge_2048": 0.0
+ },
+ "event_level_open_loop": {
+  "peak_upper_frac 0.45 (default)": {
+   "cost": 1052.3719208745804,
+   "violating_window_rate": 0.026785714285714284,
+   "record_attainment": 0.9960715679217953,
+   "cold_start_ratio": 0.0008527145836405866,
+   "overflow_share": 0.012444798530867995,
+   "p99_latency": 13.375,
+   "runtime_s": 83.2
+  },
+  "peak_upper_frac 0.90": {
+   "cost": 1052.3719208745804,
+   "violating_window_rate": 0.026785714285714284,
+   "record_attainment": 0.9960715679217953,
+   "cold_start_ratio": 0.0008527145836405866,
+   "overflow_share": 0.012444798530867995,
+   "p99_latency": 13.375,
+   "runtime_s": 148.3
+  }
+ },
+ "event_level_identical": true,
+ "fast_simulator": {
+  "peak_upper_frac 0.45 (default)": {
+   "cost": 1051.259582813857,
+   "violating_window_rate": 0.010416666666666666,
+   "record_attainment": 0.9970632927953619,
+   "cold_start_ratio": 0.00027683417339030727,
+   "overflow_share": 0.012570204806397575,
+   "p99_latency": 13.225
+  },
+  "peak_upper_frac 0.90": {
+   "cost": 1050.1286310698206,
+   "violating_window_rate": 0.008928571428571428,
+   "record_attainment": 0.9972169573738033,
+   "cold_start_ratio": 0.00020399167112949485,
+   "overflow_share": 0.009251753135846724,
+   "p99_latency": 13.205
+  }
+ },
+ "fast_simulator_changes": true,
+ "fast_simulator_self_check": {
+  "note": "the fixed schedule replayed in the fast simulator at the default reproduces the fast run's own outcome",
+  "run": 0.010416666666666666,
+  "replay": 0.010416666666666666,
+  "identical": true
+ },
+ "ok": true
+}

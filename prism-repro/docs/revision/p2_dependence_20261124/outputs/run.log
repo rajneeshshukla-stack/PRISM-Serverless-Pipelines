@@ -1,0 +1,156 @@
+2026-11-25T00:49:59Z week I145 101 PRISM test 0.01: cost 1236.9, violating 1.93%, >=2048 MB 10.1%
+2026-11-25T00:50:00Z week I145 102 PRISM test 0.01: cost 1306.0, violating 1.19%, >=2048 MB 8.3%
+2026-11-25T00:51:40Z week I145 103 PRISM test 0.03: cost 1194.1, violating 2.53%, >=2048 MB 1.8%
+2026-11-25T00:51:40Z week I145 104 PRISM test 0.03: cost 1187.4, violating 2.38%, >=2048 MB 0.6%
+2026-11-25T00:52:45Z week I145 105 PRISM test 0.03: cost 1153.9, violating 1.79%, >=2048 MB 1.2%
+2026-11-25T00:52:45Z G0 done
+2026-11-25T00:54:26Z week S145 101 PRISM test 0.01: cost 1101.2, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T00:54:26Z week S145 102 PRISM test 0.01: cost 1124.7, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T00:55:58Z week S145 103 PRISM test 0.03: cost 1118.0, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T00:55:58Z week S145 104 PRISM test 0.03: cost 1088.1, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T00:57:22Z week S145 105 PRISM test 0.03: cost 1110.8, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T00:57:22Z week I145 101 MemAdapt_q90 test 1.3: cost 1239.4, violating 2.23%, >=2048 MB 0.0%
+2026-11-25T00:58:36Z week I145 102 MemAdapt_q90 test 1.5: cost 1454.0, violating 1.04%, >=2048 MB 0.0%
+2026-11-25T00:58:42Z week I145 103 MemAdapt_q90 test 1.1: cost 1153.6, violating 2.83%, >=2048 MB 0.0%
+2026-11-25T00:59:55Z week I145 104 MemAdapt_q90 test 1.2: cost 1203.7, violating 2.23%, >=2048 MB 0.0%
+2026-11-25T01:00:01Z week I145 105 MemAdapt_q90 test 1.2: cost 1190.5, violating 1.49%, >=2048 MB 0.0%
+2026-11-25T01:01:16Z week S145 101 MemAdapt_q90 test 1.3: cost 1420.9, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T01:01:24Z week S145 102 MemAdapt_q90 test 1.5: cost 1667.0, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T01:02:36Z week S145 103 MemAdapt_q90 test 1.1: cost 1323.6, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T01:02:42Z week S145 104 MemAdapt_q90 test 1.2: cost 1380.2, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T01:03:35Z week S145 105 MemAdapt_q90 test 1.2: cost 1364.9, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T01:03:35Z G1 done
+2026-11-25T01:05:30Z week I145 101 PRISM val 0.005: cost 1197.8, violating 1.34%, >=2048 MB 27.4%
+2026-11-25T01:05:30Z week I145 101 PRISM val 0.01: cost 1171.2, violating 2.23%, >=2048 MB 9.5%
+2026-11-25T01:06:43Z week I145 101 PRISM val 0.02: cost 1115.0, violating 2.38%, >=2048 MB 1.2%
+2026-11-25T01:06:43Z week I145 101 PRISM val 0.03: cost 1069.9, violating 2.53%, >=2048 MB 0.0%
+2026-11-25T01:07:56Z week I145 101 PRISM val 0.05: cost 997.9, violating 3.72%, >=2048 MB 0.0%
+2026-11-25T01:07:56Z week I145 101 PRISM val 0.08: cost 945.0, violating 4.17%, >=2048 MB 0.0%
+2026-11-25T01:08:48Z week I145 101 PRISM val 0.003: cost 1169.8, violating 1.19%, >=2048 MB 59.5%
+2026-11-25T01:09:41Z week I145 101 PRISM val 0.002: cost 1140.2, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T01:10:34Z week I145 101 PRISM test 0.002: cost 1192.5, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T01:10:34Z group I145 101 PRISM: selected 0.002 expansions [0.003, 0.002]
+2026-11-25T01:11:42Z week I145 101 MemAdapt_q90 val 0.6: cost 857.4, violating 10.86%, >=2048 MB 0.0%
+2026-11-25T01:11:42Z week I145 101 MemAdapt_q90 val 0.7: cost 892.4, violating 6.85%, >=2048 MB 0.0%
+2026-11-25T01:12:49Z week I145 101 MemAdapt_q90 val 0.8: cost 933.2, violating 5.06%, >=2048 MB 0.0%
+2026-11-25T01:12:49Z week I145 101 MemAdapt_q90 val 0.9: cost 978.1, violating 3.27%, >=2048 MB 0.0%
+2026-11-25T01:13:57Z week I145 101 MemAdapt_q90 val 1.0: cost 1025.2, violating 2.83%, >=2048 MB 0.0%
+2026-11-25T01:13:57Z week I145 101 MemAdapt_q90 val 1.1: cost 1073.9, violating 2.53%, >=2048 MB 0.0%
+2026-11-25T01:15:03Z week I145 101 MemAdapt_q90 val 1.2: cost 1123.5, violating 2.53%, >=2048 MB 0.0%
+2026-11-25T01:15:03Z week I145 101 MemAdapt_q90 val 1.3: cost 1173.5, violating 1.93%, >=2048 MB 0.0%
+2026-11-25T01:16:10Z week I145 101 MemAdapt_q90 val 1.4: cost 1223.7, violating 1.93%, >=2048 MB 0.0%
+2026-11-25T01:16:10Z week I145 101 MemAdapt_q90 val 1.5: cost 1274.1, violating 1.64%, >=2048 MB 0.0%
+2026-11-25T01:16:10Z group I145 101 MemAdapt_q90: selected 1.3 expansions -
+2026-11-25T01:17:33Z week I145 102 PRISM val 0.005: cost 1212.3, violating 1.64%, >=2048 MB 31.5%
+2026-11-25T01:17:34Z week I145 102 PRISM val 0.01: cost 1193.8, violating 1.93%, >=2048 MB 15.5%
+2026-11-25T01:18:46Z week I145 102 PRISM val 0.02: cost 1145.4, violating 2.68%, >=2048 MB 2.4%
+2026-11-25T01:18:46Z week I145 102 PRISM val 0.03: cost 1090.8, violating 2.83%, >=2048 MB 0.0%
+2026-11-25T01:19:59Z week I145 102 PRISM val 0.05: cost 1007.5, violating 3.72%, >=2048 MB 0.0%
+2026-11-25T01:20:00Z week I145 102 PRISM val 0.08: cost 943.7, violating 5.36%, >=2048 MB 0.0%
+2026-11-25T01:20:00Z group I145 102 PRISM: selected 0.01 expansions -
+2026-11-25T01:21:08Z week I145 102 MemAdapt_q90 val 0.6: cost 864.2, violating 8.63%, >=2048 MB 0.0%
+2026-11-25T01:21:08Z week I145 102 MemAdapt_q90 val 0.7: cost 901.4, violating 6.10%, >=2048 MB 0.0%
+2026-11-25T01:22:16Z week I145 102 MemAdapt_q90 val 0.8: cost 944.8, violating 4.61%, >=2048 MB 0.0%
+2026-11-25T01:22:16Z week I145 102 MemAdapt_q90 val 0.9: cost 992.1, violating 3.87%, >=2048 MB 0.0%
+2026-11-25T01:23:22Z week I145 102 MemAdapt_q90 val 1.0: cost 1041.2, violating 3.57%, >=2048 MB 0.0%
+2026-11-25T01:23:22Z week I145 102 MemAdapt_q90 val 1.1: cost 1091.8, violating 3.12%, >=2048 MB 0.0%
+2026-11-25T01:24:29Z week I145 102 MemAdapt_q90 val 1.2: cost 1142.8, violating 2.83%, >=2048 MB 0.0%
+2026-11-25T01:24:29Z week I145 102 MemAdapt_q90 val 1.3: cost 1194.3, violating 2.68%, >=2048 MB 0.0%
+2026-11-25T01:25:34Z week I145 102 MemAdapt_q90 val 1.4: cost 1245.7, violating 2.08%, >=2048 MB 0.0%
+2026-11-25T01:25:34Z week I145 102 MemAdapt_q90 val 1.5: cost 1297.6, violating 1.93%, >=2048 MB 0.0%
+2026-11-25T01:26:23Z week I145 102 MemAdapt_q90 val 1.6: cost 1349.3, violating 1.49%, >=2048 MB 0.0%
+2026-11-25T01:26:23Z group I145 102 MemAdapt_q90: selected 1.5 expansions [1.6]
+2026-11-25T01:27:45Z week I145 103 PRISM val 0.005: cost 1160.1, violating 1.19%, >=2048 MB 37.5%
+2026-11-25T01:27:45Z week I145 103 PRISM val 0.01: cost 1146.8, violating 1.34%, >=2048 MB 16.1%
+2026-11-25T01:28:55Z week I145 103 PRISM val 0.02: cost 1095.9, violating 1.79%, >=2048 MB 4.2%
+2026-11-25T01:28:55Z week I145 103 PRISM val 0.03: cost 1047.6, violating 1.93%, >=2048 MB 1.2%
+2026-11-25T01:30:07Z week I145 103 PRISM val 0.05: cost 964.7, violating 3.12%, >=2048 MB 0.0%
+2026-11-25T01:30:07Z week I145 103 PRISM val 0.08: cost 905.2, violating 4.17%, >=2048 MB 0.0%
+2026-11-25T01:30:07Z group I145 103 PRISM: selected 0.03 expansions -
+2026-11-25T01:31:14Z week I145 103 MemAdapt_q90 val 0.6: cost 828.1, violating 7.59%, >=2048 MB 0.0%
+2026-11-25T01:31:14Z week I145 103 MemAdapt_q90 val 0.7: cost 863.0, violating 5.95%, >=2048 MB 0.0%
+2026-11-25T01:32:22Z week I145 103 MemAdapt_q90 val 0.8: cost 903.7, violating 4.46%, >=2048 MB 0.0%
+2026-11-25T01:32:22Z week I145 103 MemAdapt_q90 val 0.9: cost 948.0, violating 2.53%, >=2048 MB 0.0%
+2026-11-25T01:33:27Z week I145 103 MemAdapt_q90 val 1.0: cost 994.7, violating 2.08%, >=2048 MB 0.0%
+2026-11-25T01:33:27Z week I145 103 MemAdapt_q90 val 1.1: cost 1042.6, violating 1.64%, >=2048 MB 0.0%
+2026-11-25T01:34:34Z week I145 103 MemAdapt_q90 val 1.2: cost 1090.9, violating 1.49%, >=2048 MB 0.0%
+2026-11-25T01:34:34Z week I145 103 MemAdapt_q90 val 1.3: cost 1139.9, violating 1.49%, >=2048 MB 0.0%
+2026-11-25T01:35:41Z week I145 103 MemAdapt_q90 val 1.4: cost 1188.9, violating 1.49%, >=2048 MB 0.0%
+2026-11-25T01:35:41Z week I145 103 MemAdapt_q90 val 1.5: cost 1238.1, violating 1.34%, >=2048 MB 0.0%
+2026-11-25T01:35:41Z group I145 103 MemAdapt_q90: selected 1.1 expansions -
+2026-11-25T01:37:05Z week S145 101 PRISM val 0.005: cost 1109.8, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T01:37:06Z week S145 101 PRISM val 0.01: cost 1096.1, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T01:38:19Z week S145 101 PRISM val 0.02: cost 1096.1, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T01:38:20Z week S145 101 PRISM val 0.03: cost 1096.1, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T01:39:32Z week S145 101 PRISM val 0.05: cost 1110.9, violating 98.81%, >=2048 MB 1.2%
+2026-11-25T01:39:33Z week S145 101 PRISM val 0.08: cost 989.0, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T01:39:33Z group S145 101 PRISM: selected 0.01 expansions -
+2026-11-25T01:40:40Z week S145 101 MemAdapt_q90 val 0.6: cost 991.3, violating 0.74%, >=2048 MB 100.0%
+2026-11-25T01:40:40Z week S145 101 MemAdapt_q90 val 0.7: cost 1029.8, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T01:41:48Z week S145 101 MemAdapt_q90 val 0.8: cost 1075.1, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T01:41:48Z week S145 101 MemAdapt_q90 val 0.9: cost 1125.1, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T01:42:55Z week S145 101 MemAdapt_q90 val 1.0: cost 1177.6, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T01:42:55Z week S145 101 MemAdapt_q90 val 1.1: cost 1232.8, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T01:44:04Z week S145 101 MemAdapt_q90 val 1.2: cost 1289.0, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T01:44:05Z week S145 101 MemAdapt_q90 val 1.3: cost 1345.9, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T01:45:10Z week S145 101 MemAdapt_q90 val 1.4: cost 1403.2, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T01:45:10Z week S145 101 MemAdapt_q90 val 1.5: cost 1461.0, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T01:46:01Z week S145 101 MemAdapt_q90 val 0.5: cost 962.0, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T01:46:52Z week S145 101 MemAdapt_q90 val 0.4: cost 945.2, violating 0.74%, >=2048 MB 100.0%
+2026-11-25T01:47:43Z week S145 101 MemAdapt_q90 test 0.4: cost 939.7, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T01:47:43Z group S145 101 MemAdapt_q90: selected 0.4 expansions [0.5, 0.4]
+2026-11-25T01:49:06Z week S145 102 PRISM val 0.005: cost 1116.0, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T01:49:06Z week S145 102 PRISM val 0.01: cost 1104.0, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T01:50:21Z week S145 102 PRISM val 0.02: cost 1104.0, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T01:50:21Z week S145 102 PRISM val 0.03: cost 1104.0, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T01:51:37Z week S145 102 PRISM val 0.05: cost 1139.7, violating 98.81%, >=2048 MB 1.2%
+2026-11-25T01:51:37Z week S145 102 PRISM val 0.08: cost 994.3, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T01:51:37Z group S145 102 PRISM: selected 0.01 expansions -
+2026-11-25T01:52:47Z week S145 102 MemAdapt_q90 val 0.6: cost 999.3, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T01:52:47Z week S145 102 MemAdapt_q90 val 0.7: cost 1040.3, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T01:53:55Z week S145 102 MemAdapt_q90 val 0.8: cost 1088.0, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T01:53:55Z week S145 102 MemAdapt_q90 val 0.9: cost 1140.7, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T01:55:03Z week S145 102 MemAdapt_q90 val 1.0: cost 1196.1, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T01:55:03Z week S145 102 MemAdapt_q90 val 1.1: cost 1253.2, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T01:56:10Z week S145 102 MemAdapt_q90 val 1.2: cost 1311.1, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T01:56:10Z week S145 102 MemAdapt_q90 val 1.3: cost 1369.8, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T01:57:19Z week S145 102 MemAdapt_q90 val 1.4: cost 1429.0, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T01:57:19Z week S145 102 MemAdapt_q90 val 1.5: cost 1487.9, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T01:58:11Z week S145 102 MemAdapt_q90 val 0.5: cost 968.3, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T01:59:03Z week S145 102 MemAdapt_q90 val 0.4: cost 950.0, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T01:59:55Z week S145 102 MemAdapt_q90 test 0.4: cost 960.0, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T01:59:55Z group S145 102 MemAdapt_q90: selected 0.4 expansions [0.5, 0.4]
+2026-11-25T02:01:18Z week S145 103 PRISM val 0.005: cost 1069.4, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:01:18Z week S145 103 PRISM val 0.01: cost 1062.4, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:02:29Z week S145 103 PRISM val 0.02: cost 1062.4, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:02:29Z week S145 103 PRISM val 0.03: cost 1062.4, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:03:41Z week S145 103 PRISM val 0.05: cost 1094.4, violating 97.62%, >=2048 MB 2.4%
+2026-11-25T02:03:41Z week S145 103 PRISM val 0.08: cost 946.0, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T02:04:34Z week S145 103 PRISM test 0.01: cost 1118.0, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:04:34Z group S145 103 PRISM: selected 0.01 expansions -
+2026-11-25T02:05:41Z week S145 103 MemAdapt_q90 val 0.6: cost 958.1, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:05:41Z week S145 103 MemAdapt_q90 val 0.7: cost 996.3, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:06:49Z week S145 103 MemAdapt_q90 val 0.8: cost 1041.3, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:06:49Z week S145 103 MemAdapt_q90 val 0.9: cost 1090.4, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:07:54Z week S145 103 MemAdapt_q90 val 1.0: cost 1142.7, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:07:54Z week S145 103 MemAdapt_q90 val 1.1: cost 1196.8, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:09:03Z week S145 103 MemAdapt_q90 val 1.2: cost 1251.9, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:09:03Z week S145 103 MemAdapt_q90 val 1.3: cost 1307.7, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:10:08Z week S145 103 MemAdapt_q90 val 1.4: cost 1363.6, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:10:08Z week S145 103 MemAdapt_q90 val 1.5: cost 1419.8, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:10:58Z week S145 103 MemAdapt_q90 val 0.5: cost 929.1, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T02:11:49Z week S145 103 MemAdapt_q90 val 0.4: cost 912.3, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T02:12:40Z week S145 103 MemAdapt_q90 test 0.4: cost 948.2, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T02:12:40Z group S145 103 MemAdapt_q90: selected 0.4 expansions [0.5, 0.4]
+2026-11-25T02:12:40Z G2 done
+2026-11-25T02:14:29Z week S13 101 PRISM test 0.01: cost 1196.6, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T02:14:29Z week S13 101 MemAdapt_q90 test 0.6: cost 1006.1, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T02:15:46Z week S13 102 PRISM test 0.01: cost 1306.9, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:15:47Z week S13 102 MemAdapt_q90 test 0.6: cost 1048.0, violating 0.74%, >=2048 MB 100.0%
+2026-11-25T02:17:11Z week S13 103 PRISM test 0.01: cost 1219.3, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:17:11Z week S13 103 MemAdapt_q90 test 0.6: cost 1021.4, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T02:18:30Z week S13 104 PRISM test 0.01: cost 1248.9, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T02:18:30Z week S13 104 MemAdapt_q90 test 0.6: cost 1006.4, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T02:19:54Z week S13 105 PRISM test 0.01: cost 1202.5, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T02:19:54Z week S13 105 MemAdapt_q90 test 0.6: cost 1013.2, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T02:19:54Z G3 done

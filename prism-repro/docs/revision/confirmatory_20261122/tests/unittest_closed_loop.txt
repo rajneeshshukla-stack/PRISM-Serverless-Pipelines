@@ -1,0 +1,44 @@
+command (from prism-repro/): python -m unittest tests.test_des_closed_loop tests.test_des_epoch_major_guard tests.test_des_online -v
+HEAD fd8b01a19ec1b8172e90eb4a071435ed74a4142e; src/experiments/tests clean: yes
+start 2026-11-22T22:27:24Z
+Windows-11-10.0.26200-SP0 Python 3.12.9 numpy 2.4.4 scipy 1.17.1 sklearn 1.8.0
+test_closed_loop_decisions_replayed_open_loop_give_the_same_run (tests.test_des_closed_loop.TestBothModes.test_closed_loop_decisions_replayed_open_loop_give_the_same_run) ... ok
+test_closed_loop_replaying_a_schedule_equals_the_open_loop (tests.test_des_closed_loop.TestBothModes.test_closed_loop_replaying_a_schedule_equals_the_open_loop) ... ok
+test_open_loop_unchanged_without_a_controller (tests.test_des_closed_loop.TestBothModes.test_open_loop_unchanged_without_a_controller)
+E9 and E12 call simulate_events(cfg, draws, P_epoch, mem_epoch, want_inflight=..., sample_seed=...). ... ok
+test_prism_closed_loop (tests.test_des_closed_loop.TestConservationAcrossBoundaries.test_prism_closed_loop) ... ok
+test_requests_spanning_several_epochs (tests.test_des_closed_loop.TestConservationAcrossBoundaries.test_requests_spanning_several_epochs) ... ok
+test_controller_never_sees_beyond_its_feedback_delay (tests.test_des_closed_loop.TestNoLookahead.test_controller_never_sees_beyond_its_feedback_delay) ... ok
+test_decisions_do_not_move_when_later_minutes_change (tests.test_des_closed_loop.TestNoLookahead.test_decisions_do_not_move_when_later_minutes_change) ... ok
+test_cold_hit_estimate_follows_event_level_telemetry (tests.test_des_closed_loop.TestObservedOutcomes.test_cold_hit_estimate_follows_event_level_telemetry) ... ok
+test_conformal_offset_is_computed_from_observed_arrivals (tests.test_des_closed_loop.TestObservedOutcomes.test_conformal_offset_is_computed_from_observed_arrivals) ... ok
+test_trimmed_history_gives_identical_forecasts (tests.test_des_closed_loop.TestOnlineForecastTrim.test_trimmed_history_gives_identical_forecasts)
+The feature builder is given counts from a week-aligned start (runtime); forecasts must not change. Epochs ... ok
+test_provisional_split_with_out_of_sample_warmup (tests.test_des_closed_loop.TestValidationWeek.test_provisional_split_with_out_of_sample_warmup) ... ok
+test_submitted_split (tests.test_des_closed_loop.TestValidationWeek.test_submitted_split) ... ok
+test_all_on_demand_and_all_provisioned (tests.test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_all_on_demand_and_all_provisioned) ... ok
+test_exact_ties_keep_the_stage_major_order (tests.test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_exact_ties_keep_the_stage_major_order) ... ok
+test_executions_spanning_several_epochs (tests.test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_executions_spanning_several_epochs) ... ok
+test_memory_change_every_epoch_truncated_init_unbilled (tests.test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_memory_change_every_epoch_truncated_init_unbilled) ... ok
+test_oracle_is_the_stage_major_code_at_3bd1f33 (tests.test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_oracle_is_the_stage_major_code_at_3bd1f33) ... ok
+test_order_sensitive_ties_across_minutes (tests.test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_order_sensitive_ties_across_minutes) ... ok
+test_partial_last_epoch_and_boundary_arrivals (tests.test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_partial_last_epoch_and_boundary_arrivals) ... ok
+test_realistic_windows_three_seeds_two_scenarios (tests.test_des_epoch_major_guard.TestEpochMajorIsByteIdentical.test_realistic_windows_three_seeds_two_scenarios) ... ok
+test_conservation_gate (tests.test_des_online.TestEventTelemetry.test_conservation_gate) ... ok
+test_emitting_telemetry_changes_nothing_else (tests.test_des_online.TestEventTelemetry.test_emitting_telemetry_changes_nothing_else) ... ok
+test_stage_telemetry_hand_trace (tests.test_des_online.TestEventTelemetry.test_stage_telemetry_hand_trace) ... ok
+test_online_equals_batch (tests.test_des_online.TestOnlineFeatures.test_online_equals_batch) ... ok
+test_cold_occupancy_and_keepalive_expiry (tests.test_des_online.TestStagePass.test_cold_occupancy_and_keepalive_expiry) ... ok
+test_erlang_b_oracle (tests.test_des_online.TestStagePass.test_erlang_b_oracle)
+Poisson arrivals into a pool of P provisioned envs: overflow share = B(P, c). ... ok
+test_erlangb_accuracy_vs_eq5_gap (tests.test_des_online.TestStagePass.test_erlangb_accuracy_vs_eq5_gap)
+R3.4 / R4.9 gate: against the event-level simulator at mean load, Erlang-B is ... ok
+test_full_pipeline_deterministic_and_bounded (tests.test_des_online.TestStagePass.test_full_pipeline_deterministic_and_bounded) ... ok
+test_inflight_sweep (tests.test_des_online.TestStagePass.test_inflight_sweep) ... ok
+test_provisioned_loss_routing (tests.test_des_online.TestStagePass.test_provisioned_loss_routing) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 194.306s
+
+OK
+exit 0 end 2026-11-22T22:30:48Z

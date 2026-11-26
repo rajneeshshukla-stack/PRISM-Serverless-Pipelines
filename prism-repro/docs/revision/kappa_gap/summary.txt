@@ -1,0 +1,29 @@
+DIAGNOSTIC, pre-calibration. 10 traces (held-out test weeks), PRISM eps 0.02, GBM. Environment: {'platform': 'Windows-11-10.0.26200-SP0', 'python': '3.12.9', 'numpy': '2.4.4', 'scipy': '1.17.1', 'sklearn': '1.8.0'}
+
+kappa as PRISM sees it (clipped [0.1, 1]) | share of epochs at the floor | same estimator unclipped | raw cold starts / on-demand requests (whole week, all stages)
+  fast simulator              kappa 0.110 [0.101-0.124] | floor  89.7% | unclipped 0.050 [0.034-0.075] | raw ratio 0.0213 [0.0185-0.0248]
+  event level, F's schedule   kappa 0.330 [0.257-0.452] | floor   0.4% | unclipped 0.330 [0.256-0.452] | raw ratio 0.0686 [0.0580-0.0794]
+  event level, closed loop    kappa 0.439 [0.397-0.473] | floor   0.1% | unclipped 0.439 [0.397-0.473] | raw ratio 0.0694 [0.0589-0.0891]
+
+Same schedule, fast vs event level (O / F), mean over traces [range]:
+  on-demand requests           x0.89 [0.81-0.94]   (sample: F 2.565e+05, O 2.284e+05 per trace-week)
+  cold starts                  x2.88 [2.41-3.19]   (sample: F 5462, O 1.571e+04 per trace-week)
+  cold per on-demand request   x3.23 [2.97-3.59]   (sample: F 0.02127, O 0.06855 per trace-week)
+  stage 1: cold per on-demand request F 0.0100, O 0.0479 (x4.8)
+  stage 2: cold per on-demand request F 0.0407, O 0.0893 (x2.2)
+  stage 3: cold per on-demand request F 0.0266, O 0.0850 (x3.2)
+  stage 4: cold per on-demand request F 0.0135, O 0.0647 (x4.8)
+
+Whole-week cold-start ratio (cold starts / stage executions), violating windows, cost:
+  fast                 cold-start ratio 0.00020 | overflow share 0.0094 | violating windows 0.70% | cost 1307.6
+  event, F's schedule  cold-start ratio 0.00057 | overflow share 0.0084 | violating windows 2.89% | cost 1308.2
+  event, closed loop   cold-start ratio 0.00037 | overflow share 0.0054 | violating windows 1.74% | cost 1423.2
+  closed loop vs open-loop replay: cost +8.9% [+7.7, +10.2], violating windows -1.15 points [-2.38, -0.60]
+  check (a): closed-loop kappa recorded by PRISM equals the update recomputed from the final event telemetry: True
+
+Mechanism probes (seed 101, stationary, first day of the test week, F's schedule):
+  event model                          on-demand      6555 | cold      991 | cold per on-demand 0.1512
+  fast formula on event concurrency    on-demand      6555 | cold      991 | cold per on-demand 0.1512
+  keep-alive unlimited                 on-demand      6529 | cold      352 | cold per on-demand 0.0539
+  initialisation instantaneous         on-demand      6487 | cold      592 | cold per on-demand 0.0913
+  fast simulator (same day)            on-demand      7220 | cold      221 | cold per on-demand 0.0306

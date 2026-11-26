@@ -1,0 +1,12 @@
+RQ4 COST PERCENTAGES, BOTH DENOMINATORS (saved rows of 7980b69; validation-selected; mean over 5 traces of the per-trace percentage). EXPLORATORY, PRE-CALIBRATION.
+
+  non-scaling 0.5, deadline 14.5 s: PRISM vs MemAdapt (MemAdapt = 100%)  +1.6%;  MemAdapt vs PRISM (PRISM = 100%)  -1.5%;  mean costs PRISM   981.0, MemAdapt   965.3;  viol PRISM 1.55% / MemAdapt 1.73%;  weeks within 2%: PRISM 3/5, MemAdapt 3/5
+  non-scaling 0.5, deadline 13.0 s: PRISM vs MemAdapt (MemAdapt = 100%) +27.9%;  MemAdapt vs PRISM (PRISM = 100%) -21.8%;  mean costs PRISM  1695.4, MemAdapt  1325.2;  viol PRISM 0.00% / MemAdapt 0.00%;  weeks within 2%: PRISM 5/5, MemAdapt 5/5
+  non-scaling 0.5, deadline 12.0 s: PRISM vs MemAdapt (MemAdapt = 100%) +19.8%;  MemAdapt vs PRISM (PRISM = 100%) -16.5%;  mean costs PRISM  1587.2, MemAdapt  1325.2;  viol PRISM 0.03% / MemAdapt 0.03%;  weeks within 2%: PRISM 5/5, MemAdapt 5/5
+  non-scaling 0.5, deadline 11.0 s: PRISM vs MemAdapt (MemAdapt = 100%)  +4.7%;  MemAdapt vs PRISM (PRISM = 100%)  -4.3%;  mean costs PRISM  1446.9, MemAdapt  1384.5;  viol PRISM 1.22% / MemAdapt 1.61%;  weeks within 2%: PRISM 5/5, MemAdapt 3/5
+  non-scaling 0.15, deadline 14.5 s: PRISM vs MemAdapt (MemAdapt = 100%)  +1.6%;  MemAdapt vs PRISM (PRISM = 100%)  -1.5%;  mean costs PRISM   981.0, MemAdapt   965.3;  viol PRISM 1.55% / MemAdapt 1.73%;  weeks within 2%: PRISM 3/5, MemAdapt 3/5
+  non-scaling 0.15, deadline 12.0 s: PRISM vs MemAdapt (MemAdapt = 100%)  +8.3%;  MemAdapt vs PRISM (PRISM = 100%)  -7.7%;  mean costs PRISM  1103.8, MemAdapt  1019.2;  viol PRISM 0.00% / MemAdapt 0.00%;  weeks within 2%: PRISM 5/5, MemAdapt 5/5
+
+  remedy cost, MemAdapt at 13.0 s against MemAdapt at 14.5 s (non-scaling 0.5): +37.6% (per trace +34.8, +26.8, +42.3, +41.5, +42.7); ratio of mean costs +37.3%
+  remedy cost, MemAdapt at 12.0 s against MemAdapt at 14.5 s (non-scaling 0.5): +37.6% (per trace +34.8, +26.8, +42.3, +41.5, +42.7); ratio of mean costs +37.3%
+  remedy cost, MemAdapt at 12.0 s against MemAdapt at 14.5 s (non-scaling 0.15):  +5.8% (per trace +3.7, -2.5, +9.5, +8.8, +9.8); ratio of mean costs  +5.6%

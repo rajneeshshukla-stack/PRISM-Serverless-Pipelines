@@ -1,0 +1,64 @@
+REAL-TRACE REPLAY (R1 protocol) WITH THE PAPER'S AND THE WIDENED GRIDS (current code; post hoc study of
+five Huawei arrival traces; fast simulator; pre-calibration)
+Rows: 1140
+
+  trace  family          stored R1 sel (submitted code)  paper grid sel (current)        widened grid sel (current)
+  201    Static          50 low val 0.00%                50 low val 0.00%                30 low val 0.00%
+  201    Scheduled       1 low val 0.15%                 1 low val 0.30%                 0.6 low val 0.60%
+  201    Reactive        0.9 high val 0.15%              0.9 high val 0.00%              1 high val 0.00%
+  201    PredHead        1 low val 0.15%                 1 low val 0.00%                 1 int. val 0.00%
+  201    PredHead+hyst   1 low val 0.15%                 1 low val 0.00%                 1 int. val 0.00%
+  201    QuantProv_q90   0.9 int. val 0.30%              0.9 int. val 0.15%              0.9 int. val 0.15%
+  201    QuantProv_q99   0.8 int. val 0.30%              0.8 int. val 0.00%              0.8 int. val 0.00%
+  201    PRISM           0.08 high val 0.15%             0.08 high val 0.30%             0.15 int. val 0.30%
+  202    Static          50 low val 0.74%                50 low val 0.00%                30 low val 0.30%
+  202    Scheduled       1 low val 0.45%                 1 low val 0.15%                 0.6 low val 0.15%
+  202    Reactive        0.9 high val 1.04%              0.9 high val 0.30%              1 high val 0.74%
+  202    PredHead        1 low val 1.64%                 1 low val 1.19%                 0.9 int. val 1.19%
+  202    PredHead+hyst   1 low val 1.49%                 1 low val 1.04%                 0.9 int. val 1.04%
+  202    QuantProv_q90   0.8 int. val 1.64%              0.8 int. val 1.19%              0.8 int. val 1.19%
+  202    QuantProv_q99   0.7 int. val 1.64%              0.7 int. val 1.34%              0.7 int. val 1.34%
+  202    PRISM           0.08 high val 1.19%             0.08 high val 1.04%             0.15 int. val 1.19%
+  203    Static          99 int. val 1.34%               95 int. val 1.79%               95 int. val 1.79%
+  203    Scheduled       1.2 int. val 1.19%              1 low val 0.74%                 1 int. val 0.74%
+  203    Reactive        0.65 int. val 1.93%             0.85 int. val 1.79%             0.85 int. val 1.79%
+  203    PredHead        1 low val 1.19%                 1 low val 0.60%                 0.8 low val 0.60%
+  203    PredHead+hyst   1 low val 1.19%                 1 low val 0.60%                 0.8 low val 0.60%
+  203    QuantProv_q90   0.7 int. val 1.93%              0.6 low val 0.89%               0.6 int. val 0.89%
+  203    QuantProv_q99   0.7 int. val 1.64%              0.6 low val 0.89%               0.5 int. val 1.04%
+  203    PRISM           0.08 high val 1.04%             0.08 high val 0.60%             0.1 int. val 0.60%
+  204    Static          99.9 high val 1.04%             99.9 high val 1.04%             99.9 int. val 1.04%
+  204    Scheduled       2 high val 11.46%*              2 high val 11.76%*              3 high val 5.06%*
+  204    Reactive        0.4 low val 3.87%*              0.4 low val 4.02%*              0.3 low val 1.19%
+  204    PredHead        1.4 int. val 1.64%              1.1 int. val 1.79%              1.1 int. val 1.79%
+  204    PredHead+hyst   1.3 int. val 1.64%              1.1 int. val 1.79%              1.1 int. val 1.79%
+  204    QuantProv_q90   1.1 int. val 1.49%              1 int. val 1.34%                1 int. val 1.34%
+  204    QuantProv_q99   1 int. val 1.34%                0.9 int. val 1.93%              0.9 int. val 1.93%
+  204    PRISM           0.02 int. val 1.49%             0.03 int. val 1.64%             0.03 int. val 1.64%
+  205    Static          50 low val 0.89%                50 low val 0.74%                40 int. val 0.74%
+  205    Scheduled       1 low val 0.60%                 1 low val 0.74%                 0.6 low val 0.74%
+  205    Reactive        0.9 high val 0.60%              0.9 high val 0.60%              1 high val 0.60%
+  205    PredHead        1 low val 1.04%                 1 low val 0.89%                 1 int. val 0.89%
+  205    PredHead+hyst   1 low val 0.74%                 1 low val 0.74%                 1 int. val 0.74%
+  205    QuantProv_q90   0.8 int. val 0.74%              0.7 int. val 0.74%              0.7 int. val 0.74%
+  205    QuantProv_q99   0.6 low val 0.89%               0.6 low val 0.74%               0.4 low val 0.89%
+  205    PRISM           0.08 high val 1.04%             0.08 high val 0.74%             0.2 high val 0.74%
+
+  edge selections: stored R1 25 of 40; current code, paper grid 28 of 40; widened grid 14 of 40
+  (* = no setting met the 2% validation threshold, so the least violating was taken)
+
+  Test week (days 22-28) of the validation-selected settings: cost USD / violating windows %, and whether the
+  2% target is met; paper grid -> widened grid
+    OnDemand       201: 859/0.45+ -> 859/0.45+; 202: 832/1.49+ -> 832/1.49+; 203: 813/4.32- -> 813/4.32-; 204: 875/27.38- -> 875/27.38-; 205: 1,097/0.45+ -> 1,097/0.45+
+    Static         201: 827/0.00+ -> 818/0.00+; 202: 823/0.30+ -> 806/0.74+; 203: 943/1.93+ -> 943/1.93+; 204: 3,121/1.04+ -> 3,121/1.04+; 205: 1,032/0.45+ -> 1,042/0.45+
+    Scheduled      201: 852/0.00+ -> 777/0.15+; 202: 844/0.15+ -> 754/0.45+; 203: 880/1.04+ -> 880/1.04+; 204: 1,290/11.31- -> 1,663/5.06-; 205: 1,194/0.00+ -> 1,079/0.15+
+    Reactive       201: 904/0.00+ -> 861/0.15+; 202: 895/0.15+ -> 851/0.74+; 203: 987/1.49+ -> 987/1.49+; 204: 2,681/3.12- -> 3,398/1.49+; 205: 1,146/0.15+ -> 1,094/0.15+
+    PredHead       201: 771/0.00+ -> 771/0.00+; 202: 752/0.15+ -> 750/0.15+; 203: 757/0.00+ -> 747/0.00+; 204: 892/1.49+ -> 892/1.49+; 205: 981/0.15+ -> 981/0.15+
+    PredHead+hyst  201: 772/0.00+ -> 772/0.00+; 202: 757/0.15+ -> 753/0.15+; 203: 782/0.00+ -> 760/0.00+; 204: 1,149/1.64+ -> 1,149/1.64+; 205: 982/0.15+ -> 982/0.15+
+    QuantProv_q90  201: 773/0.00+ -> 773/0.00+; 202: 756/0.15+ -> 756/0.15+; 203: 756/0.00+ -> 756/0.00+; 204: 1,208/0.60+ -> 1,208/0.60+; 205: 994/0.15+ -> 994/0.15+
+    QuantProv_q99  201: 773/0.00+ -> 773/0.00+; 202: 757/0.15+ -> 757/0.15+; 203: 758/0.00+ -> 754/0.15+; 204: 1,200/1.19+ -> 1,200/1.19+; 205: 1,027/0.15+ -> 1,023/0.15+
+    PRISM          201: 783/0.00+ -> 783/0.00+; 202: 770/0.15+ -> 770/0.15+; 203: 803/0.00+ -> 803/0.00+; 204: 1,174/1.34+ -> 1,174/1.34+; 205: 1,007/0.15+ -> 1,005/0.15+
+  (+ meets the 2% target on the test week, - misses)
+  test weeks meeting the target, paper grid: OnDemand 3/5, Static 5/5, Scheduled 4/5, Reactive 4/5, PredHead 5/5, PredHead+hyst 5/5, QuantProv_q90 5/5, QuantProv_q99 5/5, PRISM 5/5
+  test weeks meeting the target, widened grid: OnDemand 3/5, Static 5/5, Scheduled 4/5, Reactive 5/5, PredHead 5/5, PredHead+hyst 5/5, QuantProv_q90 5/5, QuantProv_q99 5/5, PRISM 5/5
+

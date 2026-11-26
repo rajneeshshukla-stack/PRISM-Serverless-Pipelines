@@ -1,0 +1,4 @@
+epoch,from_mb,to_mb,update_duration_s,in_effect_after_epoch_start_s,records_running_at_decision,cloudtrail_requests,functions,cloudtrail_errors,cloudtrail_first_request_utc,cloudtrail_first_minus_client_start_s,seen_in_stage_records
+1,1024,512,3.266,3.257,5,4,4,0,02:38:56,1.49,yes
+2,512,2048,3.328,3.32,3,4,4,0,02:39:56,1.49,yes
+3,2048,1024,3.313,3.311,4,4,4,0,02:40:56,1.49,no record ran after it

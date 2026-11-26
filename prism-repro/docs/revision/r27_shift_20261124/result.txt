@@ -1,0 +1,40 @@
+R2.7 within-run shift (warm execution time x1.5 at test-week day 4). EXPLORATORY, fast simulator, PRE-CALIBRATION, development traces, Windows. Plan: docs/revision/r27_shift_20261124/PLAN.md
+
+trace 101:
+  A_online_dynamic           week viol 57.29%  pre  0.35%  post-shift 100.00%  post-estimate 100.00%  cost  1931.0  memory by day [1024, 1024, 1024, 2048, 2048, 2048, 2048]
+  B_online_fixed_1024        week viol 57.29%  pre  0.35%  post-shift 100.00%  post-estimate 100.00%  cost  1744.3  memory by day [1024, 1024, 1024, 1024, 1024, 1024, 1024]
+  B_online_fixed_2048        week viol 57.14%  pre  0.00%  post-shift 100.00%  post-estimate 100.00%  cost  2069.4  memory by day [2048, 2048, 2048, 2048, 2048, 2048, 2048]
+  B_online_fixed_3008        week viol  0.00%  pre  0.00%  post-shift  0.00%  post-estimate  0.00%  cost  2545.9  memory by day [3008, 3008, 3008, 3008, 3008, 3008, 3008]
+  C_published_no_estimate    week viol 57.29%  pre  0.35%  post-shift 100.00%  post-estimate 100.00%  cost  1259.9  memory by day [1024, 1024, 1024, 1024, 1024, 1024, 1024]
+  best one-time in hindsight: B_online_fixed_3008 (A cost -24.2%); criterion 1: False; criterion 2: False
+trace 102:
+  A_online_dynamic           week viol 57.59%  pre  1.04%  post-shift 100.00%  post-estimate 100.00%  cost  1969.3  memory by day [1024, 1024, 1024, 2048, 2048, 2048, 2048]
+  B_online_fixed_1024        week viol 57.59%  pre  1.04%  post-shift 100.00%  post-estimate 100.00%  cost  1751.9  memory by day [1024, 1024, 1024, 1024, 1024, 1024, 1024]
+  B_online_fixed_2048        week viol 57.14%  pre  0.00%  post-shift 100.00%  post-estimate 100.00%  cost  2103.1  memory by day [2048, 2048, 2048, 2048, 2048, 2048, 2048]
+  B_online_fixed_3008        week viol  0.00%  pre  0.00%  post-shift  0.00%  post-estimate  0.00%  cost  2588.0  memory by day [3008, 3008, 3008, 3008, 3008, 3008, 3008]
+  C_published_no_estimate    week viol 57.59%  pre  1.04%  post-shift 100.00%  post-estimate 100.00%  cost  1287.8  memory by day [1024, 1024, 1024, 1024, 1024, 1024, 1024]
+  best one-time in hindsight: B_online_fixed_3008 (A cost -23.9%); criterion 1: False; criterion 2: False
+trace 103:
+  A_online_dynamic           week viol 57.59%  pre  1.04%  post-shift 100.00%  post-estimate 100.00%  cost  1925.6  memory by day [1024, 1024, 1024, 2048, 2048, 2048, 2048]
+  B_online_fixed_1024        week viol 57.59%  pre  1.04%  post-shift 100.00%  post-estimate 100.00%  cost  1728.9  memory by day [1024, 1024, 1024, 1024, 1024, 1024, 1024]
+  B_online_fixed_2048        week viol 57.14%  pre  0.00%  post-shift 100.00%  post-estimate 100.00%  cost  2060.4  memory by day [2048, 2048, 2048, 2048, 2048, 2048, 2048]
+  B_online_fixed_3008        week viol  0.00%  pre  0.00%  post-shift  0.00%  post-estimate  0.00%  cost  2537.7  memory by day [3008, 3008, 3008, 3008, 3008, 3008, 3008]
+  C_published_no_estimate    week viol 57.59%  pre  1.04%  post-shift 100.00%  post-estimate 100.00%  cost  1265.8  memory by day [1024, 1024, 1024, 1024, 1024, 1024, 1024]
+  best one-time in hindsight: B_online_fixed_3008 (A cost -24.1%); criterion 1: False; criterion 2: False
+trace 104:
+  A_online_dynamic           week viol 57.74%  pre  1.39%  post-shift 100.00%  post-estimate 100.00%  cost  1977.3  memory by day [1024, 1024, 1024, 2048, 2048, 2048, 2048]
+  B_online_fixed_1024        week viol 57.59%  pre  1.04%  post-shift 100.00%  post-estimate 100.00%  cost  1739.2  memory by day [1024, 1024, 1024, 1024, 1024, 1024, 1024]
+  B_online_fixed_2048        week viol 57.14%  pre  0.00%  post-shift 100.00%  post-estimate 100.00%  cost  2092.7  memory by day [2048, 2048, 2048, 2048, 2048, 2048, 2048]
+  B_online_fixed_3008        week viol  0.00%  pre  0.00%  post-shift  0.00%  post-estimate  0.00%  cost  2565.5  memory by day [3008, 3008, 3008, 3008, 3008, 3008, 3008]
+  C_published_no_estimate    week viol 57.74%  pre  1.39%  post-shift 100.00%  post-estimate 100.00%  cost  1278.9  memory by day [1024, 1024, 1024, 1024, 1024, 1024, 1024]
+  best one-time in hindsight: B_online_fixed_3008 (A cost -22.9%); criterion 1: False; criterion 2: False
+trace 105:
+  A_online_dynamic           week viol 57.29%  pre  0.35%  post-shift 100.00%  post-estimate 100.00%  cost  1913.3  memory by day [1024, 1024, 1024, 2048, 2048, 2048, 2048]
+  B_online_fixed_1024        week viol 57.29%  pre  0.35%  post-shift 100.00%  post-estimate 100.00%  cost  1682.9  memory by day [1024, 1024, 1024, 1024, 1024, 1024, 1024]
+  B_online_fixed_2048        week viol 57.14%  pre  0.00%  post-shift 100.00%  post-estimate 100.00%  cost  2059.7  memory by day [2048, 2048, 2048, 2048, 2048, 2048, 2048]
+  B_online_fixed_3008        week viol  0.15%  pre  0.00%  post-shift  0.26%  post-estimate  0.26%  cost  2533.6  memory by day [3008, 3008, 3008, 3008, 3008, 3008, 3008]
+  C_published_no_estimate    week viol 57.29%  pre  0.35%  post-shift 100.00%  post-estimate 100.00%  cost  1253.7  memory by day [1024, 1024, 1024, 1024, 1024, 1024, 1024]
+  best one-time in hindsight: B_online_fixed_3008 (A cost -24.5%); criterion 1: False; criterion 2: False
+
+criterion 1 (benefit over the pre-shift one-time configuration): 0 of 5 traces -> no demonstrated benefit
+criterion 2 (benefit no one-time configuration achieves): 0 of 5 traces -> no demonstrated benefit

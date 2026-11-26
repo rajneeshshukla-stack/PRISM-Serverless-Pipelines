@@ -1,0 +1,18 @@
+{
+ "environment": {
+  "numpy": "2.4.4",
+  "scipy": "1.17.1"
+ },
+ "note": "digests of the pre-feature code; regenerate only on it",
+ "digests": {
+  "optimizer": "3c7df4154faf10b77d3749650ea11274002947b614716cc7b4cd844134c8e683",
+  "fast:Static-95": "0632077a9affe148d16a16a34e40cf1dbdc205fd93a37732191a5fa87f0c97f8",
+  "fast:Reactive-0.6": "b0ed3b7e82bd13aec2ceae8b07bd23f5eb0fecd9a7539c07d52e7bfc87b6e8c6",
+  "fast:QuantProv_q90-1.0": "41c26d8a3573f1d77fb52c4f0ce2f42c2fd5b11d715aed3d6a147b8ee02f1b06",
+  "fast:PredHead+hyst-1.3": "00067b3565d09083143adf2f278acd744a690c2e13af9bbbf5daf257ba055336",
+  "fast:PRISM-0.02": "f33533beaad9ac88a57d4282f46f1964d701b4aff8c3e95f2bb9921ad9965f2c",
+  "fast:Oracle-0.02": "c140a1048f2429c398cd59fa58809e21d69ffae33177e0a56fd2df615712eff3",
+  "fast:PRISM-0.02@D12": "2f87ed855c7ea51a601bf1dd9c56674516520728af2cc4347f26e04efd52d717",
+  "event": "8b0b727790aa3d6a309e08892e0f3efc49884b935430696637519c0a8e476843"
+ }
+}

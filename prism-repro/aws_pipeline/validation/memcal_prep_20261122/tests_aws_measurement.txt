@@ -1,0 +1,39 @@
+test_package_contains_only_the_handler (test_harness.TestAwsGuard.test_package_contains_only_the_handler) ... ok
+test_plan_only_by_default_and_refuses_without_authorisation (test_harness.TestAwsGuard.test_plan_only_by_default_and_refuses_without_authorisation) ... ok
+test_constant_penalty_gives_constant (test_harness.TestDecision.test_constant_penalty_gives_constant) ... ok
+test_eq3_shaped_penalty_keeps_eq3 (test_harness.TestDecision.test_eq3_shaped_penalty_keeps_eq3) ... ok
+test_eq3_slope_is_the_simulators (test_harness.TestDecision.test_eq3_slope_is_the_simulators) ... ok
+test_growing_penalty_gives_inverted (test_harness.TestDecision.test_growing_penalty_gives_inverted) ... ok
+test_init_sample_target_flag (test_harness.TestDecision.test_init_sample_target_flag) ... ok
+test_rule_table (test_harness.TestDecision.test_rule_table) ... ok
+test_too_few_batches_gives_no_decision (test_harness.TestDecision.test_too_few_batches_gives_no_decision) ... ok
+test_zero_width_interval_at_eq3_counts_as_containing_it (test_harness.TestDecision.test_zero_width_interval_at_eq3_counts_as_containing_it) ... ok
+test_blocks_and_randomisation (test_harness.TestDesign.test_blocks_and_randomisation) ... ok
+test_cap_everywhere (test_harness.TestDesign.test_cap_everywhere) ... ok
+test_counts_match_the_plan (test_harness.TestDesign.test_counts_match_the_plan) ... ok
+test_function_names (test_harness.TestDesign.test_function_names) ... ok
+test_timed_dry_run_recovers_truth_without_network_or_boto3 (test_harness.TestDryRun.test_timed_dry_run_recovers_truth_without_network_or_boto3) ... ok
+test_estimate_is_consistent_with_the_design (test_harness.TestEstimate.test_estimate_is_consistent_with_the_design) ... ok
+test_first_call_then_warm_and_label (test_harness.TestHandler.test_first_call_then_warm_and_label) ... ok
+test_module_scope_init_work (test_harness.TestHandler.test_module_scope_init_work) ... ok
+test_billing (test_harness.TestJoinFixture.test_billing) ... ok
+test_missing_accounting (test_harness.TestJoinFixture.test_missing_accounting) ... ok
+test_values (test_harness.TestJoinFixture.test_values) ... ok
+test_without_cloudwatch_the_report_is_missing (test_harness.TestJoinFixture.test_without_cloudwatch_the_report_is_missing) ... ok
+test_cold_line (test_harness.TestReport.test_cold_line) ... ok
+test_duration_not_taken_from_init_or_billed (test_harness.TestReport.test_duration_not_taken_from_init_or_billed) ... ok
+test_incomplete_and_garbage (test_harness.TestReport.test_incomplete_and_garbage) ... ok
+test_tail (test_harness.TestReport.test_tail) ... ok
+test_warm_line_has_no_init (test_harness.TestReport.test_warm_line_has_no_init) ... ok
+test_cap_holds_under_real_overlap (test_harness.TestRunnerWithFake.test_cap_holds_under_real_overlap) ... ok
+test_request_id_join_and_cloudwatch_fallback (test_harness.TestRunnerWithFake.test_request_id_join_and_cloudwatch_fallback) ... ok
+test_resume_reruns_only_the_incomplete_visit (test_harness.TestRunnerWithFake.test_resume_reruns_only_the_incomplete_visit) ... ok
+test_runner_rejects_design_above_its_cap (test_harness.TestRunnerWithFake.test_runner_rejects_design_above_its_cap) ... ok
+test_smaller_cap_is_respected (test_harness.TestRunnerWithFake.test_smaller_cap_is_respected) ... ok
+test_throttles_are_recorded_not_retried (test_harness.TestRunnerWithFake.test_throttles_are_recorded_not_retried) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 10.780s
+
+OK
+exit 0

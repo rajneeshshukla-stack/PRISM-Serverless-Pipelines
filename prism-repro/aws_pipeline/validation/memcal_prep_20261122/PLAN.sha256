@@ -1,0 +1,2 @@
+3dd2ef98711596f8977d9b95fea529d521d5f3ddcc6682773e33b492c6cf08c4 *aws_pipeline/MEMCAL_PLAN.md
+# fixed 2026-11-22T16:49:53Z (sha256 59a1bbcef3e5b4d3c1ca9b49b06fda039c3966ac1c2bc0d1df4cc3bab1e8e26c); re-fixed 2026-11-22T16:55:42Z after replacing a private absolute path in section 8 with a repository-relative one (no other change); both before any campaign data

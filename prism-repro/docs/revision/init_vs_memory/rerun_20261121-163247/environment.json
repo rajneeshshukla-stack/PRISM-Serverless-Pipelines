@@ -1,0 +1,15 @@
+{
+ "platform": "Windows-11-10.0.26200-SP0",
+ "python": "3.12.9",
+ "numpy": "2.4.4",
+ "pandas": "3.0.2",
+ "scipy": "1.17.1",
+ "seed": 20261121,
+ "bootstrap": {
+  "sebs": 2000,
+  "huawei": 1000
+ },
+ "min_events_per_function_pool": 20,
+ "eq3": "f(m) = 0.7 + 0.3*1024/m (prism_repro.latency.init_factor, eq3)",
+ "label": "EXPLORATORY, POST HOC; external historical data; not a PRISM measurement"
+}

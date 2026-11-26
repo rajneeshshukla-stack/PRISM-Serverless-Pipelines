@@ -1,0 +1,10 @@
+check,finding,time_utc_22_nov
+Step Functions state machine created,"1 CreateStateMachine for ['prism-pipe-docpipe'], type ['EXPRESS'], logging ['OFF'], errors 0",02:31:27
+Step Functions state machine deleted,"1 DeleteStateMachine for ['prism-pipe-docpipe'], errors 0; deleted ARN equals created ARN and manifest: True",02:55:16
+Lambda functions created,"4 successful CreateFunction for ['prism-pipe-aggregate', 'prism-pipe-ingest', 'prism-pipe-load', 'prism-pipe-transform']; memory [1024] MB, runtime ['python3.12'], tagged True, publish ['False']; ARNs equal manifest: True; 1 earlier attempt failed (['InvalidParameterValueException'], role not yet assumable) and was retried",02:30:58-02:31:23
+"Lambda environment updates (calibrated K, forced-cold nonces)","12 UpdateFunctionConfiguration without a memory change, in 3 batches of 4, errors 0","02:32, 02:33, 02:37"
+Lambda memory updates,"12 UpdateFunctionConfiguration with MemorySize, [(512, 4), (1024, 4), (2048, 4)] (MB, requests); response memory equals request for all: True; errors 0","02:38:56, 02:39:56, 02:40:56, 02:40:57"
+Lambda functions deleted,"4 DeleteFunction for ['prism-pipe-aggregate', 'prism-pipe-ingest', 'prism-pipe-load', 'prism-pipe-transform'], errors 0; all pipeline functions: True",02:55:18-02:55:20
+Log groups created,"4 CreateLogGroup for ['prism-pipe-aggregate', 'prism-pipe-ingest', 'prism-pipe-load', 'prism-pipe-transform'], errors 0",02:30:58-02:31:22
+Log groups deleted,"4 DeleteLogGroup succeeded for ['prism-pipe-aggregate', 'prism-pipe-ingest', 'prism-pipe-load', 'prism-pipe-transform']; 4 repeat deletions returned ['ResourceNotFoundException'] (teardown's second pass)",02:55:19-02:55:22
+"Provisioned concurrency, versions, aliases",0 events,

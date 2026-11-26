@@ -1,0 +1,238 @@
+{
+ "label": "EXPLORATORY; stored E1 schedules (E12-selected PRISM), development traces, test weeks; no simulation",
+ "weeks": 20,
+ "simulator_equals_aws_rule_both_readings": true,
+ "lead_bound_share_of_capacity": {
+  "min": 0.10660312254042652,
+  "max": 0.11952562544928674,
+  "mean": 0.11432883875686843
+ },
+ "rows": [
+  {
+   "seed": 101,
+   "scenario": "stationary",
+   "label": "PRISM-0.005",
+   "sim_gb_s": 185650518.75,
+   "aws_period_gb_s": 185650518.75,
+   "aws_segment_gb_s": 185650518.75,
+   "lead_bound_gb_s": 19790925.0,
+   "lead_bound_share_of_capacity": 0.10660312254042652,
+   "lead_bound_usd": 82.46284719750001
+  },
+  {
+   "seed": 101,
+   "scenario": "growth",
+   "label": "PRISM-0.005",
+   "sim_gb_s": 233275368.75,
+   "aws_period_gb_s": 233275368.75,
+   "aws_segment_gb_s": 233275368.75,
+   "lead_bound_gb_s": 25424006.25,
+   "lead_bound_share_of_capacity": 0.10898710132250086,
+   "lead_bound_usd": 105.93420684187501
+  },
+  {
+   "seed": 101,
+   "scenario": "bursty",
+   "label": "PRISM-0.005",
+   "sim_gb_s": 214380318.75,
+   "aws_period_gb_s": 214380318.75,
+   "aws_segment_gb_s": 214380318.75,
+   "lead_bound_gb_s": 23459793.75,
+   "lead_bound_share_of_capacity": 0.10943072520270707,
+   "lead_bound_usd": 97.74992261812501
+  },
+  {
+   "seed": 101,
+   "scenario": "new_spike",
+   "label": "PRISM-0.005",
+   "sim_gb_s": 227221800.0,
+   "aws_period_gb_s": 227221800.0,
+   "aws_segment_gb_s": 227221800.0,
+   "lead_bound_gb_s": 25093800.0,
+   "lead_bound_share_of_capacity": 0.11043746682756672,
+   "lead_bound_usd": 104.55833646
+  },
+  {
+   "seed": 102,
+   "scenario": "stationary",
+   "label": "PRISM-0.005",
+   "sim_gb_s": 197839668.75,
+   "aws_period_gb_s": 197839668.75,
+   "aws_segment_gb_s": 197839668.75,
+   "lead_bound_gb_s": 22363312.5,
+   "lead_bound_share_of_capacity": 0.1130375553158623,
+   "lead_bound_usd": 93.18121419375001
+  },
+  {
+   "seed": 102,
+   "scenario": "growth",
+   "label": "PRISM-0.005",
+   "sim_gb_s": 247755881.25,
+   "aws_period_gb_s": 247755881.25,
+   "aws_segment_gb_s": 247755881.25,
+   "lead_bound_gb_s": 28338187.5,
+   "lead_bound_share_of_capacity": 0.11437947449330227,
+   "lead_bound_usd": 118.07672585625001
+  },
+  {
+   "seed": 102,
+   "scenario": "bursty",
+   "label": "PRISM-0.005",
+   "sim_gb_s": 218065668.75,
+   "aws_period_gb_s": 218065668.75,
+   "aws_segment_gb_s": 218065668.75,
+   "lead_bound_gb_s": 24799912.5,
+   "lead_bound_share_of_capacity": 0.11372680826908019,
+   "lead_bound_usd": 103.33379541375001
+  },
+  {
+   "seed": 102,
+   "scenario": "new_spike",
+   "label": "PRISM-0.005",
+   "sim_gb_s": 248290800.0,
+   "aws_period_gb_s": 248290800.0,
+   "aws_segment_gb_s": 248290800.0,
+   "lead_bound_gb_s": 27948000.0,
+   "lead_bound_share_of_capacity": 0.11256156087942042,
+   "lead_bound_usd": 116.4509316
+  },
+  {
+   "seed": 103,
+   "scenario": "stationary",
+   "label": "PRISM-0.03",
+   "sim_gb_s": 141482400.0,
+   "aws_period_gb_s": 141482400.0,
+   "aws_segment_gb_s": 141482400.0,
+   "lead_bound_gb_s": 16532700.0,
+   "lead_bound_share_of_capacity": 0.11685340367423792,
+   "lead_bound_usd": 68.88680109
+  },
+  {
+   "seed": 103,
+   "scenario": "growth",
+   "label": "PRISM-0.03",
+   "sim_gb_s": 183119100.0,
+   "aws_period_gb_s": 183119100.0,
+   "aws_segment_gb_s": 183119100.0,
+   "lead_bound_gb_s": 21324300.0,
+   "lead_bound_share_of_capacity": 0.11645044127018973,
+   "lead_bound_usd": 88.85196081000001
+  },
+  {
+   "seed": 103,
+   "scenario": "bursty",
+   "label": "PRISM-0.03",
+   "sim_gb_s": 163560000.0,
+   "aws_period_gb_s": 163560000.0,
+   "aws_segment_gb_s": 163560000.0,
+   "lead_bound_gb_s": 19209000.0,
+   "lead_bound_share_of_capacity": 0.11744314013206163,
+   "lead_bound_usd": 80.03814030000001
+  },
+  {
+   "seed": 103,
+   "scenario": "new_spike",
+   "label": "PRISM-0.03",
+   "sim_gb_s": 188920800.0,
+   "aws_period_gb_s": 188920800.0,
+   "aws_segment_gb_s": 188920800.0,
+   "lead_bound_gb_s": 22334400.0,
+   "lead_bound_share_of_capacity": 0.11822096878692023,
+   "lead_bound_usd": 93.06074448000001
+  },
+  {
+   "seed": 104,
+   "scenario": "stationary",
+   "label": "PRISM-0.01",
+   "sim_gb_s": 168222300.0,
+   "aws_period_gb_s": 168222300.0,
+   "aws_segment_gb_s": 168222300.0,
+   "lead_bound_gb_s": 19327200.0,
+   "lead_bound_share_of_capacity": 0.11489083195271971,
+   "lead_bound_usd": 80.53064424
+  },
+  {
+   "seed": 104,
+   "scenario": "growth",
+   "label": "PRISM-0.01",
+   "sim_gb_s": 223870800.0,
+   "aws_period_gb_s": 223870800.0,
+   "aws_segment_gb_s": 223870800.0,
+   "lead_bound_gb_s": 25849500.0,
+   "lead_bound_share_of_capacity": 0.11546615279884648,
+   "lead_bound_usd": 107.70711165
+  },
+  {
+   "seed": 104,
+   "scenario": "bursty",
+   "label": "PRISM-0.01",
+   "sim_gb_s": 214502700.0,
+   "aws_period_gb_s": 214502700.0,
+   "aws_segment_gb_s": 214502700.0,
+   "lead_bound_gb_s": 24887400.0,
+   "lead_bound_share_of_capacity": 0.11602371438681192,
+   "lead_bound_usd": 103.69832958
+  },
+  {
+   "seed": 104,
+   "scenario": "new_spike",
+   "label": "PRISM-0.01",
+   "sim_gb_s": 249144900.0,
+   "aws_period_gb_s": 249144900.0,
+   "aws_segment_gb_s": 249144900.0,
+   "lead_bound_gb_s": 29779200.0,
+   "lead_bound_share_of_capacity": 0.11952562544928674,
+   "lead_bound_usd": 124.08099264
+  },
+  {
+   "seed": 105,
+   "scenario": "stationary",
+   "label": "PRISM-0.02",
+   "sim_gb_s": 148325400.0,
+   "aws_period_gb_s": 148325400.0,
+   "aws_segment_gb_s": 148325400.0,
+   "lead_bound_gb_s": 17311500.0,
+   "lead_bound_share_of_capacity": 0.11671298375059161,
+   "lead_bound_usd": 72.13182705
+  },
+  {
+   "seed": 105,
+   "scenario": "growth",
+   "label": "PRISM-0.02",
+   "sim_gb_s": 189118500.0,
+   "aws_period_gb_s": 189118500.0,
+   "aws_segment_gb_s": 189118500.0,
+   "lead_bound_gb_s": 21869100.0,
+   "lead_bound_share_of_capacity": 0.11563702123271917,
+   "lead_bound_usd": 91.12197897
+  },
+  {
+   "seed": 105,
+   "scenario": "bursty",
+   "label": "PRISM-0.02",
+   "sim_gb_s": 186147600.0,
+   "aws_period_gb_s": 186147600.0,
+   "aws_segment_gb_s": 186147600.0,
+   "lead_bound_gb_s": 21668700.0,
+   "lead_bound_share_of_capacity": 0.11640601329267743,
+   "lead_bound_usd": 90.28697229000001
+  },
+  {
+   "seed": 105,
+   "scenario": "new_spike",
+   "label": "PRISM-0.02",
+   "sim_gb_s": 197088900.0,
+   "aws_period_gb_s": 197088900.0,
+   "aws_segment_gb_s": 197088900.0,
+   "lead_bound_gb_s": 22425300.0,
+   "lead_bound_share_of_capacity": 0.11378266355943942,
+   "lead_bound_usd": 93.43949751000001
+  }
+ ],
+ "lead_bound_share_of_total_cost": {
+  "min": 0.06194608039625864,
+  "max": 0.07441755810989173,
+  "mean": 0.06673164455117916
+ },
+ "capacity_cost_matches_stored_cost_pc_max_rel_diff": 1.928481760007297e-16
+}

@@ -1,0 +1,14 @@
+{
+ "C1C2: groups complete": [
+  75,
+  75
+ ],
+ "C1C2: duplicate or incomplete groups": [],
+ "C1C2: identical request counts across families per seed and week": true,
+ "C3: groups complete": [
+  50,
+  50
+ ],
+ "C3: duplicate or incomplete groups": [],
+ "C3: identical request counts across families per seed and week": true
+}

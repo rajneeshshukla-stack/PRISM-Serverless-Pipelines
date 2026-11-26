@@ -1,0 +1,8 @@
+{
+ "group": "G1",
+ "driver_sha256": "84f37749af4bff3bfd95b578faa1fcda8ebb2bdd2f3f2c94107d20a1eb278677",
+ "exploratory_sha256": "8c06277db8d62432e89ca286b592f70899388ff104fa4ea8dc90d2b623619fe1",
+ "factors_sha256": "c60f471a149ea296b9159bc1429c4d070cbde7cd9b337a0331d88d030884ecf5",
+ "workers": 2,
+ "started": "2026-11-25T00:52:51Z"
+}

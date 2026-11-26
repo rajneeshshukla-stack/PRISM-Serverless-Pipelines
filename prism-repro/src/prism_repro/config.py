@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import json
 from dataclasses import asdict, dataclass, field, replace
-from typing import Tuple
+from typing import Optional, Tuple
 
 STAGES: Tuple[str, ...] = ("ingest", "transform", "aggregate", "load")
 
@@ -42,14 +42,32 @@ class Prices:
 @dataclass(frozen=True)
 class PipelineConfig:
     warm_mean_1024: Tuple[float, ...] = (0.8, 4.0, 2.5, 1.2)  # s, Table S1
+    # R2.5, R4.1, R7.1: stage-specific demand phi. Stage s runs phi_s executions per record that enters stage 1
+    # (filtering < 1, fan-out > 1, batching < 1). None = one execution per record at every stage, the submitted
+    # model ("one demand drives every stage"). Approximation in the fast simulator and the optimiser: a record's
+    # latency still counts one execution per stage, with that stage's per-execution cold-start probability; the
+    # concurrency, overflow, cost and request counts of stage s scale with phi_s. The event-level simulator
+    # refuses phi != 1 (fan-out joins, filter exits and batch formation are not modelled there).
+    stage_demand: Optional[Tuple[float, ...]] = None
     exec_shape: float = 0.30  # sigma of log, Table S1 (ASSUMPTION D01: sigma of log)
     overhead_mean: float = 0.1  # s per stage
     overhead_shape: float = 0.30
     init_mean_1024: float = 6.0  # s
     init_shape: float = 0.30
+    # R4.8: upper bound (s) on a sampled initialisation. The log-normal is truncated (conditioned
+    # on init <= init_max_s). None keeps the untruncated model of the submitted paper. Lambda's
+    # init phase is limited to 10 s; switching the main configuration to 10.0 is deferred to the
+    # regeneration with the measured init distribution, because it moves every risk table.
+    init_max_s: Optional[float] = None
     mem_options: Tuple[int, ...] = (512, 1024, 2048, 3008)
     nonscaling: float = 0.5  # Eq. (2)
     init_nonscaling: float = 0.7  # §III-A, Eq. (3)
+    # R1.2 / R5.M2: direction of the init-vs-memory relation. "eq3": Eq. (3), init shortens as
+    # memory grows (submitted model). "constant": init_mean_1024 at every size. "inverted":
+    # reciprocal of the Eq. (3) factor, so init grows with memory by the same log-ratio.
+    # "measured": per-size means from init_mean_measured ((MB, s), ...), e.g. the AWS campaign.
+    init_scaling: str = "eq3"
+    init_mean_measured: Optional[Tuple[Tuple[int, float], ...]] = None
     default_mem: int = 1024
     deadline: float = 14.5  # s
     window_min: int = 15
@@ -75,6 +93,9 @@ class PipelineConfig:
         self.prices.validate()
         if self.n_stages < 1 or any(d <= 0 for d in self.warm_mean_1024):
             raise ValueError("stage warm means must be positive")
+        if self.stage_demand is not None and (len(self.stage_demand) != self.n_stages
+                                              or any(not p > 0 for p in self.stage_demand)):
+            raise ValueError("stage_demand needs one positive multiplier per stage")
         for name in ("exec_shape", "overhead_shape", "init_shape", "intensity_sigma"):
             if getattr(self, name) < 0:
                 raise ValueError(f"{name} must be >= 0")
@@ -92,6 +113,14 @@ class PipelineConfig:
             raise ValueError("invalid timing parameters")
         if (7 * 1440) % self.window_min or self.window_min % 1:
             raise ValueError("window length must divide a week")
+        if self.init_scaling not in ("eq3", "constant", "inverted", "measured"):
+            raise ValueError("init_scaling must be 'eq3', 'constant', 'inverted' or 'measured'")
+        if self.init_scaling == "measured":
+            meas = dict(self.init_mean_measured or ())
+            if any(m not in meas for m in self.mem_options) or any(v < 0 for v in meas.values()):
+                raise ValueError("init_mean_measured must give a non-negative mean for every memory option")
+        if self.init_max_s is not None and not self.init_max_s > 0:
+            raise ValueError("init_max_s must be positive or None")
         if self.deadline <= 0 or self.init_mean_1024 < 0:
             raise ValueError("deadline must be positive and init time non-negative")
 
@@ -115,6 +144,21 @@ class PrismConfig:
     s_max: float = 0.8
     target_miss: float = 0.01
     conformal_delay_epochs: int = 2
+    # R4.6 / R5.M3: days of conformal replay immediately before the validation week, so the
+    # offset enters validation warm (as it enters the test week). 0 = submitted behaviour
+    # (offset starts at zero at the start of validation). The warm-up days lie inside the
+    # forecaster's training range, so their residuals are in-sample.
+    conformal_warmup_days: int = 0
+    # R4.6 / R5.M3 (PROVISIONAL split option): the forecasters are fitted on days [0, forecast_train_days). 14 =
+    # submitted (every day before validation). With 11 and conformal_warmup_days = 3, the warm-up replays the
+    # out-of-sample days 11-13, so the offset enters validation warm without in-sample residuals.
+    forecast_train_days: int = 14
+    # R2.11: independent conformal offsets for q0.9 (target 10% misses) and q0.99 (target_miss).
+    # False = submitted Eq. (13): one offset driven by q0.99 misses scales both.
+    conformal_per_quantile: bool = False
+    # R2.11: initial conformal offset at the start of the replayed period (calibration-initialisation
+    # sensitivity). 0.0 = submitted behaviour.
+    conformal_s0: float = 0.0
     use_conformal: bool = True
     n_scenarios: int = 100
     n_levels: int = 20  # plus the zero level
@@ -132,6 +176,10 @@ class PrismConfig:
     optimise_memory: bool = True
     feasibility_mode: str = "scenarios"  # or "quantile" (§IV-C; Supplement S9)
     cap: int | None = None
+    # R2.5, R4.1, R7.1: candidate family under stage-specific demand. False = the paper's family (15),
+    # P_s = ceil(y d_s / 60), the same for every phi. True = P_s = ceil(y phi_s d_s / 60), proportional to the
+    # per-stage load. Identical when phi = 1.
+    family_follows_stage_demand: bool = False
 
     def validate(self) -> None:
         if not (0 < self.eps < 1 and 0 < self.delta < 1):
@@ -146,6 +194,12 @@ class PrismConfig:
             raise ValueError("hysteresis factor must be in (0,1]")
         if self.cap is not None and self.cap < 0:
             raise ValueError("cap must be non-negative")
+        if not (0 <= self.conformal_warmup_days <= 12):  # features need day 1 + 1 h of history
+            raise ValueError("conformal_warmup_days must be in [0, 12]")
+        if not (3 <= self.forecast_train_days <= 14):   # training needs days beyond the 1-day feature lead-in
+            raise ValueError("forecast_train_days must be in [3, 14] (validation starts on day 14)")
+        if not (self.s_min <= self.conformal_s0 <= self.s_max):
+            raise ValueError("conformal_s0 must lie within [s_min, s_max]")
 
     def with_(self, **kw) -> "PrismConfig":
         c = replace(self, **kw)

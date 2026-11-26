@@ -1,0 +1,5 @@
+PRISM          selected 0.01 -> 0.01; expansions [] -> []; rows 7; week time saved 10.1 min, new 22.4 min
+QuantProv_q90  selected 1.3 -> 1.3; expansions [] -> []; rows 11; week time saved 15.3 min, new 30.6 min
+Reactive       selected 0.55 -> 0.55; expansions [] -> []; rows 12; week time saved 6.1 min, new 17.1 min
+MemAdapt_q90   selected 1.3 -> 1.3; expansions [] -> []; rows 11; week time saved 15.4 min, new 31.7 min
+compared 41 rows, 424 fields (runtime_s and commit excluded): IDENTICAL

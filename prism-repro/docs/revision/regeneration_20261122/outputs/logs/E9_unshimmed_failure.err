@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "<prism-repro>\private\regen_20261122\prism-repro\experiments\run_experiments.py", line 452, in <module>
+    EXPS[a.exp](a.seeds, a.quick)
+  File "<prism-repro>\private\regen_20261122\prism-repro\experiments\run_experiments.py", line 398, in exp_E9
+    spec = sel[fam]
+           ~~~^^^^^
+KeyError: 'PRISM'

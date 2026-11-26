@@ -36,7 +36,7 @@ from prism_repro.workload import MAIN_SCENARIOS  # noqa: E402
 
 RESULTS = os.environ.get("PRISM_RESULTS", os.path.join(ROOT, "results", "raw"))
 DRAW_FIELDS = ("warm_mean_1024", "exec_shape", "overhead_mean", "overhead_shape", "init_shape",
-               "nonscaling", "intensity_sigma", "peak_upper_frac", "latency_samples", "mem_options")
+               "nonscaling", "intensity_sigma", "peak_upper_frac", "latency_samples", "mem_options", "stage_demand")
 
 
 def source_sha() -> str:
@@ -141,13 +141,25 @@ def grid_specs(families=("OnDemand", "Static", "Scheduled", "Reactive", "PredHea
     return out
 
 
+# Variant name of PRISM's main configuration (PrismConfig defaults). policies.PRISM names its runs after the risk
+# model ('PRISM_EB' for Erlang-B, 'PRISM' for Eq. (5)), so since f119bee made Erlang-B the default the main
+# configuration's rows read 'PRISM_EB'. The experiments below look PRISM's selection up as "PRISM", meaning the main
+# configuration, so selections() keys those rows as "PRISM". Labels, run ids and stored rows are unchanged.
+MAIN_PRISM_VARIANT = make_policy(dict(family="PRISM", param=PrismConfig().eps)).variant   # the name ignores eps
+
+
 def variant_of(row):
-    return row["policy"]
+    v = row["policy"]
+    return "PRISM" if v == MAIN_PRISM_VARIANT else v
 
 
 def selections(seed, exp="E1"):
-    """Validation-selected spec per variant for one seed (§5.3 rule)."""
+    """Validation-selected spec per variant for one seed (§5.3 rule); PRISM's main configuration is keyed "PRISM"."""
     rows = [r for r in load_rows(exp) if r["seed"] == seed and r["week"] == "val" and r["status"] == "ok"]
+    names = {r["policy"] for r in rows}
+    if MAIN_PRISM_VARIANT != "PRISM" and {"PRISM", MAIN_PRISM_VARIANT} <= names:
+        raise ValueError(f"{exp} seed {seed} holds both 'PRISM' and '{MAIN_PRISM_VARIANT}' rows; they are different "
+                         "risk models and cannot both be the main configuration")
     out = {}
     for v in sorted(set(variant_of(r) for r in rows)):
         sel = select_by_rule([r for r in rows if variant_of(r) == v])

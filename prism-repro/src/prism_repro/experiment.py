@@ -10,9 +10,9 @@ from dataclasses import asdict
 import numpy as np
 
 from .config import PipelineConfig, PrismConfig
-from .features import FeatureBuilder
-from .forecast import ConformalScaler, QuantileGBM, RatioQuantileForecaster
-from .policies import PRISM, OnDemand, PredHead, QuantProv, Reactive, Scheduled, Static
+from .features import FeatureBuilder, forecast_horizon, min_feedback_delay
+from .forecast import ConformalScaler, QuantileGBM, RatioQuantileForecaster, apply_offset
+from .policies import PRISM, MemAdapt, OnDemand, PredHead, QuantProv, Reactive, Scheduled, Static
 from .simulator import WEEK, SimContext, WeekDraws, simulate
 from .workload import MAIN_SCENARIOS, MIN_PER_DAY, WorkloadParams, generate_trace
 
@@ -70,13 +70,13 @@ class TraceBundle:
     # ---------------- forecasting ----------------
     def _builder(self, counts, spec):
         return FeatureBuilder(counts, self.trigger_minutes, drop_groups=spec.get("drop", ()),
-                              normalise=spec.get("normalise", True))
+                              normalise=spec.get("normalise", True), horizon=forecast_horizon(self.cfg))
 
     def _train_forecasters(self):
-        train_hi = 14 * MIN_PER_DAY
+        train_hi = self.pc.forecast_train_days * MIN_PER_DAY   # 14 days = submitted (R4.6 / R5.M3)
         sc0 = self.scenarios[0]
         fb0 = self._builder(self.traces[sc0]["counts"], {})
-        ts = np.arange(fb0.min_t, train_hi - 6)
+        ts = np.arange(fb0.min_t, train_hi - fb0.h_hi)
         self.r_mean_peak = float(np.mean(fb0.ymean[ts] / np.maximum(fb0.y[ts], 1)))
         for name in self.fc_names:
             spec = FORECASTERS[name]
@@ -97,11 +97,18 @@ class TraceBundle:
                 ts_val = (WEEK_START["val"] + np.arange(WEEK // self.cfg.epoch_min) * self.cfg.epoch_min
                           - self.cfg.lag_min)
                 ts_all = np.concatenate([ts_val, ts_val + WEEK])
-                q_raw = pred.predict(ts_all)
-                y = fbs.target(ts_all)
+                # R4.6 / R5.M3: optional replay of the days before validation (0 = submitted)
+                W = self.pc.conformal_warmup_days * MIN_PER_DAY // self.cfg.epoch_min
+                ts_run = np.concatenate([ts_val[0] - (np.arange(W, 0, -1) * self.cfg.epoch_min), ts_all])
+                q_run = pred.predict(ts_run)
+                y_run = fbs.target(ts_run)
                 cs = ConformalScaler(self.pc.gamma, self.pc.target_miss, self.pc.s_min, self.pc.s_max,
-                                     self.pc.conformal_delay_epochs)
-                q_cal, s_used, rev = cs.run(q_raw, y)
+                                     max(self.pc.conformal_delay_epochs, min_feedback_delay(self.cfg)),
+                                     per_quantile=self.pc.conformal_per_quantile)
+                q_cal, s_used, rev = cs.run(q_run, y_run, s0=self.pc.conformal_s0)
+                q_raw, y, q_cal, s_used = q_run[W:], y_run[W:], q_cal[W:], s_used[W:]
+                if W:  # count order reversals over validation and test only, as without warm-up
+                    rev = int(np.sum(np.any(np.diff(apply_offset(q_raw, s_used), axis=1) < 0, axis=1)))
                 K = len(ts_val)
                 for wk, sl in (("val", slice(0, K)), ("test", slice(K, 2 * K))):
                     self.forecasts[(sc, wk, name)] = dict(q_raw=q_raw[sl], q_cal=q_cal[sl], s=s_used[sl],
@@ -145,6 +152,19 @@ GRIDS = {
     "QuantProv": [round(0.6 + 0.1 * i, 1) for i in range(10)],  # ASSUMPTION D16
 }
 
+# R5.M4 / R4.7: widened grids for the closed-loop retuning. Every family whose selection sat at a
+# grid edge in a stored analysis (scripts/revision/grid_edge_audit.py: E12 event-level retuning,
+# R1 real-trace replay, post hoc test-week selections) is extended past that edge; GRIDS itself is
+# unchanged, so no stored or existing experiment changes. Not yet used by any run.
+GRIDS_WIDE = {
+    "Static": [30, 40] + GRIDS["Static"] + [99.95, 99.99],
+    "Scheduled": [0.6, 0.8] + GRIDS["Scheduled"] + [2.2, 2.5, 3.0],
+    "Reactive": [0.30, 0.35] + GRIDS["Reactive"] + [0.95, 1.0],
+    "PredHead": [0.8, 0.9] + GRIDS["PredHead"] + [2.2, 2.5, 3.0],
+    "PRISM": [0.002, 0.003] + GRIDS["PRISM"] + [0.10, 0.15, 0.20],
+    "QuantProv": [0.4, 0.5] + GRIDS["QuantProv"] + [1.6, 1.8, 2.0],
+}
+
 
 def make_policy(spec: dict, pcfg_base: PrismConfig | None = None):
     fam = spec["family"]
@@ -162,6 +182,8 @@ def make_policy(spec: dict, pcfg_base: PrismConfig | None = None):
         return PredHead(p, fc, hysteresis=0.85 if spec.get("hyst") else None)
     if fam == "QuantProv":
         return QuantProv(spec["tau_idx"], p, fc)
+    if fam == "MemAdapt":   # R2.6, R3.7, R7.4
+        return MemAdapt(spec.get("tau_idx", 2), p, spec.get("tau_w", 0.005), fc)
     if fam in ("PRISM", "Oracle"):
         base = pcfg_base or PrismConfig()
         pc = base.with_(eps=p, **spec.get("prism", {}))

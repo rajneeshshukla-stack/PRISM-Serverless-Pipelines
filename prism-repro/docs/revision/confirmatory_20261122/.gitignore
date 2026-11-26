@@ -1,0 +1,5 @@
+# trace bundles are pickled binaries (rebuilt deterministically by the driver); not evidence
+bundles/
+*.pkl
+*.tmp*
+__pycache__/

@@ -1,0 +1,7 @@
+scope,invocations,expected_from_design,unique_request_ids,reports_matched,reports_missing,tail_vs_cloudwatch_differ,log_group_mismatch,billed_ceil_duration_plus_init,billed_ceil_plus_1ms_at_whole_ms_sum,billed_unexplained
+block 0,6968,6968,6968,6968,0,0,0,6933,35,0
+block 1,7064,7064,7064,7064,0,0,0,7032,32,0
+block 2,6960,6960,6960,6960,0,0,0,6933,27,0
+smoke,256,256,256,256,0,0,0,256,0,0
+total,21248,21248,21248,21248,0,0,0,21154,94,0
+"unmatched CloudWatch REPORTs (kept in archive, excluded)",,,24,,,,,,,

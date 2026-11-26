@@ -1,0 +1,42 @@
+R2.9: ALL FAMILIES ON LESS-STRUCTURED REAL TRACES (Huawei Public 2025, Region 2); R1 protocol; EXPLORATORY,
+POST HOC, PRE-CALIBRATION, fast simulator. Plan fixed before selection: PLAN.md.
+
+Functions in the 28-day window: 2418; eligible: 11; selected: 10
+
+Traces complete: 10 of 10
+Trace structure (28 days) and GBM test-week forecast quality:
+  r2_00: CV 1.56, daily autocorr +0.79, p99.9/median 32.3, zero minutes 6512; median APE 55.8%, pinball0.9 52.0, cov90_cal 93.2%
+  r2_01: CV 0.51, daily autocorr +0.92, p99.9/median 3.8, zero minutes 0; median APE 9.4%, pinball0.9 9.7, cov90_cal 93.5%
+  r2_02: CV 0.92, daily autocorr +0.95, p99.9/median 13.5, zero minutes 9; median APE 15.1%, pinball0.9 49.4, cov90_cal 96.8%
+  r2_03: CV 2.13, daily autocorr +0.91, p99.9/median 39.4, zero minutes 0; median APE 7.4%, pinball0.9 7.7, cov90_cal 95.2%
+  r2_04: CV 0.94, daily autocorr +0.93, p99.9/median 5.6, zero minutes 0; median APE 5.0%, pinball0.9 5.2, cov90_cal 95.7%
+  r2_05: CV 0.94, daily autocorr +0.92, p99.9/median 5.5, zero minutes 0; median APE 4.8%, pinball0.9 5.3, cov90_cal 94.8%
+  r2_06: CV 0.51, daily autocorr +0.91, p99.9/median 2.3, zero minutes 4; median APE 5.4%, pinball0.9 11.3, cov90_cal 89.9%
+  r2_07: CV 0.69, daily autocorr +0.96, p99.9/median 3.2, zero minutes 0; median APE 11.4%, pinball0.9 11.0, cov90_cal 94.1%
+  r2_08: CV 0.51, daily autocorr +0.92, p99.9/median 3.9, zero minutes 4; median APE 20.3%, pinball0.9 9.5, cov90_cal 93.4%
+  r2_09: CV 0.49, daily autocorr +0.76, p99.9/median 2.3, zero minutes 1; median APE 15.9%, pinball0.9 17.7, cov90_cal 92.9%
+
+Test week (days 21-27) at the validation-selected settings: mean over traces
+  family          cost USD  viol %  met 2%  selected settings
+  OnDemand             737    6.47   6/10  [None, None, None, None, None, None, None, None, None, None]
+  Static             1,054    0.27  10/10  [50, 50, 99.9, 50, 50, 50, 50, 50, 50, 95]
+  Scheduled            953    0.48   9/10  [1.0, 1.0, 2.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+  Reactive             865    1.44   8/10  [0.4, 0.9, 0.6, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9]
+  PredHead             725    2.38   8/10  [1.9, 1.0, 1.4, 1.0, 2.0, 2.0, 1.0, 1.3, 1.0, 1.4]
+  PredHead+S           736    2.29   8/10  [2.0, 1.0, 1.0, 1.0, 2.0, 2.0, 1.0, 1.2, 1.0, 1.4]
+  QuantProv-q90        823    1.70   7/10  [1.5, 0.8, 0.8, 0.7, 1.5, 1.5, 0.9, 0.8, 0.8, 1.0]
+  QuantProv-q99        898    1.28   7/10  [1.5, 0.7, 0.6, 0.6, 1.5, 1.4, 0.7, 0.7, 0.7, 0.9]
+  PRISM                754    1.37   7/10  [0.03, 0.08, 0.08, 0.08, 0.03, 0.05, 0.08, 0.08, 0.08, 0.03]
+
+Paired PRISM minus comparator over traces (mean +/- 95% t half-width; traces where PRISM is cheaper / less violating):
+  vs OnDemand       cost  +18.0 +/- 48.4% (includes 0; cheaper in 7/10); viol  -5.10 +/- 6.58 pts (includes 0; fewer in 7/10)
+  vs Static         cost   -0.5 +/- 33.9% (includes 0; cheaper in 9/10); viol  +1.10 +/- 1.21 pts (includes 0; fewer in 0/10)
+  vs Scheduled      cost  -20.5 +/- 10.6% (excludes 0; cheaper in 10/10); viol  +0.89 +/- 0.79 pts (excludes 0; fewer in 0/10)
+  vs Reactive       cost   -7.4 +/- 17.2% (includes 0; cheaper in 9/10); viol  -0.07 +/- 1.61 pts (includes 0; fewer in 1/10)
+  vs PredHead       cost  +16.0 +/- 38.6% (includes 0; cheaper in 4/10); viol  -1.01 +/- 2.24 pts (includes 0; fewer in 4/10)
+  vs PredHead+S     cost  +13.8 +/- 36.7% (includes 0; cheaper in 4/10); viol  -0.92 +/- 2.20 pts (includes 0; fewer in 5/10)
+  vs QuantProv-q90  cost   -6.5 +/- 11.3% (includes 0; cheaper in 4/10); viol  -0.33 +/- 0.63 pts (includes 0; fewer in 4/10)
+  vs QuantProv-q99  cost  -10.9 +/- 14.0% (includes 0; cheaper in 7/10); viol  +0.09 +/- 0.31 pts (includes 0; fewer in 5/10)
+
+Exploratory: Spearman(forecast median APE, PRISM cost vs Reactive) = -0.03 (p = 0.93, n = 10)
+Validation selections at an edge of the paper's grid: 55 of 80 (by family: Static 9, Scheduled 10, Reactive 9, PredHead 6, PredHead+S 8, QuantProv-q90 3, QuantProv-q99 4, PRISM 6); widened grids were not run.

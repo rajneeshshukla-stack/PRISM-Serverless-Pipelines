@@ -1,0 +1,5 @@
+# Checksum manifests must keep LF line endings in every checkout (including Windows with core.autocrlf=true),
+# otherwise 'sha256sum -c' reads a trailing carriage return as part of each file name and fails (found 24 Nov 2026).
+*.sha256 text eol=lf
+SHA256SUMS text eol=lf
+SHA256SUMS.* text eol=lf

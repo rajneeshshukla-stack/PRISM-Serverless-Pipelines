@@ -1,0 +1,9 @@
+start posthoc 2026-11-22T05:41:57Z workers=3 env={"platform": "Windows-11-10.0.26200-SP0", "python": "3.12.9", "numpy": "2.4.4", "scipy": "1.17.1", "sklearn": "1.8.0", "git_head": "78ba419c427b15537c2828e22e543ebac3c98479", "src_and_experiments_clean": true, "cpu_count": 8}
+restart 2026-11-22T05:56:02Z: stopped the 3-worker run (event job paused for CPU; 4 physical cores), resuming with 5 workers; completed rows are kept and skipped
+start posthoc 2026-11-22T05:56:10Z workers=5 env={"platform": "Windows-11-10.0.26200-SP0", "python": "3.12.9", "numpy": "2.4.4", "scipy": "1.17.1", "sklearn": "1.8.0", "git_head": "78ba419c427b15537c2828e22e543ebac3c98479", "src_and_experiments_clean": true, "cpu_count": 8}
+task done posthoc 102: 394 new rows 06:21:38Z
+task done posthoc 101: 427 new rows 06:22:21Z
+task done posthoc 105: 656 new rows 06:25:17Z
+task done posthoc 103: 482 new rows 06:26:03Z
+task done posthoc 104: 676 new rows 06:27:43Z
+end posthoc 2026-11-22T06:27:43Z

@@ -1,0 +1,25 @@
+seed 101: 60 rows in 931.5s
+seed 102: 60 rows in 937.8s
+seed 103: 60 rows in 935.6s
+seed 104: 60 rows in 939.1s
+seed 105: 60 rows in 941.2s
+rows: 300; seeds: [101, 102, 103, 104, 105]
+
+(a) VALIDATION-SELECTED epsilon, held-out test weeks (primary comparison)
+   selected eps: {'floor0.1': [0.05, 0.03, 0.08, 0.08, 0.08], 'floor0.001': [0.01, 0.01, 0.01, 0.02, 0.01]}
+   stationary floor0.1: cost   981.0 viol  1.55% met 3/5 kappa 0.105 | floor0.001: cost  1089.5 viol  1.04% met 5/5 kappa 0.062
+   growth     floor0.1: cost  1273.2 viol  1.31% met 4/5 kappa 0.104 | floor0.001: cost  1398.8 viol  1.01% met 5/5 kappa 0.065
+   bursty     floor0.1: cost  1075.9 viol  2.14% met 3/5 kappa 0.105 | floor0.001: cost  1220.5 viol  1.13% met 5/5 kappa 0.056
+   new_spike  floor0.1: cost  1270.3 viol  2.11% met 2/5 kappa 0.103 | floor0.001: cost  1439.4 viol  0.77% met 5/5 kappa 0.056
+   ALL floor0.1: mean cost 1150.1, mean viol 1.78%, met 12/20
+   ALL floor0.001: mean cost 1287.0, mean viol 0.99%, met 20/20
+   paired cost change floor0.001 vs floor0.1: mean +12.27% [+1.33, +23.03] over 20 trace-scenario weeks
+
+(b) POST HOC matched compliance (frontier over epsilon on test weeks, per trace, pooled over scenarios)
+   at 1.0% violating windows: floor0.001 vs floor0.1 cost +2.84% (per trace [3.65, 2.95, 0.13, 2.22, 5.24]); interpolable traces 5/5
+   at 1.5% violating windows: floor0.001 vs floor0.1 cost +3.56% (per trace [6.31, 4.15, 2.57, 1.21]); interpolable traces 4/5
+   at 2.0% violating windows: floor0.001 vs floor0.1 cost +3.68% (per trace [6.04, 3.41, 3.06, 2.21]); interpolable traces 4/5
+
+real	15m48.408s
+user	0m0.015s
+sys	0m0.015s

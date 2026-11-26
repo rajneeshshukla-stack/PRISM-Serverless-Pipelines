@@ -1,0 +1,72 @@
+{
+ "seed": 103,
+ "c_star": 0.8,
+ "eta": 0.0001,
+ "w0": [
+  0.018005880232288194,
+  0.07762114206285889,
+  0.05015988615996465,
+  0.025777587833806292
+ ],
+ "sigma": [
+  0.0044554746861916175,
+  0.013469393380266332,
+  0.009346452228726654,
+  0.005742699249355132
+ ],
+ "u_unstable": 141.4213562373095,
+ "cost": 76684692.79841277,
+ "violating_window_rate": 0.010416666666666666,
+ "stages": [
+  {
+   "stage": 0,
+   "w_final": -164024547.96117693,
+   "first_epoch_w_outside_half_to_double_w0": 114,
+   "first_epoch_eta_u2_gt_2": 728,
+   "share_capped_feedback_minutes_overall": 0.0031746031746031746,
+   "share_capped_in_day_before_first_bad": 0.010526315789473684,
+   "w_trend_day_before_first_bad": [
+    0.018005880232288194,
+    0.01664780736142405
+   ],
+   "P_at_first_bad": 50.0,
+   "epochs_P_zero": 1286
+  },
+  {
+   "stage": 1,
+   "w_final": 0.07609325682252414,
+   "first_epoch_w_outside_half_to_double_w0": null,
+   "first_epoch_eta_u2_gt_2": null,
+   "share_capped_feedback_minutes_overall": 0.009623015873015874,
+   "share_capped_in_day_before_first_bad": null,
+   "w_trend_day_before_first_bad": null,
+   "P_at_first_bad": null,
+   "epochs_P_zero": 0
+  },
+  {
+   "stage": 2,
+   "w_final": 0.051008742336389704,
+   "first_epoch_w_outside_half_to_double_w0": null,
+   "first_epoch_eta_u2_gt_2": null,
+   "share_capped_feedback_minutes_overall": 0.009424603174603174,
+   "share_capped_in_day_before_first_bad": null,
+   "w_trend_day_before_first_bad": null,
+   "P_at_first_bad": null,
+   "epochs_P_zero": 0
+  },
+  {
+   "stage": 3,
+   "w_final": 0.026273446011260703,
+   "first_epoch_w_outside_half_to_double_w0": 728,
+   "first_epoch_eta_u2_gt_2": null,
+   "share_capped_feedback_minutes_overall": 0.01001984126984127,
+   "share_capped_in_day_before_first_bad": 0.003472222222222222,
+   "w_trend_day_before_first_bad": [
+    0.024735568875470605,
+    0.024560724589741147
+   ],
+   "P_at_first_bad": 60.0,
+   "epochs_P_zero": 0
+  }
+ ]
+}

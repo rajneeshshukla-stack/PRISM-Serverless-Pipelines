@@ -1,0 +1,48 @@
+[
+ {
+  "file": "supplement_pertrace\\pertrace_tables.md",
+  "old": "(SUBMITTED rows, test weeks;",
+  "new": "(REGENERATED rows at fd8b01a, test weeks;",
+  "applied": true
+ },
+ {
+  "file": "supplement_pertrace\\pertrace_tables.md",
+  "old": "the variants use the same eps. Pre-calibration; values change at",
+  "new": "the variants use the same eps. Pre-calibration; regenerated at fd8b01a",
+  "applied": true
+ },
+ {
+  "file": "supplement_pertrace\\pertrace_tables.md",
+  "old": "the regeneration. Built by scripts/revision/supplement_pertrace_tables.py",
+  "new": "(R3.6). Built by scripts/revision/supplement_pertrace_tables.py",
+  "applied": true
+ },
+ {
+  "file": "supplement_pertrace\\pertrace_tables.md",
+  "old": "(SUBMITTED rows, stationary test week;",
+  "new": "(REGENERATED rows at fd8b01a, stationary test week;",
+  "applied": true
+ },
+ {
+  "file": "supplement_pertrace\\pertrace_tables.md",
+  "sha256_before": "d48d1c46bd32e76344a39768000388cfe6ae048219bfde9ac83da49c606c3f92",
+  "sha256_after": "50b59d716320dfd1db71a330d7e871e34e4ab2e7572b5b7bb5894a54f7fce7bb"
+ },
+ {
+  "file": "statistical_meaning\\summary.md",
+  "old": "(submitted rows; n = 5 traces; 95% t intervals)",
+  "new": "(regenerated rows at fd8b01a; n = 5 traces; 95% t intervals)",
+  "applied": true
+ },
+ {
+  "file": "statistical_meaning\\summary.md",
+  "old": "Pre-calibration, submitted code and values.",
+  "new": "Pre-calibration, regenerated at fd8b01a (current code).",
+  "applied": true
+ },
+ {
+  "file": "statistical_meaning\\summary.md",
+  "sha256_before": "ee7bb7abad7642d9401d1e10408103766b0bde1929f0fed2f298648fdd10ef8d",
+  "sha256_after": "84c2a558e3e5625a539ceadde25ec97f9561b546c71b57b944375e88722283c6"
+ }
+]

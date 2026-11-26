@@ -1,0 +1,270 @@
+{
+ "region": "us-east-2",
+ "account": "000000000000",
+ "prefix": "prism-pipe",
+ "tag": {
+  "project": "prism-pipeline"
+ },
+ "created_wall_ns": 1795358584547997000,
+ "roles": {
+  "prism-pipe-lambda-role": "arn:aws:iam::000000000000:role/prism-pipe-lambda-role",
+  "prism-pipe-sfn-role": "arn:aws:iam::000000000000:role/prism-pipe-sfn-role"
+ },
+ "functions": {
+  "prism-pipe-ingest": {
+   "stage": "ingest",
+   "arn": "arn:aws:lambda:us-east-2:000000000000:function:prism-pipe-ingest",
+   "memory_mb": 1024,
+   "env": {
+    "PRISM_STAGE": "ingest",
+    "PRISM_K": "1",
+    "PRISM_INIT_ROWS": "0",
+    "PRISM_SINK": "none",
+    "PRISM_CALIBRATION": "1",
+    "PRISM_COLD_NONCE": "initial"
+   }
+  },
+  "prism-pipe-transform": {
+   "stage": "transform",
+   "arn": "arn:aws:lambda:us-east-2:000000000000:function:prism-pipe-transform",
+   "memory_mb": 1024,
+   "env": {
+    "PRISM_STAGE": "transform",
+    "PRISM_K": "1",
+    "PRISM_INIT_ROWS": "0",
+    "PRISM_SINK": "none",
+    "PRISM_CALIBRATION": "1",
+    "PRISM_COLD_NONCE": "initial"
+   }
+  },
+  "prism-pipe-aggregate": {
+   "stage": "aggregate",
+   "arn": "arn:aws:lambda:us-east-2:000000000000:function:prism-pipe-aggregate",
+   "memory_mb": 1024,
+   "env": {
+    "PRISM_STAGE": "aggregate",
+    "PRISM_K": "1",
+    "PRISM_INIT_ROWS": "0",
+    "PRISM_SINK": "none",
+    "PRISM_CALIBRATION": "1",
+    "PRISM_COLD_NONCE": "initial"
+   }
+  },
+  "prism-pipe-load": {
+   "stage": "load",
+   "arn": "arn:aws:lambda:us-east-2:000000000000:function:prism-pipe-load",
+   "memory_mb": 1024,
+   "env": {
+    "PRISM_STAGE": "load",
+    "PRISM_K": "1",
+    "PRISM_INIT_ROWS": "0",
+    "PRISM_SINK": "none",
+    "PRISM_CALIBRATION": "1",
+    "PRISM_COLD_NONCE": "initial"
+   }
+  }
+ },
+ "log_groups": [
+  "/aws/lambda/prism-pipe-ingest",
+  "/aws/lambda/prism-pipe-transform",
+  "/aws/lambda/prism-pipe-aggregate",
+  "/aws/lambda/prism-pipe-load"
+ ],
+ "state_machine": "arn:aws:states:us-east-2:000000000000:stateMachine:prism-pipe-docpipe",
+ "memory_mb": 1024,
+ "init_rows": 0,
+ "sink": "none",
+ "definition": {
+  "Comment": "PRISM four-stage pipeline (proposed document-ingestion workload, aws_pipeline/SPEC.md)",
+  "StartAt": "ingest",
+  "TimeoutSeconds": 120,
+  "States": {
+   "ingest": {
+    "Type": "Task",
+    "Resource": "arn:aws:lambda:us-east-2:000000000000:function:prism-pipe-ingest",
+    "TimeoutSeconds": 60,
+    "Comment": "PRISM stage 1 of 4: ingest",
+    "Next": "transform"
+   },
+   "transform": {
+    "Type": "Task",
+    "Resource": "arn:aws:lambda:us-east-2:000000000000:function:prism-pipe-transform",
+    "TimeoutSeconds": 60,
+    "Comment": "PRISM stage 2 of 4: transform",
+    "Next": "aggregate"
+   },
+   "aggregate": {
+    "Type": "Task",
+    "Resource": "arn:aws:lambda:us-east-2:000000000000:function:prism-pipe-aggregate",
+    "TimeoutSeconds": 60,
+    "Comment": "PRISM stage 3 of 4: aggregate",
+    "Next": "load"
+   },
+   "load": {
+    "Type": "Task",
+    "Resource": "arn:aws:lambda:us-east-2:000000000000:function:prism-pipe-load",
+    "TimeoutSeconds": 60,
+    "Comment": "PRISM stage 4 of 4: load",
+    "End": true
+   }
+  }
+ },
+ "calibration": {
+  "ingest": {
+   "k": 84,
+   "a_s": 0.0007940605611738775,
+   "b_s_per_k": 0.0001817394366580501,
+   "target_s": 0.016,
+   "achieved_median_s": 0.012296000000787899,
+   "achieved": [
+    0.015931399997498374,
+    0.012255100002221297,
+    0.012296000000787899
+   ],
+   "probes": [
+    [
+     1,
+     [
+      0.0010368000002927147,
+      0.0009657000009610783,
+      0.0009757999978319276
+     ]
+    ],
+    [
+     5,
+     [
+      0.001746499998262152,
+      0.0018142000008083414,
+      0.0017446999991079792
+     ]
+    ],
+    [
+     72,
+     [
+      0.013879300000553485,
+      0.01406229999702191,
+      0.01361679999899934
+     ]
+    ]
+   ],
+   "n_words": 300
+  },
+  "transform": {
+   "k": 1354,
+   "a_s": 0.0005696305046493929,
+   "b_s_per_k": 5.866949559466017e-05,
+   "target_s": 0.08,
+   "achieved_median_s": 0.09171369999967283,
+   "achieved": [
+    0.09171369999967283,
+    0.09311580000212416,
+    0.07939509999778238
+   ],
+   "probes": [
+    [
+     1,
+     [
+      0.0010008999997808132,
+      0.0006283000002440531,
+      0.000610499999311287
+     ]
+    ],
+    [
+     5,
+     [
+      0.0009288999972341117,
+      0.0008366999973077327,
+      0.0008522999996785074
+     ]
+    ],
+    [
+     1250,
+     [
+      0.07229409999854397,
+      0.0739064999979746,
+      0.08543120000103954
+     ]
+    ]
+   ],
+   "n_words": 300
+  },
+  "aggregate": {
+   "k": 417,
+   "a_s": 0.0003782828646219811,
+   "b_s_per_k": 0.00011891713780616311,
+   "target_s": 0.05,
+   "achieved_median_s": 0.054461599997011945,
+   "achieved": [
+    0.05286049999995157,
+    0.054461599997011945,
+    0.06266730000061216
+   ],
+   "probes": [
+    [
+     1,
+     [
+      0.000500300000567222,
+      0.0004972000024281442,
+      0.0004904999987047631
+     ]
+    ],
+    [
+     5,
+     [
+      0.0008057000013650395,
+      0.0008054999998421408,
+      0.000796799999079667
+     ]
+    ],
+    [
+     567,
+     [
+      0.06545869999899878,
+      0.06780430000071647,
+      0.07889919999797712
+     ]
+    ]
+   ],
+   "n_words": 300
+  },
+  "load": {
+   "k": 309,
+   "a_s": 0.0015194327784050382,
+   "b_s_per_k": 7.266722288447115e-05,
+   "target_s": 0.024,
+   "achieved_median_s": 0.02244549999886658,
+   "achieved": [
+    0.025647399997978937,
+    0.02244549999886658,
+    0.021599299998342758
+   ],
+   "probes": [
+    [
+     1,
+     [
+      0.0015921000012895092,
+      0.0015568999988317955,
+      0.001919300000736257
+     ]
+    ],
+    [
+     5,
+     [
+      0.0014296999979706015,
+      0.0008559999987483025,
+      0.0008519000002706889
+     ]
+    ],
+    [
+     840,
+     [
+      0.06241029999728198,
+      0.0625599000013608,
+      0.06755649999831803
+     ]
+    ]
+   ],
+   "n_words": 300
+  }
+ }
+}

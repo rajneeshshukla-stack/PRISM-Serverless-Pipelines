@@ -1,0 +1,7 @@
+arm,observed_memory,records,met,missed,e2e_median_s,e2e_min_s,e2e_max_s,records_with_a_cold_stage
+baseline_ondemand,all stages 1024 MB,40,39,1,9.081,5.088,17.175,6
+adapter_schedule,all stages 1024 MB,11,11,0,9.848,7.526,12.005,3
+adapter_schedule,all stages 2048 MB,11,11,0,5.639,3.705,10.342,1
+adapter_schedule,all stages 512 MB,11,2,9,16.836,12.843,24.892,6
+adapter_schedule,crossed 1024 to 512 MB,2,1,1,13.353,10.456,16.251,2
+adapter_schedule,crossed 512 to 2048 MB,5,4,1,12.232,4.907,14.615,4

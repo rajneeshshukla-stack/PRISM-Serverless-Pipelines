@@ -1,0 +1,637 @@
+{
+ "request_streams_identical": true,
+ "weeks": {
+  "E14_legacy": 5,
+  "E14_meas": 5,
+  "C13_legacy": 61,
+  "C13_meas": 67
+ },
+ "E14_legacy_equals_K": {
+  "101": {
+   "cost_equal": true,
+   "viol_equal": true,
+   "all_keys_equal": true
+  },
+  "102": {
+   "cost_equal": true,
+   "viol_equal": true,
+   "all_keys_equal": true
+  },
+  "103": {
+   "cost_equal": true,
+   "viol_equal": true,
+   "all_keys_equal": true
+  },
+  "104": {
+   "cost_equal": true,
+   "viol_equal": true,
+   "all_keys_equal": true
+  },
+  "105": {
+   "cost_equal": true,
+   "viol_equal": true,
+   "all_keys_equal": true
+  }
+ },
+ "E14_regression": {
+  "101": {
+   "legacy": {
+    "cost": 1286.7,
+    "viol_pct": 1.786,
+    "meets": true,
+    "mem_share": {
+     "512": 0.0,
+     "1024": 0.8809523809523809,
+     "2048": 0.11904761904761904,
+     "3008": 0.0
+    }
+   },
+   "measured": {
+    "cost": 1236.9,
+    "viol_pct": 1.935,
+    "meets": true,
+    "mem_share": {
+     "512": 0.0,
+     "1024": 0.8988095238095238,
+     "2048": 0.10119047619047619,
+     "3008": 0.0
+    }
+   },
+   "cost_change_pct": -3.8719703781333727,
+   "verdict_changed": false
+  },
+  "102": {
+   "legacy": {
+    "cost": 1350.7,
+    "viol_pct": 1.19,
+    "meets": true,
+    "mem_share": {
+     "512": 0.0,
+     "1024": 0.8988095238095238,
+     "2048": 0.10119047619047619,
+     "3008": 0.0
+    }
+   },
+   "measured": {
+    "cost": 1306.0,
+    "viol_pct": 1.19,
+    "meets": true,
+    "mem_share": {
+     "512": 0.0,
+     "1024": 0.9166666666666666,
+     "2048": 0.08333333333333333,
+     "3008": 0.0
+    }
+   },
+   "cost_change_pct": -3.306569946994199,
+   "verdict_changed": false
+  },
+  "103": {
+   "legacy": {
+    "cost": 1197.5,
+    "viol_pct": 2.53,
+    "meets": false,
+    "mem_share": {
+     "512": 0.0,
+     "1024": 0.9821428571428571,
+     "2048": 0.017857142857142856,
+     "3008": 0.0
+    }
+   },
+   "measured": {
+    "cost": 1194.1,
+    "viol_pct": 2.53,
+    "meets": false,
+    "mem_share": {
+     "512": 0.0,
+     "1024": 0.9821428571428571,
+     "2048": 0.017857142857142856,
+     "3008": 0.0
+    }
+   },
+   "cost_change_pct": -0.2816544430697282,
+   "verdict_changed": false
+  },
+  "104": {
+   "legacy": {
+    "cost": 1188.1,
+    "viol_pct": 2.381,
+    "meets": false,
+    "mem_share": {
+     "512": 0.0,
+     "1024": 0.9940476190476191,
+     "2048": 0.005952380952380952,
+     "3008": 0.0
+    }
+   },
+   "measured": {
+    "cost": 1187.4,
+    "viol_pct": 2.381,
+    "meets": false,
+    "mem_share": {
+     "512": 0.0,
+     "1024": 0.9940476190476191,
+     "2048": 0.005952380952380952,
+     "3008": 0.0
+    }
+   },
+   "cost_change_pct": -0.06260815470485648,
+   "verdict_changed": false
+  },
+  "105": {
+   "legacy": {
+    "cost": 1155.8,
+    "viol_pct": 1.786,
+    "meets": true,
+    "mem_share": {
+     "512": 0.0,
+     "1024": 0.9880952380952381,
+     "2048": 0.011904761904761904,
+     "3008": 0.0
+    }
+   },
+   "measured": {
+    "cost": 1153.9,
+    "viol_pct": 1.786,
+    "meets": true,
+    "mem_share": {
+     "512": 0.0,
+     "1024": 0.9880952380952381,
+     "2048": 0.011904761904761904,
+     "3008": 0.0
+    }
+   },
+   "cost_change_pct": -0.16500156604212224,
+   "verdict_changed": false
+  }
+ },
+ "F13": {
+  "PRISM": {
+   "traces": [
+    101,
+    102,
+    103,
+    104,
+    105
+   ],
+   "legacy": {
+    "101": {
+     "cost": 1788.7,
+     "viol_pct": 0.446,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 0.9702380952380952,
+      "3008": 0.02976190476190476
+     }
+    },
+    "102": {
+     "cost": 1949.9,
+     "viol_pct": 0.298,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 0.9523809523809523,
+      "3008": 0.047619047619047616
+     }
+    },
+    "103": {
+     "cost": 1857.2,
+     "viol_pct": 0.446,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 0.9583333333333334,
+      "3008": 0.041666666666666664
+     }
+    },
+    "104": {
+     "cost": 1845.4,
+     "viol_pct": 1.042,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 0.9583333333333334,
+      "3008": 0.041666666666666664
+     }
+    },
+    "105": {
+     "cost": 1790.7,
+     "viol_pct": 0.744,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 0.9702380952380952,
+      "3008": 0.02976190476190476
+     }
+    }
+   },
+   "measured": {
+    "101": {
+     "cost": 1118.3,
+     "viol_pct": 0.298,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    },
+    "102": {
+     "cost": 1168.6,
+     "viol_pct": 0.149,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    },
+    "103": {
+     "cost": 1135.2,
+     "viol_pct": 0.149,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    },
+    "104": {
+     "cost": 1124.7,
+     "viol_pct": 0.595,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    },
+    "105": {
+     "cost": 1126.8,
+     "viol_pct": 0.298,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    }
+   },
+   "measured_minus_legacy": {
+    "cost_pct": {
+     "mean": -38.51027084463445,
+     "hw": 1.5188502235611803,
+     "per_trace": [
+      -37.47972204392273,
+      -40.06914174115995,
+      -38.87408178004353,
+      -39.0548666305392,
+      -37.07354202750682
+     ]
+    },
+    "viol_pp": {
+     "mean": -0.29761904761904756,
+     "hw": 0.18477142830413157,
+     "per_trace": [
+      -0.1488095238095238,
+      -0.1488095238095238,
+      -0.2976190476190476,
+      -0.4464285714285714,
+      -0.4464285714285714
+     ]
+    }
+   }
+  },
+  "MemAdapt_q90": {
+   "traces": [
+    101,
+    102,
+    103,
+    104,
+    105
+   ],
+   "legacy": {
+    "101": {
+     "cost": 1308.0,
+     "viol_pct": 1.935,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    },
+    "102": {
+     "cost": 1363.4,
+     "viol_pct": 1.637,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    },
+    "103": {
+     "cost": 1327.3,
+     "viol_pct": 1.637,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    },
+    "104": {
+     "cost": 1308.7,
+     "viol_pct": 2.232,
+     "meets": false,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    },
+    "105": {
+     "cost": 1317.1,
+     "viol_pct": 1.19,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    }
+   },
+   "measured": {
+    "101": {
+     "cost": 1006.4,
+     "viol_pct": 0.744,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    },
+    "102": {
+     "cost": 1048.0,
+     "viol_pct": 1.042,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    },
+    "103": {
+     "cost": 1021.3,
+     "viol_pct": 0.893,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    },
+    "104": {
+     "cost": 1006.6,
+     "viol_pct": 0.595,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    },
+    "105": {
+     "cost": 1013.2,
+     "viol_pct": 0.446,
+     "meets": true,
+     "mem_share": {
+      "512": 0.0,
+      "1024": 0.0,
+      "2048": 1.0,
+      "3008": 0.0
+     }
+    }
+   },
+   "measured_minus_legacy": {
+    "cost_pct": {
+     "mean": -23.079424272001184,
+     "hw": 0.04177216550883624,
+     "per_trace": [
+      -23.057748130339956,
+      -23.13577161881745,
+      -23.051572629027316,
+      -23.08246870020102,
+      -23.06956028162017
+     ]
+    },
+    "viol_pp": {
+     "mean": -0.9821428571428571,
+     "hw": 0.5323213220937664,
+     "per_trace": [
+      -1.1904761904761907,
+      -0.5952380952380953,
+      -0.7440476190476192,
+      -1.636904761904762,
+      -0.744047619047619
+     ]
+    }
+   }
+  },
+  "prism_minus_memadapt_pct": {
+   "legacy": {
+    "per_trace": {
+     "101": 36.74920040967451,
+     "102": 43.01591091050705,
+     "103": 39.92463688369756,
+     "104": 41.009381824892934,
+     "105": 35.96119584694276
+    },
+    "mean": 39.332065175142965,
+    "hw": 3.6607616755832355
+   },
+   "measured": {
+    "per_trace": {
+     "101": 11.117075626629193,
+     "102": 11.509169688546715,
+     "103": 11.152653840154567,
+     "104": 11.727917373835172,
+     "105": 11.211589426395907
+    },
+    "mean": 11.34368119111231,
+    "hw": 0.3286973615574745
+   }
+  }
+ },
+ "R13": {
+  "C13_legacy|102|PRISM": {
+   "selected": 0.01,
+   "expansions": [],
+   "at_widened_edge": false,
+   "test": {
+    "cost": 1949.9,
+    "viol_pct": 0.298,
+    "meets": true,
+    "mem_share": null
+   }
+  },
+  "C13_legacy|101|PRISM": {
+   "selected": 0.01,
+   "expansions": [],
+   "at_widened_edge": false,
+   "test": {
+    "cost": 1788.7,
+    "viol_pct": 0.446,
+    "meets": true,
+    "mem_share": null
+   }
+  },
+  "C13_legacy|102|MemAdapt_q90": {
+   "selected": 0.6,
+   "expansions": [
+    0.5
+   ],
+   "at_widened_edge": false,
+   "test": {
+    "cost": 1363.4,
+    "viol_pct": 1.637,
+    "meets": true,
+    "mem_share": null
+   }
+  },
+  "C13_legacy|103|PRISM": {
+   "selected": 0.01,
+   "expansions": [],
+   "at_widened_edge": false,
+   "test": {
+    "cost": 1857.2,
+    "viol_pct": 0.446,
+    "meets": true,
+    "mem_share": null
+   }
+  },
+  "C13_legacy|101|MemAdapt_q90": {
+   "selected": 0.6,
+   "expansions": [
+    0.5
+   ],
+   "at_widened_edge": false,
+   "test": {
+    "cost": 1308.0,
+    "viol_pct": 1.935,
+    "meets": true,
+    "mem_share": null
+   }
+  },
+  "C13_legacy|103|MemAdapt_q90": {
+   "selected": 0.6,
+   "expansions": [
+    0.5
+   ],
+   "at_widened_edge": false,
+   "test": {
+    "cost": 1327.3,
+    "viol_pct": 1.637,
+    "meets": true,
+    "mem_share": null
+   }
+  },
+  "C13_meas|102|PRISM": {
+   "selected": 0.01,
+   "expansions": [],
+   "at_widened_edge": false,
+   "test": {
+    "cost": 1168.6,
+    "viol_pct": 0.149,
+    "meets": true,
+    "mem_share": null
+   }
+  },
+  "C13_meas|101|PRISM": {
+   "selected": 0.01,
+   "expansions": [],
+   "at_widened_edge": false,
+   "test": {
+    "cost": 1118.3,
+    "viol_pct": 0.298,
+    "meets": true,
+    "mem_share": null
+   }
+  },
+  "C13_meas|102|MemAdapt_q90": {
+   "selected": 0.4,
+   "expansions": [
+    0.5,
+    0.4
+   ],
+   "at_widened_edge": true,
+   "test": {
+    "cost": 960.1,
+    "viol_pct": 1.042,
+    "meets": true,
+    "mem_share": null
+   }
+  },
+  "C13_meas|103|PRISM": {
+   "selected": 0.01,
+   "expansions": [],
+   "at_widened_edge": false,
+   "test": {
+    "cost": 1135.2,
+    "viol_pct": 0.149,
+    "meets": true,
+    "mem_share": null
+   }
+  },
+  "C13_meas|101|MemAdapt_q90": {
+   "selected": 0.4,
+   "expansions": [
+    0.5,
+    0.4
+   ],
+   "at_widened_edge": true,
+   "test": {
+    "cost": 940.1,
+    "viol_pct": 0.744,
+    "meets": true,
+    "mem_share": null
+   }
+  },
+  "C13_meas|103|MemAdapt_q90": {
+   "selected": 0.4,
+   "expansions": [
+    0.5,
+    0.4
+   ],
+   "at_widened_edge": true,
+   "test": {
+    "cost": 948.2,
+    "viol_pct": 0.893,
+    "meets": true,
+    "mem_share": null
+   }
+  }
+ }
+}

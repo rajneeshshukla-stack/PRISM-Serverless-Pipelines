@@ -1,0 +1,38 @@
+{
+ "groups": {
+  "expected": 125,
+  "present": 125,
+  "missing": []
+ },
+ "coverage_problems": [],
+ "selection_replay_problems": [],
+ "failures": {
+  "logged_failed_tasks": 10,
+  "retried_and_saved": 10,
+  "unresolved": [],
+  "failures_json_entries": 0,
+  "run_segments": 5,
+  "gaps": []
+ },
+ "duplicates": {
+  "week_files": 1432,
+  "weeks_in_groups": 1432,
+  "files_outside_groups": [],
+  "tmp_files": 0
+ },
+ "determinism_rerun": [
+  {
+   "week": "weeks\\C3\\117\\MemAdapt_q90\\val_validation_0.7.json",
+   "identical": true,
+   "differences": {}
+  },
+  {
+   "week": "weeks\\C3\\126\\MemAdapt_q90\\test_stationary_0.6.json",
+   "identical": true,
+   "differences": {}
+  }
+ ],
+ "problems": [],
+ "ok": true
+}
+provenance: {'rows_checked_against_trace_hash': 1432, 'trace_hash_mismatches': [], 'run_segments': 5, 'segments_same_commit_clean_same_driver': True, 'commit': 'fd8b01a19ec1b8172e90eb4a071435ed74a4142e', 'driver_sha256': '3f909dc9780d721315c4e97c82cbc412259ea447a96ad42e4cc5d9b808d92a3a'} wrong cfg rows: 0

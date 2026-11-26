@@ -1,0 +1,3 @@
+comparison,comparator,n_traces,cost_pct_mean,cost_pct_lo,cost_pct_hi,cost_call,violating_pts_mean,violating_pts_lo,violating_pts_hi,compliance_call,traces_prism_cheaper,traces_prism_costlier,traces_prism_fewer_violating,traces_prism_more_violating
+C3,MemAdapt_q90,25,13.063,8.496,17.63,difference: PRISM costlier,-0.6548,-0.9207,-0.3888,cost comparison confounded by compliance,4,21,20,3
+"C3 [stationary, EXPLORATORY]",MemAdapt_q90,25,13.063,8.496,17.63,,-0.6548,-0.9207,-0.3888,,4,21,20,3

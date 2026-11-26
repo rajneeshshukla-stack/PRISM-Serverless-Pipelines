@@ -11,7 +11,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "src"))
 
 from prism_repro.config import PipelineConfig, PrismConfig  # noqa: E402
 from prism_repro.features import FeatureBuilder, window_peak_target  # noqa: E402
-from prism_repro.forecast import ConformalScaler, calibrate, scenarios  # noqa: E402
+from prism_repro.forecast import TAUS as TAUS_, ConformalScaler, calibrate, scenarios  # noqa: E402
 from prism_repro.latency import gb, init_mean, miss_table, stage_means  # noqa: E402
 from prism_repro.optimizer import ChanceConstrainedOptimizer  # noqa: E402
 from prism_repro.risk import c_eff, occupancy_overflow, overflow_prob  # noqa: E402
@@ -290,6 +290,161 @@ class TestFeatures(unittest.TestCase):
         N = np.zeros(4000, int)
         X, lev = FeatureBuilder(N, [0, 1, 30]).matrix(np.array([3500]))
         self.assertTrue(np.all(np.isfinite(X)) and lev[0] == 1.0)
+
+
+class TestPerQuantileCalibration(unittest.TestCase):
+    """R2.11: with one shared offset driven by q0.99 misses, a q0.9 that was already right is
+    inflated with q0.99 and over-covers; independent offsets keep each near its own level."""
+
+    def _coverage(self, per_quantile):
+        from scipy import stats
+        rng = np.random.default_rng(31)
+        K = 40_000
+        y = np.exp(0.3 * rng.standard_normal(K)) * 100
+        true = 100 * np.exp(0.3 * stats.norm.ppf(np.array(TAUS_)))
+        q_raw = np.tile(true * np.array([1, 1, 1, 0.8]), (K, 1))   # q0.99 20% too low, q0.9 exact
+        q, s, _ = ConformalScaler(per_quantile=per_quantile).run(q_raw, y)
+        burn = 5_000
+        return float((y[burn:] <= q[burn:, 2]).mean()), float((y[burn:] <= q[burn:, 3]).mean()), s
+
+    def test_shared_overcovers_q90_and_independent_does_not(self):
+        c90_sh, c99_sh, s_sh = self._coverage(False)
+        c90_pq, c99_pq, s_pq = self._coverage(True)
+        self.assertEqual(s_sh.ndim, 1)
+        self.assertEqual(s_pq.shape[1], 2)
+        self.assertGreater(c90_sh, 0.95)                 # inflated with q0.99
+        self.assertAlmostEqual(c90_pq, 0.90, delta=0.02)  # its own level
+        for c in (c99_sh, c99_pq):
+            self.assertAlmostEqual(c, 0.99, delta=0.005)
+
+    def test_shared_mode_unchanged(self):
+        rng = np.random.default_rng(2)
+        q_raw = np.sort(rng.uniform(50, 150, (500, 4)), axis=1)
+        y = rng.uniform(40, 180, 500)
+        a = ConformalScaler().run(q_raw, y)
+        b = ConformalScaler(per_quantile=False).run(q_raw, y)
+        np.testing.assert_array_equal(a[0], b[0])
+        np.testing.assert_array_equal(a[1], b[1])
+        # a per-quantile run whose two offsets are equal reproduces apply_offset's shared form
+        s = rng.uniform(-0.2, 0.5, 500)
+        np.testing.assert_array_equal(calibrate(q_raw, s), calibrate(q_raw, np.column_stack([s, s])))
+
+
+class TestConformalInitialOffset(unittest.TestCase):
+    """R2.11: the initial conformal offset is a parameter (sensitivity sweep); the default 0.0 is the
+    submitted behaviour and leaves forecasts untouched."""
+
+    def test_initial_offset(self):
+        from prism_repro.experiment import TraceBundle
+        cfg = PipelineConfig()
+        kw = dict(scenarios=("stationary",), forecasters=("seasonal_naive",))
+        b0 = TraceBundle(101, cfg, **kw)
+        b1 = TraceBundle(101, cfg, conformal=PrismConfig(conformal_s0=0.0), **kw)
+        b2 = TraceBundle(101, cfg, conformal=PrismConfig(conformal_s0=0.2), **kw)
+        f0, f1, f2 = (b.forecasts[("stationary", "val", "seasonal_naive")] for b in (b0, b1, b2))
+        for k in ("q_raw", "q_cal", "s"):
+            np.testing.assert_array_equal(f0[k], f1[k])        # explicit 0.0 = default, byte for byte
+        np.testing.assert_array_equal(f0["q_raw"], f2["q_raw"])
+        self.assertEqual(f2["s"][0], 0.2)                       # validation starts from the set offset
+        self.assertEqual(f0["s"][0], 0.0)
+        with self.assertRaises(ValueError):
+            PrismConfig().with_(conformal_s0=0.9)               # outside the clip [-0.3, 0.8]
+
+
+class TestForecastTrainingSplit(unittest.TestCase):
+    """R4.6 / R5.M3 (PROVISIONAL split option): the forecasters' training range is a parameter. The default, 14 days,
+    is the submitted split and leaves every forecast untouched; with 11 days and a 3-day warm-up, the offset is
+    warmed on out-of-sample days and enters validation away from zero."""
+
+    def test_training_split(self):
+        from prism_repro.experiment import TraceBundle
+        cfg = PipelineConfig()
+        kw = dict(scenarios=("stationary",), forecasters=("seasonal_naive",))
+        b0 = TraceBundle(101, cfg, **kw)
+        b14 = TraceBundle(101, cfg, conformal=PrismConfig(forecast_train_days=14), **kw)
+        b11 = TraceBundle(101, cfg, conformal=PrismConfig(forecast_train_days=11, conformal_warmup_days=3), **kw)
+        for wk in ("val", "test"):
+            f0, f14, f11 = (b.forecasts[("stationary", wk, "seasonal_naive")] for b in (b0, b14, b11))
+            for k in ("q_raw", "q_cal", "s", "y", "ts"):
+                np.testing.assert_array_equal(f0[k], f14[k])     # explicit 14 = default, byte for byte
+            np.testing.assert_array_equal(f0["y"], f11["y"])     # same targets ...
+            self.assertFalse(np.array_equal(f0["q_raw"], f11["q_raw"]))   # ... from a model fitted on fewer days
+        self.assertEqual(b0.r_mean_peak, b14.r_mean_peak)
+        self.assertEqual(b0.forecasts[("stationary", "val", "seasonal_naive")]["s"][0], 0.0)
+        self.assertNotEqual(b11.forecasts[("stationary", "val", "seasonal_naive")]["s"][0], 0.0)   # warmed
+        for bad in (2, 15):
+            with self.assertRaises(ValueError):
+                PrismConfig().with_(forecast_train_days=bad)
+
+
+class TestConformalWarmup(unittest.TestCase):
+    """R4.6 / R5.M3: the conformal offset can be warmed on the days before validation.
+    Default 0 keeps the submitted behaviour (offset 0 at the start of validation)."""
+
+    def test_warmup_is_a_continuous_prefix_replay(self):
+        from prism_repro.experiment import WEEK_START, TraceBundle
+        from prism_repro.features import min_feedback_delay
+        cfg = PipelineConfig()
+        cold = TraceBundle(101, cfg, scenarios=("stationary",), forecasters=("seasonal_naive",))
+        warm = TraceBundle(101, cfg, scenarios=("stationary",), forecasters=("seasonal_naive",),
+                           conformal=PrismConfig(conformal_warmup_days=7))
+        fc0, fc1 = (b.forecasts[("stationary", "val", "seasonal_naive")] for b in (cold, warm))
+        self.assertEqual(fc0["s"][0], 0.0)
+        np.testing.assert_array_equal(fc0["q_raw"], fc1["q_raw"])   # same forecasts, only s differs
+        np.testing.assert_array_equal(fc0["ts"], fc1["ts"])
+        # oracle: one ConformalScaler pass over [7 warm-up days, validation, test]
+        pc = PrismConfig()
+        W = 7 * 1440 // cfg.epoch_min
+        ts = np.concatenate([fc0["ts"][0] - np.arange(W, 0, -1) * cfg.epoch_min, fc0["ts"],
+                             cold.forecasts[("stationary", "test", "seasonal_naive")]["ts"]])
+        self.assertLess(ts[W - 1] + cfg.lag_min + cfg.epoch_min - 1, WEEK_START["val"])  # warm-up ends before val
+        model = cold.models["seasonal_naive"]
+        q, y = model.predict(ts), model.fb.target(ts)
+        _, s_ref, _ = ConformalScaler(pc.gamma, pc.target_miss, pc.s_min, pc.s_max,
+                                      max(pc.conformal_delay_epochs, min_feedback_delay(cfg))).run(q, y)
+        np.testing.assert_allclose(fc1["s"], s_ref[W:W + len(fc0["ts"])], rtol=0, atol=0)
+        self.assertNotEqual(fc1["s"][0], 0.0)
+        with self.assertRaises(ValueError):
+            PrismConfig().with_(conformal_warmup_days=13)
+
+
+class TestLagHorizon(unittest.TestCase):
+    """R1.3 / R4.3 / R5.M2 (disclosed issue M1): the forecast horizon and the conformal
+    feedback delay follow cfg.lag_min, so lag sweeps at L = 5 and 10 stay free of
+    look-ahead. At the default L = 2 both equal the submitted values."""
+
+    def test_horizon_and_delay_follow_lag(self):
+        from prism_repro.features import forecast_horizon, min_feedback_delay
+        base = PipelineConfig()
+        self.assertEqual(forecast_horizon(base), (2, 6))
+        self.assertEqual(min_feedback_delay(base), PrismConfig().conformal_delay_epochs)
+        self.assertEqual(forecast_horizon(base.with_(lag_min=5)), (5, 9))
+        self.assertEqual(forecast_horizon(base.with_(lag_min=10)), (10, 14))
+        for L in range(0, 16):   # brute force: first j with 5(k+j) - L >= 5k + 4
+            j = next(j for j in range(1, 10) if 5 * j - L >= 4)
+            self.assertEqual(min_feedback_delay(base.with_(lag_min=L)), j, L)
+        self.assertEqual(min_feedback_delay(base.with_(lag_min=10)), 3)
+
+    def test_target_and_features_at_lag_10(self):
+        from prism_repro.features import online_features
+        rng = np.random.default_rng(8)
+        N = rng.poisson(400, 5000)
+        h = (10, 14)
+        fb = FeatureBuilder(N, [0, 1, 30], horizon=h)
+        for t in (1600, 2500, 4000):
+            self.assertEqual(fb.y[t], N[t + 10:t + 15].max())
+        self.assertTrue(np.isnan(fb.y[len(N) - 14]) and not np.isnan(fb.y[len(N) - 15]))
+        np.testing.assert_array_equal(window_peak_target(N), FeatureBuilder(N, [0, 1, 30]).y)
+        for t in (1600, 3000, 4980):
+            x_b, l_b = fb.matrix(np.array([t]))
+            x_o, l_o = online_features(N, t, [0, 1, 30], horizon=h)
+            np.testing.assert_allclose(x_b[0], x_o, rtol=1e-12)
+            self.assertAlmostEqual(l_b[0], l_o)
+        t = 3000   # no look-ahead at the longer horizon either
+        N2 = N.copy()
+        N2[t + 1:] = rng.poisson(5000, len(N) - t - 1)
+        np.testing.assert_allclose(fb.matrix(np.array([t]))[0],
+                                   FeatureBuilder(N2, [0, 1, 30], horizon=h).matrix(np.array([t]))[0])
 
 
 if __name__ == "__main__":

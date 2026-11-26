@@ -1,0 +1,13 @@
+start_utc 2026-11-21T06:50:53Z HEAD efcfd12
+101 stationary base  1122.93 searched  1105.80 saving  1.53%  viol 0.60% -> 0.74%  improved 1946/2013
+101 new_spike  base  1397.48 searched  1380.80 saving  1.19%  viol 0.60% -> 0.60%  improved 1953/2015
+102 stationary base  1104.16 searched  1086.27 saving  1.62%  viol 0.74% -> 0.89%  improved 1935/2015
+102 new_spike  base  1437.50 searched  1418.19 saving  1.34%  viol 0.60% -> 0.60%  improved 1972/2015
+103 stationary base  1007.33 searched   977.58 saving  2.95%  viol 2.08% -> 2.23%  improved 1997/2015
+103 new_spike  base  1307.39 searched  1272.53 saving  2.67%  viol 1.79% -> 2.53%  improved 1994/2016
+{'runs': 6, 'mean_saving': 0.018837031679903676, 'min_saving': 0.011933083674191547, 'max_saving': 0.029531031023871557, 'runs_compliance_worse': 4, 'runs_crossing_2pct_target': ['103/new_spike'], 'improved_share_range': [0.9602977667493796, 0.9910669975186104]}
+
+real	6m22.070s
+user	0m0.016s
+sys	0m0.015s
+end_utc 2026-11-21T06:57:15Z

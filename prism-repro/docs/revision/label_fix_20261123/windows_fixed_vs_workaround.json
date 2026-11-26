@@ -1,0 +1,168 @@
+{
+ "raw": {
+  "E3": {
+   "rows": [
+    110,
+    110
+   ],
+   "same_run_keys": true,
+   "result_fields_differing": {},
+   "provenance_or_timing_fields_differing": {
+    "sim_seconds": 110,
+    "started_utc": 110,
+    "decision_ms_median": 110,
+    "decision_ms_p99": 110,
+    "runtime_s": 110,
+    "source_sha256": 110
+   },
+   "array_files": [
+    5,
+    5
+   ],
+   "array_keys": 880,
+   "array_keys_differing": 0,
+   "first_differing_keys": []
+  },
+  "E7": {
+   "rows": [
+    180,
+    180
+   ],
+   "same_run_keys": true,
+   "result_fields_differing": {},
+   "provenance_or_timing_fields_differing": {
+    "sim_seconds": 80,
+    "started_utc": 180,
+    "decision_ms_median": 80,
+    "decision_ms_p99": 80,
+    "runtime_s": 80,
+    "source_sha256": 180
+   },
+   "array_files": [
+    5,
+    5
+   ],
+   "array_keys": 640,
+   "array_keys_differing": 0,
+   "first_differing_keys": []
+  },
+  "E9": {
+   "rows": [
+    72,
+    72
+   ],
+   "same_run_keys": true,
+   "result_fields_differing": {},
+   "provenance_or_timing_fields_differing": {
+    "started_utc": 72,
+    "runtime_s": 72,
+    "source_sha256": 72
+   },
+   "array_files": [
+    12,
+    12
+   ],
+   "array_keys": 168,
+   "array_keys_differing": 0,
+   "first_differing_keys": []
+  }
+ },
+ "tables": {
+  "E10_overhead.csv": "identical",
+  "E10_overhead.md": "identical",
+  "E11_erlangb.csv": "identical",
+  "E11_erlangb.md": "identical",
+  "E1_aggregate_all_test_weeks.csv": "identical",
+  "E1_aggregate_all_test_weeks.md": "identical",
+  "E1_selected_parameters.csv": "identical",
+  "E1_selected_parameters.md": "identical",
+  "E3_ablation_conformal_oracle.csv": "identical",
+  "E3_ablation_conformal_oracle.md": "identical",
+  "E3_quantile_vs_scenario_feasibility.csv": {
+   "lines": [
+    4,
+    4
+   ],
+   "differing": [
+    [
+     2,
+     "stationary,92.6%,100.0%,-0.25%,+0.03,3.43,1.99",
+     "stationary,92.6%,100.0%,-0.25%,+0.03,3.43,4.26"
+    ],
+    [
+     3,
+     "new_spike,97.6%,100.0%,-0.09%,+0.03,3.55,2.02",
+     "new_spike,97.6%,100.0%,-0.09%,+0.03,3.55,4.37"
+    ]
+   ]
+  },
+  "E3_quantile_vs_scenario_feasibility.md": {
+   "lines": [
+    9,
+    9
+   ],
+   "differing": [
+    [
+     7,
+     "| stationary | 92.6%                           | 100.0%             | -0.25%      |             0.03 |                    3.43 |                   1.99 |",
+     "| stationary | 92.6%                           | 100.0%             | -0.25%      |             0.03 |                    3.43 |                   4.26 |"
+    ],
+    [
+     8,
+     "| new_spike  | 97.6%                           | 100.0%             | -0.09%      |             0.03 |                    3.55 |                   2.02 |",
+     "| new_spike  | 97.6%                           | 100.0%             | -0.09%      |             0.03 |                    3.55 |                   4.37 |"
+    ]
+   ]
+  },
+  "E6_caps.csv": "identical",
+  "E6_caps.md": "identical",
+  "E9_inflight_and_sampling.csv": "identical",
+  "E9_inflight_and_sampling.md": "identical",
+  "F3_validation_frontier.csv": "identical",
+  "F3_validation_frontier_summary.csv": "identical",
+  "F3_validation_frontier_summary.md": "identical",
+  "T10_fast_vs_event.csv": "identical",
+  "T10_fast_vs_event.md": "identical",
+  "T10b_prism_vs_predhead_fidelity.csv": "identical",
+  "T10b_prism_vs_predhead_fidelity.md": "identical",
+  "T11_overflow_estimates.csv": "identical",
+  "T11_overflow_estimates.md": "identical",
+  "T13_infeasibility.csv": "identical",
+  "T13_infeasibility.md": "identical",
+  "T14_hysteresis.csv": "identical",
+  "T14_hysteresis.md": "identical",
+  "T15_severity.csv": "identical",
+  "T15_severity.md": "identical",
+  "T18_reference_forecasters.csv": "identical",
+  "T18_reference_forecasters.md": "identical",
+  "T19_reference_downstream.csv": "identical",
+  "T19_reference_downstream.md": "identical",
+  "T20_feature_ablation.csv": "identical",
+  "T20_feature_ablation.md": "identical",
+  "T4_forecast_coverage.csv": "identical",
+  "T4_forecast_coverage.md": "identical",
+  "T5_test_weeks.csv": "identical",
+  "T5_test_weeks.md": "identical",
+  "T6_paired_PRISM_vs_PredHead.csv": "identical",
+  "T6_paired_PRISM_vs_PredHead.md": "identical",
+  "T6_paired_PRISM_vs_PredHeadHyst.csv": "identical",
+  "T6_paired_PRISM_vs_PredHeadHyst.md": "identical",
+  "T6_paired_PRISM_vs_QuantProvq90.csv": "identical",
+  "T6_paired_PRISM_vs_QuantProvq90.md": "identical",
+  "T7_frozen_vs_retuned.csv": "identical",
+  "T7_frozen_vs_retuned.md": "identical",
+  "T8_memory_regimes.csv": "identical",
+  "T8_memory_regimes.md": "identical",
+  "T9_sensitivity.csv": "identical",
+  "T9_sensitivity.md": "identical"
+ },
+ "summary": {
+  "tables": 53,
+  "identical": 51,
+  "differing": [
+   "E3_quantile_vs_scenario_feasibility.csv",
+   "E3_quantile_vs_scenario_feasibility.md"
+  ],
+  "no_counterpart": []
+ }
+}

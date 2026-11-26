@@ -1,0 +1,13 @@
+[134] test stationary eps 0.005 margin 0: viol 0.0119 cost 1310 25s
+[134] test stationary eps 0.005 margin 0.1: viol 0.0074 cost 1387 24s
+[134] test stationary eps 0.005 margin 0.5: viol 0.0030 cost 1672 21s
+[134] test growth eps 0.005 margin 0: viol 0.0164 cost 1635 27s
+[134] test growth eps 0.005 margin 0.1: viol 0.0149 cost 1729 27s
+[134] test growth eps 0.005 margin 0.5: viol 0.0060 cost 2082 27s
+[134] test bursty eps 0.005 margin 0: viol 0.0193 cost 1413 21s
+[134] test bursty eps 0.005 margin 0.1: viol 0.0134 cost 1500 21s
+[134] test bursty eps 0.005 margin 0.5: viol 0.0060 cost 1829 21s
+[134] test new_spike eps 0.005 margin 0: viol 0.0208 cost 1557 25s
+[134] test new_spike eps 0.005 margin 0.1: viol 0.0104 cost 1648 27s
+[134] test new_spike eps 0.005 margin 0.5: viol 0.0030 cost 1996 26s
+[134] complete in 305s, selected eps 0.005

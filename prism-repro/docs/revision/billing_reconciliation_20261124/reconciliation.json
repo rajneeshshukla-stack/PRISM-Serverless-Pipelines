@@ -1,0 +1,111 @@
+{
+ "export": {
+  "exported_utc": "2026-11-24T06:39:28Z",
+  "periods_utc": [
+   "2026-11-21",
+   "2026-11-22"
+  ],
+  "granularity": "DAILY",
+  "region_ohio_file": "us-east-2",
+  "grouping_ohio": "SERVICE, USAGE_TYPE",
+  "grouping_account": "SERVICE, RECORD_TYPE (all regions)",
+  "estimated": {
+   "2026-11-21": true,
+   "2026-11-22": true
+  },
+  "estimated_account": {
+   "2026-11-21": true,
+   "2026-11-22": true
+  },
+  "lambda_rows_on_2026_11_21": [],
+  "lambda_requests": 21784.0,
+  "lambda_gb_s": 57005.562125,
+  "lambda_unblended_usd": 0.0,
+  "lambda_unblended_usd_account_wide": 0.0,
+  "lambda_non_usage_record_types_account_wide": [],
+  "step_functions_requests": 94.0,
+  "step_functions_gb_s": 60.7808,
+  "units": {
+   "lambda_requests": "Requests",
+   "lambda_gb_s": "Lambda-GB-Second",
+   "cost": "USD"
+  },
+  "source_sha256": {
+   "ohio_usage_and_cost.json": "16e7d310eb4a673a3993daef7a49dec7ae2ea8b956ff38f2c59bffc34c0d64e0",
+   "account_cost_by_record_type.json": "c1d1909455cd16e31da61fc94b536a76ff40878a7ae0dc831acb2a3313dcac6e",
+   "export_scope.txt": "695c995aa9f9f6c6ca77342a16e59b3a6ab49b348c300aa16fd0899e965a6ee1"
+  }
+ },
+ "calibration_blocks": {
+  "requests": 20992,
+  "gb_s": 55234.5058125,
+  "usd_list": 0.9247753380251938,
+  "usd_duration": 0.9205769380251938,
+  "usd_requests": 0.0041984
+ },
+ "export_minus_blocks": {
+  "requests": 792.0,
+  "gb_s": 1771.0563124999971
+ },
+ "table": [
+  {
+   "line": "memcal-1 calibration blocks 0-2 (17:17-19:51 UTC)",
+   "requests": 20992,
+   "gb_s": 55234.505812,
+   "source": "REPORT records"
+  },
+  {
+   "line": "memcal-1 smoke run (17:11-17:13 UTC)",
+   "requests": 256,
+   "gb_s": 687.3705,
+   "source": "REPORT records"
+  },
+  {
+   "line": "memcal-1 log groups, REPORTs without a campaign record (17:01-20:03 UTC)",
+   "requests": 24,
+   "gb_s": 77.059875,
+   "source": "REPORT records"
+  },
+  {
+   "line": "live test, 22 Nov 09:02 CST (15:02-15:08 UTC)",
+   "requests": 100,
+   "gb_s": 168.197,
+   "source": "REPORT records"
+  },
+  {
+   "line": "subtotal with REPORT records",
+   "requests": 21372,
+   "gb_s": 56167.133187,
+   "source": "sum"
+  },
+  {
+   "line": "live test, 21 Nov 20:30 CST (02:30-02:55 UTC 22 Nov): stage invocations with saved request IDs",
+   "requests": 332,
+   "gb_s": null,
+   "source": "run records; REPORT lines not saved (0 saved)"
+  },
+  {
+   "line": "export: us-east-2 Lambda, 22 Nov 2026 UTC",
+   "requests": 21784.0,
+   "gb_s": 57005.562125,
+   "source": "Cost Explorer, Estimated"
+  },
+  {
+   "line": "residual after REPORT-attributed lines",
+   "requests": 412.0,
+   "gb_s": 838.428938,
+   "source": "export - subtotal"
+  },
+  {
+   "line": "residual after also counting the 21 Nov live test's saved request IDs",
+   "requests": 80.0,
+   "gb_s": null,
+   "source": "unattributed"
+  }
+ ],
+ "step_functions": {
+  "export_requests": 94.0,
+  "saved_executions": 94,
+  "scope": "Step Functions only; not part of the Lambda calibration estimate"
+ }
+}

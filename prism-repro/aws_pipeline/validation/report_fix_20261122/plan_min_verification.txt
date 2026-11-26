@@ -1,0 +1,28 @@
+# smallest live test, region us-east-2
+sts.get_caller_identity
+lambda.get_account_settings (ConcurrentExecutions, Unreserved...)
+lambda.list_functions, stepfunctions.list_state_machines, iam.get_role: any 'prism-pipe-' leftover
+iam.create_role prism-pipe-lambda-role (trust lambda.amazonaws.com) + attach arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+iam.create_role prism-pipe-sfn-role (trust states.amazonaws.com) + put_role_policy lambda:InvokeFunction on the four function ARNs
+logs.create_log_group /aws/lambda/prism-pipe-ingest retention=7 d tags={'project': 'prism-pipeline'}
+lambda.create_function prism-pipe-ingest handler=docpipe.ingest runtime=python3.12 arch=x86_64 memory=1024 MB timeout=60s env={'PRISM_STAGE': 'ingest', 'PRISM_K': '1', 'PRISM_INIT_ROWS': '0', 'PRISM_SINK': 'none', 'PRISM_CALIBRATION': '1', 'PRISM_COLD_NONCE': 'initial'}
+logs.create_log_group /aws/lambda/prism-pipe-transform retention=7 d tags={'project': 'prism-pipeline'}
+lambda.create_function prism-pipe-transform handler=docpipe.transform runtime=python3.12 arch=x86_64 memory=1024 MB timeout=60s env={'PRISM_STAGE': 'transform', 'PRISM_K': '1', 'PRISM_INIT_ROWS': '0', 'PRISM_SINK': 'none', 'PRISM_CALIBRATION': '1', 'PRISM_COLD_NONCE': 'initial'}
+logs.create_log_group /aws/lambda/prism-pipe-aggregate retention=7 d tags={'project': 'prism-pipeline'}
+lambda.create_function prism-pipe-aggregate handler=docpipe.aggregate runtime=python3.12 arch=x86_64 memory=1024 MB timeout=60s env={'PRISM_STAGE': 'aggregate', 'PRISM_K': '1', 'PRISM_INIT_ROWS': '0', 'PRISM_SINK': 'none', 'PRISM_CALIBRATION': '1', 'PRISM_COLD_NONCE': 'initial'}
+logs.create_log_group /aws/lambda/prism-pipe-load retention=7 d tags={'project': 'prism-pipeline'}
+lambda.create_function prism-pipe-load handler=docpipe.load runtime=python3.12 arch=x86_64 memory=1024 MB timeout=60s env={'PRISM_STAGE': 'load', 'PRISM_K': '1', 'PRISM_INIT_ROWS': '0', 'PRISM_SINK': 'none', 'PRISM_CALIBRATION': '1', 'PRISM_COLD_NONCE': 'initial'}
+stepfunctions.create_state_machine prism-pipe-docpipe type=EXPRESS logging=OFF definition=asl.definition(4 Task states, no Retry)
+calibrate: chain-mode probes at 1024 MB per stage (<= 20 invocations each); update_function_configuration PRISM_K=<k_stage>, PRISM_CALIBRATION=0
+smoke: 3 records one after another through prism-pipe-docpipe (StartSyncExecution)
+arm baseline_ondemand: force cold (nonce), OnDemand policy (P=0, 1024 MB), 4 records, Poisson 12.0/min, seed 20261122, cap 8
+arm adapter_schedule: force cold, ScheduleController memory [1024] per 60 s epoch via update_function_configuration(MemorySize) x4 per change; P recorded, not applied; SAME records
+collect: wait 60 s, then filter_log_events REPORT per log group, page by page (saved before each token; retried; resumable)
+coverage (local): every recorded request ID must have a saved REPORT; verified only if complete
+analyse (local)
+stepfunctions.delete_state_machine prism-pipe-docpipe
+lambda.delete_function prism-pipe-ingest, prism-pipe-transform, prism-pipe-aggregate, prism-pipe-load (manifest, or prefix 'prism-pipe-' AND tag {'project': 'prism-pipeline'})
+logs.delete_log_group /aws/lambda/prism-pipe-<stage> for each, ONLY if REPORT coverage is complete (cloudwatch_coverage.json); otherwise kept with 7-day retention and listed in the manifest
+iam: delete inline policy, detach arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole, delete roles prism-pipe-lambda-role, prism-pipe-sfn-role
+then verify: list every remaining 'prism-pipe-' function, state machine, log group and role
+epochs per arm: 1; arm length about 60 s

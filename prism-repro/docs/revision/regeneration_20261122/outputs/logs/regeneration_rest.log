@@ -1,0 +1,41 @@
+2026-11-23T15:28:59Z START E9: <prism-repro>/venv/Scripts/python <prism-repro>/docs/revision/regeneration_20261122/run_exp_selection_shim.py . --exp E9 --seeds 101 102 103
+2026-11-23T16:04:00Z END   E9: exit 0, 2101 s
+2026-11-23T16:04:00Z START E12: <prism-repro>/venv/Scripts/python scripts/revision/e12_event_retune.py . results/raw/E12 101 102 103 104 105
+2026-11-23T17:02:53Z END   E12: exit 0, 3533 s
+2026-11-23T17:02:53Z START E2: <prism-repro>/venv/Scripts/python experiments/run_experiments.py --exp E2 --seeds 101 102 103 104 105
+2026-11-23T17:03:35Z END   E2: exit 0, 42 s
+2026-11-23T17:03:35Z START E3: <prism-repro>/venv/Scripts/python <prism-repro>/docs/revision/regeneration_20261122/run_exp_selection_shim.py . --exp E3 --seeds 101 102 103 104 105
+2026-11-23T17:15:07Z END   E3: exit 0, 692 s
+2026-11-23T17:15:07Z START E10: <prism-repro>/venv/Scripts/python experiments/run_experiments.py --exp E10 --seeds 101
+2026-11-23T17:15:40Z END   E10: exit 0, 33 s
+2026-11-23T17:15:40Z START E4: <prism-repro>/venv/Scripts/python experiments/run_experiments.py --exp E4 --seeds 101 102
+2026-11-23T17:19:24Z END   E4: exit 0, 224 s
+2026-11-23T17:19:24Z START E6: <prism-repro>/venv/Scripts/python experiments/run_experiments.py --exp E6 --seeds 101 102 103 104 105
+2026-11-23T17:24:09Z END   E6: exit 0, 285 s
+2026-11-23T17:24:09Z START E7: <prism-repro>/venv/Scripts/python <prism-repro>/docs/revision/regeneration_20261122/run_exp_selection_shim.py . --exp E7 --seeds 101 102 103 104 105
+2026-11-23T17:34:42Z END   E7: exit 0, 633 s
+2026-11-23T17:34:42Z START E5: <prism-repro>/venv/Scripts/python experiments/run_experiments.py --exp E5 --seeds 101 102
+2026-11-23T17:46:06Z END   E5: exit 0, 684 s
+2026-11-23T17:46:06Z START E11: <prism-repro>/venv/Scripts/python experiments/run_experiments.py --exp E11 --seeds 101 102 103 104 105
+2026-11-23T18:03:07Z END   E11: exit 0, 1021 s
+2026-11-23T18:03:07Z START E11occ: <prism-repro>/venv/Scripts/python <prism-repro>/docs/revision/regeneration_20261122/e11_occupancy.py . run
+2026-11-23T18:20:30Z END   E11occ: exit 0, 1043 s
+2026-11-23T18:20:30Z START E4b_fixed_101: <prism-repro>/venv/Scripts/python scripts/revision/e4b_fixed_memory.py . results/raw/E4b/e4b_seed101.jsonl 101
+2026-11-23T18:24:36Z END   E4b_fixed_101: exit 0, 246 s
+2026-11-23T18:24:36Z START E4b_ondemand_101: <prism-repro>/venv/Scripts/python scripts/revision/e4b_ondemand.py . results/raw/E4b/e4b_ondemand_seed101.jsonl 101
+2026-11-23T18:25:03Z END   E4b_ondemand_101: exit 0, 27 s
+2026-11-23T18:25:03Z START E4b_eps_101: <prism-repro>/venv/Scripts/python scripts/revision/e4b_prism_eps.py . results/raw/E4b/e4b_prism_eps_seed101.jsonl 101
+2026-11-23T18:29:13Z END   E4b_eps_101: exit 0, 250 s
+2026-11-23T18:29:13Z START R2_101: <prism-repro>/venv/Scripts/python scripts/revision/r2_quantprov_memory.py . results/raw/R2/r2_seed101.jsonl 101
+2026-11-23T18:31:28Z END   R2_101: exit 0, 135 s
+2026-11-23T18:31:28Z START E4b_fixed_102: <prism-repro>/venv/Scripts/python scripts/revision/e4b_fixed_memory.py . results/raw/E4b/e4b_seed102.jsonl 102
+2026-11-23T18:35:14Z END   E4b_fixed_102: exit 0, 226 s
+2026-11-23T18:35:14Z START E4b_ondemand_102: <prism-repro>/venv/Scripts/python scripts/revision/e4b_ondemand.py . results/raw/E4b/e4b_ondemand_seed102.jsonl 102
+2026-11-23T18:35:38Z END   E4b_ondemand_102: exit 0, 24 s
+2026-11-23T18:35:38Z START E4b_eps_102: <prism-repro>/venv/Scripts/python scripts/revision/e4b_prism_eps.py . results/raw/E4b/e4b_prism_eps_seed102.jsonl 102
+2026-11-23T18:39:43Z END   E4b_eps_102: exit 0, 245 s
+2026-11-23T18:39:43Z START R2_102: <prism-repro>/venv/Scripts/python scripts/revision/r2_quantprov_memory.py . results/raw/R2/r2_seed102.jsonl 102
+2026-11-23T18:41:55Z END   R2_102: exit 0, 132 s
+2026-11-23T18:41:55Z START R1: <prism-repro>/venv/Scripts/python experiments/run_real_traces.py
+2026-11-23T18:52:22Z END   R1: exit 0, 628 s
+2026-11-23T18:52:23Z REST DONE

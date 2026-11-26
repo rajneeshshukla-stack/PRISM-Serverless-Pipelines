@@ -1,0 +1,22 @@
+{
+ "week": "test",
+ "param": 1.1,
+ "runtime_s": 74.9,
+ "n_requests": 7957960,
+ "share_mem_ge_2048": 0.0,
+ "cost": 1805.7442419011368,
+ "violating_window_rate": 0.011904761904761904,
+ "record_attainment": 0.9974627919718119,
+ "cold_start_ratio": 0.00017510769091576235,
+ "overflow_share": 0.002542674253200594,
+ "p99_latency": 13.185,
+ "mean_provisioned": 452.41765873015873,
+ "scenario": "growth",
+ "seed": 103,
+ "family": "QuantProv_q99",
+ "set": "CMPb",
+ "cfg_sha": "65721002596b843f",
+ "counts_sha256": "e81a64820239a02e55b86e0cb88b4e1605ca60b04d98f750f2fe911469385266",
+ "pid": 826,
+ "finished_utc": "2026-11-24T20:45:58Z"
+}

@@ -1,0 +1,23 @@
+start 2026-11-24T15:02:37Z Linux 6.18.58.1-microsoft-standard-WSL2 x86_64
+seed 101: 134.2s; selected PRISM=0.08, PredHead=1.2, PredHead+hyst=1.2, QuantProv_q90=0.8
+seed 102: 133.7s; selected PRISM=0.03, PredHead=1.5, PredHead+hyst=1.4, QuantProv_q90=0.9
+seed 103: 134.9s; selected PRISM=0.08, PredHead=1.0, PredHead+hyst=1.0, QuantProv_q90=0.7
+seed 104: 132.6s; selected PRISM=0.08, PredHead=1.2, PredHead+hyst=1.1, QuantProv_q90=0.7
+seed 105: 134.5s; selected PRISM=0.08, PredHead=1.1, PredHead+hyst=1.1, QuantProv_q90=0.7
+{"platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.43", "python": "3.12.3", "numpy": "2.4.4", "scipy": "1.17.1", "pandas": "3.0.2", "sklearn": "1.8.0"}
+
+real	2m18.886s
+user	11m16.246s
+sys	0m3.820s
+mid 2026-11-24T15:04:56Z
+seed 101: 144.9s; selected PRISM=0.05, PredHead=1.2, PredHead+hyst=1.2, QuantProv_q90=0.8
+seed 102: 143.9s; selected PRISM=0.03, PredHead=1.5, PredHead+hyst=1.3, QuantProv_q90=0.9
+seed 103: 145.5s; selected PRISM=0.08, PredHead=1.0, PredHead+hyst=1.0, QuantProv_q90=0.7
+seed 104: 143.8s; selected PRISM=0.08, PredHead=1.2, PredHead+hyst=1.1, QuantProv_q90=0.7
+seed 105: 144.4s; selected PRISM=0.08, PredHead=1.1, PredHead+hyst=1.1, QuantProv_q90=0.7
+{"platform": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.43", "python": "3.12.3", "numpy": "2.4.4", "scipy": "1.17.1", "pandas": "3.0.2", "sklearn": "1.9.1"}
+
+real	2m32.163s
+user	12m15.768s
+sys	0m6.372s
+end 2026-11-24T15:07:29Z exit 0

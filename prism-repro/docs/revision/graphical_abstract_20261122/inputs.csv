@@ -1,0 +1,8 @@
+panel,quantity,policy,label_in_figure,value,half_width_95,unit,n_traces,source_file,source_row,label
+headline,violating windows,PRISM,PRISM,1.55,1.15,% of 15-min windows,5,results/tables/T5_test_weeks.md,new_spike | PRISM,"SUBMITTED, fast simulator, pre-calibration"
+headline,violating windows,PredHead+hyst,smoothed headroom (stronger comparator),3.24,1.80,% of 15-min windows,5,results/tables/T5_test_weeks.md,new_spike | PredHead+hyst,"SUBMITTED, fast simulator, pre-calibration"
+headline,violating windows,PredHead,unsmoothed headroom,6.67,1.66,% of 15-min windows,5,results/tables/T5_test_weeks.md,new_spike | PredHead,"SUBMITTED, fast simulator, pre-calibration"
+headline,weekly cost,PRISM,PRISM,1395,74,USD/week,5,results/tables/T5_test_weeks.md,new_spike | PRISM,"SUBMITTED, fast simulator, pre-calibration"
+headline,weekly cost,PredHead+hyst,smoothed headroom,1241,73,USD/week,5,results/tables/T5_test_weeks.md,new_spike | PredHead+hyst,"SUBMITTED, fast simulator, pre-calibration"
+headline,weekly cost,PredHead,unsmoothed headroom,1160,45,USD/week,5,results/tables/T5_test_weeks.md,new_spike | PredHead,"SUBMITTED, fast simulator, pre-calibration"
+caption,cost difference,PredHead at 2048 MB vs best PRISM,headroom at 2048 MB cheaper,14.3-28.7,,%,2,results/tables/revision/E4b_fixed_memory_summary.json,"regimes ns0.5 D13/D12/D11, ns0.15 D12 (best_PredHead_2048_vs_best_PRISM_pct)","POST HOC, two traces, no caps"

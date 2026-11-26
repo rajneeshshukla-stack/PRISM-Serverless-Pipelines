@@ -1,0 +1,31 @@
+test_linear_chain_without_retry ... ok
+test_deploy_resources_and_teardown_is_scoped ... ok
+test_execute_needs_authorisation_for_non_fake_clients ... ok
+test_plan_only_without_execute ... ok
+test_preflight_stops_on_leftovers_and_low_quota ... ok
+test_teardown_after_partial_deploy ... ok
+test_ondemand_baseline_policy ... ok
+test_prism_controller_through_adapter
+test_provisioned_concurrency_refused_at_quota_10 ... ok
+test_schedule_actuates_memory_on_epoch_boundaries ... ok
+test_hits_targets_on_fake ... ok
+test_cap_sheds_and_bounds_in_flight ... ok
+test_deadline_outcomes_failures_and_no_retry ... ok
+test_sfn_executor_failure_is_recorded ... ok
+test_bounds ... ok
+test_cold_then_warm ... ok
+test_deterministic_across_environments ... ok
+test_four_stages_real_work_and_trace ... ok
+test_k_override_only_in_calibration_mode ... ok
+test_missing_ids_fail_loudly ... ok
+test_work_grows_with_k_and_length ... ok
+test_cloudwatch_fallback_join_with_pagination ... ok
+test_cold_without_init_duration_flagged ... ok
+test_paired_same_records ... ok
+test_whole_live_test_sequence_on_fakes
+test_no_lookahead_and_counts ... ok
+test_same_seed_same_records ... ok
+test_size_mean_and_spread ... ok
+test_thinning_and_trace_stream ... ok
+Ran 29 tests in 19.370s
+OK

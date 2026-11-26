@@ -1,0 +1,25 @@
+A: scikit-learn 1.8.0 | B: scikit-learn 1.9.1 | Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.43, Python 3.12.3, numpy 2.4.4, scipy 1.17.1, pandas 3.0.2
+only scikit-learn differs: True
+
+Validation selections (A -> B):
+  101: PRISM 0.08 -> 0.05; PredHead 1.2; PredHead+hyst 1.2; QuantProv_q90 0.8
+  102: PRISM 0.03; PredHead 1.5; PredHead+hyst 1.4 -> 1.3; QuantProv_q90 0.9
+  103: PRISM 0.08; PredHead 1.0; PredHead+hyst 1.0; QuantProv_q90 0.7
+  104: PRISM 0.08; PredHead 1.2; PredHead+hyst 1.1; QuantProv_q90 0.7
+  105: PRISM 0.08; PredHead 1.1; PredHead+hyst 1.1; QuantProv_q90 0.7
+  selections that change: 2 of 20
+  single-run test weeks: max |violating-window change| 2.08 points, max |cost change| 9.59%
+
+Table VI, PRISM minus comparator (mean ± 95% half-width over 5 traces): A | B | B - A
+  vs PredHead      stationary cost%  +12.0 ± 5.6 |  +13.3 ± 4.6 | +1.4   viol pp  -0.48 ± 0.50 |  -0.71 ± 0.44 | -0.24   cheaper 0/0
+  vs PredHead      growth     cost%  +12.2 ± 5.1 |  +13.3 ± 4.8 | +1.2   viol pp  -0.80 ± 0.48 |  -0.80 ± 0.31 | +0.00   cheaper 0/0
+  vs PredHead      bursty     cost%  +17.8 ± 5.9 |  +20.1 ± 5.8 | +2.3   viol pp  -1.22 ± 0.60 |  -1.52 ± 0.48 | -0.30   cheaper 0/0
+  vs PredHead      new_spike  cost%  +14.5 ± 6.1 |  +16.2 ± 4.8 | +1.6   viol pp  -5.00 ± 1.36 |  -5.54 ± 1.42 | -0.54   cheaper 0/0
+  vs PredHead+hyst stationary cost%   +3.8 ± 5.6 |   +5.9 ± 5.6 | +2.0   viol pp  -0.21 ± 0.28 |  -0.42 ± 0.24 | -0.21   cheaper 1/0
+  vs PredHead+hyst growth     cost%   +3.8 ± 5.4 |   +5.7 ± 6.1 | +1.9   viol pp  -0.45 ± 0.41 |  -0.45 ± 0.23 | +0.00   cheaper 1/0
+  vs PredHead+hyst bursty     cost%   +9.3 ± 6.4 |  +12.3 ± 6.8 | +3.0   viol pp  -0.89 ± 0.68 |  -1.16 ± 0.40 | -0.27   cheaper 0/0
+  vs PredHead+hyst new_spike  cost%   +7.1 ± 6.7 |   +9.4 ± 6.3 | +2.3   viol pp  -1.40 ± 1.87 |  -2.02 ± 1.31 | -0.63   cheaper 1/0
+  vs QuantProv_q90 stationary cost%   +0.4 ± 3.4 |   +1.8 ± 2.1 | +1.4   viol pp  -0.09 ± 0.46 |  -0.24 ± 0.21 | -0.15   cheaper 2/1
+  vs QuantProv_q90 growth     cost%   -0.2 ± 3.4 |   +1.3 ± 2.1 | +1.5   viol pp  -0.21 ± 0.50 |  -0.33 ± 0.20 | -0.12   cheaper 2/1
+  vs QuantProv_q90 bursty     cost%   -2.0 ± 4.7 |   +0.0 ± 3.5 | +2.0   viol pp  -0.03 ± 0.40 |  -0.24 ± 0.25 | -0.21   cheaper 4/3
+  vs QuantProv_q90 new_spike  cost%   -1.5 ± 3.9 |   +0.1 ± 3.2 | +1.6   viol pp  +0.21 ± 0.87 |  -0.21 ± 0.46 | -0.42   cheaper 4/3

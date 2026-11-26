@@ -1,0 +1,22 @@
+{
+ "week": "val",
+ "param": 1.0,
+ "runtime_s": 82.4,
+ "n_requests": 6122799,
+ "share_mem_ge_2048": 0.0,
+ "cost": 829.9374347173178,
+ "violating_window_rate": 0.046130952380952384,
+ "record_attainment": 0.9950302141226586,
+ "cold_start_ratio": 0.0013718399052459504,
+ "overflow_share": 0.09856897147856725,
+ "p99_latency": 13.525,
+ "mean_provisioned": 113.26984126984127,
+ "scenario": "validation",
+ "seed": 101,
+ "family": "PredHead",
+ "set": "CMPb",
+ "cfg_sha": "65721002596b843f",
+ "counts_sha256": "e3d7550151cf3e500384c404ae888f190324f92a347c1d52a2e381782e24180b",
+ "pid": 735,
+ "finished_utc": "2026-11-24T19:10:12Z"
+}

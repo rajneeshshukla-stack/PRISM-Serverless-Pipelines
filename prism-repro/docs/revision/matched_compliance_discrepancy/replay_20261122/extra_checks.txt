@@ -1,0 +1,16 @@
+(1) v1-submitted tree vs HEAD (occupancy + sampled): 314 of 320 rows identical; differing rows:
+    (101, 'stationary', 'PRISM', 0.005): cost +0.00028%, violating windows 0.00298 -> 0.00298
+    (101, 'new_spike', 'PRISM', 0.005): cost +0.00039%, violating windows 0.00744 -> 0.00744
+    (104, 'stationary', 'PRISM', 0.005): cost +0.00001%, violating windows 0.00149 -> 0.00149
+    (104, 'new_spike', 'PRISM', 0.005): cost +0.00034%, violating windows 0.00446 -> 0.00446
+    (105, 'growth', 'PRISM', 0.01): cost +0.00001%, violating windows 0.00149 -> 0.00149
+    (105, 'growth', 'PRISM', 0.02): cost +0.00003%, violating windows 0.00298 -> 0.00298
+(2) stored rows vs the v1-submitted tree on this laptop, per trace (PRISM and QuantProv-q90, 64 rows each):
+    101: identical 0/64; mean |cost change| 0.65%, max 2.23%
+    102: identical 0/64; mean |cost change| 0.68%, max 1.95%
+    103: identical 0/64; mean |cost change| 0.11%, max 0.66%
+    104: identical 0/64; mean |cost change| 1.65%, max 4.12%
+    105: identical 0/64; mean |cost change| 1.06%, max 3.53%
+(3) current-code real-trace replay (HEAD 78ba419, Huawei traces 201-205, paper grid, validation-selected), PRISM minus QuantProv-q90:
+    cost +1.61 +/- 4.00% (per trace [1.4, 1.9, 6.2, -2.8, 1.4]); violating windows +0.15 +/- 0.41 points
+    selections: 201 PRISM 0.08 / QP 0.9; 202 PRISM 0.08 / QP 0.8; 203 PRISM 0.08 / QP 0.6; 204 PRISM 0.03 / QP 1; 205 PRISM 0.08 / QP 0.7

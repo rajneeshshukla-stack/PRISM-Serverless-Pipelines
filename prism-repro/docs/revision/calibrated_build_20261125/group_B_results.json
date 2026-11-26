@@ -1,0 +1,615 @@
+{
+ "weeks": {
+  "planned_base": 90,
+  "expansions_triggered": 10,
+  "planned_total": 100,
+  "completed": 100,
+  "failed_or_unreadable": 0,
+  "groups_missing": []
+ },
+ "rows": [
+  {
+   "seed": 101,
+   "family": "MemAdapt_q90",
+   "selected": 0.4,
+   "expansions": [
+    0.5,
+    0.4
+   ],
+   "wide_bounds": [
+    0.4,
+    2.0
+   ],
+   "unresolved_edge": true,
+   "any_val_compliant": true,
+   "selected_val": {
+    "param": 0.4,
+    "cost": 945.1,
+    "viol": 1.64,
+    "attain": 99.72,
+    "ge2048": 100.0,
+    "counts_sha256": "e3d7550151cf3e500384c404ae888f190324f92a347c1d52a2e381782e24180b"
+   },
+   "neighbours_val": [
+    {
+     "param": 0.5,
+     "cost": 961.9,
+     "viol": 1.64,
+     "attain": 99.74,
+     "ge2048": 100.0,
+     "counts_sha256": "e3d7550151cf3e500384c404ae888f190324f92a347c1d52a2e381782e24180b"
+    },
+    {
+     "param": 0.6,
+     "cost": 991.2,
+     "viol": 1.49,
+     "attain": 99.76,
+     "ge2048": 100.0,
+     "counts_sha256": "e3d7550151cf3e500384c404ae888f190324f92a347c1d52a2e381782e24180b"
+    }
+   ],
+   "test": {
+    "param": 0.4,
+    "cost": 939.6,
+    "viol": 1.79,
+    "attain": 99.73,
+    "ge2048": 100.0,
+    "counts_sha256": "22daef84b7fd620c9f5c9cfe24e44a1a4d2860f043b2a590095311aa4c813c70"
+   }
+  },
+  {
+   "seed": 101,
+   "family": "PRISM",
+   "selected": 0.05,
+   "expansions": [],
+   "wide_bounds": [
+    0.002,
+    0.2
+   ],
+   "unresolved_edge": false,
+   "any_val_compliant": true,
+   "selected_val": {
+    "param": 0.05,
+    "cost": 1095.3,
+    "viol": 1.19,
+    "attain": 99.79,
+    "ge2048": 100.0,
+    "counts_sha256": "e3d7550151cf3e500384c404ae888f190324f92a347c1d52a2e381782e24180b"
+   },
+   "neighbours_val": [
+    {
+     "param": 0.02,
+     "cost": 1130.7,
+     "viol": 1.19,
+     "attain": 99.8,
+     "ge2048": 100.0,
+     "counts_sha256": "e3d7550151cf3e500384c404ae888f190324f92a347c1d52a2e381782e24180b"
+    },
+    {
+     "param": 0.03,
+     "cost": 1099.0,
+     "viol": 1.19,
+     "attain": 99.79,
+     "ge2048": 100.0,
+     "counts_sha256": "e3d7550151cf3e500384c404ae888f190324f92a347c1d52a2e381782e24180b"
+    },
+    {
+     "param": 0.08,
+     "cost": 1095.3,
+     "viol": 1.19,
+     "attain": 99.79,
+     "ge2048": 100.0,
+     "counts_sha256": "e3d7550151cf3e500384c404ae888f190324f92a347c1d52a2e381782e24180b"
+    }
+   ],
+   "test": {
+    "param": 0.05,
+    "cost": 1099.7,
+    "viol": 0.89,
+    "attain": 99.8,
+    "ge2048": 100.0,
+    "counts_sha256": "22daef84b7fd620c9f5c9cfe24e44a1a4d2860f043b2a590095311aa4c813c70"
+   }
+  },
+  {
+   "seed": 102,
+   "family": "MemAdapt_q90",
+   "selected": 0.4,
+   "expansions": [
+    0.5,
+    0.4
+   ],
+   "wide_bounds": [
+    0.4,
+    2.0
+   ],
+   "unresolved_edge": true,
+   "any_val_compliant": true,
+   "selected_val": {
+    "param": 0.4,
+    "cost": 949.9,
+    "viol": 1.19,
+    "attain": 99.74,
+    "ge2048": 100.0,
+    "counts_sha256": "b9b91f5809b4577e82ed8c46105a43de57d16ede39f00e11afb862108fd7fe42"
+   },
+   "neighbours_val": [
+    {
+     "param": 0.5,
+     "cost": 968.3,
+     "viol": 1.04,
+     "attain": 99.75,
+     "ge2048": 100.0,
+     "counts_sha256": "b9b91f5809b4577e82ed8c46105a43de57d16ede39f00e11afb862108fd7fe42"
+    },
+    {
+     "param": 0.6,
+     "cost": 999.3,
+     "viol": 1.04,
+     "attain": 99.77,
+     "ge2048": 100.0,
+     "counts_sha256": "b9b91f5809b4577e82ed8c46105a43de57d16ede39f00e11afb862108fd7fe42"
+    }
+   ],
+   "test": {
+    "param": 0.4,
+    "cost": 960.0,
+    "viol": 1.49,
+    "attain": 99.73,
+    "ge2048": 100.0,
+    "counts_sha256": "dd3cdae1f659f9739215338e097c47bdc1672764bb8f76b0bae05aeae2668934"
+   }
+  },
+  {
+   "seed": 102,
+   "family": "PRISM",
+   "selected": 0.05,
+   "expansions": [],
+   "wide_bounds": [
+    0.002,
+    0.2
+   ],
+   "unresolved_edge": false,
+   "any_val_compliant": true,
+   "selected_val": {
+    "param": 0.05,
+    "cost": 1103.0,
+    "viol": 1.19,
+    "attain": 99.8,
+    "ge2048": 100.0,
+    "counts_sha256": "b9b91f5809b4577e82ed8c46105a43de57d16ede39f00e11afb862108fd7fe42"
+   },
+   "neighbours_val": [
+    {
+     "param": 0.02,
+     "cost": 1128.8,
+     "viol": 0.89,
+     "attain": 99.8,
+     "ge2048": 100.0,
+     "counts_sha256": "b9b91f5809b4577e82ed8c46105a43de57d16ede39f00e11afb862108fd7fe42"
+    },
+    {
+     "param": 0.03,
+     "cost": 1107.6,
+     "viol": 1.04,
+     "attain": 99.8,
+     "ge2048": 100.0,
+     "counts_sha256": "b9b91f5809b4577e82ed8c46105a43de57d16ede39f00e11afb862108fd7fe42"
+    },
+    {
+     "param": 0.08,
+     "cost": 1103.0,
+     "viol": 1.19,
+     "attain": 99.8,
+     "ge2048": 100.0,
+     "counts_sha256": "b9b91f5809b4577e82ed8c46105a43de57d16ede39f00e11afb862108fd7fe42"
+    }
+   ],
+   "test": {
+    "param": 0.05,
+    "cost": 1123.6,
+    "viol": 1.04,
+    "attain": 99.79,
+    "ge2048": 100.0,
+    "counts_sha256": "dd3cdae1f659f9739215338e097c47bdc1672764bb8f76b0bae05aeae2668934"
+   }
+  },
+  {
+   "seed": 103,
+   "family": "MemAdapt_q90",
+   "selected": 0.4,
+   "expansions": [
+    0.5,
+    0.4
+   ],
+   "wide_bounds": [
+    0.4,
+    2.0
+   ],
+   "unresolved_edge": true,
+   "any_val_compliant": true,
+   "selected_val": {
+    "param": 0.4,
+    "cost": 912.2,
+    "viol": 1.79,
+    "attain": 99.72,
+    "ge2048": 100.0,
+    "counts_sha256": "216207cbe3f91babdb6f18a8b773668320116e8bca9dc70893e1138336084763"
+   },
+   "neighbours_val": [
+    {
+     "param": 0.5,
+     "cost": 929.0,
+     "viol": 1.49,
+     "attain": 99.74,
+     "ge2048": 100.0,
+     "counts_sha256": "216207cbe3f91babdb6f18a8b773668320116e8bca9dc70893e1138336084763"
+    },
+    {
+     "param": 0.6,
+     "cost": 958.0,
+     "viol": 1.19,
+     "attain": 99.75,
+     "ge2048": 100.0,
+     "counts_sha256": "216207cbe3f91babdb6f18a8b773668320116e8bca9dc70893e1138336084763"
+    }
+   ],
+   "test": {
+    "param": 0.4,
+    "cost": 948.2,
+    "viol": 1.34,
+    "attain": 99.73,
+    "ge2048": 100.0,
+    "counts_sha256": "fcb4e5ac2ccf9f494b3e28311f4cd1544420d8f22b0eb2eeb20f9c27a37173dc"
+   }
+  },
+  {
+   "seed": 103,
+   "family": "PRISM",
+   "selected": 0.05,
+   "expansions": [],
+   "wide_bounds": [
+    0.002,
+    0.2
+   ],
+   "unresolved_edge": false,
+   "any_val_compliant": true,
+   "selected_val": {
+    "param": 0.05,
+    "cost": 1061.4,
+    "viol": 0.89,
+    "attain": 99.79,
+    "ge2048": 100.0,
+    "counts_sha256": "216207cbe3f91babdb6f18a8b773668320116e8bca9dc70893e1138336084763"
+   },
+   "neighbours_val": [
+    {
+     "param": 0.02,
+     "cost": 1085.6,
+     "viol": 0.74,
+     "attain": 99.79,
+     "ge2048": 100.0,
+     "counts_sha256": "216207cbe3f91babdb6f18a8b773668320116e8bca9dc70893e1138336084763"
+    },
+    {
+     "param": 0.03,
+     "cost": 1062.9,
+     "viol": 0.89,
+     "attain": 99.79,
+     "ge2048": 100.0,
+     "counts_sha256": "216207cbe3f91babdb6f18a8b773668320116e8bca9dc70893e1138336084763"
+    },
+    {
+     "param": 0.08,
+     "cost": 1061.4,
+     "viol": 0.89,
+     "attain": 99.79,
+     "ge2048": 100.0,
+     "counts_sha256": "216207cbe3f91babdb6f18a8b773668320116e8bca9dc70893e1138336084763"
+    }
+   ],
+   "test": {
+    "param": 0.05,
+    "cost": 1117.7,
+    "viol": 1.34,
+    "attain": 99.79,
+    "ge2048": 100.0,
+    "counts_sha256": "fcb4e5ac2ccf9f494b3e28311f4cd1544420d8f22b0eb2eeb20f9c27a37173dc"
+   }
+  },
+  {
+   "seed": 104,
+   "family": "MemAdapt_q90",
+   "selected": 0.4,
+   "expansions": [
+    0.5,
+    0.4
+   ],
+   "wide_bounds": [
+    0.4,
+    2.0
+   ],
+   "unresolved_edge": true,
+   "any_val_compliant": true,
+   "selected_val": {
+    "param": 0.4,
+    "cost": 932.4,
+    "viol": 0.89,
+    "attain": 99.74,
+    "ge2048": 100.0,
+    "counts_sha256": "c5f204d5be440291e409d911ce5bf3880751e5c82ef6f84e64204522d350158e"
+   },
+   "neighbours_val": [
+    {
+     "param": 0.5,
+     "cost": 959.2,
+     "viol": 0.89,
+     "attain": 99.76,
+     "ge2048": 100.0,
+     "counts_sha256": "c5f204d5be440291e409d911ce5bf3880751e5c82ef6f84e64204522d350158e"
+    },
+    {
+     "param": 0.6,
+     "cost": 999.2,
+     "viol": 0.74,
+     "attain": 99.77,
+     "ge2048": 100.0,
+     "counts_sha256": "c5f204d5be440291e409d911ce5bf3880751e5c82ef6f84e64204522d350158e"
+    }
+   ],
+   "test": {
+    "param": 0.4,
+    "cost": 928.4,
+    "viol": 1.64,
+    "attain": 99.73,
+    "ge2048": 100.0,
+    "counts_sha256": "d8c56a9846f471dcd451416a7951124c28c5d6e2c444ab576f5045f80c356147"
+   }
+  },
+  {
+   "seed": 104,
+   "family": "PRISM",
+   "selected": 0.05,
+   "expansions": [],
+   "wide_bounds": [
+    0.002,
+    0.2
+   ],
+   "unresolved_edge": false,
+   "any_val_compliant": true,
+   "selected_val": {
+    "param": 0.05,
+    "cost": 1088.9,
+    "viol": 0.45,
+    "attain": 99.8,
+    "ge2048": 100.0,
+    "counts_sha256": "c5f204d5be440291e409d911ce5bf3880751e5c82ef6f84e64204522d350158e"
+   },
+   "neighbours_val": [
+    {
+     "param": 0.02,
+     "cost": 1164.8,
+     "viol": 0.3,
+     "attain": 99.82,
+     "ge2048": 100.0,
+     "counts_sha256": "c5f204d5be440291e409d911ce5bf3880751e5c82ef6f84e64204522d350158e"
+    },
+    {
+     "param": 0.03,
+     "cost": 1094.6,
+     "viol": 0.45,
+     "attain": 99.8,
+     "ge2048": 100.0,
+     "counts_sha256": "c5f204d5be440291e409d911ce5bf3880751e5c82ef6f84e64204522d350158e"
+    },
+    {
+     "param": 0.08,
+     "cost": 1088.9,
+     "viol": 0.45,
+     "attain": 99.8,
+     "ge2048": 100.0,
+     "counts_sha256": "c5f204d5be440291e409d911ce5bf3880751e5c82ef6f84e64204522d350158e"
+    }
+   ],
+   "test": {
+    "param": 0.05,
+    "cost": 1085.6,
+    "viol": 1.34,
+    "attain": 99.78,
+    "ge2048": 100.0,
+    "counts_sha256": "d8c56a9846f471dcd451416a7951124c28c5d6e2c444ab576f5045f80c356147"
+   }
+  },
+  {
+   "seed": 105,
+   "family": "MemAdapt_q90",
+   "selected": 0.4,
+   "expansions": [
+    0.5,
+    0.4
+   ],
+   "wide_bounds": [
+    0.4,
+    2.0
+   ],
+   "unresolved_edge": true,
+   "any_val_compliant": true,
+   "selected_val": {
+    "param": 0.4,
+    "cost": 941.3,
+    "viol": 1.34,
+    "attain": 99.75,
+    "ge2048": 100.0,
+    "counts_sha256": "c8cc4e73fbaa821d8463a506a0423ed2f3940ed0513953654e5b27d4873cef85"
+   },
+   "neighbours_val": [
+    {
+     "param": 0.5,
+     "cost": 964.4,
+     "viol": 0.89,
+     "attain": 99.76,
+     "ge2048": 100.0,
+     "counts_sha256": "c8cc4e73fbaa821d8463a506a0423ed2f3940ed0513953654e5b27d4873cef85"
+    },
+    {
+     "param": 0.6,
+     "cost": 999.9,
+     "viol": 0.6,
+     "attain": 99.77,
+     "ge2048": 100.0,
+     "counts_sha256": "c8cc4e73fbaa821d8463a506a0423ed2f3940ed0513953654e5b27d4873cef85"
+    }
+   ],
+   "test": {
+    "param": 0.4,
+    "cost": 947.7,
+    "viol": 1.19,
+    "attain": 99.74,
+    "ge2048": 100.0,
+    "counts_sha256": "c67c4bfe9969508ee4cda2ef12833579d93a42f46c348c5dfb1e5e10e7f68e69"
+   }
+  },
+  {
+   "seed": 105,
+   "family": "PRISM",
+   "selected": 0.05,
+   "expansions": [],
+   "wide_bounds": [
+    0.002,
+    0.2
+   ],
+   "unresolved_edge": false,
+   "any_val_compliant": true,
+   "selected_val": {
+    "param": 0.05,
+    "cost": 1097.0,
+    "viol": 0.3,
+    "attain": 99.8,
+    "ge2048": 100.0,
+    "counts_sha256": "c8cc4e73fbaa821d8463a506a0423ed2f3940ed0513953654e5b27d4873cef85"
+   },
+   "neighbours_val": [
+    {
+     "param": 0.02,
+     "cost": 1143.9,
+     "viol": 0.3,
+     "attain": 99.81,
+     "ge2048": 100.0,
+     "counts_sha256": "c8cc4e73fbaa821d8463a506a0423ed2f3940ed0513953654e5b27d4873cef85"
+    },
+    {
+     "param": 0.03,
+     "cost": 1102.8,
+     "viol": 0.3,
+     "attain": 99.8,
+     "ge2048": 100.0,
+     "counts_sha256": "c8cc4e73fbaa821d8463a506a0423ed2f3940ed0513953654e5b27d4873cef85"
+    },
+    {
+     "param": 0.08,
+     "cost": 1097.0,
+     "viol": 0.3,
+     "attain": 99.8,
+     "ge2048": 100.0,
+     "counts_sha256": "c8cc4e73fbaa821d8463a506a0423ed2f3940ed0513953654e5b27d4873cef85"
+    }
+   ],
+   "test": {
+    "param": 0.05,
+    "cost": 1110.3,
+    "viol": 0.74,
+    "attain": 99.8,
+    "ge2048": 100.0,
+    "counts_sha256": "c67c4bfe9969508ee4cda2ef12833579d93a42f46c348c5dfb1e5e10e7f68e69"
+   }
+  }
+ ],
+ "paired": [
+  {
+   "seed": 101,
+   "prism_cost": 1099.7,
+   "memadapt_cost": 939.6,
+   "prism_premium_pct": 17.0,
+   "prism_viol": 0.89,
+   "memadapt_viol": 1.79,
+   "prism_meets_2pct": true,
+   "memadapt_meets_2pct": true,
+   "prism_ge2048": 100.0,
+   "memadapt_ge2048": 100.0,
+   "same_stream": true
+  },
+  {
+   "seed": 102,
+   "prism_cost": 1123.6,
+   "memadapt_cost": 960.0,
+   "prism_premium_pct": 17.0,
+   "prism_viol": 1.04,
+   "memadapt_viol": 1.49,
+   "prism_meets_2pct": true,
+   "memadapt_meets_2pct": true,
+   "prism_ge2048": 100.0,
+   "memadapt_ge2048": 100.0,
+   "same_stream": true
+  },
+  {
+   "seed": 103,
+   "prism_cost": 1117.7,
+   "memadapt_cost": 948.2,
+   "prism_premium_pct": 17.9,
+   "prism_viol": 1.34,
+   "memadapt_viol": 1.34,
+   "prism_meets_2pct": true,
+   "memadapt_meets_2pct": true,
+   "prism_ge2048": 100.0,
+   "memadapt_ge2048": 100.0,
+   "same_stream": true
+  },
+  {
+   "seed": 104,
+   "prism_cost": 1085.6,
+   "memadapt_cost": 928.4,
+   "prism_premium_pct": 16.9,
+   "prism_viol": 1.34,
+   "memadapt_viol": 1.64,
+   "prism_meets_2pct": true,
+   "memadapt_meets_2pct": true,
+   "prism_ge2048": 100.0,
+   "memadapt_ge2048": 100.0,
+   "same_stream": true
+  },
+  {
+   "seed": 105,
+   "prism_cost": 1110.3,
+   "memadapt_cost": 947.7,
+   "prism_premium_pct": 17.2,
+   "prism_viol": 0.74,
+   "memadapt_viol": 1.19,
+   "prism_meets_2pct": true,
+   "memadapt_meets_2pct": true,
+   "prism_ge2048": 100.0,
+   "memadapt_ge2048": 100.0,
+   "same_stream": true
+  }
+ ],
+ "edge_traces": {
+  "PRISM": [],
+  "MemAdapt_q90": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ]
+ },
+ "c3_edge_rule_failed_for": {
+  "MemAdapt_q90": [
+   101,
+   102,
+   103,
+   104,
+   105
+  ]
+ },
+ "identical_request_streams": true,
+ "c3_ready": false
+}

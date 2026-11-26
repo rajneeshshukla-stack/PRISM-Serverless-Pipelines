@@ -1,0 +1,31 @@
+[101] A_online_dynamic: viol 57.29% (post 100.00%) cost 1931 mem/day [1024, 1024, 1024, 2048, 2048, 2048, 2048] 11s
+[101] C_published_no_estimate: viol 57.29% (post 100.00%) cost 1260 mem/day [1024, 1024, 1024, 1024, 1024, 1024, 1024] 8s
+[101] B_online_fixed_1024: viol 57.29% (post 100.00%) cost 1744 mem/day [1024, 1024, 1024, 1024, 1024, 1024, 1024] 7s
+[101] B_online_fixed_2048: viol 57.14% (post 100.00%) cost 2069 mem/day [2048, 2048, 2048, 2048, 2048, 2048, 2048] 7s
+[101] B_online_fixed_3008: viol 0.00% (post 0.00%) cost 2546 mem/day [3008, 3008, 3008, 3008, 3008, 3008, 3008] 7s
+[101] done in 55s
+[102] A_online_dynamic: viol 57.59% (post 100.00%) cost 1969 mem/day [1024, 1024, 1024, 2048, 2048, 2048, 2048] 9s
+[102] C_published_no_estimate: viol 57.59% (post 100.00%) cost 1288 mem/day [1024, 1024, 1024, 1024, 1024, 1024, 1024] 8s
+[102] B_online_fixed_1024: viol 57.59% (post 100.00%) cost 1752 mem/day [1024, 1024, 1024, 1024, 1024, 1024, 1024] 7s
+[102] B_online_fixed_2048: viol 57.14% (post 100.00%) cost 2103 mem/day [2048, 2048, 2048, 2048, 2048, 2048, 2048] 7s
+[102] B_online_fixed_3008: viol 0.00% (post 0.00%) cost 2588 mem/day [3008, 3008, 3008, 3008, 3008, 3008, 3008] 7s
+[102] done in 52s
+[103] A_online_dynamic: viol 57.59% (post 100.00%) cost 1926 mem/day [1024, 1024, 1024, 2048, 2048, 2048, 2048] 8s
+[103] C_published_no_estimate: viol 57.59% (post 100.00%) cost 1266 mem/day [1024, 1024, 1024, 1024, 1024, 1024, 1024] 9s
+[103] B_online_fixed_1024: viol 57.59% (post 100.00%) cost 1729 mem/day [1024, 1024, 1024, 1024, 1024, 1024, 1024] 7s
+[103] B_online_fixed_2048: viol 57.14% (post 100.00%) cost 2060 mem/day [2048, 2048, 2048, 2048, 2048, 2048, 2048] 7s
+[103] B_online_fixed_3008: viol 0.00% (post 0.00%) cost 2538 mem/day [3008, 3008, 3008, 3008, 3008, 3008, 3008] 7s
+[103] done in 54s
+[104] A_online_dynamic: viol 57.74% (post 100.00%) cost 1977 mem/day [1024, 1024, 1024, 2048, 2048, 2048, 2048] 10s
+[104] C_published_no_estimate: viol 57.74% (post 100.00%) cost 1279 mem/day [1024, 1024, 1024, 1024, 1024, 1024, 1024] 9s
+[104] B_online_fixed_1024: viol 57.59% (post 100.00%) cost 1739 mem/day [1024, 1024, 1024, 1024, 1024, 1024, 1024] 8s
+[104] B_online_fixed_2048: viol 57.14% (post 100.00%) cost 2093 mem/day [2048, 2048, 2048, 2048, 2048, 2048, 2048] 8s
+[104] B_online_fixed_3008: viol 0.00% (post 0.00%) cost 2565 mem/day [3008, 3008, 3008, 3008, 3008, 3008, 3008] 8s
+[104] done in 58s
+[105] A_online_dynamic: viol 57.29% (post 100.00%) cost 1913 mem/day [1024, 1024, 1024, 2048, 2048, 2048, 2048] 11s
+[105] C_published_no_estimate: viol 57.29% (post 100.00%) cost 1254 mem/day [1024, 1024, 1024, 1024, 1024, 1024, 1024] 10s
+[105] B_online_fixed_1024: viol 57.29% (post 100.00%) cost 1683 mem/day [1024, 1024, 1024, 1024, 1024, 1024, 1024] 9s
+[105] B_online_fixed_2048: viol 57.14% (post 100.00%) cost 2060 mem/day [2048, 2048, 2048, 2048, 2048, 2048, 2048] 8s
+[105] B_online_fixed_3008: viol 0.15% (post 0.26%) cost 2534 mem/day [3008, 3008, 3008, 3008, 3008, 3008, 3008] 8s
+[105] done in 62s
+exit 0

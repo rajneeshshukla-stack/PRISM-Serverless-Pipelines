@@ -1,0 +1,41 @@
+start 2026-11-21T09:09:25Z code bde7d25 + scripts/revision/stage_demand_e2e.py
+P common seed 101: 95 rows in 867.6s
+P common seed 102: 95 rows in 789.3s
+P common seed 103: 95 rows in 839.4s
+P common seed 104: 95 rows in 875.1s
+P common seed 105: 95 rows in 871.8s
+P filter seed 101: 175 rows in 1567.1s
+P filter seed 102: 175 rows in 1520.5s
+P filter seed 103: 175 rows in 1501.2s
+P filter seed 104: 175 rows in 1497.2s
+P filter seed 105: 175 rows in 1500.8s
+P fanout seed 101: 175 rows in 11792.1s
+P fanout seed 102: 175 rows in 11850.5s
+P fanout seed 103: 175 rows in 11949.8s
+P fanout seed 104: 175 rows in 11927.8s
+P fanout seed 105: 175 rows in 12351.0s
+P batch seed 101: 175 rows in 1802.8s
+P batch seed 102: 175 rows in 1745.7s
+P batch seed 103: 175 rows in 2320.7s
+P batch seed 104: 175 rows in 2374.1s
+P batch seed 105: 175 rows in 2596.4s
+B default_wide seed 101: 130 rows in 1801.7s
+B default_wide seed 102: 130 rows in 1813.7s
+B default_wide seed 103: 130 rows in 1896.5s
+B default_wide seed 104: 130 rows in 1859.0s
+B default_wide seed 105: 130 rows in 1426.4s
+B smooth6000_wide seed 101: 130 rows in 1289.7s
+B smooth6000_wide seed 102: 130 rows in 1327.1s
+B smooth6000_wide seed 103: 130 rows in 1054.5s
+B smooth6000_wide seed 104: 130 rows in 1010.9s
+B smooth6000_wide seed 105: 130 rows in 975.0s
+B be0.30_wide seed 101: 130 rows in 831.6s
+B be0.30_wide seed 102: 130 rows in 828.9s
+B be0.30_wide seed 103: 130 rows in 697.0s
+B be0.30_wide seed 104: 130 rows in 744.7s
+B be0.30_wide seed 105: 130 rows in 684.5s
+
+real	340m39.453s
+user	0m0.045s
+sys	0m0.046s
+end 2026-11-21T14:50:05Z

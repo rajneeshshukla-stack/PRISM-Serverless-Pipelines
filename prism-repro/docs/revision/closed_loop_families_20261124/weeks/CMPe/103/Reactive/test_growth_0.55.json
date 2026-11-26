@@ -1,0 +1,22 @@
+{
+ "week": "test",
+ "param": 0.55,
+ "runtime_s": 53.4,
+ "n_requests": 7957960,
+ "share_mem_ge_2048": 0.0,
+ "cost": 2248.4773371727406,
+ "violating_window_rate": 0.013392857142857142,
+ "record_attainment": 0.9971731448763251,
+ "cold_start_ratio": 0.0003091558640656651,
+ "overflow_share": 0.0016050910032219257,
+ "p99_latency": 13.225,
+ "mean_provisioned": 627.9747023809524,
+ "scenario": "growth",
+ "seed": 103,
+ "family": "Reactive",
+ "set": "CMPe",
+ "cfg_sha": "65721002596b843f",
+ "counts_sha256": "e81a64820239a02e55b86e0cb88b4e1605ca60b04d98f750f2fe911469385266",
+ "pid": 493,
+ "finished_utc": "2026-11-24T18:50:12Z"
+}

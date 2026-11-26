@@ -1,0 +1,24 @@
+{
+ "PRISM_EB": {
+  "spec": {
+   "family": "PRISM",
+   "param": 0.05
+  },
+  "cost": 1000.8861581302461,
+  "ref_cost": 1000.8861581302461,
+  "viol": 0.011904761904761904,
+  "ref_viol": 0.011904761904761904,
+  "ok": true
+ },
+ "OnDemand": {
+  "spec": {
+   "family": "OnDemand"
+  },
+  "cost": 865.05164583855,
+  "ref_cost": 865.05164583855,
+  "viol": 0.16666666666666666,
+  "ref_viol": 0.16666666666666666,
+  "ok": true
+ },
+ "pass": true
+}

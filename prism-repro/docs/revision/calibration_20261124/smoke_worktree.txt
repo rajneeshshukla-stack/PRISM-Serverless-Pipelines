@@ -1,0 +1,8 @@
+legacy 14.5 PRISM eps 0.05 {'stationary': (1000.9, 1.19, [1024]), 'new_spike': (1258.5, 1.64, [1024])} | MemAdapt None {}
+legacy 13.0 PRISM eps 0.01 {'stationary': (1690.0, 0.0, [2048, 3008]), 'new_spike': (2090.7, 0.0, [2048])} | MemAdapt 0.6 {'stationary': (1313.0, 0.0, [2048]), 'new_spike': (1657.5, 0.0, [2048])}
+measured 14.5 PRISM eps 0.05 {'stationary': (1000.9, 1.19, [1024]), 'new_spike': (1258.5, 1.64, [1024])} | MemAdapt None {}
+measured 13.0 PRISM eps 0.01 {'stationary': (1112.5, 0.0, [2048]), 'new_spike': (1390.5, 0.0, [2048])} | MemAdapt 0.6 {'stationary': (1007.9, 0.0, [2048]), 'new_spike': (1272.4, 0.0, [2048])}
+
+real	4m9.672s
+user	0m0.000s
+sys	0m0.030s

@@ -1,0 +1,22 @@
+{
+ "mode": "full",
+ "time_scale": 0.0,
+ "invocations_planned": 23168,
+ "invocations_recorded": 23168,
+ "visits": 696,
+ "fake_config_updates": 696,
+ "runner_max_in_flight": 2,
+ "fake_max_in_flight": 1,
+ "cap": 8,
+ "fake_throttles": 0,
+ "fake_calls": 23168,
+ "tail_reports_missing": 416,
+ "recovered_from_cloudwatch": 416,
+ "no_report_after_fallback": 0,
+ "cold_without_init": 11,
+ "unexpected_warm_in_cold_batch": 4872,
+ "issues": {
+  "incomplete_visit_invocations_dropped": 0,
+  "orphan_cloudwatch_reports": 0
+ }
+}

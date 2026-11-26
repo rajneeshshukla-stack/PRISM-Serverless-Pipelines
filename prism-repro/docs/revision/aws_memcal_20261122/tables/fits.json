@@ -1,0 +1,188 @@
+{
+ "warm_eq2": {
+  "ingest": {
+   "d1024_s": 0.8498266307464133,
+   "nonscaling": 0.228,
+   "rms_log_error": 0.09248109170105455,
+   "ratio_3008_over_2048": 0.9996869028211135
+  },
+  "transform": {
+   "d1024_s": 4.216717350588319,
+   "nonscaling": 0.226,
+   "rms_log_error": 0.09083055816149065,
+   "ratio_3008_over_2048": 0.9972083670473902
+  },
+  "aggregate": {
+   "d1024_s": 2.6710550895974308,
+   "nonscaling": 0.227,
+   "rms_log_error": 0.09144760935431893,
+   "ratio_3008_over_2048": 0.9994799899441765
+  },
+  "load": {
+   "d1024_s": 1.2775007743118845,
+   "nonscaling": 0.219,
+   "rms_log_error": 0.09349683563691516,
+   "ratio_3008_over_2048": 0.9987447212991047
+  }
+ },
+ "init_eq3_P_mean": {
+  "ingest": {
+   "at_1024_s": 0.2281749730306403,
+   "init_nonscaling": 1.0,
+   "rms_log_error": 0.030949125570963333,
+   "boundary": true,
+   "measured_candidate": [
+    [
+     512,
+     0.2235
+    ],
+    [
+     1024,
+     0.2371
+    ],
+    [
+     2048,
+     0.233
+    ],
+    [
+     3008,
+     0.2195
+    ]
+   ]
+  },
+  "transform": {
+   "fit": "not estimable (non-positive or missing value)"
+  },
+  "aggregate": {
+   "fit": "not estimable (non-positive or missing value)"
+  },
+  "load": {
+   "fit": "not estimable (non-positive or missing value)"
+  },
+  "POOLED": {
+   "fit": "not estimable (non-positive or missing value)"
+  }
+ },
+ "init_eq3_I": {
+  "ingest": {
+   "at_1024_s": 0.11443425170580782,
+   "init_nonscaling": 1.0,
+   "rms_log_error": 0.003617093880973358,
+   "boundary": true,
+   "measured_candidate": [
+    [
+     512,
+     0.1138
+    ],
+    [
+     1024,
+     0.1143
+    ],
+    [
+     2048,
+     0.1149
+    ],
+    [
+     3008,
+     0.1147
+    ]
+   ]
+  },
+  "transform": {
+   "at_1024_s": 0.11455231201279946,
+   "init_nonscaling": 1.0,
+   "rms_log_error": 0.005010602018565672,
+   "boundary": true,
+   "measured_candidate": [
+    [
+     512,
+     0.1138
+    ],
+    [
+     1024,
+     0.1144
+    ],
+    [
+     2048,
+     0.1147
+    ],
+    [
+     3008,
+     0.1154
+    ]
+   ]
+  },
+  "aggregate": {
+   "at_1024_s": 0.11488594809762294,
+   "init_nonscaling": 1.0,
+   "rms_log_error": 0.0069825460222757985,
+   "boundary": true,
+   "measured_candidate": [
+    [
+     512,
+     0.1145
+    ],
+    [
+     1024,
+     0.1139
+    ],
+    [
+     2048,
+     0.1152
+    ],
+    [
+     3008,
+     0.116
+    ]
+   ]
+  },
+  "load": {
+   "at_1024_s": 0.11479179493634042,
+   "init_nonscaling": 1.0,
+   "rms_log_error": 0.003504425518606164,
+   "boundary": true,
+   "measured_candidate": [
+    [
+     512,
+     0.115
+    ],
+    [
+     1024,
+     0.1144
+    ],
+    [
+     2048,
+     0.1144
+    ],
+    [
+     3008,
+     0.1153
+    ]
+   ]
+  },
+  "POOLED": {
+   "at_1024_s": 0.11466661889987852,
+   "init_nonscaling": 1.0,
+   "rms_log_error": 0.003918829125932925,
+   "boundary": true,
+   "measured_candidate": [
+    [
+     512,
+     0.1143
+    ],
+    [
+     1024,
+     0.1143
+    ],
+    [
+     2048,
+     0.1148
+    ],
+    [
+     3008,
+     0.1154
+    ]
+   ]
+  }
+ }
+}

@@ -1,0 +1,302 @@
+"""Event-level simulator (§V-A, §VI-H). SIMULATION ONLY.
+
+Every request is an event. Arrivals are placed uniformly at random within each
+minute; service, orchestration and initialisation draws of every request and stage
+are fixed per (trace, week, scenario) so that every policy sees identical draws.
+Per stage, a request is served by a free provisioned environment if one exists
+(loss routing, so the provisioned pool is an M/G/P/P system); otherwise by an idle
+warm on-demand environment (last-in first-out, retained for the keep-alive period);
+otherwise it cold-starts, and the new environment is occupied for init + execution.
+An upstream completion plus the orchestration delay is the downstream arrival.
+Every request's latency is computed, so window attainment is exact.
+
+This is an independent reconstruction of the manuscript's description; it is
+open-loop: it replays provisioning schedules produced elsewhere (§VI-H).
+`simulate_events(..., want_telemetry=True)` additionally records per-minute
+telemetry of that open-loop replay (`EventTelemetry`). This is instrumentation and a
+data contract (the fields of `simulator.Telemetry` that policies read), not a closed
+loop: no policy consumes it, and `simulate_events` still runs stage by stage over the
+whole horizon. Making it epoch-major so decisions can respond to it is separate work
+(R2.2 remains open).
+"""
+from __future__ import annotations
+
+import heapq
+from collections import deque
+from dataclasses import dataclass
+
+import numpy as np
+
+from .config import PipelineConfig
+from .latency import init_mean, init_seconds, lognormal_mult, stage_demand, stage_means
+from .metrics import severity, weighted_quantile_hist, window_attainment
+from .simulator import Telemetry
+
+
+class EventDraws:
+    def __init__(self, cfg: PipelineConfig, counts: np.ndarray, seed: int, key: int):
+        rng = np.random.default_rng([seed, 500 + key])
+        n_min = len(counts)
+        S = cfg.n_stages
+        self.counts = counts.astype(np.int64)
+        self.minute = np.repeat(np.arange(n_min), self.counts)
+        self.arrival = self.minute * 60.0 + rng.uniform(0, 60, len(self.minute))
+        order = np.argsort(self.arrival, kind="stable")
+        self.arrival, self.minute = self.arrival[order], self.minute[order]
+        n = len(self.arrival)
+        self.ex = lognormal_mult(rng.standard_normal((S, n)), cfg.exec_shape).astype(np.float32)
+        self.ov = (cfg.overhead_mean * lognormal_mult(rng.standard_normal((S, n)), cfg.overhead_shape)).astype(np.float32)
+        self.init = lognormal_mult(rng.standard_normal((S, n)), cfg.init_shape).astype(np.float32)
+        self.n, self.n_min = n, n_min
+
+
+def _stage_pass(arr, x, z, P_min, KA, gen_min=None):
+    """One stage. arr sorted ascending. Returns finish times, cold flags, provisioned flags.
+    gen_min (M5 fix): memory-version index per minute; an on-demand environment is reused only by a
+    request of the same version."""
+    n = len(arr)
+    finish = np.empty(n)
+    cold = np.zeros(n, bool)
+    used_pc = np.zeros(n, bool)
+    pc_busy, od_busy, idle = [], [], deque()
+    hpush, hpop = heapq.heappush, heapq.heappop
+    arr_l, x_l, z_l = arr.tolist(), x.tolist(), z.tolist()
+    P_l = P_min.tolist()
+    nP = len(P_l)
+    G_l = gen_min.tolist() if gen_min is not None else None
+    cur_gen = None
+    for j in range(n):
+        t = arr_l[j]
+        while pc_busy and pc_busy[0] <= t:
+            hpop(pc_busy)
+        m = int(t // 60.0)
+        Pm = P_l[m] if m < nP else P_l[-1]
+        if len(pc_busy) < Pm:
+            f = t + x_l[j]
+            hpush(pc_busy, f)
+            used_pc[j] = True
+        else:
+            if G_l is None:
+                while od_busy and od_busy[0] <= t:
+                    idle.append(hpop(od_busy))
+                lim = t - KA
+                while idle and idle[0] < lim:
+                    idle.popleft()
+                if idle:
+                    idle.pop()
+                    f = t + x_l[j]
+                else:
+                    f = t + z_l[j] + x_l[j]
+                    cold[j] = True
+                hpush(od_busy, f)
+            else:  # M5 fix: entries are (finish time, version)
+                g = G_l[m] if m < len(G_l) else G_l[-1]
+                if g != cur_gen:
+                    cur_gen = g
+                    idle = deque(e for e in idle if e[1] == g)
+                while od_busy and od_busy[0][0] <= t:
+                    e = hpop(od_busy)
+                    if e[1] == g:
+                        idle.append(e)
+                lim = t - KA
+                while idle and idle[0][0] < lim:
+                    idle.popleft()
+                if idle:
+                    idle.pop()
+                    f = t + x_l[j]
+                else:
+                    f = t + z_l[j] + x_l[j]
+                    cold[j] = True
+                hpush(od_busy, (f, g))
+        finish[j] = f
+    return finish, cold, used_pc
+
+
+def max_inflight_per_minute(arr, finish, n_min):
+    """Maximum number of in-flight executions in each minute (sweep over +1/-1 events),
+    including the level carried into a minute from earlier events."""
+    times = np.concatenate([arr, finish])
+    delta = np.concatenate([np.ones(len(arr)), -np.ones(len(finish))])
+    o = np.lexsort((-delta, times))  # at equal times process arrivals first (conservative)
+    times, level = times[o], np.cumsum(delta[o])
+    mins = np.minimum((times // 60).astype(np.int64), n_min - 1)
+    out = np.zeros(n_min)
+    np.maximum.at(out, mins, level)
+    # level in force at the start of each minute = level after the last earlier event
+    k = np.searchsorted(times, np.arange(n_min) * 60.0, side="left") - 1
+    carry = np.where(k >= 0, level[np.maximum(k, 0)], 0.0)
+    return np.maximum(out, carry)
+
+
+@dataclass
+class EventTelemetry(Telemetry):
+    """Per-minute telemetry of an open-loop event-level replay (R2.2: instrumentation and data contract).
+
+    The fields inherited from `simulator.Telemetry` carry the same meaning as in the
+    fast simulator, so a policy's `decide(k, tel)` can read either: N arrivals per
+    minute, K peak in-flight executions per stage, P provisioned level, n_od requests
+    served on demand and cold the cold starts, each binned by the minute a request
+    reaches the stage. The extra fields support conservation checks: `arrivals` and
+    `completed` count stage arrivals and completions in each minute, and `inflight_end`
+    counts executions still running at the end of each minute. Events after the last
+    minute of the horizon are not observed (K is the exception: it reuses
+    `max_inflight_per_minute`, which folds them into the last minute)."""
+    arrivals: np.ndarray = None      # (n, S) stage arrivals per minute
+    completed: np.ndarray = None     # (n, S) stage completions per minute
+    inflight_end: np.ndarray = None  # (n, S) executions in flight at the end of each minute
+    mem: np.ndarray = None           # (n,) memory applied per minute
+
+
+def stage_telemetry(arr, fin, cold, used_pc, n_min):
+    """Per-minute telemetry of one stage from its event outcomes.
+
+    arr, fin: arrival and finish times (s); cold, used_pc: per-request flags from
+    `_stage_pass`. Returns dict(arrivals, completed, inflight_end, n_od, cold, K), each of
+    length n_min. inflight_end is counted directly at each minute boundary, not as a
+    running sum of the other two, so arrivals - completed accumulating to inflight_end
+    is a real check."""
+    arr = np.asarray(arr, float)
+    fin = np.asarray(fin, float)
+    T = n_min * 60.0
+    a_min = (arr // 60.0).astype(np.int64)
+    f_min = (fin // 60.0).astype(np.int64)
+    seen = arr < T
+    od = seen & ~np.asarray(used_pc, bool)
+    arrivals = np.bincount(a_min[seen], minlength=n_min)[:n_min]
+    completed = np.bincount(f_min[fin < T], minlength=n_min)[:n_min]
+    bounds = (np.arange(n_min) + 1) * 60.0
+    started = np.searchsorted(np.sort(arr), bounds, side="left")    # arrivals strictly before the boundary
+    finished = np.searchsorted(np.sort(fin), bounds, side="left")   # finishes strictly before the boundary
+    inflight_end = started - finished
+    n_od = np.bincount(a_min[od], minlength=n_min)[:n_min]
+    n_cold = np.bincount(a_min[od & np.asarray(cold, bool)], minlength=n_min)[:n_min]
+    K = max_inflight_per_minute(arr, fin, n_min)
+    return dict(arrivals=arrivals, completed=completed, inflight_end=inflight_end,
+                n_od=n_od, cold=n_cold, K=K)
+
+
+def simulate_events(cfg: PipelineConfig, draws: EventDraws, P_epoch: np.ndarray, mem_epoch: np.ndarray,
+                    bill_init: bool = True, want_inflight: bool = False, sample_seed: int | None = None,
+                    want_telemetry: bool = False) -> dict:
+    """Replay a provisioning schedule (per epoch, S stages) and memory schedule.
+    want_telemetry: also return raw['telemetry'], an EventTelemetry (R2.2)."""
+    if np.any(stage_demand(cfg) != 1.0):   # R2.5/R4.1: not modelled at event level (see PipelineConfig.stage_demand)
+        raise NotImplementedError("event-level simulator: stage-specific demand (stage_demand != 1) is not modelled; "
+                                  "fan-out joins, filter exits and batch formation would need defined semantics")
+    S, E = cfg.n_stages, cfg.epoch_min
+    P_min = np.repeat(np.asarray(P_epoch, float), E, axis=0)[:draws.n_min]
+    mem_min = np.repeat(np.asarray(mem_epoch), E)[:draws.n_min]
+    pr = cfg.prices
+    arr = draws.arrival.copy()
+    idx = np.arange(draws.n)          # request id of each position
+    cost = (P_min * (mem_min[:, None] / 1024.0) * 60.0 * pr.pc).sum() + draws.n * S * pr.req
+    od_share, cold_ratio, inflight, stel = [], [], [], []
+    KA = cfg.keepalive_min * 60.0
+    gen_min = np.concatenate([[0], np.cumsum(mem_min[1:] != mem_min[:-1])])  # M5 fix: memory version per minute
+    for s in range(S):
+        m_req = mem_min[np.minimum((arr // 60).astype(np.int64), draws.n_min - 1)]
+        d_s = np.array([stage_means(cfg, int(m))[s] for m in cfg.mem_options])
+        ini = np.array([init_mean(cfg, int(m)) for m in cfg.mem_options])
+        mi = np.searchsorted(np.array(cfg.mem_options), m_req)
+        x = draws.ex[s, idx] * d_s[mi]
+        if cfg.init_max_s is None:
+            z = draws.init[s, idx] * ini[mi]
+        else:  # R4.8: truncated initialisation, per memory size
+            u = draws.init[s, idx]
+            z = np.empty(len(u))
+            for j, m in enumerate(cfg.mem_options):
+                sel = mi == j
+                if sel.any():
+                    z[sel] = init_seconds(cfg, u[sel], m)
+        fin, cold, used_pc = _stage_pass(arr, x, z, P_min[:, s], KA, gen_min)
+        g = m_req / 1024.0
+        cost += (x * g * np.where(used_pc, pr.pcd, pr.od)).sum()
+        if bill_init:
+            cost += (z * g * cold * pr.od).sum()
+        od_share.append(1 - used_pc.mean())
+        cold_ratio.append(cold.mean())
+        if want_inflight:
+            inflight.append(max_inflight_per_minute(arr, fin, draws.n_min))
+        if want_telemetry:
+            stel.append(stage_telemetry(arr, fin, cold, used_pc, draws.n_min))
+        nxt = fin + draws.ov[s, idx]
+        o = np.argsort(nxt, kind="stable")
+        arr, idx = nxt[o], idx[o]
+    done = np.empty(draws.n)
+    done[idx] = arr                  # after final stage incl. its orchestration overhead
+    lat = done - draws.arrival
+    ok = lat <= cfg.deadline
+    ontime = np.bincount(draws.minute, weights=ok.astype(float), minlength=draws.n_min)
+    N = draws.counts.astype(float)
+    att, late, tot = window_attainment(N, ontime, cfg.window_min)
+    sev = severity(att, late, tot, 1 - cfg.sla_eps)
+    out = dict(cost=float(cost), record_attainment=float(ok.mean()),
+               p99_latency=weighted_quantile_hist(lat[None, :], np.ones((1, 1)), 0.99),
+               overflow_share=float(np.mean(od_share)), cold_start_ratio=float(np.mean(cold_ratio)),
+               slo_met=bool(sev["violating_window_rate"] <= cfg.slo_violating_window_target + 1e-12), **sev)
+    raw = dict(window_attainment=att.astype(np.float32), overflow_share_stage=np.array(od_share))
+    if want_inflight:
+        raw["inflight_max"] = np.stack(inflight, 1).astype(np.float32)
+    if want_telemetry:
+        col = {f: np.stack([t[f] for t in stel], 1).astype(float) for f in stel[0]}
+        raw["telemetry"] = EventTelemetry(
+            N=draws.counts.astype(float), K=col["K"], P=P_min.copy(), n_od=col["n_od"], cold=col["cold"],
+            filled=draws.n_min, arrivals=col["arrivals"], completed=col["completed"],
+            inflight_end=col["inflight_end"], mem=np.asarray(mem_min).copy())
+    if sample_seed is not None:  # latency-sampling error of the fast simulator (Supplement S4)
+        raw["sampling_flip_share"] = sampling_flips(draws, lat, cfg, sample_seed)
+        raw["sampling_flip_direction"] = sampling_flip_direction(draws, lat, cfg, sample_seed)
+    return dict(summary=out, raw=raw)
+
+
+def sampling_flip_direction(draws: EventDraws, lat: np.ndarray, cfg: PipelineConfig, seed: int,
+                            reps: int = 5):
+    """Direction of the sampling-induced misclassification (R5.M1).
+
+    sampling_flips reports how often the 100-request sample changes a window's compliance
+    verdict; Reviewer 5 notes the net direction was never reported. Returns the share of
+    windows the sample calls compliant while exact attainment calls them violating
+    ("optimistic" - these hide real violations) and the converse ("pessimistic"), plus
+    net = optimistic - pessimistic. Positive net means sampling understates violations.
+    """
+    N = draws.counts.astype(float)
+    ok = (lat <= cfg.deadline).astype(float)
+    exact_ot = np.bincount(draws.minute, weights=ok, minlength=draws.n_min)
+    att_exact, _, _ = window_attainment(N, exact_ot, cfg.window_min)
+    starts = np.concatenate([[0], np.cumsum(draws.counts)[:-1]])
+    rng = np.random.default_rng(seed)
+    thr = 1 - cfg.sla_eps
+    exact_bad = att_exact < thr
+    opt, pes = [], []
+    k = cfg.latency_samples
+    for _ in range(reps):
+        pick = starts[:, None] + (rng.uniform(size=(draws.n_min, k)) * np.maximum(draws.counts, 1)[:, None]).astype(np.int64)
+        pick = np.minimum(pick, len(ok) - 1)
+        frac = np.where(draws.counts > 0, ok[pick].mean(1), 1.0)
+        att_s, _, _ = window_attainment(N, N * frac, cfg.window_min)
+        samp_bad = att_s < thr
+        opt.append(float(np.mean(exact_bad & ~samp_bad)))
+        pes.append(float(np.mean(~exact_bad & samp_bad)))
+    o, p_ = float(np.mean(opt)), float(np.mean(pes))
+    return dict(optimistic=o, pessimistic=p_, net=o - p_)
+
+
+def sampling_flips(draws: EventDraws, lat: np.ndarray, cfg: PipelineConfig, seed: int, reps: int = 5):
+    """Share of windows whose compliance classification changes when attainment is
+    estimated from 100 sampled requests per minute (volume weighted) instead of exactly."""
+    N = draws.counts.astype(float)
+    ok = (lat <= cfg.deadline).astype(float)
+    exact_ot = np.bincount(draws.minute, weights=ok, minlength=draws.n_min)
+    att_exact, _, _ = window_attainment(N, exact_ot, cfg.window_min)
+    starts = np.concatenate([[0], np.cumsum(draws.counts)[:-1]])
+    rng = np.random.default_rng(seed)
+    flips = []
+    k = cfg.latency_samples
+    for _ in range(reps):
+        pick = starts[:, None] + (rng.uniform(size=(draws.n_min, k)) * np.maximum(draws.counts, 1)[:, None]).astype(np.int64)
+        pick = np.minimum(pick, len(ok) - 1)
+        frac = np.where(draws.counts > 0, ok[pick].mean(1), 1.0)
+        att_s, _, _ = window_attainment(N, N * frac, cfg.window_min)
+        thr = 1 - cfg.sla_eps
+        flips.append(np.mean((att_s < thr) != (att_exact < thr)))
+    return np.array(flips)

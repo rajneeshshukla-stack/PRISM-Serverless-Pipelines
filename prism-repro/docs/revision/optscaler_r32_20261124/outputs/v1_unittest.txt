@@ -1,0 +1,13 @@
+test_closed_form_equals_numerical (scripts.revision.test_optscaler_policy.V1a_MLE.test_closed_form_equals_numerical) ... ok
+test_hand_example (scripts.revision.test_optscaler_policy.V1a_MLE.test_hand_example) ... ok
+test_eq13 (scripts.revision.test_optscaler_policy.V1b_Decision.test_eq13) ... ok
+test_bruteforce_D3 (scripts.revision.test_optscaler_policy.V1c_HorizonIndependence.test_bruteforce_D3) ... ok
+test_algorithm1_by_hand (scripts.revision.test_optscaler_policy.V1d_OLR.test_algorithm1_by_hand) ... ok
+test_eta_zero_closed (scripts.revision.test_optscaler_policy.V1d_OLR.test_eta_zero_closed) ... ok
+test_perturb_future (scripts.revision.test_optscaler_policy.V1e_NoLookAhead.test_perturb_future) ... ok
+test_argmin (scripts.revision.test_optscaler_policy.V1f_EtaSelection.test_argmin) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.587s
+
+OK

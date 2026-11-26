@@ -1,0 +1,149 @@
+{
+ "label": "DECLARED RESEARCH WORKLOAD for the first multi-memory calibration campaign: the synthetic four-stage document-ingestion pipeline (aws_pipeline/SPEC.md); not the authors' application",
+ "declaration": "declared by the author for this campaign on 22 Nov 2026 (SPEC.md decision P1); the handler's own LABEL text is unchanged because the code is frozen",
+ "handler_label_in_code": "PROPOSED REPRESENTATIVE WORKLOAD (document ingestion); pending author decision P1; not the authors' code",
+ "workload_id": "docpipe-1",
+ "handler_file": "prism-repro/aws_pipeline/handlers/docpipe.py",
+ "handler_sha256_lf": "f03a4a72e933f1e748917fef97c85ad93d3ea0115078b5092f73a7eb64f2ac6e",
+ "handler_git_blob": "23206632b5f65bc94eb449a2d50e826559bc3ae2",
+ "handler_last_commit": "ea32370",
+ "repository_head_at_preparation": "af9c4ea",
+ "runtime": "python3.12",
+ "architecture": "x86_64",
+ "timeout_s": 60,
+ "region": "us-east-2",
+ "package": "zip holding docpipe.py only; standard library; no layers",
+ "entry_points": {
+  "ingest": "docpipe.ingest",
+  "transform": "docpipe.transform",
+  "aggregate": "docpipe.aggregate",
+  "load": "docpipe.load"
+ },
+ "memory_sizes_mb": [
+  512,
+  1024,
+  2048,
+  3008
+ ],
+ "functions": {
+  "ingest": [
+   "prism-mcal-ingest-512",
+   "prism-mcal-ingest-1024",
+   "prism-mcal-ingest-2048",
+   "prism-mcal-ingest-3008"
+  ],
+  "transform": [
+   "prism-mcal-transform-512",
+   "prism-mcal-transform-1024",
+   "prism-mcal-transform-2048",
+   "prism-mcal-transform-3008"
+  ],
+  "aggregate": [
+   "prism-mcal-aggregate-512",
+   "prism-mcal-aggregate-1024",
+   "prism-mcal-aggregate-2048",
+   "prism-mcal-aggregate-3008"
+  ],
+  "load": [
+   "prism-mcal-load-512",
+   "prism-mcal-load-1024",
+   "prism-mcal-load-2048",
+   "prism-mcal-load-3008"
+  ]
+ },
+ "work_units_K": {
+  "ingest": 373,
+  "transform": 4908,
+  "aggregate": 2264,
+  "load": 1966
+ },
+ "work_units_source": {
+  "run": "livetest_20261122-090236 (us-east-2, 1024 MB, 22 Nov 2026 09:02 CST; saved manifest 'calibration')",
+  "method": "campaign.calibrate: linear fit of handler time on K at 1024 MB, reference document of the mean size",
+  "targets_s": {
+   "ingest": 0.8,
+   "transform": 4.0,
+   "aggregate": 2.5,
+   "load": 1.2
+  },
+  "achieved_median_s": {
+   "ingest": 0.8005,
+   "transform": 4.0451,
+   "aggregate": 2.516,
+   "load": 1.1852
+  },
+  "handler_commit": "ea32370 (aws_pipeline/handlers/docpipe.py has no later commit)"
+ },
+ "retuned_per_size": false,
+ "reference_matched_by_construction": "K was fitted so that each stage's warm handler time at 1024 MB equals the paper's mean (0.8/4.0/2.5/1.2 s) on the reference document; 1024 MB warm times therefore reproduce the targets by construction and are a check, not a finding. The same K is used at 512, 2048 and 3008 MB, so the measured trend is Lambda's own scaling of this fixed work.",
+ "environment": {
+  "ingest": {
+   "PRISM_STAGE": "ingest",
+   "PRISM_K": "373",
+   "PRISM_INIT_ROWS": "0",
+   "PRISM_SINK": "none",
+   "PRISM_CALIBRATION": "0",
+   "PRISM_COLD_NONCE": "deploy"
+  },
+  "transform": {
+   "PRISM_STAGE": "transform",
+   "PRISM_K": "4908",
+   "PRISM_INIT_ROWS": "0",
+   "PRISM_SINK": "none",
+   "PRISM_CALIBRATION": "0",
+   "PRISM_COLD_NONCE": "deploy"
+  },
+  "aggregate": {
+   "PRISM_STAGE": "aggregate",
+   "PRISM_K": "2264",
+   "PRISM_INIT_ROWS": "0",
+   "PRISM_SINK": "none",
+   "PRISM_CALIBRATION": "0",
+   "PRISM_COLD_NONCE": "deploy"
+  },
+  "load": {
+   "PRISM_STAGE": "load",
+   "PRISM_K": "1966",
+   "PRISM_INIT_ROWS": "0",
+   "PRISM_SINK": "none",
+   "PRISM_CALIBRATION": "0",
+   "PRISM_COLD_NONCE": "deploy"
+  }
+ },
+ "input_mix": {
+  "description": "one reference document for every invocation of a stage, at every size: doc_seed 20261121, 3,000 words (the calibration document). The P2 log-normal size mix is NOT used: its spread is by construction and would swamp the cold-minus-warm difference.",
+  "reference": {
+   "pipeline_request_id": "memcal-reference",
+   "record_id": "memcal-reference",
+   "doc_seed": 20261121,
+   "n_words": 3000,
+   "deadline_s": 14.5,
+   "arm": "memcal"
+  },
+  "request_bytes": {
+   "ingest": 165,
+   "transform": 10043,
+   "aggregate": 9602,
+   "load": 9940
+  },
+  "request_sha256": {
+   "ingest": "505be8153c425fc4c7600672a7e584ffbe667e435c7c7b11e8fd0fcb04779860",
+   "transform": "da29fdd3d3f077ba0ddfeb715ad2ae1a245dd779d3fee9435fc1bc606e32694f",
+   "aggregate": "00009d2d42e43c04523f3f8c5664846b3287250790e8b1ff153890e2055842d7",
+   "load": "90505c36b1184d6e32730074a11556ff1cc1c1fbee4d7fe2041b891873ee34d6"
+  }
+ },
+ "startup_behaviour": {
+  "module_scope_inside_INIT": [
+   "standard-library imports: base64, hashlib, json, os, re, tempfile, time, unicodedata, uuid, zlib",
+   "ENV_ID = uuid4 (one per execution environment)",
+   "synthetic vocabulary of 2,000 words (_vocab)",
+   "_build_tables(PRISM_INIT_ROWS = 0): empty, so no classifier/lexicon start-up work (decision P3 default)",
+   "one 'env_init' JSON log line; four regular expressions compiled"
+  ],
+  "first_invocation": "no extra work: the handler only flags cold=True; any first-use costs (Unicode tables, regex and zlib first use) fall inside Duration and are measured as X",
+  "not_present": "no network, no files, no dependency outside the standard library; sink 'none' (boto3 never imported); PRISM_CALIBRATION=0 (k_override ignored)",
+  "consequence": "the cold penalty measured is the platform's plus the standard library's; the paper's 6 s mean initialisation has no code counterpart here (P3), so magnitudes are not the paper's"
+ },
+ "invocation": "synchronous Invoke (RequestResponse, LogType=Tail) of each stage function directly from the client; no Step Functions in this campaign"
+}

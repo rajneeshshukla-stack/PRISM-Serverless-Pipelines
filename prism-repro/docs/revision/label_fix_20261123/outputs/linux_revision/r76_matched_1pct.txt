@@ -1,0 +1,58 @@
+R7.6: PRISM against QuantProv-q90 at matched compliance. POST HOC, EXPLORATORY, PRE-CALIBRATION, fast simulator,
+development traces 101-105, test weeks (four-scenario mean per setting), paper grid. Regenerated on one pinned
+implementation (the regeneration tree); the stored rows are shown for comparison.
+
+## Target 1.0% violating windows
+  regenerated interpolated: PRISM minus QuantProv-q90 -1.98 +/- 2.09% (n 5; per trace -0.2, -3.1, -4.3, -1.1, -1.2) -> not distinguishable: interval includes zero and extends beyond +/-2%
+  regenerated evaluated (cheapest setting actually meeting the target, no interpolation): -2.69 +/- 1.00% (n 5; -1.5, -2.4, -2.8, -3.4, -3.4)
+  stored      interpolated: PRISM minus QuantProv-q90 -0.36 +/- 3.30% (n 5; per trace +3.3, +0.3, -4.1, -0.5, -0.7) -> not distinguishable: interval includes zero and extends beyond +/-2%
+  stored      evaluated (cheapest setting actually meeting the target, no interpolation): -0.74 +/- 1.72% (n 5; +0.1, -0.1, -2.9, -1.4, +0.5)
+  bracketing (regenerated): 5 of 5 traces bracketed for both families
+    PRISM          101: bracket [0.03 at 0.86%, 0.05 at 1.38%]; interpolated cost 1222.3; evaluated 0.03 at 0.86%, cost 1245.7; 6 complete settings
+    PRISM          102: bracket [0.03 at 0.78%, 0.05 at 1.19%]; interpolated cost 1254.1; evaluated 0.03 at 0.78%, cost 1302.6; 6 complete settings
+    PRISM          103: bracket [0.01 at 0.71%, 0.02 at 1.04%]; interpolated cost 1327.7; evaluated 0.01 at 0.71%, cost 1392.8; 6 complete settings
+    PRISM          104: bracket [0.02 at 0.89%, 0.03 at 1.08%]; interpolated cost 1338.2; evaluated 0.02 at 0.89%, cost 1370.6; 6 complete settings
+    PRISM          105: bracket [0.05 at 0.97%, 0.08 at 1.53%]; interpolated cost 1171.8; evaluated 0.05 at 0.97%, cost 1177.0; 6 complete settings
+    QuantProv_q90  101: bracket [1.0 at 0.82%, 0.9 at 1.12%]; interpolated cost 1224.2; evaluated 1.0 at 0.82%, cost 1264.6; 10 complete settings
+    QuantProv_q90  102: bracket [1.0 at 0.86%, 0.9 at 1.12%]; interpolated cost 1293.9; evaluated 1.0 at 0.86%, cost 1334.3; 10 complete settings
+    QuantProv_q90  103: bracket [1.2 at 0.86%, 1.1 at 1.08%]; interpolated cost 1387.8; evaluated 1.2 at 0.86%, cost 1432.9; 10 complete settings
+    QuantProv_q90  104: bracket [1.1 at 0.74%, 1.0 at 1.04%]; interpolated cost 1353.5; evaluated 1.1 at 0.74%, cost 1419.0; 10 complete settings
+    QuantProv_q90  105: bracket [0.9 at 0.86%, 0.8 at 1.15%]; interpolated cost 1186.2; evaluated 0.9 at 0.86%, cost 1218.4; 10 complete settings
+  change regenerated minus stored, paired by trace: -1.62 +/- 2.03 points
+
+## Target 1.5% violating windows
+  regenerated interpolated: PRISM minus QuantProv-q90 -1.78 +/- 1.51% (n 5; per trace -0.7, -1.0, -1.3, -3.7, -2.2) -> difference (PRISM cheaper): interval excludes zero
+  regenerated evaluated (cheapest setting actually meeting the target, no interpolation): -1.01 +/- 3.55% (n 5; -3.1, +1.9, -2.0, -4.0, +2.2)
+  stored      interpolated: PRISM minus QuantProv-q90 -0.44 +/- 2.13% (n 5; per trace -1.3, +0.3, -2.2, -1.1, +2.2) -> not distinguishable: interval includes zero and extends beyond +/-2%
+  stored      evaluated (cheapest setting actually meeting the target, no interpolation): +0.43 +/- 3.32% (n 5; +0.8, -1.3, -1.2, -1.1, +5.0)
+  bracketing (regenerated): 5 of 5 traces bracketed for both families
+    PRISM          101: bracket [0.05 at 1.38%, 0.08 at 2.42%]; interpolated cost 1150.9; evaluated 0.05 at 1.38%, cost 1161.0; 6 complete settings
+    PRISM          102: bracket [0.05 at 1.19%, 0.08 at 2.16%]; interpolated cost 1176.2; evaluated 0.05 at 1.19%, cost 1211.8; 6 complete settings
+    PRISM          103: bracket [0.03 at 1.34%, 0.05 at 1.86%]; interpolated cost 1241.3; evaluated 0.03 at 1.34%, cost 1268.5; 6 complete settings
+    PRISM          104: bracket [0.05 at 1.41%, 0.08 at 2.53%]; interpolated cost 1207.3; evaluated 0.05 at 1.41%, cost 1216.5; 6 complete settings
+    PRISM          105: bracket [0.05 at 0.97%, 0.08 at 1.53%]; interpolated cost 1092.8; evaluated 0.05 at 0.97%, cost 1177.0; 6 complete settings
+    QuantProv_q90  101: bracket [0.9 at 1.12%, 0.8 at 1.75%]; interpolated cost 1159.3; evaluated 0.9 at 1.12%, cost 1198.4; 10 complete settings
+    QuantProv_q90  102: bracket [0.8 at 1.49%, 0.7 at 1.97%]; interpolated cost 1187.9; evaluated 0.8 at 1.49%, cost 1189.6; 10 complete settings
+    QuantProv_q90  103: bracket [1.0 at 1.26%, 0.9 at 1.71%]; interpolated cost 1257.6; evaluated 1.0 at 1.26%, cost 1293.7; 10 complete settings
+    QuantProv_q90  104: bracket [0.9 at 1.41%, 0.8 at 1.90%]; interpolated cost 1254.0; evaluated 0.9 at 1.41%, cost 1267.3; 10 complete settings
+    QuantProv_q90  105: bracket [0.8 at 1.15%, 0.7 at 1.79%]; interpolated cost 1117.4; evaluated 0.8 at 1.15%, cost 1152.1; 10 complete settings
+
+## Target 2.0% violating windows
+  regenerated interpolated: PRISM minus QuantProv-q90 -1.26 +/- 1.69% (n 4; per trace -0.8, -0.0, -1.8, -2.4) -> not distinguishable: interval includes zero and extends beyond +/-2%
+  regenerated evaluated (cheapest setting actually meeting the target, no interpolation): +1.79 +/- 5.33% (n 5; +2.4, +8.2, -3.6, +2.0, -0.0)
+  stored      interpolated: PRISM minus QuantProv-q90 +0.17 +/- 1.18% (n 5; per trace +0.2, +0.0, -1.3, +0.8, +1.2) -> tie: interval within +/-2%
+  stored      evaluated (cheapest setting actually meeting the target, no interpolation): +1.85 +/- 5.55% (n 5; -0.5, +4.7, -5.0, +5.0, +5.0)
+  bracketing (regenerated): 4 of 5 traces bracketed for both families
+    PRISM          101: bracket [0.05 at 1.38%, 0.08 at 2.42%]; interpolated cost 1109.7; evaluated 0.05 at 1.38%, cost 1161.0; 6 complete settings
+    PRISM          102: bracket [0.05 at 1.19%, 0.08 at 2.16%]; interpolated cost 1118.7; evaluated 0.05 at 1.19%, cost 1211.8; 6 complete settings
+    PRISM          103: bracket [0.05 at 1.86%, 0.08 at 2.75%]; interpolated cost 1166.0; evaluated 0.05 at 1.86%, cost 1180.6; 6 complete settings
+    PRISM          104: bracket [0.05 at 1.41%, 0.08 at 2.53%]; interpolated cost 1154.1; evaluated 0.05 at 1.41%, cost 1216.5; 6 complete settings
+    PRISM          105: bracket NOT BRACKETED; interpolated cost nan; evaluated 0.08 at 1.53%, cost 1088.8; 6 complete settings
+    QuantProv_q90  101: bracket [0.8 at 1.75%, 0.7 at 2.75%]; interpolated cost 1118.5; evaluated 0.8 at 1.75%, cost 1133.9; 10 complete settings
+    QuantProv_q90  102: bracket [0.7 at 1.97%, 0.6 at 3.35%]; interpolated cost 1119.0; evaluated 0.7 at 1.97%, cost 1120.3; 10 complete settings
+    QuantProv_q90  103: bracket [0.9 at 1.71%, 0.8 at 2.23%]; interpolated cost 1187.8; evaluated 0.9 at 1.71%, cost 1225.1; 10 complete settings
+    QuantProv_q90  104: bracket [0.8 at 1.90%, 0.7 at 2.64%]; interpolated cost 1182.6; evaluated 0.8 at 1.90%, cost 1192.6; 10 complete settings
+    QuantProv_q90  105: bracket [0.7 at 1.79%, 0.6 at 2.79%]; interpolated cost 1076.5; evaluated 0.7 at 1.79%, cost 1088.8; 10 complete settings
+
+Reference figures (docs/revision/matched_compliance_discrepancy/FINDINGS_20261122.md): stored -0.36 +/- 3.30%;
+controlled replay at HEAD defaults on this laptop -2.27 +/- 2.02% (exact attainment and Erlang-B switched on).

@@ -1,0 +1,89 @@
+{
+ "assumptions": {
+  "n_records_per_arm": 40,
+  "schedule_mb": [
+   1024,
+   512,
+   2048,
+   1024,
+   1024
+  ],
+  "smoke_records": 3,
+  "calibration_invocations_per_stage_max": 20,
+  "init_s_per_cold_start": 1.0,
+  "cold_starts_per_reset": 32,
+  "client_overhead_s": 0.15,
+  "transition_s": 0.1,
+  "prices": {
+   "lambda_gb_s": 1.66667e-05,
+   "lambda_request": 2.0000000000000002e-07,
+   "sfn_request": 1e-06,
+   "sfn_gb_s": 1.667e-05,
+   "logs_ingest_gb": 0.5,
+   "logs_storage_gb_month": 0.03
+  },
+  "prices_status": "UNVERIFIED list prices; check us-east-2 before approval",
+  "free_tier": "not assumed"
+ },
+ "models": {
+  "cpu_linear": {
+   "lambda_gb_s": 1211.5,
+   "lambda_invocations": 412,
+   "sfn_executions": 83,
+   "e2e_s_by_memory": {
+    "512": 17.55,
+    "1024": 9.05,
+    "2048": 4.8
+   },
+   "cost_usd": {
+    "lambda_duration": 0.02019,
+    "lambda_requests": 8e-05,
+    "sfn_requests": 8e-05,
+    "sfn_duration": 0.00082,
+    "logs_ingest": 0.00031,
+    "logs_storage_7d": 0.0
+   },
+   "total_usd": 0.0215
+  },
+  "vcpu_plateau": {
+   "lambda_gb_s": 1222.2,
+   "lambda_invocations": 412,
+   "sfn_executions": 83,
+   "e2e_s_by_memory": {
+    "512": 17.55,
+    "1024": 9.05,
+    "2048": 5.47
+   },
+   "cost_usd": {
+    "lambda_duration": 0.02037,
+    "lambda_requests": 8e-05,
+    "sfn_requests": 8e-05,
+    "sfn_duration": 0.00083,
+    "logs_ingest": 0.00031,
+    "logs_storage_7d": 0.0
+   },
+   "total_usd": 0.0217
+  },
+  "eq2_model": {
+   "lambda_gb_s": 1228.5,
+   "lambda_invocations": 412,
+   "sfn_executions": 83,
+   "e2e_s_by_memory": {
+    "512": 13.3,
+    "1024": 9.05,
+    "2048": 6.93
+   },
+   "cost_usd": {
+    "lambda_duration": 0.02048,
+    "lambda_requests": 8e-05,
+    "sfn_requests": 8e-05,
+    "sfn_duration": 0.0008,
+    "logs_ingest": 0.00031,
+    "logs_storage_7d": 0.0
+   },
+   "total_usd": 0.0218
+  }
+ },
+ "planning_total_usd_upper": 0.0218,
+ "suggested_budget_alarm_usd": 1.0
+}
