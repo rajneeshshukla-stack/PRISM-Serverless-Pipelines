@@ -84,6 +84,9 @@ matplotlib 3.10.8 and tabulate 0.10.0. The freeze files are:
     lines of that list from its folder, as its README says.
 - **Archive contents:** `docs/revision/label_fix_20261123/release_inputs.sha256` (74 entries) is checked inside the
   extracted archive (command 3).
-- **Lists of files kept outside Git:** `sources.sha256` in three AWS folders, `docs/revision/r61_live_run_20261125/raw_sources.sha256`
-  and `docs/revision/graphical_abstract_20261123/linux_e4b/inputs.sha256`. Their files are not in the repository
+- **Lists of files kept outside Git:** `sources.sha256` in three AWS folders, `docs/revision/r61_live_run_20261125/raw_sources.sha256`,
+  `docs/revision/r61_live_run_20261125/sanitized_summaries_20261128/sources.sha256` (added 28 Nov 2026) and
+  `docs/revision/graphical_abstract_20261123/linux_e4b/inputs.sha256`. Their files are not in the repository
   (`DATA_SOURCES.md`, section 5). This is an availability limit, not a checksum failure.
+- **Sanitized summaries of 28 Nov 2026:** `docs/revision/r61_live_run_20261125/sanitized_summaries_20261128/` has its own
+  `SHA256SUMS`, checked from that folder on any checkout (its `.gitattributes` keeps the files byte for byte).

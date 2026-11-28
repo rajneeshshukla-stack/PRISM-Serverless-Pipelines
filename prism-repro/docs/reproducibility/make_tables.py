@@ -298,23 +298,47 @@ rl = {r["line"]: r for r in rec}
 x22 = dict(req=float(rl["export: us-east-2 Lambda, 22 Nov 2026 UTC"]["requests"]), gbs=float(rl["export: us-east-2 Lambda, 22 Nov 2026 UTC"]["gb_s"]))
 sub = dict(req=float(rl["subtotal with REPORT records"]["requests"]), gbs=float(rl["subtotal with REPORT records"]["gb_s"]))
 res_gbs = float(rl["residual after REPORT-attributed lines"]["gb_s"])
+res412 = float(rl["residual after REPORT-attributed lines"]["requests"])
+ids332 = float(rl["live test, 21 Nov 20:30 CST (02:30-02:55 UTC 22 Nov): stage invocations with saved request IDs"]["requests"])
 res80 = float(rl["residual after also counting the 21 Nov live test's saved request IDs"]["requests"])
 assert (x22["req"], round(x22["gbs"], 1), sub["req"], round(sub["gbs"], 1), res80, round(res_gbs, 1)) == (21784, 57005.6, 21372, 56167.1, 80, 838.4)
+assert (res412, ids332) == (412, 332) and sub["req"] + ids332 + res80 == x22["req"]
 mb = {r["scope"]: r for r in csv.DictReader(open(os.path.join(REV, "aws_memcal_20261122", "tables", "billing.csv"), encoding="utf-8"))}
 cal_req = sum(int(mb[k]["requests"]) for k in ("block 0", "block 1", "block 2"))
 cal_gbs = sum(float(mb[k]["billed_gb_s"]) for k in ("block 0", "block 1", "block 2"))
 cal_usd = sum(float(mb[k]["usd_lambda_list_price"]) for k in ("block 0", "block 1", "block 2"))
 assert cal_req == 20992 and abs(cal_gbs - 55234.5) < 0.05 and abs(cal_usd - 0.92) < 0.01, (cal_req, cal_gbs, cal_usd)
-# The 25 Nov 2026 row comes from a PRIVATE AWS billing export (Cost Explorer; it carries account data and is not
-# published). Its aggregates were read from the export on 25 Nov 2026 and are fixed here; this row cannot be
-# re-derived from the repository.
-req25, od25, pc25, lam_use = 2568.0, 3255.4, 2219.8, 0.0216
+# The 25 Nov 2026 row: the export itself is PRIVATE (Cost Explorer; it carries account data). Its aggregates and the
+# replay's REPORT populations are published as a sanitized summary (28 Nov 2026), with the export's SHA-256 in
+# sources.sha256 there; this row is read from that summary. (Until 28 Nov the row was fixed text, and it compared the
+# export with the 2,596 matched REPORT records instead of all 2,652 saved ones; corrected here.)
+S25 = os.path.join(REV, "r61_live_run_20261125", "sanitized_summaries_20261128")
+SM = json.load(open(os.path.join(S25, "summary.json"), encoding="utf-8"))
+reg = SM["billing_export"]["regional_us_east_2_lambda"]
+req25 = reg["USE2-Request"]["quantity"]
+od25 = reg["USE2-Lambda-GB-Second"]["quantity"]
+pc25 = reg["USE2-Lambda-Provisioned-GB-Second"]["quantity"]
+lam_use = SM["billing_export"]["account_wide_lambda_by_record_type_usd"]["Usage"]
+lam_cred = SM["billing_export"]["account_wide_lambda_by_record_type_usd"]["Credit"]
+assert SM["billing_export"]["estimated"] is True and SM["billing_export"]["period_utc"] == {"Start": "2026-11-25", "End": "2026-11-26"}
+assert (req25, round(od25, 3), round(pc25, 3), round(lam_use, 6), round(lam_cred, 6)) == (2568, 3255.356, 2219.792, 0.021581, -0.021581)
+assert all(v["unblended_cost_usd"] == 0 for v in reg.values()) and SM["billing_export"]["provisioned_concurrency_capacity_line"] is False
+pops = SM["report_populations"]
+n_arms, g_arms = pops["replay arms (PRISM + OnDemand): stage executions"]["report_records"], pops["replay arms (PRISM + OnDemand): stage executions"]["billed_gb_s"]
+n_match = pops["matched REPORT records (replay arms + smoke)"]["report_records"]
+n_probe = pops["calibration-probe REPORTs (unmatched extras)"]["report_records"]
+n_all = pops["all saved REPORT records of the replay"]["report_records"]
+assert (n_arms, n_match, n_probe, n_all) == (2584, 2596, 56, 2652) and n_match + n_probe == n_all
+assert (n_match, n_probe) == (cov["matched"], cov["extra_reports"])
+# the harness estimate is arm-only: its request and duration costs give back 2,584 requests and 5,560.3 GB-s
+assert round(est["lambda_requests"] / (0.20 / 1e6)) == n_arms and abs(g_arms * 0.0000166667 - est["lambda_duration"]) < 1e-9
+assert round(g_arms, 1) == 5560.3 and round(est["sfn_requests"] / 1e-6) == 646
 md = ["# TR5. Cost evidence, by kind (kept distinct; no figure here is a final replay-attributable charge)", "",
       "| Kind | Scope | Requests | GB-s | Amount | Status | Source |", "|---|---|---|---|---|---|---|",
       f"| Usage-based estimate at public list price | memcal-1 calibration blocks (22 Nov 2026 UTC), Lambda duration + requests, free tier not assumed | {cal_req:,} | {cal_gbs:,.1f} | USD {cal_usd:.2f} | estimate from REPORT records, not a bill | `aws_memcal_20261122/tables/billing.csv` |",
-      f"| Harness estimate at UNVERIFIED list prices | R6.1 replay, both arms, Lambda + Step Functions, excludes provisioned concurrency | - | - | USD {sum(est.values()):.2f} | estimate, not a bill | `r61_live_run_20261125/r61_results.json` |",
-      f"| AWS estimated billing export (Cost Explorer) | us-east-2, 22 Nov 2026 UTC, full day, all resources | {x22['req']:,.0f} | {x22['gbs']:,.1f} | USD 0 (no reason stated) | ESTIMATED, provisional; {sub['req']:,.0f} requests / {sub['gbs']:,.1f} GB-s matched to saved REPORT records, {res80:,.0f} requests / {res_gbs:,.1f} GB-s unattributed | `billing_reconciliation_20261124/reconciliation.csv` |",
-      f"| AWS estimated billing export (Cost Explorer) | us-east-2, 25 Nov 2026 UTC (R6.1 replay day), full day, all resources | {req25:,.0f} | {od25:,.1f} on demand + {pc25:,.1f} on provisioned environments | USD 0 by usage type; account-wide Lambda usage USD {lam_use:.4f} offset by an equal credit | ESTIMATED, provisional; no separate provisioned-concurrency capacity line; {req25:,.0f} requests against 2,596 matched REPORT records (28 fewer), NOT RECONCILED | private AWS billing export (not published: it carries account data) |",
+      f"| Harness estimate at UNVERIFIED list prices | R6.1 replay, both arms: Lambda (all duration at the on-demand rate) + {round(est['sfn_requests'] / 1e-6)} Step Functions executions; excludes provisioned-concurrency capacity | {n_arms:,} | {g_arms:,.1f} | USD {sum(est.values()):.2f} | estimate, not a bill | `r61_live_run_20261125/r61_results.json`; counts in `r61_live_run_20261125/sanitized_summaries_20261128/report_populations_20261125.csv` |",
+      f"| AWS estimated billing export (Cost Explorer) | us-east-2, 22 Nov 2026 UTC, full day, all resources | {x22['req']:,.0f} | {x22['gbs']:,.1f} | USD 0 (no reason stated) | ESTIMATED, provisional; of {x22['req']:,.0f} requests, {sub['req']:,.0f} ({sub['gbs']:,.1f} GB-s) matched to saved REPORT records, {ids332:,.0f} to saved request IDs only (21 Nov live test), {res80:,.0f} unattributed; the other {res_gbs:,.1f} GB-s belong to these {res412:,.0f} requests | `billing_reconciliation_20261124/reconciliation.csv` |",
+      f"| AWS estimated billing export (Cost Explorer) | us-east-2, 25 Nov 2026 UTC (R6.1 replay day), full day, all resources | {req25:,.0f} | {od25:,.1f} on demand + {pc25:,.1f} on provisioned environments | USD 0 by usage type; account-wide Lambda usage USD {lam_use:.4f} offset by an equal credit | ESTIMATED, provisional; no separate provisioned-concurrency capacity line; {req25:,.0f} requests against the replay's {n_all:,} saved REPORT records ({n_match:,} stage executions + {n_probe} calibration probes): {n_all - req25:,.0f} fewer, NOT RECONCILED | `r61_live_run_20261125/sanitized_summaries_20261128/billing_export_20261125.csv` (sanitized summary; the export is private, its SHA-256 in `r61_live_run_20261125/sanitized_summaries_20261128/sources.sha256`) |",
       "| Final charges attributable to the runs | memcal-1 and the R6.1 replay | - | - | open | requires the final bill / Cost and Usage Report | pending |"]
 write("TR5_cost_evidence_by_kind", md, None, None)
 

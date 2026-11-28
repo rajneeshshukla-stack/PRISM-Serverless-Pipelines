@@ -1,0 +1,6 @@
+scope,service,line,quantity,unit,unblended_cost_usd
+regional (us-east-2),AWS Lambda,usage type USE2-Request,2568,Requests,0.000000
+regional (us-east-2),AWS Lambda,usage type USE2-Lambda-GB-Second (on-demand duration),3255.3560,Lambda-GB-Second,0.000000
+regional (us-east-2),AWS Lambda,usage type USE2-Lambda-Provisioned-GB-Second (duration on provisioned environments),2219.7920,Lambda-GB-Second,0.000000
+account-wide (all regions),AWS Lambda,record type Usage,,,0.021581
+account-wide (all regions),AWS Lambda,record type Credit,,,-0.021581

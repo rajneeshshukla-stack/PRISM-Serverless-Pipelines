@@ -1,0 +1,18 @@
+event_time_utc,event_name,stage,requested_units,error_code,phase
+2026-11-25T03:41:25Z,DeleteProvisionedConcurrencyConfig,aggregate,,none,reset before the OnDemand arm
+2026-11-25T03:41:25Z,DeleteProvisionedConcurrencyConfig,ingest,,none,reset before the OnDemand arm
+2026-11-25T03:41:25Z,DeleteProvisionedConcurrencyConfig,load,,none,reset before the OnDemand arm
+2026-11-25T03:41:25Z,DeleteProvisionedConcurrencyConfig,transform,,none,reset before the OnDemand arm
+2026-11-25T04:21:37Z,DeleteProvisionedConcurrencyConfig,aggregate,,none,reset before the PRISM arm
+2026-11-25T04:21:37Z,DeleteProvisionedConcurrencyConfig,ingest,,none,reset before the PRISM arm
+2026-11-25T04:21:37Z,DeleteProvisionedConcurrencyConfig,load,,none,reset before the PRISM arm
+2026-11-25T04:21:37Z,DeleteProvisionedConcurrencyConfig,transform,,none,reset before the PRISM arm
+2026-11-25T04:21:44Z,PutProvisionedConcurrencyConfig,aggregate,2,none,PRISM decision epoch 0: initial allocation
+2026-11-25T04:21:44Z,PutProvisionedConcurrencyConfig,ingest,1,none,PRISM decision epoch 0: initial allocation
+2026-11-25T04:21:44Z,PutProvisionedConcurrencyConfig,load,1,none,PRISM decision epoch 0: initial allocation
+2026-11-25T04:21:44Z,PutProvisionedConcurrencyConfig,transform,2,none,PRISM decision epoch 0: initial allocation
+2026-11-25T04:28:08Z,PutProvisionedConcurrencyConfig,aggregate,1,none,PRISM decision epoch 1: decrease (aggregate 2 -> 1)
+2026-11-25T05:04:20Z,DeleteProvisionedConcurrencyConfig,aggregate,,none,teardown
+2026-11-25T05:04:20Z,DeleteProvisionedConcurrencyConfig,ingest,,none,teardown
+2026-11-25T05:04:20Z,DeleteProvisionedConcurrencyConfig,load,,none,teardown
+2026-11-25T05:04:20Z,DeleteProvisionedConcurrencyConfig,transform,,none,teardown

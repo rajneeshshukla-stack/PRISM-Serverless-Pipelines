@@ -1,0 +1,113 @@
+{
+ "billing_export": {
+  "account_wide_lambda_by_record_type_usd": {
+   "Credit": -0.0215812618,
+   "Usage": 0.0215812618
+  },
+  "billed_gb_s_total_regional": 5475.148,
+  "estimated": true,
+  "exported_utc": "20261125T183112Z",
+  "period_utc": {
+   "End": "2026-11-26",
+   "Start": "2026-11-25"
+  },
+  "provisioned_concurrency_capacity_line": false,
+  "regional_us_east_2_lambda": {
+   "USE2-Lambda-GB-Second": {
+    "quantity": 3255.356,
+    "unblended_cost_usd": 0.0,
+    "unit": "Lambda-GB-Second"
+   },
+   "USE2-Lambda-Provisioned-GB-Second": {
+    "quantity": 2219.792,
+    "unblended_cost_usd": 0.0,
+    "unit": "Lambda-GB-Second"
+   },
+   "USE2-Request": {
+    "quantity": 2568.0,
+    "unblended_cost_usd": 0.0,
+    "unit": "Requests"
+   }
+  },
+  "source": "AWS Cost Explorer, estimated (private; SHA-256 in sources.sha256)"
+ },
+ "cloudtrail": {
+  "event_time_range_utc": [
+   "2026-11-25T03:31:58Z",
+   "2026-11-25T05:13:51Z"
+  ],
+  "events_in_export": 3069,
+  "exported_utc": "20261125T183457Z",
+  "lookup": {
+   "from_utc": "03:30",
+   "region": "us-east-2",
+   "to_utc": "05:15"
+  },
+  "provisioned_concurrency_events": {
+   "DeleteProvisionedConcurrencyConfig / none": 12,
+   "GetProvisionedConcurrencyConfig / ProvisionedConcurrencyConfigNotFoundException": 936,
+   "GetProvisionedConcurrencyConfig / none": 976,
+   "PutProvisionedConcurrencyConfig / none": 5
+  },
+  "source": "CloudTrail management events (private; SHA-256 in sources.sha256)",
+  "status_reads_utc": {
+   "ProvisionedConcurrencyConfigNotFoundException": [
+    "2026-11-25T03:41:31Z",
+    "2026-11-25T04:21:31Z"
+   ],
+   "none": [
+    "2026-11-25T04:21:44Z",
+    "2026-11-25T05:03:08Z"
+   ]
+  }
+ },
+ "comparison": {
+  "pc_served_report_gb_s_minus_provisioned_gb_s": 152.218,
+  "saved_report_gb_s_minus_billed_gb_s": 169.305,
+  "saved_reports_minus_billed_requests": 84,
+  "status": "not reconciled: the populations have different scopes"
+ },
+ "harness_estimate_check": {
+  "lambda_billed_gb_s": 5560.316,
+  "lambda_duration_usd": 0.0926721186772,
+  "lambda_requests": 2584,
+  "price_lambda_gb_s_unverified": 1.66667e-05,
+  "sfn_executions": 646,
+  "total_usd_unverified_prices": 0.0997
+ },
+ "readiness_from_harness_polling": {
+  "epoch0_initial_allocation_ready_after_s": 82.8,
+  "epoch1_decrease_ready_after_s": 20.1,
+  "source": "../r61_results.json pc_readiness (public)"
+ },
+ "report_populations": {
+  "all saved REPORT records of the replay": {
+   "billed_gb_s": 5644.453,
+   "report_records": 2652
+  },
+  "calibration-probe REPORTs (unmatched extras)": {
+   "billed_gb_s": 57.678,
+   "report_records": 56
+  },
+  "matched REPORT records (replay arms + smoke)": {
+   "billed_gb_s": 5586.775,
+   "report_records": 2596
+  },
+  "of which served by provisioned concurrency (PRISM arm)": {
+   "billed_gb_s": 2372.01,
+   "report_records": 1112
+  },
+  "replay arms (PRISM + OnDemand): stage executions": {
+   "billed_gb_s": 5560.316,
+   "report_records": 2584
+  },
+  "smoke run: stage executions": {
+   "billed_gb_s": 26.459,
+   "report_records": 12
+  }
+ },
+ "run_window_utc": [
+  "2026-11-25T03:38:34Z",
+  "2026-11-25T05:04:26Z"
+ ]
+}

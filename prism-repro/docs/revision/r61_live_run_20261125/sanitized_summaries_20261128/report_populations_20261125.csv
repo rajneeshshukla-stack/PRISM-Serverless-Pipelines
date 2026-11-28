@@ -1,0 +1,7 @@
+population,report_records,billed_gb_s,definition
+replay arms (PRISM + OnDemand): stage executions,2584,5560.316,"matched to run records; the harness estimate's population (TR3, TR5)"
+  of which served by provisioned concurrency (PRISM arm),1112,2372.010,init type provisioned-concurrency in the run records
+smoke run: stage executions,12,26.459,matched to run records
+matched REPORT records (replay arms + smoke),2596,5586.775,report_coverage.matched in r61_results.json
+calibration-probe REPORTs (unmatched extras),56,57.678,report_coverage.extra_reports in r61_results.json
+all saved REPORT records of the replay,2652,5644.453,"every run phase 2026-11-25T03:38:34Z to 2026-11-25T05:04:26Z, inside the export's UTC day"
