@@ -1,0 +1,22 @@
+{
+ "week": "val",
+ "param": 0.8,
+ "runtime_s": 62.2,
+ "n_requests": 6085213,
+ "share_mem_ge_2048": 1.0,
+ "cost": 1097.7507243308953,
+ "violating_window_rate": 0.002976190476190476,
+ "record_attainment": 0.9994849810516082,
+ "cold_start_ratio": 0.0008605697121859168,
+ "overflow_share": 0.04817629226783024,
+ "p99_latency": 10.035,
+ "mean_provisioned": 98.40376984126983,
+ "scenario": "validation",
+ "seed": 105,
+ "family": "MemAdapt_q90",
+ "set": "CAL145C",
+ "cfg_sha": "47dfd93b71879e5d",
+ "counts_sha256": "c8cc4e73fbaa821d8463a506a0423ed2f3940ed0513953654e5b27d4873cef85",
+ "pid": 589,
+ "finished_utc": "2026-11-25T20:26:34Z"
+}

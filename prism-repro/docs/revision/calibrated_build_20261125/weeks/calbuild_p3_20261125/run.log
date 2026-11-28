@@ -1,0 +1,248 @@
+2026-11-25T18:50:00Z start E workers=1
+2026-11-25T18:51:04Z week CAL145C 101 QuantProv_q90 val 0.4: cost 815.0, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T18:51:57Z week CAL145C 101 QuantProv_q90 test 0.4: cost 810.3, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T18:52:26Z week CAL145C 101 Reactive val 1.0: cost 1448.0, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T18:52:55Z week CAL145C 101 Reactive test 1.0: cost 1458.9, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T18:53:57Z week CAL145C 102 QuantProv_q90 val 0.4: cost 818.9, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T18:54:49Z week CAL145C 102 QuantProv_q90 test 0.4: cost 828.4, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T18:55:17Z week CAL145C 102 Reactive val 1.0: cost 1455.9, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T18:55:45Z week CAL145C 102 Reactive test 1.0: cost 1404.0, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T18:56:44Z week CAL145C 103 QuantProv_q90 val 0.4: cost 786.1, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T18:57:37Z week CAL145C 103 QuantProv_q90 test 0.4: cost 817.7, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T18:58:04Z week CAL145C 103 Reactive val 1.0: cost 1364.2, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T18:58:32Z week CAL145C 103 Reactive test 1.0: cost 1412.0, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T18:59:33Z week CAL145C 104 QuantProv_q90 val 0.4: cost 803.9, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T19:00:25Z week CAL145C 104 QuantProv_q90 test 0.4: cost 800.6, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T19:00:53Z week CAL145C 104 Reactive val 1.0: cost 1397.8, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T19:01:21Z week CAL145C 104 Reactive test 1.0: cost 1388.5, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T19:02:23Z week CAL145C 105 QuantProv_q90 val 0.4: cost 811.5, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T19:03:15Z week CAL145C 105 QuantProv_q90 test 0.4: cost 817.1, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T19:03:43Z week CAL145C 105 Reactive val 1.0: cost 1406.3, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T19:04:10Z week CAL145C 105 Reactive test 1.0: cost 1429.5, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T19:04:11Z E done
+2026-11-25T19:04:11Z start A workers=1
+2026-11-25T19:05:18Z week CAL145C 101 PRISM val 0.005: cost 1168.6, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T19:06:44Z week CAL145C 101 PRISM val 0.01: cost 1110.8, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T19:07:58Z week CAL145C 101 PRISM val 0.02: cost 1108.6, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T19:09:02Z week CAL145C 101 PRISM val 0.03: cost 1108.6, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T19:09:58Z week CAL145C 101 PRISM val 0.05: cost 1107.8, violating 98.21%, >=2048 MB 1.8%
+2026-11-25T19:10:59Z week CAL145C 101 PRISM val 0.08: cost 985.6, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T19:11:58Z week CAL145C 101 PRISM test 0.02: cost 1115.9, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T19:11:58Z group CAL145C 101 PRISM: selected 0.02 expansions -
+2026-11-25T19:12:51Z week CAL145C 101 MemAdapt_q90 val 0.6: cost 992.3, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T19:13:42Z week CAL145C 101 MemAdapt_q90 val 0.7: cost 1030.7, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T19:14:32Z week CAL145C 101 MemAdapt_q90 val 0.8: cost 1075.9, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T19:15:23Z week CAL145C 101 MemAdapt_q90 val 0.9: cost 1125.8, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T19:16:14Z week CAL145C 101 MemAdapt_q90 val 1.0: cost 1178.2, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T19:17:06Z week CAL145C 101 MemAdapt_q90 val 1.1: cost 1233.3, violating 0.74%, >=2048 MB 100.0%
+2026-11-25T19:17:56Z week CAL145C 101 MemAdapt_q90 val 1.2: cost 1289.5, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T19:18:47Z week CAL145C 101 MemAdapt_q90 val 1.3: cost 1346.3, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T19:19:36Z week CAL145C 101 MemAdapt_q90 val 1.4: cost 1403.5, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T19:20:28Z week CAL145C 101 MemAdapt_q90 val 1.5: cost 1461.2, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T19:21:20Z week CAL145C 101 MemAdapt_q90 val 0.5: cost 963.2, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T19:22:12Z week CAL145C 101 MemAdapt_q90 val 0.4: cost 946.4, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T19:23:04Z week CAL145C 101 MemAdapt_q90 test 0.4: cost 940.9, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T19:23:04Z group CAL145C 101 MemAdapt_q90: selected 0.4 expansions [0.5, 0.4] UNRESOLVED EDGE
+2026-11-25T19:24:07Z week CAL145C 102 PRISM val 0.005: cost 1178.1, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T19:25:01Z week CAL145C 102 PRISM val 0.01: cost 1118.1, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T19:25:56Z week CAL145C 102 PRISM val 0.02: cost 1115.5, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T19:26:51Z week CAL145C 102 PRISM val 0.03: cost 1115.5, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T19:27:47Z week CAL145C 102 PRISM val 0.05: cost 1133.4, violating 99.40%, >=2048 MB 0.6%
+2026-11-25T19:28:42Z week CAL145C 102 PRISM val 0.08: cost 985.4, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T19:29:37Z week CAL145C 102 PRISM test 0.02: cost 1144.1, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T19:29:37Z group CAL145C 102 PRISM: selected 0.02 expansions -
+2026-11-25T19:30:31Z week CAL145C 102 MemAdapt_q90 val 0.6: cost 1000.3, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T19:31:22Z week CAL145C 102 MemAdapt_q90 val 0.7: cost 1041.2, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T19:32:14Z week CAL145C 102 MemAdapt_q90 val 0.8: cost 1088.8, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T19:33:05Z week CAL145C 102 MemAdapt_q90 val 0.9: cost 1141.3, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T19:33:56Z week CAL145C 102 MemAdapt_q90 val 1.0: cost 1196.7, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T19:34:46Z week CAL145C 102 MemAdapt_q90 val 1.1: cost 1253.7, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T19:35:37Z week CAL145C 102 MemAdapt_q90 val 1.2: cost 1311.5, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T19:36:28Z week CAL145C 102 MemAdapt_q90 val 1.3: cost 1370.1, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T19:37:19Z week CAL145C 102 MemAdapt_q90 val 1.4: cost 1429.3, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T19:38:11Z week CAL145C 102 MemAdapt_q90 val 1.5: cost 1488.1, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T19:39:03Z week CAL145C 102 MemAdapt_q90 val 0.5: cost 969.4, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T19:39:55Z week CAL145C 102 MemAdapt_q90 val 0.4: cost 951.3, violating 0.74%, >=2048 MB 100.0%
+2026-11-25T19:40:47Z week CAL145C 102 MemAdapt_q90 test 0.4: cost 961.3, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T19:40:47Z group CAL145C 102 MemAdapt_q90: selected 0.4 expansions [0.5, 0.4] UNRESOLVED EDGE
+2026-11-25T19:41:50Z week CAL145C 103 PRISM val 0.005: cost 1129.6, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T19:42:45Z week CAL145C 103 PRISM val 0.01: cost 1075.6, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T19:43:38Z week CAL145C 103 PRISM val 0.02: cost 1075.3, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T19:44:33Z week CAL145C 103 PRISM val 0.03: cost 1075.3, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T19:45:27Z week CAL145C 103 PRISM val 0.05: cost 1089.9, violating 97.02%, >=2048 MB 3.0%
+2026-11-25T19:46:23Z week CAL145C 103 PRISM val 0.08: cost 939.9, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T19:47:17Z week CAL145C 103 PRISM test 0.02: cost 1132.3, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T19:47:17Z group CAL145C 103 PRISM: selected 0.02 expansions -
+2026-11-25T19:48:08Z week CAL145C 103 MemAdapt_q90 val 0.6: cost 959.1, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T19:48:58Z week CAL145C 103 MemAdapt_q90 val 0.7: cost 997.2, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T19:49:48Z week CAL145C 103 MemAdapt_q90 val 0.8: cost 1042.0, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T19:50:39Z week CAL145C 103 MemAdapt_q90 val 0.9: cost 1091.1, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T19:51:29Z week CAL145C 103 MemAdapt_q90 val 1.0: cost 1143.3, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T19:52:20Z week CAL145C 103 MemAdapt_q90 val 1.1: cost 1197.3, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T19:53:09Z week CAL145C 103 MemAdapt_q90 val 1.2: cost 1252.3, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T19:53:59Z week CAL145C 103 MemAdapt_q90 val 1.3: cost 1308.0, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T19:54:49Z week CAL145C 103 MemAdapt_q90 val 1.4: cost 1363.8, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T19:55:39Z week CAL145C 103 MemAdapt_q90 val 1.5: cost 1420.1, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T19:56:29Z week CAL145C 103 MemAdapt_q90 val 0.5: cost 930.2, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T19:57:23Z week CAL145C 103 MemAdapt_q90 val 0.4: cost 913.5, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T19:58:14Z week CAL145C 103 MemAdapt_q90 test 0.4: cost 949.6, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T19:58:14Z group CAL145C 103 MemAdapt_q90: selected 0.4 expansions [0.5, 0.4] UNRESOLVED EDGE
+2026-11-25T19:59:18Z week CAL145C 104 PRISM val 0.005: cost 1239.5, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T20:00:13Z week CAL145C 104 PRISM val 0.01: cost 1114.1, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T20:01:08Z week CAL145C 104 PRISM val 0.02: cost 1112.5, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T20:02:04Z week CAL145C 104 PRISM val 0.03: cost 1112.5, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T20:02:59Z week CAL145C 104 PRISM val 0.05: cost 1174.9, violating 98.21%, >=2048 MB 1.8%
+2026-11-25T20:03:54Z week CAL145C 104 PRISM val 0.08: cost 1047.6, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T20:04:48Z week CAL145C 104 PRISM test 0.02: cost 1104.4, violating 0.74%, >=2048 MB 100.0%
+2026-11-25T20:04:48Z group CAL145C 104 PRISM: selected 0.02 expansions -
+2026-11-25T20:05:40Z week CAL145C 104 MemAdapt_q90 val 0.6: cost 1000.1, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:06:31Z week CAL145C 104 MemAdapt_q90 val 0.7: cost 1048.6, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:07:21Z week CAL145C 104 MemAdapt_q90 val 0.8: cost 1103.3, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:08:12Z week CAL145C 104 MemAdapt_q90 val 0.9: cost 1162.0, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:09:02Z week CAL145C 104 MemAdapt_q90 val 1.0: cost 1222.5, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:09:52Z week CAL145C 104 MemAdapt_q90 val 1.1: cost 1284.7, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:10:42Z week CAL145C 104 MemAdapt_q90 val 1.2: cost 1347.7, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T20:11:34Z week CAL145C 104 MemAdapt_q90 val 1.3: cost 1410.7, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T20:12:25Z week CAL145C 104 MemAdapt_q90 val 1.4: cost 1474.4, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T20:13:15Z week CAL145C 104 MemAdapt_q90 val 1.5: cost 1538.2, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T20:14:07Z week CAL145C 104 MemAdapt_q90 val 0.5: cost 960.2, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:14:59Z week CAL145C 104 MemAdapt_q90 val 0.4: cost 933.6, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T20:15:53Z week CAL145C 104 MemAdapt_q90 test 0.4: cost 929.7, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T20:15:53Z group CAL145C 104 MemAdapt_q90: selected 0.4 expansions [0.5, 0.4] UNRESOLVED EDGE
+2026-11-25T20:16:58Z week CAL145C 105 PRISM val 0.005: cost 1211.6, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:17:54Z week CAL145C 105 PRISM val 0.01: cost 1117.4, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:18:58Z week CAL145C 105 PRISM val 0.02: cost 1112.0, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:20:01Z week CAL145C 105 PRISM val 0.03: cost 1112.0, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:21:03Z week CAL145C 105 PRISM val 0.05: cost 1163.9, violating 98.21%, >=2048 MB 1.8%
+2026-11-25T20:22:04Z week CAL145C 105 PRISM val 0.08: cost 1019.8, violating 100.00%, >=2048 MB 0.0%
+2026-11-25T20:23:05Z week CAL145C 105 PRISM test 0.02: cost 1125.4, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T20:23:05Z group CAL145C 105 PRISM: selected 0.02 expansions -
+2026-11-25T20:24:22Z week CAL145C 105 MemAdapt_q90 val 0.6: cost 1000.8, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T20:25:29Z week CAL145C 105 MemAdapt_q90 val 0.7: cost 1045.9, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T20:26:34Z week CAL145C 105 MemAdapt_q90 val 0.8: cost 1097.8, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T20:27:35Z week CAL145C 105 MemAdapt_q90 val 0.9: cost 1153.7, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:28:34Z week CAL145C 105 MemAdapt_q90 val 1.0: cost 1211.9, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:29:38Z week CAL145C 105 MemAdapt_q90 val 1.1: cost 1271.9, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:30:30Z week CAL145C 105 MemAdapt_q90 val 1.2: cost 1332.7, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T20:31:21Z week CAL145C 105 MemAdapt_q90 val 1.3: cost 1393.6, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T20:32:13Z week CAL145C 105 MemAdapt_q90 val 1.4: cost 1455.3, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T20:33:03Z week CAL145C 105 MemAdapt_q90 val 1.5: cost 1517.3, violating 0.00%, >=2048 MB 100.0%
+2026-11-25T20:33:56Z week CAL145C 105 MemAdapt_q90 val 0.5: cost 965.4, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T20:34:50Z week CAL145C 105 MemAdapt_q90 val 0.4: cost 942.4, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T20:35:43Z week CAL145C 105 MemAdapt_q90 test 0.4: cost 948.8, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T20:35:43Z group CAL145C 105 MemAdapt_q90: selected 0.4 expansions [0.5, 0.4] UNRESOLVED EDGE
+2026-11-25T20:35:43Z A done
+2026-11-25T20:35:44Z start B workers=1
+2026-11-25T20:36:52Z week CAL12C 101 PRISM val 0.005: cost 1640.0, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T20:37:47Z week CAL12C 101 PRISM val 0.01: cost 1355.4, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T20:38:41Z week CAL12C 101 PRISM val 0.02: cost 1198.0, violating 1.34%, >=2048 MB 100.0%
+2026-11-25T20:39:36Z week CAL12C 101 PRISM val 0.03: cost 1139.1, violating 1.64%, >=2048 MB 100.0%
+2026-11-25T20:40:30Z week CAL12C 101 PRISM val 0.05: cost 1109.6, violating 1.49%, >=2048 MB 100.0%
+2026-11-25T20:41:25Z week CAL12C 101 PRISM val 0.08: cost 1108.6, violating 1.49%, >=2048 MB 100.0%
+2026-11-25T20:42:20Z week CAL12C 101 PRISM val 0.1: cost 1108.6, violating 1.49%, >=2048 MB 100.0%
+2026-11-25T20:43:14Z week CAL12C 101 PRISM test 0.08: cost 1115.9, violating 1.64%, >=2048 MB 100.0%
+2026-11-25T20:43:14Z group CAL12C 101 PRISM: selected 0.08 expansions [0.1]
+2026-11-25T20:44:05Z week CAL12C 101 MemAdapt_q90 val 0.6: cost 992.3, violating 1.64%, >=2048 MB 100.0%
+2026-11-25T20:44:56Z week CAL12C 101 MemAdapt_q90 val 0.7: cost 1030.7, violating 1.79%, >=2048 MB 100.0%
+2026-11-25T20:45:46Z week CAL12C 101 MemAdapt_q90 val 0.8: cost 1075.9, violating 1.64%, >=2048 MB 100.0%
+2026-11-25T20:46:36Z week CAL12C 101 MemAdapt_q90 val 0.9: cost 1125.8, violating 1.64%, >=2048 MB 100.0%
+2026-11-25T20:47:26Z week CAL12C 101 MemAdapt_q90 val 1.0: cost 1178.2, violating 1.49%, >=2048 MB 100.0%
+2026-11-25T20:48:16Z week CAL12C 101 MemAdapt_q90 val 1.1: cost 1233.3, violating 1.49%, >=2048 MB 100.0%
+2026-11-25T20:49:06Z week CAL12C 101 MemAdapt_q90 val 1.2: cost 1289.5, violating 1.34%, >=2048 MB 100.0%
+2026-11-25T20:49:57Z week CAL12C 101 MemAdapt_q90 val 1.3: cost 1346.3, violating 1.34%, >=2048 MB 100.0%
+2026-11-25T20:50:49Z week CAL12C 101 MemAdapt_q90 val 1.4: cost 1403.5, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T20:51:40Z week CAL12C 101 MemAdapt_q90 val 1.5: cost 1461.2, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T20:52:32Z week CAL12C 101 MemAdapt_q90 val 0.5: cost 963.2, violating 1.79%, >=2048 MB 100.0%
+2026-11-25T20:53:23Z week CAL12C 101 MemAdapt_q90 val 0.4: cost 946.4, violating 2.68%, >=2048 MB 100.0%
+2026-11-25T20:54:14Z week CAL12C 101 MemAdapt_q90 test 0.5: cost 967.5, violating 2.68%, >=2048 MB 100.0%
+2026-11-25T20:54:14Z group CAL12C 101 MemAdapt_q90: selected 0.5 expansions [0.5, 0.4]
+2026-11-25T20:55:17Z week CAL12C 102 PRISM val 0.005: cost 1673.8, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T20:56:11Z week CAL12C 102 PRISM val 0.01: cost 1339.4, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T20:57:07Z week CAL12C 102 PRISM val 0.02: cost 1211.1, violating 1.34%, >=2048 MB 100.0%
+2026-11-25T20:58:01Z week CAL12C 102 PRISM val 0.03: cost 1138.9, violating 1.93%, >=2048 MB 100.0%
+2026-11-25T20:58:56Z week CAL12C 102 PRISM val 0.05: cost 1116.7, violating 2.08%, >=2048 MB 100.0%
+2026-11-25T20:59:52Z week CAL12C 102 PRISM val 0.08: cost 1115.5, violating 2.08%, >=2048 MB 100.0%
+2026-11-25T21:00:46Z week CAL12C 102 PRISM test 0.03: cost 1282.0, violating 1.34%, >=2048 MB 100.0%
+2026-11-25T21:00:46Z group CAL12C 102 PRISM: selected 0.03 expansions -
+2026-11-25T21:01:40Z week CAL12C 102 MemAdapt_q90 val 0.6: cost 1000.3, violating 2.08%, >=2048 MB 100.0%
+2026-11-25T21:02:30Z week CAL12C 102 MemAdapt_q90 val 0.7: cost 1041.2, violating 1.64%, >=2048 MB 100.0%
+2026-11-25T21:03:21Z week CAL12C 102 MemAdapt_q90 val 0.8: cost 1088.8, violating 1.64%, >=2048 MB 100.0%
+2026-11-25T21:04:12Z week CAL12C 102 MemAdapt_q90 val 0.9: cost 1141.3, violating 1.79%, >=2048 MB 100.0%
+2026-11-25T21:05:04Z week CAL12C 102 MemAdapt_q90 val 1.0: cost 1196.7, violating 1.49%, >=2048 MB 100.0%
+2026-11-25T21:05:55Z week CAL12C 102 MemAdapt_q90 val 1.1: cost 1253.7, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T21:06:45Z week CAL12C 102 MemAdapt_q90 val 1.2: cost 1311.5, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T21:07:35Z week CAL12C 102 MemAdapt_q90 val 1.3: cost 1370.1, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T21:08:25Z week CAL12C 102 MemAdapt_q90 val 1.4: cost 1429.3, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T21:09:16Z week CAL12C 102 MemAdapt_q90 val 1.5: cost 1488.1, violating 0.74%, >=2048 MB 100.0%
+2026-11-25T21:10:06Z week CAL12C 102 MemAdapt_q90 test 0.7: cost 1108.7, violating 1.79%, >=2048 MB 100.0%
+2026-11-25T21:10:06Z group CAL12C 102 MemAdapt_q90: selected 0.7 expansions -
+2026-11-25T21:11:08Z week CAL12C 103 PRISM val 0.005: cost 1687.6, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T21:12:02Z week CAL12C 103 PRISM val 0.01: cost 1293.1, violating 0.74%, >=2048 MB 100.0%
+2026-11-25T21:12:55Z week CAL12C 103 PRISM val 0.02: cost 1158.1, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T21:13:49Z week CAL12C 103 PRISM val 0.03: cost 1097.3, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T21:14:42Z week CAL12C 103 PRISM val 0.05: cost 1075.3, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T21:15:36Z week CAL12C 103 PRISM val 0.08: cost 1075.3, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T21:16:30Z week CAL12C 103 PRISM val 0.1: cost 1075.3, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T21:17:24Z week CAL12C 103 PRISM test 0.08: cost 1132.3, violating 1.79%, >=2048 MB 100.0%
+2026-11-25T21:17:24Z group CAL12C 103 PRISM: selected 0.08 expansions [0.1]
+2026-11-25T21:18:16Z week CAL12C 103 MemAdapt_q90 val 0.6: cost 959.1, violating 1.93%, >=2048 MB 100.0%
+2026-11-25T21:19:06Z week CAL12C 103 MemAdapt_q90 val 0.7: cost 997.2, violating 1.49%, >=2048 MB 100.0%
+2026-11-25T21:19:55Z week CAL12C 103 MemAdapt_q90 val 0.8: cost 1042.0, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T21:20:47Z week CAL12C 103 MemAdapt_q90 val 0.9: cost 1091.1, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T21:21:37Z week CAL12C 103 MemAdapt_q90 val 1.0: cost 1143.3, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T21:22:28Z week CAL12C 103 MemAdapt_q90 val 1.1: cost 1197.3, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T21:23:19Z week CAL12C 103 MemAdapt_q90 val 1.2: cost 1252.3, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T21:24:08Z week CAL12C 103 MemAdapt_q90 val 1.3: cost 1308.0, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T21:24:58Z week CAL12C 103 MemAdapt_q90 val 1.4: cost 1363.8, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T21:25:48Z week CAL12C 103 MemAdapt_q90 val 1.5: cost 1420.1, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T21:26:38Z week CAL12C 103 MemAdapt_q90 val 0.5: cost 930.2, violating 2.53%, >=2048 MB 100.0%
+2026-11-25T21:27:29Z week CAL12C 103 MemAdapt_q90 test 0.6: cost 1022.4, violating 1.93%, >=2048 MB 100.0%
+2026-11-25T21:27:29Z group CAL12C 103 MemAdapt_q90: selected 0.6 expansions [0.5]
+2026-11-25T21:28:32Z week CAL12C 104 PRISM val 0.005: cost 1735.1, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T21:29:27Z week CAL12C 104 PRISM val 0.01: cost 1460.0, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T21:30:21Z week CAL12C 104 PRISM val 0.02: cost 1278.0, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T21:31:15Z week CAL12C 104 PRISM val 0.03: cost 1171.2, violating 0.74%, >=2048 MB 100.0%
+2026-11-25T21:32:11Z week CAL12C 104 PRISM val 0.05: cost 1118.5, violating 0.74%, >=2048 MB 100.0%
+2026-11-25T21:33:05Z week CAL12C 104 PRISM val 0.08: cost 1112.5, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T21:33:59Z week CAL12C 104 PRISM val 0.1: cost 1112.5, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T21:34:54Z week CAL12C 104 PRISM test 0.08: cost 1104.4, violating 2.38%, >=2048 MB 100.0%
+2026-11-25T21:34:54Z group CAL12C 104 PRISM: selected 0.08 expansions [0.1]
+2026-11-25T21:35:45Z week CAL12C 104 MemAdapt_q90 val 0.6: cost 1000.1, violating 1.49%, >=2048 MB 100.0%
+2026-11-25T21:36:36Z week CAL12C 104 MemAdapt_q90 val 0.7: cost 1048.6, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T21:37:26Z week CAL12C 104 MemAdapt_q90 val 0.8: cost 1103.3, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T21:38:17Z week CAL12C 104 MemAdapt_q90 val 0.9: cost 1162.0, violating 0.74%, >=2048 MB 100.0%
+2026-11-25T21:39:07Z week CAL12C 104 MemAdapt_q90 val 1.0: cost 1222.5, violating 0.74%, >=2048 MB 100.0%
+2026-11-25T21:39:58Z week CAL12C 104 MemAdapt_q90 val 1.1: cost 1284.7, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T21:40:48Z week CAL12C 104 MemAdapt_q90 val 1.2: cost 1347.7, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T21:41:38Z week CAL12C 104 MemAdapt_q90 val 1.3: cost 1410.7, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T21:42:29Z week CAL12C 104 MemAdapt_q90 val 1.4: cost 1474.4, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T21:43:18Z week CAL12C 104 MemAdapt_q90 val 1.5: cost 1538.2, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T21:44:09Z week CAL12C 104 MemAdapt_q90 val 0.5: cost 960.2, violating 1.49%, >=2048 MB 100.0%
+2026-11-25T21:45:01Z week CAL12C 104 MemAdapt_q90 val 0.4: cost 933.6, violating 2.53%, >=2048 MB 100.0%
+2026-11-25T21:45:51Z week CAL12C 104 MemAdapt_q90 test 0.5: cost 961.9, violating 2.38%, >=2048 MB 100.0%
+2026-11-25T21:45:51Z group CAL12C 104 MemAdapt_q90: selected 0.5 expansions [0.5, 0.4]
+2026-11-25T21:46:55Z week CAL12C 105 PRISM val 0.005: cost 1710.0, violating 0.15%, >=2048 MB 100.0%
+2026-11-25T21:47:49Z week CAL12C 105 PRISM val 0.01: cost 1406.2, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T21:48:43Z week CAL12C 105 PRISM val 0.02: cost 1237.4, violating 0.74%, >=2048 MB 100.0%
+2026-11-25T21:49:38Z week CAL12C 105 PRISM val 0.03: cost 1154.5, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T21:50:33Z week CAL12C 105 PRISM val 0.05: cost 1113.9, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T21:51:29Z week CAL12C 105 PRISM val 0.08: cost 1112.0, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T21:52:24Z week CAL12C 105 PRISM val 0.1: cost 1112.0, violating 0.89%, >=2048 MB 100.0%
+2026-11-25T21:53:20Z week CAL12C 105 PRISM test 0.08: cost 1125.4, violating 1.34%, >=2048 MB 100.0%
+2026-11-25T21:53:20Z group CAL12C 105 PRISM: selected 0.08 expansions [0.1]
+2026-11-25T21:54:11Z week CAL12C 105 MemAdapt_q90 val 0.6: cost 1000.8, violating 1.34%, >=2048 MB 100.0%
+2026-11-25T21:55:02Z week CAL12C 105 MemAdapt_q90 val 0.7: cost 1045.9, violating 1.19%, >=2048 MB 100.0%
+2026-11-25T21:55:53Z week CAL12C 105 MemAdapt_q90 val 0.8: cost 1097.8, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T21:56:44Z week CAL12C 105 MemAdapt_q90 val 0.9: cost 1153.7, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T21:57:35Z week CAL12C 105 MemAdapt_q90 val 1.0: cost 1211.9, violating 1.04%, >=2048 MB 100.0%
+2026-11-25T21:58:25Z week CAL12C 105 MemAdapt_q90 val 1.1: cost 1271.9, violating 0.74%, >=2048 MB 100.0%
+2026-11-25T21:59:15Z week CAL12C 105 MemAdapt_q90 val 1.2: cost 1332.7, violating 0.60%, >=2048 MB 100.0%
+2026-11-25T22:00:05Z week CAL12C 105 MemAdapt_q90 val 1.3: cost 1393.6, violating 0.45%, >=2048 MB 100.0%
+2026-11-25T22:00:56Z week CAL12C 105 MemAdapt_q90 val 1.4: cost 1455.3, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T22:01:47Z week CAL12C 105 MemAdapt_q90 val 1.5: cost 1517.3, violating 0.30%, >=2048 MB 100.0%
+2026-11-25T22:02:38Z week CAL12C 105 MemAdapt_q90 val 0.5: cost 965.4, violating 1.64%, >=2048 MB 100.0%
+2026-11-25T22:03:30Z week CAL12C 105 MemAdapt_q90 val 0.4: cost 942.4, violating 1.93%, >=2048 MB 100.0%
+2026-11-25T22:04:22Z week CAL12C 105 MemAdapt_q90 test 0.4: cost 948.8, violating 2.08%, >=2048 MB 100.0%
+2026-11-25T22:04:22Z group CAL12C 105 MemAdapt_q90: selected 0.4 expansions [0.5, 0.4] UNRESOLVED EDGE
+2026-11-25T22:04:22Z B done
+2026-11-25T22:04:23Z chain done

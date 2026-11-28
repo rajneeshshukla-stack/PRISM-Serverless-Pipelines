@@ -1,0 +1,15 @@
+{
+ "group": "A",
+ "driver_sha256": "d41b60571a5714e4ed27b4cd2b35a6cea07439ec4591e2d6971f3ce033ad7c0c",
+ "exploratory_sha256": "8c06277db8d62432e89ca286b592f70899388ff104fa4ea8dc90d2b623619fe1",
+ "factors_sha256": "c60f471a149ea296b9159bc1429c4d070cbde7cd9b337a0331d88d030884ecf5",
+ "workers": 2,
+ "cfg_sha": {
+  "LEG145": "6cada1fd3ba21b0f",
+  "I145": "11595c72d5835c13",
+  "S145": "4eeec20abc33eb73",
+  "CAL145": "698d05115bf50809",
+  "CAL12": "7c9ec37c98b58d7e"
+ },
+ "started": "2026-11-25T05:48:06Z"
+}
